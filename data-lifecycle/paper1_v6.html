@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designing for the Data Lifecycle is not easy — Data Lifecycle Series, Paper 1 of 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --slate-950:#0B1220; --slate-900:#0F172A; --slate-800:#1E293B;
+    --slate-700:#334155; --slate-600:#475569; --slate-500:#64748B;
+    --slate-400:#94A3B8; --slate-300:#CBD5E1; --slate-200:#E2E8F0;
+    --slate-100:#F1F5F9;
+    --brass-900:#5C4310; --brass-700:#8B6914; --brass-600:#A8841C;
+    --brass-500:#B8860B; --brass-400:#C9A33D; --brass-300:#DAB769;
+    --brass-200:#EBD7A7; --brass-100:#F5E6B8;
+    --parchment:#FAF7F0; --parchment-mid:#F2EDE0; --parchment-deep:#E8E0CC;
+    --white:#FFFFFF;
+    --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+    --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --mono:'JetBrains Mono','SF Mono',Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--parchment-mid)}
+  body{font-family:var(--serif);font-size:17px;line-height:1.65;color:var(--slate-800);
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  .page{max-width:780px;margin:0 auto;background:var(--white);
+    box-shadow:0 0 80px rgba(15,23,42,.10);min-height:100vh}
+
+  /* Series cards */
+  /* Header */
+  
+  /* ── Series cap — top and bottom ── */
+  .series-cap{
+    background:var(--slate-900);
+    display:flex;align-items:center;flex-wrap:wrap;
+    gap:0 8px;
+    padding:12px 64px;
+    font-family:var(--mono);font-size:10.5px;
+    letter-spacing:.04em;
+  }
+  .series-cap--top{ border-bottom:2px solid var(--brass-500); }
+  .series-cap--bottom{ border-top:2px solid var(--brass-500); }
+  .series-cap-label{
+    font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+    color:var(--brass-400);white-space:nowrap;
+  }
+  .series-cap-sep{ color:var(--slate-600);user-select:none; }
+  .series-cap-item{
+    color:var(--slate-400);text-decoration:none;
+    white-space:nowrap;transition:color .15s;
+  }
+  .series-cap-item:hover{ color:var(--slate-100); }
+  .series-cap-item--active{ color:var(--slate-100);font-weight:700; }
+
+  .doc-header{padding:32px 64px 36px;border-bottom:1px solid var(--slate-200);
+    background:var(--white)}
+  .series-label::after{content:'';flex:1;height:1px;background:var(--slate-200)}
+  .doc-header h1{font-family:var(--serif);font-size:38px;font-weight:600;
+    line-height:1.15;color:var(--slate-900);letter-spacing:-.015em;
+    margin-bottom:14px}
+  .doc-header .subtitle{font-family:var(--serif);font-style:italic;font-size:18px;
+    line-height:1.4;color:var(--slate-600);margin-bottom:22px}
+  .doc-header .meta{font-family:var(--mono);font-size:11.5px;color:var(--slate-500);
+    letter-spacing:.04em;padding-top:14px;border-top:1px solid var(--slate-200);
+    display:flex;gap:22px;flex-wrap:wrap}
+  .doc-header .meta b{color:var(--slate-700);font-weight:600}
+
+  /* Body */
+  .body{padding:0 64px 72px}
+
+  /* Cartoon frame */
+  .cartoon-frame{margin:40px -64px;background:var(--parchment-mid);padding:28px 32px;
+    text-align:center;border-top:1px solid var(--parchment-deep);
+    border-bottom:1px solid var(--parchment-deep)}
+  .cartoon-frame img{max-width:100%;height:auto;display:inline-block;
+    border:1px solid var(--parchment-deep);background:var(--white)}
+  .cartoon-caption{font-family:var(--sans);font-size:11px;color:var(--slate-500);
+    margin-top:14px;letter-spacing:.04em;font-style:italic}
+
+  /* Opening prose */
+  .opening{margin:36px 0 8px;font-size:18.5px;line-height:1.7;color:var(--slate-800)}
+  .opening p{margin-bottom:16px}
+  .opening p:last-child{margin-bottom:0}
+
+  /* Block */
+  .block{margin-top:64px;padding-top:32px;border-top:2px solid var(--slate-900)}
+  .block-eyebrow{font-family:var(--sans);font-size:11px;font-weight:700;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--brass-700);
+    margin-bottom:10px}
+  .block h2{font-family:var(--serif);font-size:28px;font-weight:600;
+    line-height:1.25;color:var(--slate-900);letter-spacing:-.01em;
+    margin-bottom:18px}
+  .block p{margin-bottom:14px;font-size:17px;line-height:1.7;color:var(--slate-700)}
+  .block p:last-child{margin-bottom:0}
+
+  /* Tables */
+  .table-wrap{margin:22px 0;overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:14px;
+    background:var(--white);border:1px solid var(--slate-200)}
+  thead th{background:var(--slate-900);color:var(--white);font-size:11px;
+    font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    padding:12px 16px;text-align:left}
+  tbody tr{border-bottom:1px solid var(--slate-200)}
+  tbody tr:last-child{border-bottom:none}
+  tbody tr:nth-child(even){background:var(--parchment)}
+  tbody td{padding:14px 16px;vertical-align:top;color:var(--slate-700);
+    line-height:1.55}
+  tbody td:first-child{font-weight:700;color:var(--slate-900);width:200px}
+
+  /* Mechanism table */
+  .mech-table tbody td:first-child{font-family:var(--mono);font-weight:600;
+    color:var(--brass-700);text-align:center;font-size:13px;width:48px}
+  .mech-table thead th:first-child{width:48px;text-align:center}
+  .mech-table tbody td:nth-child(2){font-weight:700;color:var(--slate-900);width:180px}
+  .mech-table tbody td:nth-child(3){font-weight:600;color:var(--slate-800);width:200px}
+  .mech-table tbody td:nth-child(4){font-weight:400;color:var(--slate-700)}
+  .mech-table thead th:nth-child(2){width:180px}
+  .mech-table thead th:nth-child(3){width:200px}
+
+  /* Pull-quote card */
+  .pq-card{margin:28px 0;padding:22px 26px 22px 24px;background:var(--parchment);
+    border-left:4px solid var(--brass-500);border-top:1px solid var(--parchment-deep);
+    border-right:1px solid var(--parchment-deep);
+    border-bottom:1px solid var(--parchment-deep);border-radius:0 3px 3px 0}
+  .pq-name{font-family:var(--sans);font-size:17px;font-weight:700;
+    color:var(--slate-900);margin-bottom:10px;letter-spacing:-.005em}
+  .pq-def{font-family:var(--serif);font-style:italic;font-size:16px;
+    line-height:1.6;color:var(--slate-700)}
+
+  /* Diagram frame */
+  .diagram-frame{margin:32px 0;padding:24px;background:var(--white);
+    border:1px solid var(--slate-200);text-align:center}
+  .diagram-frame img{max-width:100%;height:auto}
+  .diagram-caption{font-family:var(--sans);font-size:11px;font-weight:500;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--slate-500);
+    margin-top:14px;padding-top:10px;border-top:1px solid var(--slate-200)}
+
+  /* Closing dark panel */
+  .closing{margin-top:64px;padding:36px 40px;background:var(--slate-900);
+    color:var(--white);border-top:4px solid var(--brass-500)}
+  .closing-eyebrow{font-family:var(--sans);font-size:10px;font-weight:700;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--brass-300);
+    margin-bottom:14px}
+  .closing h3{font-family:var(--serif);font-size:22px;font-weight:500;
+    line-height:1.4;color:var(--white);margin-bottom:14px;letter-spacing:-.005em}
+  .closing p{font-family:var(--serif);font-size:17px;line-height:1.65;
+    color:var(--slate-300);margin:0}
+  .closing p+p{margin-top:10px}
+
+  /* Series footer */
+  @media print{body,html{background:var(--white)}.page{box-shadow:none}
+    .cartoon-frame,.diagram-frame{page-break-inside:avoid}
+    .pq-card{page-break-inside:avoid}}
+  @media (max-width:720px){
+    .series-cap{padding:10px 20px;gap:0 6px;font-size:10px;}
+
+    .doc-header{padding:24px 28px 28px}
+    .doc-header h1{font-size:28px}
+    .body{padding:0 28px 48px}
+    .cartoon-frame{margin:28px -28px;padding:20px}
+    .closing{padding:28px 24px}
+    }
+</style>
+</head>
+<body>
+<div class="page">
+    <div class="series-cap series-cap--top">
+    <span class="series-cap-label">Data Lifecycle Series</span>
+    <span class="series-cap-sep">·</span>
+    <span class="series-cap-item series-cap-item--active">1 — Designing for the Data Lifecycle is not easy</span>
+    <span class="series-cap-sep">·</span>
+    <a class="series-cap-item" href="#">2 — The Best Pattern for a New Source</a>
+    <span class="series-cap-sep">·</span>
+    <a class="series-cap-item" href="#">3 — When the Request Is "Delete Me"</a>
+  </div>
+  <header class="doc-header">    <h1>Designing for the Data Lifecycle is not easy</h1>
+    <div class="subtitle">Slow down and make sure everyone understands.</div>
+    <div class="meta">
+      <span><b>Published</b> May 2026</span>
+      <span><b>Audience</b> Cross-functional leadership</span>
+      <span><b>Reading time</b> ~7 min</span>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <div class="cartoon-frame">
+      <img src="https://drive.google.com/thumbnail?id=1wLZ3W-uA9Z4hZSDRRpSo9QjlIGZaqOWW&sz=w1600" alt="Stakeholders bringing different — and individually correct — answers to the same compliance question.">
+    </div>
+
+    <div class="opening">
+      <p>Legal needs the record retained. Privacy needs identifying fields removed. Engineering and analytics need the data usable. Finance needs the storage cost contained. Compliance needs evidence the whole thing is auditable.</p>
+      <p>None of them is wrong. They are not having a disagreement. They are answering different questions about the same data, at the same time, under the same regulation. The conflict is not in the policy. The conflict is in the architecture asking a single dataset to satisfy obligations that pull in opposite directions at once.</p>
+      <p>This paper names what the four mechanisms actually are and which two problems they really solve. Paper 2 builds the architecture that separates them. Paper 3 stress-tests that architecture against the hardest request it will ever receive.</p>
+    </div>
+
+    <section class="block">
+      <div class="block-eyebrow">Block 1 · Retention requirements</div>
+      <h2>Four mechanisms inside one rule</h2>
+      <p>Inside a single retention rule, four mechanisms are typically running at once. They share vocabulary. They do not share owners, triggers, or standards. When an organization writes them all into one policy paragraph, the paragraph reads coherent and the implementation reads chaotic.</p>
+
+      <div class="table-wrap">
+        <table class="mech-table">
+          <thead><tr><th>#</th><th>Concern</th><th>Mechanism</th><th>What it is</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Minimum legal retention</td><td>Archive to WORM</td><td>Mandatory hold. HIPAA, CMS, SOX, state statute, contract.</td></tr>
+            <tr><td>2</td><td>Post-floor exposure</td><td>Purge from WORM after legal floor</td><td>Time-based deletion once retention clock expires.</td></tr>
+            <tr><td>3</td><td>Analytical proliferation</td><td>Purge when no use</td><td>Purpose-based deletion when no documented active use.</td></tr>
+            <tr><td>4</td><td>Analytical risk</td><td>Hard mask</td><td>Irreversible removal of identifying fields. Record persists without the subject.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Card · Four Mechanisms -->
+      <div class="pq-card">
+        <div class="pq-name">Four Mechanisms</div>
+        <div class="pq-def">One source of data. Four distinct obligations acting on it simultaneously. Each has a different owner, trigger, and standard.</div>
+      </div>
+
+      <p>Mechanism 1 is an externally imposed obligation. In regulated industries, the regulator, the contract, or the statute sets the floor. The organization is required to hold the record for the required time period, and to protect it. The question of how to store it safely, how much longer is appropriate to store it beyond the legal minimum, and exactly how to lower risk and remove data over time is where judgment comes into play. Mechanisms 2, 3, and 4 are internal risk-reduction choices. They reduce exposure, they reduce cost, they reduce the surface area of a future privacy event. None of them is specifically prescribed by the obligation that governs Mechanism 1.</p>
+      <p>Conflating the obligation with the choices is where the conversation breaks. If retention and disposal are written as one rule, the organization either over-retains (because the floor is mistaken for the ceiling) or under-retains (because a disposal choice is mistaken for a permission). Both produce the same outcome: a regulator finding that data was handled incorrectly.</p>
+      <p>A note on Mechanism 4: hard mask means the irreversible removal or destruction of identifying fields such that the subject can no longer reasonably be re-identified through the retained dataset. The record survives. The person does not appear in it.</p>
+
+      <!-- Card · Obligation vs. Choice -->
+      <div class="pq-card">
+        <div class="pq-name">Obligation vs. Choice</div>
+        <div class="pq-def">Legal retention is an externally imposed obligation. Hard masking, removal after retention, and removal if no use are internal risk-reduction choices. Conflating them is the root of the problem.</div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block-eyebrow">Block 2 · The three obligations</div>
+      <h2>Three obligations, all simultaneous</h2>
+      <p>Step back from the four mechanisms and three regulatory obligations come into focus. They do not run in sequence. They run in parallel, against the same record, on the same day.</p>
+
+      <div class="diagram-frame">
+        <img src="https://drive.google.com/thumbnail?id=1GTebmhVC7bU_KfNGzmGwUbk0rUovwxDa&sz=w1600" alt="Three Compliance Obligations: RETAIN, ERASE, GOVERN — all applying simultaneously to the same data.">
+        <div class="diagram-caption">Figure D9 · Three compliance obligations acting simultaneously</div>
+      </div>
+
+      <p>Retain. The record must be available, legible, and provably unaltered for the duration the regulation specifies. The clock starts at creation, last use, or some other documented event.</p>
+      <p>Erase. A subject can ask to be forgotten. A consent can lapse. A use case can end. The record, or the parts of it that identify a person, must be removed in a timeframe and to a standard the regulation defines.</p>
+      <p>Govern. Access to the record must be controlled, logged, attested, and auditable for as long as the record exists.</p>
+      <p>All three apply to the same data at the same time. Meeting one does not excuse the others. Removing identifying fields is a risk-reduction strategy. It is not a disposal decision. A record with identifiers removed still falls under the retain obligation if the underlying business event is in scope, and still falls under the govern obligation as long as it exists in any form. Regulatory frameworks vary in how they define these obligations, and retention floors, erasure timelines, and identity standards must be calibrated to the specific laws and jurisdictions that apply.</p>
+
+      <!-- Card · Three Simultaneous Obligations -->
+      <div class="pq-card">
+        <div class="pq-name">Three Simultaneous Obligations</div>
+        <div class="pq-def">RETAIN, ERASE, and GOVERN all apply to the same data at the same time. Meeting one does not excuse the others.</div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block-eyebrow">Block 3 · The architectural split</div>
+      <h2>Analytics is not the vault</h2>
+      <p>Look back at the four mechanisms. Mechanisms 1 and 2 (legal retention and purge after the legal floor) operate on the authoritative record. Their job is to ensure the record exists, intact, for as long as the obligation requires, and disappears cleanly when it expires. This is a vault problem, largely solved by retention rules and a disposal calendar.</p>
+      <p>Mechanisms 3 and 4 (purge when no use, and hard mask) operate on derived data. Their job is to reduce the privacy and operational surface area of analytical copies, joins, and aggregates that exist downstream of the authoritative record. This is an analytical risk problem: it requires tracking where identity propagates across many derived datasets, which is harder. A subject does not appear in one row of one table; the subject appears across derived data products, each carrying a different slice of identity, joined to other entities that have their own obligations.</p>
+      <p>The two problems share the verb <em>remove</em> and almost nothing else. The vault answers the question <em>"is this record still required?"</em> with a date. The analytical environment answers the question <em>"is anyone still using this, and does what remains still need to identify a person?"</em> with a much harder calculation.</p>
+      <p>One architecture cannot solve both correctly. An environment that bolts disposal logic onto the analytical store ends up either deleting records the vault still needs, or holding identifiers the analytical use case stopped requiring two years ago. Both are avoidable.</p>
+
+      <!-- Card · Two Problems -->
+      <div class="pq-card">
+        <div class="pq-name">Two Problems</div>
+        <div class="pq-def">The vault problem is administrative and age-driven. It is solved by a retention calendar. The analytical risk problem requires tracking identity across many derived datasets. Much harder.</div>
+      </div>
+    </section>
+
+    <div class="closing">
+      <div class="closing-eyebrow">Over to you</div>
+      <h3>Is your analytical store being managed under "retention" and "removal" requirements that were written for the original source data?</h3>
+      <p style="margin-top:18px;font-size:14.5px;color:var(--slate-400);font-style:italic">Paper 2 picks up at Day Zero: the architectural fork that separates the vault problem from the analytical risk problem before either has a chance to contaminate the other.</p>
+    </div>
+
+  </div>
+  <div class="series-cap series-cap--bottom">
+    <span class="series-cap-label">Data Lifecycle Series</span>
+    <span class="series-cap-sep">·</span>
+    <span class="series-cap-item series-cap-item--active">1 — Designing for the Data Lifecycle is not easy</span>
+    <span class="series-cap-sep">·</span>
+    <a class="series-cap-item" href="#">2 — The Best Pattern for a New Source</a>
+    <span class="series-cap-sep">·</span>
+    <a class="series-cap-item" href="#">3 — When the Request Is "Delete Me"</a>
+  </div>
+  </div>
+</div>
+</body>
+</html>
+<!-- ════════════════════════════════════════════════════════════════
+     PROVENANCE
+     ════════════════════════════════════════════════════════════════
+     MODEL             Claude Sonnet 4.6 — 2026-05-12
+     VERSION           v6.0 — Final editorial pass; series complete
+     SESSION           2026-05-12 — DL-S12
+     AUDIENCE          Cross-functional leadership (legal, compliance,
+                       data engineering, analytics) — LinkedIn series
+     SOURCES           The Author's original Analytical Data Lifecycle
+                       whitepaper (April 2026) — source document for
+                       the series; external review: Gemini, ChatGPT,
+                       Perplexity; editorial decisions approved by
+                       author across sessions DL-S01 through DL-S12.
+     DECISION/ACTION   Pending final author sign-off after review of
+                       published artifact URLs. Teasers drafted DL-S12.
+                       Publish one paper per week beginning with Paper 1.
+     ITERATION NOTES   v6.0: Final banned-pattern pass (DL-S12).
+                       Removed unsupported frequency claim (P1);
+                       removed "data minimization" label (P2);
+                       replaced metaphorical "data landscape" (P2);
+                       sharpened closing question (P2); removed
+                       contraction (P3). Version number unified
+                       across series at v6.0.
+     ASSUMPTIONS       SVG diagrams served inline. No external image
+                       dependencies. Publishing via shared Claude
+                       artifact URL.
+     SCOPE EXCLUSIONS  Does not cover implementation playbook,
+                       vendor selection, or regulatory legal advice.
+     TOOL CHAIN        Claude only — drafting, editing, HTML
+                       production across DL-S01 through DL-S12.
+     REVIEW STATUS     Pending final author sign-off.
+
+     VERSION HISTORY (SUMMARY)
+       v6.0 · 2026-05-12 · Final banned-pattern pass; series unified · Pending sign-off
+       v5.0/v4.0 · 2026-05-11 · SVG diagram upgrade + voice pass (DL-S11) · Superseded
+       v4.0/v3.0 · 2026-05-11 · External review integrated; Opus synthesis · Superseded
+       v2.0 · 2026-05-08 · Voice and structure pass; content edits · Superseded
+       v1.0 · Late April 2026 · Initial HTML draft from source whitepaper · Superseded
+       Source · April 2026 · Author's original Analytical Data Lifecycle whitepaper · Archived
+     ════════════════════════════════════════════════════════════════ -->

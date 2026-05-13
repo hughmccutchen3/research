@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When the Request Is "Delete Me" — Data Lifecycle Series, Paper 3 of 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --slate-950:#0B1220; --slate-900:#0F172A; --slate-800:#1E293B;
+    --slate-700:#334155; --slate-600:#475569; --slate-500:#64748B;
+    --slate-400:#94A3B8; --slate-300:#CBD5E1; --slate-200:#E2E8F0;
+    --slate-100:#F1F5F9;
+    --brass-900:#5C4310; --brass-700:#8B6914; --brass-600:#A8841C;
+    --brass-500:#B8860B; --brass-400:#C9A33D; --brass-300:#DAB769;
+    --brass-200:#EBD7A7; --brass-100:#F5E6B8;
+    --parchment:#FAF7F0; --parchment-mid:#F2EDE0; --parchment-deep:#E8E0CC;
+    --white:#FFFFFF;
+    --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+    --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --mono:'JetBrains Mono','SF Mono',Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--parchment-mid)}
+  body{font-family:var(--serif);font-size:17px;line-height:1.65;color:var(--slate-800);
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  .page{max-width:780px;margin:0 auto;background:var(--white);
+    box-shadow:0 0 80px rgba(15,23,42,.10);min-height:100vh}
+
+  
+  /* ── Series cap — top and bottom ── */
+  .series-cap{
+    background:var(--slate-900);
+    display:flex;align-items:center;flex-wrap:wrap;
+    gap:0 8px;
+    padding:12px 64px;
+    font-family:var(--mono);font-size:10.5px;
+    letter-spacing:.04em;
+  }
+  .series-cap--top{ border-bottom:2px solid var(--brass-500); }
+  .series-cap--bottom{ border-top:2px solid var(--brass-500); }
+  .series-cap-label{
+    font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+    color:var(--brass-400);white-space:nowrap;
+  }
+  .series-cap-sep{ color:var(--slate-600);user-select:none; }
+  .series-cap-item{
+    color:var(--slate-400);text-decoration:none;
+    white-space:nowrap;transition:color .15s;
+  }
+  .series-cap-item:hover{ color:var(--slate-100); }
+  .series-cap-item--active{ color:var(--slate-100);font-weight:700; }
+
+  .doc-header{padding:32px 64px 36px;border-bottom:1px solid var(--slate-200);
+    background:var(--white)}
+  .series-label::after{content:'';flex:1;height:1px;background:var(--slate-200)}
+  .doc-header h1{font-family:var(--serif);font-size:38px;font-weight:600;
+    line-height:1.15;color:var(--slate-900);letter-spacing:-.015em;
+    margin-bottom:14px}
+  .doc-header .subtitle{font-family:var(--serif);font-style:italic;font-size:18px;
+    line-height:1.4;color:var(--slate-600);margin-bottom:22px}
+  .doc-header .meta{font-family:var(--mono);font-size:11.5px;color:var(--slate-500);
+    letter-spacing:.04em;padding-top:14px;border-top:1px solid var(--slate-200);
+    display:flex;gap:22px;flex-wrap:wrap}
+  .doc-header .meta b{color:var(--slate-700);font-weight:600}
+
+  .body{padding:0 64px 72px}
+
+  .cartoon-frame{margin:40px -64px;background:var(--parchment-mid);padding:28px 32px;
+    text-align:center;border-top:1px solid var(--parchment-deep);
+    border-bottom:1px solid var(--parchment-deep)}
+  .cartoon-frame img{max-width:100%;height:auto;display:inline-block;
+    border:1px solid var(--parchment-deep);background:var(--white)}
+
+  .opening{margin:36px 0 8px;font-size:18.5px;line-height:1.7;color:var(--slate-800)}
+  .opening p{margin-bottom:16px}
+  .opening p:last-child{margin-bottom:0}
+
+  .block{margin-top:64px;padding-top:32px;border-top:2px solid var(--slate-900)}
+  .block-eyebrow{font-family:var(--sans);font-size:11px;font-weight:700;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--brass-700);
+    margin-bottom:10px}
+  .block h2{font-family:var(--serif);font-size:28px;font-weight:600;
+    line-height:1.25;color:var(--slate-900);letter-spacing:-.01em;
+    margin-bottom:18px}
+  .block p{margin-bottom:14px;font-size:17px;line-height:1.7;color:var(--slate-700)}
+  .block p:last-child{margin-bottom:0}
+
+  .table-wrap{margin:22px 0;overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:14px;
+    background:var(--white);border:1px solid var(--slate-200)}
+  thead th{background:var(--slate-900);color:var(--white);font-size:11px;
+    font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    padding:12px 16px;text-align:left}
+  tbody tr{border-bottom:1px solid var(--slate-200)}
+  tbody tr:last-child{border-bottom:none}
+  tbody tr:nth-child(even){background:var(--parchment)}
+  tbody td{padding:14px 16px;vertical-align:top;color:var(--slate-700);
+    line-height:1.55}
+  tbody td:first-child{font-weight:700;color:var(--slate-900);width:260px}
+
+  .pq-card{margin:28px 0;padding:22px 26px 22px 24px;background:var(--parchment);
+    border-left:4px solid var(--brass-500);border-top:1px solid var(--parchment-deep);
+    border-right:1px solid var(--parchment-deep);
+    border-bottom:1px solid var(--parchment-deep);border-radius:0 3px 3px 0}
+  .pq-name{font-family:var(--sans);font-size:17px;font-weight:700;
+    color:var(--slate-900);margin-bottom:10px;letter-spacing:-.005em}
+  .pq-def{font-family:var(--serif);font-style:italic;font-size:16px;
+    line-height:1.6;color:var(--slate-700)}
+
+  .diagram-frame{margin:32px 0;padding:24px;background:var(--white);
+    border:1px solid var(--slate-200);text-align:center}
+  .diagram-frame img{max-width:100%;height:auto}
+  .diagram-caption{font-family:var(--sans);font-size:11px;font-weight:500;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--slate-500);
+    margin-top:14px;padding-top:10px;border-top:1px solid var(--slate-200)}
+
+  /* Governance table — distinct styling */
+  .gov-table-intro{font-family:var(--sans);font-size:14px;color:var(--slate-600);
+    line-height:1.6;margin-bottom:16px;font-style:italic}
+  .gov-section{margin-top:56px;padding-top:28px;border-top:1px solid var(--slate-200)}
+  .gov-section-label{font-family:var(--sans);font-size:11px;font-weight:700;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--brass-700);
+    margin-bottom:14px}
+  .gov-section h3{font-family:var(--serif);font-size:22px;font-weight:600;
+    color:var(--slate-900);margin-bottom:10px;letter-spacing:-.008em}
+
+  .closing{margin-top:64px;padding:36px 40px;background:var(--slate-900);
+    color:var(--white);border-top:4px solid var(--brass-500)}
+  .closing-eyebrow{font-family:var(--sans);font-size:10px;font-weight:700;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--brass-300);
+    margin-bottom:14px}
+  .closing h3{font-family:var(--serif);font-size:22px;font-weight:500;
+    line-height:1.4;color:var(--white);margin-bottom:14px;letter-spacing:-.005em}
+  .closing p{font-family:var(--serif);font-size:17px;line-height:1.65;
+    color:var(--slate-300);margin:0}
+  .closing p+p{margin-top:10px}
+
+  /* Series capstone */
+  .capstone{margin-top:0;padding:48px 64px 56px;background:var(--slate-900);
+    border-top:4px solid var(--brass-500)}
+  .capstone-eyebrow{font-family:var(--sans);font-size:10px;font-weight:700;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--brass-300);
+    margin-bottom:16px}
+  .capstone-heading{font-family:var(--serif);font-size:28px;font-weight:600;
+    line-height:1.25;color:var(--white);letter-spacing:-.01em;margin-bottom:20px}
+  .capstone-body{font-family:var(--serif);font-size:16px;line-height:1.7;
+    color:var(--slate-300);margin-bottom:14px}
+  .capstone-table thead th{background:var(--slate-800);color:var(--brass-200);
+    border-bottom:1px solid var(--slate-700)}
+  .capstone-table tbody tr{border-bottom:1px solid var(--slate-700)}
+  .capstone-table tbody tr:nth-child(even){background:var(--slate-800)}
+  .capstone-table tbody tr:nth-child(odd){background:var(--slate-900)}
+  .capstone-table tbody td{color:var(--slate-300)}
+  .capstone-table tbody td:first-child{color:var(--white)}
+
+  @media print{body,html{background:var(--white)}.page{box-shadow:none}
+    .cartoon-frame,.diagram-frame{page-break-inside:avoid}
+    .pq-card{page-break-inside:avoid}}
+  @media (max-width:720px){
+    .series-cap{padding:10px 20px;gap:0 6px;font-size:10px;}
+
+    .doc-header{padding:24px 28px 28px}
+    .doc-header h1{font-size:28px}
+    .body{padding:0 28px 48px}
+    .cartoon-frame{margin:28px -28px;padding:20px}
+    .closing{padding:28px 24px}
+    }
+</style>
+</head>
+<body>
+<div class="page">
+    <div class="series-cap series-cap--top">
+    <span class="series-cap-label">Data Lifecycle Series</span>
+    <span class="series-cap-sep">·</span>
+    <a class="series-cap-item" href="#">1 — Designing for the Data Lifecycle is not easy</a>
+    <span class="series-cap-sep">·</span>
+    <a class="series-cap-item" href="#">2 — The Best Pattern for a New Source</a>
+    <span class="series-cap-sep">·</span>
+    <span class="series-cap-item series-cap-item--active">3 — When the Request Is "Delete Me"</span>
+  </div>
+  <header class="doc-header">    <h1>When the Request Is "Delete Me"</h1>
+    <div class="subtitle">Record removal in the analytical store is complicated.</div>
+    <div class="meta">
+      <span><b>Published</b> May 2026</span>
+      <span><b>Audience</b> Cross-functional leadership</span>
+      <span><b>Reading time</b> ~7 min</span>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <div class="cartoon-frame">
+      <img src="https://drive.google.com/thumbnail?id=1pF2V9aEKKDof9Q7kUlZe7YKtQ1f_NKy3&sz=w1600" alt="Two scenes: scheduled lifecycle disposal on top, an erasure request fire drill on bottom.">
+    </div>
+
+    <div class="opening">
+      <p>The complexity of an erasure request is the same as the complexity of routine analytical removal: find the subject, remove what identifies them, leave the rest intact. The difference is whether the platform was built before the request arrived. The architecture that handles routine removal well also handles erasure well, because the underlying technical operation is the same.</p>
+      <p>Papers 1 and 2 built the case and the architecture. This paper proves the architecture holds under the hardest test it will face.</p>
+    </div>
+
+    <section class="block">
+      <div class="block-eyebrow">Block 1 · Hard Mask and Remove are different processes</div>
+      <h2>Two operations, two triggers, two clocks</h2>
+      <p><strong>Hard Mask</strong> is a permanent, one-way transformation of identifying fields, approved by privacy and legal. The record stays. The subject is forgotten. Hard mask answers a privacy obligation: it is what an erasure request actually requires the platform to do. Analytics is not the vault, and the analytical store is not exempt from this obligation.</p>
+      <p><strong>Remove</strong> is the retirement of data from the analytical environment when it no longer has active use. Remove is triggered by platform monitoring and domain-owner authorization, not by a privacy request. The vault is not involved. Remove answers an operational lifecycle question, not a privacy one.</p>
+      <p>The two operations share infrastructure but not intent.</p>
+
+      <div class="diagram-frame">
+        <img src="https://drive.google.com/thumbnail?id=1PzVPsXsF9fNuo1uBehP0dMpF-lfVSKUb&sz=w1600" alt="Six-step DSR/Erasure workflow: Locate → Mask (immediate) → Overwrite at each layer → 72-hour hold → Physical purge (history clearing) → Cleanup and evidence.">
+        <div class="diagram-caption">Figure D4 · Six-step erasure workflow</div>
+      </div>
+
+      <p style="font-size:14px;color:var(--slate-500);font-style:italic;margin-top:-8px">A note on Step 5: hard mask is not complete until the change logs that enable time-travel access are cleared. Both steps are required: overwriting the field and clearing the history that would let someone reconstruct it.</p>
+
+      <!-- Card · Hard Mask vs. Remove -->
+      <div class="pq-card">
+        <div class="pq-name">Hard Mask vs. Remove</div>
+        <div class="pq-def">Hard mask answers a privacy obligation: the subject is forgotten, the record stays. Remove answers an operational lifecycle question: the data is no longer used, so it leaves.</div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block-eyebrow">Block 2 · Platform conditions for removal</div>
+      <h2>Three things have to be true</h2>
+      <p>Hard masking is the operation. Whether triggered by lifecycle policy (data no longer in active use) or by subject request (consent revoked, erasure asked for), the platform does the same thing: identifying fields overwritten, the change propagated through the layers, history cleared. Same tool. Same audit trail.</p>
+      <p>What varies by organization is how hard the tool is to point at the right rows. Three platform conditions decide that.</p>
+
+      <p><strong>Is there a canonical record for the subject?</strong> An analytical environment that keeps a single canonical entity per subject (one row, one place, one system-of-record for who that person is) has a target to aim at. An environment that materialized identity into a hundred derived tables, each with its own copy of the subject's identifying fields, does not. The first removes a subject by changing one row and letting it propagate. The second runs a search operation across the whole graph.</p>
+
+      <p><strong>Is the graph mapped?</strong> A canonical record is necessary but not sufficient. The platform also needs to know where that record's identity appears downstream: which Silver tables joined to it, which Gold data products carried it forward, which features are derived from it. A data catalog with subject-level lineage answers this directly. Without one, locating every relevant row may require manual investigation, table by table. Building out catalog and lineage capability does not have to be finished first. But it has to move in parallel, at the same priority as the architecture build, or the three conditions will not hold when the first serious request arrives.</p>
+
+      <p><strong>Does data flow upward, or is it materialized independently?</strong> Bronze is the closest layer to the canonical record. If Silver is built from Bronze on a recurring cadence, and Gold from Silver, then a hard mask applied to the Bronze canonical record propagates upward on the next run. The change is made once. If, instead, Silver and Gold are independently materialized from source (because someone needed faster access) the change has to be made at every layer separately, and the platform has to track which copy is authoritative.</p>
+
+      <p>The platform answer to all three is: build the canonical record, build the catalog, build the upward flow. The organizational answer is harder, because these decisions span data engineering, master data management, and governance. They do not get solved by buying tools. They get solved by committing, on Day Zero, to a single canonical entity model, even if its implementation matures over time. Without that commitment, the analytical store accumulates parallel identity definitions that are expensive to reconcile later.</p>
+
+      <p>When those three conditions hold, lifecycle and DSR converge on the same technical operation, even though they remain distinct compliance workflows. The audit trail for a DSR is not the same as the audit trail for a routine lifecycle removal. The documentation, the timing, and the evidence requirements differ. But the masking change applied to the data is the same. Lifecycle says: this subject's records are no longer in use, hard mask them. DSR says: this subject withdrew consent, hard mask them. Same change, same propagation. The only thing different is what initiated the request.</p>
+
+      <!-- Card · Same Tool, Different Trigger -->
+      <div class="pq-card">
+        <div class="pq-name">Same Tool, Different Trigger</div>
+        <div class="pq-def">Hard masking is the operation for both lifecycle removal and DSR. What varies is how easy the platform makes it to point the tool at the right rows. Three conditions decide that: a canonical record, a mapped graph, and upward-flowing transformations.</div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block-eyebrow">Block 3 · Automate the analytical data lifecycle to lower DSR risk</div>
+      <h2>DSR Automation</h2>
+      <p>The lifecycle arc is what the architecture buys you. The vault holds the authoritative record for the full regulated period. Bronze, Silver, and Gold hold what active analytical work requires. Only that. Identifiers thin out as data moves outward from source. By the time an erasure request arrives for a subject who hasn't appeared in an active use case for two years, the platform has already done most of the work.</p>
+
+      <div class="diagram-frame">
+        <img src="https://drive.google.com/thumbnail?id=1yNK5njg1Psl_kmFw82ZMillCFicmbHWB&sz=w1600" alt="Data lifecycle arc by layer: Bronze (1–3 years, queryable), Silver (up to 10 years, usage-driven), Gold (data products, minimum identifiers), Vault (10 years WORM, regulated period).">
+        <div class="diagram-caption">Figure D7 · Data lifecycle arc by layer</div>
+      </div>
+
+      <p>That is the payoff of Papers 1 and 2. When the masking standard is agreed, the canonical record exists, the graph is mapped, and data flows upward through the layers: a DSR is not a special event. It is the same engine, pointed at a different trigger. A vendor exit works the same way. A consent lapse works the same way. The platform does not need a separate process for each. It needs one well-built process that different obligations can invoke.</p>
+<div class="pq-def">When the lifecycle runs well, most identifying material has already been cleared before any removal request arrives. The DSR, the vendor exit, the consent lapse: all invoke the same operation. What changes is the trigger, not the work.</div>
+      </div>
+    </section>
+
+    <div class="cartoon-frame">
+      <img src="https://drive.google.com/thumbnail?id=1yKY2BpB1Ej78zTn9PpJE2LUfDNKoNox6&sz=w1600" alt="Closing scene — the orchestra in harmony, sheet music in front of every musician.">
+    </div>
+
+    <!-- Series capstone -->
+    <div class="capstone">
+      <div class="capstone-eyebrow">Across the series</div>
+      <h2 class="capstone-heading">This only works if the right people are at the table</h2>
+      <p class="capstone-body">The three papers describe an architecture. The architecture does not run on platform decisions alone. Retention floors are set by Legal and Compliance. The identity removal standard is owned by Privacy and Legal. Analytical retention decisions belong to Privacy and the domain data owner. The platform monitors usage and executes the lifecycle. Domain owners authorize removal. Compliance and Platform together produce the audit evidence. Privacy sets the standard for what that evidence has to show.</p>
+      <p class="capstone-body">None of these are mandates from the platform team. They are shared decisions. The table below shows who should care most about each one. Not as an org chart, but as a starting point for the conversations that make the framework real.</p>
+      <div class="table-wrap">
+        <table class="capstone-table">
+          <thead><tr><th>Decision</th><th>Who Should Care Most</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Retention floor — how long the vault holds the record</td>
+              <td>Legal / Compliance</td>
+            </tr>
+            <tr>
+              <td>Identity removal standard — what counts as hard masked</td>
+              <td>Privacy + Legal</td>
+            </tr>
+            <tr>
+              <td>Analytical retention — how long Bronze, Silver, and Gold data stays</td>
+              <td>Privacy + Domain data owner</td>
+            </tr>
+            <tr>
+              <td>Usage telemetry review — when a use case is declared dormant</td>
+              <td>Platform engineering</td>
+            </tr>
+            <tr>
+              <td>Final purge authorization — who approves removal from Bronze, Silver, and Gold</td>
+              <td>Domain data owner</td>
+            </tr>
+            <tr>
+              <td>Audit evidence: logged and retained for DSR and lifecycle events</td>
+              <td>Compliance + Platform engineering <em style="font-weight:400;color:var(--brass-300)">(Privacy sets the standard)</em></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="closing">
+      <div class="closing-eyebrow">Over to you</div>
+      <h3>Are you able to use a single set of rules and processes that cascade out through analytical stores to satisfy identity removal?</h3>
+    </div>
+
+  </div>
+  <div class="series-cap series-cap--bottom">
+    <span class="series-cap-label">Data Lifecycle Series</span>
+    <span class="series-cap-sep">·</span>
+    <a class="series-cap-item" href="#">1 — Designing for the Data Lifecycle is not easy</a>
+    <span class="series-cap-sep">·</span>
+    <a class="series-cap-item" href="#">2 — The Best Pattern for a New Source</a>
+    <span class="series-cap-sep">·</span>
+    <span class="series-cap-item series-cap-item--active">3 — When the Request Is "Delete Me"</span>
+  </div>
+  </div>
+</div>
+</body>
+</html>
+<!-- ════════════════════════════════════════════════════════════════
+     PROVENANCE
+     ════════════════════════════════════════════════════════════════
+     MODEL             Claude Sonnet 4.6 — 2026-05-12
+     VERSION           v6.0 — Final editorial pass; series complete
+     SESSION           2026-05-12 — DL-S12
+     AUDIENCE          Cross-functional leadership (legal, compliance,
+                       data engineering, analytics) — LinkedIn series
+     SOURCES           The Author's original Analytical Data Lifecycle
+                       whitepaper (April 2026) — source document for
+                       the series; external review: Gemini, ChatGPT,
+                       Perplexity; editorial decisions approved by
+                       author across sessions DL-S01 through DL-S12.
+     DECISION/ACTION   Pending final author sign-off after review of
+                       published artifact URLs. Teasers drafted DL-S12.
+                       Publish one paper per week beginning with Paper 1.
+     ITERATION NOTES   v6.0: Final banned-pattern pass (DL-S12).
+                       Removed unsupported frequency claim (P1);
+                       removed "data minimization" label (P2);
+                       replaced metaphorical "data landscape" (P2);
+                       sharpened closing question (P2); removed
+                       contraction (P3). Version number unified
+                       across series at v6.0.
+     ASSUMPTIONS       SVG diagrams served inline. No external image
+                       dependencies. Publishing via shared Claude
+                       artifact URL.
+     SCOPE EXCLUSIONS  Does not cover implementation playbook,
+                       vendor selection, or regulatory legal advice.
+     TOOL CHAIN        Claude only — drafting, editing, HTML
+                       production across DL-S01 through DL-S12.
+     REVIEW STATUS     Pending final author sign-off.
+
+     VERSION HISTORY (SUMMARY)
+       v6.0 · 2026-05-12 · Final banned-pattern pass; series unified · Pending sign-off
+       v5.0/v4.0 · 2026-05-11 · SVG diagram upgrade + voice pass (DL-S11) · Superseded
+       v4.0/v3.0 · 2026-05-11 · External review integrated; Opus synthesis · Superseded
+       v2.0 · 2026-05-08 · Voice and structure pass; content edits · Superseded
+       v1.0 · Late April 2026 · Initial HTML draft from source whitepaper · Superseded
+       Source · April 2026 · Author's original Analytical Data Lifecycle whitepaper · Archived
+     ════════════════════════════════════════════════════════════════ -->

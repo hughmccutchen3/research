@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Best Pattern for a New Source — Data Lifecycle Series, Paper 2 of 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --slate-950:#0B1220; --slate-900:#0F172A; --slate-800:#1E293B;
+    --slate-700:#334155; --slate-600:#475569; --slate-500:#64748B;
+    --slate-400:#94A3B8; --slate-300:#CBD5E1; --slate-200:#E2E8F0;
+    --slate-100:#F1F5F9;
+    --brass-900:#5C4310; --brass-700:#8B6914; --brass-600:#A8841C;
+    --brass-500:#B8860B; --brass-400:#C9A33D; --brass-300:#DAB769;
+    --brass-200:#EBD7A7; --brass-100:#F5E6B8;
+    --parchment:#FAF7F0; --parchment-mid:#F2EDE0; --parchment-deep:#E8E0CC;
+    --white:#FFFFFF;
+    --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+    --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --mono:'JetBrains Mono','SF Mono',Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--parchment-mid)}
+  body{font-family:var(--serif);font-size:17px;line-height:1.65;color:var(--slate-800);
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  .page{max-width:780px;margin:0 auto;background:var(--white);
+    box-shadow:0 0 80px rgba(15,23,42,.10);min-height:100vh}
+
+  
+  /* ── Series cap — top and bottom ── */
+  .series-cap{
+    background:var(--slate-900);
+    display:flex;align-items:center;flex-wrap:wrap;
+    gap:0 8px;
+    padding:12px 64px;
+    font-family:var(--mono);font-size:10.5px;
+    letter-spacing:.04em;
+  }
+  .series-cap--top{ border-bottom:2px solid var(--brass-500); }
+  .series-cap--bottom{ border-top:2px solid var(--brass-500); }
+  .series-cap-label{
+    font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+    color:var(--brass-400);white-space:nowrap;
+  }
+  .series-cap-sep{ color:var(--slate-600);user-select:none; }
+  .series-cap-item{
+    color:var(--slate-400);text-decoration:none;
+    white-space:nowrap;transition:color .15s;
+  }
+  .series-cap-item:hover{ color:var(--slate-100); }
+  .series-cap-item--active{ color:var(--slate-100);font-weight:700; }
+
+  .doc-header{padding:32px 64px 36px;border-bottom:1px solid var(--slate-200);
+    background:var(--white)}
+  .series-label::after{content:'';flex:1;height:1px;background:var(--slate-200)}
+  .doc-header h1{font-family:var(--serif);font-size:38px;font-weight:600;
+    line-height:1.15;color:var(--slate-900);letter-spacing:-.015em;
+    margin-bottom:14px}
+  .doc-header .subtitle{font-family:var(--serif);font-style:italic;font-size:18px;
+    line-height:1.4;color:var(--slate-600);margin-bottom:22px}
+  .doc-header .meta{font-family:var(--mono);font-size:11.5px;color:var(--slate-500);
+    letter-spacing:.04em;padding-top:14px;border-top:1px solid var(--slate-200);
+    display:flex;gap:22px;flex-wrap:wrap}
+  .doc-header .meta b{color:var(--slate-700);font-weight:600}
+
+  .body{padding:0 64px 72px}
+
+  .cartoon-frame{margin:40px -64px;background:var(--parchment-mid);padding:28px 32px;
+    text-align:center;border-top:1px solid var(--parchment-deep);
+    border-bottom:1px solid var(--parchment-deep)}
+  .cartoon-frame img{max-width:100%;height:auto;display:inline-block;
+    border:1px solid var(--parchment-deep);background:var(--white)}
+
+  .opening{margin:36px 0 8px;font-size:18.5px;line-height:1.7;color:var(--slate-800)}
+  .opening p{margin-bottom:16px}
+  .opening p:last-child{margin-bottom:0}
+
+  .block{margin-top:64px;padding-top:32px;border-top:2px solid var(--slate-900)}
+  .block-eyebrow{font-family:var(--sans);font-size:11px;font-weight:700;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--brass-700);
+    margin-bottom:10px}
+  .block h2{font-family:var(--serif);font-size:28px;font-weight:600;
+    line-height:1.25;color:var(--slate-900);letter-spacing:-.01em;
+    margin-bottom:18px}
+  .block p{margin-bottom:14px;font-size:17px;line-height:1.7;color:var(--slate-700)}
+  .block p:last-child{margin-bottom:0}
+  .block h3{font-family:var(--sans);font-size:14px;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--slate-700);
+    margin:36px 0 14px;padding-bottom:6px;border-bottom:1px solid var(--slate-200)}
+
+  .table-wrap{margin:22px 0;overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:14px;
+    background:var(--white);border:1px solid var(--slate-200)}
+  thead th{background:var(--slate-900);color:var(--white);font-size:11px;
+    font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    padding:12px 16px;text-align:left}
+  tbody tr{border-bottom:1px solid var(--slate-200)}
+  tbody tr:last-child{border-bottom:none}
+  tbody tr:nth-child(even){background:var(--parchment)}
+  tbody td{padding:14px 16px;vertical-align:top;color:var(--slate-700);
+    line-height:1.55}
+  tbody td:first-child{font-weight:700;color:var(--slate-900);width:240px}
+
+  .pq-card{margin:28px 0;padding:22px 26px 22px 24px;background:var(--parchment);
+    border-left:4px solid var(--brass-500);border-top:1px solid var(--parchment-deep);
+    border-right:1px solid var(--parchment-deep);
+    border-bottom:1px solid var(--parchment-deep);border-radius:0 3px 3px 0}
+  .pq-name{font-family:var(--sans);font-size:17px;font-weight:700;
+    color:var(--slate-900);margin-bottom:10px;letter-spacing:-.005em}
+  .pq-def{font-family:var(--serif);font-style:italic;font-size:16px;
+    line-height:1.6;color:var(--slate-700)}
+
+  .diagram-frame{margin:32px 0;padding:24px;background:var(--white);
+    border:1px solid var(--slate-200);text-align:center}
+  .diagram-frame img{max-width:100%;height:auto}
+  .diagram-caption{font-family:var(--sans);font-size:11px;font-weight:500;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--slate-500);
+    margin-top:14px;padding-top:10px;border-top:1px solid var(--slate-200)}
+
+  .closing{margin-top:64px;padding:36px 40px;background:var(--slate-900);
+    color:var(--white);border-top:4px solid var(--brass-500)}
+  .closing-eyebrow{font-family:var(--sans);font-size:10px;font-weight:700;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--brass-300);
+    margin-bottom:14px}
+  .closing h3{font-family:var(--serif);font-size:22px;font-weight:500;
+    line-height:1.4;color:var(--white);margin-bottom:14px;letter-spacing:-.005em}
+  .closing p{font-family:var(--serif);font-size:17px;line-height:1.65;
+    color:var(--slate-300);margin:0}
+  .closing p+p{margin-top:10px}
+
+  @media print{body,html{background:var(--white)}.page{box-shadow:none}
+    .cartoon-frame,.diagram-frame{page-break-inside:avoid}
+    .pq-card{page-break-inside:avoid}}
+  @media (max-width:720px){
+    .series-cap{padding:10px 20px;gap:0 6px;font-size:10px;}
+
+    .doc-header{padding:24px 28px 28px}
+    .doc-header h1{font-size:28px}
+    .body{padding:0 28px 48px}
+    .cartoon-frame{margin:28px -28px;padding:20px}
+    .closing{padding:28px 24px}
+    }
+</style>
+</head>
+<body>
+<div class="page">
+    <div class="series-cap series-cap--top">
+    <span class="series-cap-label">Data Lifecycle Series</span>
+    <span class="series-cap-sep">·</span>
+    <a class="series-cap-item" href="#">1 — Designing for the Data Lifecycle is not easy</a>
+    <span class="series-cap-sep">·</span>
+    <span class="series-cap-item series-cap-item--active">2 — The Best Pattern for a New Source</span>
+    <span class="series-cap-sep">·</span>
+    <a class="series-cap-item" href="#">3 — When the Request Is "Delete Me"</a>
+  </div>
+  <header class="doc-header">    <h1>The Best Pattern for a New Source</h1>
+    <div class="subtitle">The Day Zero architecture for satisfying retention and analytical needs.</div>
+    <div class="meta">
+      <span><b>Published</b> May 2026</span>
+      <span><b>Audience</b> Cross-functional leadership</span>
+      <span><b>Reading time</b> ~7 min</span>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <div class="cartoon-frame">
+      <img src="https://drive.google.com/thumbnail?id=1GxSRHI0OIVrgYnTCIrNRmaeLQ-Ez5eM2&sz=w1600" alt="Stakeholders pulling the architecture in different directions, each request individually legitimate.">
+    </div>
+
+    <div class="opening">
+      <p>Privacy says: <em>de-identify it first.</em> Compliance says: <em>prove you need it.</em> Engineering says: <em>how fast can we ship?</em> Finance says: <em>what does this cost?</em> Analytics says: <em>when do we get access?</em> The data scientist says: <em>I just need the data.</em></p>
+      <p>Paper 1 named why these voices conflict at the architecture layer. This paper shows the pattern that resolves it: an architecture decision made before the first byte of source data lands.</p>
+    </div>
+
+    <section class="block">
+      <div class="block-eyebrow">Block 1 · Day Zero is the architecture</div>
+      <h2>The fork that solves the conflict</h2>
+      <p>Paper 1 named four mechanisms and two problems. This is the architecture that separates them.</p>
+      <p>One hundred percent of the source payload lands once, at a fork point. This model assumes that data ingestion to the analytical store is approved based on documented use cases. The framework governs what happens to it after. From the fork, two independent streams receive the data. Stream 1 is the compliance vault: write-once, append-only, governed by Mechanisms 1 and 2 (legal retention and purge after the legal floor). Stream 2 is the analytical store: a medallion lakehouse, with Bronze (raw analytical store), Silver (cleaned, query-ready tables), and Gold (curated products used by analytics and applications) layers, governed by Mechanisms 3 and 4 (purge when no use, hard mask). After ingestion, the two streams are governed independently. Lifecycle actions in one stream do not automatically propagate into the other.</p>
+
+      <div class="diagram-frame">
+        <img src="https://drive.google.com/thumbnail?id=1QTvV7giyawChkZsuDkYurFX7ubprJs85&sz=w1600" alt="Dual-stream architecture: source payload lands at a fork point, then splits into a compliance vault stream and an analytical store stream.">
+        <div class="diagram-caption">Figure D1 · Day Zero fork — source to two streams</div>
+      </div>
+
+      <p>The point of the fork is not redundancy. The point is that the two problems have different jobs. The vault carries the legal weight. The analytical store carries the analytical weight. When something has to give (a subject erasure request, a regulatory hold, a cost cut) it gives in only one stream.</p>
+      <p>This architecture reduces policy ambiguity at the cost of additional lineage, governance, and orchestration complexity. That tradeoff is worth naming before Day Zero.</p>
+
+      <div class="diagram-frame">
+        <img src="https://drive.google.com/thumbnail?id=1I7DUAogjzhQJOZo36yQbhVEMBUS6YIC8&sz=w1600" alt="Two streams over time: vault holds full payload for the regulated retention period; analytical store carries only what active use cases require.">
+        <div class="diagram-caption">Figure D2 · Two streams, two lifecycles</div>
+      </div>
+      <div class="diagram-frame">
+        <img src="https://drive.google.com/thumbnail?id=1dgfZoIvvDnRsHi5L2dbwZlumRLCP6Hel&sz=w1600" alt="Relative storage volume by layer: Fork/Landing (transient), Vault (5–10 years), Bronze (2–3 years), Silver (columnar, usage-driven), Gold (minimal, drops when use case ends).">
+        <div class="diagram-caption">Figure D8 · Relative storage volume by layer — illustrative</div>
+      </div>
+
+      <!-- Card · Single Origin -->
+      <div class="pq-card">
+        <div class="pq-name">Single Origin</div>
+        <div class="pq-def">One hundred percent of source payload lands once, at the fork point. Both streams receive it independently.</div>
+      </div>
+
+      <!-- Card · Two Streams, Two Lifecycles -->
+      <div class="pq-card">
+        <div class="pq-name">Two Streams, Two Lifecycles</div>
+        <div class="pq-def">Stream 1 is the compliance vault (WORM, Mechanisms 1 &amp; 2). Stream 2 is the analytical store (Bronze, Silver, Gold, governed by Mechanisms 3 &amp; 4). After ingestion, the streams are governed independently.</div>
+      </div>
+
+      <h3>The vault stream has a defined endpoint</h3>
+      <p>When the regulated retention period expires, the vault record reaches the retention ceiling: a binary decision. Retain the underlying business event with identifying fields removed, on a documented analytical basis. Or dispose of the record in full. The standard for what counts as identity removal is defined and documented by privacy and legal, aligned to applicable regulatory obligations. It is not derived from any single regulation's safe-harbor language. It is the organization's own documented standard, attested and auditable.</p>
+
+      <div class="diagram-frame">
+        <img src="https://drive.google.com/thumbnail?id=1dcN76ZhfLWXbRgmRbJIRw9yf-TVD0Lhf&sz=w1600" alt="Retention Ceiling Gate: at the regulated retention boundary, the record either retains the business event without patient identifiers, or is disposed in full.">
+        <div class="diagram-caption">Figure D6 · Retention Ceiling Gate</div>
+      </div>
+
+      <!-- Card · Retention Ceiling Decision -->
+      <div class="pq-card">
+        <div class="pq-name">Retention Ceiling Decision</div>
+        <div class="pq-def">When the vault retention period expires, the record either retains the business event without identifying fields, or it is disposed in full. The identity removal standard is set by privacy and legal: documented, attested, and auditable.</div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block-eyebrow">Block 2 · What has to be true on Day Zero</div>
+      <h2>Five capabilities the platform needs</h2>
+      <p>The dual-stream architecture is the shape. These five capabilities are what makes it operate. All five are easier to build at platform launch than to retrofit later. Retrofit work runs in parallel with live data flows and adds coordination cost the original build avoids. Building capability before policy is written means the platform is ready to act when policy arrives.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Capability</th><th>What it means</th></tr></thead>
+          <tbody>
+            <tr><td>Analytical store derives from source, not vault</td><td>The analytical store lands from the fork point independently. Vault disposal never propagates downstream.</td></tr>
+            <tr><td>Day Zero ingestion standard</td><td>New sources onboard through the same process. No bespoke pipeline design per source.</td></tr>
+            <tr><td>Telemetry-driven lifecycle</td><td>Usage signals drive promotion and disposal. The platform acts on evidence of use, not on the legal retention calendar of the vault.</td></tr>
+            <tr><td>Service-account-per-use-case</td><td>Each analytical use case authenticates through its own service account. Idle service accounts signal dormant use cases, which become candidates for removal.</td></tr>
+            <tr><td>Identity protection from Day Zero</td><td>Soft mask from Silver up. Hard mask for maximum risk protection per use case.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Card · Five Platform Capabilities -->
+      <div class="pq-card">
+        <div class="pq-name">Five Platform Capabilities</div>
+        <div class="pq-def">All five are easier to build at launch than to retrofit. Build the capability to act on decisions before policy is written.</div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block-eyebrow">Block 3 · The pattern that enforces the commitment</div>
+      <h2>Two non-negotiables</h2>
+      <p>The architecture works only when two organizational commitments hold. All data flows through the platform: one ingestion point, no exceptions, no side channels. Vault and analytical store are designed together from Day Zero. Not the vault first and analytics retrofitted, not the reverse.</p>
+      <p>Organizations that take the architecture but skip the commitments end up with a source system that the analytical store has to create a separate flow to receive, or worse, the analytical store becomes a second vault that needs to meet vault requirements because it accumulated data the real vault did not.</p>
+
+      <!-- Card · The Organizational Commitment -->
+      <div class="pq-card">
+        <div class="pq-name">The Organizational Commitment</div>
+        <div class="pq-def">One ingestion point, no exceptions. Vault and analytical store designed together from Day Zero. Not retrofitted.</div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block-eyebrow">Block 4 · The governance model that runs on top</div>
+      <h2>Six ideas for the analytical store</h2>
+      <p>The vault problem is largely solved by the architecture itself: write once, retain for the regulated period, dispose at the floor. The analytical store needs more. Six ideas govern how data lives, moves, and leaves the analytical store.</p>
+
+      <!-- Card · The Analytical Store Is a Governed Asset -->
+      <div class="pq-card">
+        <div class="pq-name">The Analytical Store Is a Governed Asset</div>
+        <div class="pq-def">Not a staging area for disposal. Explicit decisions about what stays, in what form, for how long, on whose authority.</div>
+      </div>
+
+      <!-- Card · Usage as the Governing Signal -->
+      <div class="pq-card">
+        <div class="pq-name">Usage as the Governing Signal</div>
+        <div class="pq-def">Data is promoted on documented demand and dropped when usage ends. The platform monitors actual consumption through service-account telemetry. When a use case's service account goes idle, the data behind it becomes a candidate for removal. Hold what is in active use, in the form it requires, and no more.</div>
+      </div>
+
+      <!-- Card · Longitudinal Value -->
+      <div class="pq-card">
+        <div class="pq-name">Longitudinal Value</div>
+        <div class="pq-def">Some analytical data is worth holding longer because the time-series signal is the value. A ten-year cohort cannot be rebuilt from a two-year Bronze window. Longer retention requires a documented purpose, not just the absence of a deletion decision.</div>
+      </div>
+
+      <!-- Card · Minimum Identifiers -->
+      <div class="pq-card">
+        <div class="pq-name">Minimum Identifiers</div>
+        <div class="pq-def">Gold-layer data products hold only the identifiers the use case requires. Not a full copy of source identity fields.</div>
+      </div>
+
+      <!-- Card · Recoverable Disposal -->
+      <div class="pq-card">
+        <div class="pq-name">Recoverable Disposal</div>
+        <div class="pq-def">Disposal is designed to be recoverable before it becomes permanent: soft mask before hard mask, removal window before final purge. One caveat: disposal processes remain subordinate to active litigation hold, regulatory preservation, or other legally imposed suspension events.</div>
+      </div>
+
+      
+      <!-- Card · Restore and Rebuild -->
+      <div class="pq-card">
+        <div class="pq-name">Restore and Rebuild Must Account for Hard Masking History</div>
+        <div class="pq-def">A restored backup is not exempt from the lifecycle. Any hard masking or removal actions that ran after a backup was made have to be applied again on restoration. A backup that silently restores removed identity is a second vault the architecture did not intend to create. Restore procedures need to include a replay of all masking events that occurred after the backup timestamp. Not a trivial step, but unavoidable.</div>
+      </div>
+
+      <!-- Card · Identity Removal as Risk Mitigation -->
+      <div class="pq-card">
+        <div class="pq-name">Identity Removal Is Risk Mitigation, Not a Certification</div>
+        <div class="pq-def">Hard masking reduces the privacy surface area of the analytical store. It does not certify compliance with any specific regulatory standard. The approach needs to be reviewed periodically with the Privacy organization. What the standard requires changes over time.</div>
+      </div>
+    </section>
+
+    <div class="closing">
+      <div class="closing-eyebrow">Over to you</div>
+      <h3>How would you adapt this to your environment?</h3>
+      <p style="margin-top:18px;font-size:14.5px;color:var(--slate-400);font-style:italic">Paper 3 takes the architecture to its hardest test: a data subject erasure request. It shows why the same hard-mask process serves both routine lifecycle removal and an erasure request, when three platform conditions hold.</p>
+    </div>
+
+  </div>
+  <div class="series-cap series-cap--bottom">
+    <span class="series-cap-label">Data Lifecycle Series</span>
+    <span class="series-cap-sep">·</span>
+    <a class="series-cap-item" href="#">1 — Designing for the Data Lifecycle is not easy</a>
+    <span class="series-cap-sep">·</span>
+    <span class="series-cap-item series-cap-item--active">2 — The Best Pattern for a New Source</span>
+    <span class="series-cap-sep">·</span>
+    <a class="series-cap-item" href="#">3 — When the Request Is "Delete Me"</a>
+  </div>
+  </div>
+</div>
+</body>
+</html>
+<!-- ════════════════════════════════════════════════════════════════
+     PROVENANCE
+     ════════════════════════════════════════════════════════════════
+     MODEL             Claude Sonnet 4.6 — 2026-05-12
+     VERSION           v6.0 — Final editorial pass; series complete
+     SESSION           2026-05-12 — DL-S12
+     AUDIENCE          Cross-functional leadership (legal, compliance,
+                       data engineering, analytics) — LinkedIn series
+     SOURCES           The Author's original Analytical Data Lifecycle
+                       whitepaper (April 2026) — source document for
+                       the series; external review: Gemini, ChatGPT,
+                       Perplexity; editorial decisions approved by
+                       author across sessions DL-S01 through DL-S12.
+     DECISION/ACTION   Pending final author sign-off after review of
+                       published artifact URLs. Teasers drafted DL-S12.
+                       Publish one paper per week beginning with Paper 1.
+     ITERATION NOTES   v6.0: Final banned-pattern pass (DL-S12).
+                       Removed unsupported frequency claim (P1);
+                       removed "data minimization" label (P2);
+                       replaced metaphorical "data landscape" (P2);
+                       sharpened closing question (P2); removed
+                       contraction (P3). Version number unified
+                       across series at v6.0.
+     ASSUMPTIONS       SVG diagrams served inline. No external image
+                       dependencies. Publishing via shared Claude
+                       artifact URL.
+     SCOPE EXCLUSIONS  Does not cover implementation playbook,
+                       vendor selection, or regulatory legal advice.
+     TOOL CHAIN        Claude only — drafting, editing, HTML
+                       production across DL-S01 through DL-S12.
+     REVIEW STATUS     Pending final author sign-off.
+
+     VERSION HISTORY (SUMMARY)
+       v6.0 · 2026-05-12 · Final banned-pattern pass; series unified · Pending sign-off
+       v5.0/v4.0 · 2026-05-11 · SVG diagram upgrade + voice pass (DL-S11) · Superseded
+       v4.0/v3.0 · 2026-05-11 · External review integrated; Opus synthesis · Superseded
+       v2.0 · 2026-05-08 · Voice and structure pass; content edits · Superseded
+       v1.0 · Late April 2026 · Initial HTML draft from source whitepaper · Superseded
+       Source · April 2026 · Author's original Analytical Data Lifecycle whitepaper · Archived
+     ════════════════════════════════════════════════════════════════ -->
