@@ -39,7 +39,7 @@
     font-family:var(--mono);font-size:10.5px;
     letter-spacing:.04em;
   }
-  .series-cap--top{ border-bottom:2px solid var(--brass-500); }
+  .series-cap--top{ border-top:2px solid var(--brass-500); border-bottom:2px solid var(--brass-500); }
   .series-cap--bottom{ border-top:2px solid var(--brass-500); }
   .series-cap-label{
     font-weight:700;text-transform:uppercase;letter-spacing:.12em;
@@ -168,6 +168,42 @@
     .cartoon-frame{margin:28px -28px;padding:20px}
     .closing{padding:28px 24px}
     }
+
+  /* Provenance block — archival, below footer */
+  .provenance{
+    padding:24px 64px 32px;
+    background:var(--parchment-mid);
+    border-top:1px solid var(--parchment-deep);
+  }
+  .provenance-eyebrow{
+    font-family:var(--mono);font-size:9px;font-weight:600;
+    letter-spacing:.18em;text-transform:uppercase;
+    color:var(--slate-400);margin-bottom:12px;
+  }
+  .prov-table{width:100%;border-collapse:collapse;
+    font-family:var(--mono);font-size:10px;line-height:1.6}
+  .prov-table td{padding:3px 0;vertical-align:top;color:var(--slate-400)}
+  .prov-table td:first-child{color:var(--slate-500);font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;
+    width:140px;padding-right:20px;white-space:nowrap}
+  .prov-history{margin-top:14px;padding-top:12px;
+    border-top:1px solid var(--parchment-deep)}
+  .prov-history-label{font-family:var(--mono);font-size:9px;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;
+    color:var(--slate-400);margin-bottom:8px}
+  .prov-history-row{font-family:var(--mono);font-size:10px;color:var(--slate-400);
+    padding:3px 0;border-bottom:1px solid var(--parchment-deep);
+    display:grid;grid-template-columns:80px 110px 1fr 90px;gap:10px}
+  .prov-history-row:last-child{border-bottom:none}
+  .prov-history-row .ver{color:var(--slate-500);font-weight:600}
+  .prov-history-row .status{color:var(--slate-400);text-align:right}
+  @media (max-width:720px){
+    .provenance{padding:20px 20px 28px}
+    .prov-table td:first-child{width:100px;padding-right:10px}
+    .prov-history-row{grid-template-columns:70px 1fr;gap:8px}
+    .prov-history-row .status,.prov-history-row span:nth-child(3){display:none}
+  }
+
 </style>
 </head>
 <body>
@@ -175,9 +211,9 @@
     <div class="series-cap series-cap--top">
     <span class="series-cap-label">Data Lifecycle Series</span>
     <span class="series-cap-sep">·</span>
-    <a class="series-cap-item" href="#">1 — Designing for the Data Lifecycle is not easy</a>
+    <a class="series-cap-item" href="paper1_v6.html">1 — Designing for the Data Lifecycle is not easy</a>
     <span class="series-cap-sep">·</span>
-    <a class="series-cap-item" href="#">2 — The Best Pattern for a New Source</a>
+    <a class="series-cap-item" href="paper2_v6.html">2 — The Best Pattern for a New Source</a>
     <span class="series-cap-sep">·</span>
     <span class="series-cap-item series-cap-item--active">3 — When the Request Is "Delete Me"</span>
   </div>
@@ -309,16 +345,25 @@
     </div>
 
   </div>
+  </div>
   <div class="series-cap series-cap--bottom">
     <span class="series-cap-label">Data Lifecycle Series</span>
     <span class="series-cap-sep">·</span>
-    <a class="series-cap-item" href="#">1 — Designing for the Data Lifecycle is not easy</a>
+    <a class="series-cap-item" href="paper1_v6.html">1 — Designing for the Data Lifecycle is not easy</a>
     <span class="series-cap-sep">·</span>
-    <a class="series-cap-item" href="#">2 — The Best Pattern for a New Source</a>
+    <a class="series-cap-item" href="paper2_v6.html">2 — The Best Pattern for a New Source</a>
     <span class="series-cap-sep">·</span>
     <span class="series-cap-item series-cap-item--active">3 — When the Request Is "Delete Me"</span>
   </div>
   </div>
+
+  <div class="provenance">
+    <div class="provenance-eyebrow">Provenance</div>
+    <table class="prov-table"><tbody><tr><td>Model</td><td>Claude Sonnet 4.6 — 2026-05-12</td></tr><tr><td>Version</td><td>v6.0 — Final editorial pass; series complete</td></tr><tr><td>Session</td><td>2026-05-12 — DL-S12</td></tr><tr><td>Audience</td><td>Cross-functional leadership (legal, compliance, data engineering, analytics) — LinkedIn series</td></tr><tr><td>Sources</td><td>The Author's original Analytical Data Lifecycle whitepaper (April 2026); external review: Gemini, ChatGPT, Perplexity; editorial decisions approved by author across sessions DL-S01 through DL-S12.</td></tr><tr><td>Decision / Action</td><td>First official published version. Publish one paper per week beginning with Paper 1.</td></tr><tr><td>Iteration Notes</td><td>v6.0: Final banned-pattern pass (DL-S12). Removed unsupported frequency claim (P1); removed "data minimization" label (P2); replaced metaphorical "data landscape" (P2); sharpened closing question (P2); removed contraction (P3). Version number unified across series at v6.0.</td></tr><tr><td>Assumptions</td><td>Images served via Google Drive thumbnail URLs. Publishing via GitHub Pages.</td></tr><tr><td>Scope Exclusions</td><td>Does not cover implementation playbook, vendor selection, or regulatory legal advice.</td></tr><tr><td>Tool Chain</td><td>Claude only — drafting, editing, HTML production across DL-S01 through DL-S12.</td></tr><tr><td>Review Status</td><td>Accepted — ready to publish.</td></tr></tbody></table>
+    <div class="prov-history">
+      <div class="prov-history-label">Version History</div>
+      <div class="prov-history-row"><span class="ver">v6.0</span><span>2026-05-12</span><span>Final banned-pattern pass; series unified</span><span class="status">Accepted</span></div><div class="prov-history-row"><span class="ver">v5.0/v4.0</span><span>2026-05-11</span><span>SVG diagram upgrade + voice pass (DL-S11)</span><span class="status">Superseded</span></div><div class="prov-history-row"><span class="ver">v4.0/v3.0</span><span>2026-05-11</span><span>External review integrated; Opus synthesis</span><span class="status">Superseded</span></div><div class="prov-history-row"><span class="ver">v2.0</span><span>2026-05-08</span><span>Voice and structure pass; content edits</span><span class="status">Superseded</span></div><div class="prov-history-row"><span class="ver">v1.0</span><span>Late April 2026</span><span>Initial HTML draft from source whitepaper</span><span class="status">Superseded</span></div><div class="prov-history-row"><span class="ver">Source</span><span>April 2026</span><span>Author's original Analytical Data Lifecycle whitepaper</span><span class="status">Archived</span></div>
+    </div>
 </div>
 </body>
 </html>
@@ -335,9 +380,9 @@
                        the series; external review: Gemini, ChatGPT,
                        Perplexity; editorial decisions approved by
                        author across sessions DL-S01 through DL-S12.
-     DECISION/ACTION   Pending final author sign-off after review of
-                       published artifact URLs. Teasers drafted DL-S12.
-                       Publish one paper per week beginning with Paper 1.
+     DECISION/ACTION   Ready for LinkedIn publishing. Teasers drafted
+                       DL-S12. Publish one paper per week beginning
+                       with Paper 1.
      ITERATION NOTES   v6.0: Final banned-pattern pass (DL-S12).
                        Removed unsupported frequency claim (P1);
                        removed "data minimization" label (P2);
@@ -345,17 +390,16 @@
                        sharpened closing question (P2); removed
                        contraction (P3). Version number unified
                        across series at v6.0.
-     ASSUMPTIONS       SVG diagrams served inline. No external image
-                       dependencies. Publishing via shared Claude
-                       artifact URL.
+     ASSUMPTIONS       Images served via Google Drive thumbnail URLs.
+                       Publishing via GitHub Pages.
      SCOPE EXCLUSIONS  Does not cover implementation playbook,
                        vendor selection, or regulatory legal advice.
      TOOL CHAIN        Claude only — drafting, editing, HTML
                        production across DL-S01 through DL-S12.
-     REVIEW STATUS     Pending final author sign-off.
+     REVIEW STATUS     Accepted — ready to publish.
 
      VERSION HISTORY (SUMMARY)
-       v6.0 · 2026-05-12 · Final banned-pattern pass; series unified · Pending sign-off
+       v6.0 · 2026-05-12 · Final banned-pattern pass; series unified · Accepted
        v5.0/v4.0 · 2026-05-11 · SVG diagram upgrade + voice pass (DL-S11) · Superseded
        v4.0/v3.0 · 2026-05-11 · External review integrated; Opus synthesis · Superseded
        v2.0 · 2026-05-08 · Voice and structure pass; content edits · Superseded
