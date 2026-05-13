@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 400" width="860" height="400">
+<rect width="860" height="400" fill="#ffffff" rx="4"/>
+<style>text{font-family:Segoe UI,Arial,sans-serif}</style>
+
+<text x="430" y="28" font-size="14" font-weight="700" fill="#1e293b" text-anchor="middle">ANALYTICAL DATA PLATFORM</text>
+
+<!-- Doc 0 box - top center -->
+<rect x="280" y="50" width="300" height="70" rx="8" fill="#1e3a5f" stroke="#0f2440" stroke-width="2"/>
+<text x="430" y="75" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Doc 0: Platform Foundation</text>
+<text x="430" y="93" font-size="10" fill="#93c5fd" text-anchor="middle">What the platform is — zones, controls, observability</text>
+<text x="430" y="107" font-size="9" fill="#93c5fd" text-anchor="middle">Read first. Sets context for everything else.</text>
+
+<!-- Doc A box - left -->
+<rect x="30" y="175" width="250" height="80" rx="8" fill="#1d4ed8" stroke="#1e40af" stroke-width="2"/>
+<text x="155" y="200" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Doc A: Data Lifecycle</text>
+<text x="155" y="216" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Architecture</text>
+<text x="155" y="234" font-size="9" fill="#bfdbfe" text-anchor="middle">What we BUILD — ingestion, medallion,</text>
+<text x="155" y="246" font-size="9" fill="#bfdbfe" text-anchor="middle">tiering, retention, 10-year gateway</text>
+
+<!-- Doc B box - right -->
+<rect x="580" y="175" width="250" height="80" rx="8" fill="#0369a1" stroke="#075985" stroke-width="2"/>
+<text x="705" y="200" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Doc B: Governance,</text>
+<text x="705" y="216" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Privacy &amp; Operations</text>
+<text x="705" y="234" font-size="9" fill="#bae6fd" text-anchor="middle">How we OPERATE — erasure, DSR,</text>
+<text x="705" y="246" font-size="9" fill="#bae6fd" text-anchor="middle">exit, contracts, policy precedence</text>
+
+<!-- Doc C box - bottom center -->
+<rect x="280" y="305" width="300" height="70" rx="8" fill="#475569" stroke="#334155" stroke-width="2"/>
+<text x="430" y="330" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Doc C: Implementation Playbook</text>
+<text x="430" y="348" font-size="9" fill="#cbd5e1" text-anchor="middle">When we EXECUTE — decisions, 90-day plan,</text>
+<text x="430" y="360" font-size="9" fill="#cbd5e1" text-anchor="middle">issues, master decision register</text>
+
+<!-- Arrows: Doc 0 → A and B -->
+<line x1="350" y1="120" x2="200" y2="175" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="510" y1="120" x2="660" y2="175" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+<!-- Arrows: A and B → C -->
+<line x1="200" y1="255" x2="350" y2="305" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="660" y1="255" x2="510" y2="305" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+<!-- Horizontal double arrow between A and B -->
+<line x1="280" y1="215" x2="580" y2="215" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6 3" marker-end="url(#arr2)" marker-start="url(#arr3)"/>
+<text x="430" y="208" font-size="8" fill="#b45309" text-anchor="middle">Shared decisions cross-referenced</text>
+
+<defs>
+<marker id="arr" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#94a3b8"/></marker>
+<marker id="arr2" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#f59e0b"/></marker>
+<marker id="arr3" markerWidth="7" markerHeight="5" refX="1" refY="2.5" orient="auto"><polygon points="7 0,0 2.5,7 5" fill="#f59e0b"/></marker>
+</defs>
+
+<text x="430" y="392" font-size="8" fill="#94a3b8" text-anchor="middle">Analaytical Data Platform · Document Set v6 · March 2026</text>
+</svg>

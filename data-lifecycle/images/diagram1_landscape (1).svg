@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 530" width="920" height="530">
+<rect width="920" height="530" fill="#ffffff" rx="4"/>
+<style>text{font-family:Segoe UI,Arial,sans-serif}</style>
+<defs>
+<marker id="ah1" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#94a3b8"/></marker>
+<marker id="ah2" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#b45309"/></marker>
+<marker id="ah3" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#0369a1"/></marker>
+</defs>
+
+<text x="105" y="28" font-size="10" font-weight="700" fill="#6b7280" text-anchor="middle">SOURCE SYSTEMS</text>
+<text x="478" y="28" font-size="10" font-weight="700" fill="#0369a1" text-anchor="middle">ANALYTICAL DATA PLATFORM</text>
+<text x="838" y="28" font-size="10" font-weight="700" fill="#6b7280" text-anchor="middle">CONSUMERS</text>
+<line x1="225" y1="40" x2="225" y2="460" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="730" y1="40" x2="730" y2="380" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4 4"/>
+
+<rect x="15" y="50" width="195" height="55" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="112" y="70" font-size="12" font-weight="700" fill="#1e293b" text-anchor="middle">Flex Postgres</text>
+<text x="112" y="84" font-size="8" fill="#94a3b8" text-anchor="middle">LAVA: Prior Auths, Claims</text>
+<text x="112" y="96" font-size="8" fill="#94a3b8" text-anchor="middle">Providers, Payers, Drugs</text>
+
+<rect x="15" y="117" width="195" height="50" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="112" y="139" font-size="12" font-weight="700" fill="#1e293b" text-anchor="middle">MSSQL / Oracle</text>
+<text x="112" y="155" font-size="8" fill="#94a3b8" text-anchor="middle">Legacy: Pharmacies, EHR systems</text>
+
+<rect x="15" y="179" width="195" height="50" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="112" y="201" font-size="12" font-weight="700" fill="#1e293b" text-anchor="middle">Kafka Events</text>
+<text x="112" y="217" font-size="8" fill="#94a3b8" text-anchor="middle">WIDE Schema event streams</text>
+
+<rect x="15" y="241" width="195" height="50" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="112" y="263" font-size="12" font-weight="700" fill="#1e293b" text-anchor="middle">FHIR / Files</text>
+<text x="112" y="279" font-size="8" fill="#94a3b8" text-anchor="middle">Acquired entities, vendor feeds</text>
+
+<circle cx="278" cy="173" r="22" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="278" y="169" font-size="8" font-weight="700" fill="#2563eb" text-anchor="middle">FORK</text>
+<text x="278" y="181" font-size="8" font-weight="700" fill="#2563eb" text-anchor="middle">POINT</text>
+
+<line x1="210" y1="77" x2="256" y2="165" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah1)"/>
+<line x1="210" y1="142" x2="256" y2="170" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah1)"/>
+<line x1="210" y1="204" x2="256" y2="175" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah1)"/>
+<line x1="210" y1="266" x2="256" y2="183" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah1)"/>
+
+<line x1="300" y1="163" x2="328" y2="105" stroke="#b45309" stroke-width="2" marker-end="url(#ah2)"/>
+<line x1="300" y1="183" x2="328" y2="260" stroke="#0369a1" stroke-width="2" marker-end="url(#ah3)"/>
+
+<!-- Stream 1 -->
+<rect x="330" y="50" width="385" height="105" rx="8" fill="#fefce8" stroke="#b45309"/>
+<text x="345" y="72" font-size="12" font-weight="700" fill="#b45309" text-anchor="start">STREAM 1: Compliance Vault (Permanent Archive)</text>
+<text x="345" y="90" font-size="10" fill="#6b7280" text-anchor="start">ADLS Gen2 WORM — 10yr retention — Accelerated to Archive by day 90</text>
+<text x="345" y="110" font-size="10" fill="#b45309" font-family="Consolas,monospace" text-anchor="start">Hot(7d) → Cool(30d) → Cold(90d) → Archive(10yr)</text>
+<text x="345" y="130" font-size="9" fill="#94a3b8" text-anchor="start">100% of payload · Never touches Databricks · This is the permanent copy</text>
+
+<!-- Stream 2 -->
+<rect x="330" y="175" width="385" height="195" rx="8" fill="#eff6ff" stroke="#0369a1"/>
+<text x="345" y="197" font-size="12" font-weight="700" fill="#0369a1" text-anchor="start">STREAM 2: Analytical Lake (Disposable Working Copy)</text>
+<text x="345" y="214" font-size="10" fill="#6b7280" text-anchor="start">Delta Lake / Unity Catalog — Queryable 2-3 years then deleted</text>
+
+<rect x="350" y="225" width="78" height="24" rx="4" fill="#fef2f2" stroke="#dc2626"/>
+<text x="389" y="242" font-size="10" font-weight="700" fill="#dc2626" text-anchor="middle">Landing</text>
+<rect x="440" y="225" width="78" height="24" rx="4" fill="#fefce8" stroke="#b45309"/>
+<text x="479" y="242" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">Bronze</text>
+<rect x="530" y="225" width="68" height="24" rx="4" fill="#eff6ff" stroke="#2563eb"/>
+<text x="564" y="242" font-size="10" font-weight="700" fill="#2563eb" text-anchor="middle">Silver</text>
+<rect x="610" y="225" width="56" height="24" rx="4" fill="#f0fdf4" stroke="#16a34a"/>
+<text x="638" y="242" font-size="10" font-weight="700" fill="#16a34a" text-anchor="middle">Gold</text>
+
+<text x="345" y="275" font-size="9" fill="#6b7280" text-anchor="start">Bronze: Hot 30d → Cool → DELETE after 2-3 yrs (vault holds permanent copy)</text>
+<text x="345" y="291" font-size="9" fill="#6b7280" text-anchor="start">Silver/Gold: promoted on demand, dropped when unused (rebuildable)</text>
+<text x="345" y="307" font-size="9" fill="#6b7280" text-anchor="start">Promotion is demand-driven, not ingestion-time</text>
+
+<rect x="345" y="320" width="360" height="22" rx="4" fill="#fef2f2" stroke="#dc2626" stroke-width="0.8"/>
+<text x="525" y="336" font-size="9" font-weight="700" fill="#dc2626" text-anchor="middle">No double-archive: vault is the permanent copy, Bronze is the working copy</text>
+
+<!-- Consumers -->
+<rect x="748" y="55" width="155" height="38" rx="6" fill="#fefce8" stroke="#b45309"/>
+<text x="825" y="72" font-size="11" font-weight="700" fill="#b45309" text-anchor="middle">Legal / Audit</text>
+<text x="825" y="86" font-size="8" fill="#94a3b8" text-anchor="middle">E-Discovery · Rebuild</text>
+<rect x="748" y="195" width="155" height="32" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="825" y="216" font-size="11" font-weight="600" fill="#1e293b" text-anchor="middle">Power BI / Tableau</text>
+<rect x="748" y="235" width="155" height="32" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="825" y="256" font-size="11" font-weight="600" fill="#1e293b" text-anchor="middle">APIs / FHIR</text>
+<rect x="748" y="275" width="155" height="32" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="825" y="296" font-size="11" font-weight="600" fill="#1e293b" text-anchor="middle">ML Models</text>
+<rect x="748" y="315" width="155" height="32" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="825" y="336" font-size="11" font-weight="600" fill="#1e293b" text-anchor="middle">Operational Apps</text>
+
+<line x1="715" y1="90" x2="746" y2="74" stroke="#b45309" stroke-width="1.5" marker-end="url(#ah2)"/>
+<line x1="715" y1="260" x2="746" y2="211" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah1)"/>
+<line x1="715" y1="275" x2="746" y2="251" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah1)"/>
+<line x1="715" y1="300" x2="746" y2="291" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah1)"/>
+<line x1="715" y1="320" x2="746" y2="331" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah1)"/>
+
+<!-- Footer -->
+<rect x="15" y="400" width="888" height="115" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="0.8"/>
+<text x="35" y="420" font-size="10" font-weight="700" fill="#dc2626" text-anchor="start">KEY COMPLEXITIES</text>
+<text x="35" y="438" font-size="9" fill="#6b7280" text-anchor="start">[KC-01] Hundreds of source DBs across legal entities            [KC-02] Multi-customer data on same record</text>
+<text x="35" y="454" font-size="9" fill="#6b7280" text-anchor="start">[KC-03] No enterprise patient/physician key                         [KC-04] Patients/physicians are facts on records</text>
+<text x="35" y="470" font-size="9" fill="#6b7280" text-anchor="start">[KC-05] Source apps retain only 12-24 months                         [KC-06] 5+ yrs failed inventory   [KC-07] Entity model early</text>
+<text x="35" y="490" font-size="9" fill="#b45309" text-anchor="start">[KC-08] "Customer" is polymorphic: payer, pharmacy, or EHR system. Each has different data footprint across the lake.</text>
+</svg>

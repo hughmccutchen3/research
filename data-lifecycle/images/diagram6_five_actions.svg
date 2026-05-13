@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 420" width="920" height="420">
+<rect width="920" height="420" fill="#ffffff" rx="4"/>
+<style>text{font-family:Segoe UI,Arial,sans-serif}</style>
+
+<text x="460" y="28" font-size="14" font-weight="700" fill="#1e293b" text-anchor="middle">FIVE DISTINCT ACTIONS — They Are Not the Same</text>
+<text x="460" y="46" font-size="10" fill="#6b7280" text-anchor="middle">Each serves a different purpose. Confusing them creates compliance risk.</text>
+
+<!-- Gradient bar -->
+<defs>
+<linearGradient id="spectrum" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" stop-color="#dbeafe"/><stop offset="25%" stop-color="#93c5fd"/>
+<stop offset="50%" stop-color="#3b82f6"/><stop offset="75%" stop-color="#1e40af"/>
+<stop offset="100%" stop-color="#7c2d12"/>
+</linearGradient>
+</defs>
+<rect x="40" y="65" width="840" height="8" rx="4" fill="url(#spectrum)"/>
+<text x="40" y="60" font-size="8" fill="#93c5fd" font-weight="600">REVERSIBLE</text>
+<text x="880" y="60" font-size="8" fill="#7c2d12" font-weight="600" text-anchor="end">IRREVERSIBLE</text>
+
+<!-- Action 1: Dynamic Masking -->
+<rect x="20" y="90" width="168" height="200" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
+<text x="104" y="112" font-size="11" font-weight="700" fill="#1d4ed8" text-anchor="middle">Dynamic</text>
+<text x="104" y="126" font-size="11" font-weight="700" fill="#1d4ed8" text-anchor="middle">Masking</text>
+<line x1="40" y1="134" x2="168" y2="134" stroke="#bfdbfe"/>
+<text x="104" y="152" font-size="8" fill="#374151" text-anchor="middle">Row filters + column masks</text>
+<text x="104" y="164" font-size="8" fill="#374151" text-anchor="middle">in Unity Catalog</text>
+<text x="104" y="182" font-size="8" fill="#374151" text-anchor="middle">Data unchanged on disk</text>
+<text x="104" y="194" font-size="8" fill="#374151" text-anchor="middle">Access control, not erasure</text>
+<rect x="40" y="210" width="128" height="24" rx="4" fill="#fef3c7"/>
+<text x="104" y="226" font-size="8" font-weight="600" fill="#92400e" text-anchor="middle">⚠ Time travel bypasses this</text>
+<text x="104" y="260" font-size="8" fill="#6b7280" text-anchor="middle">Use for: day-to-day</text>
+<text x="104" y="272" font-size="8" fill="#6b7280" text-anchor="middle">access control</text>
+
+<!-- Action 2: Pseudonymize/Tokenize -->
+<rect x="198" y="90" width="168" height="200" rx="8" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="2"/>
+<text x="282" y="112" font-size="11" font-weight="700" fill="#0369a1" text-anchor="middle">Pseudonymize</text>
+<text x="282" y="126" font-size="11" font-weight="700" fill="#0369a1" text-anchor="middle">/ Tokenize</text>
+<line x1="218" y1="134" x2="346" y2="134" stroke="#bae6fd"/>
+<text x="282" y="152" font-size="8" fill="#374151" text-anchor="middle">Replace identity with token</text>
+<text x="282" y="164" font-size="8" fill="#374151" text-anchor="middle">(Datavant for commercial)</text>
+<text x="282" y="182" font-size="8" fill="#374151" text-anchor="middle">Reversible with mapping table</text>
+<text x="282" y="194" font-size="8" fill="#374151" text-anchor="middle">Data modified but recoverable</text>
+<text x="282" y="260" font-size="8" fill="#6b7280" text-anchor="middle">Use for: 3rd-party data</text>
+<text x="282" y="272" font-size="8" fill="#6b7280" text-anchor="middle">products, CMMX research</text>
+
+<!-- Action 3: Hard Masking -->
+<rect x="376" y="90" width="168" height="200" rx="8" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+<text x="460" y="112" font-size="11" font-weight="700" fill="#1e40af" text-anchor="middle">Hard Masking</text>
+<text x="460" y="126" font-size="11" font-weight="700" fill="#1e40af" text-anchor="middle">(Phys. Overwrite)</text>
+<line x1="396" y1="134" x2="524" y2="134" stroke="#93c5fd"/>
+<text x="460" y="152" font-size="8" fill="#374151" text-anchor="middle">UPDATE identity cols to</text>
+<text x="460" y="164" font-size="8" fill="#374151" text-anchor="middle">[REDACTED] / NULL</text>
+<text x="460" y="182" font-size="8" fill="#374151" text-anchor="middle">Row preserved, identity gone</text>
+<text x="460" y="194" font-size="8" fill="#374151" text-anchor="middle">Business data intact</text>
+<rect x="396" y="210" width="128" height="24" rx="4" fill="#dcfce7"/>
+<text x="460" y="226" font-size="8" font-weight="600" fill="#166534" text-anchor="middle">✓ Our erasure standard (D-03)</text>
+<text x="460" y="260" font-size="8" fill="#6b7280" text-anchor="middle">Use for: DSR, customer</text>
+<text x="460" y="272" font-size="8" fill="#6b7280" text-anchor="middle">exit, 10-year gateway</text>
+
+<!-- Action 4: De-identify (HIPAA) -->
+<rect x="554" y="90" width="168" height="200" rx="8" fill="#c7d2fe" stroke="#6366f1" stroke-width="2"/>
+<text x="638" y="112" font-size="11" font-weight="700" fill="#4338ca" text-anchor="middle">De-identify</text>
+<text x="638" y="126" font-size="11" font-weight="700" fill="#4338ca" text-anchor="middle">(HIPAA)</text>
+<line x1="574" y1="134" x2="702" y2="134" stroke="#a5b4fc"/>
+<text x="638" y="152" font-size="8" fill="#374151" text-anchor="middle">Remove all 18 HIPAA</text>
+<text x="638" y="164" font-size="8" fill="#374151" text-anchor="middle">identifiers from dataset</text>
+<text x="638" y="182" font-size="8" fill="#374151" text-anchor="middle">Expert Determination req'd</text>
+<text x="638" y="194" font-size="8" fill="#374151" text-anchor="middle">Not reversible by design</text>
+<text x="638" y="260" font-size="8" fill="#6b7280" text-anchor="middle">Use for: 10-year gateway</text>
+<text x="638" y="272" font-size="8" fill="#6b7280" text-anchor="middle">output products (D-23)</text>
+
+<!-- Action 5: Physical Purge -->
+<rect x="732" y="90" width="168" height="200" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+<text x="816" y="112" font-size="11" font-weight="700" fill="#991b1b" text-anchor="middle">Physical Purge</text>
+<text x="816" y="126" font-size="11" font-weight="700" fill="#991b1b" text-anchor="middle">(VACUUM)</text>
+<line x1="752" y1="134" x2="880" y2="134" stroke="#fca5a5"/>
+<text x="816" y="152" font-size="8" fill="#374151" text-anchor="middle">REORG PURGE → VACUUM</text>
+<text x="816" y="164" font-size="8" fill="#374151" text-anchor="middle">Removes old Parquet files</text>
+<text x="816" y="182" font-size="8" fill="#374151" text-anchor="middle">Time travel destroyed</text>
+<text x="816" y="194" font-size="8" fill="#374151" text-anchor="middle">Truly irreversible</text>
+<rect x="752" y="210" width="128" height="24" rx="4" fill="#fee2e2"/>
+<text x="816" y="226" font-size="8" font-weight="600" fill="#991b1b" text-anchor="middle">72-hour hold first (D-16)</text>
+<text x="816" y="260" font-size="8" fill="#6b7280" text-anchor="middle">Use for: final step of</text>
+<text x="816" y="272" font-size="8" fill="#6b7280" text-anchor="middle">every erasure workflow</text>
+
+<!-- Bottom callout -->
+<rect x="100" y="310" width="720" height="50" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="460" y="332" font-size="10" font-weight="700" fill="#92400e" text-anchor="middle">Key insight: Dynamic masking protects current queries but does NOT satisfy erasure obligations.</text>
+<text x="460" y="348" font-size="10" fill="#92400e" text-anchor="middle">Erasure requires hard masking (Step 3) followed by physical purge (Step 5). Both are mandatory.</text>
+
+<text x="460" y="410" font-size="8" fill="#94a3b8" text-anchor="middle">Analytical Data Platform · Governance, Privacy &amp; Operations · March 2026</text>
+</svg>
