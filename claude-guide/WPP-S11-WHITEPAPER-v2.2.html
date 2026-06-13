@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude for Research &#8212; Learn to use the Stick</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --blue:#4a5c6b;--blue-light:#7a9aad;--blue-pale:#e8edf0;
+  --gold:#8a6e3a;--gold-pale:#f2ede3;
+  --green:#1a5c2a;--green-pale:#e8f5e9;
+  --red:#8b1a1a;--red-pale:#fdecea;
+  --ink:#28303a;--bg:#f4f2ee;
+  --gray-dark:#28303a;--gray-mid:#8a7660;
+  --gray-light:#f4f2ee;--gray-rule:#d4c8b0;
+  --sonoran-sky:#a8c8d8;--caliche:#8a7660;--lichen-rust:#a04e18;
+  --col-w:760px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Source Serif 4',Georgia,serif;font-size:17px;line-height:1.75;color:var(--ink);background:var(--bg);}
+p{margin-bottom:16px;}p:last-child{margin-bottom:0;}
+.cover{background:var(--blue);color:#fff;padding:80px 40px 60px;text-align:center;}
+.cover h1{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(32px,5vw,56px);font-weight:700;line-height:1.1;margin-bottom:16px;}
+.cover .subtitle{font-size:18px;color:rgba(168,200,216,0.95);font-style:italic;margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto;}
+.cover .meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--sonoran-sky);letter-spacing:1px;}
+.section{max-width:var(--col-w);margin:0 auto;padding:56px 24px;border-bottom:1px solid var(--gray-rule);}
+h1.section-title{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(24px,3.5vw,36px);font-weight:700;color:var(--blue);line-height:1.2;padding-bottom:12px;border-bottom:3px solid var(--blue);margin-bottom:28px;}
+h2.subsection{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:20px;font-weight:600;color:var(--gray-dark);margin:36px 0 16px;}
+.eyebrow-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--blue-light);margin-bottom:12px;display:block;}
+.callout{border-left:4px solid var(--blue-light);background:var(--blue-pale);padding:18px 22px;margin:24px 0;font-style:italic;font-size:15.5px;color:var(--gray-dark);border-radius:0 4px 4px 0;}
+.callout.gold{border-left-color:var(--gold);background:var(--gold-pale);font-style:normal;}
+.table-wrap{overflow-x:auto;margin:24px 0;}
+table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.5;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;}
+thead th{background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.5px;padding:10px 12px;text-align:left;font-weight:600;}
+tbody tr:nth-child(even){background:var(--gray-light);}
+tbody tr:hover{background:var(--blue-pale);}
+tbody td{padding:9px 12px;border-bottom:1px solid #e0e0e0;vertical-align:top;}
+tbody td:first-child{font-weight:600;color:var(--blue);}
+figure{margin:32px 0;}
+figure img{width:100%;height:auto;border:1px solid var(--gray-rule);border-radius:6px;display:block;}
+figure svg{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--gray-rule);border-radius:6px;padding:8px;}
+figcaption{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--caliche);letter-spacing:0.5px;margin-top:10px;text-align:center;}
+.conclusion-section{background:var(--blue);color:#fff;max-width:100%;padding:80px 40px;}
+.conclusion-section .conclusion-inner{max-width:var(--col-w);margin:0 auto;}
+.conclusion-section .eyebrow-label{color:var(--sonoran-sky);font-size:11px;letter-spacing:4px;}
+.conclusion-section h1.section-title{color:#fff;border-bottom-color:var(--sonoran-sky);}
+.conclusion-section p{color:rgba(255,255,255,0.92);}
+.conclusion-section ul{color:rgba(255,255,255,0.92);margin:16px 0 24px 24px;line-height:2;}
+.conclusion-section ul li{margin-bottom:4px;}
+.ending{margin-top:40px;padding-top:28px;border-top:1px solid rgba(168,200,216,0.4);}
+.ending p{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:19px;font-weight:600;color:#fff;margin-bottom:6px;line-height:1.5;}
+.provenance{background:#f0efec;border-top:3px solid var(--caliche);padding:40px 24px;max-width:var(--col-w);margin:0 auto;}
+.provenance h2{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--caliche);margin-bottom:20px;}
+.prov-row{display:grid;grid-template-columns:160px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--gray-rule);font-size:13px;}
+.prov-row:last-child{border-bottom:none;}
+.prov-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--caliche);padding-top:2px;}
+.prov-value{color:#444;line-height:1.6;}
+</style>
+</head>
+<body>
+
+  <div class="cover">
+    <h1>Claude for Research &#8212; Learn to use the Stick</h1>
+    <div class="subtitle"><em>The most capable chat tool is the one that asks you to drive</em></div>
+    <div class="meta">Hugh McCutchen &middot; v2.2 &middot; June 2026 &middot; ~2,000 words</div>
+  </div>
+
+  <!-- PART ONE -->
+  <div class="section">
+    <span class="eyebrow-label">Part One</span>
+    <h1 class="section-title">The car nobody explained</h1>
+
+    <p>Most chat tools are automatics. They do the ordinary jobs well, keep the risky controls out of reach, and they won&#8217;t let you stall. For most people, most of the time, that&#8217;s the right car.</p>
+
+    <p>Long-running work is where this gets unglued.</p>
+
+    <p>The kind of work I&#8217;m talking about is research and writing that builds over days or weeks &#8212; accumulating sources, developing ideas, moving from rough thinking to something you&#8217;d actually publish. Not a single task you hand off and collect. A project.</p>
+
+    <p>In most tools, that project ends the same way. The wheels start to slip in the turns. The engine misfires. I find myself covering ground I already covered &#8212; same problem, same dead ends. So I pull the draft to a separate document and finish it by hand. Claude is more resilient, but it can end up in the same pattern if you haven&#8217;t learned to drive it.</p>
+
+    <p>Most of what gets written about Claude is aimed at developers &#8212; token budgets, prompt caching, agent orchestration. Not much help if you&#8217;re doing research and writing.</p>
+
+    <p>What drew me to Claude was simple: it reasons better. It produces a clean diagram. It formats a document well enough that I&#8217;m not spending hours cleaning up drafts before I can share them. Real advantages, and they come with a real catch.</p>
+
+    <p>The capability is metered. Every plan runs on a usage window, and the strongest setup drains it fastest. At first that felt like a cost problem. It isn&#8217;t. It&#8217;s a design constraint that turns out to be a feature &#8212; it forces you to make choices about your work that make you a better driver.</p>
+
+    <p>Claude was demanding I learn to drive. Once I did, everything changed.</p>
+
+    <p>If you work the way I do &#8212; long research, multi-session writing, an LLM alongside you the whole way &#8212; this paper is the foundation. It covers the ideas you need to understand. Paper Two is the framework I built to put them to work.</p>
+
+    <figure>
+      <img src="images/ClaudeGuideDashboardImage.jpeg" alt="Illustrated car dashboard: model gear shift, effort dial, feature toggles, and context folders up front; the fuel gauges inside an open glovebox.">
+      <figcaption>FIG. A &#8212; THE DASHBOARD. POWER CONTROLS UP FRONT; THE FUEL GAUGE IN THE GLOVEBOX.</figcaption>
+    </figure>
+  </div>
+
+  <!-- PART TWO -->
+  <div class="section">
+    <span class="eyebrow-label">Part Two</span>
+    <h1 class="section-title">Choosing your gears and Loading the vehicle</h1>
+
+    <p>The first move isn&#8217;t picking a model. It&#8217;s assessing the work in front of you &#8212; how complex is it, how much genuine uncertainty does it carry, does it need open-ended judgment or defined execution against a settled plan &#8212; and matching that to what you can afford. Model, effort, and context are how you spend.</p>
+
+    <h2 class="subsection">What can you afford in your time window</h2>
+
+    <p>Working in Claude for hours at a stretch means working within a budget. You&#8217;re not billed per token unless you buy additional credits, but you do have a rolling session window and a weekly limit, and both draw down as you work. Burning through either means stopping early.</p>
+
+    <p>The right model depends on the work. Deep reasoning and open-ended judgment go to the strongest model. Defined execution &#8212; drafting from a settled outline, producing from a spec &#8212; goes to the fastest capable one. Right now that means Opus to frame and synthesize, Sonnet to draft and produce, Haiku for the lightweight tasks.</p>
+
+    <p>My own path wasn&#8217;t clean. I defaulted to Opus because it handled everything. Then Anthropic released a new version and the token usage doubled overnight. I was burning through my session window in two hours instead of five, and just staying on the latest model was no longer a cost I could absorb. When I shifted to Opus for the framing work and Sonnet for execution, I got the same quality at half the cost &#8212; and kept working longer on the same plan.</p>
+
+    <p>As I came to the final draft of this paper, I shifted from Opus to Sonnet Max and turned off Claude&#8217;s extended thinking mode. The ideas were settled &#8212; I didn&#8217;t need deep reasoning pulling in bigger questions from the project. I needed clean, fast prose work, section by section. Sonnet is better at that. Turning off thinking kept it focused on the writing in front of it rather than re-examining the architecture behind it. And it iterates faster, which is exactly what you want in a drafting pass.</p>
+
+    <p>One thing I almost never do: switch models mid-thread. Bringing a new model into a long thread is like bringing a new person into a meeting that&#8217;s been running for two hours. They need to catch up, and the thinking gets inconsistent while they do. If I need to switch, I&#8217;d rather start a fresh thread than try to hand off mid-stream.</p>
+
+    <figure>
+      <svg viewBox="0 0 980 540" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arr-dark" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+          <polygon points="0 0,9 3.5,0 7" fill="#1e293b"/>
+        </marker>
+        <linearGradient id="gradTL" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#eaf2f9"/><stop offset="100%" stop-color="#c7dcf0"/>
+        </linearGradient>
+        <linearGradient id="gradTR" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#efe9f9"/><stop offset="100%" stop-color="#d4c5ef"/>
+        </linearGradient>
+        <linearGradient id="gradBL" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#eef8f3"/><stop offset="100%" stop-color="#cfe8da"/>
+        </linearGradient>
+        <linearGradient id="gradBR" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#fdf9ec"/><stop offset="100%" stop-color="#f1e3c0"/>
+        </linearGradient>
+        <linearGradient id="contBar" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#1e293b"/>
+        </linearGradient>
+        <linearGradient id="costSweep" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#1e293b" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#1e293b" stop-opacity="0.10"/>
+        </linearGradient>
+      </defs>
+      <text x="24" y="34" font-size="16" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">The match</text>
+      <text x="160" y="34" font-size="11" font-weight="400" font-style="italic" font-family="Segoe UI, Arial, sans-serif" fill="#475569">Weigh the work on two axes. The setup falls out.</text>
+      <rect x="209" y="65" width="702" height="394" rx="10" fill="url(#costSweep)"/>
+      <rect x="208" y="64" width="704" height="396" rx="10" fill="none" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="6,5"/>
+      <text x="904" y="58" text-anchor="end" font-size="9" font-style="italic" font-family="Segoe UI, Arial, sans-serif" fill="#64748b">bounded by what you can afford: the usage window</text>
+      <line x1="200" y1="470" x2="200" y2="72" stroke="#1e293b" stroke-width="2" marker-end="url(#arr-dark)"/>
+      <line x1="200" y1="470" x2="920" y2="470" stroke="#1e293b" stroke-width="2" marker-end="url(#arr-dark)"/>
+      <line x1="196" y1="166" x2="204" y2="166" stroke="#94a3b8" stroke-width="1.2"/>
+      <line x1="196" y1="262" x2="204" y2="262" stroke="#94a3b8" stroke-width="1.2"/>
+      <line x1="196" y1="358" x2="204" y2="358" stroke="#94a3b8" stroke-width="1.2"/>
+      <line x1="380" y1="466" x2="380" y2="474" stroke="#94a3b8" stroke-width="1.2"/>
+      <line x1="560" y1="466" x2="560" y2="474" stroke="#94a3b8" stroke-width="1.2"/>
+      <line x1="740" y1="466" x2="740" y2="474" stroke="#94a3b8" stroke-width="1.2"/>
+      <text x="64" y="270" text-anchor="middle" font-size="14" font-weight="700" letter-spacing="0.1em" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b" transform="rotate(-90 64 270)">WORK COMPLEXITY</text>
+      <text x="560" y="528" text-anchor="middle" font-size="14" font-weight="700" letter-spacing="0.1em" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">KIND OF THINKING</text>
+      <text x="190" y="92" text-anchor="end" font-size="11" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">High</text>
+      <text x="190" y="456" text-anchor="end" font-size="11" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Low</text>
+      <text x="386" y="496" text-anchor="middle" font-size="11" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Defined execution</text>
+      <text x="738" y="496" text-anchor="middle" font-size="11" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Open-ended judgment</text>
+      <rect x="218" y="76" width="336" height="180" rx="8" fill="url(#gradTL)" stroke="#2d6eaa" stroke-width="1.5"/>
+      <text x="386" y="102" text-anchor="middle" font-size="12.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">Drafting from a settled plan</text>
+      <rect x="234" y="118" width="8" height="112" rx="4" fill="url(#contBar)"/>
+      <text x="254" y="132" font-size="10.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">Sonnet &#183; High&#8211;Max</text>
+      <text x="254" y="146" font-size="9" font-style="italic" font-family="Segoe UI, Arial, sans-serif" fill="#475569">large, complex builds: run it up</text>
+      <text x="254" y="216" font-size="10.5" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">Sonnet &#183; Medium</text>
+      <text x="254" y="230" font-size="9" font-style="italic" font-family="Segoe UI, Arial, sans-serif" fill="#475569">routine drafting and production</text>
+      <rect x="570" y="76" width="336" height="180" rx="8" fill="url(#gradTR)" stroke="#5b3d9e" stroke-width="2"/>
+      <text x="738" y="102" text-anchor="middle" font-size="12.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">Synthesis and real uncertainty</text>
+      <rect x="586" y="118" width="8" height="112" rx="4" fill="url(#contBar)"/>
+      <text x="606" y="132" font-size="10.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">Opus &#183; High&#8211;Extra</text>
+      <text x="606" y="146" font-size="9" font-style="italic" font-family="Segoe UI, Arial, sans-serif" fill="#475569">the deepest uncertainty earns it</text>
+      <text x="606" y="216" font-size="10.5" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">Sonnet &#183; High</text>
+      <text x="606" y="230" font-size="9" font-style="italic" font-family="Segoe UI, Arial, sans-serif" fill="#475569">lower-stakes synthesis</text>
+      <rect x="798" y="222" width="96" height="20" rx="4" fill="#5b3d9e"/>
+      <text x="846" y="236" text-anchor="middle" font-size="8.5" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#ffffff">spends fastest</text>
+      <rect x="218" y="268" width="336" height="180" rx="8" fill="url(#gradBL)" stroke="#2a7a50" stroke-width="1.25"/>
+      <text x="386" y="334" text-anchor="middle" font-size="12.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">Lookups and mechanical tasks</text>
+      <text x="386" y="360" text-anchor="middle" font-size="10.5" font-family="Segoe UI, Arial, sans-serif" fill="#1e5c38">Haiku or Sonnet &#183; Low</text>
+      <text x="386" y="380" text-anchor="middle" font-size="9" font-style="italic" font-family="Segoe UI, Arial, sans-serif" fill="#475569">the fast, cheap path</text>
+      <rect x="230" y="416" width="70" height="20" rx="4" fill="#2a7a50"/>
+      <text x="265" y="430" text-anchor="middle" font-size="8.5" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#ffffff">cheapest</text>
+      <rect x="570" y="268" width="336" height="180" rx="8" fill="url(#gradBR)" stroke="#b8860b" stroke-width="1.5"/>
+      <text x="738" y="334" text-anchor="middle" font-size="12.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">Light exploration and brainstorm</text>
+      <text x="738" y="360" text-anchor="middle" font-size="10.5" font-family="Segoe UI, Arial, sans-serif" fill="#7a5c1e">Sonnet &#183; Medium</text>
+      <text x="738" y="380" text-anchor="middle" font-size="9" font-style="italic" font-family="Segoe UI, Arial, sans-serif" fill="#475569">escalate if it deepens <tspan fill="#5b3d9e" font-weight="700" font-style="normal">&#8599;</tspan></text>
+    </svg>
+      <figcaption>FIG. B &#8212; THE MATCH. SPEND RISES TOWARD THE TOP RIGHT.</figcaption>
+    </figure>
+
+    <h2 class="subsection">Context is what you&#8217;re carrying in the vehicle</h2>
+
+    <p>Context is the other half of the equation. It determines what the model is actually working with &#8212; what facts it holds, what decisions it remembers, how much of your work is live in the thread.</p>
+
+    <p>Something shifted here while I was writing this paper. Claude used to hold your entire thread, word for word, until you hit a hard stop. Now the stop is softer. When a thread gets near the context limit, Claude summarizes the early material and keeps going &#8212; and it marks the spot when it does. Everything below that line is still held in full.</p>
+
+    <p>The other tools I&#8217;ve used do something different. They trim and compress continuously as the thread grows, and you find out what fell off when the model forgets it. With Claude you can see what the model is holding, because below the compression line, it&#8217;s holding all of it.</p>
+
+    <p>That difference matters because it means you can choose where the break happens and what survives it. A break you cut deliberately &#8212; carrying forward what you decided matters &#8212; produces better work than a break the system cut for you.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Habit</th>
+            <th>The Hazard</th>
+            <th>The Protection</th>
+            <th>What it costs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cut a clean break at every deliverable</td>
+            <td>You can&#8217;t see what&#8217;s been compressed or what the model is quietly working without.</td>
+            <td>You chose the break point and what carries forward. Fresh context, full picture.</td>
+            <td>Noticing when the thread is running long. Save the draft, open a fresh thread, carry the file forward.</td>
+          </tr>
+          <tr>
+            <td>Close with a handoff note</td>
+            <td>The model drifts &#8212; logic gets fuzzy, focus slips, earlier decisions lose weight.</td>
+            <td>The next session opens on a few pages of full continuity instead of a hundred-thousand-token thread.</td>
+            <td>Ten minutes at session close. Let Claude draft it from your open items and next step.</td>
+          </tr>
+          <tr>
+            <td>Load only what the thread needs</td>
+            <td>More context feels like richer work. It isn&#8217;t &#8212; it&#8217;s a slower, shorter thread on diluted material.</td>
+            <td>The model holds exactly what you want it thinking about. The thread runs longer and the work stays sharper.</td>
+            <td>Deciding what context each task actually needs before you load it.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>These habits pay off on work that builds over time. For a one-off question, skip them and just pick the right model for the task.</p>
+
+    <figure>
+      <img src="images/ClaudeGuideCompactionZones.jpeg" alt="Two roads compared: on Claude's road, three labeled breaks the driver cut; on the other road, an unmarked compaction zone consuming the road behind the car.">
+      <figcaption>FIG. C &#8212; WHO COMPRESSES, AND WHEN. A BREAK YOU CUT IS A SUMMARY YOU AUTHORED.</figcaption>
+    </figure>
+
+    <h2 class="subsection">Is the process overhead worth it?</h2>
+
+    <p>Managing context, breaking work across threads, writing a handoff note at the end of a session &#8212; that&#8217;s real work. Worth asking honestly whether it pays.</p>
+
+    <p>Working through multiple drafts and iterations with a model that isn&#8217;t losing the thread &#8212; isn&#8217;t quietly forgetting earlier decisions or drifting from the original problem &#8212; produces better work. That part is straightforward.</p>
+
+    <p>The thing that&#8217;s hard to see until you&#8217;ve lived it: when I write two thousand words the usual way, I get attached to the sentences. Tearing the structure down means rewriting all of them, so I defend what I have instead of improving it. When Claude holds the draft, the sentences stop being the investment. The ideas are the investment &#8212; what the piece argues, how it&#8217;s ordered, what it&#8217;s built to do. Those survive any rewrite. The prose is just the cheap layer, regenerated from the thinking you already banked. You can reshape the whole thing with a few prompts and feel nothing, because nothing you actually valued got destroyed.</p>
+
+    <p>Claude is a raw tool. Powerful, but raw. A software engineer has an IDE &#8212; one place that holds everything, tracks every change, keeps the project coherent across sessions. Nothing like that exists for knowledge work. So you assemble it yourself.</p>
+
+    <p>That assembly is what Paper Two is about.</p>
+  </div>
+
+  <!-- PART THREE -->
+  <div class="conclusion-section">
+    <div class="conclusion-inner">
+      <span class="eyebrow-label">Part Three</span>
+      <h1 class="section-title">What does this look like exactly?</h1>
+
+      <p>For each paper I create a separate Claude Project. The project instructions guide and track the work &#8212; what I&#8217;m building, what&#8217;s been decided, where I am in the process. I maintain a set of reference documents in Google Drive that travel with the project: research I&#8217;ve accumulated, frameworks I&#8217;ve developed, decisions I&#8217;ve locked. And I use the three habits in the table above consistently. Every paper I&#8217;ve written in the past several months was built this way and the framework has evolved throughout.</p>
+
+      <p>It&#8217;s built entirely on native Claude features. Nothing exotic &#8212; just Project instructions, context discipline, and a handful of habits applied consistently. Together they get closer to a knowledge worker&#8217;s IDE than anything else I&#8217;ve found.</p>
+
+      <p>Paper Two covers the framework in full:</p>
+      <ul>
+        <li>Why you need to bolt on your own gauges</li>
+        <li>How to use the Project framework as your workspace</li>
+        <li>What goes in a project charter and why it matters</li>
+        <li>How to build context that gets richer without getting longer</li>
+        <li>Managing context within and between threads</li>
+        <li>How to work with Claude as a thinking partner, not just a drafting tool</li>
+      </ul>
+
+      <div class="ending">
+        <p>If you&#8217;ve read this far, I assume you&#8217;re trying to solve the same problems I was.</p>
+        <p>Get in the driver&#8217;s seat &#8212; the next paper takes you much further down far trickier roads.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROVENANCE -->
+  <div class="provenance">
+    <h2>Provenance</h2>
+    <div class="prov-row"><span class="prov-label">Model</span><span class="prov-value">Claude Opus 4.8 (S01, S03, S04, S06 &middot; Extra, S07 &middot; High/Extra, S10 prose forks) &middot; Claude Sonnet 4.6 (S03b &middot; Medium, S05 &middot; Max, S11 build) &middot; Claude Sonnet Max &middot; Thinking off (S11 writing refinement pass) &middot; Claude Opus 4.8 &middot; Medium &middot; Thinking off (S11 final in-project review) &middot; Claude Fable 5 (S08&ndash;S10 production and HTML merge) &middot; 2026-06-05/12</span></div>
+    <div class="prov-row"><span class="prov-label">Version</span><span class="prov-value">v2.2 &middot; HTML &middot; June 2026</span></div>
+    <div class="prov-row"><span class="prov-label">Session</span><span class="prov-value">WPP-S01 through WPP-S11 &middot; 2026-06-05 through 2026-06-12 &middot; 11 sessions across 8 days</span></div>
+    <div class="prov-row"><span class="prov-label">Audience</span><span class="prov-value">claude.ai Pro researcher / analyst / writer (primary); LinkedIn reader; industry reader / product leader (secondary)</span></div>
+    <div class="prov-row"><span class="prov-label">Sources</span><span class="prov-value">WPP reference manual v0.4 (Opus 4.8, S03 &mdash; foundational claim inventory); white paper v0.6&ndash;v0.11 markdown (Opus 4.8, Fable 5, successive drafts); author editorial pass (Google Doc, June 12, 2026); Gemini external review (15 findings, June 11, 2026); Sonnet 4.6 Max verification against Anthropic primary sources: support.claude.com/en/articles/11647753, /12111783, /11473015; GitHub issue #25759 (all accessed June 11, 2026); Charter v0.1 &rarr; v0.2 &rarr; v0.3; S01&ndash;S10 session logs and handoffs; output-formatting, svg-diagrams, provenance, session-handoff, my-voice skills</span></div>
+    <div class="prov-row"><span class="prov-label">Decision / Action</span><span class="prov-value"><strong>S01&ndash;S02 (Jun 5&ndash;6):</strong> Project scoped. Terminal question locked: how should a knowledge worker manage model, effort, and features to optimize quality and cost. Charter v0.1. Reference manual established as claim foundation. <strong>S03/S03b (Jun 7):</strong> Parallel sessions &mdash; reference manual v0.4 (Opus 4.8); story-framing pass (Sonnet 4.6 &middot; Medium). <strong>S04&ndash;S05 (Jun 8):</strong> Charter v0.2. Working title: &ldquo;A Fresh Look at Claude for Deep Knowledge Work.&rdquo; HTML/GitHub target confirmed. SVG diagram approach established. <strong>S06 (Jun 9):</strong> Title locked as &ldquo;Driving with a Stick&rdquo; (Opus 4.8 &middot; Extra). Stick shift metaphor consolidated. <strong>S07 (Jun 9, Opus 4.8 &middot; High/Extra):</strong> Structural inflection point. Read the actual paper; found two documents stapled together &mdash; essay wrapped around a reworded manual. Split executed: essay stripped to argument only (v0.5), companion manual scoped as Paper 2. Thesis locked: reading the work (complexity + kind of thinking) and matching to what you can afford &mdash; model/effort/context are instruments of that match. Context persistence named as Claude&rsquo;s differentiator. Practice observations moved to data table. v0.6 produced (~1,700 words). <strong>S08 (Jun 9&ndash;10):</strong> Charter v0.3 installed. Blind-review results (queued from S07) ingested. Gemini 15-finding triage locked (Fable 5); 2 genuine items, 13 rejected. <strong>S09 (Jun 10):</strong> Spine rebuilt around capability-then-meter argument (Fable 5). v0.9 &mdash; 33-item batch pass. <strong>S10 (Jun 11):</strong> Opus 4.8 five-fork rewrite &rarr; v0.10 (evergreen, &ldquo;weigh the work&rdquo; frame) &rarr; v0.11 (rhythm/flow pass). Fable 5 merged to HTML (v0.12). Standalone verification thread (Sonnet 4.6 Max) confirmed all product mechanics against Anthropic primary sources; Phase 1 gate satisfied. <strong>S11 (Jun 12):</strong> Gemini reconciliation completed. Author editorial pass: title changed, Part One rewritten in direct personal voice, Weigh it first merged into Part Two intro, Opus token-doubling story added, Sonnet Max example placed in budget section, overhead scaffolding removed, table rebuilt 3&rarr;4 columns, Part Three rewritten as Paper 2 teaser. Sonnet Max &middot; Thinking off used for section-by-section writing refinement. HTML rebuilt via Python from settled prose. v2.0 delivered. v2.1: provenance rebuilt from session logs. v2.2 (final pass, in-project, Opus 4.8 &middot; Medium &middot; Thinking off): thread reviewed against Charter goals and verification record. Two accuracy corrections applied &mdash; &ldquo;weekly cap&rdquo; &rarr; &ldquo;weekly limit&rdquo; (vocabulary lock), and compaction signal softened from &ldquo;it tells you when it happens&rdquo; to &ldquo;it marks the spot when it does&rdquo; (accurate to the quiet indicator). Two Charter deltas named for close: title change from &ldquo;Driving with a Stick&rdquo; and LinkedIn-native register now canonical for the deliverable.</span></div>
+    <div class="prov-row"><span class="prov-label">Iteration notes</span><span class="prov-value">v2.2: Final in-project review &mdash; two accuracy corrections, two Charter deltas named (Opus 4.8 &middot; Medium &middot; Thinking off, S11). v2.1: Provenance rebuild from session logs (Sonnet 4.6, S11). v2.0: Major editorial pass &mdash; title, voice, structure (Sonnet Max &middot; Thinking off, S11). v0.12: Four post-merge calls (Fable 5, Hugh-directed). v0.11: Rhythm/flow pass (Opus 4.8, S10). v0.10: Five-fork rewrite &mdash; evergreen, manual removed, &ldquo;weigh the work,&rdquo; Part Three cut (Opus 4.8, S10). v0.9: Spine rebuild + 33-item batch (Fable 5, S09). v0.6: Structural split &mdash; essay only, thesis locked, context persistence named differentiator (Opus 4.8, S07). v0.1&ndash;v0.5: Reference manual &rarr; argument essay evolution, S01&ndash;S07.</span></div>
+    <div class="prov-row"><span class="prov-label">Assumptions</span><span class="prov-value">Product mechanics verified against Anthropic primary sources (Sonnet 4.6 Max verification thread, June 11, 2026): compaction behavior, Settings usage page, Project retrieval, dual clocks (session window + weekly limit). Phase&nbsp;1 claim-verification complete. HTML publishes from <code>claude-guide/</code>.</span></div>
+    <div class="prov-row"><span class="prov-label">Scope exclusions</span><span class="prov-value">Settings/how-to manual (Paper 2); v0.1&ndash;v0.5 draft series (reference manual phase); coding, agentic work, Cowork, speed; the developer API.</span></div>
+    <div class="prov-row"><span class="prov-label">Tool chain</span><span class="prov-value">Google Drive fetch (session logs and handoffs S01&ndash;S10, author edited source, Charter v0.3); Python rebuild script (HTML production); CSS + SVG extracted from prior build; web_fetch (GitHub Pages); Anthropic source verification (Sonnet 4.6 Max, S10); output-formatting, provenance, svg-diagrams skills</span></div>
+    <div class="prov-row"><span class="prov-label">Review status</span><span class="prov-value">v2.2 &mdash; final in-project review complete (Opus 4.8 &middot; Medium); accuracy corrections applied; Charter deltas named; ready to publish</span></div>
+  </div>
+
+</body>
+</html>
