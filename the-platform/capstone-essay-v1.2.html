@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>When Even the Best Prompt Isn't Enough — Hugh McCutchen</title>
+  <style>
+    :root {
+      --blue:       #4a5c6b;
+      --blue-light: #7a9aad;
+      --blue-pale:  #e8edf0;
+      --gold:       #8a6e3a;
+      --gold-pale:  #f2ede3;
+      --ink:        #28303a;
+      --bg:         #f4f2ee;
+      --gray-dark:  #28303a;
+      --gray-mid:   #8a7660;
+      --gray-light: #f4f2ee;
+      --gray-rule:  #d4c8b0;
+      --sonoran-sky:#a8c8d8;
+      --caliche:    #8a7660;
+      --lichen-rust:#a04e18;
+      --col-w:      760px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    p { margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    a { color: var(--gold); text-decoration: underline; }
+    a:hover { color: var(--blue); }
+
+    /* ── COVER ── */
+    .cover {
+      background: var(--blue);
+      color: #fff;
+      padding: 80px 40px 64px;
+      text-align: center;
+    }
+    .cover h1 {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Trebuchet, sans-serif;
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .cover h1 em {
+      display: block;
+      font-size: 0.52em;
+      font-weight: 600;
+      color: var(--sonoran-sky);
+      font-style: normal;
+      margin-bottom: 10px;
+      letter-spacing: 0.3px;
+    }
+    .cover .meta {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 11px;
+      color: var(--caliche);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+    .cover .illustration-link {
+      margin-top: 24px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+    .cover .illustration-link a {
+      color: var(--sonoran-sky);
+      text-decoration: underline;
+    }
+
+    /* ── MAIN SECTION ── */
+    .section {
+      max-width: var(--col-w);
+      margin: 0 auto;
+      padding: 56px 24px 48px;
+    }
+
+    /* ── SECTION HEADLINES ── */
+    h2.section-head {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Trebuchet, sans-serif;
+      font-size: clamp(20px, 3vw, 26px);
+      font-weight: 700;
+      color: var(--blue);
+      line-height: 1.2;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--blue);
+      margin: 48px 0 20px;
+    }
+    h2.section-head:first-child {
+      margin-top: 0;
+    }
+
+    /* ── CALLOUT ── */
+    .callout {
+      border-left: 4px solid var(--blue-light);
+      background: var(--blue-pale);
+      padding: 18px 22px;
+      margin: 28px 0;
+      font-style: italic;
+      font-size: 15.5px;
+      color: var(--gray-dark);
+      border-radius: 0 4px 4px 0;
+    }
+    .callout-title {
+      display: block;
+      font-style: normal;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Trebuchet, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.3px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    /* ── TABLE ── */
+    .table-wrap { overflow-x: auto; margin: 24px 0 10px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.55; }
+    thead th {
+      background: var(--blue);
+      color: #fff;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 11px;
+      letter-spacing: 0.8px;
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    tbody tr:nth-child(even) { background: #eeece7; }
+    tbody tr:hover { background: var(--blue-pale); }
+    tbody td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--gray-rule);
+      vertical-align: top;
+    }
+    tbody td:first-child {
+      font-weight: 600;
+      color: var(--blue);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Trebuchet, sans-serif;
+      font-size: 13.5px;
+    }
+
+    .link-needed {
+      color: var(--lichen-rust);
+      font-style: italic;
+      font-size: 12px;
+    }
+
+    .table-note {
+      font-style: italic;
+      font-size: 14px;
+      color: var(--gray-mid);
+      margin: 10px 0 28px;
+    }
+
+    /* ── CONCLUSION ── */
+    .conclusion-section {
+      background: var(--blue);
+      color: #fff;
+      padding: 72px 40px 80px;
+    }
+    .conclusion-inner {
+      max-width: var(--col-w);
+      margin: 0 auto;
+    }
+    .conclusion-section p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.92);
+    }
+
+    /* ── PROVENANCE ── */
+    .provenance-wrap {
+      background: #efede9;
+      border-top: 3px solid var(--caliche);
+      padding: 48px 24px 56px;
+    }
+    .provenance {
+      max-width: var(--col-w);
+      margin: 0 auto;
+    }
+    .provenance h2 {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--caliche);
+      margin-bottom: 24px;
+    }
+    .prov-row {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray-rule);
+      font-size: 13px;
+    }
+    .prov-row:last-child { border-bottom: none; }
+    .prov-label {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--caliche);
+      padding-top: 3px;
+    }
+    .prov-value { color: #444; line-height: 1.65; }
+    .unverified { color: var(--lichen-rust); font-style: italic; }
+  </style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <h1>
+    <em>An LLM platform for your most serious research and writing needs</em>
+    When Even the Best Prompt Isn&rsquo;t Enough
+  </h1>
+  <div class="meta">Hugh McCutchen &nbsp;&middot;&nbsp; v1.2 &nbsp;&middot;&nbsp; June 2026 &nbsp;&middot;&nbsp; ~800 words</div>
+</div>
+
+<!-- ILLUSTRATION -->
+<img src="the-platform/images/LLMResearchPlatformFutureIsNow_v2_large.jpg" alt="LLM Research Platform — The Future Is Now" style="width:100%;display:block;">
+
+<!-- MAIN BODY -->
+<div class="section">
+
+  <h2 class="section-head">A Good Prompt Will Take You Far</h2>
+
+  <p>Once you move past using an LLM to google, you learn to build a real prompt. The first good one is a paragraph. Then it grows to a full page, maybe two. You learn to structure it, put a goal at the top, feed it good context, and teach it to write the way you write. The chat tools are built for this whole spectrum of engagement, from a quick question to a carefully constructed page that produces a strong piece of research. This is the kind of ask they do well.</p>
+
+  <p>A requirements document for a large system build is not that kind of ask. Neither is research into industry best practice for a modernization plan. You do not write one prompt, however good, and trust what comes back. The way it gets done now is familiar. A trusted analyst, who is often you, runs a long process: research, meetings, interviews, compiling, reviewing, analyzing, then producing a document and explaining and selling it. Days or weeks of accumulating work toward one deliverable that someone will act on.</p>
+
+  <h2 class="section-head">Two Approaches to the Hard Work. Both Fall Short.</h2>
+
+  <p>People reach for LLMs on this kind of work in two ways, and both fall short.</p>
+
+  <p>The first is to work in fragments. You ask the tool to summarize this, draft that, react to the other thing, then you assemble the pieces by hand. The continuity lives in your head, not the tool. Over a long project the seams show.</p>
+
+  <p>The second is more sophisticated. You craft one thorough prompt, or build a single long agent, and send it winding through the whole research in one pass to produce the thing. The better version keeps a person in the middle <span class="link-needed">[LINK NEEDED &mdash; human-in-the-loop source, Paper 2 research artifact]</span>, the approach the field is converging on now, supervising the run rather than turning it loose. That will certainly produce higher quality individual research artifacts than a fancy prompt. But building a robust, flexible agent is real engineering, and most writers and analysts will never build one for the same reason most writers never learn LaTeX: the investment only makes sense if you treat the tool itself as a specialty. Every project has its own shape, and engineering one from scratch each time is its own job. The effort rarely survives to the next project.</p>
+
+  <p>What I am building sits between those two. A framework that stays in place across the whole project, so the LLM&rsquo;s research, analysis, and writing run through the full process instead of in fragments you assemble or an agent you rebuild each time. The framework holds the continuity in a way that the chat tools by themselves cannot.</p>
+
+  <!-- CARD: Sounds like an agent? -->
+  <div class="callout">
+    <span class="callout-title">Sounds like an agent?</span>
+    Fair question. The difference is where the judgment sits. An agent decides its own next steps and runs on its own. Here the person decides and the tool executes the parts handed to it. It borrows the agent&rsquo;s plumbing, persistent memory and a structured workspace it reads and writes, without handing over the autonomy. The person is not checking in at the edges of an automated run. The person is running it, and the tool does the work inside.
+  </div>
+
+  <h2 class="section-head">This Gap Is Being Studied</h2>
+
+  <p>The reason the fragmented approach breaks is not subtle, and it is not only my experience. It shows up wherever the work is long and the stakes are real, and it has been measured.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Who</th>
+          <th>The long work</th>
+          <th>What breaks across a project</th>
+          <th>What it costs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Social science and policy researchers</td>
+          <td>A paper or report over months, many drafts</td>
+          <td>Citations invented. Settled decisions reopen.</td>
+          <td>
+            <a href="https://mental.jmir.org/2025/1/e80371" target="_blank" rel="noopener">Roughly 20% of AI-generated citations fabricated in one review study</a>
+            (Linardon et al. 2025, JMIR Mental Health / Deakin). Credibility on the line.
+          </td>
+        </tr>
+        <tr>
+          <td>Business and systems analysts</td>
+          <td>Requirements and specs across dozens of sessions</td>
+          <td>Terminology drifts. A requirement no one stated appears. Context lost between threads</td>
+          <td>
+            <a href="https://www.pmi.org/learning/thought-leadership/pulse/core-competency-project-program-success" target="_blank" rel="noopener">Rework can reach 40% of a project budget</a>
+            (PMI Pulse of the Profession).
+            <a href="https://www.batimes.com/articles/how-to-prevent-the-negative-impacts-of-poor-requirements/" target="_blank" rel="noopener">Poor requirements is the most cited cause of project failure</a>
+            (BA Times).
+          </td>
+        </tr>
+        <tr>
+          <td>Legal analysts</td>
+          <td>Case prep and briefs built over weeks</td>
+          <td>Citations hallucinated. Argument loses consistency across sessions</td>
+          <td>
+            <a href="https://arxiv.org/abs/2405.20362" target="_blank" rel="noopener">Leading legal AI tools hallucinated 17&ndash;34% of the time in Stanford testing</a>
+            (Magesh et al. 2025, Stanford HAI/RegLab).
+            <a href="https://www.damiencharlotin.com/hallucinations/" target="_blank" rel="noopener">Over 1,600 court cases now involve AI hallucinations</a>
+            (Charlotin, HEC Paris).
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="table-note">Segment detail and full sourcing: <a href="https://docs.google.com/document/d/1dRk0FZXFyclpvyg9gr5KAyK3ZldU83lPwjaD3eMPqIE/edit" target="_blank" rel="noopener">companion research paper</a> (access on request).</p>
+
+  <p>Three different jobs, the same three failures. The tool makes things up. It loses the thread across a long context. It forgets the project between sessions. These are properties of how the tools work today. Models keep improving, but real projects run longer than any single context and span more sessions than any single thread, so the need to manage the work does not disappear with the next release.</p>
+
+  <h2 class="section-head">We Can Manage These Tools Like a Writing Team</h2>
+
+  <p>I am early in this work, running a version of it by hand. The shape of it is clearer to me than the finished form. The framework is the subject of the next paper. This one describes the need. The most valuable knowledge work is the kind a single ask handles worst, and the gap is not the chat tool. It is the process we have not built around it.</p>
+
+</div>
+
+<!-- CONCLUSION -->
+<div class="conclusion-section">
+  <div class="conclusion-inner">
+    <p>As the tools get cheaper at producing words, the words stop being the scarce part. What stays scarce is knowing what the work should say, and determining how and when to pivot and getting those approvals, making sure you don&rsquo;t lose anything along the way, and standing behind it at the end. That was always the analyst&rsquo;s job, and it still is.</p>
+  </div>
+</div>
+
+<!-- PROVENANCE -->
+<div class="provenance-wrap">
+  <div class="provenance">
+    <h2>Provenance</h2>
+
+    <div class="prov-row">
+      <span class="prov-label">Model</span>
+      <span class="prov-value">Claude Sonnet 4.6 &middot; June 20, 2026</span>
+    </div>
+    <div class="prov-row">
+      <span class="prov-label">Version</span>
+      <span class="prov-value">v1.2</span>
+    </div>
+    <div class="prov-row">
+      <span class="prov-label">Session</span>
+      <span class="prov-value">OMUP-Capstone-S2 &middot; June 20, 2026</span>
+    </div>
+    <div class="prov-row">
+      <span class="prov-label">Audience</span>
+      <span class="prov-value">Hugh McCutchen &mdash; professional / LinkedIn audience</span>
+    </div>
+    <div class="prov-row">
+      <span class="prov-label">Sources</span>
+      <span class="prov-value">
+        Locked draft (OMUP-Capstone-S2 handoff);
+        Paper 2 Research Foundation (Drive 1dRk0FZXFyclpvyg9gr5KAyK3ZldU83lPwjaD3eMPqIE);
+        web searches for Linardon, Charlotin, PMI, BA Times, LaTeX
+      </span>
+    </div>
+    <div class="prov-row">
+      <span class="prov-label">Decision / Action</span>
+      <span class="prov-value">Applied 6 review comments; added 4 section headlines; embedded image link; resolved 4 source URLs to live links</span>
+    </div>
+    <div class="prov-row">
+      <span class="prov-label">Iteration Notes</span>
+      <span class="prov-value">
+        v1.1: Comments 1&ndash;6 applied. Headlines added: A Good Prompt Will Take You Far /
+        Two Approaches to the Hard Work. Both Fall Short. /
+        This Gap Is Being Studied /
+        We Can Manage These Tools Like a Writing Team.
+        LaTeX analogy verified (~18% of scholarly articles; STEM-concentrated; most writers never acquire it).
+        Charlotin database at 1,624; &ldquo;over 1,600&rdquo; in essay remains accurate.
+      </span>
+    </div>
+    <div class="prov-row">
+      <span class="prov-label">Assumptions</span>
+      <span class="prov-value">
+        PMI and BA Times URLs point to closest matching articles; original cited documents may differ.
+        arXiv URL for Magesh et al. derived from arXiv:2405.20362 in backing paper.
+        <span class="unverified">&ldquo;robust&rdquo; (banned word) still unresolved &mdash; awaiting Hugh&rsquo;s call.</span>
+        HITL source URL not found in backing paper or web search.
+      </span>
+    </div>
+    <div class="prov-row">
+      <span class="prov-label">Scope Exclusions</span>
+      <span class="prov-value">Illustration raw embed (link only per instructions); HITL source URL; &ldquo;robust&rdquo; word swap</span>
+    </div>
+    <div class="prov-row">
+      <span class="prov-label">Tool Chain</span>
+      <span class="prov-value">Google Drive:read_file_content (backing paper); web_search (URL resolution + LaTeX fact-check); My-Voice &middot; Output-Formatting &middot; Provenance skills</span>
+    </div>
+    <div class="prov-row">
+      <span class="prov-label">Review Status</span>
+      <span class="prov-value">Draft &mdash; pending Hugh review</span>
+    </div>
+    <div class="prov-row">
+      <span class="prov-label">Version History</span>
+      <span class="prov-value">
+        v1.2 &middot; June 20, 2026 &middot; New title; 3 held comments applied; image rendered<br>
+        v1.1 &middot; June 20, 2026 &middot; Applied review comments, headlines, image link, live source URLs<br>
+        v1.0 &middot; June 20, 2026 &middot; Initial formatted HTML from locked prose draft
+      </span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
