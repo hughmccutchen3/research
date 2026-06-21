@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When Even the Best Prompt Isn't Enough</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue:#4a5c6b;--blue-light:#7a9aad;--blue-pale:#e8edf0;
+  --gold:#8a6e3a;--gold-pale:#f2ede3;
+  --ink:#28303a;--bg:#f4f2ee;
+  --gray-mid:#8a7660;--gray-light:#f4f2ee;--gray-rule:#d4c8b0;
+  --sonoran-sky:#a8c8d8;--caliche:#8a7660;
+  --col-w:760px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Source Serif 4',Georgia,serif;font-size:17px;line-height:1.75;color:var(--ink);background:var(--bg);}
+p{margin-bottom:16px;}p:last-child{margin-bottom:0;}
+a{color:var(--blue);text-decoration:underline;text-decoration-color:var(--blue-light);}
+a:hover{color:var(--gold);}
+
+/* COVER */
+.cover{background:var(--blue);color:#fff;padding:80px 40px 60px;text-align:center;}
+.cover-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--sonoran-sky);margin-bottom:20px;display:block;}
+.cover h1{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(32px,5vw,52px);font-weight:700;line-height:1.1;margin-bottom:20px;color:#fff;}
+.cover .subtitle{font-size:17px;color:rgba(168,200,216,0.9);font-style:italic;max-width:600px;margin:0 auto;line-height:1.8;}
+.cover .meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(138,118,96,0.8);letter-spacing:1px;margin-top:32px;}
+
+/* ILLUSTRATION */
+.illustration{display:block;width:100%;max-width:800px;height:auto;margin:0 auto;}
+
+/* SECTION */
+.section{max-width:var(--col-w);margin:0 auto;padding:56px 24px;border-bottom:1px solid var(--gray-rule);}
+h1.section-title{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(22px,3vw,30px);font-weight:700;color:var(--blue);line-height:1.2;padding-bottom:12px;border-bottom:3px solid var(--blue);margin-bottom:28px;}
+.eyebrow-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--blue-light);margin-bottom:12px;display:block;}
+
+/* THESIS CARD — inline in S1 */
+.thesis-inline{border-left:4px solid var(--blue-light);background:var(--blue-pale);padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;color:var(--ink);}
+.thesis-inline strong{color:var(--blue);}
+
+/* CALLOUTS */
+.callout.keycard{border-left:none;border-top:3px solid var(--blue);background:var(--blue-pale);padding:24px 28px;margin:36px 0;}
+.callout.keycard .card-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--blue-light);display:block;margin-bottom:12px;}
+.callout.keycard p{font-size:16px;margin-bottom:12px;}
+.callout.keycard p:last-child{margin-bottom:0;}
+.callout.keycard .card-ref{font-size:13px;font-style:italic;color:var(--gray-mid);margin-top:14px;padding-top:12px;border-top:1px solid var(--gray-rule);}
+
+/* INLINE ASIDE */
+.aside-bold{font-family:'DM Sans',sans-serif;font-weight:700;font-size:15px;color:var(--blue);display:block;margin:28px 0 8px;}
+
+/* TABLE */
+.table-wrap{overflow-x:auto;margin:24px 0;}
+table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.5;}
+thead th{background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.5px;padding:10px 12px;text-align:left;font-weight:600;}
+tbody tr:nth-child(even){background:#edeae4;}
+tbody tr:hover{background:var(--blue-pale);}
+tbody td{padding:10px 12px;border-bottom:1px solid var(--gray-rule);vertical-align:top;}
+tbody td:first-child{font-weight:600;color:var(--blue);font-family:'DM Sans',sans-serif;}
+.table-note{font-size:13px;font-style:italic;color:var(--gray-mid);margin-top:10px;}
+
+/* CONCLUSION */
+.conclusion-section{background:var(--blue);color:#fff;}
+.conclusion-inner{max-width:var(--col-w);margin:0 auto;padding:72px 24px;}
+.conclusion-section .eyebrow-label{color:var(--sonoran-sky);}
+.conclusion-section h1.section-title{color:#fff;border-bottom-color:var(--sonoran-sky);}
+.conclusion-section p{color:rgba(255,255,255,0.88);}
+.conclusion-section .closing-button{margin-top:36px;padding-top:24px;border-top:1px solid rgba(168,200,216,0.3);}
+.conclusion-section .closing-button p{font-size:18px;font-style:italic;color:rgba(168,200,216,0.95);line-height:1.65;}
+
+/* SUPPORTING MATERIAL — always visible, strong visual break */
+.support-break{background:#2a3540;padding:28px 24px;text-align:center;}
+.support-break-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:rgba(168,200,216,0.6);display:block;margin-bottom:6px;}
+.support-break-title{font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.4);}
+
+.support-section{background:#e8e5df;}
+.support-inner{max-width:var(--col-w);margin:0 auto;padding:48px 24px;}
+.support-inner h2{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:16px;font-weight:700;color:var(--caliche);margin:36px 0 14px;padding-bottom:6px;border-bottom:1px solid #ccc8c0;}
+.support-inner h2:first-child{margin-top:0;}
+.support-inner p{font-size:15px;color:#555;margin-bottom:14px;}
+.support-inner p:last-child{margin-bottom:0;}
+.support-inner table thead th{background:var(--caliche);}
+.support-inner table tbody td:first-child{color:var(--caliche);}
+.support-inner .table-note{color:#888;}
+.support-inner a{color:var(--caliche);}
+
+/* PROVENANCE */
+.provenance{background:#dedad3;border-top:2px solid #ccc8c0;padding:40px 24px;}
+.provenance-inner{max-width:var(--col-w);margin:0 auto;}
+.provenance-inner h2{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#999;margin-bottom:20px;}
+.prov-row{display:grid;grid-template-columns:160px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid #ccc8c0;font-size:12px;}
+.prov-row:last-child{border-bottom:none;}
+.prov-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#999;padding-top:2px;}
+.prov-value{color:#777;line-height:1.6;}
+.version-history{margin-top:24px;padding-top:20px;border-top:1px solid #ccc8c0;}
+.version-history h3{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#999;margin-bottom:12px;}
+.version-history ul{list-style:none;padding:0;}
+.version-history li{font-size:11px;font-family:'JetBrains Mono',monospace;color:#999;padding:5px 0;border-bottom:1px solid #e0ddd6;}
+.version-history li:last-child{border-bottom:none;}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <span class="cover-eyebrow">Essay · Hugh McCutchen III</span>
+  <h1>When Even the Best Prompt Isn't Enough</h1>
+  <p class="subtitle">We're using these tools well,<br>and leaving most of their power on the table where it counts.</p>
+  <div class="meta">v2.8 &nbsp;·&nbsp; June 2026 &nbsp;·&nbsp; Hugh McCutchen III</div>
+</div>
+
+<!-- ILLUSTRATION -->
+<img class="illustration" src="/the-platform/images/CapstoneIllustration1.png" alt="Capstone illustration">
+
+<!-- S1: THE WORK I WOULDN'T HAVE ATTEMPTED ALONE -->
+<div class="section" id="s01">
+  <span class="eyebrow-label">Part One</span>
+  <h1 class="section-title">The Work I Wouldn't Have Attempted Alone</h1>
+
+  <p>My team and I were running a large modernization of our infrastructure to the cloud. We were short much of the experience it called for.</p>
+
+  <p>The chat tools turned out to be invaluable. They helped us understand the options and the current best practices, and analyze the tradeoffs between them. They also helped me present the work: telling the story of how the new architecture served the business, with artwork, music, and a clean, consistent set of data-driven slides. We took on transformative work with more confidence, and produced work I could actually stand behind: checked, sourced, and defensible.</p>
+
+  <p>All of that came in bites. Each piece was useful on its own and disconnected from the next, and I corrected and stitched by hand the whole way. When I tried to thread the next multi-week effort through a single chat tool, end to end, it fell apart fast. Not because the tools were weak. Because nothing held the parts together, and holding them together with care is a full time job on its own. That is the analyst's job, and it has always been mine.</p>
+
+  <div class="thesis-inline">
+    <strong>We bolted powerful new tools onto the same old belt, and never noticed the belt was the thing that needed replacing.</strong> AI handed knowledge work a set of extraordinary tools. The framework that organizes them into work you can stand behind is what almost no one has built yet.
+  </div>
+
+  <p>I know this work. Systems analysis under waterfall first, then agile. Waterfall gave the analyst full authority: document everything, analyze thoroughly, build nothing until the plan was sound. Agile broke that open — faster delivery, less documentation, the analyst's work chopped into sprints and given fewer resources. The discipline didn't disappear. It just got squeezed. These tools landed in that same gap.</p>
+
+  <p>That is the piece missing from how most of us use these tools. We have been handed extraordinary tools for analysis and knowledge work, and nothing that connects them to each other or to the exact project we are running.</p>
+</div>
+
+<!-- S2: HOW FAR CAN THE PROMPT TAKE YOU -->
+<div class="section" id="s02">
+  <span class="eyebrow-label">Part Two</span>
+  <h1 class="section-title">How Far Can the Prompt Take You</h1>
+
+  <p>The prompt is the first thing you learn to control. Most people stop there, and for a lot of work, that is exactly right.</p>
+
+  <p>The first good prompt is a paragraph. Then it grows to a full page, maybe two. You learn to structure it, put a goal at the top, feed it good context, and teach it to write the way you write. The chat tools are built for this whole spectrum of engagement, from a quick question to a carefully constructed page that produces a strong piece of research. This is the kind of ask they do well.</p>
+
+  <p>A requirements document for a large system build is not that kind of ask. Neither is research into industry best practice for a modernization plan. You do not write one prompt, however good, and trust what comes back. The way it gets done now is familiar. A trusted analyst, who is often you, runs a long process: research, meetings, interviews, compiling, reviewing, analyzing, then producing a document and explaining and selling it. There can be days or weeks of accumulating work toward one deliverable that someone will act on.</p>
+</div>
+
+<!-- S3: TWO APPROACHES -->
+<div class="section" id="s03">
+  <span class="eyebrow-label">Part Three</span>
+  <h1 class="section-title">Two Approaches to the Hard Work</h1>
+
+  <p>When faced with that kind of multi-week effort, most people reach for LLMs in one of two ways — and both fall short.</p>
+
+  <p>The first is to work in fragments. You ask the tool to summarize this, draft that, react to the other thing, then you assemble the pieces by hand, editing as you go — maybe feeding pieces back in for suggestions, or relying on Word for corrections. The continuity lives in your head, not the tool. The tools add real speed here. You cover more ground and synthesize more than you could alone. But you are stepping in and out and between tools, handling much of it entirely outside of them. When you try to run a full project this way, the failures will stop you.</p>
+
+  <p>The second is more aligned to application development than to analysis, research, and writing. You craft one thorough prompt, or build a single long agent, and send it winding through the whole research in one pass to produce the thing. The better version keeps a person in the middle, the approach the field is converging on now, supervising the run rather than turning it loose. That will certainly produce higher quality individual research artifacts than a fancy prompt. But building a highly governed, flexible agent is real engineering, and most writers and analysts will never build one for the same reason most writers never learn LaTeX: the investment only makes sense if you treat the tool itself as a specialty. Every project has its own shape, and engineering one from scratch each time is its own job.</p>
+
+  <p>What I am building uses aspects of both but is neither. A framework that stays in place across the whole project, so the LLM's research, analysis, and writing run through the full process instead of in fragments you assemble or an agent you rebuild each time. The framework holds the continuity in a way that the chat tools by themselves cannot.</p>
+
+  <span class="aside-bold">Sounds like an agent?</span>
+
+  <p>The difference lies in where the judgment sits. An agent decides its own next steps and runs on its own. Here the person decides and the tool executes the parts handed to it. It borrows how an agent works under the hood: persistent memory and a structured workspace it reads and writes, without the autonomy. The person is not checking in at the edges of an automated run. The person is on site, directing the build: the tools do the heavy lifting, and the next move is always theirs to call.</p>
+
+  <div class="callout keycard">
+    <span class="card-label">The core problem</span>
+    <p><strong>A better prompt does not fix these problems.</strong> No instruction tells the model what happened in a previous session, and no phrasing compensates for information buried in a long context.</p>
+    <p>Some will say the tools will catch up: bigger context windows, better integrations, assistance built into the software you already use. They will keep improving. But serious work scales to fill every capability the tool can offer, and without a framework governing what the tools are working on and what the goals are, you cannot stand behind what they produce.</p>
+    <p class="card-ref">The evidence base: see Research on Current Limits to AI Context in the supporting material below.</p>
+  </div>
+</div>
+
+<!-- S4: CONCLUSION -->
+<div class="conclusion-section" id="s04">
+  <div class="conclusion-inner">
+    <span class="eyebrow-label">Part Four</span>
+    <h1 class="section-title">The Right Tool Belt Lets You Take Control of Your Job Site</h1>
+
+    <p>I am early in this work. The framework I've assembled in Claude.ai is a solid toolbelt for the analyst but it has too much duct tape and super glue on it to try to ask anyone else to use it. The next version will be in Cowork and be closer to something others would enjoy using. The framework is the subject of a separate paper in progress.</p>
+
+    <p>For years, a good analyst ran every piece of a project alone. Research, first draft, rewrite, source check, revise again. Capable, but always limited by what one person can hold and how much time they have. That analyst now has a crew: one trade for research, another for drafting, another for fact-checking and revision. The crew can document, synthesize, analyze, write, and refine at a pace no single person matches. Most people with that crew do not yet know how to use them. They are running the tools the way they used a search engine.</p>
+
+    <p>The general contractor does not commission the job and come back in three months. They are on site while the work is done: checking each piece as it goes in, sending back what is not right, standing behind what does. The analyst who runs this crew the same way can stand behind what the crew produces, because they were there while it was built.</p>
+
+    <p>As the tools get cheaper at producing words, the words stop being the scarce part. What stays scarce is knowing what the work should say, deciding when to pivot, losing nothing along the way, and standing behind it at the end.</p>
+
+    <p>That was always the analyst's job, and it still is. What changed is the crew. The trade knowledge moved into the tools. The judgment did not move with it.</p>
+
+    <div class="closing-button">
+      <p>The analyst now has an extraordinary set of tools, and still needs a new way to run them.</p>
+    </div>
+  </div>
+</div>
+
+<!-- STRONG VISUAL BREAK -->
+<div class="support-break">
+  <span class="support-break-label">Supporting Material</span>
+  <span class="support-break-title">Process notes &amp; research appendix</span>
+</div>
+
+<!-- SUPPORTING MATERIAL — always visible, retreated -->
+<div class="support-section" id="appendix">
+  <div class="support-inner">
+
+    <h2>Built with the framework it describes</h2>
+
+    <p>This paper was directed across sessions. It began as a research brief, then moved through structured drafts, editorial review against a voice guide, and revision passes logged throughout, with every instruction and critique preserved in the transcript. Session handoff documents captured the state of the work each time context shifted.</p>
+
+    <p>Working this way made the expensive things cheap. Reframing the argument, testing a different way to tell the story, pinning down where this sits in the industry: each would have been a day's work on its own, so alone I would have done one of them, and done it worse. Here each cost an afternoon, so I did all of them, and the placement got sharper for it.</p>
+
+    <p>The same process caught something quieter. This piece makes five citations. When a second pass from a different LLM checked the draft against the research document it was built from, only one of the five citations was actually there. The other four had to be found and verified before the piece could stand behind them. A single confident pass would have shipped them unchecked, and they would have looked authoritative.</p>
+
+    <p>The provenance block below is not a formality. It is the record of that work. The output is inseparable from its lineage, and the lineage is verifiable.</p>
+
+    <h2 id="research">Research on Current Limits to AI Context</h2>
+
+    <p>None of this is an argument against the tools on your everyday work. On a memo, a quick analysis, a first draft, they are excellent, and the framework described here would be wasted overhead. The case for it is narrow. It shows up only where the work runs long and the stakes are real. There the failure modes are not opinion. They have been measured.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Who</th>
+            <th>The long work</th>
+            <th>What breaks across a project</th>
+            <th>What it costs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Social science and policy researchers</td>
+            <td>A paper or report over months, many drafts</td>
+            <td>Citations invented. Settled decisions reopen.</td>
+            <td><a href="https://mental.jmir.org/2025/1/e80371">Roughly 20% of AI-generated citations fabricated in one review study</a> (Linardon et al. 2025, JMIR Mental Health / Deakin). Credibility on the line.</td>
+          </tr>
+          <tr>
+            <td>Business and systems analysts</td>
+            <td>Requirements and specs across dozens of sessions</td>
+            <td>Terminology drifts. A requirement no one stated appears. Context lost between threads.</td>
+            <td><a href="https://www.pmi.org/learning/thought-leadership/pulse/core-competency-project-program-success">Requirements failures drive rework that can reach 40% of a project budget</a> (PMI Pulse of the Profession). <a href="https://www.batimes.com/articles/how-to-prevent-the-negative-impacts-of-poor-requirements/">Poor requirements is the most cited cause of project failure</a> (BA Times).</td>
+          </tr>
+          <tr>
+            <td>Legal analysts</td>
+            <td>Case prep and briefs built over weeks</td>
+            <td>Citations hallucinated. Argument loses consistency across sessions.</td>
+            <td><a href="https://arxiv.org/abs/2405.20362">Leading legal AI tools hallucinated 17–34% of the time in Stanford testing</a> (Magesh et al. 2025, Stanford HAI/RegLab). <a href="https://www.damiencharlotin.com/hallucinations/">Over 1,600 court cases now involve AI hallucinations</a> (Charlotin, HEC Paris) — many involving pro se litigants and consumer-grade tools used without professional oversight.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">Segment detail and full sourcing: <a href="https://docs.google.com/document/d/1dRk0FZXFyclpvyg9gr5KAyK3ZldU83lPwjaD3eMPqIE/edit">companion research paper</a> (the evidence base; access on request).</p>
+
+    <p style="margin-top:16px;">Three different jobs, the same failures. The tool makes things up. It loses the thread across a long context. It forgets the project between sessions. These are properties of how the tools work today. Models keep improving, but real projects run longer than any single context and span more sessions than any single thread, so the need to manage the work does not disappear with the next release. The analyst row carries the thinnest direct measurement. No one has yet run a controlled study on requirements drift in AI-assisted work the way Stanford ran one on legal citations. But if you push the tools on this kind of long, high-stakes work, you will see it yourself.</p>
+
+  </div>
+</div>
+
+<!-- PROVENANCE — fully retreated -->
+<div class="provenance">
+  <div class="provenance-inner">
+    <h2>Provenance</h2>
+    <div class="prov-row">
+      <span class="prov-label">Model</span>
+      <span class="prov-value">Primary: Claude Sonnet 4.6 · High effort. Secondary: Claude Opus · separate sessions. External: Google Gemini — citation verification and argument review.</span>
+    </div>
+    <div class="prov-row">
+      <span class="prov-label">Version</span>
+      <span class="prov-value">v2.8</span>
+    </div>
+    <div class="prov-row">
+      <span class="prov-label">Session</span>
+      <span class="prov-value">OMUP-Capstone-S4 · June 21, 2026 · batch-7 applied</span>
+    </div>
+    <div class="prov-row">
+      <span class="prov-label">Audience</span>
+      <span class="prov-value">Senior IT leaders, analysts, and AI practitioners (LinkedIn). Assumes working familiarity with LLM tools.</span>
+    </div>
+    <div class="prov-row">
+      <span class="prov-label">Decision / Action</span>
+      <span class="prov-value">Batch-7: conclusion retitled; building/belt paragraph dropped; appendix toggle replaced with always-visible retreated panel + strong visual break; subtitle split at comma; image max-width 800px; image src corrected to /the-platform/images/CapstoneIllustration1.png.</span>
+    </div>
+    <div class="prov-row">
+      <span class="prov-label">Review Status</span>
+      <span class="prov-value">Draft — v2.8, awaiting author review</span>
+    </div>
+    <div class="version-history">
+      <h3>Version History</h3>
+      <ul>
+        <li>v2.8 · June 21, 2026 · Batch-7: conclusion retitled, belt paragraph dropped, appendix always-visible, subtitle split, image path corrected</li>
+        <li>v2.7 · June 21, 2026 · Batch-6: cover simplified, thesis card to S1, career-arc rewritten, S2→S3 transition, agent aside tightened, period sweep, appendix collapsible</li>
+        <li>v2.6 · June 21, 2026 · Batch-5: career-arc cleaned, new opener, Rome dropped, duct tape line, new closing button, process note to appendix, image updated</li>
+        <li><em>(v1.0–v2.5 archived in prior provenance record)</em></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
