@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red Team · The Interns</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue:#4a5c6b;
+  --blue-light:#7a9aad;
+  --blue-pale:#e8edf0;
+  --gold:#8a6e3a;
+  --ink:#28303a;
+  --bg:#f4f2ee;
+  --gray-mid:#8a7660;
+  --gray-rule:#d4c8b0;
+  --sonoran-sky:#a8c8d8;
+  --caliche:#8a7660;
+  --film:#33230f;
+  --panel-w:900px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Source Serif 4',Georgia,serif;
+  font-size:16px;line-height:1.75;
+  color:var(--ink);background:#1a1a1a;
+}
+
+/* COVER */
+.cover{
+  background:var(--blue);
+  color:#fff;
+  padding:80px 40px 60px;
+  text-align:center;
+}
+.cover .series-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--sonoran-sky);
+  margin-bottom:20px;
+  display:block;
+}
+.cover h1{
+  font-family:'DM Sans',sans-serif;
+  font-size:clamp(36px,6vw,64px);
+  font-weight:700;line-height:1.05;
+  margin-bottom:16px;
+  letter-spacing:-1px;
+}
+.cover .subtitle{
+  font-size:16px;
+  color:rgba(168,200,216,0.85);
+  font-style:italic;
+  margin-bottom:40px;
+  max-width:480px;
+  margin-left:auto;margin-right:auto;
+}
+.cover .meta{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:rgba(168,200,216,0.6);
+  letter-spacing:1px;
+}
+
+/* SETUP — film title card */
+.setup{
+  max-width:var(--panel-w);
+  margin:0 auto;
+  background:var(--film);
+  padding:0 16px;
+}
+.film-perforations{
+  height:32px;
+  background-color:var(--film);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='32'%3E%3Crect x='6' y='10' width='14' height='12' rx='2.5' fill='%23f4f2ee'/%3E%3C/svg%3E");
+  background-repeat:repeat-x;
+  background-position:center;
+  background-size:26px 32px;
+}
+.setup-frame{
+  background:var(--bg);
+  color:var(--ink);
+  padding:48px 56px;
+}
+.setup-frame .slate{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--caliche);
+  display:block;
+  margin-bottom:22px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--gray-rule);
+}
+.setup-frame p{
+  font-size:16px;line-height:1.8;
+  color:var(--ink);
+  margin-bottom:16px;
+}
+.setup-frame p:last-of-type{margin-bottom:0;}
+.setup-frame .slate-foot{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--gray-mid);
+  display:block;
+  margin-top:28px;
+  padding-top:16px;
+  border-top:1px solid var(--gray-rule);
+  text-align:center;
+}
+
+/* PANELS WRAPPER */
+.panels{
+  max-width:var(--panel-w);
+  margin:0 auto;
+  padding:48px 24px 80px;
+}
+
+/* INDIVIDUAL PANEL */
+.panel{
+  background:#fff;
+  margin-bottom:4px;
+  overflow:hidden;
+}
+.panel:first-of-type{ border-radius:4px 4px 0 0; }
+.panel:last-of-type{ border-radius:0 0 4px 4px; margin-bottom:0; }
+
+.panel-header{
+  background:var(--ink);
+  padding:10px 20px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.panel-number{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--sonoran-sky);
+  white-space:nowrap;
+}
+.panel-title{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:3px;
+  text-transform:uppercase;
+  color:#fff;
+}
+
+.panel-body{
+  display:grid;
+  grid-template-columns:400px 1fr;
+}
+
+/* IMAGE SIDE */
+.panel-image{
+  border-right:1px solid var(--gray-rule);
+  background:#f0efec;
+  display:flex;
+  align-items:stretch;
+}
+.panel-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* SCRIPT SIDE */
+.panel-script{
+  padding:24px 28px;
+}
+.scene-heading{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--caliche);
+  margin-bottom:16px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--gray-rule);
+}
+.action{
+  font-family:'Source Serif 4',Georgia,serif;
+  font-size:14px;line-height:1.7;
+  color:var(--gray-mid);
+  font-style:italic;
+  margin-bottom:12px;
+}
+.script-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--caliche);
+  margin-bottom:12px;
+}
+
+.stage-direction{
+  font-family:'Source Serif 4',Georgia,serif;
+  font-size:13px;font-style:italic;
+  color:var(--gray-mid);
+  display:block;
+  width:100%;
+  margin:4px 0 6px 0;
+  padding-left:84px;
+  text-align:left;
+}
+
+.dialog-block{
+  display:grid;
+  grid-template-columns:72px 1fr;
+  gap:0 12px;
+  margin-bottom:7px;
+  align-items:baseline;
+}
+
+.name-ghost{
+  display:block;
+}
+.character-name{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--blue);
+  font-weight:600;
+  text-align:right;
+  padding-top:3px;
+  white-space:nowrap;
+}
+
+.line{
+  font-family:'Source Serif 4',Georgia,serif;
+  font-size:15px;line-height:1.6;
+  color:var(--ink);
+  margin:0;
+}
+
+/* BRIDGE */
+.bridge{
+  background:#fff;
+  border-top:4px solid var(--gold);
+  margin-top:48px;
+  padding:56px 40px;
+  max-width:var(--panel-w);
+  margin-left:auto;margin-right:auto;
+  border-radius:4px;
+}
+.bridge .eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--caliche);
+  margin-bottom:20px;
+  display:block;
+}
+.bridge h2{
+  font-family:'DM Sans',sans-serif;
+  font-size:24px;font-weight:700;
+  color:var(--blue);
+  line-height:1.25;
+  margin-bottom:24px;
+}
+.bridge p{
+  font-size:16px;line-height:1.85;
+  color:var(--ink);
+  margin-bottom:18px;
+}
+.bridge p:last-child{margin-bottom:0;}
+.callout{
+  border-left:4px solid var(--blue-light);
+  background:var(--blue-pale);
+  padding:16px 20px;
+  margin:24px 0;
+  font-style:italic;
+  font-size:15px;
+  color:var(--ink);
+  border-radius:0 4px 4px 0;
+}
+
+/* DECODER TABLE */
+.decoder{
+  width:100%;
+  border-collapse:collapse;
+  margin:8px 0 26px;
+}
+.decoder th{
+  text-align:left;
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--caliche);
+  padding:0 18px 10px 0;
+  border-bottom:1px solid var(--gray-rule);
+  width:50%;
+}
+.decoder th:last-child{
+  padding-right:0;padding-left:18px;
+  border-left:1px solid var(--gray-rule);
+}
+.decoder td{
+  padding:13px 18px 13px 0;
+  vertical-align:top;
+  border-bottom:1px solid var(--blue-pale);
+  font-size:14px;line-height:1.55;
+}
+.decoder td:first-child{
+  font-style:italic;
+  color:var(--blue);
+}
+.decoder td:last-child{
+  padding-right:0;padding-left:18px;
+  border-left:1px solid var(--gray-rule);
+  color:var(--ink);
+}
+.decoder tr:last-child td{border-bottom:none;}
+
+/* PRO TIP CARD */
+.protip{
+  background:#faf7f0;
+  max-width:var(--panel-w);
+  margin:16px auto 0;
+  border-radius:4px;
+  overflow:hidden;
+}
+.protip-splats{
+  height:28px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='28'%3E%3Cg stroke='%23BF5B2E' stroke-width='2.4' stroke-linecap='round'%3E%3Cline x1='10' y1='14' x2='30' y2='14'/%3E%3Cline x1='11.34' y1='9' x2='28.66' y2='19'/%3E%3Cline x1='15' y1='5.34' x2='25' y2='22.66'/%3E%3Cline x1='20' y1='4' x2='20' y2='24'/%3E%3Cline x1='25' y1='5.34' x2='15' y2='22.66'/%3E%3Cline x1='28.66' y1='9' x2='11.34' y2='19'/%3E%3C/g%3E%3Ccircle cx='20' cy='14' r='2' fill='%23BF5B2E'/%3E%3C/svg%3E");
+  background-repeat:repeat-x;
+  background-position:center;
+  background-size:40px 28px;
+}
+.protip-inner{
+  padding:22px 44px 26px;
+}
+.protip .eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--gold);
+  display:block;margin-bottom:14px;
+}
+.protip h3{
+  font-family:'DM Sans',sans-serif;
+  font-size:23px;font-weight:700;
+  color:var(--gold);
+  line-height:1.2;
+  letter-spacing:-0.3px;
+  margin-bottom:16px;
+}
+.protip p{
+  font-size:16px;line-height:1.8;
+  color:var(--ink);
+  margin-bottom:14px;
+}
+.protip .ref{
+  font-size:13px;
+  color:var(--gray-mid);
+  font-style:italic;
+  margin:18px 0 0;
+  padding-top:16px;
+  border-top:1px solid var(--gray-rule);
+}
+.protip .ref a{color:var(--gold);}
+
+/* CONCLUSION */
+.conclusion{
+  background:var(--blue);
+  color:#fff;
+  padding:56px 40px;
+  margin:16px auto 0;
+  max-width:var(--panel-w);
+  border-radius:4px;
+}
+.conclusion .eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--sonoran-sky);
+  margin-bottom:20px;
+  display:block;
+}
+.conclusion .fr-head{
+  margin-top:36px;
+  padding-top:24px;
+  border-top:1px solid rgba(255,255,255,0.15);
+}
+.conclusion h2{
+  font-family:'DM Sans',sans-serif;
+  font-size:24px;font-weight:700;
+  line-height:1.25;margin-bottom:20px;
+}
+.conclusion p{
+  font-size:16px;line-height:1.85;
+  color:rgba(255,255,255,0.88);
+  margin-bottom:16px;
+}
+.conclusion p:last-child{margin-bottom:0;}
+.link-line{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;letter-spacing:1px;
+  color:var(--sonoran-sky);
+  margin-top:24px;
+  display:block;
+}
+.link-line a{color:var(--sonoran-sky);}
+.link-line em{
+  font-style:italic;
+  color:rgba(168,200,216,0.6);
+  letter-spacing:0;
+}
+.link-line + .link-line{margin-top:10px;}
+
+/* PROVENANCE */
+.provenance{
+  max-width:var(--panel-w);
+  margin:48px auto 80px;
+  background:#2a2a2a;
+  border-radius:4px;
+  padding:36px 40px;
+}
+.provenance h2{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--caliche);
+  margin-bottom:20px;
+}
+.prov-row{
+  display:grid;
+  grid-template-columns:160px 1fr;
+  gap:12px;padding:10px 0;
+  border-bottom:1px solid #3a3a3a;
+  font-size:13px;
+}
+.prov-row:last-child{border-bottom:none;}
+.prov-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--caliche);
+  padding-top:2px;
+}
+.prov-value{color:#aaa;line-height:1.6;}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <span class="series-label">The Interns</span>
+  <h1>Red Team</h1>
+  <div class="subtitle">A series about leading the team nobody else knew what to do with.</div>
+  <div class="meta">Hugh McCutchen · June 2026</div>
+</div>
+
+<!-- SETUP -->
+<div class="setup">
+  <div class="film-perforations"></div>
+  <div class="setup-frame">
+    <span class="slate">Treatment</span>
+    <p>The firm hired a dozen interns for the summer and could not figure out what to do with them. So they handed them to Luke.</p>
+    <p>They knew nothing. Not the clients, not the history, not where anything was kept. They learned fast. They never got tired. They were positive to a degree that unsettled people. And there were enough of them that Luke could finally do the parts of the job he never had time for. The second pass. The deeper research. The rigor nobody budgets for.</p>
+    <p>Most of the firm still treats them as a babysitting problem. Luke runs them like a team.</p>
+    <p>Each episode is one day with the interns. Tonight he has finished a long one. The piece is a big one: a signature argument about how these new AI tools are burying the world in slop. He is meeting Sandra for dinner.</p>
+    <span class="slate-foot">The Interns · Scene One · Red Team</span>
+  </div>
+  <div class="film-perforations"></div>
+</div>
+
+<!-- PANELS -->
+<div class="panels">
+
+  <!-- PANEL 1 -->
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 01</span>
+      <span class="panel-title">Running Them Hard</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image">
+        <img src="https://raw.githubusercontent.com/hughmccutchen3/research/main/the-interns/Panel1_sml.jpg" alt="Panel 1 — Running them hard">
+      </div>
+      <div class="panel-script"><div class="script-label">Dialogue</div>
+        <p class="stage-direction">[Sandra was already at the table when I sat down.]</p>
+        <p class="stage-direction">(dry)</p>
+        <div class="dialog-block">
+          <div class="character-name">Sandra:</div>
+          <p class="line">“How are the interns?”</p>
+        </div>
+        <div class="dialog-block">
+          <div class="character-name">Luke:</div>
+          <p class="line">“Good. Tired, maybe. I ran them hard today.”</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 2 -->
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 02</span>
+      <span class="panel-title">Always Ready</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image">
+        <img src="https://raw.githubusercontent.com/hughmccutchen3/research/main/the-interns/Panel2_sml.jpg" alt="Panel 2 — Always ready">
+      </div>
+      <div class="panel-script"><div class="script-label">Dialogue</div>
+        <div class="dialog-block">
+          <div class="character-name">Sandra:</div>
+          <p class="line">“Do they get tired?”</p>
+        </div>
+        <div class="dialog-block">
+          <div class="character-name">Luke:</div>
+          <p class="line">“One of them started to drift on in a long meeting today, but honestly I don't even think they sleep.”</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 3 -->
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 03</span>
+      <span class="panel-title">Nice</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image">
+        <img src="https://raw.githubusercontent.com/hughmccutchen3/research/main/the-interns/Panel3_sml.jpg" alt="Panel 3 — Nice">
+      </div>
+      <div class="panel-script"><div class="script-label">Dialogue</div>
+        <div class="dialog-block">
+          <div class="character-name">Sandra:</div>
+          <p class="line">“That must be nice.”</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 4 -->
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 04</span>
+      <span class="panel-title">What's Wrong</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image">
+        <img src="https://raw.githubusercontent.com/hughmccutchen3/research/main/the-interns/Panel4_sml.jpg" alt="Panel 4 — What's wrong">
+      </div>
+      <div class="panel-script"><div class="script-label">Dialogue</div>
+        <p class="stage-direction">[She leaned forward slightly.]</p>
+        <div class="dialog-block">
+          <div class="character-name">Sandra:</div>
+          <p class="line">“So what happened.”</p>
+        </div>
+        <p class="stage-direction">[Not a question. Twenty-some years and she can hear it before I say anything.]</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 5 -->
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 05</span>
+      <span class="panel-title">They Didn't Get It</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image">
+        <img src="https://raw.githubusercontent.com/hughmccutchen3/research/main/the-interns/Panel5_sml.jpg" alt="Panel 5 — They didn't get it">
+      </div>
+      <div class="panel-script"><div class="script-label">Dialogue</div>
+        <div class="dialog-block">
+          <div class="character-name">Luke:</div>
+          <p class="line">“Framing problem. I had a frame I liked and I couldn't get it to hold. Kept pushing on it with the team, kept trying different angles.”</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 6 -->
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 06</span>
+      <span class="panel-title">The Problem</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image">
+        <img src="https://raw.githubusercontent.com/hughmccutchen3/research/main/the-interns/Panel6_sml.jpg" alt="Panel 6 — The problem">
+      </div>
+      <div class="panel-script"><div class="script-label">Dialogue</div>
+        <div class="dialog-block">
+          <div class="character-name">Sandra:</div>
+          <p class="line">“How long?”</p>
+        </div>
+        <div class="dialog-block">
+          <div class="character-name">Luke:</div>
+          <p class="line">“Long enough that I started thinking maybe the frame wasn't the problem.”</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 7 -->
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 07</span>
+      <span class="panel-title">Me</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image">
+        <img src="https://raw.githubusercontent.com/hughmccutchen3/research/main/the-interns/Panel7_sml.jpg" alt="Panel 7 — Me">
+      </div>
+      <div class="panel-script"><div class="script-label">Dialogue</div>
+        <div class="dialog-block">
+          <div class="character-name">Sandra:</div>
+          <p class="line">“Meaning you were the problem.”</p>
+        </div>
+        <div class="dialog-block">
+          <div class="character-name">Luke:</div>
+          <p class="line">“Meaning I hadn't said it clearly enough yet. Even to myself.”</p>
+        </div>
+        <p class="stage-direction">[Sandra nods slowly. She has heard versions of this before.]</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 8 -->
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 08</span>
+      <span class="panel-title">Couldn't See It</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image">
+        <img src="https://raw.githubusercontent.com/hughmccutchen3/research/main/the-interns/Panel8_sml.jpg" alt="Panel 8 — Couldn't see it">
+      </div>
+      <div class="panel-script"><div class="script-label">Dialogue</div>
+        <div class="dialog-block">
+          <div class="character-name">Luke:</div>
+          <p class="line">“So I did the thing you always tell me to do. Got an outside view. Someone with no history on the project. Had to lay it out again from the beginning.”</p>
+        </div>
+        <div class="dialog-block">
+          <div class="character-name">Sandra:</div>
+          <p class="line">“And?”</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 9 -->
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 09</span>
+      <span class="panel-title">The Red Team</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image">
+        <img src="https://raw.githubusercontent.com/hughmccutchen3/research/main/the-interns/Panel9_sml.jpg" alt="Panel 9 — The red team">
+      </div>
+      <div class="panel-script"><div class="script-label">Dialogue</div>
+        <div class="dialog-block">
+          <div class="character-name">Luke:</div>
+          <p class="line">“I could feel it when it started working. The questions changed. The pushback got more specific.”</p>
+        </div>
+        <p class="stage-direction">[Sandra takes a slow, thoughtful sip of her wine.]</p>
+        <div class="dialog-block">
+          <div class="character-name">Sandra:</div>
+          <p class="line">“So your intern fixed it.”</p>
+        </div>
+        <div class="dialog-block">
+          <div class="character-name">Luke:</div>
+          <p class="line">“It told me I was overclaiming. I thought I'd found a new ceiling. It said I'd taken a known thing and carried it somewhere new. That's a smaller claim. It was right.”</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 10 -->
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 10</span>
+      <span class="panel-title">Told You So</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image">
+        <img src="https://raw.githubusercontent.com/hughmccutchen3/research/main/the-interns/Panel10_sml.jpg" alt="Panel 10 — Told you so">
+      </div>
+      <div class="panel-script"><div class="script-label">Dialogue</div>
+        <p class="stage-direction">[She smiled because she knew me well.]</p>
+        <div class="dialog-block">
+          <div class="character-name">Sandra:</div>
+          <p class="line">“I've been telling you that for twenty years.”</p>
+        </div>
+        <div class="dialog-block">
+          <div class="character-name">Luke:</div>
+          <p class="line">“I know.”</p>
+        </div>
+        <div class="dialog-block">
+          <div class="character-name">Sandra:</div>
+          <p class="line">“To get an outside view.”</p>
+        </div>
+        <div class="dialog-block">
+          <div class="character-name">Luke:</div>
+          <p class="line">“I know.”</p>
+        </div>
+        <div class="dialog-block">
+          <div class="character-name">Sandra:</div>
+          <p class="line">“When you're stuck.”</p>
+        </div>
+        <div class="dialog-block">
+          <div class="character-name">Luke:</div>
+          <p class="line">“I know, Sandra.”</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 11 -->
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 11</span>
+      <span class="panel-title">Ready for More</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image">
+        <img src="https://raw.githubusercontent.com/hughmccutchen3/research/main/the-interns/Panel11_sml.jpg" alt="Panel 11 — Ready for more">
+      </div>
+      <div class="panel-script"><div class="script-label">Dialogue</div>
+        <div class="dialog-block">
+          <div class="character-name">Sandra:</div>
+          <p class="line">“Are they ready to go again tomorrow?”</p>
+        </div>
+        <div class="dialog-block">
+          <div class="character-name">Luke:</div>
+          <p class="line">“They were ready before I left the desk.”</p>
+        </div>
+        <div class="dialog-block">
+          <div class="character-name">Sandra:</div>
+          <p class="line">“And you.”</p>
+        </div>
+        <div class="dialog-block">
+          <div class="character-name">Luke:</div>
+          <p class="line">“I need sleep.”</p>
+        </div>
+        <div class="dialog-block">
+          <div class="character-name">Sandra:</div>
+          <p class="line">“You just need more interns!”</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end panels -->
+
+<!-- BRIDGE -->
+<div class="bridge">
+  <span class="eyebrow">What Actually Happened</span>
+  <h2>The conversation was invented. The work behind it was not.</h2>
+  <p>The scene above is staged. The events were last week.</p>
+  <p>I had a frame I could not make hold. I pushed on it across several sessions. The team pushed back, but only as far as I had stated the problem. The frame kept slipping. Not because the team was wrong. Because I had not yet said the thing clearly enough for either of us to know what we were arguing about.</p>
+  <p>When I finally said it clearly, the resistance changed. The questions got sharper. That shift was the signal. I knew the frame had moved because of how the pushback moved with it.</p>
+  <p>Then I asked for an outside view. I went in for a validation pass. It told me I was overclaiming instead, and it was right. I cut the claim down. Twenty-two rounds of markup. The paper came out built on a smaller, truer spine.</p>
+  <div class="callout">
+    I could feel it when it started working. The questions changed. The pushback got more specific. There is a difference between a teammate who agrees with your frame and one who actually sees it.
+  </div>
+  <p>If you have read this far you already know the team is not people. Here is the scene, translated:</p>
+  <table class="decoder">
+    <thead>
+      <tr><th>In the scene</th><th>What that actually was</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>“They knew nothing.”</td>
+        <td>A new chat starts blank. You give it the full context or it works from guesses.</td>
+      </tr>
+      <tr>
+        <td>“Positive to a degree that unsettled people.”</td>
+        <td>The model stays upbeat and agreeable. That is the reason it will ride a bad frame without flinching.</td>
+      </tr>
+      <tr>
+        <td>“One of them started to drift in a long meeting.”</td>
+        <td>A long thread fills its context. The work loosens the longer you stay in it.</td>
+      </tr>
+      <tr>
+        <td>“An outside view. Someone with no history.”</td>
+        <td>A new chat. Separate model, blank context.</td>
+      </tr>
+      <tr>
+        <td>“Lay it out again from the beginning.”</td>
+        <td>No memory of the project. I re-state the whole problem.</td>
+      </tr>
+      <tr>
+        <td>“The pushback got more specific.”</td>
+        <td>A fresh context has no stake in the frame I built.</td>
+      </tr>
+      <tr>
+        <td>“It told me I was overclaiming.”</td>
+        <td>A reader with no stake caught the claim I was inflating. The smaller version was the true one.</td>
+      </tr>
+      <tr>
+        <td>“Treated as a babysitting problem. Run like a team.”</td>
+        <td>Most people manage the tool to produce. The work changes when you lead it.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Most people never get near this. They write one good prompt, take what comes back, maybe push once or twice. They use the tool to produce. They never use it to attack the work, or to attack itself. That critic is sitting right there, and it is free. The sharpest version of it is the one with no memory of what you built, because it has nothing to defend.</p>
+</div>
+
+<!-- PRO TIP -->
+<div class="protip">
+  <div class="protip-splats"></div>
+  <div class="protip-inner">
+    <span class="eyebrow">Pro Tip</span>
+    <h3>Red Team: put a critic on your team.</h3>
+    <p>When you are close to done and too invested to see straight, open a blank thread in a totally different chat tool. Give it the work and the right prompt and tell it to find what is wrong. No history, no loyalty, no stake. That is the teammate who tells you the truth.</p>
+    <p class="ref">One habit inside a larger one: leading these tools like a team, not writing a prompt and walking away. → <a href="https://hughmccutchen3.github.io/research/" target="_blank">A Team You Have to Build and Lead</a></p>
+  </div>
+  <div class="protip-splats"></div>
+</div>
+
+<!-- CONCLUSION -->
+<div class="conclusion">
+  <h2>This is the first scene in a series. Stay tuned for more adventures.</h2>
+  <span class="eyebrow fr-head">Further Reading</span>
+  <span class="link-line">→ <a href="https://hughmccutchen3.github.io/research/the-platform/OMUP-Capstone_WhenTheBestPromptIsntEnough_v2.8" target="_blank">When Even the Best Prompt Isn't Enough</a> <em>(the piece this scene is about)</em></span>
+  <span class="link-line">→ <a href="https://hughmccutchen3.github.io/research/" target="_blank">Driving with a Stick</a></span>
+  <span class="link-line">→ <a href="https://hughmccutchen3.github.io/research/" target="_blank">A Team You Have to Build and Lead</a></span>
+</div>
+
+<!-- PROVENANCE -->
+<div class="provenance">
+  <h2>Provenance</h2>
+  <div class="prov-row">
+    <span class="prov-label">Model</span>
+    <span class="prov-value">Claude Opus 4.8 · June 2026</span>
+  </div>
+  <div class="prov-row">
+    <span class="prov-label">Session</span>
+    <span class="prov-value">TeamStory-S03 · bridge rewrite and series rebrand</span>
+  </div>
+  <div class="prov-row">
+    <span class="prov-label">Version</span>
+    <span class="prov-value">v3.2 · Overclaim beat (Panel 9, decoder, bridge). Pro-tip bracketed with Claude-splat band. Film band on the treatment.</span>
+  </div>
+  <div class="prov-row">
+    <span class="prov-label">Illustrations</span>
+    <span class="prov-value">Storyboard and visual direction: Gemini · Panel images pending upload to GitHub</span>
+  </div>
+  <div class="prov-row">
+    <span class="prov-label">Sources</span>
+    <span class="prov-value">Session dialogue TeamStory-S01–S03 · Capstone OMUP v2.8</span>
+  </div>
+  <div class="prov-row">
+    <span class="prov-label">Open items</span>
+    <span class="prov-value">Panel images 1–11 to replace placeholders · Driving with a Stick URL to confirm · A Team You Have to Build and Lead URL to confirm · Capstone live URL to confirm</span>
+  </div>
+  <div class="prov-row">
+    <span class="prov-label">Assumptions</span>
+    <span class="prov-value">Luke and Sandra are fictional. The argument and red-team session are real. Series numbering dropped in favor of named scenes.</span>
+  </div>
+</div>
+
+</body>
+</html>
