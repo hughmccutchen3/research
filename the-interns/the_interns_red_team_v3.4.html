@@ -32,8 +32,17 @@ body{
 .cover{
   background:var(--blue);
   color:#fff;
-  padding:80px 40px 60px;
   text-align:center;
+  padding:0;
+}
+.cover-inner{
+  max-width:var(--panel-w);
+  margin:0 auto;
+  padding:84px 40px 64px;
+  background:
+    linear-gradient(180deg, rgba(28,32,42,0.42) 0%, rgba(28,32,42,0.80) 100%),
+    url("https://raw.githubusercontent.com/hughmccutchen3/research/main/the-interns/Images/TheInternsC-Small.png") center/cover no-repeat,
+    var(--blue);
 }
 .cover .series-label{
   font-family:'JetBrains Mono',monospace;
@@ -464,10 +473,12 @@ body{
 
 <!-- COVER -->
 <div class="cover">
-  <span class="series-label">The Interns</span>
-  <h1>Red Team</h1>
-  <div class="subtitle">A series about leading the team nobody else knew what to do with.</div>
-  <div class="meta">Hugh McCutchen · June 2026</div>
+  <div class="cover-inner">
+    <span class="series-label">The Interns</span>
+    <h1>Red Team</h1>
+    <div class="subtitle">A series about leading the team nobody else knew what to do with.</div>
+    <div class="meta">Hugh McCutchen · June 2026</div>
+  </div>
 </div>
 
 <!-- SETUP -->
@@ -883,7 +894,7 @@ body{
   </div>
   <div class="prov-row">
     <span class="prov-label">Version</span>
-    <span class="prov-value">v3.3</span>
+    <span class="prov-value">v3.4</span>
   </div>
   <div class="prov-row">
     <span class="prov-label">Sessions</span>
@@ -915,6 +926,7 @@ body{
   <div class="prov-row">
     <span class="prov-label">Version history</span>
     <span class="prov-value">
+      v3.4 · Header image set behind the cover under a legibility scrim<br>
       v3.3 · Provenance rebuilt as Cast &amp; Crew credits and a three-session arc<br>
       v3.2 · Overclaim beat across Panel 9, decoder, and bridge · Claude-splat pro-tip band · panel images wired to repo<br>
       v3.1 · Rebrand to The Interns / Red Team · Treatment card and film band · eight-row decoder · Further Reading split<br>
