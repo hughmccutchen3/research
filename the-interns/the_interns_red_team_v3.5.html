@@ -467,6 +467,36 @@ body{
   line-height:1.55;
   margin-top:2px;
 }
+/* MOBILE — phones only, tablets keep the desktop layout */
+@media (max-width:640px){
+  .cover-inner{padding:52px 22px 44px;}
+  .setup{padding:0 10px;}
+  .setup-frame{padding:30px 22px;}
+  .panels{padding:28px 12px 56px;}
+
+  .panel-body{grid-template-columns:1fr;}
+  .panel-image{border-right:none;border-bottom:1px solid var(--gray-rule);}
+  .panel-image img{width:100%;height:auto;aspect-ratio:1/1;}
+  .panel-script{padding:20px 20px;}
+  .dialog-block{grid-template-columns:60px 1fr;gap:0 10px;}
+
+  .bridge{padding:36px 22px;}
+
+  .decoder thead{display:none;}
+  .decoder,.decoder tbody,.decoder tr,.decoder td{display:block;width:auto;}
+  .decoder tr{padding:12px 0;border-bottom:1px solid var(--blue-pale);}
+  .decoder tr:last-child{border-bottom:none;}
+  .decoder td{border:none;padding:0;}
+  .decoder td:first-child{font-style:italic;color:var(--blue);margin-bottom:4px;}
+  .decoder td:last-child{padding-left:14px;border-left:2px solid var(--gray-rule);color:var(--ink);}
+
+  .protip-inner{padding:20px 22px 24px;}
+  .conclusion{padding:40px 22px;}
+
+  .provenance{padding:28px 22px;margin:36px auto 56px;}
+  .prov-row{grid-template-columns:1fr;gap:4px;}
+  .prov-label{padding-top:0;}
+}
 </style>
 </head>
 <body>
@@ -894,7 +924,7 @@ body{
   </div>
   <div class="prov-row">
     <span class="prov-label">Version</span>
-    <span class="prov-value">v3.4</span>
+    <span class="prov-value">v3.5</span>
   </div>
   <div class="prov-row">
     <span class="prov-label">Sessions</span>
@@ -926,6 +956,7 @@ body{
   <div class="prov-row">
     <span class="prov-label">Version history</span>
     <span class="prov-value">
+      v3.5 · Mobile layout: panels and tables stack on phones, tablets unchanged<br>
       v3.4 · Header image set behind the cover under a legibility scrim<br>
       v3.3 · Provenance rebuilt as Cast &amp; Crew credits and a three-session arc<br>
       v3.2 · Overclaim beat across Panel 9, decoder, and bridge · Claude-splat pro-tip band · panel images wired to repo<br>
