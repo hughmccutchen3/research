@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 590" font-family="Segoe UI, Arial, sans-serif">
+  <rect x="0" y="0" width="980" height="590" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="490" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#1a3a5c">Research Process &amp; Methodology &#x2014; the practice at a glance</text>
+  <text x="490" y="52" text-anchor="middle" font-size="11" font-weight="400" fill="#4a5568" font-style="italic">Anchored by the problem statement; delivered through three areas of engagement work.</text>
+
+  <!-- THE PROBLEM STATEMENT (unified band with goal as emphasized card) -->
+  <rect x="20" y="72" width="940" height="152" rx="8" fill="#f7ede0" stroke="#8b6a3b" stroke-width="1.5"/>
+  <text x="36" y="94" font-size="12" font-weight="700" fill="#5a3e00">THE PROBLEM STATEMENT</text>
+  <text x="222" y="94" font-size="10" font-weight="400" fill="#5a3e00" font-style="italic">&#x2014; the shared understanding, worked bottom-up, top-down, and in circles.</text>
+
+  <!-- Card grid: 4 columns x 2 rows. Cards at x=36/265/494/723, w=221 each, gap 8 -->
+  <!-- Row 1: y=104 to y=157, h=53 -->
+  <!-- Row 2: y=163 to y=216, h=53 -->
+
+  <!-- Card 1: GOAL (emphasized, purple fill) -->
+  <rect x="36" y="104" width="221" height="53" rx="5" fill="#e8e0f5" stroke="#5b3d9e" stroke-width="1.8"/>
+  <text x="46" y="122" font-size="10.5" font-weight="700" fill="#2e1060">THE CUSTOMER&#x2019;S GOAL</text>
+  <text x="46" y="140" font-size="9" font-style="italic" fill="#2e1060">What they want to achieve</text>
+  <text x="46" y="152" font-size="8.5" font-style="italic" fill="#5b3d9e">&#x2014; anchors the other parts</text>
+
+  <!-- Card 2: DOMAIN -->
+  <rect x="265" y="104" width="221" height="53" rx="5" fill="#fdf6ec" stroke="#a67c52" stroke-width="1"/>
+  <text x="275" y="122" font-size="10.5" font-weight="700" fill="#5a3e00">DOMAIN</text>
+  <text x="275" y="140" font-size="9" font-style="italic" fill="#5a3e00">The subject area</text>
+
+  <!-- Card 3: SCOPE & BOUNDARIES -->
+  <rect x="494" y="104" width="221" height="53" rx="5" fill="#fdf6ec" stroke="#a67c52" stroke-width="1"/>
+  <text x="504" y="122" font-size="10.5" font-weight="700" fill="#5a3e00">SCOPE &amp; BOUNDARIES</text>
+  <text x="504" y="140" font-size="9" font-style="italic" fill="#5a3e00">What&#x2019;s in and what&#x2019;s out</text>
+
+  <!-- Card 4: ASSUMPTIONS -->
+  <rect x="723" y="104" width="221" height="53" rx="5" fill="#fdf6ec" stroke="#a67c52" stroke-width="1"/>
+  <text x="733" y="122" font-size="10.5" font-weight="700" fill="#5a3e00">ASSUMPTIONS</text>
+  <text x="733" y="140" font-size="9" font-style="italic" fill="#5a3e00">Starting beliefs</text>
+
+  <!-- Card 5: EXPECTED LIMITATIONS -->
+  <rect x="36" y="163" width="221" height="53" rx="5" fill="#fdf6ec" stroke="#a67c52" stroke-width="1"/>
+  <text x="46" y="181" font-size="10.5" font-weight="700" fill="#5a3e00">EXPECTED LIMITATIONS</text>
+  <text x="46" y="199" font-size="9" font-style="italic" fill="#5a3e00">Known gaps in available info</text>
+
+  <!-- Card 6: SOURCES & SYNTHESIS -->
+  <rect x="265" y="163" width="221" height="53" rx="5" fill="#fdf6ec" stroke="#a67c52" stroke-width="1"/>
+  <text x="275" y="181" font-size="10.5" font-weight="700" fill="#5a3e00">SOURCES &amp; SYNTHESIS</text>
+  <text x="275" y="199" font-size="9" font-style="italic" fill="#5a3e00">What will drive direction</text>
+
+  <!-- Card 7: KEY AREAS -->
+  <rect x="494" y="163" width="221" height="53" rx="5" fill="#fdf6ec" stroke="#a67c52" stroke-width="1"/>
+  <text x="504" y="181" font-size="10.5" font-weight="700" fill="#5a3e00">KEY AREAS</text>
+  <text x="504" y="199" font-size="9" font-style="italic" fill="#5a3e00">Where to focus understanding</text>
+
+  <!-- Card 8: HYPOTHESES & QUESTIONS -->
+  <rect x="723" y="163" width="221" height="53" rx="5" fill="#fdf6ec" stroke="#a67c52" stroke-width="1"/>
+  <text x="733" y="181" font-size="10.5" font-weight="700" fill="#5a3e00">HYPOTHESES &amp; QUESTIONS</text>
+  <text x="733" y="199" font-size="9" font-style="italic" fill="#5a3e00">Starting bets to test</text>
+
+  <!-- Three engagement-area columns: y=244, h=170 -->
+
+  <!-- Section label above columns -->
+  <text x="490" y="238" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a52">HOW THE ENGAGEMENT WORKS &#x2014; three areas below serve the problem statement above</text>
+
+  <!-- Column 1: WHO'S IN THE LOOP -->
+  <rect x="20" y="250" width="300" height="170" rx="6" fill="#f0f4f8" stroke="#2d5270" stroke-width="1.5"/>
+  <rect x="20" y="250" width="300" height="34" rx="6" fill="#2d5270"/>
+  <rect x="20" y="272" width="300" height="12" fill="#2d5270"/>
+  <text x="170" y="272" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">WHO&#x2019;S IN THE LOOP</text>
+  <text x="36" y="308" font-size="10" font-weight="700" fill="#1e3a52">Who&#x2019;s involved, and what do they own?</text>
+  <line x1="36" y1="322" x2="304" y2="322" stroke="#2d5270" stroke-width="0.5" opacity="0.5"/>
+  <text x="36" y="346" font-size="9.5" font-weight="400" fill="#1e293b">&#xB7; The customer; goal, reality check</text>
+  <text x="36" y="364" font-size="9.5" font-weight="400" fill="#1e293b">&#xB7; The analyst; sequencing, judgment</text>
+  <text x="36" y="382" font-size="9.5" font-weight="400" fill="#1e293b">&#xB7; The tool stack; licensed, boundaried</text>
+
+  <!-- Column 2: WHAT GETS DONE -->
+  <rect x="340" y="250" width="300" height="170" rx="6" fill="#f0f4f8" stroke="#2d5270" stroke-width="1.5"/>
+  <rect x="340" y="250" width="300" height="34" rx="6" fill="#2d5270"/>
+  <rect x="340" y="272" width="300" height="12" fill="#2d5270"/>
+  <text x="490" y="272" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">WHAT GETS DONE</text>
+  <text x="356" y="308" font-size="10" font-weight="700" fill="#1e3a52">What&#x2019;s the shape of the work?</text>
+  <line x1="356" y1="322" x2="624" y2="322" stroke="#2d5270" stroke-width="0.5" opacity="0.5"/>
+  <text x="356" y="346" font-size="9.5" font-weight="400" fill="#1e293b">&#xB7; Frame the goal and success criteria</text>
+  <text x="356" y="364" font-size="9.5" font-weight="400" fill="#1e293b">&#xB7; Break into parts; design the work</text>
+  <text x="356" y="382" font-size="9.5" font-weight="400" fill="#1e293b">&#xB7; Build evidence; analyze; deliver</text>
+
+  <!-- Column 3: WHAT GETS DELIVERED -->
+  <rect x="660" y="250" width="300" height="170" rx="6" fill="#f0f4f8" stroke="#2d5270" stroke-width="1.5"/>
+  <rect x="660" y="250" width="300" height="34" rx="6" fill="#2d5270"/>
+  <rect x="660" y="272" width="300" height="12" fill="#2d5270"/>
+  <text x="810" y="272" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">WHAT GETS DELIVERED</text>
+  <text x="676" y="308" font-size="10" font-weight="700" fill="#1e3a52">What does the customer walk away with?</text>
+  <line x1="676" y1="322" x2="944" y2="322" stroke="#2d5270" stroke-width="0.5" opacity="0.5"/>
+  <text x="676" y="346" font-size="9.5" font-weight="400" fill="#1e293b">&#xB7; Shared understanding; research plan; engagement goals</text>
+  <text x="676" y="364" font-size="9.5" font-weight="400" fill="#1e293b">&#xB7; Base research; applied modules</text>
+  <text x="676" y="382" font-size="9.5" font-weight="400" fill="#1e293b">&#xB7; Cross-section synthesis; positioning</text>
+
+  <!-- The Analyst's Judgment (gold band) -->
+  <rect x="20" y="436" width="940" height="60" rx="6" fill="#fdf6e3" stroke="#b8860b" stroke-width="1.5"/>
+  <text x="36" y="460" font-size="12" font-weight="700" fill="#5a3e00">THE ANALYST&#x2019;S JUDGMENT</text>
+  <text x="36" y="480" font-size="10" font-weight="400" fill="#5a3e00">Selects and operates the areas above. Frames the goal; sets the structure; routes the tools; verifies the work; levels the confidence on findings.</text>
+
+  <!-- A Proprietary Platform (teal band) -->
+  <rect x="20" y="504" width="940" height="80" rx="6" fill="#e0f5f5" stroke="#2d7d7d" stroke-width="1.5"/>
+  <text x="36" y="528" font-size="12" font-weight="700" fill="#1a4a4a">A PROPRIETARY PLATFORM BUILT FOR RESEARCH WITH LLMS</text>
+  <text x="36" y="550" font-size="10" font-weight="400" fill="#1a4a4a">Holds context consistent through the analysis. Deep-research skill for focused, hundreds-of-sources synthesis.</text>
+  <text x="36" y="566" font-size="10" font-weight="400" fill="#1a4a4a">Sources integrated: public web, academic corpora, customer library. Inputs logged; deliverables versioned; audit trail available.</text>
+</svg>
