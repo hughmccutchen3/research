@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What I learned from 20 years running a corporate BI platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  --blue:       #4a5c6b;
+  --blue-light: #7a9aad;
+  --blue-pale:  #e8edf0;
+  --gold:       #8a6e3a;
+  --gold-pale:  #f2ede3;
+  --green:      #1a5c2a;
+  --green-pale: #e8f5e9;
+  --red:        #8b1a1a;
+  --red-pale:   #fdecea;
+  --ink:        #28303a;
+  --bg:         #f4f2ee;
+  --gray-dark:  #28303a;
+  --gray-mid:   #8a7660;
+  --gray-light: #f4f2ee;
+  --gray-rule:  #d4c8b0;
+  --sonoran-sky: #a8c8d8;
+  --caliche:    #8a7660;
+  --lichen-rust: #a04e18;
+  --col-w: 760px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+p { margin-bottom: 16px; }
+p:last-child { margin-bottom: 0; }
+
+/* ── Cover ── */
+.cover {
+  background: var(--blue);
+  color: #fff;
+  padding: 80px 40px 60px;
+  text-align: center;
+}
+.cover .eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--sonoran-sky);
+  margin-bottom: 28px;
+}
+.cover h1 {
+  font-family: 'DM Sans', 'Gill Sans', Trebuchet, sans-serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.cover h1 em {
+  display: block;
+  font-size: 0.55em;
+  font-weight: 600;
+  color: var(--sonoran-sky);
+  font-style: normal;
+  margin-bottom: 8px;
+}
+.cover .subtitle {
+  font-size: 16px;
+  color: rgba(168,200,216,0.85);
+  font-style: italic;
+  margin-bottom: 40px;
+}
+.cover .meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--caliche);
+  letter-spacing: 1px;
+}
+
+/* ── Layout ── */
+.section {
+  max-width: var(--col-w);
+  margin: 0 auto;
+  padding: 56px 24px;
+  border-bottom: 1px solid var(--gray-rule);
+}
+.wrapper {
+  max-width: var(--col-w);
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+/* ── Headings ── */
+h1.section-title {
+  font-family: 'DM Sans', 'Gill Sans', Trebuchet, sans-serif;
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1.2;
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--blue);
+  margin-bottom: 28px;
+}
+h2 {
+  font-family: 'DM Sans', 'Gill Sans', Trebuchet, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--gray-dark);
+  margin: 40px 0 16px;
+  scroll-margin-top: 56px;
+}
+h3.sub3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--caliche);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 28px 0 10px;
+}
+.eyebrow-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* ── Callouts ── */
+.callout {
+  border-left: 4px solid var(--blue-light);
+  background: var(--blue-pale);
+  padding: 18px 22px;
+  margin: 24px 0;
+  font-style: italic;
+  font-size: 15.5px;
+  color: var(--gray-dark);
+  border-radius: 0 4px 4px 0;
+}
+.callout.gold  { border-left-color: var(--gold);  background: var(--gold-pale); }
+.callout.green { border-left-color: var(--green); background: var(--green-pale); font-style: normal; }
+
+/* ── Pull quote ── */
+.pullquote {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: var(--blue);
+  border-left: 3px solid var(--blue-light);
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  margin: 2rem 0;
+  line-height: 1.6;
+}
+
+/* ── Diagram containers ── */
+.diagram-container {
+  margin: 2.5rem 0;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid var(--gray-rule);
+  border-radius: 6px;
+  overflow-x: auto;
+}
+.diagram-caption {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gray-mid);
+  text-align: center;
+  margin-top: 12px;
+  letter-spacing: 0.5px;
+}
+
+/* ── Sidebar-labeled blocks (pattern & function) ── */
+.pattern-block, .fn-block {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 0;
+  margin: 2.5rem 0 0;
+  border-radius: 0;
+  overflow: hidden;
+  border: 1px solid var(--gray-rule);
+}
+.pattern-block + .pattern-block,
+.fn-block + .fn-block {
+  margin-top: 1px;
+  border-top: none;
+}
+.pattern-block:first-of-type, .fn-block:first-of-type { border-radius: 4px 4px 0 0; }
+.pattern-block:last-of-type, .fn-block:last-of-type   { border-radius: 0 0 4px 4px; }
+
+.pattern-sidebar, .fn-sidebar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gold-pale);
+  border-right: 1px solid var(--gray-rule);
+  min-height: 100%;
+}
+.pattern-sidebar-text, .fn-sidebar-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  white-space: nowrap;
+  padding: 0.75rem 0;
+}
+.pattern-body, .fn-body {
+  padding: 1.1rem 1.25rem;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 15.5px;
+  line-height: 1.7;
+  background: var(--bg);
+}
+.pattern-body p { margin-bottom: 0; }
+.fn-body p { margin-bottom: 0.6rem; }
+.fn-body p:last-child { margin-bottom: 0; }
+
+/* ── "When unplanned" sub-block ── */
+.fn-improvised {
+  font-family: 'DM Sans', 'Gill Sans', Trebuchet, sans-serif;
+  font-size: 13px;
+  color: var(--gray-dark);
+  background: var(--blue-pale);
+  padding: 10px 14px;
+  border-radius: 4px;
+  margin-top: 10px;
+  line-height: 1.55;
+  border-left: 3px solid var(--blue-light);
+}
+.fn-improvised-label {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--blue-light);
+  font-weight: 600;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ── Resolved list (engineered state) ── */
+.resolved-list {
+  margin: 1rem 0;
+  font-family: 'DM Sans', 'Gill Sans', Trebuchet, sans-serif;
+  font-size: 14px;
+}
+.resolved-item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 12px;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--gray-rule);
+  line-height: 1.5;
+}
+.resolved-item:last-child { border-bottom: none; }
+.resolved-label {
+  font-weight: 600;
+  color: var(--green);
+  font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-top: 1px;
+}
+
+/* ── Embed compare ── */
+.embed-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 1rem 0;
+  font-family: 'DM Sans', 'Gill Sans', Trebuchet, sans-serif;
+  font-size: 13px;
+}
+.embed-card {
+  border: 1px solid var(--gray-rule);
+  border-radius: 4px;
+  padding: 1.25rem;
+  line-height: 1.5;
+  background: #fff;
+}
+.embed-card h3 {
+  font-family: 'DM Sans', 'Gill Sans', Trebuchet, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.embed-card.catalog { border-top: 3px solid var(--gray-mid); }
+.embed-card.catalog h3 { color: var(--gray-dark); }
+.embed-card.appowns { border-top: 3px solid var(--gold); }
+.embed-card.appowns h3 { color: var(--gold); }
+.embed-card .flow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--gray-mid);
+  font-family: 'JetBrains Mono', monospace;
+}
+.embed-card .detail { color: var(--gray-dark); margin-bottom: 0.5rem; }
+.embed-card .cost-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-weight: 600;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 0.5rem;
+  letter-spacing: 0.5px;
+}
+.embed-card.catalog .cost-tag { background: var(--blue-pale); color: var(--blue); }
+.embed-card.appowns .cost-tag { background: var(--gold-pale); color: var(--gold); }
+
+/* ── Platform stack diagram ── */
+.platform-stack {
+  margin: 1rem 0;
+  font-family: 'DM Sans', 'Gill Sans', Trebuchet, sans-serif;
+  font-size: 13px;
+}
+.stack-layer {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 0.75rem;
+  margin-bottom: 2px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.stack-layer.visible { opacity: 1; transform: translateY(0); }
+.stack-main {
+  padding: 1rem 1.25rem;
+  border-radius: 4px;
+  border: 1px solid var(--gray-rule);
+  background: #fff;
+}
+.stack-main h3 {
+  font-family: 'DM Sans', 'Gill Sans', Trebuchet, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--blue);
+}
+.stack-main .desc {
+  font-size: 12px;
+  color: var(--gray-mid);
+  font-family: 'JetBrains Mono', monospace;
+}
+.stack-callout {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: var(--gray-mid);
+  line-height: 1.4;
+  font-family: 'JetBrains Mono', monospace;
+}
+.stack-connector {
+  text-align: center;
+  color: var(--blue-light);
+  font-size: 0.75rem;
+  padding: 0.15rem 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.stack-connector.visible { opacity: 1; }
+.stack-accent .stack-main {
+  border: 2px solid var(--gold);
+  background: var(--gold-pale);
+}
+.stack-accent .stack-main h3 { color: var(--gold); }
+.stack-accent .stack-callout { font-weight: 600; color: var(--gold); }
+.stack-reports .stack-main {
+  border-color: var(--blue-light);
+  background: var(--blue-pale);
+}
+.stack-reports .stack-main h3 { color: var(--blue); }
+.stack-reports .stack-callout { color: var(--blue); font-weight: 600; }
+.stack-foundation .stack-main {
+  border-color: var(--green);
+  background: var(--green-pale);
+}
+.stack-foundation .stack-main h3 { color: var(--green); }
+.stack-foundation .stack-callout { color: var(--green); font-weight: 600; }
+.stack-source .stack-main { border-style: dashed; background: var(--gray-light); }
+.stack-sub-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-top: 0.5rem;
+}
+.stack-sub-item {
+  font-size: 11px;
+  padding: 4px 8px;
+  background: rgba(138,110,58,0.12);
+  border-radius: 3px;
+  color: var(--gold);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── Platform headline callout ── */
+.platform-headline {
+  margin: 1.75rem 0 0.5rem;
+  padding: 18px 22px;
+  background: var(--green-pale);
+  border-left: 4px solid var(--green);
+  border-radius: 0 4px 4px 0;
+}
+.platform-headline-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 6px;
+  display: block;
+}
+.platform-headline-title {
+  font-family: 'DM Sans', 'Gill Sans', Trebuchet, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1.3;
+}
+.platform-headline-sub {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 14px;
+  color: var(--gray-dark);
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* ── Conclusion block ── */
+.conclusion-section {
+  background: var(--blue);
+  color: #fff;
+  max-width: 100%;
+  padding: 80px 40px;
+}
+.conclusion-section .conclusion-inner {
+  max-width: var(--col-w);
+  margin: 0 auto;
+}
+.conclusion-section .eyebrow-label {
+  color: var(--sonoran-sky);
+  font-size: 11px;
+  letter-spacing: 4px;
+}
+.conclusion-section p { color: rgba(255,255,255,0.9); }
+
+/* ── Sticky nav ── */
+.article-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(244,242,238,0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-rule);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+.nav-title {
+  font-weight: 600;
+  color: var(--blue);
+  white-space: nowrap;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 1;
+}
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-link {
+  color: var(--gray-mid);
+  text-decoration: none;
+  padding: 0 0.85rem;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  border-right: 1px solid var(--gray-rule);
+  transition: color 0.15s, background 0.15s;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.nav-link:first-child { border-left: 1px solid var(--gray-rule); }
+.nav-link:hover { color: var(--blue); background: var(--blue-pale); }
+.nav-link.active { color: var(--blue); font-weight: 600; background: var(--blue-pale); }
+
+/* ── Provenance ── */
+.provenance {
+  background: #f0efec;
+  border-top: 3px solid var(--caliche);
+  padding: 40px 24px;
+  max-width: var(--col-w);
+  margin: 0 auto;
+}
+.provenance h2 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--caliche);
+  margin-bottom: 20px;
+}
+.prov-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gray-rule);
+  font-size: 13px;
+}
+.prov-row:last-child { border-bottom: none; }
+.prov-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--caliche);
+  padding-top: 2px;
+}
+.prov-value { color: #444; line-height: 1.6; font-family: 'DM Sans', 'Gill Sans', Trebuchet, sans-serif; }
+.unverified { color: var(--lichen-rust); font-style: italic; }
+
+@media (max-width: 600px) {
+  .nav-title { display: none; }
+  .nav-link { padding: 0 0.6rem; font-size: 10px; }
+  .embed-compare { grid-template-columns: 1fr; }
+  .stack-layer { grid-template-columns: 1fr; }
+  .stack-callout { padding: 0 1rem 0.75rem; }
+  .resolved-item { grid-template-columns: 120px 1fr; }
+  .prov-row { grid-template-columns: 1fr; }
+  .cover { padding: 48px 24px 40px; }
+}
+
+
+
+@media print {
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .article-nav { display: none !important; }
+  body { background: #fff; font-size: 11pt; }
+  .cover { padding: 40px 24px 32px; }
+  .wrapper { padding: 32px 24px 48px; }
+  .conclusion-section { padding: 40px 24px; }
+  .provenance { padding: 24px; }
+  .stack-layer { opacity: 1 !important; transform: none !important; }
+  .stack-connector { opacity: 1 !important; }
+  h2 { page-break-after: avoid; }
+  .fn-block { page-break-inside: avoid; }
+  .pattern-block { page-break-inside: avoid; }
+  .embed-compare { page-break-inside: avoid; }
+  .diagram-container { page-break-inside: avoid; }
+  .pullquote { page-break-inside: avoid; }
+  .conclusion-section { page-break-inside: avoid; }
+  a { text-decoration: none; color: inherit; }
+}
+</style>
+</head>
+<body>
+<nav class="article-nav">
+  <span class="nav-title">20 Years of BI</span>
+  <div class="nav-links">
+    <span class="nav-link" data-target="gap" onclick="navTo('gap')">The Gap</span>
+    <span class="nav-link" data-target="platform" onclick="navTo('platform')">The Missing Layer</span>
+    <span class="nav-link" data-target="functions" onclick="navTo('functions')">Five Functions</span>
+    <span class="nav-link" data-target="engineered" onclick="navTo('engineered')">When It Is Engineered</span>
+    <span class="nav-link" data-target="cost" onclick="navTo('cost')">The Hidden Cost</span>
+    <span class="nav-link" data-target="bridge" onclick="navTo('bridge')">The Roebling</span>
+  </div>
+</nav>
+
+
+<div class="cover">
+  <h1>The Data Access Platform</h1>
+  <div class="subtitle">What I learned from 20 years running a corporate BI platform</div>
+  <div class="meta">Hugh McCutchen &middot; April 2026 &middot; v6 &middot; ~2,200 words</div>
+</div>
+
+<div class="wrapper">
+
+<p>Proposals for a bridge connecting Manhattan and Brooklyn existed as early as the 1800s. For decades, the ferries were fine, so nobody committed. It took a German immigrant engineer named John Roebling getting his ferry stuck in East River ice in 1852 to produce someone with enough frustration and vision to stop proposing and start designing. Even then it took fifteen more years to get legislative approval. The bridge finally opened in 1883. The cities had not lacked an idea. They had lacked a decision.</p>
+
+<p>I spent 20 years building and running analytics platforms in a large healthcare company. The bridge story is not an analogy I chose for effect. It is what I watched happen, in slow motion, across five organizational regimes and four different BI platforms. Every team had working tools. Most of them had built something to connect those tools to the people who needed them — scripts, processes, a person who knew how it all fit together. What almost none of them had done was imagine it at the scale of the Brooklyn Bridge. A structure worth engineering from the start, worth funding as a line item, worth building to last longer than the people who built it.</p>
+
+<p>I started my career as an architect, the licensed kind. Design the whole system at a human scale before you touch a component. I ended up as the person the organization called when something complicated needed to be designed across teams. Over time I saw the same needs appear in every BI operation I worked with, and very different levels of investment in solving them. That gap is what this paper is about.</p>
+
+<p>I am not a consultant. I am not selling a product. What I have is a set of observations from two decades, and I am curious whether any of them look familiar to you.</p>
+
+<h2 id="gap">How the gap forms</h2>
+
+<p>Three forces create this gap. None of them are mistakes. All of them are normal.</p>
+
+<div class="pattern-block">
+  <div class="pattern-sidebar"><span class="pattern-sidebar-text">Org Change</span></div>
+  <div class="pattern-body"><p>Organizations change over time. Teams split, merge, and reorganize. Analytics problems are often solved by small business-aligned teams, and each team picks the tools that fit their immediate need. Nobody consolidates those tools on day one. Often nobody consolidates them ever.</p></div>
+</div>
+
+<div class="pattern-block">
+  <div class="pattern-sidebar"><span class="pattern-sidebar-text">Tool Evolution</span></div>
+  <div class="pattern-body"><p>Cognos gives way to Tableau. Tableau makes room for Power BI. Each transition takes years and the old tool never fully retires because there are always reports that aren&rsquo;t worth the cost of migrating. So both tools run in parallel. Then a third shows up.</p></div>
+</div>
+
+<div class="pattern-block">
+  <div class="pattern-sidebar"><span class="pattern-sidebar-text">Audience Complexity</span></div>
+  <div class="pattern-body"><p>Internal employees are one population. External customers are another. Regulated data adds a layer. Multiple product lines add more. Each audience has different entitlements, different compliance requirements, and a different relationship with the content.</p></div>
+</div>
+
+<p>Each of these forces adds a tool, a user population, and a governance burden. None of them add a unifying layer.</p>
+
+<p>There is a fourth force that compounds the other three. BI work attracts brilliant problem solvers. These are people who find a way to get data in front of users no matter what the tool limitations are. When the platform falls short, they build something. When the process breaks, they fix it with what they have. That resourcefulness is a genuine strength. It is also why the data access layer ends up as scripts, spreadsheets, and workarounds instead of planned architecture. The problem is rarely recognized as an architecture problem, so it rarely receives architecture-level investment. It gets solved off the side of someone&rsquo;s desk, usually by the people closest to the pain, with the tools and skills they have.</p>
+
+<h2 id="platform">The layer nobody planned for</h2>
+
+<p>Most people hear &ldquo;data platform&rdquo; and think about the data foundation. Ingestion, ETL, modeling, the warehouse, the lakehouse. That work is well understood and it gets real engineering investment. Above the foundation sit the BI tools: Tableau, Power BI, Cognos, whatever the organization has licensed. Mostly debated, always licensed, rarely rationalized. Above those sit the reports and dashboards: what users see and what the business funds.</p>
+
+<p>Anchoring the whole stack are the source systems. They were there before any data team showed up, and they absorb most of the organization&rsquo;s technology investment. Everything above them runs on what is left.</p>
+
+<div class="diagram-container">
+<div class="platform-stack">
+  <div class="stack-layer stack-reports">
+    <div class="stack-main">
+      <h3>Reports and dashboards</h3>
+      <div class="desc">What users see</div>
+    </div>
+    <div class="stack-callout">Gets attention.<br>Gets funded.</div>
+  </div>
+  <div class="stack-connector">&darr;</div>
+  <div class="stack-layer">
+    <div class="stack-main">
+      <h3>BI tools</h3>
+      <div class="desc">Tableau, Power BI, Cognos, custom</div>
+    </div>
+    <div class="stack-callout">Gets licensed.<br>Gets debated.</div>
+  </div>
+  <div class="stack-connector">&darr;</div>
+  <div class="stack-layer stack-accent">
+    <div class="stack-main">
+      <h3>Data access platform</h3>
+      <div class="stack-sub-items">
+        <div class="stack-sub-item">Governed metadata</div>
+        <div class="stack-sub-item">Access and delivery</div>
+        <div class="stack-sub-item">Embedding extensions</div>
+        <div class="stack-sub-item">Utilization and admin</div>
+      </div>
+    </div>
+    <div class="stack-callout">Gets inherited.<br>Gets one person.<br>Gets no name.</div>
+  </div>
+  <div class="stack-connector">&darr;</div>
+  <div class="stack-layer stack-foundation">
+    <div class="stack-main">
+      <h3>Data foundation</h3>
+      <div class="desc">ETL, modeling, warehouses, lakehouses, data marts</div>
+    </div>
+    <div class="stack-callout">Gets engineered.<br>Gets a team.</div>
+  </div>
+  <div class="stack-connector">&darr;</div>
+  <div class="stack-layer stack-source">
+    <div class="stack-main">
+      <h3>Source systems</h3>
+      <div class="desc">They were here before you got here</div>
+    </div>
+    <div class="stack-callout">Gets most of the org&rsquo;s<br>investment.</div>
+  </div>
+</div>
+<p class="diagram-caption">Everything above the source systems lives on what is left. The data access platform lives on what is left of what is left.</p>
+</div>
+
+<p>Between the data foundation and the reports there is a layer that handles how users actually get access to what has been built for them. I call it the data access platform. It includes governed metadata that controls access and defines key reporting concepts, the delivery application that manages authentication and authorization, extensions that replace native BI features lost through embedding, and the administrative tools for managing customers, users, and utilization.</p>
+
+<h2 id="functions">Five functions, no owner</h2>
+
+<p>When I look across the organizations I have worked with, the same five functions show up every time. The question is whether they are managed in a fully engineered platform or handled by whatever person can carve out some time to solve them.</p>
+
+<p>For each one, I have described what it is, why it matters, and what I have seen happen when it is left without a plan.</p>
+
+<div class="fn-block">
+  <div class="fn-sidebar"><span class="fn-sidebar-text">Authentication</span></div>
+  <div class="fn-body">
+    <p><strong>One login.</strong> The customer opens a browser, signs in once, and sees their reports. They don&rsquo;t know or care which tool rendered the content. That sounds simple until you have multiple BI tools, external customers on a different identity provider than your employees, and compliance requirements that differ by product line. When it works well, the customer sees your analytics as a product, not a collection of tools.</p>
+    <div class="fn-improvised">
+      <span class="fn-improvised-label">When unplanned:</span> Each BI tool manages its own login. SSO gets bolted on tool by tool if at all. External customers navigate multiple entry points. The experience feels like what it is: several disconnected systems.
+    </div>
+  </div>
+</div>
+
+<div class="fn-block">
+  <div class="fn-sidebar"><span class="fn-sidebar-text">Authorization</span></div>
+  <div class="fn-body">
+    <p><strong>Not folder permissions.</strong> Authorization modeled around business concepts. This customer sees these product lines. This user has this role within their organization. This territory maps to these reports. Every BI tool thinks in folders, sites, and workspaces. Your business thinks in customers, products, and roles. Someone has to map one to the other, and in most organizations that mapping lives in someone&rsquo;s head.</p>
+    <div class="fn-improvised">
+      <span class="fn-improvised-label">When unplanned:</span> Folder structures and role assignments managed manually by multiple people over many years. Or a team builds a custom access model that works well enough — until the person who built it leaves, and the institutional knowledge leaves with them. Each approach solves the immediate problem and introduces its own fragility.
+    </div>
+  </div>
+</div>
+
+<div class="fn-block">
+  <div class="fn-sidebar"><span class="fn-sidebar-text">Business Metadata</span></div>
+  <div class="fn-body">
+    <p><strong>The data that makes the data make sense.</strong> Customer organizations, brands, territory-to-zip mappings. The reference data that makes a report meaningful for a specific customer. This metadata is almost always unique to the business and no generic tool manages it well. It is where implementations run into walls they did not see coming.</p>
+    <div class="fn-improvised">
+      <span class="fn-improvised-label">When unplanned:</span> Engineers maintain reference data through direct database manipulation with no application layer around it. Or the data is baked into provisioning scripts and becomes rigid, hard to change, and impossible to audit. It rarely connects cleanly to the metadata in the data foundation layer because nobody designed the two layers as part of the same architecture.
+    </div>
+  </div>
+</div>
+
+<p>Those three show up in almost every BI modernization conversation. Ask yourself the harder question: does your organization have a deliberate answer to the next two, or does it have a workaround?</p>
+
+<div class="fn-block">
+  <div class="fn-sidebar"><span class="fn-sidebar-text">Utilization Visibility</span></div>
+  <div class="fn-body">
+    <p><strong>Who is using what, across which tools, for which customers.</strong> If you asked your organization for a single view of report usage across all your BI platforms, how long would it take to get an answer?</p>
+    <div class="fn-improvised">
+      <span class="fn-improvised-label">When unplanned:</span> Ad hoc log pulls, per tool, on request. Days to answer if the data exists at all. In some cases pulling cross-tool usage data becomes a project in its own right — the infrastructure to do it easily was never built. In others, the data exists but lives in separate tool logs with no common schema — assembling a unified view requires engineering time nobody budgeted for. The result is that nobody has a clear picture of what is actually being used and by whom.
+    </div>
+  </div>
+</div>
+
+<div class="fn-block">
+  <div class="fn-sidebar"><span class="fn-sidebar-text">Tool Abstraction</span></div>
+  <div class="fn-body">
+    <p><strong>The ability to add, retire, or replace a BI tool without rewriting the user experience.</strong> Without this, every tool migration is a hard cutover for every user at once. With it, you can migrate incrementally, run a long tail on a legacy platform while new content moves to the replacement, and bring in custom AI tools or specialized insight applications alongside your primary BI platform as part of one unified experience.</p>
+    <div class="fn-improvised">
+      <span class="fn-improvised-label">When unplanned:</span> This function almost never exists outside of a purpose-built platform. Organizations that lack it discover the cost every time they need to migrate a BI tool, add a new one, or retire an old one. Each change is a project instead of a configuration.
+    </div>
+  </div>
+</div>
+
+<div class="pullquote">Authentication, authorization, business metadata, utilization visibility, tool abstraction. That is a platform. It is the part of the data platform that almost nobody recognizes as something that needs to be engineered.</div>
+
+<h2 id="engineered">What it looks like when the organization commits</h2>
+
+<p>I have seen what happens when an organization recognizes the data access layer as something worth engineering from the start. The difference is not talent. The people finding solutions in every organization I have worked with were smart and resourceful. The difference is whether the organization ever recognized this layer as architecture, or whether it stayed invisible until someone close to the problem solved it with whatever they had.</p>
+
+<div class="platform-headline">
+  <div class="platform-headline-label">What the platform delivers</div>
+  <div class="platform-headline-title">Five functions. Engineered from the start.</div>
+  <div class="platform-headline-sub">What changes when the organization treats the data access layer as architecture.</div>
+</div>
+
+<div class="diagram-container">
+<div class="resolved-list">
+  <div class="resolved-item">
+    <div class="resolved-label">Authentication</div>
+    <div>One login. SSO to the customer. The customer sees a product, not a collection of tools.</div>
+  </div>
+  <div class="resolved-item">
+    <div class="resolved-label">Authorization</div>
+    <div>Modeled on customer, product line, and role. Self-service admin for customer managers. Not folder structures.</div>
+  </div>
+  <div class="resolved-item">
+    <div class="resolved-label">Business metadata</div>
+    <div>Customer orgs, brands, territories managed through an admin UI. Evolvable. Not direct database manipulation.</div>
+  </div>
+  <div class="resolved-item">
+    <div class="resolved-label">Utilization visibility</div>
+    <div>Designed in from day one. Cross-tool. Per customer. Not ad hoc log pulls. Not a week-long project.</div>
+  </div>
+  <div class="resolved-item">
+    <div class="resolved-label">Tool abstraction</div>
+    <div>BI tools, custom AI, specialized insight tools. All part of one experience. Migrate, add, or retire without user disruption.</div>
+  </div>
+</div>
+<p class="diagram-caption">What a purpose-built data access platform provides. Same five functions, fully engineered.</p>
+</div>
+
+<h2 id="cost">The cost most organizations don&rsquo;t see</h2>
+
+<p>There are two cost pressures that live inside this layer.</p>
+
+<p>The first is operational. When an organization manages the data access layer entirely through people and manual process, it consumes time from many people just to hold it together. That overhead introduces inconsistencies, which takes more time to investigate. And it reduces adoption, because access is slow to set up and painful to change. The cost is not just headcount. It is the drag on every team that depends on the platform working cleanly.</p>
+
+<p>The second is licensing cost, and this one is subtle enough that most people evaluating BI portal solutions miss it entirely. There are two fundamentally different ways to deliver BI content through a portal, and they have very different economics.</p>
+
+<div class="diagram-container">
+<div class="embed-compare">
+  <div class="embed-card catalog">
+    <h3>Portal as catalog</h3>
+    <div class="flow">User &rarr; Portal &rarr; BI tool</div>
+    <div class="detail">Portal polls the BI tool&rsquo;s API to determine what the user can see. The user exists as a licensed user on the BI platform.</div>
+    <div class="detail">Portal inherits the tool&rsquo;s authorization model.</div>
+    <div class="detail"><strong>What most commercial portal vendors do.</strong></div>
+    <div class="cost-tag">Cost scales per user</div>
+  </div>
+  <div class="embed-card appowns">
+    <h3>App owns data</h3>
+    <div class="flow">User &rarr; Portal &rarr; BI tool <span style="font-size:0.7rem;color:var(--gray-mid);">(service principal)</span></div>
+    <div class="detail">Portal authenticates the user directly and calls the BI tool via a service principal. The user has no identity or license on the BI platform.</div>
+    <div class="detail">Portal owns the authorization model entirely.</div>
+    <div class="detail"><strong>True embedding. Portal with app as owner.</strong></div>
+    <div class="cost-tag">Cost scales per capacity</div>
+  </div>
+</div>
+<p class="diagram-caption">At thousands of external users, the difference is 2x to 4x per user.</p>
+</div>
+
+<p>Most commercial BI portal products use the catalog model. They inherit authorization from the source platforms. That means the users still need to be set up as licensed users on those platforms. You get a better experience and better governance, but you do not get the cost economics that come from true embedding. Understanding the difference before you commit to a direction matters, because at scale the licensing economics can dwarf every other cost in the platform.</p>
+
+<p>Commercial BI portal vendors do exist. MetricInsights, ZenOptics, Digital Hive, and others have productized portions of the data access layer. Their existence is validation that the problem is real and recurring. The category is young and not well defined, but if you recognize the patterns described in this paper, these products are worth evaluating.</p>
+
+<h2 id="bridge">The bridge needs a Roebling</h2>
+
+<p>The harder truth is that most organizations have not gotten to the point of evaluating solutions because they have not named the problem. The people closest to the pain are heads-down solving it with whatever they have. The people with budget are not seeing the pain at all. The full solution crosses teams, requires a business case, and needs someone to explain why the space between the tools and the users is worth a line item. That is a hard thing to get onto a roadmap.</p>
+
+</div><!-- end .wrapper -->
+
+<div class="conclusion-section">
+  <div class="conclusion-inner">
+    <span class="eyebrow-label">Closing</span>
+    <p>Bridges had been built for thousands of years when Roebling proposed his. The technology was not the barrier. His proposal sat unanswered for fifteen years. It moved when the right conditions aligned: political will, a bad enough winter, and a champion who would not let it drop. The data access layer is not a new problem. What is missing is not the solution. It is the organizational recognition that the problem exists and is worth solving.</p>
+    <p style="margin-top:16px;">If any of this felt familiar, you probably have the same gap I spent 20 years learning how to fill. I would be curious to hear what you have seen.</p>
+  </div>
+</div>
+
+<div class="provenance">
+  <h2>Provenance</h2>
+  <div class="prov-row">
+    <span class="prov-label">Model</span>
+    <span class="prov-value">Claude Sonnet 4.6 &middot; April 21, 2026 (language refinements: tonal recalibration pass). Prior versions: Claude Opus 4.6 and Sonnet 4.6, April 15&ndash;16, 2026.</span>
+  </div>
+  <div class="prov-row">
+    <span class="prov-label">Sources</span>
+    <span class="prov-value">
+      Internal strategic analysis and platform evaluation work, 2024&ndash;2026 &middot;
+      Career background material, prior coaching project sessions, April 2026 &middot;
+      HTML Report and Diagram Style Guide v1.1 (April 2026) &middot;
+      Writing Style Guide v1 (April 2026) &middot; Banned Patterns v1 &middot; White Paper Session Playbook v1 &middot;
+      Brooklyn Bridge history: Wikipedia, Britannica, ASCE, Bill of Rights Institute &middot;
+      BI tool public pricing, 2026
+    </span>
+  </div>
+  <div class="prov-row">
+    <span class="prov-label">Iteration Notes</span>
+    <span class="prov-value">
+      v1&ndash;v7 (Opus/Sonnet 4.6, April 15&ndash;16): Argument arc, five functions, embedding economics, bridge frame, sidebar blocks, sticky nav, political sensitivity review.<br>
+      v3 (Sonnet 4.6, April 21): Full CSS migration to HTML Report &amp; Diagram Style Guide v1.1. Cover and conclusion blocks added. Provenance reformatted.<br>
+      v4 (Sonnet 4.6, April 21): Tonal recalibration. Stack callout softened: removed &ldquo;Gets improvised / Gets a spreadsheet&rdquo; in favor of &ldquo;Gets inherited.&rdquo; All five &ldquo;When improvised&rdquo; labels changed to &ldquo;When unplanned.&rdquo; Authorization block rewritten to remove specific implementation detail; replaced with institutional knowledge fragility framing. &ldquo;Improvising solutions&rdquo; reference in engineered section replaced with neutral &ldquo;finding solutions.&rdquo;<br>v5 (Sonnet 4.6, April 21): Reframed &ldquo;nobody decided&rdquo; sentence — replaced with Brooklyn Bridge scale-of-imagination argument. Honors team resourcefulness while sharpening the real diagnosis. Utilization &ldquo;when unplanned&rdquo; block softened: removed &ldquo;too consumed keeping the system running&rdquo; and &ldquo;logging disabled&rdquo; — both rewritten to describe structural gaps rather than team failures.
+    </span>
+  </div>
+  <div class="prov-row">
+    <span class="prov-label">Assumptions</span>
+    <span class="prov-value">
+      Observations drawn from practitioner experience across multiple organizational entities within a single parent company over 20 years. Scale references are approximations generalized for public use. The 2x&ndash;4x cost differential is derived from published pricing comparisons between per-user and capacity licensing models, not an independent study. <span class="unverified">[UNVERIFIED]</span> Commercial portal vendor descriptions based on publicly available documentation as of mid-2025.
+    </span>
+  </div>
+  <div class="prov-row">
+    <span class="prov-label">Scope Exclusions</span>
+    <span class="prov-value">Vendor evaluation or recommendation. Implementation guidance or technical architecture. Data foundation architecture (Cluster 2 paper). AI integration with BI platforms (Cluster 3 paper). COTS portal product comparison. Organizational design or staffing models.</span>
+  </div>
+</div>
+
+<script>
+function navTo(id) {
+  var target = document.getElementById(id);
+  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+(function() {
+  var links = document.querySelectorAll('.nav-link');
+  var sectionIds = ['gap','platform','functions','engineered','cost','bridge'];
+  var sections = sectionIds.map(function(id) { return document.getElementById(id); }).filter(Boolean);
+  function update() {
+    var current = '';
+    sections.forEach(function(sec) {
+      if (window.scrollY >= sec.offsetTop - 80) current = sec.id;
+    });
+    links.forEach(function(link) {
+      var target = link.getAttribute('data-target');
+      link.classList.toggle('active', target === current);
+    });
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+(function() {
+  var layers = document.querySelectorAll('.stack-layer, .stack-connector');
+  if (!layers.length) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var siblings = Array.from(entry.target.parentElement.querySelectorAll('.stack-layer, .stack-connector'));
+        var idx = siblings.indexOf(entry.target);
+        setTimeout(function() { entry.target.classList.add('visible'); }, idx * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  layers.forEach(function(el) { observer.observe(el); });
+})();
+</script>
+</body>
+</html>
