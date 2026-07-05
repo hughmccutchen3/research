@@ -1,0 +1,272 @@
+/* =============================================================================
+   Bursera Consulting — shared stylesheet (styles.css)
+   RES-300 branding foundation. One stylesheet, one shell.
+
+   ARCHITECTURE — read before editing:
+   Every component rule is scoped under one of three roots so this file can be
+   safely LINKED into a whitepaper without re-skinning it:
+     body.site-page  → full-mode site shell (Home / Method / Leadership / index / About)
+     body.reading … .reading  → reading-mode site content (680px)
+     .paper-bar      → the minimal top bar added above a whitepaper
+   Global scope declares ONLY the :root token layer (values verbatim from the
+   repo, so cascade into a paper is a no-op) and a light box-sizing reset scoped
+   to the shell roots. No bare body/h1/main rules — those would flatten papers.
+
+   Token source: bursera-brand-tokens-v0.1 (Regime A · Slate/Brass/Parchment).
+   Mobile-first: phone is the base; ≥720px is the enhancement.
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   1. TOKEN LAYER  (:root — verbatim from bursera-brand-tokens-v0.1)
+   --------------------------------------------------------------------------- */
+:root {
+  /* Neutrals — slate ramp */
+  --slate-950:#0B1220; --slate-900:#0F172A; --slate-800:#1E293B; --slate-700:#334155;
+  --slate-600:#475569; --slate-500:#64748B; --slate-400:#94A3B8; --slate-300:#CBD5E1;
+  --slate-200:#E2E8F0; --slate-100:#F1F5F9; --white:#FFFFFF;
+
+  /* Accent — brass ramp */
+  --brass-900:#5C4310; --brass-700:#8B6914; --brass-600:#A8841C; --brass-500:#B8860B;
+  --brass-400:#C9A33D; --brass-300:#DAB769; --brass-200:#EBD7A7; --brass-100:#F5E6B8;
+
+  /* Surfaces — parchment */
+  --parchment:#FAF7F0; --parchment-mid:#F2EDE0; --parchment-deep:#E8E0CC;
+
+  /* Semantic roles */
+  --color-bg:var(--parchment-mid);
+  --color-surface:var(--white);
+  --color-surface-alt:var(--parchment);
+  --color-text:var(--slate-800);
+  --color-text-strong:var(--slate-900);
+  --color-text-muted:var(--slate-600);
+  --color-text-subtle:var(--slate-500);
+  --color-link:var(--brass-700);
+  --color-link-hover:var(--brass-900);
+  --color-underline:var(--brass-400);
+  --color-border:var(--slate-200);
+  --color-border-strong:var(--slate-300);
+  --color-shadow:rgba(15,23,42,0.10);
+
+  /* Type */
+  --font-serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --font-sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --font-mono:'JetBrains Mono','SF Mono',Menlo,Consolas,monospace;
+  --font-body:var(--font-serif);
+  --font-heading:var(--font-sans);
+  --font-label:var(--font-mono);
+  --weight-normal:400; --weight-medium:600; --weight-bold:700;
+
+  --text-hero:clamp(2.25rem,6vw,4rem);
+  --text-h1:2.375rem; --text-h2:1.75rem; --text-h3:1.25rem;
+  --text-lede:1.15rem; --text-body:1.0625rem; --text-small:0.875rem;
+  --text-label:0.6875rem; --text-micro:0.625rem;
+  --leading-body:1.7; --leading-caption:1.5; --leading-heading:1.2;
+
+  /* Spacing + layout */
+  --space-1:0.25rem; --space-2:0.5rem; --space-3:0.75rem; --space-4:1rem;
+  --space-5:1.25rem; --space-6:1.5rem; --space-7:2rem; --space-8:2.5rem;
+  --space-9:3rem; --space-10:3.5rem; --space-11:4rem; --space-12:5rem;
+  --content-width:820px; --content-narrow:640px;
+  --reading-width:680px;
+  --gutter:var(--space-11); --gutter-mobile:var(--space-6);
+  --radius:8px;
+}
+
+/* Scoped reset — only inside the shell roots, never bare elements */
+body.site-page, body.site-page *,
+.reading, .reading *,
+.paper-bar, .paper-bar * { box-sizing:border-box; }
+body.site-page, body.reading-body { margin:0; }
+
+/* =============================================================================
+   2. FULL-MODE SITE SHELL  (body.site-page)  — framing pages, 820px
+   ============================================================================= */
+body.site-page{
+  margin:0;
+  background:var(--parchment-mid);
+  font-family:var(--font-body);
+  font-size:var(--text-body);
+  line-height:var(--leading-body);
+  color:var(--color-text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+body.site-page .page{
+  max-width:var(--content-width);
+  margin:0 auto;
+  background:var(--color-surface);
+  min-height:100vh;
+}
+
+/* --- site header: wordmark + nav (mobile-first) --- */
+body.site-page .site-header{
+  background:var(--color-surface);
+  border-bottom:1px solid var(--color-border);
+  padding:var(--space-4) var(--gutter-mobile);
+  display:flex; flex-wrap:wrap; align-items:center; gap:var(--space-3) var(--space-5);
+  justify-content:space-between;
+}
+body.site-page .wordmark{
+  font-family:var(--font-heading);
+  font-weight:var(--weight-bold);
+  font-size:1.125rem; letter-spacing:-.01em;
+  color:var(--color-text-strong);
+  text-decoration:none; white-space:nowrap;
+}
+body.site-page .wordmark span{ color:var(--brass-700); }
+body.site-page .site-nav{
+  display:flex; flex-wrap:wrap; gap:var(--space-4);
+  font-family:var(--font-heading); font-size:var(--text-small);
+  list-style:none; margin:0; padding:0;
+}
+body.site-page .site-nav a{
+  display:inline-block; min-height:44px; line-height:44px; /* 44px touch target */
+  color:var(--color-text-muted); text-decoration:none;
+  border-bottom:2px solid transparent; transition:color .15s,border-color .15s;
+}
+body.site-page .site-nav a:hover,
+body.site-page .site-nav a[aria-current="page"]{
+  color:var(--brass-700); border-bottom-color:var(--brass-400);
+}
+
+/* --- masthead --- */
+body.site-page header.masthead{
+  padding:var(--space-8) var(--gutter-mobile) var(--space-6);
+  border-bottom:2px solid var(--brass-500);
+  background:var(--color-surface);
+}
+body.site-page .eyebrow{
+  font-family:var(--font-label); font-size:var(--text-label); font-weight:var(--weight-bold);
+  letter-spacing:.22em; text-transform:uppercase; color:var(--brass-700);
+  margin:0 0 var(--space-3);
+}
+body.site-page header.masthead h1{
+  font-family:var(--font-body); font-size:clamp(1.875rem,5vw,2.5rem); font-weight:var(--weight-medium);
+  line-height:var(--leading-heading); color:var(--color-text-strong);
+  letter-spacing:-.02em; margin:0 0 var(--space-3);
+}
+body.site-page header.masthead .lede{
+  font-family:var(--font-body); font-style:italic; font-size:var(--text-lede);
+  line-height:var(--leading-caption); color:var(--color-text-muted); max-width:60ch; margin:0;
+}
+
+/* --- main + section groups --- */
+body.site-page main{ padding:var(--space-2) var(--gutter-mobile) var(--space-11); }
+body.site-page section.group{ margin-top:var(--space-9); }
+body.site-page .group-label{
+  font-family:var(--font-heading); font-size:var(--text-label); font-weight:var(--weight-bold);
+  letter-spacing:.16em; text-transform:uppercase; color:var(--color-text-subtle);
+  padding-bottom:var(--space-3); margin-bottom:var(--space-2);
+  border-bottom:1px solid var(--color-border);
+}
+body.site-page .entry{ padding:var(--space-5) 0; border-bottom:1px solid var(--slate-100); }
+body.site-page .entry:last-child{ border-bottom:none; }
+body.site-page .entry a.entry-title{
+  font-family:var(--font-body); font-size:1.3125rem; font-weight:var(--weight-medium);
+  color:var(--color-text-strong); text-decoration:none; letter-spacing:-.01em;
+  line-height:1.3; display:inline-block;
+  border-bottom:1.5px solid transparent; transition:border-color .15s,color .15s;
+}
+body.site-page .entry a.entry-title:hover{ color:var(--brass-700); border-bottom-color:var(--brass-400); }
+body.site-page .entry .summary{
+  font-size:1rem; line-height:1.62; color:var(--color-text); margin-top:var(--space-2); max-width:66ch;
+}
+
+/* --- series sub-list --- */
+body.site-page .series{ margin-top:var(--space-4); padding-left:0; list-style:none; }
+body.site-page .series li{
+  padding:var(--space-2) 0 var(--space-2) var(--space-5);
+  border-left:2px solid var(--parchment-deep); margin-left:2px; position:relative;
+}
+body.site-page .series li+li{ margin-top:2px; }
+body.site-page .series .num{
+  font-family:var(--font-heading); font-size:var(--text-micro); font-weight:var(--weight-bold);
+  letter-spacing:.08em; text-transform:uppercase; color:var(--brass-600);
+  display:block; margin-bottom:2px;
+}
+body.site-page .series a{
+  font-family:var(--font-body); font-size:var(--text-body); font-weight:var(--weight-medium);
+  color:var(--color-text-strong); text-decoration:none;
+  border-bottom:1.5px solid transparent; transition:border-color .15s,color .15s;
+}
+body.site-page .series a:hover{ color:var(--brass-700); border-bottom-color:var(--brass-400); }
+body.site-page .series .s-sum{ font-size:var(--text-small); color:var(--color-text-muted); line-height:1.55; margin-top:2px; }
+
+/* --- shared footer --- */
+body.site-page footer{
+  padding:var(--space-6) var(--gutter-mobile) var(--space-8);
+  border-top:1px solid var(--color-border); background:var(--color-surface-alt);
+  font-family:var(--font-heading); font-size:var(--text-small); color:var(--color-text-subtle);
+  letter-spacing:.02em;
+}
+
+/* --- ≥720px enhancement (full mode) --- */
+@media (min-width:720px){
+  body.site-page .page{ box-shadow:0 0 80px var(--color-shadow); }
+  body.site-page .site-header{ padding:var(--space-4) var(--gutter); }
+  body.site-page header.masthead{ padding:var(--space-10) var(--gutter) var(--space-7); }
+  body.site-page main{ padding:var(--space-2) var(--gutter) var(--space-11); }
+  body.site-page footer{ padding:var(--space-6) var(--gutter) var(--space-9); }
+}
+
+/* =============================================================================
+   3. READING-MODE SHELL  (body.reading-body / .reading)  — site content, 680px
+   ============================================================================= */
+body.reading-body{
+  margin:0; background:var(--parchment-mid);
+  font-family:var(--font-body); font-size:var(--text-body); line-height:var(--leading-body);
+  color:var(--color-text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+.reading{ max-width:var(--reading-width); margin:0 auto; padding:0 var(--gutter-mobile); }
+.reading .reader-bar{
+  position:sticky; top:0; z-index:10; background:var(--color-surface);
+  border-bottom:1px solid var(--color-border);
+  display:flex; align-items:center; justify-content:space-between; gap:var(--space-4);
+  padding:var(--space-3) 0; margin:0 calc(-1 * var(--gutter-mobile)) var(--space-7);
+  padding-left:var(--gutter-mobile); padding-right:var(--gutter-mobile);
+}
+.reading .reader-bar .wordmark{
+  font-family:var(--font-heading); font-weight:var(--weight-bold); font-size:1rem;
+  color:var(--color-text-strong); text-decoration:none;
+}
+.reading .reader-bar .wordmark span{ color:var(--brass-700); }
+.reading .reader-bar .back{
+  font-family:var(--font-heading); font-size:var(--text-small); color:var(--color-text-muted);
+  text-decoration:none; min-height:44px; line-height:44px;
+}
+.reading .reader-bar .back:hover{ color:var(--brass-700); }
+.reading .colophon{
+  margin-top:var(--space-10); padding-top:var(--space-6);
+  border-top:1px solid var(--color-border);
+  font-family:var(--font-heading); font-size:var(--text-small); color:var(--color-text-subtle);
+}
+@media (min-width:720px){
+  body.reading-body{ background:var(--parchment-mid); }
+  .reading{ background:var(--color-surface); box-shadow:0 0 80px var(--color-shadow); padding:0 var(--space-9); }
+  .reading .reader-bar{ margin-left:calc(-1 * var(--space-9)); margin-right:calc(-1 * var(--space-9)); padding-left:var(--space-9); padding-right:var(--space-9); }
+}
+
+/* =============================================================================
+   4. WHITEPAPER MINIMAL TOP BAR  (.paper-bar)  — the shell↔whitepaper seam
+   Self-contained + token-driven. Added ABOVE an Output-Formatting whitepaper.
+   Adds NO footer/colophon — the paper's own Provenance block is its close.
+   ============================================================================= */
+.paper-bar{
+  font-family:var(--font-sans);
+  background:var(--white);
+  border-bottom:1px solid var(--slate-200);
+  display:flex; align-items:center; justify-content:space-between; gap:var(--space-4);
+  padding:var(--space-3) var(--gutter-mobile);
+  /* static, not sticky: several whitepapers carry their own sticky nav — a second
+     sticky bar would overlap. This bar sits at the very top and scrolls away. */
+}
+.paper-bar .paper-bar__brand{
+  font-weight:700; font-size:1rem; letter-spacing:-.01em;
+  color:var(--slate-900); text-decoration:none; white-space:nowrap;
+}
+.paper-bar .paper-bar__brand span{ color:var(--brass-700); }
+.paper-bar .paper-bar__back{
+  font-size:.875rem; color:var(--slate-600); text-decoration:none;
+  min-height:44px; line-height:44px; white-space:nowrap;
+}
+.paper-bar .pape
