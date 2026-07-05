@@ -269,4 +269,37 @@ body.reading-body{
   font-size:.875rem; color:var(--slate-600); text-decoration:none;
   min-height:44px; line-height:44px; white-space:nowrap;
 }
-.paper-bar .pape
+.paper-bar .paper-bar__back:hover{ color:var(--brass-700); }
+@media (min-width:720px){
+  .paper-bar{ padding:var(--space-3) var(--space-9); }
+}
+
+/* =============================================================================
+   5. IN-PAGE SECTION NAV  (.article-nav)  — RES-313
+   Auto-built from <h2 id> by section-nav.js; opt-in via [data-section-nav].
+   The only sticky element on a whitepaper (the .paper-bar is static), so top:0.
+   Tokens per RES-313 mapping: parchment+blur bar, mid-slate labels, brass active.
+   ============================================================================= */
+.article-nav{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:stretch; gap:0;
+  height:38px; overflow-x:auto; overflow-y:hidden;
+  background:rgba(250,247,240,0.82);              /* --parchment @ .82 */
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--color-border);
+  scrollbar-width:none; -ms-overflow-style:none;
+}
+.article-nav::-webkit-scrollbar{ display:none; }
+.article-nav .nav-link{
+  display:inline-flex; align-items:center; white-space:nowrap; height:100%;
+  padding:0 var(--space-4);
+  font-family:var(--font-label); font-size:var(--text-label); font-weight:var(--weight-medium);
+  letter-spacing:.1em; text-transform:uppercase;
+  color:var(--color-text-muted); text-decoration:none; cursor:pointer;
+  border-right:1px solid var(--color-border);
+  border-bottom:2px solid transparent;
+  transition:color .15s, border-color .15s;
+}
+.article-nav .nav-link:first-child{ border-left:1px solid var(--color-border); }
+.article-nav .nav-link:hover{ color:var(--color-link); }
+.article-nav .nav-link.is-active{ color:var(--color-link); border-bottom-color:var(--color-underline); }
