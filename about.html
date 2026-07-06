@@ -4,7 +4,7 @@ content-class: site-page
 version: v2.2
 source: First Build [BURSBUILD1] — content thread S05; consolidated by Cowork [RES-332]
 date: 2026-07-06
-notes: v2.1 content unchanged. v2.2 strips the PROVENANCE comment block per Hugh's provenance policy: site pages (About, Home, LLM Leadership, Research index) never carry a PROVENANCE block, hidden or otherwise — reserved for white papers only, where it's part of what's published. Version history for this page now lives in Linear [RES-298] / this handoff record, not on the page itself.
+notes: v2.1 content unchanged. v2.2 strips the PROVENANCE comment block per Hugh's provenance policy: site pages (About, Home, LLM Leadership, Research index) never carry a PROVENANCE block, hidden or otherwise — reserved for white papers only, where it's part of what's published. Version history for this page now lives in Linear [RES-298] / this handoff record, not on the page itself. Nav updated BURSBUILD-S04: Home and LLM Leadership wired to their new shell pages.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -23,11 +23,11 @@ notes: v2.1 content unchanged. v2.2 strips the PROVENANCE comment block per Hugh
   <header class="site-header">
     <a class="wordmark" href="/">Bursera <span>Consulting</span></a>
     <!-- Site-wide primary nav (RES-300). Locked labels + order: Home · Method · LLM Leadership · Research Examples · About.
-         href="#" = page not yet authored (Home, LLM Leadership). About now wired to /about.html. -->
+         All five now wired to real pages (Home, LLM Leadership shipped as build-continuation shells, BURSBUILD-S04). -->
     <nav class="site-nav" aria-label="Primary">
-      <a href="#">Home</a>
+      <a href="/home.html">Home</a>
       <a href="/the-research-methodology/RWP-S02_20260702-1451_DRAFT-v7.html">Method</a>
-      <a href="#">LLM Leadership</a>
+      <a href="/llm-leadership.html">LLM Leadership</a>
       <a href="/">Research Examples</a>
       <a href="/about.html" aria-current="page">About</a>
     </nav>
