@@ -321,3 +321,32 @@ body.site-page .media-entry .card-body > :first-child{ margin-top:0; }
   body.site-page .media-entry.media-left{ grid-template-columns:280px 1fr; }
   body.site-page .media-entry.media-left .card-media{ order:0; }
 }
+
+/* ===========================================================================
+   9. CROSS-BROWSER TEXT RENDERING  — BURSBUILD-S06
+   Fixes Safari/iOS auto-inflating body text on rotation and normalizes the
+   Source Serif 4 variable-font optical-size axis so weight/size render the
+   same in Safari as in Chrome/Firefox.
+   --------------------------------------------------------------------------- */
+html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+body.site-page, body.reading-body{ font-optical-sizing:auto; }
+
+/* ===========================================================================
+   10. PRINT  — BURSBUILD-S06
+   Ink-light, legible, no site chrome. Screen rendering is untouched.
+   --------------------------------------------------------------------------- */
+@media print{
+  html, body.site-page, body.reading-body{ background:#fff !important; color:#000 !important; }
+  body.site-page .page{ max-width:none; box-shadow:none; }
+  /* drop navigation + footers + colophons — not useful on paper */
+  .site-header, .site-nav, .paper-bar, .article-nav, footer, .colophon{ display:none !important; }
+  /* neutralize dark cover/section bands so they don't dump ink */
+  .cover, .support-section{ background:#fff !important; color:#000 !important; border:0 !important; box-shadow:none !important; }
+  /* links legible in print */
+  a{ color:#000; text-decoration:underline; }
+  /* keep structural blocks from splitting across pages */
+  h1, h2, h3{ page-break-after:avoid; break-after:avoid; }
+  figure, table, pre, blockquote, .callout, .entry{ page-break-inside:avoid; break-inside:avoid; }
+  img{ max-width:100% !important; height:auto; }
+  p, li{ orphans:3; widows:3; }
+}
