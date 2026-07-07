@@ -131,7 +131,7 @@ body.site-page .site-nav a[aria-current="page"]{
 
 /* --- masthead --- */
 body.site-page header.masthead{
-  padding:var(--space-8) var(--gutter-mobile) var(--space-6);
+  padding:var(--space-8) var(--gutter-mobile) var(--space-4);
   border-bottom:2px solid var(--brass-500);
   background:var(--color-surface);
 }
@@ -152,7 +152,7 @@ body.site-page header.masthead .lede{
 
 /* --- main + section groups --- */
 body.site-page main{ padding:var(--space-2) var(--gutter-mobile) var(--space-11); }
-body.site-page section.group{ margin-top:var(--space-9); }
+body.site-page section.group{ margin-top:var(--space-6); }
 body.site-page .group-label{
   font-family:var(--font-heading); font-size:var(--text-label); font-weight:var(--weight-bold);
   letter-spacing:.16em; text-transform:uppercase; color:var(--color-text-subtle);
@@ -204,7 +204,7 @@ body.site-page footer{
 @media (min-width:720px){
   body.site-page .page{ box-shadow:0 0 80px var(--color-shadow); }
   body.site-page .site-header{ padding:var(--space-4) var(--gutter); }
-  body.site-page header.masthead{ padding:var(--space-10) var(--gutter) var(--space-7); }
+  body.site-page header.masthead{ padding:var(--space-10) var(--gutter) var(--space-5); }
   body.site-page main{ padding:var(--space-2) var(--gutter) var(--space-11); }
   body.site-page footer{ padding:var(--space-6) var(--gutter) var(--space-9); }
 }
@@ -303,3 +303,28 @@ body.reading-body{
 .article-nav .nav-link:first-child{ border-left:1px solid var(--color-border); }
 .article-nav .nav-link:hover{ color:var(--color-link); }
 .article-nav .nav-link.is-active{ color:var(--color-link); border-bottom-color:var(--color-underline); }
+
+/* --- card thumbnails (hub pages) — BURSBUILD-S05 ---
+   fixed height, natural width; very wide images clamp and crop sides (object-fit) */
+body.site-page .card-thumb{
+  float:right; height:96px; width:auto; max-width:45%;
+  object-fit:cover;
+  margin:0 0 var(--space-3) var(--space-4);
+  border:1px solid var(--color-border); border-radius:4px;
+}
+@media (min-width:720px){
+  body.site-page .card-thumb{ height:130px; }
+}
+
+/* --- home-page figure (verification diagram → Method) — BURSBUILD-S05 --- */
+body.site-page .home-figure{
+  display:block; margin:var(--space-3) 0;
+  border:1px solid var(--color-border); border-radius:4px; background:#fff;
+}
+body.site-page .home-figure svg{ display:block; width:100%; height:auto; }
+@media (min-width:720px){
+  body.site-page .home-figure{
+    float:right; width:46%; max-width:360px;
+    margin:0 0 var(--space-3) var(--space-4);
+  }
+}

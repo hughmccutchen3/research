@@ -1,13 +1,22 @@
+<!-- BURSBUILD-S05. Leadership rebuilt as the training pillar; Framework hub merged in per Hugh
+     (llm-framework.html now redirects here). Intro positioning line drafted in-session (my-voice
+     mode 4), pending Hugh's markup. Card thumbnails reference existing paper imagery by path.
+     No PROVENANCE block — site-page policy. -->
 <!DOCTYPE html>
 <html lang="en"><head>
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v=s05b">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LLM Leadership — Bursera Consulting</title>
+<meta name="description" content="Training for leaders who want serious work from large language models: the habits, techniques, and tool knowledge behind Bursera's research practice.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LLM Leadership — Bursera Consulting">
+<meta property="og:description" content="Training for leaders who want serious work from large language models: the habits, techniques, and tool knowledge behind Bursera's research practice.">
+<meta property="og:image" content="https://burseraconsulting.com/the-interns/Images/TheInternsC-Small.png">
+<meta property="og:url" content="https://burseraconsulting.com/llm-leadership.html">
 <style>
 /* page-local prose layout; shared chrome + tokens come from /styles.css */
 .pillar-intro{max-width:44rem;margin:0 0 2.4rem}
-.pillar-intro .lede{font-size:1.15rem;line-height:1.5;color:#2d5270}
 .cluster{max-width:46rem;margin:0 0 2.6rem;padding:0 0 1.8rem;border-bottom:1px solid #e2e2e2}
 .cluster:last-of-type{border-bottom:none}
 .cluster h2{font-size:1.3rem;margin:0 0 .2rem}
@@ -15,7 +24,6 @@
 .cluster .assets{margin:1rem 0 0;padding:0;list-style:none;font-family:Arial,Helvetica,sans-serif;font-size:14px}
 .cluster .assets li{margin:.35rem 0}
 .cluster .assets a{color:#2d5270}
-.cluster .assets .pending{color:#999;font-style:italic}
 </style>
 </head>
 <body class="site-page">
@@ -24,56 +32,63 @@
 <header class="site-header">
   <a class="wordmark" href="/">Bursera <span>Consulting</span></a>
   <nav class="site-nav" aria-label="Primary">
-    <a href="/home.html">Home</a>
-    <a href="/the-research-methodology/RWP-S02_20260702-1451_DRAFT-v7.html">Method</a>
-    <a href="/llm-leadership.html" aria-current="page">LLM Leadership</a>
-    <a href="/">Research Examples</a>
+    <a href="/">Home</a>
+    <a href="/research_examples.html">Research</a>
+    <a href="/llm-leadership.html" aria-current="page">Leadership</a>
+    <a href="/method.html">Method</a>
     <a href="/about.html">About</a>
   </nav>
+</header>
+
+<header class="masthead">
+  <h1>LLM Leadership</h1>
+  <p class="lede">Training for leaders who want serious work from large language models.</p>
 </header>
 
 <main>
 
 <div class="pillar-intro">
-  <h1>LLM Leadership</h1>
-  <p class="lede">Treat LLM as a team to build and lead.</p>
-  <p>The work that holds up over days and many sessions does not come from a better prompt. It comes from directing the model the way you would direct people: you set the vision and the judgment, you run adversarial review, you keep the human in the loop. Leadership is the part that does not transfer to the tool.</p>
-  <p>Each piece here is the practice in the open: something you can read, run, or check for yourself.</p>
+  <p>I run research and writing with an LLM the way you run a team — full time and at full depth. Almost nobody needs to work the way I do. But leading the work this way has taught me a lot that carries over: the habits, the techniques, and how these tools actually behave. That is what I teach.</p>
+  <p>Work that holds up across days and many sessions comes from directing the model the way you would direct people: you set the direction, you review the work critically, and you make the final calls. Each piece below shows the practice in a form you can read, run, or check for yourself.</p>
 </div>
 
 <section class="cluster">
   <p class="role">The thesis</p>
+  <img class="card-thumb" src="old-research/images/LLM_is_a_team_hero.jpg" alt="">
   <h2>A team you have to build and lead</h2>
-  <p>Drawn from twenty-two years building healthcare data platforms and eighteen months running an LLM as a team. It traces five phases, from treating the model as fancy search to leading it like a group of capable people who need direction. It is specific about what went wrong along the way: the thread that agreed with everything, the drafts that echoed the last thing said.</p>
+  <p>This article draws on experiences going back to the fall of 2024 through the current state in the middle of 2026. It traces five phases, from treating the model as fancy search to leading it like a group of capable people who need direction. It is specific about what went wrong along the way: the thread that agreed with everything, the drafts that echoed the last thing said.</p>
   <ul class="assets">
     <li><a href="old-research/LLM_is_a_team.html">A Team You Have to Build and Lead</a> — the five-phase argument in full</li>
   </ul>
 </section>
 
 <section class="cluster">
-  <p class="role">The teaching series</p>
+  <p class="role">The habits</p>
+  <img class="card-thumb" src="the-interns/Images/TheInternsC-Small.png" alt="">
   <h2>The Interns</h2>
-  <p>A series on running the team well, one leadership practice and one technique per episode. "Red Team" is the current one. It walks through a simple practice. When the work is not landing the way you want, you bring in a second model for a fresh set of eyes and point it at the first model's work. The story shows adversarial review as a normal habit, the kind the model makes easy once you are directing it rather than taking its first answer. That first answer is often confident and wrong, and a single agreeable thread will hand it to you and call it finished.</p>
+  <p>A series on running the team well, one leadership practice and one technique per episode. "Red Team" is the first: when the work is not landing the way you want, you bring in a second model for a fresh set of eyes and point it at the first model's work. The story shows adversarial review as a normal habit, the kind the model makes easy once you are directing it rather than taking its first answer. That first answer is often confident and wrong. New episodes are added as they are written.</p>
   <ul class="assets">
     <li><a href="the-interns/the_interns_red_team_v3.5.html">The Interns — Red Team</a> — the practice, step by step</li>
   </ul>
 </section>
 
 <section class="cluster">
-  <p class="role">The working tool</p>
-  <h2>Ship a real deck this week</h2>
-  <p>A free setup guide for one recurring job: the monthly team-meeting deck. You spend about twenty minutes wiring it up once, and after that the model gathers the updates and drafts the slides while you decide what the meeting is actually about. The guide is firm on the line that matters. The model finds and writes. You own the story. It is the fastest way to feel the difference between asking a tool for output and directing one.</p>
+  <p class="role">The case for a platform</p>
+  <img class="card-thumb" src="the-platform/Images/CapstoneIllustration1.png" alt="">
+  <h2>When Even the Best Prompt Isn't Enough</h2>
+  <p>Features like Projects, Skills, instruction blocks, and memory are all worth knowing. A process that holds up under sustained work, with an audit trail, needs a framework behind it. This paper makes the case that most of us use these tools well and still leave most of their power on the table.</p>
   <ul class="assets">
-    <li><a href="#">Monthly Team Meeting Deck — A Claude Setup Guide</a> <span class="pending">[asset not yet sourced]</span></li>
+    <li><a href="the-platform/OMUP-Capstone_WhenTheBestPromptIsntEnough_v2.8.html">When Even the Best Prompt Isn't Enough</a> — the full argument</li>
   </ul>
 </section>
 
 <section class="cluster">
-  <p class="role">The method, demonstrated</p>
-  <h2>Watch the method work</h2>
-  <p>Think of it as a casting call. One part, three actors reading the same lines, two of them fresh off the bus that week. You are in the director's chair. You give the same brief to each, watch the reads side by side, and coach toward the take that lands. The part goes to the best read, not the biggest name or the newest face. A cost breakdown runs alongside, so you can see what the performance was worth. The published post came out of exactly this, unchanged, and you can watch every take, including the ones that fell flat.</p>
+  <p class="role">Learning to operate the tool</p>
+  <img class="card-thumb" src="claude-guide/images/ClaudeGuideDashboardImage.jpeg" alt="">
+  <h2>Claude for Research — Learn to use the Stick</h2>
+  <p>Most chat tools are automatics; the most capable one asks you to drive. The guide teaches how to operate Claude deliberately, and why that reaches results one-shot prompting cannot.</p>
   <ul class="assets">
-    <li><a href="#">The chef post</a> — the published piece, plus the three-model comparison, drafts, and cost analysis behind it <span class="pending">[asset not yet sourced]</span></li>
+    <li><a href="claude-guide/WPP-S11-WHITEPAPER-v2.2.html">Claude for Research — Learn to use the Stick</a> — the full guide</li>
   </ul>
 </section>
 
