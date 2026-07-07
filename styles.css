@@ -304,27 +304,20 @@ body.reading-body{
 .article-nav .nav-link:hover{ color:var(--color-link); }
 .article-nav .nav-link.is-active{ color:var(--color-link); border-bottom-color:var(--color-underline); }
 
-/* --- card thumbnails (hub pages) — BURSBUILD-S05 ---
-   fixed height, natural width; very wide images clamp and crop sides (object-fit) */
-body.site-page .card-thumb{
-  float:right; height:96px; width:auto; max-width:45%;
-  object-fit:cover;
-  margin:0 0 var(--space-3) var(--space-4);
-  border:1px solid var(--color-border); border-radius:4px;
+/* --- media entries: image + text; stacked card on phones, split row >=720px — BURSBUILD-S05 ---
+   Text and image each own a grid cell: no floats, no text wrap under images.
+   Default: image right. .media-left: image left (hub pages). */
+body.site-page .media-entry{ display:grid; grid-template-columns:1fr; gap:var(--space-3); align-items:start; }
+body.site-page .card-media{
+  margin:0; display:block; overflow:hidden;
+  border:1px solid var(--color-border); border-radius:6px; background:#fff;
 }
+body.site-page .card-media img{ display:block; width:100%; aspect-ratio:3/2; object-fit:cover; }
+body.site-page .card-media svg{ display:block; width:100%; height:auto; }
+body.site-page .media-entry .card-body > :first-child{ margin-top:0; }
 @media (min-width:720px){
-  body.site-page .card-thumb{ height:130px; }
-}
-
-/* --- home-page figure (verification diagram → Method) — BURSBUILD-S05 --- */
-body.site-page .home-figure{
-  display:block; margin:var(--space-3) 0;
-  border:1px solid var(--color-border); border-radius:4px; background:#fff;
-}
-body.site-page .home-figure svg{ display:block; width:100%; height:auto; }
-@media (min-width:720px){
-  body.site-page .home-figure{
-    float:right; width:46%; max-width:360px;
-    margin:0 0 var(--space-3) var(--space-4);
-  }
+  body.site-page .media-entry{ grid-template-columns:1fr 280px; gap:var(--space-5); }
+  body.site-page .media-entry .card-media{ order:2; }
+  body.site-page .media-entry.media-left{ grid-template-columns:280px 1fr; }
+  body.site-page .media-entry.media-left .card-media{ order:0; }
 }
