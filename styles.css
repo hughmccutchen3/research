@@ -207,7 +207,7 @@ body.site-page .series li{
 body.site-page .series li+li{ margin-top:2px; }
 body.site-page .series .num{
   font-family:var(--font-heading); font-size:var(--text-micro); font-weight:var(--weight-bold);
-  letter-spacing:.08em; text-transform:uppercase; color:var(--brass-600);
+  letter-spacing:.08em; text-transform:uppercase; color:var(--brass-700);
   display:block; margin-bottom:2px;
 }
 body.site-page .series a{
