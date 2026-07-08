@@ -98,6 +98,32 @@ body.site-page .page{
   min-height:100vh;
 }
 
+/* ---------------------------------------------------------------------------
+   1b. ACCESSIBILITY  (RES-371 — global: applies to site pages AND papers)
+   --------------------------------------------------------------------------- */
+/* Skip link — first focusable element; off-canvas until keyboard-focused */
+.skip-link{
+  position:fixed; top:var(--space-3); left:var(--space-3); z-index:1000;
+  display:inline-flex; align-items:center; min-height:44px;
+  padding:0 var(--space-4);
+  font-family:var(--font-heading); font-size:var(--text-small); font-weight:var(--weight-bold);
+  color:var(--white); background:var(--brass-700);
+  border-radius:4px; text-decoration:none;
+  transform:translateY(-150%); transition:transform .15s ease;
+}
+.skip-link:focus{ transform:translateY(0); }
+
+/* Branded keyboard-focus ring (Regime A brass) on every interactive element */
+:focus-visible{ outline:3px solid var(--brass-500); outline-offset:2px; border-radius:2px; }
+
+/* Honor reduced-motion — neutralize transitions, animations, smooth scroll */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important; animation-iteration-count:1 !important;
+    transition-duration:.001ms !important; scroll-behavior:auto !important;
+  }
+}
+
 /* --- site header: wordmark + nav (mobile-first) --- */
 body.site-page .site-header{
   background:var(--color-surface);
@@ -196,9 +222,16 @@ body.site-page .series .s-sum{ font-size:var(--text-small); color:var(--color-te
 body.site-page footer{
   padding:var(--space-6) var(--gutter-mobile) var(--space-8);
   border-top:1px solid var(--color-border); background:var(--color-surface-alt);
-  font-family:var(--font-heading); font-size:var(--text-small); color:var(--color-text-subtle);
+  font-family:var(--font-heading); font-size:var(--text-small); color:var(--color-text-muted);
   letter-spacing:.02em;
 }
+
+/* footer contact link (RES-356) */
+body.site-page footer a{
+  color:var(--color-link); text-decoration:none;
+  border-bottom:1px solid var(--color-underline);
+}
+body.site-page footer a:hover{ color:var(--color-link-hover); border-bottom-color:var(--brass-600); }
 
 /* --- ≥720px enhancement (full mode) --- */
 @media (min-width:720px){
