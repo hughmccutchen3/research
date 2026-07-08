@@ -1,0 +1,515 @@
+<!-- HANDOFF
+target-path:      monthly-deck-guide/monthly-deck-guide.html
+content-class:    white-paper
+version:          v2.1 (BURSBUILD placement edits, see notes)
+source:           BURSFORGE-S01
+date:             2026-07-07
+
+-- REVIEW PACKET (where / what template / what's unique) --
+placement:        llm-leadership.html — "The working tool" entry (RES-347/RES-353). Wired
+                  BURSBUILD-S09 as a media-entry cluster with a card image
+                  (monthly-deck-guide/images/monthly-deck-card.jpg).
+                  Inbound link -> monthly-deck-guide/monthly-deck-guide.html.
+exemplar-modeled: claude-guide/WPP-S11-WHITEPAPER-v2.2.html
+unique-elements:  bespoke <style> (sanctioned white-paper exception — exemplar palette + .copy-block
+                  <pre> component, justified: readers copy exact text); TWO companion download files
+                  shipped alongside; SECTION-NAV opt-in (RES-313); part headings demoted h1->h2.section-title
+                  so the script picks them up; a .protip callout box (Hugh-directed, added at
+                  placement); NOW at second placement edit (BURSBUILD-S09): a closer <figure> at the
+                  end of "The idea" section, plus a real card-media image on the llm-leadership.html
+                  cluster — both sourced from the same "Monthly Slide Deck Image.jpg" Hugh supplied.
+nav-links:        ../ (index.html — exists on disk: yes) · /llm-leadership.html (exists on disk: yes)
+                  · ../section-nav.js (exists on disk: yes)
+                  · deck-skill.md + project-instructions.md (folder-relative downloads — placed
+                  alongside this file)
+assets:           monthly-deck-guide_deck-skill.md and monthly-deck-guide_project-instructions.md
+                  placed as monthly-deck-guide/deck-skill.md and monthly-deck-guide/project-instructions.md
+                  (plain text, no EXIF concerns). Two real image files added at second placement edit
+                  (BURSBUILD-S09): monthly-deck-guide/images/monthly-deck-closer.jpg (900x506, embedded
+                  as a closing figure in "The idea" section) and monthly-deck-guide/images/
+                  monthly-deck-card.jpg (864x576, 3:2 crop of the same source, used as the
+                  llm-leadership.html hub-card image). Source "Monthly Slide Deck Image.jpg"
+                  (1024x576, no EXIF present) supplied by Hugh directly into _incoming/. RES-354
+                  (og:image) still open for this page specifically — these two are in-paper/hub-card
+                  images, not an og:image.
+metadata:         title yes · meta description yes · og block yes (type/title/description/url;
+                  NO og:image — known gap RES-354, unresolved for this page)
+voice:            my-voice mode 2 framing; body substance is Hugh's v4 guide carried faithfully,
+                  genericized per Hugh's direction (2026-07-07); banned-patterns sweep run: yes
+self-check:       pass — styles.css linked not embedded (bespoke <style> flagged); real image files
+                  web-sized (<=900px long edge) and EXIF-free (source had none); full provenance
+                  block (white-paper class); links verified per nav-links; mobile inherited from
+                  exemplar CSS, .copy-block wraps on phone, .protip stacks full-width below 640px,
+                  new figure img is width:100% responsive; metadata + og present except og:image;
+                  keep-at-root: new folder, no moves/renames
+flags:            [VERIFY] v2.0 REFRAME is Hugh-directed but the execution is unreviewed: subtitle
+                  thesis (lead the strategy, delegate production) + genericization to any capable
+                  assistant (Claude as worked example; "roughly 90% carries" is Hugh's estimate,
+                  stated as such).
+                  [RESOLVED, BURSBUILD-S09] cross-tool equivalence table (Claude/ChatGPT/Copilot names)
+                  — web-verified this session, holds up as a map per the guide's own framing.
+                  [VERIFY] target-path mints NEW folder monthly-deck-guide/ (stable filename,
+                  RES-304 direction).
+                  [VERIFY] companion-download pattern (two .md files) is new for this site.
+                  Guide remains field-untested (no user feedback yet) — intro now says so
+                  explicitly ("run it and tell me what breaks").
+provenance:       Body: Claude Fable 5 (claude-fable-5) · v2.1 · 2026-07-07 · BURSFORGE-S01 ·
+                  Placement (protip, then closer figure + hub-card image): Claude Sonnet 5
+                  (claude-sonnet-5) · BURSBUILD-S09 · 2026-07-08
+notes:            v2.0 supersedes v1.0 (never intaken; v1.0 file stubbed SUPERSEDED in _incoming/).
+                  Changes per Hugh in-session (BURSFORGE-S01): (1) thesis corrected — the guide is
+                  for leaders who DIRECT the AI and LEAD the meeting's strategy, not the production;
+                  (2) written generically for any capable assistant, Claude kept as the worked example;
+                  (3) .pptx warning corrected (images degrade analysis, not "cannot read"); (4) copy
+                  blocks now also ship as downloadable files; (5) untested-design disclosure added.
+                  Copy-paste blocks remain functional text — do not re-wrap.
+                  PLACEMENT NOTE (BURSBUILD-S09, first edit): added a .protip callout box at the top
+                  of "The idea" section, right-floated on desktop, per Hugh's exact wording.
+                  PLACEMENT NOTE (BURSBUILD-S09, second edit): added a closer figure at the end of
+                  "The idea" section and a hub-card image on llm-leadership.html, both from the same
+                  Hugh-supplied source image, per his direction.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="../styles.css">
+<script src="../section-nav.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monthly Team Meeting Deck &#8212; An AI Setup Guide</title>
+<meta name="description" content="A one-time, twenty-minute AI setup for the monthly team-meeting deck: you lead the strategy of the meeting, the assistant handles the production. Built in Claude; most of it carries to ChatGPT or Copilot.">
+<link rel="canonical" href="https://burseraconsulting.com/monthly-deck-guide/monthly-deck-guide.html">
+<link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Monthly Team Meeting Deck — An AI Setup Guide">
+<meta property="og:description" content="Set up your AI assistant once, in about twenty minutes. After that it gathers the updates and drafts the slides while you decide what the meeting is actually about.">
+<meta property="og:url" content="https://burseraconsulting.com/monthly-deck-guide/monthly-deck-guide.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --blue:#4a5c6b;--blue-light:#7a9aad;--blue-pale:#e8edf0;
+  --gold:#8a6e3a;--gold-pale:#f2ede3;
+  --ink:#28303a;--bg:#f4f2ee;
+  --gray-dark:#28303a;--gray-mid:#8a7660;
+  --gray-light:#f4f2ee;--gray-rule:#d4c8b0;
+  --sonoran-sky:#a8c8d8;--caliche:#8a7660;
+  --col-w:760px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Source Serif 4',Georgia,serif;font-size:17px;line-height:1.75;color:var(--ink);background:var(--bg);}
+p{margin-bottom:16px;}p:last-child{margin-bottom:0;}
+.cover{background:var(--blue);color:#fff;padding:80px 40px 60px;text-align:center;}
+.cover h1{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(32px,5vw,56px);font-weight:700;line-height:1.1;margin-bottom:16px;}
+.cover .subtitle{font-size:18px;color:rgba(168,200,216,0.95);font-style:italic;margin-bottom:40px;max-width:620px;margin-left:auto;margin-right:auto;}
+.cover .meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--sonoran-sky);letter-spacing:1px;}
+.section{max-width:var(--col-w);margin:0 auto;padding:56px 24px;border-bottom:1px solid var(--gray-rule);}
+h1.section-title,h2.section-title{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(24px,3.5vw,36px);font-weight:700;color:var(--blue);line-height:1.2;padding-bottom:12px;border-bottom:3px solid var(--blue);margin-bottom:28px;}
+h2.subsection{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:20px;font-weight:600;color:var(--gray-dark);margin:36px 0 16px;}
+h3.optional-step{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:17px;font-weight:600;color:var(--caliche);margin:28px 0 12px;}
+.eyebrow-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--blue-light);margin-bottom:12px;display:block;}
+.callout{border-left:4px solid var(--blue-light);background:var(--blue-pale);padding:18px 22px;margin:24px 0;font-size:15.5px;color:var(--gray-dark);border-radius:0 4px 4px 0;}
+.callout.gold{border-left-color:var(--gold);background:var(--gold-pale);}
+.callout .callout-title{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--gold);}
+.callout ul{margin:8px 0 0 20px;}
+.callout ul li{margin-bottom:6px;}
+.copy-block{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.6;background:#fff;border:1px solid var(--gray-rule);border-left:4px solid var(--blue);border-radius:0 4px 4px 0;padding:18px 22px;margin:24px 0;white-space:pre-wrap;overflow-x:auto;color:var(--gray-dark);}
+.copy-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--blue-light);margin:24px 0 -16px;display:block;}
+.download-line{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:14px;margin:-8px 0 24px;}
+.download-line a{color:var(--blue);font-weight:600;}
+.section ul.plain{margin:16px 0 16px 24px;}
+.section ul.plain li{margin-bottom:8px;}
+.table-wrap{overflow-x:auto;margin:24px 0;}
+table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.5;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;}
+thead th{background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.5px;padding:10px 12px;text-align:left;font-weight:600;}
+tbody tr{background:#fff;}
+tbody tr:nth-child(even){background:var(--gray-light);}
+tbody td{color:var(--gray-dark);padding:9px 12px;border-bottom:1px solid #e0e0e0;vertical-align:top;}
+tbody td:first-child{font-weight:600;color:var(--blue);}
+figure{margin:32px 0;}
+figure img{width:100%;height:auto;border:1px solid var(--gray-rule);border-radius:6px;display:block;}
+figcaption{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--caliche);letter-spacing:0.5px;margin-top:10px;text-align:center;}
+.conclusion-section{background:var(--blue);color:#fff;max-width:100%;padding:80px 40px;}
+.conclusion-section .conclusion-inner{max-width:var(--col-w);margin:0 auto;}
+.conclusion-section .eyebrow-label{color:var(--sonoran-sky);font-size:11px;letter-spacing:4px;}
+.conclusion-section h1.section-title,.conclusion-section h2.section-title{color:#fff;border-bottom-color:var(--sonoran-sky);}
+.conclusion-section p{color:rgba(255,255,255,0.92);}
+.ending{margin-top:40px;padding-top:28px;border-top:1px solid rgba(168,200,216,0.4);}
+.ending p{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:19px;font-weight:600;color:#fff;margin-bottom:6px;line-height:1.5;}
+.provenance{background:#f0efec;border-top:3px solid var(--caliche);padding:40px 24px;max-width:var(--col-w);margin:0 auto;}
+.provenance h2{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--caliche);margin-bottom:20px;}
+.prov-row{display:grid;grid-template-columns:160px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--gray-rule);font-size:13px;}
+.prov-row:last-child{border-bottom:none;}
+.prov-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--caliche);padding-top:2px;}
+.prov-value{color:#444;line-height:1.6;}
+.protip{background:var(--gold-pale);border:1px solid var(--gold);border-radius:6px;padding:14px 16px;margin:0 0 24px;font-size:13px;line-height:1.55;color:var(--gray-dark);}
+.protip .protip-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px;font-weight:700;}
+@media (min-width:640px){
+  .protip{float:right;width:220px;margin:0 0 20px 28px;}
+  .section::after{content:"";display:table;clear:both;}
+}
+</style>
+</head>
+<body>
+<nav class="paper-bar">
+  <a class="paper-bar__brand" href="../">Bursera <span>Consulting</span></a>
+  <a class="paper-bar__back" href="/llm-leadership.html">← LLM Leadership</a>
+</nav>
+<nav class="article-nav" data-section-nav></nav>
+
+  <div class="cover">
+    <h1>Monthly Team Meeting Deck</h1>
+    <div class="subtitle"><em>An AI setup guide for leaders who want to lead the meeting&#8217;s strategy &#8212; and direct the AI through the production</em></div>
+    <div class="meta">Hugh McCutchen &middot; v2.1 &middot; July 2026 &middot; ~20-minute setup</div>
+  </div>
+
+  <!-- WHY THIS GUIDE -->
+  <div class="section">
+    <span class="eyebrow-label">The idea</span>
+    <h2 class="section-title" id="idea" data-nav-label="The idea">Lead the meeting. Delegate the production.</h2>
+
+    <div class="protip">
+      <span class="protip-label">Pro tip</span>
+      Save this file as HTML and paste it into an empty chat thread in a fresh project. Tell your chat tool to use it to guide you through setup of your Monthly Report Builder project. Tell it to ask you for what is needed and to help you refine and customize the project to meet your needs.
+    </div>
+
+    <p>The first time most people use an AI assistant for a team presentation, the reaction is the same: it found the content, organized it, and produced something close to usable &#8212; faster than expected. That moment is the baseline, not the ceiling.</p>
+
+    <p>The step that separates occasional users from people who get consistent value is leading the work rather than just starting it. A capable assistant is genuinely strong at collecting information across email and documents, synthesizing what is relevant, and turning it into structured, readable output. What it cannot supply on its own is the strategy of the meeting &#8212; what the story is this month, what your team needs to hear, what decision the room has to make. That is leadership work, and it stays with you. The files and details that support it are production work, and that is what you delegate.</p>
+
+    <p>This guide builds that division in. It sets up a workspace that carries your template, your process, and optionally your writing style forward from one session to the next. You direct. The assistant produces.</p>
+
+    <p>I built and run this in Claude, so Claude is the worked example throughout. Most of it &#8212; my estimate is 90% &#8212; carries to ChatGPT or Microsoft Copilot with small adaptations; the table below maps the terms. And an honest disclosure: I designed this for a colleague and it has not yet been through months of field use. Run it and tell me what breaks.</p>
+
+    <h2 class="subsection">The same idea in each tool</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Concept in this guide</th><th>Claude</th><th>ChatGPT</th><th>Microsoft Copilot</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Workspace that persists across sessions</td><td>Project</td><td>Project</td><td>Notebook / agent, by plan</td></tr>
+          <tr><td>Standing instructions field</td><td>Project instructions</td><td>Project instructions</td><td>Agent instructions</td></tr>
+          <tr><td>Attached reference files</td><td>Project files</td><td>Project files</td><td>Grounding files</td></tr>
+          <tr><td>Email / document search</td><td>Connectors</td><td>Connectors</td><td>Microsoft Graph (built in)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Names move fast in these products; treat the table as a map, not a spec, and check your tool&#8217;s current documentation. The process in this guide is the part that transfers.</p>
+
+    <h2 class="subsection">This guide gives you three things</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Part</th><th>What it is</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Part 1</td><td>Setup Guide &#8212; a one-time checklist to get your workspace configured.</td></tr>
+          <tr><td>Part 2</td><td>Workspace Instructions &#8212; a short block you paste into the instructions field. Acts as a router. Stays small so you have room to add more skills later.</td></tr>
+          <tr><td>Part 3</td><td>Deck Skill File &#8212; the full process spec. Save this as a file and attach it to the workspace. The assistant loads it when you ask for a deck.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout gold">
+      <span class="callout-title">Why three parts?</span>
+      Instructions fields have size limits &#8212; in every one of these tools. Put the full process there and you will hit the ceiling, especially once you add a second skill. The fix: keep the instructions field short and use it as a router. The real spec lives in an attached file, where there is no limit.
+    </div>
+
+    <h2 class="subsection">How to use this guide</h2>
+
+    <ul class="plain">
+      <li>Read Part 1 and follow the setup steps once.</li>
+      <li>Copy Part 2 into your workspace instructions field exactly as written.</li>
+      <li>Copy Part 3 into a plain text file, name it <strong>DeckSkill.md</strong>, attach it to the workspace. (Both are also downloadable below.)</li>
+      <li>Optional steps are marked. Skip them and the system still works. Do them and the deck sounds like you.</li>
+    </ul>
+
+    <figure>
+      <img src="images/monthly-deck-closer.jpg" alt="A monthly team meeting deck in progress, built from the workspace setup this guide describes.">
+      <figcaption>YOU LEAD THE STRATEGY. THE ASSISTANT HANDLES THE PRODUCTION.</figcaption>
+    </figure>
+  </div>
+
+  <!-- PART 1 -->
+  <div class="section">
+    <span class="eyebrow-label">Part One</span>
+    <h2 class="section-title" id="setup" data-nav-label="Setup">Setup Guide &#8212; do this once, about 20 minutes</h2>
+
+    <h2 class="subsection">Step 1 &#8212; Create a workspace</h2>
+
+    <p>In your assistant, create a new project (Claude or ChatGPT) or the equivalent persistent workspace in your tool. Name it something clear:</p>
+
+    <div class="copy-block">Team Communication
+  — or —
+[Your Team Name] Decks and Updates</div>
+
+    <p>All your monthly deck work &#8212; and any future communication skills &#8212; lives here. The workspace stores your instructions and reference files so the assistant carries context into every new session automatically.</p>
+
+    <h2 class="subsection">Step 2 &#8212; Add the instructions</h2>
+
+    <p>Open the workspace settings and paste in the text from Part 2 exactly as written. About ten lines. It tells the assistant that skill files are how this workspace works and where to look for them.</p>
+
+    <p>Do not put the full deck process in the instructions field. That goes in a file &#8212; see Step 3.</p>
+
+    <h2 class="subsection">Step 3 &#8212; Create and attach the Deck Skill File</h2>
+
+    <p>Part 3 is the full deck process in plain text. Copy it into any plain text editor &#8212; Notepad, TextEdit, Notes &#8212; or use the download link under the block. Fill in the four fields in brackets:</p>
+
+    <ul class="plain">
+      <li>Your title</li>
+      <li>Your team name, size, and function</li>
+      <li>Who is in the room for these meetings</li>
+      <li>Two to four standing themes your team cares about year-round</li>
+    </ul>
+
+    <p>Save the file as <strong>DeckSkill.md</strong> and attach it to your workspace. A capable assistant finds it by description &#8212; you do not need to name it precisely each session.</p>
+
+    <h2 class="subsection">Step 4 &#8212; Create a slide template reference</h2>
+
+    <p>Start a new chat thread inside the workspace. Say:</p>
+
+    <div class="copy-block">I want to create a reference description of my standard slide template.
+Ask me questions about my format — colors, fonts, section layout, title
+style, and visual conventions — and produce a plain text description
+I can save as a reference file.</div>
+
+    <p>Save the output as a plain text file and attach it to the workspace. Name it something obvious.</p>
+
+    <h3 class="optional-step">OPTIONAL &#8212; Step 4a: Build your writing style guide</h3>
+
+    <p>This step makes the deck sound like you wrote it. Skip it and the output will be clean and professional. Do it and the deck will carry your own craft and voice.</p>
+
+    <p><strong>What this does.</strong> The assistant analyzes slides you have already made and extracts a personal style guide: how you title things, how much text you put on a slide, how you structure an argument, what your native diagram patterns look like. That file goes into your workspace and the assistant refers to it every session.</p>
+
+    <p><strong>What you need.</strong> Ten to twenty slides that honestly represent how you communicate. Variety beats polish. Slides from different decks are fine.</p>
+
+    <div class="callout gold">
+      <span class="callout-title">Warnings</span>
+      <ul>
+        <li>Use native .pptx files, not PDFs, JPGs, or screenshots. The assistant reads text and diagram structure directly from a .pptx; images of slides degrade the analysis.</li>
+        <li>Remove anything confidential. The content does not matter &#8212; the writing patterns do.</li>
+        <li>You can pull from multiple decks. Combine into one file or attach up to three or four source files.</li>
+      </ul>
+    </div>
+
+    <p><strong>The session &#8212; do this once in a new thread.</strong> Start a new thread inside the workspace. Attach your sample slides. Say:</p>
+
+    <div class="copy-block">I want to build a writing style guide for my PowerPoint decks.
+I'm attaching slides that represent how I like to communicate.
+Analyze them and produce a style guide I can save to my workspace.</div>
+
+    <p>The assistant reads your slides, then asks a few questions about choices you made. That conversation is where your intent gets captured. Save the result as a plain text file and attach it to the workspace.</p>
+
+    <p>Update it over time. After a few sessions you will notice things it missed. Start a thread, paste the relevant section, say update this.</p>
+
+    <h2 class="subsection">Step 5 &#8212; Start your first deck session</h2>
+
+    <p>Start a new chat thread inside the workspace &#8212; one thread per meeting, no exceptions. Say:</p>
+
+    <div class="copy-block">I want to work on my monthly deck for [month]. Let's start.</div>
+
+    <p>The assistant finds the deck skill file, loads the process, and walks you through it step by step. Attach any month-specific files directly in the thread.</p>
+
+    <div class="callout gold">
+      <span class="callout-title">Warnings</span>
+      <ul>
+        <li>Do not attach PDFs, PPT files, or images to the workspace. Attach month-specific files to the thread that needs them.</li>
+        <li>If you have a lot of source material, paste key excerpts rather than attaching large files.</li>
+        <li>One thread per meeting. Do not reuse a thread across months.</li>
+        <li>Do not load dozens of files into the workspace. Only attach things with long-term usefulness in plain text format.</li>
+      </ul>
+    </div>
+
+    <div class="callout">
+      <span class="callout-title" style="color:var(--blue-light)">Adding more skills later</span>
+      When you want help with a different kind of communication &#8212; a boss report, a skip-level prep, a board update &#8212; add a new skill file using the same pattern: write the process as plain text, save as a .md file, attach to the workspace. The instructions already route requests to the right skill file. Nothing else to update.
+    </div>
+  </div>
+
+  <!-- PART 2 -->
+  <div class="section">
+    <span class="eyebrow-label">Part Two</span>
+    <h2 class="section-title" id="instructions" data-nav-label="Instructions">Workspace Instructions &#8212; paste exactly as written</h2>
+
+    <p>This is a router, not a spec. About ten lines. Do not add to it or reformat it.</p>
+
+    <span class="copy-label">Paste into your workspace instructions field</span>
+    <div class="copy-block">This project supports team communication work. Available skills:
+
+- Monthly team meeting deck: load the deck skill file attached
+  to this project and follow its process.
+
+When the user names a task, find the matching skill file in the
+project files and load it. The skill file contains all instructions,
+sources, and process steps.
+
+If no matching skill file exists for what the user wants to do,
+say so and ask them to add the right file to the project.</div>
+    <p class="download-line">Download: <a href="project-instructions.md" download>project-instructions.md</a></p>
+  </div>
+
+  <!-- PART 3 -->
+  <div class="section">
+    <span class="eyebrow-label">Part Three</span>
+    <h2 class="section-title" id="deck-skill" data-nav-label="Deck skill">Deck Skill File &#8212; save as DeckSkill.md</h2>
+
+    <p>Copy everything below into a plain text editor, or download the ready-made file. Fill in the four fields in brackets. Save as <strong>DeckSkill.md</strong>. Attach to your workspace. Plain text only &#8212; no formatting.</p>
+
+    <span class="copy-label">DeckSkill.md &#8212; full contents</span>
+    <div class="copy-block">SKILL: Monthly Team Meeting Deck
+
+PURPOSE
+Help me build a PowerPoint deck for my monthly team meeting.
+I own the story and what gets included. You find the content,
+write the copy, and produce the formatted output.
+
+ABOUT ME AND MY TEAM
+Fill in these fields when you set up your project:
+  My role:         [your title]
+  My team:         [team name, size, function]
+  Audience:        [who is in the room - direct reports, leadership, etc.]
+  Standing themes: [2-4 topics your team cares about year-round]
+
+REFERENCE FILES
+This project may have reference files attached. Look for them and
+use what you find - do not require an exact filename match:
+
+  Template file: A file describing my slide template - colors, fonts,
+  section layout, title conventions. Use it to format every slide
+  consistently. If you do not find one, ask me before generating slides.
+
+  Style guide: A file describing how I write slides - text density,
+  argument structure, tone, and what I avoid. If you find one, apply
+  it to all copy. If you do not find one, use clean professional
+  defaults and note that the optional style guide setup is available.
+
+SOURCES - search all three, in this order
+  1. Email - last 45 days. Emails to/from my team and from
+     leadership to me. Flag wins, risks, and leadership priorities.
+  2. Documents - files I have worked on related to my topics, updated
+     in the last 45 days.
+  3. My input - after searching, ask what else I want to add.
+
+SLIDE STRUCTURE (default - I may adjust each month)
+  1. Agenda
+  2. Company / Leadership Updates
+  3. Team / Department Updates
+  4. Wins and High Fives
+  5. Anniversaries and New Hires
+  6. Meaty Topic 1
+  7. Meaty Topic 2
+  8. Meaty Topic 3 (drop if not needed)
+
+MEATY TOPIC STANDARD
+Every substantive topic slide must include:
+  - SO WHAT: one sentence on why this matters
+  - Revenue connection: name it if it exists; say so briefly if not
+  - Required actions: action / owner / deadline
+  - Decision needed: call it out if the team must decide something
+
+PROCESS - follow in order, do not skip steps
+
+  Step 1 - Get the basics
+  Ask for the meeting date and the 2-4 topics I want to cover.
+
+  Step 2 - Research
+  Search email and documents. Present a brief summary - what you
+  found, what looks relevant, what you recommend including.
+  One short paragraph per topic. Not a data dump.
+
+  Step 3 - Story gate (do not skip)
+  Ask me: for each topic, what is the headline the team should
+  walk away with? I set the story. Do not infer from sources.
+
+  Step 4 - Meaty topic detail
+  For each meaty topic, ask me to confirm or add:
+    - the SO WHAT
+    - supporting data or talking points not found in sources
+    - who owns the action items
+
+  Step 5 - Draft outline
+  Present a one-line-per-slide outline for my approval.
+  Wait for confirmation before writing any slide copy.
+
+  Step 6 - Generate the deck
+  Build the full .pptx from the approved outline.
+  Use the template if one is attached to this project.
+  Name the file: [TeamName]_MonthlyDeck_[YYYY-MM].pptx
+
+  Step 7 - Handoff
+  Present the file. Tell me what to verify before the meeting
+  and whether anything looked important but did not make the cut.</div>
+    <p class="download-line">Download: <a href="deck-skill.md" download="DeckSkill.md">deck-skill.md</a></p>
+  </div>
+
+  <!-- QUICK REFERENCE + CLOSE -->
+  <div class="conclusion-section">
+    <div class="conclusion-inner">
+      <span class="eyebrow-label">Quick Reference</span>
+      <h2 class="section-title" id="quick-reference" data-nav-label="Quick reference">Once, then monthly</h2>
+
+      <p>What you set up once:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Piece</th><th>What it does</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Workspace</td><td>Created in your assistant. Holds all your team communication work.</td></tr>
+            <tr><td>Instructions</td><td>Short router block from Part 2. Paste once, never touch again.</td></tr>
+            <tr><td>DeckSkill.md</td><td>Full process from Part 3. Edit when your process evolves.</td></tr>
+            <tr><td>Template reference</td><td>Plain text description of your slide format. Attached to workspace.</td></tr>
+            <tr><td>Style guide</td><td>Optional. Your writing patterns as a plain text file. Attached to workspace.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>What you do each month:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Move</th><th>The rule</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>New thread</td><td>One per meeting. Never reuse.</td></tr>
+            <tr><td>Name your task</td><td>Tell the assistant you want to work on this month&#8217;s deck.</td></tr>
+            <tr><td>Attach files</td><td>In the thread, not the workspace.</td></tr>
+            <tr><td>Own the story</td><td>Step 3 is yours. The assistant does not infer the headline &#8212; you set it.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ending">
+        <p>The assistant finds and writes. You lead the meeting.</p>
+        <p>The story gate in Step 3 is where that boundary holds &#8212; never skip it.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROVENANCE -->
+  <div class="provenance">
+    <h2>Provenance</h2>
+    <div class="prov-row"><span class="prov-label">Model</span><span class="prov-value">Claude Sonnet 4.6 (source guide v1&ndash;v4, 2026-06-19) &middot; Claude Fable 5 (claude-fable-5) &middot; Medium (web editions v1.0&ndash;v2.0, 2026-07-07) &middot; Claude Sonnet 5 (claude-sonnet-5) &middot; placement, Pro Tip callout, closer figure + hub-card image (BURSBUILD-S09, 2026-07-08)</span></div>
+    <div class="prov-row"><span class="prov-label">Version</span><span class="prov-value">v2.1 &middot; HTML &middot; July 2026 (placement edits, BURSBUILD-S09)</span></div>
+    <div class="prov-row"><span class="prov-label">Session</span><span class="prov-value">BURSFORGE-S01 &middot; 2026-07-07 &middot; source guide authored 2026-06-19 &middot; placed + edited BURSBUILD-S09 &middot; 2026-07-08</span></div>
+    <div class="prov-row"><span class="prov-label">Audience</span><span class="prov-value">Business leader using any capable AI assistant for monthly team decks &#8212; built in Claude, adaptable to ChatGPT and Microsoft Copilot; new or occasional AI user with email and document access</span></div>
+    <div class="prov-row"><span class="prov-label">Sources</span><span class="prov-value">Google Doc MonthlyDeckGuide_v4 (v4.0, 2026-06-19, read in full per RES-314); Hugh&#8217;s v2.0 direction in-session (2026-07-07): strategy-not-production thesis, genericize across assistants; Linear RES-347 (build ticket), RES-353 (placement); white-paper structural exemplar claude-guide/WPP-S11-WHITEPAPER-v2.2.html; "Monthly Slide Deck Image.jpg" supplied by Hugh at placement (BURSBUILD-S09)</span></div>
+    <div class="prov-row"><span class="prov-label">Decision / Action</span><span class="prov-value">v2.0 reframe per Hugh: the guide is for leaders who direct the AI and lead the meeting&#8217;s strategy while delegating production; rewritten generically for any capable assistant with Claude as the worked example and a cross-tool term map; .pptx warning corrected (images degrade analysis, not &#8220;cannot read&#8221;); Part 2/3 blocks now also ship as downloadable files; untested-design disclosure added to the intro. At placement (BURSBUILD-S09): added a Pro Tip callout box; then a closer figure ending "The idea" section, plus a 3:2-cropped hub-card image on llm-leadership.html, both sourced from the same Hugh-supplied photo.</span></div>
+    <div class="prov-row"><span class="prov-label">Iteration notes</span><span class="prov-value">v2.1: section-nav added (RES-313 opt-in; part headings to h2.section-title); quick-reference tables made readable on the dark band (solid row backgrounds, explicit ink); row-hover highlight removed. v2.0: Hugh-directed reframe (subtitle thesis, genericization, downloads, accuracy fixes). v1.0 (web): first HTML edition, from source v4.0. Placement (BURSBUILD-S09, same v2.1): Pro Tip callout added, then a closer figure + hub-card image in a second edit; body text otherwise byte-faithful to the BURSFORGE submission throughout.</span></div>
+    <div class="prov-row"><span class="prov-label">Assumptions</span><span class="prov-value">Reader has email and document access wired to their assistant. Cross-tool equivalence table reflects product naming as of mid-2026 and is labeled a map, not a spec; &#8220;roughly 90% carries&#8221; is the author&#8217;s estimate. The 45-day lookback and the default slide structure are starting points, not prescriptions.</span></div>
+    <div class="prov-row"><span class="prov-label">Scope exclusions</span><span class="prov-value">og:image still not added for this page (RES-354 open here specifically); boss report and other skill variations; per-tool setup walkthroughs for ChatGPT and Copilot (term map only); slide design guidance beyond the template-reference step; troubleshooting/failure paths (deferred &#8212; wants field data first).</span></div>
+    <div class="prov-row"><span class="prov-label">Tool chain</span><span class="prov-value">Google Drive read (source doc); file tools + shell placement (RES-315 drill); my-voice v3.1 (mode 2, banned-patterns sweep); provenance skill; PIL (image crop/resize)</span></div>
+    <div class="prov-row"><span class="prov-label">Review status</span><span class="prov-value">v2.1 &#8212; placed BURSBUILD-S09; cross-tool terms web-verified (holds up); Pro Tip callout + closer figure + hub-card image added; awaiting Hugh review before deploy.bat</span></div>
+  </div>
+
+</body>
+</html>

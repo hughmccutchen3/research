@@ -1,0 +1,397 @@
+<!-- HANDOFF
+target-path:      the-chef-post/the-chef-post.html
+content-class:    white-paper
+version:          v1.2 (BURSBUILD placement edits, see notes)
+source:           BURSFORGE-S01
+date:             2026-07-07
+
+-- REVIEW PACKET (where / what template / what's unique) --
+placement:        llm-leadership.html — NEW cluster (RES-353), role label "The method, demonstrated",
+                  heading "Watch the method work"; wired BURSBUILD-S09 as a media-entry cluster with
+                  a card image (writer-chef-card.jpg). Inbound link -> the-chef-post/the-chef-post.html.
+exemplar-modeled: claude-guide/WPP-S11-WHITEPAPER-v2.2.html
+unique-elements:  bespoke <style> (sanctioned white-paper exception — exemplar palette, plus a
+                  .post-card component that sets the published LinkedIn post apart from the
+                  commentary around it, justified: the paper's subject IS that post); no new nav
+                  entry; section-nav opt-in (RES-313); part headings demoted h1->h2.section-title
+                  for the script.
+nav-links:        ../ (index.html — exists on disk: yes) · /llm-leadership.html (exists on disk: yes)
+                  · ../section-nav.js (exists on disk: yes)
+assets:           Two SVG figures inlined at placement (BURSBUILD-S09, first edit): "Three models,
+                  one kitchen" (Part Two) and "The writer as head chef" (Part One), supplied by Hugh
+                  directly, SVG per his direction (PNG kept for reference only).
+                  SECOND edit (BURSBUILD-S09, same session): two real image files added —
+                  the-chef-post/images/the-chef-post-og.jpg (905x928, bordered crop of the "Fable 5 ·
+                  Low" green card, used as og:image) and the-chef-post/images/writer-chef-card.jpg
+                  (928x628, bordered crop of the "writer — head chef" gold box + title, used as the
+                  hub-card image on llm-leadership.html). Both cropped from the source PNGs Hugh
+                  supplied, framed to Hugh's direction, bordered in var(--gray-rule) (the site's own
+                  figure-border token) so each reads as a deliberate fragment, not the full diagram.
+                  Hub-card image was cropped a second time to exactly 3:2 (before bordering) to match
+                  the site's fixed .card-media aspect-ratio CSS — same visual content, tightened
+                  horizontally so the browser's object-fit:cover doesn't uncontrolled-crop it.
+metadata:         title yes · meta description yes · og block yes (type/title/description/url;
+                  og:image ADDED at placement: the-chef-post-og.jpg, 905x928, with og:image:width/
+                  height declared since the crop is a near-square fragment rather than the 1.91:1
+                  og standard — width/height meta lets platforms that respect it avoid a blind crop)
+voice:            my-voice mode 2 for framing; the published post and Hugh's transcript quotes
+                  carried verbatim (quoted-source exemption); banned-patterns sweep run: yes
+self-check:       pass — styles.css linked not embedded; two inline SVG figures + two real JPEG
+                  files (images/, web-sized, EXIF-free since generated fresh from PNG crops, not
+                  camera originals); full provenance block present (white-paper class); both links
+                  exist on disk; mobile inherited from exemplar CSS; metadata + og present including
+                  og:image; keep-at-root: new folder, no moves/renames
+flags:            [VERIFY] SHAPE — RES-346 records Hugh's framing as unresolved (one piece vs
+                  story/bake-off split). Ships as ONE piece per the v0.8 reference cluster. Reject
+                  back if the split is wanted.
+                  [VERIFY] target-path mints a NEW folder the-chef-post/ (RES-304 direction).
+                  [RESOLVED, BURSBUILD-S09] imagery — Hugh supplied both diagrams; in-page SVGs
+                  placed, og:image + hub-card crops placed. RES-354 (og:image) now closed for this
+                  page.
+                  [VERIFY] cost figures are browser-extension estimates, labeled as such; official
+                  rates cited with the intro-pricing sunset (Aug 31, 2026).
+provenance:       Body: Claude Fable 5 (claude-fable-5) · v1.2 · 2026-07-07 · BURSFORGE-S01 ·
+                  Placement (SVG figures, then og:image + hub-card crops): Claude Sonnet 5
+                  (claude-sonnet-5) · BURSBUILD-S09 · 2026-07-08
+notes:            Source asset read in full per RES-314: Google Doc "Linked-in Chef story -
+                  3 models help" (doc id 1QgGazqAn2w6eJJRS1WN0GEMpyK4MatnSPZuSu4Ybp5o, ~16.8K
+                  words, full three-thread transcript). The published post is carried verbatim,
+                  including its "The chef's seat used to be closed" emphasis (source used
+                  LinkedIn bold glyphs; rendered here as <strong>). The "cheapest cook won"
+                  framing from the transcript was corrected in-source to "the most expensive
+                  model on its cheapest setting won" — this paper uses the corrected version.
+                  v1.1: post body replaced with the PUBLISHED final supplied by Hugh in-session
+                  (2026-07-07) — it is NOT in the Google Doc transcript. Duplicated old-close
+                  paste residue dropped; <strong> kept on "The chef's seat used to be closed"
+                  per the published bold glyphs [VERIFY both].
+                  PLACEMENT NOTES (BURSBUILD-S09): (1) body text unchanged from v1.2 as submitted
+                  except the two inline SVG figures; (2) og:image + hub-card image added in a
+                  second pass this session, both cropped to Hugh's specification (Fable green card
+                  only; "top middle third" of the other diagram = title + writer/chef gold box),
+                  bordered in var(--gray-rule). Recorded here and in the release-back addendum to
+                  BURSFORGE.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="../styles.css">
+<script src="../section-nav.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Chef Post &#8212; and the Three-Model Bake-Off Behind It</title>
+<meta name="description" content="One brief, three Claude models, one palate. The published chef post, the parallel-thread bake-off that produced it, and what each model actually cost.">
+<link rel="canonical" href="https://burseraconsulting.com/the-chef-post/the-chef-post.html">
+<link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Chef Post — and the Three-Model Bake-Off Behind It">
+<meta property="og:description" content="The same prompts, run in three parallel Claude threads. The published post, every take behind it, and the cost breakdown — the method, demonstrated.">
+<meta property="og:url" content="https://burseraconsulting.com/the-chef-post/the-chef-post.html">
+<meta property="og:image" content="https://burseraconsulting.com/the-chef-post/images/the-chef-post-og.jpg">
+<meta property="og:image:width" content="905">
+<meta property="og:image:height" content="928">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --blue:#4a5c6b;--blue-light:#7a9aad;--blue-pale:#e8edf0;
+  --gold:#8a6e3a;--gold-pale:#f2ede3;
+  --ink:#28303a;--bg:#f4f2ee;
+  --gray-dark:#28303a;--gray-mid:#8a7660;
+  --gray-light:#f4f2ee;--gray-rule:#d4c8b0;
+  --sonoran-sky:#a8c8d8;--caliche:#8a7660;
+  --col-w:760px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Source Serif 4',Georgia,serif;font-size:17px;line-height:1.75;color:var(--ink);background:var(--bg);}
+p{margin-bottom:16px;}p:last-child{margin-bottom:0;}
+.cover{background:var(--blue);color:#fff;padding:80px 40px 60px;text-align:center;}
+.cover h1{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(32px,5vw,56px);font-weight:700;line-height:1.1;margin-bottom:16px;}
+.cover .subtitle{font-size:18px;color:rgba(168,200,216,0.95);font-style:italic;margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto;}
+.cover .meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--sonoran-sky);letter-spacing:1px;}
+.section{max-width:var(--col-w);margin:0 auto;padding:56px 24px;border-bottom:1px solid var(--gray-rule);}
+h1.section-title,h2.section-title{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(24px,3.5vw,36px);font-weight:700;color:var(--blue);line-height:1.2;padding-bottom:12px;border-bottom:3px solid var(--blue);margin-bottom:28px;}
+h2.subsection{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:20px;font-weight:600;color:var(--gray-dark);margin:36px 0 16px;}
+.eyebrow-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--blue-light);margin-bottom:12px;display:block;}
+.callout{border-left:4px solid var(--blue-light);background:var(--blue-pale);padding:18px 22px;margin:24px 0;font-size:15.5px;color:var(--gray-dark);border-radius:0 4px 4px 0;}
+.callout.gold{border-left-color:var(--gold);background:var(--gold-pale);}
+.post-card{background:#fff;border:1px solid var(--gray-rule);border-top:4px solid var(--gold);border-radius:4px;padding:36px 32px;margin:32px 0;}
+.post-card .post-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:20px;}
+.post-card p{font-size:16.5px;}
+.table-wrap{overflow-x:auto;margin:24px 0;}
+table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.5;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;}
+thead th{background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.5px;padding:10px 12px;text-align:left;font-weight:600;}
+tbody tr{background:#fff;}
+tbody tr:nth-child(even){background:var(--gray-light);}
+tbody td{color:var(--gray-dark);padding:9px 12px;border-bottom:1px solid #e0e0e0;vertical-align:top;}
+tbody td:first-child{font-weight:600;color:var(--blue);white-space:nowrap;}
+figure{margin:32px 0;}
+figure svg{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--gray-rule);border-radius:6px;padding:8px;}
+figcaption{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--caliche);letter-spacing:0.5px;margin-top:10px;text-align:center;}
+.conclusion-section{background:var(--blue);color:#fff;max-width:100%;padding:80px 40px;}
+.conclusion-section .conclusion-inner{max-width:var(--col-w);margin:0 auto;}
+.conclusion-section .eyebrow-label{color:var(--sonoran-sky);font-size:11px;letter-spacing:4px;}
+.conclusion-section h1.section-title,.conclusion-section h2.section-title{color:#fff;border-bottom-color:var(--sonoran-sky);}
+.conclusion-section p{color:rgba(255,255,255,0.92);}
+.ending{margin-top:40px;padding-top:28px;border-top:1px solid rgba(168,200,216,0.4);}
+.ending p{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:19px;font-weight:600;color:#fff;margin-bottom:6px;line-height:1.5;}
+.provenance{background:#f0efec;border-top:3px solid var(--caliche);padding:40px 24px;max-width:var(--col-w);margin:0 auto;}
+.provenance h2{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--caliche);margin-bottom:20px;}
+.prov-row{display:grid;grid-template-columns:160px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--gray-rule);font-size:13px;}
+.prov-row:last-child{border-bottom:none;}
+.prov-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--caliche);padding-top:2px;}
+.prov-value{color:#444;line-height:1.6;}
+</style>
+</head>
+<body>
+<nav class="paper-bar">
+  <a class="paper-bar__brand" href="../">Bursera <span>Consulting</span></a>
+  <a class="paper-bar__back" href="/llm-leadership.html">← LLM Leadership</a>
+</nav>
+<nav class="article-nav" data-section-nav></nav>
+
+  <div class="cover">
+    <h1>The Chef Post</h1>
+    <div class="subtitle"><em>One brief, three models, one palate &#8212; the published piece and the bake-off behind it</em></div>
+    <div class="meta">Hugh McCutchen &middot; v1.2 &middot; July 2026</div>
+  </div>
+
+  <!-- PART ONE — THE POST -->
+  <div class="section">
+    <span class="eyebrow-label">Part One</span>
+    <h2 class="section-title" id="post" data-nav-label="The post">The published post</h2>
+
+    <p>In July 2026 I published a LinkedIn post about how I actually work with an LLM. What most readers didn&#8217;t see is how the post itself was made: I ran the same conversation in three parallel Claude threads &#8212; three models, same prompts, same rules &#8212; picked the winning take, and finished the piece with the model that won. The post comes first, exactly as published. The rest of this paper shows the work behind it: the three takes, what each model did under direction, and what each thread cost.</p>
+
+    <div class="post-card">
+      <span class="post-tag">The post &#8212; published verbatim, July 2026</span>
+
+      <p>Yesterday I asked an AI &#8220;what&#8217;s next?&#8221; and it answered correctly, because it was reading a plan I wrote. I run research and writing projects inside a chat tool (Claude, in my case). The project holds my plan: the steps, the checkpoints, the working rules for how I want the work done. When I ask what&#8217;s next, the AI reads that plan and proposes the next step. Most of the time I approve it. Sometimes I redirect one step, and sometimes the redirect is bigger: that piece of work was wrong from the start.</p>
+
+      <p>The comparison I keep coming back to is a head chef. A chef doesn&#8217;t cook most of what leaves the kitchen. They design the menu, train the cooks to the house standard, and stand at the pass tasting everything, sending back the plate that is ninety percent right. The food carries their name because the judgment was theirs.</p>
+
+      <p>My process has the same shape. I wrote the standards and designed the plan, then gave the AI the coordination job &#8212; tracking where we are, keeping the sequence, telling me what&#8217;s next &#8212; because that is real work and it was never the part I wanted. I kept the design, the taste, and the final say. Every piece of output passes in front of me, and plenty gets sent back.</p>
+
+      <p>Most of the energy in AI right now goes to two other approaches. One builds autonomous agents: the machine does the work and the human shrinks to a yes/no at the end, because human time is the cost to cut. The other draws a hard line: ideas and writing stay human, and the AI gets only small mechanical tasks, because ownership is the thing to protect. Both make sense. I&#8217;m doing a third thing.</p>
+
+      <p><strong>The chef&#8217;s seat used to be closed.</strong> You didn&#8217;t get to run a kitchen without years on the line first. I&#8217;m not a trained writer; I&#8217;m a curious researcher. This setup lets me produce work I could not have produced alone: researched, checked, versioned, in my own voice, at a standard I set and enforce at every step.</p>
+
+      <p>This is one practitioner&#8217;s account, not a study. But I&#8217;m running the kitchen, and I&#8217;m proud of what&#8217;s coming out of it.</p>
+    </div>
+
+    <figure>
+      <svg width="100%" viewBox="0 0 690 470" xmlns="http://www.w3.org/2000/svg" role="img"><title>The writer as head chef</title><desc>Diagram of the writer's role as head chef: the chef keeps menu design, taste, and veto; the kitchen holds the clipboard and the brigade; work and questions cross the pass in both directions.</desc>
+<defs>
+<marker id="arr-gold" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#b8860b"/></marker>
+<marker id="arr-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#2d5270"/></marker>
+</defs>
+<rect x="0" y="0" width="680" height="460" fill="#ffffff"/>
+<text x="340" y="28" text-anchor="middle" font-size="15" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">The chef stays in the kitchen</text>
+<text x="340" y="46" text-anchor="middle" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">What the writer keeps, what the kitchen runs, and the pass between them</text>
+<rect x="140" y="64" width="400" height="106" rx="6" fill="#fdf6e3" stroke="#b8860b" stroke-width="2"/>
+<rect x="140" y="64" width="400" height="28" rx="6" fill="#b8860b"/>
+<rect x="140" y="80" width="400" height="12" fill="#b8860b"/>
+<text x="340" y="82" text-anchor="middle" font-size="10.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#ffffff">The writer — head chef</text>
+<text x="340" y="112" text-anchor="middle" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">Keeps what cannot be delegated:</text>
+<text x="340" y="132" text-anchor="middle" font-size="11" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">menu design &middot; taste &middot; veto</text>
+<text x="340" y="154" text-anchor="middle" font-size="9" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">Wrote every standard the kitchen runs on</text>
+<line x1="60" y1="225" x2="620" y2="225" stroke="#888780" stroke-width="0.75" stroke-dasharray="5 4"/>
+<text x="340" y="214" text-anchor="middle" font-size="9" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">the pass &#8212; every plate crosses here, in both directions</text>
+<line x1="180" y1="170" x2="180" y2="276" stroke="#b8860b" stroke-width="1.8" marker-end="url(#arr-gold)"/>
+<text x="168" y="196" text-anchor="end" font-size="9" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">the plan &middot; the standards</text>
+<text x="168" y="252" text-anchor="end" font-size="9" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">"no &#8212; re-fire that,</text>
+<text x="168" y="265" text-anchor="end" font-size="9" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">differently"</text>
+<line x1="500" y1="280" x2="500" y2="174" stroke="#2d5270" stroke-width="1.8" marker-end="url(#arr-blue)"/>
+<text x="512" y="196" font-size="9" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1e3a52">"the next step is&#8230;"</text>
+<text x="512" y="252" font-size="9" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1e3a52">"what do you need</text>
+<text x="512" y="265" font-size="9" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1e3a52">from me, chef?"</text>
+<rect x="60" y="280" width="560" height="140" rx="6" fill="#f0f4f8" stroke="#2d5270" stroke-width="1.5"/>
+<text x="340" y="302" text-anchor="middle" font-size="10.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e3a52">The kitchen — trained to the house</text>
+<rect x="84" y="316" width="250" height="88" rx="4" fill="#e0f5f5" stroke="#2d7d7d" stroke-width="1"/>
+<text x="209" y="340" text-anchor="middle" font-size="10" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a4a4a">The clipboard</text>
+<text x="209" y="360" text-anchor="middle" font-size="9" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1a4a4a">sequencing &middot; tracking</text>
+<text x="209" y="374" text-anchor="middle" font-size="9" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1a4a4a">answering "what's next"</text>
+<rect x="346" y="316" width="250" height="88" rx="4" fill="#e0f5f5" stroke="#2d7d7d" stroke-width="1"/>
+<text x="471" y="340" text-anchor="middle" font-size="10" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a4a4a">The brigade</text>
+<text x="471" y="360" text-anchor="middle" font-size="9" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1a4a4a">research &middot; drafting</text>
+<text x="471" y="374" text-anchor="middle" font-size="9" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1a4a4a">checking its own work</text>
+<text x="340" y="444" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#888780">The dish carries the chef's name because the judgment was theirs &middot; July 2026</text>
+</svg>
+      <figcaption>THE WRITER AS HEAD CHEF &#8212; WHAT STAYS WITH THE WRITER, WHAT THE KITCHEN RUNS, AND THE PASS BETWEEN THEM</figcaption>
+    </figure>
+  </div>
+
+  <!-- PART TWO — THE BAKE-OFF -->
+  <div class="section">
+    <span class="eyebrow-label">Part Two</span>
+    <h2 class="section-title" id="bake-off" data-nav-label="The bake-off">The bake-off &#8212; how the post got made</h2>
+
+    <p>Think of it as a casting call. One part, three actors reading the same lines, and two of them were fresh off the bus that week &#8212; Sonnet 5 and Fable 5 had both just been released. I gave the same brief to three threads in the same Claude project: Sonnet 5 on Medium reasoning effort, Opus 4.8 on Low, and Fable 5 on Low. I throttled everything down on purpose. A LinkedIn post is not complex or wide-ranging work, and I can&#8217;t afford to throw maximum horsepower at one.</p>
+
+    <p>I honestly hoped Sonnet 5 would win. It&#8217;s the everyday workhorse, and a win on the cheap setting would have been the convenient result. That is not what happened. My verdict at the pass, from the session log: &#8220;Fable 5 Low wins. I will publish without changing a word.&#8221; The most expensive model, on its cheapest setting, produced the winning take. In the end I did keep editing &#8212; several more rounds with Fable, pressing it to stop sounding like a bot &#8212; and the version above is where that landed. The win stood; the plate still got sent back a few more times before it left the kitchen.</p>
+
+    <figure>
+      <svg width="100%" viewBox="0 0 690 462" xmlns="http://www.w3.org/2000/svg" role="img"><title>Three models, one kitchen</title><desc>Comparison of three parallel Claude threads used to draft one LinkedIn post, with the same human judgment applied across all three. White background for export.</desc>
+<rect x="0" y="0" width="680" height="452" fill="#ffffff"/>
+<text x="340" y="28" text-anchor="middle" font-size="15" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Three models, one kitchen, one published post</text>
+<text x="340" y="46" text-anchor="middle" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">Same prompts run in three parallel threads &#8212; the chef tasted every plate</text>
+<rect x="16" y="64" width="208" height="210" rx="6" fill="#f0f4f8" stroke="#2d5270" stroke-width="1.5"/>
+<rect x="16" y="64" width="208" height="30" rx="6" fill="#2d5270"/>
+<rect x="16" y="82" width="208" height="12" fill="#2d5270"/>
+<text x="120" y="84" text-anchor="middle" font-size="10.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#ffffff">Sonnet 5 &middot; Medium</text>
+<text x="30" y="116" font-size="9" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1e3a52">"Want me to push on which</text>
+<text x="30" y="129" font-size="9" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1e3a52">of these is the strongest</text>
+<text x="30" y="142" font-size="9" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1e3a52">vehicle for a post?"</text>
+<line x1="30" y1="156" x2="210" y2="156" stroke="#b4b2a9" stroke-width="0.5"/>
+<text x="30" y="174" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e3a52">What happened</text>
+<text x="30" y="190" font-size="9" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">&middot; Fast, execution-first</text>
+<text x="30" y="204" font-size="9" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">&middot; Drove at the deliverable</text>
+<text x="30" y="218" font-size="9" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">&middot; Dropped after two turns</text>
+<line x1="30" y1="232" x2="210" y2="232" stroke="#b4b2a9" stroke-width="0.5"/>
+<text x="120" y="254" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e3a52">Not the job for this seat</text>
+<rect x="236" y="64" width="208" height="210" rx="6" fill="#e8e0f5" stroke="#5b3d9e" stroke-width="1.5"/>
+<rect x="236" y="64" width="208" height="30" rx="6" fill="#5b3d9e"/>
+<rect x="236" y="82" width="208" height="12" fill="#5b3d9e"/>
+<text x="340" y="84" text-anchor="middle" font-size="10.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#ffffff">Opus 4.8 &middot; Low</text>
+<text x="250" y="116" font-size="9" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">"It wasn't a gap; it was</text>
+<text x="250" y="129" font-size="9" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">your sentence. So strike</text>
+<text x="250" y="142" font-size="9" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">that pushback."</text>
+<line x1="250" y1="156" x2="430" y2="156" stroke="#b4b2a9" stroke-width="0.5"/>
+<text x="250" y="174" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">What happened</text>
+<text x="250" y="190" font-size="9" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">&middot; Hardest critic of the frame</text>
+<text x="250" y="204" font-size="9" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">&middot; Restated my point as a risk</text>
+<text x="250" y="218" font-size="9" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">&middot; Owned the miss when caught</text>
+<line x1="250" y1="232" x2="430" y2="232" stroke="#b4b2a9" stroke-width="0.5"/>
+<text x="340" y="254" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">Best sparring partner</text>
+<rect x="456" y="64" width="208" height="210" rx="6" fill="#ddf0e8" stroke="#2a7a50" stroke-width="2.5"/>
+<rect x="456" y="64" width="208" height="30" rx="6" fill="#2a7a50"/>
+<rect x="456" y="82" width="208" height="12" fill="#2a7a50"/>
+<text x="560" y="84" text-anchor="middle" font-size="10.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#ffffff">Fable 5 &middot; Low — published</text>
+<text x="470" y="116" font-size="9" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">"The empty seat isn't</text>
+<text x="470" y="129" font-size="9" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">'human in the loop' — it's</text>
+<text x="470" y="142" font-size="9" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">design, taste, and veto."</text>
+<line x1="470" y1="156" x2="650" y2="156" stroke="#b4b2a9" stroke-width="0.5"/>
+<text x="470" y="174" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">What happened</text>
+<text x="470" y="190" font-size="9" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1e5c38">&middot; Read back before adding</text>
+<text x="470" y="204" font-size="9" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1e5c38">&middot; Took the rival's best lines</text>
+<text x="470" y="218" font-size="9" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1e5c38">&middot; Rewrote it for cold readers</text>
+<line x1="470" y1="232" x2="650" y2="232" stroke="#b4b2a9" stroke-width="0.5"/>
+<text x="560" y="254" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">Published, word for word</text>
+<rect x="16" y="294" width="648" height="118" rx="6" fill="#fdf8ee" stroke="#b8952a" stroke-width="1.5"/>
+<text x="340" y="316" text-anchor="middle" font-size="10.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#7a5c1e">The same chef worked all three kitchens</text>
+<rect x="32" y="328" width="198" height="64" rx="4" fill="#ffffff" stroke="#b8952a" stroke-width="0.75"/>
+<text x="131" y="352" text-anchor="middle" font-size="9.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">"What's next?"</text>
+<text x="131" y="378" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">hand over the clipboard</text>
+<rect x="242" y="328" width="198" height="64" rx="4" fill="#ffffff" stroke="#b8952a" stroke-width="0.75"/>
+<text x="341" y="348" text-anchor="middle" font-size="9.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">"Nope — not that,</text>
+<text x="341" y="361" text-anchor="middle" font-size="9.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">differently."</text>
+<text x="341" y="378" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">the veto at the pass</text>
+<rect x="452" y="328" width="198" height="64" rx="4" fill="#ffffff" stroke="#b8952a" stroke-width="0.75"/>
+<text x="551" y="348" text-anchor="middle" font-size="9.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">"What was my</text>
+<text x="551" y="361" text-anchor="middle" font-size="9.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">last sentence?"</text>
+<text x="551" y="378" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">send the critic's plate back</text>
+<text x="340" y="436" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#888780">Same prompts, three parallel Claude threads &middot; one human palate &middot; July 2026</text>
+</svg>
+      <figcaption>THREE MODELS, ONE KITCHEN &#8212; SAME BRIEF, THREE PARALLEL THREADS, ONE HUMAN PALATE AT THE PASS</figcaption>
+    </figure>
+
+    <h2 class="subsection">What the transcript shows</h2>
+
+    <p>The full three-thread transcript survives, and reading it back, three things stand out.</p>
+
+    <p><strong>The bet was overruled at the pass.</strong> I expected my usual pick to take it. Instead the plate decided. That matters more than a &#8220;cheap model wins&#8221; story would have: taste standing at the pass beat my own prior belief about which cook to back, which is a cleaner proof of the chef&#8217;s seat than any pricing argument.</p>
+
+    <p><strong>The model that went straight to execution was the one I dropped first.</strong> Sonnet answered efficiently, then pushed to lock the metaphor and start shaping the deliverable before the idea was settled. I stopped working with it early. The two models I kept stayed in the negotiation &#8212; they questioned the framing, pushed back on weak spots, and in one case Opus flagged a risk I had already ruled out, then struck its own pushback when I called it. The failure mode the post describes &#8212; the dispatched bot that executes instead of engaging &#8212; showed up live, inside the test itself.</p>
+
+    <p><strong>The winning draft exists because I said &#8220;no &#8212; differently.&#8221;</strong> Mid-exercise I showed each thread a rival&#8217;s draft and asked whether anything was worth borrowing. Fable took the best lines on merit and declined the parts that broke my voice rules. Then I sent its own strong draft back once more: it was written for me as the audience, and the readers of the post don&#8217;t know my setup. That corrected draft won the pass, and the rounds that followed &#8212; the de-botting edits after the transcript ends &#8212; produced the published version above. The send-back-the-plate mechanism isn&#8217;t described in the transcript. It happens in it.</p>
+
+    <div class="callout gold">
+      A footnote on the method: the post about running a kitchen was made by running a kitchen. Same brief, three kitchens, one pass, one palate. I tasted all three, sent two back, and kept the third at the pass until it was right.
+    </div>
+  </div>
+
+  <!-- PART THREE — THE COST -->
+  <div class="section">
+    <span class="eyebrow-label">Part Three</span>
+    <h2 class="section-title" id="cost" data-nav-label="The cost">What it cost</h2>
+
+    <p>Two lenses on cost: what the models are priced at, and what the three threads actually consumed.</p>
+
+    <h2 class="subsection">The rate card</h2>
+
+    <p>Official API pricing for the three models as I ran them. Reasoning-effort level does not change the rate &#8212; it changes how many tokens a model burns getting to an answer.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Model &middot; run</th><th>Input $/MTok</th><th>Output $/MTok</th><th>vs. Sonnet</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Sonnet 5 &middot; Medium</td><td>$2 (intro &rarr; $3)</td><td>$10 (intro &rarr; $15)</td><td>1&times;</td></tr>
+          <tr><td>Opus 4.8 &middot; Low</td><td>$5</td><td>$25</td><td>2.5&times;</td></tr>
+          <tr><td>Fable 5 &middot; Low</td><td>$10</td><td>$50</td><td>5&times;</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Sonnet 5 launched June 30, 2026 at introductory pricing through August 31, 2026. On intro pricing the ratio is 5 / 2.5 / 1; at standard pricing it compresses to roughly 3.3 / 1.7 / 1.</p>
+
+    <h2 class="subsection">What the three threads actually consumed</h2>
+
+    <p>I capture token use with a browser extension that estimates credit consumption; the numbers below are that estimate, not an official meter. One asymmetry to hold while reading: I cut the Sonnet thread off roughly 30% early, so its raw number understates a full run.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Model &middot; run</th><th>Tokens</th><th>Credits (est.)</th><th>Credits / 1K tokens</th><th>Work done</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Fable 5 &middot; Low</td><td>60,988</td><td>113,340</td><td>1,858</td><td>Full run &#8212; the winner</td></tr>
+          <tr><td>Opus 4.8 &middot; Low</td><td>74,306</td><td>71,370</td><td>960</td><td>Full run, most verbose thread</td></tr>
+          <tr><td>Sonnet 5 &middot; Medium</td><td>46,362</td><td>24,114</td><td>520</td><td>Cut ~30% early</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The credits-per-token column is the honest per-model unit cost, independent of how much work each thread did: Sonnet runs about 3.6&times; cheaper than Fable and about 1.85&times; cheaper than Opus per unit of work, which matches the shape of the rate card. Adjusting Sonnet upward for the missing 30%, a full Sonnet run still lands under half the Opus thread&#8217;s cost, and the winning Fable thread came in at roughly 1.6&times; Opus.</p>
+
+    <p>So the winning take cost about five times the losing one per token, and about 1.6&times; the runner-up thread in total. For a piece published under my own name, unedited, that trade was worth it. Low effort didn&#8217;t dull the judgment; it kept the bill down.</p>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="conclusion-section">
+    <div class="conclusion-inner">
+      <span class="eyebrow-label">Part Four</span>
+      <h2 class="section-title" id="close" data-nav-label="One data point">One case, one data point</h2>
+
+      <p>If you are weighing the same three models &#8212; Sonnet 5 and Fable 5 brand new, Opus 4.8 the old favorite &#8212; this exercise is one honest data point, not a benchmark. For judgment-heavy writing, the model with the best listening won: Fable read my intent back before adding anything, borrowed from a rival draft on merit alone, and rewrote for an audience it was told about once. Effort level mattered less than I expected. Low kept the cost down without dulling the taste.</p>
+
+      <p>The finding I trust most isn&#8217;t about any one model. Three capable cooks got the same brief, and the difference came from the direction: the plan they were handed, the drafts sent back, the standards already written down before the exercise started. The method carried more of the outcome than the model choice did.</p>
+
+      <div class="ending">
+        <p>One exercise, one data point.</p>
+        <p>But the chef tasted every plate, and one came off the pass.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROVENANCE -->
+  <div class="provenance">
+    <h2>Provenance</h2>
+    <div class="prov-row"><span class="prov-label">Model</span><span class="prov-value">Source session: Claude Sonnet 5 &middot; Medium, Claude Opus 4.8 &middot; Low, Claude Fable 5 &middot; Low (three parallel threads, 2026-07-02; winning take by Fable 5 &middot; Low, finished over further edit rounds with Fable before publication) &middot; Web edition: Claude Fable 5 (claude-fable-5) &middot; Medium (2026-07-07) &middot; Placement (SVG figures, og:image, hub-card image): Claude Sonnet 5 (claude-sonnet-5) &middot; BURSBUILD-S09 (2026-07-08)</span></div>
+    <div class="prov-row"><span class="prov-label">Version</span><span class="prov-value">v1.2 &middot; HTML &middot; July 2026</span></div>
+    <div class="prov-row"><span class="prov-label">Session</span><span class="prov-value">BURSFORGE-S01 &middot; 2026-07-07 &middot; source bake-off run 2026-07-02 &middot; placed BURSBUILD-S09 &middot; 2026-07-08</span></div>
+    <div class="prov-row"><span class="prov-label">Audience</span><span class="prov-value">Leaders evaluating how to direct LLMs for serious writing; readers choosing between Sonnet 5, Opus 4.8, and Fable 5 and weighing effort levels</span></div>
+    <div class="prov-row"><span class="prov-label">Sources</span><span class="prov-value">Google Doc &#8220;Linked-in Chef story - 3 models help&#8221; &#8212; the complete three-thread transcript (~16,800 words, read in full per RES-314), containing the published post, all drafts, Hugh&#8217;s session verdict, the official rate-card lookup, and the browser-extension cost capture; Linear RES-346 (build ticket), RES-353 (placement); white-paper structural exemplar claude-guide/WPP-S11-WHITEPAPER-v2.2.html; two SVG diagrams + two JPEG crops (og:image, hub-card) supplied and directed by Hugh at placement (BURSBUILD-S09)</span></div>
+    <div class="prov-row"><span class="prov-label">Decision / Action</span><span class="prov-value">Authored as ONE piece (published post + bake-off + cost analysis) per the hub cluster description; RES-346&#8217;s story/technical split option flagged, not exercised. Published post carried verbatim. At placement: two SVG diagrams inserted; og:image + hub-card JPEG crops added in a second pass, framed per Hugh's direction (Fable green card only for og:image; title + writer/chef gold box for the hub card), bordered in var(--gray-rule).</span></div>
+    <div class="prov-row"><span class="prov-label">Iteration notes</span><span class="prov-value">v1.2: section-nav added (RES-313 opt-in); table row-hover removed, solid row backgrounds + explicit ink. v1.1: post body replaced with the published final. v1.0 (web): first HTML edition. Placement (BURSBUILD-S09, same v1.2): two SVG figures inserted; og:image + hub-card image added in a follow-up edit, body text otherwise byte-faithful to the BURSFORGE submission throughout.</span></div>
+    <div class="prov-row"><span class="prov-label">Assumptions</span><span class="prov-value">Credit figures are browser-extension estimates, labeled as such; official API rates as published 2026-07 (Sonnet 5 intro pricing sunsets 2026-08-31). Plan-usage weights are Anthropic&#8217;s qualitative descriptions, not exact multipliers.</span></div>
+    <div class="prov-row"><span class="prov-label">Scope exclusions</span><span class="prov-value">The full draft-by-draft transcript (summarized, not reproduced); Opus 4.8&#8217;s consolation post; general model benchmarking beyond this one exercise.</span></div>
+    <div class="prov-row"><span class="prov-label">Tool chain</span><span class="prov-value">Google Drive read (source transcript); file tools + shell placement (RES-315 drill); my-voice v3.1 (mode 2, banned-patterns sweep); provenance skill; PIL (image crop/border/resize)</span></div>
+    <div class="prov-row"><span class="prov-label">Review status</span><span class="prov-value">v1.2 &#8212; placed BURSBUILD-S09; SVG figures + og:image + hub-card image all confirmed with Hugh in-session; awaiting deploy.bat</span></div>
+  </div>
+
+</body>
+</html>
