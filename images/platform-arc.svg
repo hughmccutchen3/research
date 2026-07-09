@@ -1,0 +1,32 @@
+<svg viewBox="0 0 400 344" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="arcTitle arcDesc">
+  <title id="arcTitle">How the platform matured</title>
+  <desc id="arcDesc">A four-stage timeline from early 2025 to July 2026: the research practice, the framework, the platform built in parts, and platform v1, whose first test is the work behind this site.</desc>
+
+  <!-- spine -->
+  <line x1="24" y1="43" x2="24" y2="271" stroke="#CBD5E1" stroke-width="2"/>
+
+  <!-- Stage 1 -->
+  <circle cx="24" cy="43" r="6" fill="#FAF7F0" stroke="#64748B" stroke-width="2"/>
+  <text x="48" y="28" font-size="9" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#8B6914" letter-spacing="1">EARLY 2025</text>
+  <text x="48" y="47" font-size="13" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#0F172A">The research practice</text>
+  <text x="48" y="65" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#475569">Getting meaningful research out of the tools.</text>
+
+  <!-- Stage 2 -->
+  <circle cx="24" cy="119" r="6" fill="#FAF7F0" stroke="#64748B" stroke-width="2"/>
+  <text x="48" y="104" font-size="9" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#8B6914" letter-spacing="1">EARLY 2026</text>
+  <text x="48" y="123" font-size="13" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#0F172A">The framework</text>
+  <text x="48" y="141" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#475569">The practices that worked, named and applied.</text>
+
+  <!-- Stage 3 -->
+  <circle cx="24" cy="195" r="6" fill="#FAF7F0" stroke="#64748B" stroke-width="2"/>
+  <text x="48" y="180" font-size="9" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#8B6914" letter-spacing="1">JUNE 2026</text>
+  <text x="48" y="199" font-size="13" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#0F172A">The platform, in parts</text>
+  <text x="48" y="217" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#475569">Components built and carrying real work.</text>
+
+  <!-- Stage 4 -->
+  <circle cx="24" cy="271" r="7" fill="#B8860B" stroke="#8B6914" stroke-width="2"/>
+  <text x="48" y="256" font-size="9" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#8B6914" letter-spacing="1">JULY 2026 — NOW</text>
+  <text x="48" y="275" font-size="13" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#0F172A">Platform v1</text>
+  <text x="48" y="293" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#475569">The complete system. Its first test is</text>
+  <text x="48" y="307" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#475569">the work behind this site.</text>
+</svg>

@@ -355,6 +355,12 @@ body.site-page .media-entry .card-body > :first-child{ margin-top:0; }
   body.site-page .media-entry.media-left .card-media{ order:0; }
 }
 
+/* --- platform diagram figure: a diagram, not a photo — never cropped. Rides
+   the entry's .media-entry right column on desktop; centered and capped on
+   phone. BURSBUILD-S11, revised per S10 feedback. --- */
+body.site-page .diagram-figure{ max-width:340px; margin:0 auto; }
+body.site-page .diagram-figure img{ aspect-ratio:auto; object-fit:contain; }
+
 /* ===========================================================================
    9. CROSS-BROWSER TEXT RENDERING  — BURSBUILD-S06
    Fixes Safari/iOS auto-inflating body text on rotation and normalizes the
