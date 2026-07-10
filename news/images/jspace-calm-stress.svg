@@ -1,0 +1,49 @@
+<svg viewBox="0 0 980 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="calmStressTitle">
+  <title id="calmStressTitle">Two different internal states — calm and under stress — converge on one identical, polished output. Only the new training-time read can tell them apart.</title>
+  <defs>
+    <marker id="arr-gray2" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0,9 3.5,0 7" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="980" height="470" fill="#ffffff"/>
+
+  <text x="490" y="34" text-anchor="middle" font-size="17" font-weight="700" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#1e293b">Same output. Different inside.</text>
+
+  <!-- frame: during training and testing -->
+  <rect x="20" y="66" width="940" height="322" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <rect x="44" y="54" width="204" height="24" rx="4" fill="#475569"/>
+  <text x="146" y="70" text-anchor="middle" font-size="11" font-weight="700" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#ffffff">During training and testing</text>
+
+  <!-- column labels -->
+  <text x="205" y="110" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="0.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#2a7a50">WHAT TRAINING CAN NOW READ — THE INSIDE</text>
+  <text x="775" y="110" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="0.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#64748b">WHAT EVERYONE ALREADY SAW — THE OUTPUT</text>
+
+  <!-- interior state: calm -->
+  <rect x="50" y="128" width="310" height="82" rx="8" fill="#ddf0e8" stroke="#2a7a50" stroke-width="1.5"/>
+  <text x="72" y="156" font-size="13" font-weight="700" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#133d26">Inside: calm</text>
+  <text x="72" y="176" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#1e5c38">Working with the task. No tension between</text>
+  <text x="72" y="191" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#1e5c38">what it&#8217;s doing and getting it right.</text>
+
+  <!-- interior state: under stress -->
+  <rect x="50" y="266" width="310" height="96" rx="8" fill="#fdf6e3" stroke="#b8860b" stroke-width="1.5"/>
+  <text x="72" y="294" font-size="13" font-weight="700" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#5a3e00">Inside: under stress</text>
+  <text x="72" y="314" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#5a3e00">Straining against the task. Noticing it&#8217;s being</text>
+  <text x="72" y="329" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#5a3e00">tested, or starting to fabricate — while the</text>
+  <text x="72" y="344" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#5a3e00">output stays smooth.</text>
+
+  <!-- single output box -->
+  <rect x="640" y="196" width="280" height="102" rx="8" fill="#eef2f6" stroke="#64748b" stroke-width="1.5"/>
+  <text x="780" y="228" text-anchor="middle" font-size="13.5" font-weight="700" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#334155">The same output</text>
+  <text x="780" y="250" text-anchor="middle" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#64748b">Polished. Confident.</text>
+  <text x="780" y="265" text-anchor="middle" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#64748b">Looks identical whether the</text>
+  <text x="780" y="280" text-anchor="middle" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#64748b">inside was calm or stressed.</text>
+
+  <!-- converging arrows, edge to edge -->
+  <path d="M360 169 C 500 169, 540 222, 636 226" fill="none" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr-gray2)"/>
+  <path d="M360 314 C 500 314, 540 272, 636 268" fill="none" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr-gray2)"/>
+
+  <!-- caption -->
+  <text x="490" y="420" text-anchor="middle" font-size="11" font-style="italic" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#64748b">Two different insides, one identical result. Watching only the output can&#8217;t tell them apart.</text>
+  <text x="490" y="438" text-anchor="middle" font-size="11" font-style="italic" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#64748b">Training can now watch whether a worker was calm or straining — and adjust before that worker reaches you.</text>
+</svg>

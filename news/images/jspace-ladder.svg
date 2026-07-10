@@ -1,0 +1,54 @@
+<svg viewBox="0 0 980 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ladderTitle">
+  <title id="ladderTitle">Three steps in seeing how a model works: judge by output (2023–2024), watch the flow (2024–2025), read the stresses inside (July 2026).</title>
+  <defs>
+    <marker id="arr-gray" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0,9 3.5,0 7" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="980" height="430" fill="#ffffff"/>
+
+  <text x="490" y="36" text-anchor="middle" font-size="17" font-weight="700" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#1e293b">Learning to see how the team works</text>
+  <text x="490" y="57" text-anchor="middle" font-size="11.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#64748b">Three steps. Each sees more of the workshop.</text>
+
+  <!-- RUNG 1 · 2023–2024 · judge by output -->
+  <g>
+    <rect x="24" y="242" width="292" height="132" rx="8" fill="#f0f4f8" stroke="#2d5270" stroke-width="1.5"/>
+    <path d="M24 250 a8 8 0 0 1 8-8 h276 a8 8 0 0 1 8 8 v46 h-292 z" fill="#2d5270"/>
+    <text x="170" y="268" text-anchor="middle" font-size="15" font-weight="700" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#ffffff">2023–2024</text>
+    <text x="170" y="286" text-anchor="middle" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#c9d9e8">GPT-4, early Claude</text>
+    <text x="170" y="318" text-anchor="middle" font-size="13" font-weight="700" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#1e3a52">Judge by output</text>
+    <text x="170" y="340" text-anchor="middle" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#475569">The answers. Benchmark scores,</text>
+    <text x="170" y="355" text-anchor="middle" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#475569">red-team results, refusals.</text>
+  </g>
+
+  <!-- RUNG 2 · 2024–2025 · watch the flow -->
+  <g>
+    <rect x="344" y="172" width="292" height="132" rx="8" fill="#ede7f8" stroke="#5b3d9e" stroke-width="1.5"/>
+    <path d="M344 180 a8 8 0 0 1 8-8 h276 a8 8 0 0 1 8 8 v46 h-292 z" fill="#5b3d9e"/>
+    <text x="490" y="198" text-anchor="middle" font-size="15" font-weight="700" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#ffffff">2024–2025</text>
+    <text x="490" y="216" text-anchor="middle" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#dcd0f0">the &#8220;AI microscope&#8221;</text>
+    <text x="490" y="248" text-anchor="middle" font-size="13" font-weight="700" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#2e1060">Watch the flow</text>
+    <text x="490" y="270" text-anchor="middle" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#4a2d8a">Concepts moving between layers,</text>
+    <text x="490" y="285" text-anchor="middle" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#4a2d8a">and in and out of the J-space.</text>
+  </g>
+
+  <!-- RUNG 3 · July 2026 · read the stresses inside -->
+  <g>
+    <rect x="664" y="102" width="292" height="132" rx="8" fill="#ddf0e8" stroke="#2a7a50" stroke-width="1.5"/>
+    <path d="M664 110 a8 8 0 0 1 8-8 h276 a8 8 0 0 1 8 8 v46 h-292 z" fill="#2a7a50"/>
+    <text x="810" y="128" text-anchor="middle" font-size="15" font-weight="700" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#ffffff">July 2026</text>
+    <text x="810" y="146" text-anchor="middle" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#c6e8d6">J-space</text>
+    <text x="810" y="178" text-anchor="middle" font-size="13" font-weight="700" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#133d26">Read the stresses inside</text>
+    <text x="810" y="200" text-anchor="middle" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#1e5c38">A sample of what&#8217;s held in the</text>
+    <text x="810" y="215" text-anchor="middle" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#1e5c38">J-space — enough to see the</text>
+    <text x="810" y="230" text-anchor="middle" font-size="10.5" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#1e5c38">stresses in the thinking.</text>
+  </g>
+
+  <!-- step arrows, edge to edge -->
+  <path d="M316 290 C 330 285, 330 250, 342 244" fill="none" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr-gray)"/>
+  <path d="M636 220 C 650 215, 650 180, 662 174" fill="none" stroke="#64748b" stroke-width="1.8" marker-end="url(#arr-gray)"/>
+
+  <line x1="120" y1="398" x2="860" y2="398" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="490" y="420" text-anchor="middle" font-size="11" font-style="italic" font-family="DM Sans, Segoe UI, Arial, sans-serif" fill="#64748b">None of these watches the team while it works for you. The window opens in the workshop, not on the job.</text>
+</svg>

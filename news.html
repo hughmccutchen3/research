@@ -1,0 +1,80 @@
+<!-- BURSBUILD-S12. News hub v1.0 — industry updates index.
+     CONVENTION (hold this page together):
+     · Each story is one self-contained file in news/ with its images in news/images/.
+     · A story carries: og block (og:image = its graphic, rendered as a raster),
+       provenance block, and a LINKEDIN POSTING comment after the provenance (the share
+       text — never rendered).
+     · This list shows the 25 most recent, newest first: date / headline / theme.
+       On adding the 26th, move the oldest <li> into the NEWS ARCHIVE comment at the
+       bottom of this file — the story file itself stays at its URL (keep-at-root).
+     · On every new story: (1) prepend its <li> here, (2) update NEWS_LATEST in
+       /news-flag.js to the story date, (3) update the Home color block headline.
+     Site-page class — no PROVENANCE block. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industry Updates — Bursera Consulting</title>
+<meta name="description" content="Short analyses of AI industry news — what actually changed, read plainly, for leaders who run LLMs in production.">
+<link rel="canonical" href="https://burseraconsulting.com/news.html">
+<link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Industry Updates — Bursera Consulting">
+<meta property="og:description" content="Short analyses of AI industry news — what actually changed, read plainly.">
+<meta property="og:url" content="https://burseraconsulting.com/news.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=s12a">
+<script src="news-flag.js" defer></script>
+</head>
+<body class="site-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="page">
+
+  <header class="site-header">
+    <a class="wordmark" href="/">Bursera <span>Consulting</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/research_examples.html">Research</a>
+      <a href="/llm-leadership.html">Leadership</a>
+      <a href="/method.html">Method</a>
+      <a href="/platform.html">Platform</a>
+      <a href="/about.html">About</a>
+      <a href="/news.html" class="nav-news" data-news-flag aria-current="page">News</a>
+    </nav>
+  </header>
+
+  <header class="masthead">
+    <h1>Industry updates</h1>
+    <p class="lede">Short analyses of AI industry news. Each one takes a story making the rounds, checks it against the primary source, and states plainly what changed for leaders who run these systems.</p>
+  </header>
+
+  <main id="main">
+
+    <section class="group">
+      <div class="group-label">Most recent</div>
+
+      <ol class="news-list">
+        <li class="news-item">
+          <span class="news-date">July 10, 2026</span>
+          <a class="news-headline" href="/news/jspace-directors-chair.html">J-space &#8212; what a team leader needs to know</a>
+          <span class="news-theme">Interpretability &middot; Anthropic published a way to see where a model strains while it works. The coverage called it a miracle or a monster; the paper shows better vetting, upstream.</span>
+        </li>
+      </ol>
+    </section>
+
+  </main>
+
+  <footer>
+    Bursera Consulting &middot; Research &amp; Writing &middot; <a href="mailto:contact@burseraconsulting.com">contact@burseraconsulting.com</a>
+  </footer>
+
+</div>
+<!-- NEWS ARCHIVE — items rotated off the 25-most-recent list land here, newest first.
+     The story files stay live at their URLs. (empty) -->
+</body>
+</html>
