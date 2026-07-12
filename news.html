@@ -9,6 +9,10 @@
        bottom of this file — the story file itself stays at its URL (keep-at-root).
      · On every new story: (1) prepend its <li> here, (2) update NEWS_LATEST in
        /news-flag.js to the story date, (3) update the Home color block headline.
+     · Row layout (BURSBUILD-S12b): a story's <li> carries a .news-item-main block
+       (date + headline, left) and an optional .news-update-badge (right, own href
+       to the story's #update anchor) when that story has a dated Update section.
+       .news-theme always forces to its own full-width line.
      Site-page class — no PROVENANCE block. -->
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=s12a">
+<link rel="stylesheet" href="styles.css?v=s12c">
 <script src="news-flag.js" defer></script>
 </head>
 <body class="site-page">
@@ -60,8 +64,11 @@
 
       <ol class="news-list">
         <li class="news-item">
-          <span class="news-date">July 10, 2026</span>
-          <a class="news-headline" href="/news/jspace-directors-chair.html">J-space &#8212; what a team leader needs to know</a>
+          <div class="news-item-main">
+            <span class="news-date">July 10, 2026</span>
+            <a class="news-headline" href="/news/jspace-directors-chair.html">J-space &#8212; what a team leader needs to know</a>
+          </div>
+          <a class="news-update-badge" href="/news/jspace-directors-chair.html#update">UPDATE July 12, 2026</a>
           <span class="news-theme">Interpretability &middot; Anthropic published a way to see where a model strains while it works. The coverage called it a miracle or a monster; the paper shows better vetting, upstream.</span>
         </li>
       </ol>

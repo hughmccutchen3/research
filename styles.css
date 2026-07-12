@@ -430,10 +430,32 @@ body.site-page .home-news:hover .hn-headline{ color:var(--brass-200); }
   body.site-page .home-news{ padding:var(--space-4) var(--gutter); }
 }
 
-/* industry-updates list (news.html): date / headline / theme rows */
+/* home color block — dated update line, sits directly under .home-news, own href to the story's Update anchor */
+body.site-page .hn-update-line{
+  display:block; text-decoration:none;
+  font-family:var(--font-heading); font-size:var(--text-small); font-weight:var(--weight-bold);
+  color:var(--brass-700);
+  padding:var(--space-2) var(--gutter-mobile) 0;
+  margin:0;
+}
+body.site-page .hn-update-line:hover{ color:var(--brass-900); }
+@media (min-width:720px){
+  body.site-page .hn-update-line{ padding:var(--space-2) var(--gutter) 0; }
+}
+
+/* industry-updates list (news.html): date / headline / theme rows.
+   Row is a flex container: date+headline live in .news-item-main (left, grows),
+   an optional .news-update-badge sits right (own href to the story's #update
+   anchor) when that story carries a dated Update section, and .news-theme is
+   forced onto its own full-width line beneath both. BURSBUILD-S12b. */
 body.site-page ol.news-list{ list-style:none; margin:0; padding:0; }
-body.site-page .news-item{ padding:var(--space-5) 0; border-bottom:1px solid var(--slate-100); }
+body.site-page .news-item{
+  display:flex; flex-wrap:wrap; align-items:flex-start;
+  justify-content:space-between; column-gap:var(--space-4); row-gap:var(--space-1);
+  padding:var(--space-5) 0; border-bottom:1px solid var(--slate-100);
+}
 body.site-page .news-item:last-child{ border-bottom:none; }
+body.site-page .news-item-main{ display:flex; flex-direction:column; flex:1 1 auto; min-width:0; }
 body.site-page .news-date{
   font-family:var(--font-mono); font-size:var(--text-label); font-weight:var(--weight-bold);
   letter-spacing:.12em; text-transform:uppercase; color:var(--brass-700);
@@ -446,7 +468,15 @@ body.site-page .news-headline{
   border-bottom:1.5px solid transparent; transition:border-color .15s,color .15s;
 }
 body.site-page .news-headline:hover{ color:var(--brass-700); border-bottom-color:var(--brass-400); }
+/* per-story update badge — red, own link to that story's Update anchor (id="update") */
+body.site-page .news-update-badge{
+  font-family:var(--font-mono); font-size:var(--text-label); font-weight:var(--weight-bold);
+  letter-spacing:.1em; text-transform:uppercase; color:#b3261e; text-decoration:none;
+  white-space:nowrap; flex:0 0 auto; align-self:flex-start; margin-top:2px;
+}
+body.site-page .news-update-badge:hover{ color:#8f1e17; text-decoration:underline; }
 body.site-page .news-theme{
   font-size:var(--text-small); color:var(--color-text-muted); line-height:1.55;
   display:block; margin-top:var(--space-1); max-width:66ch;
+  flex:1 1 100%;
 }
