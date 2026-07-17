@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 650" font-family="Georgia, 'Times New Roman', serif">
+  <!-- Bursera structure v0.1 — literal companion to the tree.
+       Customer (top) · offerings coupled (middle) · the human-led trunk · the visible foundation.
+       Palette: navy #1a2b4a · gold #c0983f · sage #5f8471 · parchment #f6f2e9 · ink #1e293b -->
+  <rect x="0" y="0" width="960" height="650" fill="#faf8f2"/>
+
+  <!-- ===== CUSTOMER BAND ===== -->
+  <rect x="60" y="26" width="840" height="60" rx="8" fill="#1a2b4a"/>
+  <rect x="60" y="82" width="840" height="4" fill="#c0983f"/>
+  <text x="480" y="52" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff" letter-spacing="0.10em">THE CUSTOMER</text>
+  <text x="480" y="73" text-anchor="middle" font-size="12" fill="#e9e2d2">better knowledge  ·  fuller insight  ·  better decisions</text>
+  <text x="480" y="106" text-anchor="middle" font-size="10.5" font-style="italic" fill="#5b6b7d">everything grows toward the customer</text>
+
+  <!-- ===== OFFERINGS ROW ===== -->
+  <!-- research (primary — gold header) -->
+  <rect x="86" y="120" width="232" height="150" rx="8" fill="#f6f2e9" stroke="#1a2b4a" stroke-width="1.4"/>
+  <rect x="86" y="120" width="232" height="30" rx="8" fill="#c0983f"/>
+  <text x="202" y="141" text-anchor="middle" font-size="15" font-weight="700" fill="#1a2b4a" letter-spacing="0.04em">RESEARCH</text>
+  <text x="202" y="170" text-anchor="middle" font-size="10.5" font-style="italic" fill="#33475f">the primary service</text>
+  <text x="100" y="194" font-size="9.7" fill="#1e293b">• Evidence work in a consultancy position</text>
+  <text x="100" y="213" font-size="9.7" fill="#1e293b">• Two-layer method; graded claims</text>
+  <text x="100" y="232" font-size="9.7" fill="#1e293b">• Yields knowledge &amp; insight</text>
+
+  <!-- training -->
+  <rect x="364" y="120" width="232" height="150" rx="8" fill="#f6f2e9" stroke="#1a2b4a" stroke-width="1.4"/>
+  <rect x="364" y="120" width="232" height="30" rx="8" fill="#1a2b4a"/>
+  <text x="480" y="141" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff" letter-spacing="0.04em">TRAINING</text>
+  <text x="480" y="170" text-anchor="middle" font-size="10.5" font-style="italic" fill="#33475f">capability transfer</text>
+  <text x="378" y="194" font-size="9.7" fill="#1e293b">• Direction literacy — teach the method</text>
+  <text x="378" y="213" font-size="9.7" fill="#1e293b">• Not a tool; follow the student</text>
+  <text x="378" y="232" font-size="9.7" fill="#1e293b">• Org &amp; individual capability</text>
+
+  <!-- advisory (newest — lighter header + tag) -->
+  <rect x="642" y="120" width="232" height="150" rx="8" fill="#f6f2e9" stroke="#3f5578" stroke-width="1.4"/>
+  <rect x="642" y="120" width="232" height="30" rx="8" fill="#3f5578"/>
+  <text x="758" y="141" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff" letter-spacing="0.04em">ADVISORY</text>
+  <text x="758" y="170" text-anchor="middle" font-size="10.5" font-style="italic" fill="#33475f">LLM-leadership thinking</text>
+  <text x="656" y="194" font-size="9.7" fill="#1e293b">• Help orgs adopt LLM-leadership thinking</text>
+  <text x="656" y="213" font-size="9.7" fill="#1e293b">• Scope services, fit, a specific problem</text>
+  <text x="656" y="232" font-size="9.7" fill="#1e293b">• Newest — real potential, still forming</text>
+
+  <!-- coupling tie under the three cards -->
+  <path d="M202,270 V286 M480,270 V286 M758,270 V286" stroke="#c0983f" stroke-width="1.4"/>
+  <line x1="150" y1="286" x2="810" y2="286" stroke="#c0983f" stroke-width="1.6"/>
+  <rect x="352" y="276" width="256" height="20" rx="10" fill="#f6f2e9" stroke="#c0983f" stroke-width="1.2"/>
+  <text x="480" y="290" text-anchor="middle" font-size="10.5" fill="#1a2b4a">coupled by the engagement — the right support</text>
+
+  <!-- ===== TRUNK / INTEGRATOR ===== -->
+  <rect x="86" y="306" width="788" height="42" rx="8" fill="#1a2b4a"/>
+  <text x="480" y="332" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="0.06em">BURSERA — HUMAN LED   ·   one accountable director</text>
+
+  <!-- ===== FOUNDATION ===== -->
+  <text x="480" y="372" text-anchor="middle" font-size="11" font-weight="700" fill="#c0983f" letter-spacing="0.08em">THE VISIBLE FOUNDATION — shown, not hidden</text>
+
+  <rect x="86" y="382" width="252" height="92" rx="7" fill="#f6f2e9" stroke="#1a2b4a" stroke-width="1.4"/>
+  <rect x="86" y="382" width="252" height="5" rx="2" fill="#c0983f"/>
+  <text x="212" y="410" text-anchor="middle" font-size="14" font-weight="700" fill="#1a2b4a" letter-spacing="0.04em">METHODOLOGY</text>
+  <text x="212" y="431" text-anchor="middle" font-size="9.7" fill="#3b4a5c">two-layer method · measured provenance</text>
+  <text x="212" y="446" text-anchor="middle" font-size="9.7" fill="#3b4a5c">collect – analyze – refine – verify</text>
+
+  <rect x="354" y="382" width="252" height="92" rx="7" fill="#f6f2e9" stroke="#1a2b4a" stroke-width="1.4"/>
+  <rect x="354" y="382" width="252" height="5" rx="2" fill="#c0983f"/>
+  <text x="480" y="410" text-anchor="middle" font-size="14" font-weight="700" fill="#1a2b4a" letter-spacing="0.04em">PLATFORM</text>
+  <text x="480" y="431" text-anchor="middle" font-size="9.7" fill="#3b4a5c">the operating system Bursera runs on</text>
+  <text x="480" y="446" text-anchor="middle" font-size="9.7" fill="#3b4a5c">vendor-portable · a live demonstration</text>
+
+  <rect x="622" y="382" width="252" height="92" rx="7" fill="#f6f2e9" stroke="#1a2b4a" stroke-width="1.4"/>
+  <rect x="622" y="382" width="252" height="5" rx="2" fill="#c0983f"/>
+  <text x="748" y="410" text-anchor="middle" font-size="14" font-weight="700" fill="#1a2b4a" letter-spacing="0.04em">PRINCIPLES</text>
+  <text x="748" y="431" text-anchor="middle" font-size="9.7" fill="#3b4a5c">human-led &amp; disclosed · knowledge is power</text>
+  <text x="748" y="446" text-anchor="middle" font-size="9.7" fill="#3b4a5c">human-first, society-first</text>
+
+  <!-- ===== ONE MODEL, TWO VIEWS (tree ↔ structure key) ===== -->
+  <rect x="86" y="498" width="788" height="112" rx="8" fill="#f1ece1" stroke="#1a2b4a" stroke-width="1"/>
+  <text x="110" y="522" font-size="13" font-weight="700" fill="#1a2b4a">One model · two views</text>
+  <text x="470" y="522" font-size="10.5" font-style="italic" fill="#5b6b7d">— the tree is the same picture, drawn for the eye</text>
+
+  <circle cx="118" cy="543" r="5" fill="#c0983f"/>
+  <text x="132" y="547" font-size="10.5" fill="#1e293b"><tspan font-weight="700">Light</tspan> → the customer, what the whole tree grows toward</text>
+  <circle cx="118" cy="565" r="5" fill="#5f8471"/>
+  <text x="132" y="569" font-size="10.5" fill="#1e293b"><tspan font-weight="700">Canopy branches</tspan> → the offerings, coupled by the engagement</text>
+  <circle cx="118" cy="587" r="5" fill="#1a2b4a"/>
+  <text x="132" y="591" font-size="10.5" fill="#1e293b"><tspan font-weight="700">One trunk</tspan> → Bursera, human led — one accountable director</text>
+  <circle cx="560" cy="587" r="5" fill="#7a5a2a"/>
+  <text x="574" y="591" font-size="10.5" fill="#1e293b"><tspan font-weight="700">Visible roots</tspan> → methodology · platform · principles</text>
+
+  <text x="480" y="636" text-anchor="middle" font-size="10.5" font-style="italic" fill="#5b6b7d">Bursera structure v0.1 — the plain-language companion to the tree. Same model, drawn to be read.</text>
+</svg>

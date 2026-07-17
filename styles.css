@@ -480,3 +480,43 @@ body.site-page .news-theme{
   display:block; margin-top:var(--space-1); max-width:66ch;
   flex:1 1 100%;
 }
+
+/* ===========================================================================
+   12. HOME REFRESH  — hero photo, offerings, seal, structure lightbox — BURSBUILD-S14
+   Tree-brand home: brand text + South Mountain photo hero, three coupled
+   offering cards, the seal/provenance block, and the click-to-open structure diagram.
+   --------------------------------------------------------------------------- */
+body.site-page .hero-inner{ display:grid; grid-template-columns:1fr; gap:var(--space-5); align-items:center; }
+body.site-page .hero-photo{ margin:var(--space-3) 0 0; max-width:300px; }
+body.site-page .hero-photo img{ display:block; width:100%; height:auto; border-radius:8px; border:1px solid var(--color-border); }
+body.site-page .tagline{ font-family:var(--font-label); font-size:var(--text-label); font-weight:var(--weight-bold);
+  letter-spacing:.22em; text-transform:uppercase; color:var(--brass-700); margin:0 0 var(--space-3); line-height:1.6; }
+@media (min-width:720px){
+  body.site-page .hero-inner{ grid-template-columns:1fr 300px; gap:var(--space-7); }
+  body.site-page .hero-photo{ order:2; margin:0; }
+}
+body.site-page .offerings{ display:grid; grid-template-columns:1fr; gap:var(--space-4); margin-top:var(--space-4); }
+body.site-page .offering{ border:1px solid var(--color-border); border-radius:var(--radius); padding:var(--space-5); background:var(--color-surface); }
+body.site-page .offering h3{ font-family:var(--font-heading); font-size:var(--text-h3); margin:0 0 var(--space-1); color:var(--color-text-strong); }
+body.site-page .offering .role{ font-family:var(--font-label); font-size:var(--text-label); letter-spacing:.14em; text-transform:uppercase; color:var(--brass-700); margin:0 0 var(--space-2); }
+body.site-page .offering p{ font-size:1rem; line-height:1.55; margin:0; color:var(--color-text); }
+body.site-page .offerings-note{ font-size:var(--text-small); font-style:italic; color:var(--color-text-muted); margin-top:var(--space-3); }
+@media (min-width:720px){ body.site-page .offerings{ grid-template-columns:repeat(3,1fr); } }
+body.site-page .seal-block{ display:flex; gap:var(--space-4); align-items:flex-start; background:var(--color-surface-alt);
+  border:1px solid var(--color-border); border-left:4px solid var(--brass-500); border-radius:var(--radius); padding:var(--space-5); margin-top:var(--space-4); }
+body.site-page .seal-block img{ width:48px; height:48px; flex:0 0 auto; }
+body.site-page .seal-block p{ margin:0; font-size:1rem; line-height:1.55; }
+body.site-page .diagram-open{ display:block; max-width:380px; margin:var(--space-4) 0 0; border:1px solid var(--color-border);
+  border-radius:var(--radius); overflow:hidden; background:#fff; }
+body.site-page .diagram-open img{ display:block; width:100%; height:auto; }
+body.site-page .diagram-cap{ font-size:var(--text-small); color:var(--color-text-muted); margin-top:var(--space-2); }
+.lightbox{ position:fixed; inset:0; background:rgba(11,18,32,.92); display:none; z-index:2000; }
+.lightbox:target{ display:flex; align-items:center; justify-content:center; padding:var(--space-6); }
+.lightbox img{ max-width:96vw; max-height:90vh; background:#fff; border-radius:6px; }
+.lightbox .lb-close{ position:absolute; top:var(--space-4); right:var(--space-6); color:#fff;
+  font-family:var(--font-heading); font-size:1rem; text-decoration:none; min-height:44px; line-height:44px; }
+
+/* About page — portrait photo (capped, uncropped) beside the founding story — BURSBUILD-S14 */
+body.site-page .about-figure{ margin:0 0 var(--space-3); max-width:280px; }
+body.site-page .about-figure img{ display:block; width:100%; height:auto; border-radius:8px; border:1px solid var(--color-border); }
+@media (min-width:720px){ body.site-page .media-entry .about-figure{ order:2; margin:0; } }
