@@ -544,3 +544,35 @@ body.site-page footer .footer-reports .fr-b{
   body.site-page footer .footer-info{ flex:1 1 auto; }
   body.site-page footer .footer-reports{ flex:0 0 auto; margin-left:var(--space-6); }
 }
+
+/* ------------------------------------------------------------------
+   13. HOME v2.0 — enlarged structure diagram + pillar cards — BURSBUILD-S15
+   The diagram carries the "how it fits" explanation; the cards carry the
+   navigation that the retired "How the work is done" and "Published work"
+   sections used to hold. Caption retired (Hugh, S15).
+   ------------------------------------------------------------------ */
+body.site-page .diagram-open{ max-width:100%; margin:var(--space-4) 0 0; }
+
+body.site-page .pillar-cards{
+  display:grid; grid-template-columns:1fr; gap:var(--space-3);
+  margin-top:var(--space-4);
+}
+body.site-page .pillar-card{
+  display:flex; flex-direction:column; gap:var(--space-1);
+  min-height:44px; padding:var(--space-4);
+  border:1px solid var(--color-border); border-bottom:1px solid var(--color-border);
+  border-left:3px solid var(--brass-500); border-radius:var(--radius);
+  background:var(--color-surface); text-decoration:none;
+  transition:background .15s, border-color .15s;
+}
+body.site-page .pillar-card:hover{ background:var(--color-surface-alt); border-left-color:var(--brass-700); }
+body.site-page .pillar-card .pc-title{
+  font-family:var(--font-heading); font-weight:var(--weight-bold); font-size:1rem;
+  color:var(--color-text-strong);
+}
+body.site-page .pillar-card .pc-desc{
+  font-size:var(--text-small); line-height:1.5; color:var(--color-text-muted);
+}
+@media (min-width:720px){
+  body.site-page .pillar-cards{ grid-template-columns:repeat(2,1fr); gap:var(--space-4); }
+}
