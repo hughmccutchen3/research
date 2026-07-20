@@ -1,27 +1,43 @@
-<!-- BURSBUILD-S09: "The Data Access Platform" entry upgraded to media-entry with a card image
-     (old-research/images/data-access-layers-card.jpg, 3:2 crop of Hugh's "Data Access Layers.png"
-     supplied via _incoming/), matching the Data Lifecycle Series entry above it. RES-382. -->
+<!-- BURSBUILD-S16. Page re-mastheaded as the RESEARCH offering (RES-504 Option A). URL unchanged
+     (keep-at-root); nav label "Research" now means this offering — the collision with the offering
+     name is resolved by making them the same page. New top card row "How the work is done"
+     (Method + Platform, Hugh's amendment — they leave nav but not visibility). Clusters moved IN
+     per the mindset-vs-HOW split: When Even the Best Prompt Isn't Enough (case for platform) and
+     The Chef Post (method demonstrated) from llm-leadership.html. Papers unchanged as the proof
+     section. Earlier history: BURSBUILD-S09 media-entry upgrade (RES-382). -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Research Examples — Bursera Consulting</title>
-<meta name="description" content="Complete research papers from Bursera on governing the data lifecycle and building data platforms that run at scale.">
+<title>Research — Bursera Consulting</title>
+<meta name="description" content="Research from Bursera Consulting: you bring a question your organization needs answered well; we build the evidence base under it, with sources attached and thin spots marked.">
 <link rel="canonical" href="https://burseraconsulting.com/research_examples.html">
 <link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Research Examples — Bursera Consulting">
-<meta property="og:description" content="Complete research papers: data-lifecycle governance, platform architecture, and industry research.">
+<meta property="og:title" content="Research — Bursera Consulting">
+<meta property="og:description" content="You bring a question your organization needs answered well; we build the evidence base under it, with sources attached and thin spots marked.">
 <meta property="og:image" content="https://burseraconsulting.com/data-lifecycle/images/Gemini-Data-Lifecycle-Cartoon-Part1-Fine.jpg">
 <meta property="og:url" content="https://burseraconsulting.com/research_examples.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=s15a">
+<link rel="stylesheet" href="styles.css?v=s16a">
 <script src="news-flag.js" defer></script>
+<style>
+/* page-local cluster layout (same pattern as the Training page); shared chrome + tokens from /styles.css */
+.cluster{max-width:46rem;margin:0 0 2.6rem;padding:0 0 1.8rem;border-bottom:1px solid #e2e2e2}
+.cluster:last-of-type{border-bottom:none}
+.cluster h2{font-size:1.3rem;margin:0 0 .2rem}
+.cluster .role{font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:#8b6a3b;margin:0 0 .8rem}
+.cluster .assets{margin:1rem 0 0;padding:0;list-style:none;font-family:Arial,Helvetica,sans-serif;font-size:14px}
+.cluster .assets li{margin:.35rem 0}
+.cluster .assets a{color:#2d5270}
+.cluster h2 a{color:inherit;text-decoration:none}
+.cluster h2 a:hover{text-decoration:underline;text-decoration-color:#8b6a3b}
+</style>
 </head>
 <body class="site-page">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -32,23 +48,70 @@
     <nav class="site-nav" aria-label="Primary">
       <a href="/">Home</a>
       <a href="/research_examples.html" aria-current="page">Research</a>
-      <a href="/llm-leadership.html">Leadership</a>
-      <a href="/method.html">Method</a>
-      <a href="/platform.html">Platform</a>
+      <a href="/llm-leadership.html">Training</a>
+      <a href="/advisory.html">Advisory</a>
       <a href="/about.html">About</a>
       <a href="/news.html" class="nav-news" data-news-flag>News</a>
     </nav>
   </header>
 
   <header class="masthead">
-    <h1>Research Examples</h1>
-    <p class="lede">Complete research papers: governance of the data lifecycle, and data platforms built to run at scale.</p>
+    <h1>Research</h1>
+    <p class="lede">You bring a question your organization needs answered well. We build the evidence base under it and return work you can act on &mdash; with the sources attached and the thin spots marked.</p>
   </header>
 
   <main id="main">
 
     <section class="group">
-      <div class="group-label">Data engineering</div>
+      <div class="group-label">How the work is done</div>
+      <div class="entry">
+        <div class="pillar-cards">
+          <a class="pillar-card" href="/method.html">
+            <span class="pc-title">The Method</span>
+            <span class="pc-desc">How an engagement is anchored, run, and verified before findings leave the desk. The problem statement, the two-layer structure, and the verification loop &mdash; the full process, written out.</span>
+          </a>
+          <a class="pillar-card" href="/platform.html">
+            <span class="pc-title">The Platform</span>
+            <span class="pc-desc">What holds the analysis together across days of work and hundreds of sources. Built for research with LLMs; its first test is the work on this site.</span>
+          </a>
+          <div class="pillar-card">
+            <span class="pc-title"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><rect width="100" height="100" rx="18" fill="#0F172A" stroke="#C9A33D" stroke-width="4"/><text x="50" y="72" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="66" fill="#C9A33D">B</text></svg>Provenance</span>
+            <span class="pc-desc">Provenance is the inspectable record of how a research artifact was developed: its evidence, inputs, methods, human judgment, AI/tool participation, material decisions, revisions, assumptions, and scope boundaries. Every published piece carries this seal &mdash; Human&nbsp;Led &mdash; linking to that record.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="group">
+      <div class="group-label">The method, shown working</div>
+
+      <section class="cluster media-entry media-left">
+        <figure class="card-media"><img src="the-platform/images/CapstoneIllustration1.png" alt=""></figure>
+        <div class="card-body">
+        <p class="role">The case for a platform</p>
+        <h2><a href="the-platform/OMUP-Capstone_WhenTheBestPromptIsntEnough_v2.8.html">When Even the Best Prompt Isn't Enough</a></h2>
+        <p>Features like Projects, Skills, instruction blocks, and memory are all worth knowing. A process that holds up under sustained work, with an audit trail, needs a framework behind it. This paper makes the case that most of us use these tools well and still leave most of their power on the table.</p>
+        <ul class="assets">
+          <li><a href="the-platform/OMUP-Capstone_WhenTheBestPromptIsntEnough_v2.8.html">When Even the Best Prompt Isn't Enough</a> &mdash; the full argument</li>
+        </ul>
+        </div>
+      </section>
+
+      <section class="cluster media-entry media-left">
+        <figure class="card-media"><img src="the-chef-post/images/writer-chef-card.jpg" alt="Cropped diagram fragment: the writer as head chef, keeping menu design, taste, and veto."></figure>
+        <div class="card-body">
+        <p class="role">The method, demonstrated</p>
+        <h2><a href="the-chef-post/the-chef-post.html">Watch the method work</a></h2>
+        <p>Think of it as a casting call. One part, three actors reading the same lines, two of them fresh off the bus that week. You are in the director's chair. You give the same brief to each, watch the reads side by side, and coach toward the take that lands. The part goes to the best read, not the biggest name or the newest face. A cost breakdown runs alongside, so you can see what the performance was worth. The published post came out of exactly this, unchanged, and you can watch every take, including the ones that fell flat.</p>
+        <ul class="assets">
+          <li><a href="the-chef-post/the-chef-post.html">The Chef Post</a> &mdash; the published piece, plus the three-model comparison, drafts, and cost analysis behind it</li>
+        </ul>
+        </div>
+      </section>
+    </section>
+
+    <section class="group">
+      <div class="group-label">The work &mdash; complete papers</div>
 
       <div class="entry media-entry media-left">
         <figure class="card-media"><img src="data-lifecycle/images/Gemini-Data-Lifecycle-Cartoon-Part1-Fine.jpg" alt=""></figure>
@@ -68,7 +131,7 @@
           </li>
           <li>
             <span class="num">Paper 3</span>
-            <a href="data-lifecycle/paper3_v6.html">When the Request Is "Delete Me"</a>
+            <a href="data-lifecycle/paper3_v6.html">When the Request Is &quot;Delete Me&quot;</a>
             <div class="s-sum">Why a subject-erasure request and routine analytical removal are the same operation, and the platform conditions that make it a managed step rather than an investigation.</div>
           </li>
         </ul>
@@ -79,12 +142,18 @@
         <figure class="card-media"><img src="old-research/images/data-access-layers-card.jpg" alt=""></figure>
         <div class="card-body">
         <a class="entry-title" href="old-research/The_data_platform.html">The Data Access Platform</a>
-        <p class="summary">Two decades running analytics platforms at a large healthcare company, told through the Brooklyn Bridge: why organizations tolerate "good enough" data access for years, and what it finally takes to commit to the platform they actually need.</p>
+        <p class="summary">Two decades running analytics platforms at a large healthcare company, told through the Brooklyn Bridge: why organizations tolerate &quot;good enough&quot; data access for years, and what it finally takes to commit to the platform they actually need.</p>
         </div>
       </div>
 
     </section>
 
+    <section class="group">
+      <div class="group-label">Start here</div>
+      <div class="entry">
+        <p class="summary">The best first step is a short conversation about the question you are trying to answer. <a href="mailto:contact@burseraconsulting.com">Contact us</a>.</p>
+      </div>
+    </section>
 
   </main>
 

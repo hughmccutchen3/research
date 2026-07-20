@@ -576,3 +576,21 @@ body.site-page .pillar-card .pc-desc{
 @media (min-width:720px){
   body.site-page .pillar-cards{ grid-template-columns:repeat(2,1fr); gap:var(--space-4); }
 }
+
+/* ================= 14. PROVENANCE SEAL (.bseal) — BURSBUILD-S16 =================
+   The B mark + stacked Human/Led link on every published piece; jumps to #provenance.
+   Default styling is for dark covers; .bseal--light for parchment covers. */
+.bseal-host{ position:relative; }
+.bseal{ position:absolute; top:12px; right:14px; display:flex; align-items:stretch; gap:6px; text-decoration:none; z-index:5; }
+.bseal .bmark{ display:block; width:26px; height:26px; border-radius:5px; animation:bglow 3s ease-out 1; }
+.bseal .btext{ display:flex; flex-direction:column; justify-content:space-between; height:26px; }
+.bseal .btext span{ font-family:Georgia,"Times New Roman",serif; font-size:10.5px; line-height:1.15; color:#e8d9ae; text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px; text-decoration-color:rgba(201,163,61,.8); }
+.bseal:hover .btext span{ color:#C9A33D; }
+.bseal--light .btext span{ color:#8b6a3b; text-decoration-color:rgba(139,106,59,.8); }
+.bseal--light:hover .btext span{ color:#5a3e00; }
+.bseal .btip{ position:absolute; top:calc(100% + 7px); right:0; white-space:nowrap; background:#0F172A; border:1px solid rgba(201,163,61,.6); color:#e8d9ae; font-size:10px; font-family:Georgia,serif; padding:4px 9px; border-radius:4px; opacity:0; transform:translateY(-3px); pointer-events:none; transition:opacity .18s ease, transform .18s ease; }
+.bseal:hover .btip, .bseal:focus .btip{ opacity:1; transform:translateY(0); }
+@keyframes bglow{ 0%{box-shadow:0 0 0 0 rgba(201,163,61,0);} 22%{box-shadow:0 0 10px 2px rgba(201,163,61,.75);} 55%{box-shadow:0 0 7px 1px rgba(201,163,61,.35);} 100%{box-shadow:0 0 0 0 rgba(201,163,61,0);} }
+@media (prefers-reduced-motion:reduce){ .bseal .bmark{ animation:none; } }
+/* static (non-link) pillar card — Research page provenance explainer */
+body.site-page div.pillar-card{ cursor:default; }

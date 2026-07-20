@@ -1,28 +1,29 @@
+<!-- BURSBUILD-S16. Page re-mastheaded as the TRAINING offering (RES-504 Option A). Nav label
+     Leadership -> Training; URL unchanged (keep-at-root). Cluster split per Hugh's mindset-vs-HOW
+     ruling: A Team You Have to Build and Lead + The Interns moved to advisory.html (mindset);
+     When Even the Best Prompt Isn't Enough + The Chef Post moved to research_examples.html
+     (HOW/demonstration). Kept here: the Stick guide (operating the tool) + the deck guide
+     (hands-on working tool). Offer-card email fixed to the one contact address (S15 lock).
+     Earlier history in this comment block retained below. -->
 <!-- BURSBUILD-S05. Leadership rebuilt as the training pillar; Framework hub merged in per Hugh
-     (llm-framework.html now redirects here). Intro positioning line drafted in-session (my-voice
-     mode 4), pending Hugh's markup. Card thumbnails reference existing paper imagery by path.
-     No PROVENANCE block - site-page policy.
-     BURSBUILD-S09: added two clusters (The working tool / deck guide; The method, demonstrated /
-     chef post) per RES-347/RES-353, prose carried from _incoming/llm-leadership_v0.8_reference.html.html
-     with links wired to the newly placed files. Both clusters now have card images (writer-chef gold
-     box for the chef post; a 3:2 crop of Hugh's "Monthly Slide Deck Image.jpg" for the deck guide) —
-     all six clusters are now media-entry, visually consistent. -->
+     (llm-framework.html now redirects here).
+     BURSBUILD-S09: clusters + card images added per RES-347/RES-353. -->
 <!DOCTYPE html>
 <html lang="en"><head>
-<link rel="stylesheet" href="styles.css?v=s15a">
+<link rel="stylesheet" href="styles.css?v=s16a">
 <script src="news-flag.js" defer></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LLM Leadership — Bursera Consulting</title>
-<meta name="description" content="Training for leaders who want serious work from large language models. It covers the habits, techniques, and tool knowledge behind Bursera's research practice.">
+<title>Training — Bursera Consulting</title>
+<meta name="description" content="Training from Bursera Consulting: teaching researchers, analysts and leaders to direct large language models the way you would direct a team — and get work that holds up.">
 <link rel="canonical" href="https://burseraconsulting.com/llm-leadership.html">
 <link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="LLM Leadership — Bursera Consulting">
-<meta property="og:description" content="Training for leaders who want serious work from large language models: the habits, techniques, and tool knowledge behind Bursera's research practice.">
-<meta property="og:image" content="https://burseraconsulting.com/the-interns/Images/TheInternsC-Small.png">
+<meta property="og:title" content="Training — Bursera Consulting">
+<meta property="og:description" content="Teaching researchers, analysts and leaders to direct large language models the way you would direct a team — and get work that holds up.">
+<meta property="og:image" content="https://burseraconsulting.com/claude-guide/images/ClaudeGuideDashboardImage.jpeg">
 <meta property="og:url" content="https://burseraconsulting.com/llm-leadership.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,6 +38,8 @@
 .cluster .assets{margin:1rem 0 0;padding:0;list-style:none;font-family:Arial,Helvetica,sans-serif;font-size:14px}
 .cluster .assets li{margin:.35rem 0}
 .cluster .assets a{color:#2d5270}
+.cluster h2 a{color:inherit;text-decoration:none}
+.cluster h2 a:hover{text-decoration:underline;text-decoration-color:#8b6a3b}
 .intro-row{margin:0 0 2.6rem;padding:0 0 2rem;border-bottom:1px solid #e2e2e2}
 .intro-row .pillar-intro{margin:0}
 .intro-row .pillar-intro p:first-child{margin-top:0}
@@ -55,78 +58,41 @@
   <nav class="site-nav" aria-label="Primary">
     <a href="/">Home</a>
     <a href="/research_examples.html">Research</a>
-    <a href="/llm-leadership.html" aria-current="page">Leadership</a>
-    <a href="/method.html">Method</a>
-    <a href="/platform.html">Platform</a>
+    <a href="/llm-leadership.html" aria-current="page">Training</a>
+    <a href="/advisory.html">Advisory</a>
     <a href="/about.html">About</a>
     <a href="/news.html" class="nav-news" data-news-flag>News</a>
   </nav>
 </header>
 
 <header class="masthead">
-  <h1>LLM Leadership</h1>
-  <p class="lede">Training for leaders who want serious work from large language models.</p>
+  <h1>Training</h1>
+  <p class="lede">Teaching researchers, analysts and leaders to direct large language models the way you would direct a team &mdash; and get work that holds up.</p>
 </header>
 
 <main id="main">
 
 <section class="group">
-  <div class="group-label">LLM habits and methods for every Leader</div>
+  <div class="group-label">The practice, taught</div>
 <div class="intro-row">
 <div class="pillar-intro">
-  <p>I run research and writing with an LLM the way you run a team — full time and at full depth. Almost nobody needs to work the way I do. But leading the work this way has taught me a lot that carries over: the habits, the techniques, and how these tools actually behave.</p>
-  <p>Work that holds up across days and many sessions comes from directing the model the way you would direct people: you set the direction, you review the work critically, and you make the final calls. Each piece below shows the practice in a form you can read, run, or check for yourself.</p>
+  <p>I run research and writing with an LLM the way you run a team &mdash; full time and at full depth. Almost nobody needs to work the way I do. But leading the work this way has taught me a lot that carries over: the habits, the techniques, and how these tools actually behave.</p>
+  <p>Work that holds up across days and many sessions comes from directing the model the way you would direct people: you set the direction, you review the work critically, and you make the final calls. Training teaches that practice &mdash; hands-on, on your own work. The guides below are the self-serve version: read them, run them, and feel the difference between asking a tool for output and directing one.</p>
 </div>
 <aside class="offer-card">
-  <p>Do you wish your team had these LLM Leadership habits? <a href="mailto:hugh.mccutchen@burseraconsulting.com">Contact us</a> to discuss a tailored training approach for your unique needs.</p>
+  <p>Do you wish your team had these LLM leadership habits? <a href="mailto:contact@burseraconsulting.com">Contact us</a> to discuss a tailored training approach for your unique needs.</p>
 </aside>
 </div>
-</section>
-
-<section class="cluster media-entry media-left">
-  <figure class="card-media"><img src="old-research/images/LLM_is_a_team_hero.jpg" alt=""></figure>
-  <div class="card-body">
-  <p class="role">The thesis</p>
-  <h2>A team you have to build and lead</h2>
-  <p>This article draws on experiences going back to the fall of 2024 through the current state in the middle of 2026. It traces five phases, from treating the model as fancy search to leading it like a group of capable people who need direction. It is specific about what went wrong along the way: the thread that agreed with everything, the drafts that echoed the last thing said.</p>
-  <ul class="assets">
-    <li><a href="old-research/LLM_is_a_team.html">A Team You Have to Build and Lead</a> — the five-phase argument in full</li>
-  </ul>
-  </div>
-</section>
-
-<section class="cluster media-entry media-left">
-  <figure class="card-media"><img src="the-interns/Images/TheInternsC-Small.png" alt=""></figure>
-  <div class="card-body">
-  <p class="role">The habits</p>
-  <h2>The Interns</h2>
-  <p>A series on running the team well, one leadership practice and one technique per episode. "Red Team" is the first: when the work is not landing the way you want, you bring in a second model for a fresh set of eyes and point it at the first model's work. The story shows adversarial review as a normal habit, the kind the model makes easy once you are directing it rather than taking its first answer. That first answer is often confident and wrong. New episodes are added as they are written.</p>
-  <ul class="assets">
-    <li><a href="the-interns/the_interns_red_team_v3.5.html">The Interns — Red Team</a> — the practice, step by step</li>
-  </ul>
-  </div>
-</section>
-
-<section class="cluster media-entry media-left">
-  <figure class="card-media"><img src="the-platform/images/CapstoneIllustration1.png" alt=""></figure>
-  <div class="card-body">
-  <p class="role">The case for a platform</p>
-  <h2>When Even the Best Prompt Isn't Enough</h2>
-  <p>Features like Projects, Skills, instruction blocks, and memory are all worth knowing. A process that holds up under sustained work, with an audit trail, needs a framework behind it. This paper makes the case that most of us use these tools well and still leave most of their power on the table.</p>
-  <ul class="assets">
-    <li><a href="the-platform/OMUP-Capstone_WhenTheBestPromptIsntEnough_v2.8.html">When Even the Best Prompt Isn't Enough</a> — the full argument</li>
-  </ul>
-  </div>
 </section>
 
 <section class="cluster media-entry media-left">
   <figure class="card-media"><img src="claude-guide/images/ClaudeGuideDashboardImage.jpeg" alt=""></figure>
   <div class="card-body">
   <p class="role">Learning to operate the tool</p>
-  <h2>Claude for Research — Learn to use the Stick</h2>
+  <h2><a href="claude-guide/WPP-S11-WHITEPAPER-v2.2.html">Claude for Research &mdash; Learn to use the Stick</a></h2>
   <p>Most chat tools are automatics; the most capable one asks you to drive. The guide teaches how to operate Claude deliberately, and why that reaches results one-shot prompting cannot.</p>
   <ul class="assets">
-    <li><a href="claude-guide/WPP-S11-WHITEPAPER-v2.2.html">Claude for Research — Learn to use the Stick</a> — the full guide</li>
+    <li><a href="claude-guide/WPP-S11-WHITEPAPER-v2.2.html">Claude for Research &mdash; Learn to use the Stick</a> &mdash; the full guide</li>
   </ul>
   </div>
 </section>
@@ -135,23 +101,18 @@
   <figure class="card-media"><img src="monthly-deck-guide/images/monthly-deck-card.jpg" alt="A monthly team meeting deck built from the workspace setup the guide describes."></figure>
   <div class="card-body">
   <p class="role">The working tool</p>
-  <h2>Ship a real deck this week</h2>
+  <h2><a href="monthly-deck-guide/monthly-deck-guide.html">Ship a real deck this week</a></h2>
   <p>A free setup guide for one recurring job: the monthly team-meeting deck. You spend about twenty minutes wiring it up once, and after that the model gathers the updates and drafts the slides while you decide what the meeting is actually about. The guide is firm on the line that matters. The model finds and writes. You own the story. It is the fastest way to feel the difference between asking a tool for output and directing one.</p>
   <ul class="assets">
-    <li><a href="monthly-deck-guide/monthly-deck-guide.html">Monthly Team Meeting Deck — An AI Setup Guide</a> — a twenty-minute setup, then a repeatable process</li>
+    <li><a href="monthly-deck-guide/monthly-deck-guide.html">Monthly Team Meeting Deck &mdash; An AI Setup Guide</a> &mdash; a twenty-minute setup, then a repeatable process</li>
   </ul>
   </div>
 </section>
 
-<section class="cluster media-entry media-left">
-  <figure class="card-media"><img src="the-chef-post/images/writer-chef-card.jpg" alt="Cropped diagram fragment: the writer as head chef, keeping menu design, taste, and veto."></figure>
-  <div class="card-body">
-  <p class="role">The method, demonstrated</p>
-  <h2>Watch the method work</h2>
-  <p>Think of it as a casting call. One part, three actors reading the same lines, two of them fresh off the bus that week. You are in the director's chair. You give the same brief to each, watch the reads side by side, and coach toward the take that lands. The part goes to the best read, not the biggest name or the newest face. A cost breakdown runs alongside, so you can see what the performance was worth. The published post came out of exactly this, unchanged, and you can watch every take, including the ones that fell flat.</p>
-  <ul class="assets">
-    <li><a href="the-chef-post/the-chef-post.html">The Chef Post</a> — the published piece, plus the three-model comparison, drafts, and cost analysis behind it</li>
-  </ul>
+<section class="group">
+  <div class="group-label">Where the rest of the story lives</div>
+  <div class="entry">
+    <p class="summary">The mindset behind this practice &mdash; why these tools are a team you lead, not a tool you use &mdash; is told in story form on the <a href="/advisory.html">Advisory</a> page. The method working end to end, with drafts and costs shown, is on the <a href="/research_examples.html">Research</a> page.</p>
   </div>
 </section>
 
