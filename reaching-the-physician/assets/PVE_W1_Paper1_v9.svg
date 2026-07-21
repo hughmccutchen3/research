@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PVE_W1_Paper1_v9 — direct engagement: channel x physician segment.
+     Rebuilt PVE-S09: Arial font, paper palette, equal 3-column layout,
+     label texts shortened to fit label col, all CSS variables replaced. -->
+<svg width="820" height="440" viewBox="0 0 820 440" xmlns="http://www.w3.org/2000/svg">
+<title>Paper 1 — direct engagement: channel × physician segment</title>
+
+<!-- ─── TITLE ─────────────────────────────────────────────────────── -->
+<text font-size="17" font-weight="700" font-family="Arial, sans-serif"
+      x="410" y="26" text-anchor="middle" fill="#1C2B4A">Paper 1 — direct engagement: channel × physician segment</text>
+
+<!-- ─── COLUMN HEADERS  (col centers: 286, 488, 690) ─────────────── -->
+<text font-size="13" font-weight="700" font-family="Arial, sans-serif"
+      x="286" y="50" text-anchor="middle" fill="#1C2B4A">Accessible</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="286" y="65" text-anchor="middle" fill="#5A6878">Open to rep contact</text>
+
+<text font-size="13" font-weight="700" font-family="Arial, sans-serif"
+      x="488" y="50" text-anchor="middle" fill="#1C2B4A">NoSee</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="488" y="65" text-anchor="middle" fill="#5A6878">Personally closed</text>
+
+<text font-size="13" font-weight="700" font-family="Arial, sans-serif"
+      x="690" y="50" text-anchor="middle" fill="#1C2B4A">AccessBlocked</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="690" y="65" text-anchor="middle" fill="#5A6878">AMC institutional ban</text>
+
+<line x1="40" y1="76" x2="780" y2="76" stroke="#E8EAED" stroke-width="1"/>
+
+<!-- ═══ ROW 1 — In-person rep  (cards y=82–140) ═══════════════════ -->
+<text font-size="13" font-weight="700" font-family="Arial, sans-serif"
+      x="44" y="100" fill="#1C2B4A">In-person rep</text>
+
+<!-- Accessible -->
+<rect x="188" y="82" width="196" height="58" rx="4" fill="#D6EBF0" stroke="#2A7D8A" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="286" y="106" text-anchor="middle" fill="#1C2B4A">Fully accessible</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="286" y="124" text-anchor="middle" fill="#3D5166">Deepest relationship</text>
+
+<!-- NoSee -->
+<rect x="390" y="82" width="196" height="58" rx="4" fill="#FEF3DC" stroke="#B87B1A" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="488" y="106" text-anchor="middle" fill="#1C2B4A">Access declining</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="488" y="124" text-anchor="middle" fill="#3D5166">68% oncology restricted</text>
+
+<!-- AccessBlocked -->
+<rect x="592" y="82" width="186" height="58" rx="4" fill="#EBF3F9" stroke="#3D5166" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="685" y="106" text-anchor="middle" fill="#3D5166">Structurally blocked</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="685" y="124" text-anchor="middle" fill="#5A6878">Institution policy</text>
+
+<line x1="40" y1="152" x2="780" y2="152" stroke="#E8EAED" stroke-width="1"/>
+
+<!-- ═══ ROW 2 — Video / AI rep  (cards y=158–216) ═════════════════ -->
+<text font-size="13" font-weight="700" font-family="Arial, sans-serif"
+      x="44" y="176" fill="#1C2B4A">Video / AI rep</text>
+
+<!-- Accessible -->
+<rect x="188" y="158" width="196" height="58" rx="4" fill="#D6EBF0" stroke="#2A7D8A" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="286" y="182" text-anchor="middle" fill="#1C2B4A">Accessible</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="286" y="200" text-anchor="middle" fill="#3D5166">Lower depth than live</text>
+
+<!-- NoSee -->
+<rect x="390" y="158" width="196" height="58" rx="4" fill="#D6EBF0" stroke="#2A7D8A" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="488" y="182" text-anchor="middle" fill="#1C2B4A">Partially accessible</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="488" y="200" text-anchor="middle" fill="#3D5166">Async format helps</text>
+
+<!-- AccessBlocked -->
+<rect x="592" y="158" width="186" height="58" rx="4" fill="#FEF3DC" stroke="#B87B1A" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="685" y="182" text-anchor="middle" fill="#1C2B4A">Policy-dependent</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="685" y="200" text-anchor="middle" fill="#3D5166">RepTwin — no data yet</text>
+
+<line x1="40" y1="228" x2="780" y2="228" stroke="#E8EAED" stroke-width="1"/>
+
+<!-- ═══ ROW 3 — MSL  (cards y=234–292) ════════════════════════════ -->
+<!-- Label: 4 lines, all fit within label col (max right ~149) -->
+<text font-size="13" font-weight="700" font-family="Arial, sans-serif"
+      x="44" y="252" fill="#1C2B4A">MSL</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="44" y="267" fill="#5A6878">Medical Science</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="44" y="281" fill="#5A6878">Liaison — scientific</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="44" y="295" fill="#5A6878">non-promotional</text>
+
+<!-- Accessible -->
+<rect x="188" y="234" width="196" height="58" rx="4" fill="#D6EBF0" stroke="#2A7D8A" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="286" y="258" text-anchor="middle" fill="#1C2B4A">Accessible</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="286" y="276" text-anchor="middle" fill="#3D5166">Highest influence depth</text>
+
+<!-- NoSee -->
+<rect x="390" y="234" width="196" height="58" rx="4" fill="#D6EBF0" stroke="#2A7D8A" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="488" y="258" text-anchor="middle" fill="#1C2B4A">Often accessible</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="488" y="276" text-anchor="middle" fill="#3D5166">Scientific framing</text>
+
+<!-- AccessBlocked -->
+<rect x="592" y="234" width="186" height="58" rx="4" fill="#FEF3DC" stroke="#B87B1A" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="685" y="258" text-anchor="middle" fill="#1C2B4A">AMC-dependent</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="685" y="276" text-anchor="middle" fill="#3D5166">Not banned by policy</text>
+
+<line x1="40" y1="308" x2="780" y2="308" stroke="#E8EAED" stroke-width="1"/>
+
+<!-- ─── KEY CONSTRAINT ROW ─────────────────────────────────────────── -->
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="44" y="328" fill="#1C2B4A">Key constraint</text>
+
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="286" y="322" text-anchor="middle" fill="#5A6878">Access intact.</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="286" y="337" text-anchor="middle" fill="#5A6878">Influence is the challenge.</text>
+
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="488" y="322" text-anchor="middle" fill="#5A6878">Access is the problem.</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="488" y="337" text-anchor="middle" fill="#5A6878">Rep model fails here.</text>
+
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="685" y="322" text-anchor="middle" fill="#5A6878">Structural wall.</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="685" y="337" text-anchor="middle" fill="#5A6878">MSL + research only.</text>
+
+<line x1="40" y1="352" x2="780" y2="352" stroke="#E8EAED" stroke-width="1"/>
+
+<!-- ─── LEGEND ─────────────────────────────────────────────────────── -->
+<rect x="44" y="362" width="14" height="14" rx="2" fill="#D6EBF0" stroke="#2A7D8A" stroke-width="1.5"/>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="64" y="374" fill="#3D5166">Accessible / viable</text>
+<rect x="220" y="362" width="14" height="14" rx="2" fill="#FEF3DC" stroke="#B87B1A" stroke-width="1.5"/>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="240" y="374" fill="#3D5166">Partial / degraded</text>
+<rect x="390" y="362" width="14" height="14" rx="2" fill="#EBF3F9" stroke="#3D5166" stroke-width="1.5"/>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="410" y="374" fill="#3D5166">Structurally blocked</text>
+
+<!-- ─── FOOTER ─────────────────────────────────────────────────────── -->
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="410" y="400" text-anchor="middle" fill="#5A6878">MSL is the only direct-engagement channel reaching all three physician segments,</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="410" y="415" text-anchor="middle" fill="#5A6878">because it operates under a non-promotional framework.</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="410" y="430" text-anchor="middle" fill="#5A6878">AI reps face the same structural wall as human reps.</text>
+
+</svg>

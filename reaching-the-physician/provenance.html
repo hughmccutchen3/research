@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reaching the Physician &#8212; Full Provenance and Audit Trail</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reaching the Physician &#8212; Full Provenance and Audit Trail">
+<meta property="og:description" content="The full audit trail behind the Bursera Consulting research brief &#8216;Reaching the Physician&#8217;: every working session, direction change, correction, and unverified item.">
+<meta property="og:url" content="https://burseraconsulting.com/reaching-the-physician/provenance.html">
+<meta property="og:image" content="https://burseraconsulting.com/reaching-the-physician/images/rtp-og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reaching the Physician &#8212; Full Provenance and Audit Trail">
+<meta name="twitter:description" content="The full audit trail behind the Bursera Consulting research brief &#8216;Reaching the Physician&#8217;: every working session, direction change, correction, and unverified item.">
+<meta name="description" content="The full audit trail behind the Bursera Consulting research brief &#8216;Reaching the Physician&#8217;: every working session, direction change, correction, and unverified item.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://burseraconsulting.com/reaching-the-physician/provenance.html">
+<link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Bursera tokens, restrained: slate / brass / parchment */
+  --slate-900:#0F172A; --slate-800:#1E293B; --slate-700:#334155;
+  --slate-600:#475569; --slate-500:#64748B; --slate-300:#CBD5E1; --slate-200:#E2E8F0;
+  --brass-700:#8B6914; --brass-500:#B8860B; --brass-200:#EBD7A7;
+  --parchment:#FAF7F0; --parchment-mid:#F2EDE0; --parchment-deep:#E8E0CC;
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --mono:'JetBrains Mono','SF Mono',Menlo,Consolas,monospace;
+  --doc-w:760px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  background:var(--parchment-mid);
+  font-family:var(--serif);
+  font-size:clamp(16px,0.4vw + 15.2px,17.5px);
+  line-height:1.7;
+  color:var(--slate-800);
+}
+
+/* ---------- top bar ---------- */
+.topbar{
+  background:var(--parchment);
+  border-bottom:1px solid var(--parchment-deep);
+  padding:0 clamp(16px,4vw,32px);
+}
+.topbar-inner{
+  max-width:var(--doc-w);margin:0 auto;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:4px 20px;
+}
+.topbar a{
+  display:inline-flex;align-items:center;min-height:44px;
+  font-family:var(--sans);text-decoration:none;color:var(--brass-700);
+}
+.topbar a:hover,.topbar a:focus{color:var(--slate-900);text-decoration:underline;}
+.wordmark{font-weight:700;letter-spacing:0.02em;font-size:clamp(15px,2vw,17px);color:var(--slate-900) !important;}
+.wordmark span{color:var(--brass-700);font-weight:600;}
+.backlink{font-size:clamp(13.5px,1.8vw,15px);font-weight:600;}
+
+/* ---------- document sheet ---------- */
+.doc{
+  max-width:var(--doc-w);
+  margin:0 auto;
+  background:var(--parchment);
+  padding:clamp(28px,6vw,64px) clamp(18px,5vw,56px) clamp(48px,8vw,80px);
+  border-left:1px solid var(--parchment-deep);
+  border-right:1px solid var(--parchment-deep);
+  min-height:70vh;
+}
+
+/* ---------- structural typography ---------- */
+h1{
+  font-family:var(--sans);font-weight:700;
+  font-size:clamp(24px,4.6vw,34px);line-height:1.22;
+  color:var(--slate-900);letter-spacing:-0.01em;
+  margin:0 0 18px;
+}
+h2{
+  font-family:var(--sans);font-weight:700;
+  font-size:clamp(19px,3vw,25px);line-height:1.25;
+  color:var(--slate-900);
+  margin:44px 0 14px;
+}
+h3{
+  font-family:var(--sans);font-weight:600;
+  font-size:clamp(16.5px,2.3vw,19px);line-height:1.3;
+  color:var(--slate-800);
+  margin:32px 0 10px;
+}
+h3 .sess{font-family:var(--mono);font-weight:600;color:var(--brass-700);}
+p{margin:0 0 16px;}
+strong{font-weight:600;color:var(--slate-900);}
+em{font-style:italic;}
+hr{
+  border:0;height:1px;background:var(--parchment-deep);
+  margin:40px 0;
+}
+a{color:var(--brass-700);}
+
+/* metadata header under the title */
+.docmeta{
+  font-family:var(--mono);
+  font-size:clamp(12px,1.7vw,13px);
+  line-height:1.65;
+  color:var(--slate-600);
+  margin:0 0 22px;
+}
+.docmeta b{color:var(--slate-800);font-weight:600;}
+
+blockquote{
+  border-left:3px solid var(--brass-500);
+  background:var(--parchment-mid);
+  padding:14px 18px;
+  margin:0 0 20px;
+  color:var(--slate-700);
+}
+blockquote p:last-child{margin-bottom:0;}
+
+code{
+  font-family:var(--mono);
+  font-size:0.86em;
+  background:var(--parchment-mid);
+  border:1px solid var(--parchment-deep);
+  border-radius:3px;
+  padding:0.08em 0.34em;
+  color:var(--slate-900);
+  word-break:break-word;
+}
+
+/* ---------- tables ---------- */
+.tablewrap{overflow-x:auto;margin:0 0 22px;-webkit-overflow-scrolling:touch;}
+table{
+  border-collapse:collapse;
+  width:100%;
+  min-width:460px;
+  font-size:clamp(13.5px,1.9vw,15px);
+  line-height:1.55;
+  background:#fff;
+}
+th,td{
+  border:1px solid var(--parchment-deep);
+  padding:8px 11px;
+  text-align:left;
+  vertical-align:top;
+}
+th{
+  font-family:var(--sans);font-weight:700;
+  background:var(--parchment-mid);
+  color:var(--slate-900);
+}
+tbody td:first-child{
+  font-family:var(--sans);font-weight:600;color:var(--slate-900);
+  white-space:normal;
+}
+/* the two metadata tables read as machine record */
+.metatable table,.metatable td:first-child{font-family:var(--mono);}
+.metatable table{font-size:clamp(12.5px,1.7vw,13.5px);}
+.metatable td:first-child{
+  color:var(--brass-700);font-weight:600;
+  text-transform:none;white-space:nowrap;
+}
+tbody th[scope="row"]{
+  font-family:var(--sans);font-weight:600;color:var(--slate-900);
+  background:#fff;white-space:normal;
+}
+.metatable tbody th[scope="row"]{
+  font-family:var(--mono);color:var(--brass-700);font-weight:600;
+  text-transform:none;white-space:nowrap;
+}
+
+.closing-note{
+  font-style:italic;color:var(--slate-600);
+  margin:36px 0 20px;
+}
+footer.docfoot{
+  max-width:var(--doc-w);margin:0 auto;
+  padding:20px clamp(18px,5vw,56px) 56px;
+  font-family:var(--mono);font-size:12px;color:var(--slate-500);
+}
+@media (max-width:400px){
+  table{min-width:0;}
+  th,td{padding:7px 8px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a class="wordmark" href="/">Bursera <span>Consulting</span></a>
+    <a class="backlink" href="index.html">&#8592; Return</a>
+  </div>
+</nav>
+
+<main class="doc">
+
+<h1>Reaching the Physician &#8212; Full Provenance and Audit Trail</h1>
+
+<p class="docmeta">
+<b>Document:</b> Reaching the Physician &#8212; A Research Brief (published v1.2)<br>
+<b>Audit page version:</b> v1.0 &middot; published 2026-07-20 &middot; approved by the owner from the v0.1 draft of 2026-07-19, converted without content change
+</p>
+
+<p><strong>This page backs the summary provenance block at the foot of the published article.</strong> It is the long form: every working session that touched the document, what changed in each, where direction changed, what was corrected, and what remains unverified. It exists because a research product should be able to show its work.</p>
+
+<hr>
+
+<h2>How this document was made &#8212; in one paragraph</h2>
+
+<p>The paper began as a single deep-research pass in May 2026 on iPhysicianNet, a company the author worked at from 2001 to 2003. Over ten working sessions plus a publication pass, May to July 2026, it was triangulated against two other research engines, stress-tested against a structured research charter with an explicit anti-bias protocol, corrected on specific figures, illustrated with four diagrams that went through nine versions, produced as a designed document under multi-round author markup, and finally re-registered from a private briefing into published industry research. The sections below record that history session by session.</p>
+
+<hr>
+
+<h2>Layer 1 &#8212; the summary block this page backs</h2>
+
+<div class="tablewrap metatable">
+<table>
+<thead>
+<tr><th scope="col">Field</th><th scope="col">Value</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Owner</th><td>Hugh McCutchen</td></tr>
+<tr><th scope="row">Contributors</th><td>Hugh McCutchen (author &#8212; direction, first-hand iPhysicianNet experience 2001&#8211;2003, review at every version); Claude (Sonnet 4.6, Opus 4.7 &#8212; research, drafting, document production; Fable 5 &#8212; lineage and provenance)</td></tr>
+<tr><th scope="row">How it began</th><td>Fresh: a May 2026 deep-research pass on iPhysicianNet's history and successors, commissioned from the author's two years inside the company, triangulated with Perplexity and Gemini, anchored to the SEC S-1 (CIK <code>0001097673</code>)</td></tr>
+<tr><th scope="row">Type of writing</th><td>Graded Dossier</td></tr>
+<tr><th scope="row">Process</th><td>Mixed &#8212; exploratory research (sessions 0&#8211;7), execution production (sessions 8&#8211;9), publication editing (2026-07)</td></tr>
+<tr><th scope="row">Tools</th><td>Claude deep research + docx/SVG production; Perplexity; Gemini; SEC EDGAR; ZS AccessMonitor and Veeva Pulse series</td></tr>
+<tr><th scope="row">Steps run</th><td>Source work &middot; synthesis &middot; cross-engine conflict adjudication &middot; verification (S-1-anchored) &middot; author review (per-part markup, multiple rounds)</td></tr>
+<tr><th scope="row">Notes</th><td>Builder-briefing origin softened to an industry-research register at publication; one bundle component is carried with an explicit in-text caveat rather than asserted; four vendor performance figures excluded as marketing claims</td></tr>
+<tr><th scope="row">Sources</th><td>42 consolidated public sources (appendix)</td></tr>
+<tr><th scope="row">Depth &amp; confidence</th><td>Working depth (~50%, single-pass per topic, stated in-document); high confidence on S-1-sourced history and named 2025&#8211;26 products; medium on the 2003&#8211;2019 interregnum</td></tr>
+<tr><th scope="row">Level of work</th><td>Extensive &#8212; ten sessions, nine diagram versions, multi-round markup, cross-engine adjudication</td></tr>
+<tr><th scope="row">Full history</th><td>This page, linked from the provenance block at the foot of the paper.</td></tr>
+</tbody>
+</table>
+</div>
+
+<hr>
+
+<h2>Session-by-session record</h2>
+
+<h3><span class="sess">0 &middot;</span> Origin &#8212; the deep-research brief (2026-05-14)</h3>
+<p>A deep-research task produced a four-section brief: iPhysicianNet's history, the 2003&#8211;present successor landscape, the AI-rep landscape, and the physician engagement problem. The author supplied the frame that shaped everything after: his four-point post-mortem of why iPhysicianNet failed (regulatory gray zone, hardware-giveaway economics, thin physician value, the motivation problem) &#8212; the same four points that became Part I's &#8220;What the Failure Actually Teaches.&#8221;</p>
+<p><strong>Direction change recorded:</strong> the brief was rewritten mid-session for a builder audience. <strong>Correction recorded:</strong> the rewrite silently dropped the working source URLs; the author caught it and a structured references appendix of roughly 78 titled citations, about 65 carrying URLs, was added the same session. That appendix is the ancestor of the published paper's 42 consolidated sources.</p>
+
+<h3><span class="sess">1 &middot;</span> PVE-S01 &#8212; the research charter (2026-05-19)</h3>
+<p>The brief was placed inside a formal research project (Physician Value Equation) with a charter that governs everything downstream of this point. Three charter elements shaped the paper directly: the three-segment physician framing that structures Part IV and all four diagrams; the three-path terminal question (evolve / replace / displace) that frames Part III; and an <strong>anti-bias protocol</strong> &#8212; the author held his own commercial concepts outside the research entirely, and the research assistant was instructed not to solicit, infer, or build toward them. The paper is descriptive of the market because the charter required it to be.</p>
+
+<h3><span class="sess">2 &middot;</span> PVE-S02 &#8212; Veeva and the direct-engagement landscape (2026-05-20)</h3>
+<p>A deep dive on Veeva's platform, the video-detailing competitive landscape, and the Veeva&#8211;OpenEvidence &#8220;Open Vista&#8221; partnership, worked from a Veeva white paper and triangulated with an extended research task. Produced the first W1 research paper (direct engagement), the ancestor of Part III's Problem A/B analysis and the Paper 1 diagram. <strong>Scope decision recorded:</strong> the session's paper was explicitly scoped as one mechanism category, not the whole answer &#8212; a discipline that recurs across the project.</p>
+
+<h3><span class="sess">3 &middot;</span> PVE-S03 &#8212; cross-engine adjudication and two more papers (2026-05-20/21)</h3>
+<p>Perplexity and Gemini deep-research outputs were compared against prior work in a structured conflict register, and the education and independent-tools papers were drafted. <strong>Data corrections locked here appear in the published paper:</strong> ACCME commercial support corrected to $815M (2024) from $858M (2023); Sermo membership 1.3M not 1.5M; ePocrates' 300K-US-physician figure retired in favor of 1M+ all clinician types; the OR 1.53 prescribing association scoped to speaker-bureau participants only; a Medscape 94% reach claim flagged unreliable and excluded. <strong>Direction change recorded:</strong> physician research participation was promoted from scan-only to full-analysis scope, expanding W1 from three papers to four &#8212; Part II's research-participation diagram exists because of this decision.</p>
+
+<h3><span class="sess">4 &middot;</span> PVE-S04 &#8212; the research-participation paper and the diagrams (2026-05-21)</h3>
+<p>Paper 4 (market research, RWE studies, advisory boards) was drafted, producing the &#8220;detailing wall bypass&#8221; finding shown in the Paper 4 diagram. The four SVG diagrams were drawn and redrawn through five passes under author direction. <strong>Direction change recorded:</strong> the physician segments were renamed from Group 1/2/3 to Accessible / NoSee / AccessBlocked &#8212; the labels used throughout the published paper. <strong>Anti-bias event recorded:</strong> one engine's research arrived framed around a solution architecture; the facts were extracted and the framing excluded, per the charter protocol.</p>
+
+<h3><span class="sess">5 &middot;</span> PVE-S05 &#8212; diagram completion at v5 (2026-05-21)</h3>
+<p>Final diagram edits from the originals. <strong>Process correction recorded:</strong> an initial attempt to reconstruct the SVGs from specification was rejected by the author in favor of editing the uploaded originals &#8212; a working-from-source discipline that held for the rest of the project. A cross-diagram analysis surfaced the compound finding that only MSL and research participation reach all three physician segments &#8212; visible in the published Paper 1 and Paper 4 diagrams.</p>
+
+<h3><span class="sess">6 &middot;</span> PVE-S06 &#8212; synthesis, taxonomy, and the distribution trigger (2026-05&#8594;06)</h3>
+<p>The four papers were synthesized into a Reach &#215; Influence scorecard. <strong>Direction changes recorded:</strong> platforms were separated from mechanisms (a platform is a context, not an engagement mechanism), and the analysis was reorganized around the industry-standard engagement taxonomy (promotional personal / non-promotional personal / non-personal). Nine corrections against the source papers were logged, including splitting video-rep detailing from MSL-video and adding Doceree RepTwin as a named live product. <strong>Source-integrity event recorded:</strong> four Veeva performance figures in an engine's research were excluded as vendor marketing claims rather than independent evidence. The author's upcoming conversation with the iPhysicianNet founder was the trigger for shaping the brief into a distributable document.</p>
+
+<h3><span class="sess">7 &middot;</span> PVE-S07 &#8212; value lens and diagram stabilization (2026-05-22)</h3>
+<p>The physician value lens was completed (professional autonomy, intellectual engagement, time efficiency, compensation fairness, peer credibility) &#8212; the analytical backdrop for Part IV's &#8220;why physicians restrict access&#8221; section. The diagrams went v6&#8594;v8 fixing text overflow and font weight. <strong>Process learning recorded:</strong> overflow worsened before it improved because labels were edited before geometry was checked; the geometry-first rule was written into the diagram toolchain afterward.</p>
+
+<h3><span class="sess">8 &middot;</span> PVE-S08 &#8212; document production (2026-06-22/23)</h3>
+<p>The brief became a designed four-part Word document, built part-by-part with the author reviewing each via uploaded markup before the next was assembled. Design and content decisions recorded: the &#8220;About This Research&#8221; disclosure kept up front; three truncated pharma executive quotes (Aventis, Wyeth-Ayerst, P&amp;G) restored to their full versions rather than paraphrased; &#8220;Research Note&#8221; callouts added to visibly separate analytical conclusions from source-attributed content; all 42 citations consolidated into the appendix. Four half-page spaces were reserved for the diagrams.</p>
+
+<h3><span class="sess">9 &middot;</span> PVE-S09 &#8212; verification and finish (2026-06-23)</h3>
+<p>Finishing pass to distribution-ready state. <strong>Verification event recorded:</strong> an extended research task anchored the iPhysicianNet value-bundle description to the company's own S-1 filing; one recalled component (PDR digital drug-reference access) is consistent with S-1 language and the author's recollection but unconfirmed in surviving public documents &#8212; it is carried with an explicit in-text caveat rather than silently asserted. <strong>Correction recorded:</strong> the document's first provenance block was caught in review as low-fidelity and rebuilt. The four diagrams were rebuilt to v9 (the versions embedded in the published page). The v1.1 document was distributed to the iPhysicianNet founder.</p>
+
+<h3><span class="sess">10 &middot;</span> Publication pass (2026-07-19 &#8594; BURSBUILD)</h3>
+<p>The document was promoted to Bursera cornerstone research. The full lineage above was mined from the original threads and this audit page built from it. <strong>Direction change recorded:</strong> nine edits (E1&#8211;E9) re-registered the text from a private builder briefing to published industry research &#8212; softening forward-looking advocacy (&#8220;validated everything iPhysicianNet argued&#8221; &#8594; &#8220;consistent with the timing-and-convenience case&#8221;; &#8220;any new entrant must&#8230;&#8221; &#8594; historical observation) while leaving the evidence-caution notes untouched. Two provenance defects in the v1.1 document were corrected: its own block understated the lineage (omitting the origin thread and the build sessions), and its diagram placeholders cited v8 filenames superseded by v9.</p>
+
+<hr>
+
+<h2>Corrections and integrity register &#8212; roll-up</h2>
+
+<div class="tablewrap">
+<table>
+<thead>
+<tr><th scope="col">Item</th><th scope="col">What happened</th><th scope="col">Where it shows in the paper</th></tr>
+</thead>
+<tbody>
+<tr><td>Source links lost in rewrite</td><td>Caught by author; references appendix restored &#8212; roughly 78 titled citations, about 65 carrying URLs (session 0)</td><td>42-source consolidated appendix</td></tr>
+<tr><td>ACCME $858M (2023)</td><td>Corrected to $815M (2024) (S03)</td><td>Education figures</td></tr>
+<tr><td>Sermo 1.5M</td><td>Corrected to 1.3M (S03)</td><td>Tools landscape</td></tr>
+<tr><td>ePocrates 300K US physicians</td><td>Figure retired; 1M+ all clinician types with caveat (S03)</td><td>Phase 1 / tools tables</td></tr>
+<tr><td>OR 1.53 over-generalization</td><td>Scoped to speaker-bureau participants, neurologist audience, Accessible segment only (S03/S06)</td><td>Paper 2 diagram</td></tr>
+<tr><td>Medscape 94% reach claim</td><td>Flagged unreliable; excluded (S03)</td><td>Absent by design</td></tr>
+<tr><td>Veeva vendor performance figures &#215;4</td><td>Excluded as marketing claims, not independent evidence (S06)</td><td>Absent by design</td></tr>
+<tr><td>Outcome Health conflation</td><td>Explicit record-correction callout separating Physicians Interactive/Aptus from Outcome Health</td><td>Part II callout</td></tr>
+<tr><td>PDR access in IPNI bundle</td><td>S-1-consistent, author-recalled, publicly unconfirmed &#8594; flagged rather than asserted (S09)</td><td>In-text caveat, Part I</td></tr>
+<tr><td>Low-fidelity provenance block</td><td>Caught in review, rebuilt (S09); superseded again by this two-layer record (publication)</td><td>This page</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Source pool and curation</h2>
+
+<p>The published paper's bibliography carries 42 consolidated sources. Those 42 are a curated subset of a larger working pool: the origin brief's references appendix held roughly 78 titled, annotated citations grouped under 13 topical subheads.</p>
+
+<p>Curation removed aggregator and company-profile sources &#8212; CB Insights, Crunchbase, Wikipedia, Sacra, Tracxn, Contrary Research, LinkedIn &#8212; and secondary color material, keeping primary filings, named trade press, vendor primary announcements, and research-firm data series. Six sources cited in the brief's prose without URLs &#8212; JAMA Health Forum, Cardinal Health Oncology Insights, EPG Health, the Doximity 2026 AI report, WE Communications, and the ZS AccessMonitor series &#8212; were given proper citations during consolidation. Thirty-five or thirty-six of the published 42 trace directly to entries in that working pool; the remainder were added at consolidation.</p>
+
+<p>The drop from ~78 to 42 is evidence of selection, not a gap in the record. The point of stating it here is that a reader can see the pruning happened and on what principle: a source earned its place in the published bibliography by being primary, named, and independently checkable, and lost it by being an aggregator restatement of someone else's reporting.</p>
+
+<h2>What this research does not claim</h2>
+
+<p>Stated in the document and repeated here: roughly 50% research depth, single-pass per topic. Known gaps: the Wayback archive of iphysiciannet.com (2000&#8211;2003) was not mined; paywalled trade archives (Pharmaceutical Executive, MM&amp;M, PharmaVOICE 2001&#8211;2004) were not accessed; the OR 1.53 primary citation verification is pending; undisclosed pharma AI pilot details are unknowable from public sources. No claim in the paper rests on a source the register above excluded.</p>
+
+<hr>
+
+<p class="closing-note">Compiled from this document&#8217;s working record across ten sessions and a publication pass. From here forward the record is append-only; entries are not rewritten.</p>
+
+<div class="tablewrap metatable">
+<table>
+<thead>
+<tr><th scope="col">Provenance (this page)</th><th scope="col">Value</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">MODEL</th><td>Claude Fable 5</td></tr>
+<tr><th scope="row">VERSION</th><td>RTP Provenance Audit v1.0</td></tr>
+<tr><th scope="row">SESSION</th><td>PVE architect session &middot; 2026-07-19</td></tr>
+<tr><th scope="row">SOURCES</th><td>RTP Lineage Dossier v1.0 (same session); full paper text (Google Doc read); thread transcripts/summaries sessions 0&#8211;9; provenance skill v2.1</td></tr>
+<tr><th scope="row">REVIEW STATUS</th><td>Published &#8212; owner-approved 2026-07-20; converted to HTML in BURSBUILD-S17</td></tr>
+</tbody>
+</table>
+</div>
+
+</main>
+
+<footer class="docfoot">
+  <a href="index.html">&#8592; Return</a>
+</footer>
+
+</body>
+</html>

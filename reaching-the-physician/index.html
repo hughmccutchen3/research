@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css?v=s17a">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reaching the Physician &#8212; What iPhysicianNet Tried, What Followed, and What Pharma Is Betting on Now</title>
+<meta name="description" content="An industry history and current-state analysis of how pharmaceutical manufacturers reach the physicians who prescribe their products: iPhysicianNet, twenty years of alternatives, and the AI layer of 2023-2026.">
+<link rel="canonical" href="https://burseraconsulting.com/reaching-the-physician/">
+<link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reaching the Physician">
+<meta property="og:description" content="An industry history and current-state analysis of how pharmaceutical manufacturers reach the physicians who prescribe their products.">
+<meta property="og:url" content="https://burseraconsulting.com/reaching-the-physician/">
+<meta property="og:image" content="https://burseraconsulting.com/reaching-the-physician/images/rtp-og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reaching the Physician">
+<meta name="twitter:description" content="An industry history and current-state analysis of how pharmaceutical manufacturers reach the physicians who prescribe their products.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#4a5c6b;--blue-light:#4a6b80;--blue-pale:#e8edf0;
+  --gold:#8a6e3a;--gold-pale:#f2ede3;
+  --red:#8b1a1a;--red-pale:#fdecea;
+  --ink:#28303a;--bg:#f4f2ee;
+  --gray-dark:#28303a;--gray-mid:#6f5c4a;
+  --gray-light:#f4f2ee;--gray-rule:#d4c8b0;
+  --sonoran-sky:#cfe2ec;--caliche:#8a7660;--lichen-rust:#a04e18;
+  --col-w:760px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(16px,0.55vw + 15px,17px);line-height:1.75;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%;}
+p{margin-bottom:16px;max-width:38em;}
+p:last-child{margin-bottom:0;}
+
+/* ---------- COVER ---------- */
+.cover{background:var(--blue);color:#fff;padding:64px 24px 44px;text-align:center;}
+.cover .eyebrow-label{color:var(--sonoran-sky);}
+.cover h1{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(30px,7vw,56px);font-weight:700;line-height:1.08;letter-spacing:-0.5px;margin-bottom:14px;}
+.cover .tagline{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(15px,2.4vw,19px);font-weight:600;color:#fff;line-height:1.4;max-width:34em;margin:0 auto 18px;}
+.cover .subtitle{font-size:clamp(14.5px,1.6vw,16.5px);color:rgba(232,237,240,0.9);font-style:italic;line-height:1.6;max-width:34em;margin:0 auto 32px;}
+.cover .meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--sonoran-sky);letter-spacing:1.5px;}
+@media (min-width:720px){ .cover{padding:84px 40px 60px;} }
+
+/* ---------- SECTIONS ---------- */
+.section{max-width:var(--col-w);margin:0 auto;padding:44px 20px;border-bottom:1px solid var(--gray-rule);}
+@media (min-width:720px){ .section{padding:56px 24px;} }
+h2.section-title{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(23px,3.5vw,36px);font-weight:700;color:var(--blue);line-height:1.2;padding-bottom:12px;border-bottom:3px solid var(--blue);margin-bottom:24px;}
+h3.subsection{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(18px,2.2vw,20px);font-weight:600;color:var(--gray-dark);margin:36px 0 14px;}
+h3.subsection:first-of-type{margin-top:8px;}
+.eyebrow-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--blue-light);margin-bottom:12px;display:block;}
+
+/* ---------- ABOUT ---------- */
+.about-block{background:#fff;border:1px solid var(--gray-rule);border-left:4px solid var(--gold);border-radius:4px;padding:24px 20px;margin-top:8px;}
+@media (min-width:720px){ .about-block{padding:30px 32px;} }
+.about-block dt{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:14px;font-weight:700;color:var(--gold);margin-top:18px;}
+.about-block dt:first-child{margin-top:0;}
+.about-block dd{margin:4px 0 0;font-size:15.5px;line-height:1.65;max-width:38em;}
+
+/* ---------- CONTENTS ---------- */
+ol.toc{list-style:none;margin:8px 0 0;padding:0;}
+ol.toc li{border-bottom:1px solid var(--gray-rule);}
+ol.toc li:last-child{border-bottom:none;}
+ol.toc a{display:block;min-height:44px;padding:11px 0;text-decoration:none;color:var(--ink);font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:16px;line-height:1.4;}
+ol.toc a:hover{color:var(--gold);}
+ol.toc .toc-num{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--blue-light);display:block;}
+
+/* ---------- STAT STRIP ---------- */
+.stat-strip{display:grid;grid-template-columns:1fr;gap:1px;background:var(--gray-rule);border:1px solid var(--gray-rule);margin:26px 0;}
+.stat-strip .stat{background:#fff;padding:16px 18px;}
+.stat-num{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(21px,3vw,26px);font-weight:700;color:var(--blue);line-height:1.15;display:block;}
+.stat-label{font-size:13.5px;line-height:1.45;color:var(--gray-mid);display:block;margin-top:5px;}
+@media (min-width:560px){ .stat-strip{grid-template-columns:repeat(2,1fr);} }
+@media (min-width:720px){ .stat-strip.cols-3{grid-template-columns:repeat(3,1fr);} .stat-strip.cols-4{grid-template-columns:repeat(4,1fr);} }
+
+/* ---------- TABLES ---------- */
+.table-wrap{overflow-x:auto;margin:24px 0;-webkit-overflow-scrolling:touch;}
+table{width:100%;min-width:520px;border-collapse:collapse;font-size:14px;line-height:1.55;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;}
+thead th{background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.5px;padding:10px 12px;text-align:left;font-weight:600;}
+tbody tr{background:#fff;}
+tbody tr:nth-child(even){background:var(--gray-light);}
+tbody td{color:var(--gray-dark);padding:10px 12px;border-bottom:1px solid #e0e0e0;vertical-align:top;}
+tbody td:first-child{font-weight:600;color:var(--blue);}
+td .sub{display:block;font-size:12.5px;font-weight:400;color:var(--gray-mid);line-height:1.4;margin-top:2px;}
+.table-note{font-size:13.5px;color:var(--gray-mid);line-height:1.6;margin:-8px 0 24px;max-width:38em;}
+.table-note strong{color:var(--gray-dark);}
+
+/* ---------- CALLOUTS ---------- */
+.callout{border-left:4px solid var(--blue-light);background:var(--blue-pale);padding:18px 20px;margin:26px 0;font-size:15.5px;line-height:1.65;color:var(--gray-dark);border-radius:0 4px 4px 0;}
+.callout p{max-width:none;}
+.callout .callout-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:9px;font-weight:600;}
+.callout.gold{border-left-color:var(--gold);background:var(--gold-pale);}
+.callout.gold .callout-tag{color:var(--gold);}
+.callout.red{border-left-color:var(--red);background:var(--red-pale);}
+.callout.red .callout-tag{color:var(--red);}
+.callout cite{display:block;margin-top:10px;font-size:13px;font-style:normal;color:var(--gray-mid);}
+
+/* ---------- PULL QUOTE ---------- */
+blockquote.pull{border-left:4px solid var(--gold);padding:4px 0 4px 20px;margin:24px 0;font-size:clamp(17px,2.2vw,20px);line-height:1.5;font-style:italic;color:var(--gray-dark);max-width:34em;}
+blockquote.pull cite{display:block;margin-top:12px;font-size:13px;font-style:normal;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;color:var(--caliche);}
+
+/* ---------- NUMBERED CARDS ---------- */
+.card-grid{display:grid;grid-template-columns:1fr;gap:16px;margin:26px 0;}
+@media (min-width:720px){ .card-grid{grid-template-columns:repeat(2,1fr);gap:20px;} .card-grid .card.full{grid-column:1 / -1;} }
+.card{background:#fff;border:1px solid var(--gray-rule);border-top:3px solid var(--blue);border-radius:4px;padding:20px 20px 22px;}
+.card .card-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:2px;color:var(--gold);display:block;margin-bottom:6px;}
+.card h4{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:14.5px;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;color:var(--blue);line-height:1.35;margin-bottom:10px;}
+.card p{font-size:15px;line-height:1.6;max-width:none;}
+
+/* ---------- FIGURES ---------- */
+figure.diagram-fig{margin:32px 0;}
+figure.diagram-fig img{display:block;width:100%;height:auto;background:#fff;border:1px solid var(--gray-rule);border-radius:6px;padding:8px;}
+figure.diagram-fig figcaption{font-size:13.5px;line-height:1.6;color:var(--gray-mid);margin-top:12px;max-width:38em;}
+figure.diagram-fig .fig-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+figure.diagram-fig .fig-scroll:focus{outline:3px solid var(--gold);outline-offset:2px;}
+figure.diagram-fig .fig-scroll img{min-width:640px;}
+figure.diagram-fig .fig-fullsize{display:inline-block;min-height:44px;line-height:44px;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:13px;font-weight:600;color:var(--blue);text-decoration:underline;}
+figure.diagram-fig details{margin-top:6px;font-size:13.5px;line-height:1.6;color:var(--gray-mid);max-width:38em;}
+figure.diagram-fig details summary{cursor:pointer;min-height:44px;line-height:44px;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:13px;font-weight:600;color:var(--blue);}
+figure.diagram-fig details p{margin:4px 0 0;max-width:38em;}
+figure.diagram-fig figcaption b{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--caliche);display:block;margin-bottom:5px;font-weight:600;}
+
+/* ---------- SUPPORTING MATERIAL ---------- */
+.support-break{background:var(--blue);color:var(--sonoran-sky);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;text-align:center;padding:14px 20px;margin-top:0;}
+.support-section{background:#ececea;padding:40px 20px;}
+@media (min-width:720px){ .support-section{padding:52px 24px;} }
+.support-inner{max-width:var(--col-w);margin:0 auto;}
+.support-inner h2.section-title{color:var(--blue);border-bottom-color:var(--blue);}
+
+/* ---------- BIBLIOGRAPHY ---------- */
+.bib-intro{font-size:15px;color:var(--gray-mid);line-height:1.65;margin-bottom:28px;max-width:38em;}
+.bib-group{margin-top:32px;}
+.bib-group:first-of-type{margin-top:0;}
+.bib-group h3{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--caliche);padding-bottom:8px;border-bottom:2px solid var(--caliche);margin-bottom:6px;}
+ol.bib-list{list-style:none;margin:0;padding:0;counter-reset:none;}
+ol.bib-list li{display:grid;grid-template-columns:2.6em 1fr;gap:4px 10px;padding:14px 0;border-bottom:1px solid var(--gray-rule);}
+ol.bib-list li:last-child{border-bottom:none;}
+.bib-num{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:var(--gold);line-height:1.5;padding-top:1px;}
+.bib-body{min-width:0;}
+.bib-title{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:15px;font-weight:600;color:var(--ink);line-height:1.45;display:block;}
+.bib-note{font-size:14px;line-height:1.6;color:var(--gray-mid);display:block;margin-top:3px;}
+
+/* ---------- AUTHOR NOTE ---------- */
+.author-note p{font-size:15.5px;line-height:1.7;color:var(--gray-dark);}
+
+/* ---------- PRINT ---------- */
+@media print{
+  body{background:#fff;}
+  .paper-bar{display:none!important;}
+  .cover{background:#fff!important;color:#000!important;}
+  .cover h1,.cover .tagline,.cover .subtitle,.cover .meta,.cover .eyebrow-label{color:#000!important;}
+  .bseal{display:none!important;}
+  figure,table,.callout,.card{break-inside:avoid;}
+  .prov,.support-break,thead th{background:#fff!important;color:#000!important;}
+  .prov-eyebrow,.prov-title,.prov-lede,.prov-list dt,.prov-list dd,.prov-full a,.prov-full-note{color:#000!important;}
+  .prov{border-top:2px solid #000;}
+  thead th{border-bottom:2px solid #000;}
+}
+
+.prov{background:#0F172A;color:#e8e3d8;margin-top:56px;padding:clamp(28px,6vw,56px) clamp(18px,5vw,40px)}
+.prov-inner{max-width:44em;margin:0 auto}
+.prov-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#C9A33D;margin:0 0 6px}
+.prov-title{font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(1.3rem,4vw,1.7rem);color:#fff;margin:0 0 10px;line-height:1.25}
+.prov-lede{font-size:.94rem;color:#b9b3a6;margin:0 0 26px;max-width:36em}
+.prov-list{margin:0;display:grid;grid-template-columns:1fr;gap:0}
+.prov-list dt{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:#C9A33D;margin-top:18px}
+.prov-list dd{margin:5px 0 0;font-size:.95rem;line-height:1.62;color:#e8e3d8;max-width:40em}
+.prov-list dd code{font-family:'JetBrains Mono',monospace;font-size:.86em;color:#d8cfa8}
+.prov-full{margin:34px 0 0;padding-top:20px;border-top:1px solid rgba(201,163,61,.32)}
+.prov-full a{display:inline-block;min-height:44px;line-height:44px;font-family:'DM Sans',system-ui,sans-serif;font-weight:600;font-size:1rem;color:#C9A33D;text-decoration:none;border-bottom:1px solid rgba(201,163,61,.5)}
+.prov-full a:hover,.prov-full a:focus{color:#e0be5c;border-bottom-color:#e0be5c}
+.prov-full-note{display:block;margin-top:6px;font-size:.86rem;line-height:1.55;color:#9d978a;max-width:38em}
+@media(min-width:720px){.prov-list{grid-template-columns:11em 1fr;gap:0 26px}
+.prov-list dt{margin-top:16px;text-align:right;padding-top:3px}
+.prov-list dd{margin-top:16px}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="paper-bar">
+  <a class="paper-bar__brand" href="/">Bursera <span>Consulting</span></a>
+  <a class="paper-bar__back" href="/research_examples.html">&#8592; Return</a>
+</nav>
+
+<main id="main">
+
+<!-- ============================ COVER ============================ -->
+<div class="cover bseal-host">
+<a class="bseal" href="#provenance" aria-label="Full provenance below"><svg class="bmark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#0F172A" stroke="#C9A33D" stroke-width="4"/><text x="50" y="72" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="66" fill="#C9A33D">B</text></svg><span class="btext"><span>Human</span><span>Led</span></span><span class="btip">Full Provenance Below</span></a>
+
+  <span class="eyebrow-label">A Research Brief</span>
+  <h1>Reaching the Physician</h1>
+  <p class="tagline">What iPhysicianNet Tried, What Followed, and What Pharma Is Betting on Now</p>
+  <p class="subtitle">An industry history and current-state analysis of how pharmaceutical manufacturers reach the physicians who prescribe their products.</p>
+  <div class="meta">Hugh McCutchen &middot; June 2026</div>
+</div>
+
+<!-- ============================ ABOUT ============================ -->
+<div class="section" id="about">
+  <span class="eyebrow-label">Front matter</span>
+  <h2 class="section-title">About This Research</h2>
+
+  <dl class="about-block">
+    <dt>What this is.</dt>
+    <dd>This document reconstructs the history of iPhysicianNet Inc.&#8212;a Scottsdale company that raised $80M between 1996 and 2003 to replace the in-person pharmaceutical sales call with live videoconferencing&#8212;and traces the two decades of commercial and technological experimentation that followed its collapse. It then maps the current landscape of AI-powered physician engagement tools, including both products pharma is deploying today and the independent AI clinical tools physicians are choosing for themselves.</dd>
+
+    <dt>Why it was written.</dt>
+    <dd>The author worked at iPhysicianNet and returned to the question it tried to solve &#8212; getting physicians to voluntarily engage with pharmaceutical product information &#8212; to document how the industry has approached it since. This is not an academic history; it is a working analysis of a problem that remains unsolved.</dd>
+
+    <dt>Research approach.</dt>
+    <dd>A single-pass deep research effort at roughly 50% depth. The research prioritized live web sources from 2023&#8211;2026 for the current AI landscape, and primary sources (SEC filings, Reuters Events trade press, archived local news) for the iPhysicianNet history specifically.</dd>
+
+    <dt>Primary sources for iPhysicianNet.</dt>
+    <dd>SEC S-1 (CIK 0001097673, February 4, 2000); Reuters Events/eyeforpharma press archive; U.S. 1 Newspaper (Princeton, NJ), September 3, 2003; Medtech Insight ROI analysis (paywalled).</dd>
+
+    <dt>Confidence levels.</dt>
+    <dd>iPhysicianNet specifics: high-confidence where S-1-sourced. Competitive history 2003&#8211;2019: medium-confidence. Current AI landscape (2025&#8211;2026): high-confidence for named products.</dd>
+  </dl>
+</div>
+
+<!-- ============================ CONTENTS ============================ -->
+<div class="section" id="contents">
+  <span class="eyebrow-label">Navigation</span>
+  <h2 class="section-title">Contents</h2>
+  <ol class="toc">
+    <li><a href="#about"><span class="toc-num">Front matter</span>About This Research</a></li>
+    <li><a href="#part1"><span class="toc-num">Part I</span>What iPhysicianNet Actually Built, and Why It Died</a></li>
+    <li><a href="#part2"><span class="toc-num">Part II</span>Twenty Years of Alternatives: What the Industry Tried, What Survived</a></li>
+    <li><a href="#part3"><span class="toc-num">Part III</span>What Pharma Is Betting on Now: The AI Layer (2023&#8211;2026)</a></li>
+    <li><a href="#part4"><span class="toc-num">Part IV</span>The Physician: What the Data Actually Says About Access, Motivation, and AI</a></li>
+    <li><a href="#sources"><span class="toc-num">Appendix</span>Sources and a Note About the Author</a></li>
+  </ol>
+</div>
+
+<!-- ============================ PART I ============================ -->
+<div class="section" id="part1">
+  <span class="eyebrow-label">Part I</span>
+  <h2 class="section-title">What iPhysicianNet Actually Built, and Why It Died</h2>
+
+  <h3 class="subsection">The Problem in 1996</h3>
+
+  <p>In 1996, a pharmaceutical sales representative&#8217;s typical in-office visit lasted <strong>under two minutes</strong>, covered <strong>1.6 products</strong>, and cost the manufacturer between <strong>$75&#8211;$125 per minute</strong> of physician attention. A well-prepared rep might make four to eight calls in a day. The physician had no control over timing, no ability to pause for detailed questions, and no mechanism to revisit content after the rep left.</p>
+
+  <div class="stat-strip cols-4">
+    <div class="stat"><span class="stat-num">$75&#8211;$125</span><span class="stat-label">per minute (traditional rep)</span></div>
+    <div class="stat"><span class="stat-num">&lt;2 min</span><span class="stat-label">avg in-person visit</span></div>
+    <div class="stat"><span class="stat-num">1.6</span><span class="stat-label">products per call (industry avg)</span></div>
+    <div class="stat"><span class="stat-num">4&#8211;8 calls</span><span class="stat-label">per day (human rep)</span></div>
+  </div>
+
+  <p>iPhysicianNet&#8217;s answer: give the physician free use of a kiosk-mode PC, camera, and high-speed ISDN connection to the internet in exchange for one live video detailing session per month per pharma client. The ROI case was compelling on paper&#8212;and on several dimensions it held up.</p>
+
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Comparison of the traditional pharmaceutical sales call and the iPhysicianNet video model">
+    <table>
+      <thead><tr><th scope="col">Dimension</th><th scope="col">Traditional Rep (1996)</th><th scope="col">iPhysicianNet</th></tr></thead>
+      <tbody>
+        <tr><td>Interaction time</td><td>Under 2 minutes</td><td>8.4 minutes (average session)</td></tr>
+        <tr><td>Products per call</td><td>1.6</td><td>2.9</td></tr>
+        <tr><td>Cost per minute</td><td>$75&#8211;$125</td><td>$18</td></tr>
+        <tr><td>Rep calls per day</td><td>4&#8211;8</td><td>10&#8211;25</td></tr>
+        <tr><td>After-hours access</td><td>Not possible</td><td>Yes &#8212; 70% of Aventis sessions outside office hours</td></tr>
+        <tr><td>Physician controls timing</td><td>No</td><td>Yes &#8212; scheduled on physician&#8217;s terms, not the rep&#8217;s</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="table-note"><strong>Note:</strong> Figures from iPhysicianNet marketing materials cross-referenced against Credit Suisse First Boston benchmarks. Not independently validated. A 2001 industry analysis found video reps made 13 calls/day vs. 8 in-person, at $46 vs. $106 per meeting&#8212;directionally consistent.</p>
+
+  <div class="callout">
+    <span class="callout-tag">Research Note</span>
+    <p>No published peer-reviewed study has been located that specifically ties iPhysicianNet&#8217;s model to prescribing lift. The ROI figures cited are practitioner estimates from company marketing materials, not independently validated outcomes.</p>
+  </div>
+
+  <h3 class="subsection">What iPhysicianNet Told Physicians</h3>
+
+  <p>The S-1 codified the physician value proposition as:</p>
+
+  <blockquote class="pull">
+    &#8220;greater convenience, better control of time, access to multiple sources of healthcare information for improved patient care, and improved quality of life.&#8221;
+    <cite>&#8212; iPhysicianNet S-1, filed with the SEC, February 4, 2000</cite>
+  </blockquote>
+
+  <p>Beyond the value proposition language, physicians received four concrete benefits in exchange for monthly participation:</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <h4>Free Hardware</h4>
+      <p>A kiosk-mode PC, digital camera, and high-speed ISDN connection&#8212;a meaningful commitment in an era when broadband cost thousands per installation. The PC arrived pre-configured with internet access, e-mail, electronic medical periodicals and clinical news, CME resources, and access to pharma medical-affairs departments. DrFirst&#8217;s Rcopia e-prescribing software was integrated in 2001. Physicians who used the platform also recall access to digital drug-reference content, including material consistent with the PDR, though this specific third-party arrangement has not been confirmed in surviving public documents. No upfront cost to the physician; the full bundle was absorbed by iPhysicianNet and recovered through pharma fees.</p>
+    </div>
+    <div class="card">
+      <h4>CME Credits</h4>
+      <p>Electronic continuing medical education credits tied to monthly detailing sessions&#8212;converting a compliance obligation into a professional development opportunity. Meaningful differentiation in an era before online CME was ubiquitous.</p>
+    </div>
+    <div class="card">
+      <h4>Peer Mini-Symposia</h4>
+      <p>Access to medical-affairs Q&amp;A sessions and peer symposia&#8212;the forerunner of the KOL-sponsored webinar format that became standard after 2010. Gave physicians structured scientific exchange, not only commercial messaging.</p>
+    </div>
+    <div class="card">
+      <h4>Schedule Control</h4>
+      <p>One session per month per pharma client, on the physician&#8217;s schedule. This behavioral insight&#8212;physicians will engage on their own terms, not the rep&#8217;s&#8212;is the core thesis every subsequent entrant has tried to replicate.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="callout-tag">Research Note</span>
+    <p>The one satisfaction figure in academic literature (~68% of participants rated iPhysicianNet superior to in-person detailing) has ambiguous attribution and may conflate iPhysicianNet with a competing product. No recorded physician testimonial survives in the public record that is specifically and credibly attributable to the platform.</p>
+  </div>
+
+  <div class="callout red">
+    <span class="callout-tag">&#9888; S-1 Risk Factor &#8212; The Gray Zone</span>
+    <p>&#8220;Providing this equipment and these services without charge may be considered by regulatory authorities or others to be improper inducements to participating physicians to prescribe pharmaceuticals.&#8221;</p>
+    <p>&#8212; SEC S-1, February 2000. This risk was flagged internally and never fully resolved. Every subsequent entrant that exchanges value with physicians for pharma access has had to answer the same question differently.</p>
+  </div>
+
+  <h3 class="subsection">What Pharma&#8217;s Own Executives Said</h3>
+
+  <p>Six pharma clients can be confirmed by name from primary sources. Their public statements are the clearest contemporaneous record of what the industry thought about the model&#8212;and, critically, what it was actually being used for.</p>
+
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Named pharma clients of iPhysicianNet and their executives' public statements">
+    <table>
+      <thead><tr><th scope="col">Company</th><th scope="col">Executive</th><th scope="col">Key Statement</th><th scope="col">What It Reveals</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>GlaxoSmithKline<span class="sub">Founding client; contract exit triggered shutdown</span></td>
+          <td>&#8212;</td>
+          <td>&#8220;to conduct virtual sales calls with physicians who refuse to see sales reps&#8221;</td>
+          <td>The most direct statement in the public record: no-see physician access was the primary use case, not replacing willing physicians.</td>
+        </tr>
+        <tr>
+          <td>Aventis Pharma</td>
+          <td>Michelle Runge<span class="sub">VP, North American e-business</span></td>
+          <td>&#8220;By using multiple virtual detailing platforms&#8230; we provide physicians with relevant information at the right time.&#8221; 70% of sessions outside office hours; 60% of physicians requested samples post-session.</td>
+          <td>After-hours data validates the timing thesis. Physicians who engaged on their own schedule were also willing to request samples&#8212;a commercial outcome pharma cared about.</td>
+        </tr>
+        <tr>
+          <td>Wyeth-Ayerst</td>
+          <td>Bernard Poussot<span class="sub">President</span></td>
+          <td>&#8220;Interactive electronic detailing helps address the growing information needs of our prescribing customers in a way most convenient for them.&#8221;</td>
+          <td>Physician-first framing&#8212;&#8220;convenient for them&#8221;&#8212;in a commercial press release. Notable at a time when pharma typically centered company-benefit language.</td>
+        </tr>
+        <tr>
+          <td>P&amp;G Pharmaceuticals</td>
+          <td>Rick June<span class="sub">VP / GM</span></td>
+          <td>&#8220;Physicians need clinically relevant information about our pharmaceutical therapies&#8230; We are very excited to team up with iPhysicianNet to creatively provide this information in an efficient, yet personalized manner.&#8221;</td>
+          <td>&#8220;Clinically relevant&#8221; is the same framing post-2020 research consistently identifies as what physicians most want from pharma contact.</td>
+        </tr>
+        <tr>
+          <td>Eli Lilly</td>
+          <td>&#8212;</td>
+          <td>Exited: &#8220;the size of our network was not large enough&#8221;</td>
+          <td>Named the chicken-and-egg problem precisely. A physician network needs scale before pharma will pay; scale requires pharma funding to build.</td>
+        </tr>
+        <tr>
+          <td>G.D. Searle / Pharmacia<span class="sub">Founding client per the S-1</span></td>
+          <td>&#8212;</td>
+          <td>No public quote located.</td>
+          <td>&#8212;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection">The Funding, the S-1, and the Structure That Couldn&#8217;t Survive One Exit</h3>
+
+  <p>iPhysicianNet raised $80.27M from venture investors, plus a strategic $2.5M from Professional Detailing Inc. (PDI)&#8212;an early signal that contract field-sales organizations recognized the model had commercial logic. Despite the backing, it never reached the public markets.</p>
+
+  <div class="stat-strip cols-3">
+    <div class="stat"><span class="stat-num">$80.27M</span><span class="stat-label">total raised (1996&#8211;2003)</span></div>
+    <div class="stat"><span class="stat-num">10</span><span class="stat-label">investors (9 VC + 1 strategic)</span></div>
+    <div class="stat"><span class="stat-num">$63.25M</span><span class="stat-label">IPO proposed &#8212; never executed</span></div>
+  </div>
+
+  <div class="table-wrap" tabindex="0" role="region" aria-label="iPhysicianNet investors and investor types">
+    <table>
+      <thead><tr><th scope="col">Investor</th><th scope="col">Type</th></tr></thead>
+      <tbody>
+        <tr><td>Veron International</td><td>VC</td></tr>
+        <tr><td>Far East Capital</td><td>VC</td></tr>
+        <tr><td>Cordova</td><td>VC</td></tr>
+        <tr><td>Lumira Capital</td><td>VC</td></tr>
+        <tr><td>SenMed Ventures</td><td>VC</td></tr>
+        <tr><td>Vivo Capital</td><td>VC</td></tr>
+        <tr><td>Cross Atlantic</td><td>VC</td></tr>
+        <tr><td>Patricof &amp; Co.</td><td>VC</td></tr>
+        <tr><td>Cardinal Partners</td><td>VC</td></tr>
+        <tr><td>Professional Detailing Inc. (PDI)</td><td>Strategic ($2.5M)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Key facts from the iPhysicianNet SEC S-1 filing">
+    <table>
+      <thead><tr><th scope="col">S-1 Key Facts</th><th scope="col">&nbsp;</th></tr></thead>
+      <tbody>
+        <tr><td>Filed</td><td>February 4, 2000</td></tr>
+        <tr><td>Exchange</td><td>Nasdaq</td></tr>
+        <tr><td>Proposed ticker</td><td>IPNI</td></tr>
+        <tr><td>Banker</td><td>Lehman Brothers</td></tr>
+        <tr><td>Amount sought</td><td>$63.25M</td></tr>
+        <tr><td>Outcome</td><td>Withdrawn &#8212; dot-com window closed, mid-2000</td></tr>
+        <tr><td>SEC CIK</td><td>0001097673</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The S-1 explicitly warned: &#8220;if we lose one or both of our current pharmaceutical company clients, our business would be substantially harmed.&#8221; That is exactly what happened.</p>
+
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Timeline of the iPhysicianNet collapse, 2003">
+    <table>
+      <thead><tr><th scope="col">Date</th><th scope="col">Event</th></tr></thead>
+      <tbody>
+        <tr><td>June 2003</td><td>GSK notified iPhysicianNet of contract discontinuation. Moriarty shareholder letter (August 6, 2003): &#8220;totally unexpected, and devastating, news.&#8221;</td></tr>
+        <tr><td>Late June&#8211;July 2003</td><td>Eli Lilly exited, citing network size. An unnamed investor offered $5M contingent on pharma partners agreeing to price increases. Pharma partners declined.</td></tr>
+        <tr><td>July 31 &#8212; 9:30 a.m.</td><td>Board deadline for bridge financing expired.</td></tr>
+        <tr><td>July 31 &#8212; 1:00 p.m.</td><td>Moriarty informed 115 Scottsdale staff their jobs were eliminated. Eight more cut in Princeton, NJ. &#8220;We were left with no funding and very little cash.&#8221;</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Peter Moriarty subsequently co-founded Prismic Pharmaceuticals (acquired by FSD Pharma / NASDAQ:HUGE, 2018&#8211;2019) and is currently COO of Klotho Neurosciences (NASDAQ:KLTO). No public retrospective interview on iPhysicianNet&#8217;s failure has been indexed to date.</p>
+
+  <h3 class="subsection">What the Failure Actually Teaches</h3>
+
+  <p>The iPhysicianNet model had four structural problems. Each one remains present in the market today in updated form.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <span class="card-num">01</span>
+      <h4>Capital per physician was prohibitive</h4>
+      <p>The cost of recruiting each physician&#8212;hardware, installation, ongoing ISDN connectivity&#8212;was absorbed before any revenue was secured. Today&#8217;s equivalent: acquiring physician attention at scale without paying in cash or hardware. OpenEvidence&#8217;s answer was to build something so clinically useful that physicians find it on their own.</p>
+    </div>
+    <div class="card">
+      <span class="card-num">02</span>
+      <h4>Client concentration was fatal</h4>
+      <p>Revenue from two or three pharma clients is not a platform&#8212;it is a contract-services relationship. A durable platform requires either a large number of smaller clients or a business model that survives the loss of any single one. The S-1 warned of exactly this risk. The warning proved accurate within three years.</p>
+    </div>
+    <div class="card">
+      <span class="card-num">03</span>
+      <h4>The gray zone was never resolved</h4>
+      <p>The hardware-for-sessions exchange was potentially an inducement to prescribe, and iPhysicianNet&#8217;s lawyers knew it. The OIG and PhRMA guidelines of the era were ambiguous. Post-Sunshine Act (2013), the ambiguity is different but equally present. The question every model since has had to answer: is this a marketing tool or a clinical tool, and who controls the content?</p>
+    </div>
+    <div class="card">
+      <span class="card-num">04</span>
+      <h4>The physician value proposition was too thin</h4>
+      <p>CME credits, peer symposia, drug-reference content, e-prescribing tools, and bundled internet access were meaningful in 1999. By 2002, physicians had broadband and could access clinical information, digital drug references, and CME without a three-year exclusive contract tied to pharma detailing. Every component of the value bundle eroded toward free and ubiquitous. The network stalled at a size insufficient for pharma to justify the cost. Value to the physician must be deep enough to survive the novelty period&#8212;and durable enough that it cannot be replicated elsewhere for free.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ PART II ============================ -->
+<div class="section" id="part2">
+  <span class="eyebrow-label">Part II</span>
+  <h2 class="section-title">Twenty Years of Alternatives: What the Industry Tried, What Survived</h2>
+
+  <p>Understanding what came after iPhysicianNet is essential context for understanding today&#8217;s landscape. The field evolved in three recognizable phases: a first wave of dot-com-era e-detailing startups that mostly failed or were absorbed (2000&#8211;2012); a CRM and platform era that defined the hybrid-engagement model now standard across the industry (2010&#8211;2020); and the current AI inflection (2023&#8211;present). Most of the companies below are solving the same underlying problem&#8212;getting pharma content to physicians who are increasingly unwilling to engage with it through traditional rep channels.</p>
+
+  <h3 class="subsection">Phase 1 &#8212; Early E-Detailing (2000&#8211;2012): Same Thesis, Different Mechanics</h3>
+
+  <p>Every company in this wave attacked the same problem iPhysicianNet had identified. The key structural difference from iPhysicianNet was the removal of physician hardware&#8212;each of these companies found ways to reach physicians using existing devices and workflows rather than funding hardware installation.</p>
+
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Early e-detailing companies, 2000 to 2012, and their outcomes">
+    <table>
+      <thead><tr><th scope="col">Company</th><th scope="col">Period</th><th scope="col">What They Built</th><th scope="col">Outcome</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>RxCentric</td><td>1999&#8211;2003</td>
+          <td>Web portal: sponsored digital detailing and physician email marketing. Asynchronous&#8212;no live rep, no physician hardware.</td>
+          <td>Acquired by Allscripts 2003; merged into Physicians Interactive; brand discontinued.</td>
+        </tr>
+        <tr>
+          <td>Lathian Systems<span class="sub">Originally MyDrugRep.com</span></td><td>1999&#8211;2012</td>
+          <td>Interactive Flash-based and KOL-video eDetails. Asynchronous, self-directed. Served most top-20 pharma at its peak.</td>
+          <td>Acquired by D&amp;R Communications, February 2012; brand effectively disappeared.</td>
+        </tr>
+        <tr>
+          <td>Aptilon Holdings<span class="sub">TSXV:APZ, Montreal</span></td><td>Founded 2003</td>
+          <td>Live &#8220;click-to-talk&#8221; video detailing using the physician&#8217;s own device&#8212;same live-rep model as iPhysicianNet, but with zero hardware capex. The closest functional analog to iPhysicianNet&#8217;s model with the capital-per-physician problem removed.</td>
+          <td>Sold multichannel detailing assets to Indegene 2012 (Indegene Aptilon). Residual entity renamed DMD Digital Health Connections 2014.</td>
+        </tr>
+        <tr>
+          <td>Physicians Interactive / Aptus Health<span class="sub">&#9888; Not Outcome Health &#8212; see note below</span></td><td>2003&#8211;2019</td>
+          <td>Multichannel HCP digital engagement. Began as Allscripts&#8217; e-detailing unit post-RxCentric (2003). Acquired QuantiaMD and Univadis in 2015; rebranded Aptus Health in 2015.</td>
+          <td>Acquired by WebMD/Medscape 2019; now operates as part of the Medscape Professional Network.</td>
+        </tr>
+        <tr>
+          <td>ePocrates<span class="sub">Founded 1998; IPO 2011</span></td><td>1998&#8211;present</td>
+          <td>Pharma-sponsored &#8220;DocAlerts&#8221; delivered at the moment of clinical decision-making within a drug-reference mobile app. Point-of-care ambient messaging rather than live or asynchronous detailing.</td>
+          <td>Acquired by athenahealth, March 2013, ~$293M. Major HCP digital advertising channel today. New GM (David Arkin, February 2024); AI layer in development.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout red">
+    <span class="callout-tag">&#9888; Record Correction &#8212; Commonly Conflated Companies</span>
+    <p><strong>Physicians Interactive / Aptus Health</strong> is a separate entity from <strong>Outcome Health</strong>. Outcome Health (founded 2010 as ContextMedia) was a point-of-care waiting-room screen network that collapsed under a fraud scandal beginning in 2017. The two companies operated in different segments, served different physician touchpoints, and had entirely different failure modes.</p>
+  </div>
+
+  <div class="callout">
+    <span class="callout-tag">Research Note</span>
+    <p>Every company in Phase 1 that removed the hardware giveaway survived longer than iPhysicianNet. Every company that went asynchronous had lower unit economics but less client concentration risk. None of them solved the physician motivation problem&#8212;they worked around it by making content available without requiring the physician to consent in advance. The consent problem was deferred, not resolved.</p>
+  </div>
+
+  <h3 class="subsection">Phase 2 &#8212; The CRM and Platform Era (2010&#8211;2020): Hybrid Wins</h3>
+
+  <p>The companies that defined 2010&#8211;2020 shared one structural insight Phase 1 missed: physician attention follows physician value, not pharma dollars. Veeva built CRM infrastructure that made the existing rep more productive. Doximity gave physicians a network they genuinely wanted, then let pharma advertise into that attention. OptimizeRx embedded pharma content directly into the clinical workflow. The platform economics that resulted were structurally different from the per-session pharma contracts that had killed iPhysicianNet.</p>
+
+  <div class="stat-strip cols-3">
+    <div class="stat"><span class="stat-num">&gt;80%</span><span class="stat-label">of U.S. physicians on Doximity</span></div>
+    <div class="stat"><span class="stat-num">$570M</span><span class="stat-label">Doximity FY2025 revenue (+20% YoY)</span></div>
+    <div class="stat"><span class="stat-num">$293M</span><span class="stat-label">ePocrates acquisition by athenahealth (March 2013)</span></div>
+  </div>
+
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Infrastructure and platform-era companies and their scale">
+    <table>
+      <thead><tr><th scope="col">Company</th><th scope="col">What They Built</th><th scope="col">Scale / Key Metric</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Veeva Systems<span class="sub">Founded 2007</span></td>
+          <td>Vault CRM + Engage Meeting module: live rep video detailing integrated into the rep&#8217;s existing CRM workflow. Zero physician hardware&#8212;physician uses any browser. Compliant content library and MLR workflow integrated. Offered Engage Meeting free through December 2020; Boehringer Ingelheim ran 1M+ virtual meetings on the platform in 12 months.</td>
+          <td>FY2027 revenue guidance: $3.585&#8211;$3.60B. De-facto industry standard for rep-mediated video detailing.</td>
+        </tr>
+        <tr>
+          <td>Doximity<span class="sub">Founded 2010; NYSE:DOCS IPO 2021</span></td>
+          <td>Physician social and professional network covering &gt;80% of licensed U.S. physicians. No physician cost&#8212;value is peer communication, HIPAA-compliant e-fax, telemedicine tools, and job search. Pharma advertises into physician attention already present on the platform. Bank of America upgraded the stock in 2025, citing FDA pressure on DTC advertising pushing pharma budgets toward HCP-targeted digital.</td>
+          <td>FY2025 revenue ~$570M (+20% YoY). FY2026 guidance: $619&#8211;631M. ~95% from pharma subscriptions.</td>
+        </tr>
+        <tr>
+          <td>OptimizeRx<span class="sub">NASDAQ:OPRX; founded ~2006</span></td>
+          <td>In-EHR messaging at the point of prescribing: pharma-sponsored content delivered silently into the clinical workflow via 300+ EHR integrations. Not a rep-mediated channel&#8212;closer to contextual advertising within clinical software the physician is already using.</td>
+          <td>~800K prescribing HCPs reached. Reported ~17% prescription lift on EHR-driven campaigns.</td>
+        </tr>
+        <tr>
+          <td>ConnectiveRx<span class="sub">Founded 2015</span></td>
+          <td>Patient-affordability and copay-card messaging embedded in clinical workflow. Addresses the specific physician pain point surveys consistently rank highest: patient access to expensive drugs.</td>
+          <td>49% of physicians expect reps to inform them about patient assistance programs; fewer than 25% receive it (ZoomRx). ConnectiveRx fills this gap programmatically.</td>
+        </tr>
+        <tr>
+          <td>Doceree<span class="sub">Founded 2020</span></td>
+          <td>First global HCP-only programmatic advertising network. Patented ESPYIAN identity-verification system across 2,000+ physician-only digital environments and 150+ EHRs. Launched RepTwin AI virtual sales rep in September 2025&#8212;the most direct current inheritor of the iPhysicianNet channel thesis. RepTwin covered in Part III.</td>
+          <td>6M+ verified HCPs across 25 markets.</td>
+        </tr>
+        <tr>
+          <td>Indegene<span class="sub">Founded 1998 (Bangalore); IPO May 2024</span></td>
+          <td>Services-and-technology stack offering remote detailing as one of many HCP engagement channels for top-20 pharma globally. Institutional home of the original e-detailing playbook, acquired via Aptilon in 2012.</td>
+          <td>~$220M raised at NSE/BSE IPO, May 2024.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure class="diagram-fig">
+    <div class="fig-scroll" tabindex="0" role="region" aria-label="Research participation across all three physician segments (scrollable diagram)"><img src="assets/PVE_W1_Paper4_v9.svg" alt="Matrix diagram: research participation by physician segment. All three research paths reach every segment; speaker bureaus do not." aria-describedby="fig1-desc"></div>
+    <figcaption><b>Figure 1</b> Research participation: segment access &#215; regulatory posture. Market research, RWE studies, and advisory boards, mapped across the three physician segments. All three research paths reach Accessible, NoSee, and AccessBlocked physicians; speaker bureaus, shown as the contrast row, cannot.</figcaption>
+    <p><a class="fig-fullsize" href="assets/PVE_W1_Paper4_v9.svg">View full size</a></p>
+    <details><summary>Described in full</summary><p id="fig1-desc">Matrix diagram titled Paper 4, research participation: segment access by regulatory posture. Rows are research sub-categories - market research (surveys and interviews via Sermo, M3, GLG), real-world-evidence studies (observational studies, registries, named PI), and advisory boards (paid consulting, fair-market-value required) - with a contrast row for speaker bureaus. Columns are the three physician segments (Accessible, NoSee, AccessBlocked) plus an Open Payments reporting-requirement column. All three research paths are marked accessible across all three segments; market research is Open Payments exempt through a double-blind intermediary, RWE studies are reportable research payments totalling $8.12B in 2023, advisory boards are reportable consulting fees totalling $3.29B in 2023, and the speaker-bureau contrast row is often declined by NoSee physicians and prohibited outright in the AccessBlocked segment.</p></details>
+  </figure>
+
+  <h3 class="subsection">The COVID Surge &#8212; and What It Actually Proved</h3>
+
+  <div class="stat-strip cols-3">
+    <div class="stat"><span class="stat-num">45%</span><span class="stat-label">HCP accessibility in 2024 &#8212; down from 80% in 2008 (ZS AccessMonitor)</span></div>
+    <div class="stat"><span class="stat-num">~90%</span><span class="stat-label">as responsive to virtual vs. in-person calls (ZS, 30+ pharma brands)</span></div>
+    <div class="stat"><span class="stat-num">+30% / +60%</span><span class="stat-label">prescribing lift: digital touch in 10 days / website visit after rep visit</span></div>
+  </div>
+
+  <p>Before COVID, rep-accessible U.S. physicians had already eroded from ~80% in 2008 to 44% in 2016 (ZS AccessMonitor)&#8212;the first year a majority placed moderate or severe restrictions on rep access. COVID compressed years of structural change into months. Bain found nearly <strong>60% of physicians who had previously preferred in-person meetings now wanted more virtual.</strong> Accenture reported 93% of life-sciences executives expected virtual detailing to remain a permanent feature of their commercial model. A ZS analysis across 30+ pharma brands found HCPs were approximately 90% as responsive to virtual calls as face-to-face&#8212;a figure that, if accurate, was consistent with the timing-and-convenience case iPhysicianNet made in 2000.</p>
+
+  <p>What the industry discovered by 2022&#8211;2023 is that the validated model is hybrid, not virtual-dominant. The Veeva Pulse May 2024 Field Trends Report found HCP access had declined back to 45%&#8212;approximately the pre-COVID level&#8212;with <strong>50% of accessible HCPs now meeting with only three or fewer companies.</strong> In-person meetings continued to decline 7% per HCP year-over-year even where access was restored. The data-driven finding: a rep meeting plus a digital touch within 10 days makes prescribing <strong>30% more likely,</strong> and an HCP visit to the brand website after a rep visit makes prescribing <strong>60% more likely.</strong></p>
+
+  <div class="callout">
+    <span class="callout-tag">Research Note</span>
+    <p>COVID did not create a market for stand-alone virtual detailing. It created a market for channel orchestration&#8212;tools that help pharma coordinate the right content, in the right format, across in-person, video, email, EHR, and digital channels, for each physician&#8217;s stated preferences. The model iPhysicianNet proposed in 2000 was correct on physician timing; it was wrong on channel singularity.</p>
+  </div>
+</div>
+
+<!-- ============================ PART III ============================ -->
+<div class="section" id="part3">
+  <span class="eyebrow-label">Part III</span>
+  <h2 class="section-title">What Pharma Is Betting on Now: The AI Layer (2023&#8211;2026)</h2>
+
+  <p>The current wave of investment is best understood as three distinct problems wearing similar labels. All three involve AI; all three claim to solve the physician-engagement problem; they have almost nothing else in common.</p>
+
+  <h3 class="subsection">Problem A &#8212; Replacing or Multiplying the Rep</h3>
+
+  <p>This is the iPhysicianNet problem restated. The companies below are betting that AI agents can conduct the information and brand-building job that human reps do, at lower cost and at scale. The structural challenge they face is identical to the one iPhysicianNet faced: the physician access wall.</p>
+
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Problem A companies: AI tools aimed at replacing or multiplying the pharmaceutical rep">
+    <table>
+      <thead><tr><th scope="col">Company</th><th scope="col">What It Does</th><th scope="col">Scale / Funding</th><th scope="col">What Is Missing</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Doceree RepTwin<span class="sub">Launched September 2025</span></td>
+          <td>AI-powered virtual sales rep embedded in EHRs, medical journals, and brand websites. MLR-approved content library, HIPAA/GDPR/SOC2 compliance. CEO Harshit Jain at Fierce Pharma Week 2025: &#8220;65% of physicians now restrict rep access.&#8221;</td>
+          <td>6M+ verified HCPs claimed via ESPYIAN network. No big-pharma customer has publicly named itself as a RepTwin client.</td>
+          <td>No published outcome data. No named customer willing to go on record.</td>
+        </tr>
+        <tr>
+          <td>Hippocratic AI<span class="sub">JPM 2026 announcement</span></td>
+          <td>Announced at JPM 2026: &#8220;agentic sales reps that can directly call upon HCPs&#8221; for education on new drugs, adverse-event intake, and patient-support program enrollment. Acquired Grove AI January 2026 to expand life-sciences commercial capability.</td>
+          <td>Working with 3 of top 8 and 5 of top 20 global pharma companies&#8212;all unnamed. Total funding: $404M, including $126M Series C at $3.5B valuation (November 2025).</td>
+          <td>All pharma partners are unnamed. No disclosed prescribing-lift data.</td>
+        </tr>
+        <tr>
+          <td>EVERSANA AI Agency<span class="sub">Launched August 2025, Google Cloud</span></td>
+          <td>End-to-end &#8220;80% AI-powered&#8221; marketing and commercial functions. Claims &#8220;a year&#8217;s worth of work in 10 minutes,&#8221; with &gt;50% time savings and 30% cost reductions.</td>
+          <td>&gt;50 undisclosed pharma brands. No public outcome data.</td>
+          <td>Efficiency claims only; no prescribing-impact data published.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure class="diagram-fig">
+    <div class="fig-scroll" tabindex="0" role="region" aria-label="Direct engagement by channel and physician segment (scrollable diagram)"><img src="assets/PVE_W1_Paper1_v9.svg" alt="Matrix diagram: direct-engagement channels by physician segment. The MSL is the only channel that reaches all three segments." aria-describedby="fig2-desc"></div>
+    <figcaption><b>Figure 2</b> Direct engagement: channel &#215; physician segment. In-person rep, video rep and AI rep, and MSL, mapped across the three physician segments. The MSL is the only direct-engagement mechanism reaching all three groups, because it is non-promotional. AI reps face the same structural wall as human reps.</figcaption>
+    <p><a class="fig-fullsize" href="assets/PVE_W1_Paper1_v9.svg">View full size</a></p>
+    <details><summary>Described in full</summary><p id="fig2-desc">Matrix diagram titled Paper 1, direct engagement: channel by physician segment. Rows are three direct-engagement channels - in-person rep, video rep plus AI rep, and MSL (Medical Science Liaison, scientific and non-promotional). Columns are three physician segments: Accessible (open to rep contact), NoSee (personally closed), and AccessBlocked (academic medical center institutional ban). The in-person rep is fully accessible in the first segment, declining in the second with 68 percent of oncology restricted, and structurally blocked in the third. The video and AI rep is accessible, partially accessible, and policy-dependent with no RepTwin data yet. The MSL row is the only one accessible across all three segments. A footer states MSL is the only direct-engagement channel reaching all three segments because it operates under a non-promotional framework, and that AI reps face the same structural wall as human reps.</p></details>
+  </figure>
+
+  <div class="callout">
+    <span class="callout-tag">Research Note</span>
+    <p>Problem A has real products, significant venture backing, and plausible commercial logic&#8212;but no public evidence of measurable prescribing impact, no named big-pharma customer willing to go on record, and no published study comparing AI-rep persuasion to human-rep persuasion. A Doceree survey (Fierce Pharma Week 2025) found 38% of pharma executives named &#8220;Sales &amp; Rep Enablement&#8221; as the area of greatest AI impact. But industry public messaging is consistently &#8220;augment, not replace.&#8221; The companies piloting AI reps are not announcing it.</p>
+  </div>
+
+  <h3 class="subsection">Problem B &#8212; Augmenting and Orchestrating the Human Rep</h3>
+
+  <p>This is where the confirmed multi-year, multi-billion-dollar pharma commitments are landing, and where named customer rosters are public. The pattern is identical across all three platforms: AI decides what the rep does and how to do it more efficiently; the rep does it.</p>
+
+  <div class="stat-strip cols-3">
+    <div class="stat"><span class="stat-num">125+</span><span class="stat-label">customers live on Veeva Vault CRM (March 2026)</span></div>
+    <div class="stat"><span class="stat-num">70+</span><span class="stat-label">named pharma adopters, Salesforce Agentforce Life Sciences</span></div>
+    <div class="stat"><span class="stat-num">+36%</span><span class="stat-label">new-to-brand prescriptions &#8212; Aktana (12-year average across deployments)</span></div>
+  </div>
+
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Pharma AI platforms, their capabilities, and named adopters">
+    <table>
+      <thead><tr><th scope="col">Platform</th><th scope="col">AI Capabilities</th><th scope="col">Named Adopters / Impact</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Veeva AI Agents for Vault CRM<span class="sub">GA December 2025</span></td>
+          <td>Free Text Agent, Voice Agent, Pre-call Agent, PromoMats Quick Check (MLR content review). Integrated into existing Vault CRM workflow.</td>
+          <td><strong>Bristol Myers Squibb</strong> &#8212; CDTO Greg Meyers: &#8220;Veeva AI is ideally positioned to support us.&#8221; <strong>Moderna</strong> &#8212; &#8220;nearly touch-free&#8221; MLR review. <strong>Roche</strong> &#8212; CDTO Wafaa Mamilli: &#8220;more personalized interactions.&#8221; Also: Gilead, Merck, Novo Nordisk. 125+ customers live on Vault CRM as of March 2026.</td>
+        </tr>
+        <tr>
+          <td>Salesforce Agentforce Life Sciences<span class="sub">GA October 2025</span></td>
+          <td>AI-powered Smart Summaries, voice-activated pre-call account preparation, compliance-workflow automation. Built on existing Salesforce Life Sciences Cloud.</td>
+          <td><strong>Pfizer</strong> &#8212; CDTO Lidia Fonseca: &#8220;reducing the administrative burden on our teams, freeing them up to focus on engagement.&#8221; <strong>Novartis</strong> &#8212; 5-year global rollout (December 2025). <strong>AstraZeneca</strong> &#8212; unified global platform (December 2025). Also: Sanofi, Lilly, Amgen, Takeda, Boehringer Ingelheim, Fidia. &gt;70 named life-sciences adopters total.</td>
+        </tr>
+        <tr>
+          <td>Aktana<span class="sub">Acquired by PharmaForceIQ, January 2026</span></td>
+          <td>&#8220;Next-best-action&#8221; model: AI-driven prompts tell the rep which physician to contact, through which channel, with which message, at what time. 12 years of deployment data across top pharma.</td>
+          <td>Disclosed impact across 12 years: 36% lift in new-to-brand prescriptions; 19% sales gain post-competitor launch; ~20 minutes/day saved per rep.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <span class="callout-tag">Research Note</span>
+    <p>The largest pharmaceutical companies in the world are committing to AI platforms that make their existing reps more efficient and better-informed, not platforms that replace them. The rep-replacement narrative is there for investors; the rep-augmentation reality is what is being deployed at scale. An AI-augmented human rep inherits the relationship. An AI rep starts from zero.</p>
+  </div>
+
+  <figure class="diagram-fig">
+    <div class="fig-scroll" tabindex="0" role="region" aria-label="Education sub-mechanisms by segment access and influence evidence (scrollable diagram)"><img src="assets/PVE_W1_Paper2_v9.svg" alt="Matrix diagram: education sub-mechanisms by segment and influence evidence. Measured influence reaches only accessible physicians." aria-describedby="fig3-desc"></div>
+    <figcaption><b>Figure 3</b> Education sub-mechanisms: segment access &#215; influence evidence. Speaker bureaus (OR 1.53, Accessible only), KOL and peer-to-peer, accredited CME, and sponsored supplements, across the three segments. The footer shows the core paradox: measured influence cannot reach NoSee or AccessBlocked physicians; all-group reach has no measured lift. This is why Problem B investment dominates over Problem A.</figcaption>
+    <p><a class="fig-fullsize" href="assets/PVE_W1_Paper2_v9.svg">View full size</a></p>
+    <details><summary>Described in full</summary><p id="fig3-desc">Matrix diagram titled Paper 2, education sub-mechanisms: segment access by influence evidence. Rows are five education sub-mechanisms - speaker bureaus, KOL and peer-to-peer, accredited CME, sponsored supplements, and branded webinars. Columns are the three physician segments (Accessible, NoSee, AccessBlocked) plus an influence-evidence column giving the best available signal for each. Speaker bureaus reach only the Accessible segment, are often personally declined by NoSee physicians and prohibited by academic medical center policy, and carry the only primary influence measure: an odds ratio of 1.53, 95 percent confidence interval 1.44 to 1.62, scoped to neurologists in the Accessible group. KOL work is high-trust but not independently measured. Accredited CME reaches all three segments because accreditation acts as a firewall, but its lift is not measured; sponsored supplements and branded webinars carry no measurement at all. A footer states the core paradox: measured influence cannot reach NoSee or AccessBlocked physicians, and the mechanisms with all-group reach have no measured lift.</p></details>
+  </figure>
+
+  <h3 class="subsection">Problem C &#8212; AI That Engages Physicians Directly as a Clinical Resource</h3>
+
+  <p>This is the most consequential development in the space&#8212;and the one iPhysicianNet could not have conceived. Problem C is not pharma deploying AI; it is physicians adopting AI for clinical work, and pharma finding ways to advertise inside that attention context.</p>
+
+  <div class="stat-strip cols-4">
+    <div class="stat"><span class="stat-num">40%</span><span class="stat-label">of U.S. physicians actively use OpenEvidence</span></div>
+    <div class="stat"><span class="stat-num">13.3 min</span><span class="stat-label">avg session &#8212; ~7&#215; longer than a pharma rep interaction</span></div>
+    <div class="stat"><span class="stat-num">95%</span><span class="stat-label">of new users arrive via peer recommendation &#8212; zero acquisition cost</span></div>
+    <div class="stat"><span class="stat-num">$12B</span><span class="stat-label">valuation at Series D (January 2026) &#8212; fastest healthcare AI to $100M ARR on record</span></div>
+  </div>
+
+  <p>OpenEvidence is an AI clinical decision-support tool that answers drug, dosing, guideline, and evidence questions for physicians during patient care. It does not market drugs; it answers clinical questions. Pharma advertising is embedded in the answer experience&#8212;the same model as ePocrates&#8217; DocAlerts in 2003, but orders of magnitude more sophisticated and more valuable to the physician.</p>
+
+  <p>Funding moved at a pace that suggests market conviction: $75M (February 2025) &#8594; $210M (July 2025) &#8594; $200M (October 2025) &#8594; <strong>$250M Series D at $12B valuation (January 2026)</strong>&#8212;the fastest healthcare AI company to $100M ARR on record. Pharma advertising CPMs: $70&#8211;$1,000+, versus $5&#8211;$15 for social media. On October 16, 2025, OpenEvidence and Veeva announced the &#8220;Open Vista&#8221; partnership spanning clinical trial matching, drug-discovery insights, and commercial adoption of approved medicines. OpenEvidence withdrew from the EU and UK in April 2026, citing &#8220;mounting regulatory uncertainty&#8221; under the EU AI Act.</p>
+
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Independent AI clinical tools used by physicians and their current status">
+    <table>
+      <thead><tr><th scope="col">Tool</th><th scope="col">What It Does</th><th scope="col">Current Status</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Doximity DoxGPT</td>
+          <td>AI clinical Q&amp;A embedded in Doximity workflow. Claimed 61% best-answer rate in head-to-head vs. OpenEvidence (Doximity-sponsored study; independent replication not located).</td>
+          <td>Live. Doximity platform reach: &gt;80% of U.S. physicians.</td>
+        </tr>
+        <tr>
+          <td>UpToDate Expert AI</td>
+          <td>AI layer on top of the most trusted clinical reference. Builds on UpToDate&#8217;s institutional subscription base and zero-pharma-content positioning.</td>
+          <td>In development / limited availability.</td>
+        </tr>
+        <tr>
+          <td>Glass Health</td>
+          <td>AI-generated clinical assessments and differential diagnoses. Physician-facing, not pharma-facing.</td>
+          <td>$5.5M raised through September 2023.</td>
+        </tr>
+        <tr>
+          <td>Abridge</td>
+          <td>Ambient documentation AI (~$100M ARR). Clinical decision support adjacent; not primarily a pharma engagement channel.</td>
+          <td>$316M extension funding April 2026; ~$100M ARR.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure class="diagram-fig">
+    <div class="fig-scroll" tabindex="0" role="region" aria-label="Independent tools by physician intent and pharma access, in three tiers (scrollable diagram)"><img src="assets/PVE_W1_Paper3_v9.svg" alt="Three-tier diagram: independent clinical tools. Pharma access decreases as physician clinical intent increases." aria-describedby="fig4-desc"></div>
+    <figcaption><b>Figure 4</b> Independent tools: physician intent &#215; pharma access, in three tiers. Tier 1 (clinical decision): UpToDate, OpenEvidence, ePocrates. Tier 2 (workflow): Doximity, EHR. Tier 3 (consumption and community): Medscape, Sermo, Doceree. The inverse pattern is the finding: pharma access decreases as physician intent increases.</figcaption>
+    <p><a class="fig-fullsize" href="assets/PVE_W1_Paper3_v9.svg">View full size</a></p>
+    <details><summary>Described in full</summary><p id="fig4-desc">Three-tier diagram titled Paper 3, independent tools: physician intent by pharma access. Tier 1, clinical decision and highest physician intent, has zero or minimal pharma access and contains UpToDate (zero pharma access, subscription only), OpenEvidence (contextual ads only, no direct sponsorship, CPM $70 to $1,000-plus) and Epocrates (DocAlerts opt-in only, approximately 1M-plus US clinicians, ad-supported). Tier 2, workflow tools for professional use, has limited or contextual access and contains Doximity (news-feed ads in workflow, 800K-plus active prescribers) and EHR point-of-care alerts at the prescribing moment. Tier 3, consumption and community, has the widest pharma access and contains Medscape (broad sponsorship, CME plus display ads), Sermo (surveys and ads, community context) and Doceree (programmatic targeting across an EHR and portal network). The pattern is inverse: pharma access decreases as physician intent increases.</p></details>
+  </figure>
+
+  <div class="callout">
+    <span class="callout-tag">Research Note</span>
+    <p>OpenEvidence demonstrates&#8212;and its $12B valuation prices in&#8212;the answer to the question iPhysicianNet was never able to answer: what do you give the physician that they want so much they come to you, rather than being recruited and incentivized? The answer, in 2026, is a clinical AI that is demonstrably better at answering drug questions than any human rep, any drug reference book, and most clinical journals. iPhysicianNet subsidized physician attention with hardware and content libraries that became commodities. OpenEvidence earns the same attention by answering clinical questions faster and more reliably than the alternatives. The model is structurally identical&#8212;free to physicians, pharma-funded on the back end&#8212;but the order of operations is inverted: clinical utility first, monetization second.</p>
+  </div>
+
+  <h3 class="subsection">The Regulatory Position, 2025&#8211;2026</h3>
+
+  <p>The FDA&#8217;s posture toward AI-generated promotional content has shifted materially in 2025. Any product that sits between pharma promotional intent and physician clinical decision-making sits on one side or the other of the OPDP boundary, and the market has treated that placement as a design decision rather than a later compliance question. OpenEvidence is on the physician&#8217;s side; RepTwin is on pharma&#8217;s side. The business models, regulatory exposure, physician-trust profiles, and capital structures are entirely different.</p>
+
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Regulatory developments, 2025, and their implications">
+    <table>
+      <thead><tr><th scope="col">Date</th><th scope="col">Development</th><th scope="col">Implication</th></tr></thead>
+      <tbody>
+        <tr><td>January 6, 2025</td><td>OPDP &#8220;SIUU&#8221; Final Guidance &#8212; standards for unsolicited internet and social media communication.</td><td>Sets baseline for AI-generated content in physician-facing channels.</td></tr>
+        <tr><td>January 7, 2025</td><td>AI-Enabled Device Software Functions Draft Guidance &#8212; submission requirements for AI-based clinical tools.</td><td>Establishes FDA review pathway for clinical AI products.</td></tr>
+        <tr><td>September 2025</td><td>Presidential memorandum directing CDER to extend oversight to &#8220;AI-generated health content and chatbot interactions.&#8221; HHS: FDA will &#8220;close digital loopholes.&#8221;</td><td>Explicit extension of regulatory reach to AI promotional content.</td></tr>
+        <tr><td>Q3 2025</td><td>FDA issues 50+ Warning Letters and 50+ Untitled Letters&#8212;most active enforcement period on record. Letters now signed by CDER/CBER Division Directors.</td><td>Escalated enforcement signal. Director-level signatures indicate this is not routine.</td></tr>
+        <tr><td>April 2026</td><td>OpenEvidence withdraws from EU and UK, citing &#8220;mounting regulatory uncertainty&#8221; under the EU AI Act.</td><td>First major market exit by a physician-facing AI due to AI regulation.</td></tr>
+        <tr><td>As of May 2026</td><td>PhRMA has not updated its Code to address AI. Industry self-regulation on AI promotional content is essentially undeveloped.</td><td>Self-regulatory vacuum. FDA enforcement is filling the gap before industry standards are set.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <span class="callout-tag">Research Note</span>
+    <p>The market pattern favors the physician&#8217;s side: tools that earn physician trust before pharma dollars arrive show both a stronger value proposition and, on the FDA&#8217;s current trajectory, a more defensible regulatory position. The FDA&#8217;s enforcement trajectory makes the boundary between clinical AI and promotional AI increasingly consequential.</p>
+  </div>
+</div>
+
+<!-- ============================ PART IV ============================ -->
+<div class="section" id="part4">
+  <span class="eyebrow-label">Part IV</span>
+  <h2 class="section-title">The Physician: What the Data Actually Says About Access, Motivation, and AI</h2>
+
+  <p>Anyone building in this space needs to start from a clear-eyed view of the physician&#8217;s situation, not the pharmaceutical manufacturer&#8217;s. The access problem is structural, not a temporary disruption that the right technology will fix.</p>
+
+  <h3 class="subsection">The Access Decline Is Long-Running and Data-Confirmed</h3>
+
+  <div class="stat-strip cols-4">
+    <div class="stat"><span class="stat-num">80%</span><span class="stat-label">of physicians accessible to reps in 2008</span></div>
+    <div class="stat"><span class="stat-num">44%</span><span class="stat-label">accessible by 2016&#8212;first year majority restricted rep access</span></div>
+    <div class="stat"><span class="stat-num">45%</span><span class="stat-label">accessible in 2024&#8212;essentially flat for 8 years (ZS AccessMonitor)</span></div>
+    <div class="stat"><span class="stat-num">50%</span><span class="stat-label">of accessible physicians meet with 3 or fewer companies</span></div>
+  </div>
+
+  <div class="table-wrap" tabindex="0" role="region" aria-label="ZS AccessMonitor physician-access datapoints over time">
+    <table>
+      <thead><tr><th scope="col">Datapoint</th><th scope="col">Detail</th></tr></thead>
+      <tbody>
+        <tr><td>~80% accessible (2008)</td><td>ZS AccessMonitor baseline. The year before access restriction became a tracked commercial problem.</td></tr>
+        <tr><td>~51% accessible (2014)</td><td>Six years of structural decline. Institutional policies at academic medical centers spreading to community practices.</td></tr>
+        <tr><td>~44% accessible (2016)</td><td>Tipping point: the first year a majority of U.S. physicians placed moderate or severe restrictions on rep access.</td></tr>
+        <tr><td>45% accessible (2024)</td><td>Veeva Pulse, 600M+ HCP interactions. Essentially flat since 2016&#8212;the floor appears structural, not cyclical.</td></tr>
+        <tr><td>Oncology: 73% restricted (2015)</td><td>Down from 75% accessible in 2010. The specialty with the highest pharma spend is the most closed to traditional rep engagement.</td></tr>
+        <tr><td>40.6% physicians &#8220;no-see&#8221; (2017)</td><td>SK&amp;A/IQVIA (August 2017). 54% of practices with 10+ physicians and 57% of hospital-owned practices are no-see.</td></tr>
+        <tr><td>&#8220;No rep contact in 6 months&#8221; (24%&#8594;39%)</td><td>Fierce Healthcare physician survey. A 15-point jump in a single year. Doceree&#8217;s Harshit Jain: face-to-face rep time has fallen more than 50% in a decade.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="subsection">Why Physicians Restrict Access &#8212; and What Overcomes It</h3>
+
+  <p>The access decline is not primarily about scheduling constraints. Physician surveys consistently identify three underlying drivers: the rep interaction is perceived as promotional rather than informational, the content is often not new, and the interaction model is designed around the manufacturer&#8217;s needs rather than the physician&#8217;s.</p>
+
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Survey findings on why physicians restrict rep access">
+    <table>
+      <thead><tr><th scope="col">Source</th><th scope="col">Finding</th><th scope="col">Scale</th></tr></thead>
+      <tbody>
+        <tr><td>Indegene HCP survey (~1,000 HCPs, 8 countries)</td><td>&#8220;70% feel pharma reps don&#8217;t understand their requirements; 55% feel overwhelmed by pharma content volume; 62% report product-related content fatigue.&#8221;</td><td>~1,000 HCPs, 8 countries</td></tr>
+        <tr><td>DRG Digital / Manhattan Research</td><td>52% of rep visits show physicians information they have already seen. Among oncologists: 68%.</td><td>Quantified staleness of rep content</td></tr>
+        <tr><td>JAMA Health Forum (September 2025)</td><td>61% of physicians believe rep interactions erode public trust in the profession&#8212;stable since 2011. Share who &#8220;strongly agree&#8221; tripled to 14.5%.</td><td>U.S. physician cohort; peer-reviewed</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <span class="card-num">01</span>
+      <h4>Patient access and affordability information</h4>
+      <p>ZoomRx: 49% of physicians expect reps to inform them about patient assistance programs; fewer than 25% receive it. Cardinal Health Oncology Insights: 71% of oncologists rate this function as one of the most valued rep interactions. A direct, physician-credible value proposition that has nothing to do with promotion.</p>
+    </div>
+    <div class="card">
+      <span class="card-num">02</span>
+      <h4>Clinical evidence and real-world data</h4>
+      <p>Physicians who engage with pharma content most often are seeking comparative effectiveness data, guidelines updates, and adverse-event profiles&#8212;not promotional messages. This is what OpenEvidence provides better than any rep.</p>
+    </div>
+    <div class="card">
+      <span class="card-num">03</span>
+      <h4>MSLs over sales reps</h4>
+      <p>EPG Health 2024: pharma leaders now prioritize Medical Science Liaisons over sales reps as the primary HCP information channel&#8212;a structural shift directly relevant to anyone building in the sales-rep channel. The non-promotional framing is the operative variable.</p>
+    </div>
+    <div class="card">
+      <span class="card-num">04</span>
+      <h4>Channel flexibility</h4>
+      <p>Indegene European survey (5 countries): flexibility to schedule and reschedule was the #1 driver of remote rep interaction&#8212;64% in Spain, 62% in Italy. This is consistent with the iPhysicianNet-era observation that physician-controlled timing matters.</p>
+    </div>
+    <div class="card full">
+      <span class="card-num">05</span>
+      <h4>Corporate reputation</h4>
+      <p>WE Communications: ~60% of physicians say manufacturer reputation influences their choice among similar treatments; 81% say it shapes their perception of the medicine&#8217;s value. AbbVie&#8217;s notably high NPS among immunologists (ZoomRx Q2 2025) was attributed to ten-plus years of consistent commercial behavior. Trust is built over time, not through any single engagement mechanism.</p>
+    </div>
+  </div>
+
+  <h3 class="subsection">What the AI Adoption Data Actually Shows</h3>
+
+  <div class="stat-strip cols-3">
+    <div class="stat"><span class="stat-num">63%</span><span class="stat-label">of physicians now using AI&#8212;up from 47% in under a year (+16pp in 8 months)</span></div>
+    <div class="stat"><span class="stat-num">13.3 min</span><span class="stat-label">avg OpenEvidence session vs. &lt;2 min traditional rep visit</span></div>
+    <div class="stat"><span class="stat-num">54%</span><span class="stat-label">of HCPs already use generative AI for scientific information (IQVIA EPG, March 2026)</span></div>
+  </div>
+
+  <p>Doximity&#8217;s 2026 State of AI in Medicine Report (n=3,151 U.S. physicians, November 2025&#8211;January 2026) found AI use rose from 47% to <strong>63% in under a year</strong>&#8212;16 percentage points in eight months. 94% are using or interested; 37% use AI daily. The top use cases are literature search (35%), ambient documentation (29%), and administrative tasks. These are physician-initiated uses. They are not responses to pharma-sponsored prompts.</p>
+
+  <p>The 13.3-minute average OpenEvidence session length is the single most important number in this section. It is not a promotional interaction; it is a physician choosing to spend substantive time with a tool that helps them practice medicine. The reason pharma is investing in advertising within that session at CPMs of $70&#8211;$1,000+ is that the physician&#8217;s attention is already present, already engaged with a clinical question, and the right drug information is genuinely relevant to the moment.</p>
+
+  <p>A March 2026 IQVIA EPG survey found 54% of HCPs already use generative AI tools for scientific information (75% of those born after 1990 versus 48% of older physicians), with 38% rating GenAI as &#8220;critical&#8221; or &#8220;very important&#8221; for clinical work. IQVIA&#8217;s summary conclusion: &#8220;pharmaceutical executives vastly overestimate their HCPs&#8217; relative trust in pharma channels.&#8221; A direct statement that the AI clinical tools physicians choose for themselves are now a more trusted information channel than the pharma rep.</p>
+
+  <div class="callout">
+    <span class="callout-tag">Research Note</span>
+    <p>No published peer-reviewed study compares prescribing lift from an AI-rep interaction versus a human-rep interaction. The information-retrieval job that reps used to do is now demonstrably being done better by AI tools physicians seek out themselves. Whether AI can replicate the relationship and persuasion components of effective rep engagement&#8212;the work that actually drives prescriptions beyond baseline awareness&#8212;has not been demonstrated. Every company claiming it can is making an assertion, not reporting evidence.</p>
+  </div>
+</div>
+
+<!-- ============================ SUPPORTING MATERIAL ============================ -->
+<div class="support-break">Appendix &#8212; Sources and a Note About the Author</div>
+<div class="support-section">
+<div class="support-inner">
+
+  <!-- ---------------------- BIBLIOGRAPHY ---------------------- -->
+  <section id="sources">
+    <span class="eyebrow-label">Appendix</span>
+    <h2 class="section-title">Consolidated Sources</h2>
+    <p class="bib-intro">Forty-two citations, grouped by the part of the paper each supports. The line beneath each entry states what that source was used for.</p>
+
+    <div class="bib-group">
+      <h3>Part I &#8212; iPhysicianNet History</h3>
+      <ol class="bib-list">
+        <li><span class="bib-num">1.</span><span class="bib-body"><span class="bib-title">SEC S-1 Registration Statement (Feb 4, 2000)</span><span class="bib-note">Physician value proposition, client names, risk disclosures, funding structure. CIK 0001097673.</span></span></li>
+        <li><span class="bib-num">2.</span><span class="bib-body"><span class="bib-title">U.S. 1 Newspaper &#8212; &#8220;iPhysicianNet Shuts Down&#8221; (Sept 3, 2003)</span><span class="bib-note">Definitive shutdown account: dates, staff counts, Moriarty shareholder letter quotes.</span></span></li>
+        <li><span class="bib-num">3.</span><span class="bib-body"><span class="bib-title">U.S. 1 Newspaper &#8212; Retrospective (Feb 4, 2004)</span><span class="bib-note">Post-shutdown analysis.</span></span></li>
+        <li><span class="bib-num">4.</span><span class="bib-body"><span class="bib-title">Medtech Insight &#8212; &#8220;Could Quadruple Length of Average Sales Call&#8221;</span><span class="bib-note">ROI framing and GSK no-see physician use case. Paywalled.</span></span></li>
+        <li><span class="bib-num">5.</span><span class="bib-body"><span class="bib-title">Reuters Events / eyeforpharma &#8212; Aventis announcement</span><span class="bib-note">Michelle Runge quote; 70% after-hours and 60% sample-request figures.</span></span></li>
+        <li><span class="bib-num">6.</span><span class="bib-body"><span class="bib-title">Reuters Events / eyeforpharma &#8212; Wyeth-Ayerst announcement</span><span class="bib-note">Bernard Poussot quote.</span></span></li>
+        <li><span class="bib-num">7.</span><span class="bib-body"><span class="bib-title">Reuters Events / eyeforpharma &#8212; P&amp;G announcement</span><span class="bib-note">Rick June quote.</span></span></li>
+      </ol>
+    </div>
+
+    <div class="bib-group">
+      <h3>Part II &#8212; Twenty Years of Alternatives</h3>
+      <ol class="bib-list">
+        <li><span class="bib-num">8.</span><span class="bib-body"><span class="bib-title">Aptilon &#8212; Sale of assets to Indegene (2012)</span><span class="bib-note">Confirms Indegene Aptilon operating entity.</span></span></li>
+        <li><span class="bib-num">9.</span><span class="bib-body"><span class="bib-title">Aptilon renamed DMD Digital Health Connections (2014)</span><span class="bib-note">Confirms residual entity renaming.</span></span></li>
+        <li><span class="bib-num">10.</span><span class="bib-body"><span class="bib-title">ePocrates &#8212; About / Leadership</span><span class="bib-note">David Arkin GM appointment (February 2024); current product status.</span></span></li>
+        <li><span class="bib-num">11.</span><span class="bib-body"><span class="bib-title">Veeva Pulse Field Trends Report Q4 2024</span><span class="bib-note">HCP access 45%; 50% meeting with 3 or fewer companies; in-person decline 7% YoY.</span></span></li>
+        <li><span class="bib-num">12.</span><span class="bib-body"><span class="bib-title">Veeva Pulse &#8212; Connected Engagement Creates Advantage as HCP Access Drops</span><span class="bib-note">Digital touch +30% / website visit +60% prescribing lift figures.</span></span></li>
+        <li><span class="bib-num">13.</span><span class="bib-body"><span class="bib-title">Doximity &#8212; SWOT analysis / pharma revenue (Investing.com)</span><span class="bib-note">Revenue figures, pharma subscription breakdown, FY2026 guidance.</span></span></li>
+        <li><span class="bib-num">14.</span><span class="bib-body"><span class="bib-title">OptimizeRx &#8212; Point of Care Marketing</span><span class="bib-note">~800K HCPs; ~17% prescription lift figure.</span></span></li>
+        <li><span class="bib-num">15.</span><span class="bib-body"><span class="bib-title">Doceree &#8212; Premium Programmatic launch / ESPYIAN network</span><span class="bib-note">2,000+ environments; 150+ EHRs; 6M+ HCPs.</span></span></li>
+        <li><span class="bib-num">16.</span><span class="bib-body"><span class="bib-title">ZS Associates &#8212; &#8220;As doctors keep closing doors on pharma reps&#8221;</span><span class="bib-note">AccessMonitor historical series; 80% (2008) &#8594; 44% (2016) access decline.</span></span></li>
+        <li><span class="bib-num">17.</span><span class="bib-body"><span class="bib-title">Bain &#8212; &#8220;Medtech and pharma sales go virtual&#8221;</span><span class="bib-note">60% of physicians who previously preferred in-person now want more virtual.</span></span></li>
+      </ol>
+    </div>
+
+    <div class="bib-group">
+      <h3>Part III &#8212; The AI Layer (2023&#8211;2026)</h3>
+      <ol class="bib-list">
+        <li><span class="bib-num">18.</span><span class="bib-body"><span class="bib-title">Doceree RepTwin launch (September 2025) &#8212; PR Newswire/Morningstar</span><span class="bib-note">Product launch, feature list, CEO quote.</span></span></li>
+        <li><span class="bib-num">19.</span><span class="bib-body"><span class="bib-title">MM+M &#8212; &#8220;The next-gen AI rep: Always-on, compliant&#8221;</span><span class="bib-note">RepTwin positioning and channel strategy.</span></span></li>
+        <li><span class="bib-num">20.</span><span class="bib-body"><span class="bib-title">Hippocratic AI acquires Grove AI, pivots to biopharma &#8212; Fierce Healthcare (JPM 2026)</span><span class="bib-note">JPM 2026 announcement; pharma client count; product scope.</span></span></li>
+        <li><span class="bib-num">21.</span><span class="bib-body"><span class="bib-title">Hippocratic AI $126M Series C (November 2025) &#8212; Fierce Healthcare</span><span class="bib-note">Series C valuation, total funding.</span></span></li>
+        <li><span class="bib-num">22.</span><span class="bib-body"><span class="bib-title">EVERSANA AI Agency announcement &#8212; EVERSANA InTouch</span><span class="bib-note">Product launch; efficiency claims.</span></span></li>
+        <li><span class="bib-num">23.</span><span class="bib-body"><span class="bib-title">Veeva AI Agents GA (December 2025) &#8212; Veeva press release</span><span class="bib-note">Agent types; BMS, Moderna, Roche, Gilead, Merck, Novo Nordisk quotes and adoption.</span></span></li>
+        <li><span class="bib-num">24.</span><span class="bib-body"><span class="bib-title">Salesforce Agentforce Life Sciences GA &#8212; Pfizer/Fidia adopters (October 2025)</span><span class="bib-note">Product GA; Pfizer/Fonseca quote.</span></span></li>
+        <li><span class="bib-num">25.</span><span class="bib-body"><span class="bib-title">Novartis selects Agentforce Life Sciences (December 2025) &#8212; Salesforce</span><span class="bib-note">5-year global rollout announcement.</span></span></li>
+        <li><span class="bib-num">26.</span><span class="bib-body"><span class="bib-title">AstraZeneca selects Agentforce Life Sciences (December 2025) &#8212; Salesforce/investor.salesforce.com</span><span class="bib-note">Unified global platform announcement.</span></span></li>
+        <li><span class="bib-num">27.</span><span class="bib-body"><span class="bib-title">PharmaForceIQ acquires Aktana (January 2026) &#8212; Aktana press release</span><span class="bib-note">36% new-to-brand lift; 19% sales gain; 20 min/day savings.</span></span></li>
+        <li><span class="bib-num">28.</span><span class="bib-body"><span class="bib-title">OpenEvidence $250M Series D at $12B valuation (January 2026) &#8212; Business Wire</span><span class="bib-note">Funding round; fastest-to-$100M-ARR claim.</span></span></li>
+        <li><span class="bib-num">29.</span><span class="bib-body"><span class="bib-title">OpenEvidence + Veeva &#8220;Open Vista&#8221; partnership (October 16, 2025)</span><span class="bib-note">Partnership scope and announced intent.</span></span></li>
+        <li><span class="bib-num">30.</span><span class="bib-body"><span class="bib-title">FDA advertising and promotion enforcement update &#8212; Covington &amp; Burling (October 2025)</span><span class="bib-note">50+ Warning Letters; Q3 2025 enforcement surge.</span></span></li>
+        <li><span class="bib-num">31.</span><span class="bib-body"><span class="bib-title">FDA crackdown on DTC advertising &#8212; Latham &amp; Watkins (September 2025)</span><span class="bib-note">Presidential memorandum; HHS &#8220;close digital loopholes&#8221; statement.</span></span></li>
+      </ol>
+    </div>
+
+    <div class="bib-group">
+      <h3>Part IV &#8212; The Physician</h3>
+      <ol class="bib-list">
+        <li><span class="bib-num">32.</span><span class="bib-body"><span class="bib-title">ZS Associates &#8212; AccessMonitor / &#8220;As doctors keep closing doors&#8221;</span><span class="bib-note">80% (2008) &#8594; 44% (2016) &#8594; 45% (2024) access timeline.</span></span></li>
+        <li><span class="bib-num">33.</span><span class="bib-body"><span class="bib-title">Fierce Pharma &#8212; &#8220;Crossing the threshold: more than half restrict access&#8221;</span><span class="bib-note">44% accessible (2016); majority restriction tipping point.</span></span></li>
+        <li><span class="bib-num">34.</span><span class="bib-body"><span class="bib-title">Healthcare Finance News &#8212; pharma reps not welcome</span><span class="bib-note">54% of 10+ physician practices no-see; 57% hospital-owned.</span></span></li>
+        <li><span class="bib-num">35.</span><span class="bib-body"><span class="bib-title">Indegene &#8212; closing the gap between HCPs and pharma</span><span class="bib-note">70% feel reps don&#8217;t understand requirements; 55% content fatigue.</span></span></li>
+        <li><span class="bib-num">36.</span><span class="bib-body"><span class="bib-title">Medscape &#8212; &#8220;Doctors Say Info From Pharma Reps Is Stale&#8221; (DRG Digital/Manhattan Research)</span><span class="bib-note">52% of rep visits show already-seen information; 68% for oncologists.</span></span></li>
+        <li><span class="bib-num">37.</span><span class="bib-body"><span class="bib-title">JAMA Health Forum (September 2025)</span><span class="bib-note">61% believe rep interactions erode public trust; &#8220;strongly agree&#8221; tripled to 14.5%.</span></span></li>
+        <li><span class="bib-num">38.</span><span class="bib-body"><span class="bib-title">Cardinal Health Oncology Insights</span><span class="bib-note">71% of oncologists rate patient assistance information as one of the most valued rep functions.</span></span></li>
+        <li><span class="bib-num">39.</span><span class="bib-body"><span class="bib-title">EPG Health 2024 &#8212; HCP engagement report</span><span class="bib-note">Pharma leaders now prioritize MSLs over sales reps as primary information channel.</span></span></li>
+        <li><span class="bib-num">40.</span><span class="bib-body"><span class="bib-title">Doximity 2026 State of AI in Medicine Report (n=3,151, November 2025&#8211;January 2026)</span><span class="bib-note">47% &#8594; 63% AI use; 37% daily; top use cases.</span></span></li>
+        <li><span class="bib-num">41.</span><span class="bib-body"><span class="bib-title">IQVIA EPG survey &#8212; &#8220;AI becomes a front door to medical information&#8221; (March 2026)</span><span class="bib-note">54% HCPs using GenAI; &#8220;vastly overestimate&#8221; pharma channel trust.</span></span></li>
+        <li><span class="bib-num">42.</span><span class="bib-body"><span class="bib-title">WE Communications &#8212; physician reputation study</span><span class="bib-note">~60% say reputation influences treatment choice; 81% medicine value perception.</span></span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ---------------------- AUTHOR NOTE ---------------------- -->
+  <section id="author" class="author-note" style="margin-top:44px;">
+    <h2 class="section-title">A Note About the Author</h2>
+    <p>Hugh McCutchen authored this document in collaboration with Claude.ai.</p>
+    <p>The work is informed by his two years at iPhysicianNet from 2001 to 2003. The people there had a dream and did great work. It is genuinely fun to look back at that time&#8212;at the problems they were trying to solve&#8212;and to see that while the landscape has changed considerably, the forces that shaped it are essentially identical and the problems are mostly the same.</p>
+    <p>The research is a consolidation of publicly available content gathered across multiple AI research tools&#8212;Claude, Perplexity, and Gemini&#8212;and shaped by Hugh&#8217;s knowledge of the space. He looks forward to feedback from others on exactly how accurate it is. His experience with this kind of research is that it will be very useful and informative&#8212;but not perfect. Have you seen any that is?</p>
+  </section>
+
+</div>
+</div>
+
+<!-- ============================ PROVENANCE ============================ -->
+<section id="provenance" class="prov">
+  <div class="prov-inner">
+    <p class="prov-eyebrow">Provenance</p>
+    <h2 class="prov-title">Reaching the Physician &#8212; v1.2</h2>
+    <p class="prov-lede">Compiled from this document&#8217;s working record across ten sessions and a publication pass. From here forward the record is append-only; entries are not rewritten.</p>
+    <dl class="prov-list">
+      <dt>Owner</dt><dd>Hugh McCutchen, Bursera Consulting &#8212; accountable for every judgment in this deliverable.</dd>
+      <dt>Contributors</dt><dd>Hugh McCutchen &#8212; direction, first-hand iPhysicianNet experience (2001&#8211;2003), review at every version. Claude &#8212; Sonnet 4.6 and Opus 4.7 for research, drafting, and document production; Fable 5 for lineage and provenance.</dd>
+      <dt>How it began</dt><dd>Fresh. A May 2026 Claude deep-research pass on iPhysicianNet&#8217;s history and its successors, commissioned and directed by the author from his two years inside the company, triangulated with Perplexity and Gemini, and anchored to the SEC S-1 (CIK <code>0001097673</code>).</dd>
+      <dt>Type of writing</dt><dd>Graded Dossier.</dd>
+      <dt>Process</dt><dd>Mixed &#8212; exploratory research across sessions 0&#8211;7, execution production in sessions 8&#8211;9, publication editing in July 2026.</dd>
+      <dt>Tools</dt><dd>Claude deep research with docx and SVG production; Perplexity; Gemini; SEC EDGAR; the ZS AccessMonitor and Veeva Pulse data series.</dd>
+      <dt>Steps run</dt><dd>Source work &#183; synthesis &#183; cross-engine conflict adjudication &#183; verification against the S-1 &#183; author review, per-part markup, multiple rounds.</dd>
+      <dt>Notes</dt><dd>A research charter held the author&#8217;s own commercial concepts outside the work entirely, so the paper describes the market rather than arguing a position. At publication the register was moved from a private builder briefing to industry research. Four vendor performance figures were excluded as marketing claims rather than independent evidence, and one iPhysicianNet bundle component is carried with an explicit in-text caveat rather than asserted.</dd>
+      <dt>Sources</dt><dd>42 consolidated public citations, listed in the bibliography above &#8212; curated from a working pool of roughly 78.</dd>
+      <dt>Depth &amp; confidence</dt><dd>Working depth: roughly 50 percent, single-pass per topic, stated in the document itself. High confidence on the S-1-sourced history and on named 2025&#8211;26 products; medium on the 2003&#8211;2019 interregnum.</dd>
+      <dt>Level of work</dt><dd>Extensive &#8212; ten working sessions plus a publication pass, May to July 2026, four diagrams through nine versions, multi-round author markup, cross-engine adjudication.</dd>
+    </dl>
+    <p class="prov-full"><a href="provenance.html">Read the full provenance and audit trail &#8594;</a><span class="prov-full-note">Every working session that touched this document, what changed in each, where direction changed, what was corrected, and what remains unverified.</span></p>
+  </div>
+</section>
+
+</main>
+
+</body>
+</html>

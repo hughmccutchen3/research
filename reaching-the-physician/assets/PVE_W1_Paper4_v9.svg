@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PVE_W1_Paper4_v9 — research participation: segment access x regulatory posture.
+     Rebuilt PVE-S09: Arial font, paper palette, viewBox normalized to 820,
+     CSS variables replaced, overflow text fixed. -->
+<svg width="820" height="510" viewBox="0 0 820 510" xmlns="http://www.w3.org/2000/svg">
+<title>Paper 4 — research participation: segment access × regulatory posture</title>
+
+<!-- ─── TITLE ─────────────────────────────────────────────────────── -->
+<text font-size="17" font-weight="700" font-family="Arial, sans-serif"
+      x="410" y="26" text-anchor="middle" fill="#1C2B4A">Paper 4 — research participation: segment access × regulatory posture</text>
+
+<!-- ─── COLUMN HEADERS ────────────────────────────────────────────── -->
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="44" y="52" fill="#1C2B4A">Sub-category</text>
+
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="229" y="46" text-anchor="middle" fill="#1C2B4A">Accessible</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="229" y="60" text-anchor="middle" fill="#5A6878">Open to rep contact</text>
+
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="399" y="46" text-anchor="middle" fill="#1C2B4A">NoSee</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="399" y="60" text-anchor="middle" fill="#5A6878">Personally closed</text>
+
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="569" y="46" text-anchor="middle" fill="#1C2B4A">AccessBlocked</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="569" y="60" text-anchor="middle" fill="#5A6878">AMC institutional ban</text>
+
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="720" y="46" text-anchor="middle" fill="#1C2B4A">Open Payments</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="720" y="60" text-anchor="middle" fill="#5A6878">Reporting req.</text>
+
+<line x1="40" y1="70" x2="780" y2="70" stroke="#E8EAED" stroke-width="1"/>
+
+<!-- ═══ ROW 1 — Market research  (cards y=78–136) ════════════════ -->
+<text font-size="12" font-weight="700" font-family="Arial, sans-serif"
+      x="44" y="94" fill="#1C2B4A">Market research</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="44" y="110" fill="#5A6878">Surveys, interviews</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="44" y="124" fill="#5A6878">via Sermo, M3, GLG</text>
+
+<rect x="148" y="78" width="162" height="58" rx="4" fill="#D6EBF0" stroke="#2A7D8A" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="229" y="100" text-anchor="middle" fill="#1C2B4A">Accessible</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="229" y="116" text-anchor="middle" fill="#3D5166">No barrier</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="229" y="130" text-anchor="middle" fill="#3D5166">Standard path</text>
+
+<rect x="318" y="78" width="162" height="58" rx="4" fill="#D6EBF0" stroke="#2A7D8A" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="399" y="100" text-anchor="middle" fill="#1C2B4A">Accessible</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="399" y="116" text-anchor="middle" fill="#3D5166">Non-promotional</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="399" y="130" text-anchor="middle" fill="#3D5166">No rep contact</text>
+
+<rect x="488" y="78" width="162" height="58" rx="4" fill="#D6EBF0" stroke="#2A7D8A" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="569" y="100" text-anchor="middle" fill="#1C2B4A">Accessible</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="569" y="116" text-anchor="middle" fill="#3D5166">No COI trigger</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="569" y="130" text-anchor="middle" fill="#3D5166">No Open Pmts record</text>
+
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="720" y="98" text-anchor="middle" fill="#5A6878">Exempt</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="720" y="113" text-anchor="middle" fill="#5A6878">Double-blind</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="720" y="128" text-anchor="middle" fill="#5A6878">intermediary pays</text>
+
+<line x1="40" y1="146" x2="780" y2="146" stroke="#E8EAED" stroke-width="1"/>
+
+<!-- ═══ ROW 2 — RWE studies  (cards y=154–212) ═══════════════════ -->
+<text font-size="12" font-weight="700" font-family="Arial, sans-serif"
+      x="44" y="170" fill="#1C2B4A">RWE studies</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="44" y="186" fill="#5A6878">Observational studies</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="44" y="200" fill="#5A6878">registries, named PI</text>
+
+<rect x="148" y="154" width="162" height="58" rx="4" fill="#D6EBF0" stroke="#2A7D8A" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="229" y="176" text-anchor="middle" fill="#1C2B4A">Accessible</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="229" y="192" text-anchor="middle" fill="#3D5166">Standard path</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="229" y="206" text-anchor="middle" fill="#3D5166">Lift documented</text>
+
+<rect x="318" y="154" width="162" height="58" rx="4" fill="#D6EBF0" stroke="#2A7D8A" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="399" y="176" text-anchor="middle" fill="#1C2B4A">Accessible</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="399" y="192" text-anchor="middle" fill="#3D5166">Non-promotional</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="399" y="206" text-anchor="middle" fill="#3D5166">No detailing contact</text>
+
+<rect x="488" y="154" width="162" height="58" rx="4" fill="#FEF3DC" stroke="#B87B1A" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="569" y="176" text-anchor="middle" fill="#1C2B4A">Accessible</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="569" y="192" text-anchor="middle" fill="#3D5166">AMC infrastructure</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="569" y="206" text-anchor="middle" fill="#3D5166">Approval required</text>
+
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="720" y="170" text-anchor="middle" fill="#5A6878">Reportable</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="720" y="185" text-anchor="middle" fill="#5A6878">Research payment</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="720" y="200" text-anchor="middle" fill="#5A6878">$8.12B (2023)</text>
+
+<line x1="40" y1="222" x2="780" y2="222" stroke="#E8EAED" stroke-width="1"/>
+
+<!-- ═══ ROW 3 — Advisory boards  (cards y=230–288) ══════════════ -->
+<text font-size="12" font-weight="700" font-family="Arial, sans-serif"
+      x="44" y="246" fill="#1C2B4A">Advisory boards</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="44" y="262" fill="#5A6878">Paid consulting,</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="44" y="276" fill="#5A6878">FMV required</text>
+
+<rect x="148" y="230" width="162" height="58" rx="4" fill="#D6EBF0" stroke="#2A7D8A" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="229" y="252" text-anchor="middle" fill="#1C2B4A">Accessible</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="229" y="268" text-anchor="middle" fill="#3D5166">FMV required</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="229" y="282" text-anchor="middle" fill="#3D5166">OIG guidelines apply</text>
+
+<rect x="318" y="230" width="162" height="58" rx="4" fill="#D6EBF0" stroke="#2A7D8A" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="399" y="252" text-anchor="middle" fill="#1C2B4A">Accessible</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="399" y="268" text-anchor="middle" fill="#3D5166">Non-promotional</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="399" y="282" text-anchor="middle" fill="#3D5166">Scientific exchange</text>
+
+<rect x="488" y="230" width="162" height="58" rx="4" fill="#FEF3DC" stroke="#B87B1A" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="569" y="252" text-anchor="middle" fill="#1C2B4A">Accessible</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="569" y="268" text-anchor="middle" fill="#3D5166">Disclosure + approval</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="569" y="282" text-anchor="middle" fill="#3D5166">Recusal from formulary</text>
+
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="720" y="246" text-anchor="middle" fill="#5A6878">Reportable</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="720" y="261" text-anchor="middle" fill="#5A6878">Consulting fee</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="720" y="276" text-anchor="middle" fill="#5A6878">$3.29B (2023)</text>
+
+<!-- ─── CONTRAST ROW — Speaker bureaus (dashed) ───────────────────── -->
+<line x1="40" y1="298" x2="780" y2="298" stroke="#E8EAED" stroke-width="1" stroke-dasharray="5,3" opacity="0.6"/>
+
+<text font-size="12" font-weight="700" font-family="Arial, sans-serif"
+      x="44" y="320" fill="#5A6878" opacity="0.7">Speaker bureaus</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="44" y="336" fill="#5A6878" opacity="0.7">Contrast row —</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="44" y="350" fill="#5A6878" opacity="0.7">promotional channel</text>
+
+<rect x="148" y="306" width="162" height="58" rx="4" fill="#D6EBF0" stroke="#2A7D8A" stroke-width="1" opacity="0.5"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="229" y="328" text-anchor="middle" fill="#5A6878">Accessible</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="229" y="344" text-anchor="middle" fill="#5A6878">Active participants</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="229" y="358" text-anchor="middle" fill="#5A6878">OR 1.53 documented</text>
+
+<rect x="318" y="306" width="162" height="58" rx="4" fill="#FEF3DC" stroke="#B87B1A" stroke-width="1" opacity="0.6"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="399" y="328" text-anchor="middle" fill="#5A6878">Often declined</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="399" y="344" text-anchor="middle" fill="#5A6878">personally</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="399" y="358" text-anchor="middle" fill="#5A6878">Promo framing barrier</text>
+
+<rect x="488" y="306" width="162" height="58" rx="4" fill="#EBF3F9" stroke="#3D5166" stroke-width="1"/>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="569" y="328" text-anchor="middle" fill="#3D5166">Prohibited</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="569" y="344" text-anchor="middle" fill="#5A6878">AMC policy ban</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="569" y="358" text-anchor="middle" fill="#5A6878">Hard exclusion</text>
+
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="720" y="320" text-anchor="middle" fill="#5A6878" opacity="0.7">Reportable</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="720" y="335" text-anchor="middle" fill="#5A6878" opacity="0.7">Speaker fee</text>
+
+<line x1="40" y1="374" x2="780" y2="374" stroke="#E8EAED" stroke-width="1"/>
+
+<!-- ─── FOOTER NOTE ─────────────────────────────────────────────────── -->
+<text font-size="11" font-weight="400" font-family="Arial, sans-serif"
+      x="410" y="396" text-anchor="middle" fill="#2A7D8A">All three research paths reach Accessible, NoSee, and AccessBlocked physicians.</text>
+<text font-size="11" font-weight="400" font-family="Arial, sans-serif"
+      x="410" y="413" text-anchor="middle" fill="#2A7D8A">Speaker bureaus and detailing cannot reach NoSee or AccessBlocked —</text>
+<text font-size="11" font-weight="400" font-family="Arial, sans-serif"
+      x="410" y="430" text-anchor="middle" fill="#2A7D8A">research participation bypasses the detailing wall.</text>
+<text font-size="11" font-weight="700" font-family="Arial, sans-serif"
+      x="410" y="447" text-anchor="middle" fill="#1C2B4A">Documented mechanism, not hypothesis.</text>
+
+<!-- ─── LEGEND ──────────────────────────────────────────────────────── -->
+<rect x="44" y="463" width="12" height="12" rx="2" fill="#D6EBF0" stroke="#2A7D8A" stroke-width="1.5"/>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="62" y="474" fill="#3D5166">Accessible</text>
+<rect x="190" y="463" width="12" height="12" rx="2" fill="#FEF3DC" stroke="#B87B1A" stroke-width="1.5"/>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="208" y="474" fill="#3D5166">Conditional access</text>
+<rect x="360" y="463" width="12" height="12" rx="2" fill="#EBF3F9" stroke="#3D5166" stroke-width="1.5"/>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="378" y="474" fill="#3D5166">Blocked</text>
+
+</svg>

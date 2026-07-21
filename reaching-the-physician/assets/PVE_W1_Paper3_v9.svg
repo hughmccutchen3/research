@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PVE_W1_Paper3_v9 — independent tools: physician intent x pharma access.
+     Rebuilt PVE-S09: Arial font, paper palette (#1C2B4A navy / #2A7D8A teal /
+     #B87B1A amber / #3D5166 slate / #5A6878 mid), all text overflow corrected,
+     footer split to 3 lines, cards visually separated from tier bands. -->
+<svg width="820" height="548" viewBox="0 0 820 548" xmlns="http://www.w3.org/2000/svg">
+<title>Paper 3 — independent tools: physician intent x pharma access</title>
+
+<!-- ─── TITLE ─────────────────────────────────────────────────────── -->
+<text font-size="17" font-weight="700" font-family="Arial, sans-serif"
+      x="410" y="26" text-anchor="middle" fill="#1C2B4A">Paper 3 — independent tools: physician intent × pharma access</text>
+
+<!-- ═══ TIER 1 BAND  y=40–162  (height=122) ═══════════════════════ -->
+<rect x="40" y="40" width="740" height="122" rx="6" fill="#EBF3F9" stroke="#3D6B96" stroke-width="1"/>
+<line x1="178" y1="40" x2="178" y2="162" stroke="#3D6B96" stroke-width="0.5" stroke-dasharray="3,2"/>
+
+<!-- Tier 1 label  (center x=109) -->
+<text font-size="13" font-weight="700" font-family="Arial, sans-serif"
+      x="109" y="77" text-anchor="middle" fill="#3D6B96">Tier 1</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="109" y="94" text-anchor="middle" fill="#3D5166">Clinical decision</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="109" y="109" text-anchor="middle" fill="#3D5166">Highest intent</text>
+<text font-size="9" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="109" y="131" text-anchor="middle" fill="#5A6878">Zero or minimal</text>
+<text font-size="9" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="109" y="143" text-anchor="middle" fill="#5A6878">pharma access</text>
+
+<!-- Tier 1 cards  y=54, height=94, bottom=148 -->
+<!-- UpToDate  x=186 w=190 right=376 center=281 -->
+<rect x="186" y="54" width="190" height="94" rx="4" fill="#F7FBFF" stroke="#1C2B4A" stroke-width="1.5"/>
+<text font-size="12" font-weight="700" font-family="Arial, sans-serif"
+      x="281" y="76" text-anchor="middle" fill="#1C2B4A">UpToDate</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="281" y="93" text-anchor="middle" fill="#3D5166">Zero pharma access</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="281" y="109" text-anchor="middle" fill="#3D5166">Subscription only</text>
+<text font-size="9" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="281" y="131" text-anchor="middle" fill="#5A6878">No external ads</text>
+
+<!-- OpenEvidence  x=386 w=190 right=576 center=481 -->
+<rect x="386" y="54" width="190" height="94" rx="4" fill="#FEF9ED" stroke="#B87B1A" stroke-width="1.5"/>
+<text font-size="12" font-weight="700" font-family="Arial, sans-serif"
+      x="481" y="76" text-anchor="middle" fill="#1C2B4A">OpenEvidence</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="481" y="93" text-anchor="middle" fill="#3D5166">Contextual ads only</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="481" y="109" text-anchor="middle" fill="#3D5166">No direct sponsorship</text>
+<text font-size="9" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="481" y="131" text-anchor="middle" fill="#5A6878">CPM $70–$1,000+</text>
+
+<!-- Epocrates  x=586 w=190 right=776 center=681 -->
+<rect x="586" y="54" width="190" height="94" rx="4" fill="#FEF9ED" stroke="#B87B1A" stroke-width="1.5"/>
+<text font-size="12" font-weight="700" font-family="Arial, sans-serif"
+      x="681" y="76" text-anchor="middle" fill="#1C2B4A">Epocrates</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="681" y="93" text-anchor="middle" fill="#3D5166">DocAlerts — opt-in only</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="681" y="109" text-anchor="middle" fill="#3D5166">~1M+ US clinicians</text>
+<text font-size="9" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="681" y="131" text-anchor="middle" fill="#5A6878">Ad-supported</text>
+
+<!-- ═══ TIER 2 BAND  y=176–298  (height=122) ══════════════════════ -->
+<rect x="40" y="176" width="740" height="122" rx="6" fill="#F4F6F9" stroke="#3D5166" stroke-width="1"/>
+<line x1="178" y1="176" x2="178" y2="298" stroke="#3D5166" stroke-width="0.5" stroke-dasharray="3,2"/>
+
+<!-- Tier 2 label  (center x=109) -->
+<text font-size="13" font-weight="700" font-family="Arial, sans-serif"
+      x="109" y="213" text-anchor="middle" fill="#3D5166">Tier 2</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="109" y="230" text-anchor="middle" fill="#3D5166">Workflow tool</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="109" y="245" text-anchor="middle" fill="#3D5166">Professional use</text>
+<text font-size="9" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="109" y="267" text-anchor="middle" fill="#5A6878">Limited /</text>
+<text font-size="9" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="109" y="279" text-anchor="middle" fill="#5A6878">contextual access</text>
+
+<!-- Tier 2 cards  y=190, height=94, bottom=284 -->
+<!-- Doximity  x=186 w=290 right=476 center=331 -->
+<rect x="186" y="190" width="290" height="94" rx="4" fill="#FEF9ED" stroke="#B87B1A" stroke-width="1.5"/>
+<text font-size="12" font-weight="700" font-family="Arial, sans-serif"
+      x="331" y="212" text-anchor="middle" fill="#1C2B4A">Doximity</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="331" y="229" text-anchor="middle" fill="#3D5166">News feed ads in-workflow</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="331" y="245" text-anchor="middle" fill="#3D5166">800K+ active prescribers</text>
+<text font-size="9" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="331" y="267" text-anchor="middle" fill="#5A6878">Ad-supported</text>
+
+<!-- EHR  x=486 w=290 right=776 center=631 -->
+<rect x="486" y="190" width="290" height="94" rx="4" fill="#FEF9ED" stroke="#B87B1A" stroke-width="1.5"/>
+<text font-size="12" font-weight="700" font-family="Arial, sans-serif"
+      x="631" y="212" text-anchor="middle" fill="#1C2B4A">EHR point-of-care</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="631" y="229" text-anchor="middle" fill="#3D5166">Embedded alerts at Rx moment</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="631" y="245" text-anchor="middle" fill="#3D5166">Context highly variable</text>
+<text font-size="9" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="631" y="267" text-anchor="middle" fill="#5A6878">Ad-supported</text>
+
+<!-- ═══ TIER 3 BAND  y=312–434  (height=122) ══════════════════════ -->
+<rect x="40" y="312" width="740" height="122" rx="6" fill="#D6EBF0" stroke="#2A7D8A" stroke-width="1"/>
+<line x1="178" y1="312" x2="178" y2="434" stroke="#2A7D8A" stroke-width="0.5" stroke-dasharray="3,2"/>
+
+<!-- Tier 3 label  (center x=109) -->
+<text font-size="13" font-weight="700" font-family="Arial, sans-serif"
+      x="109" y="349" text-anchor="middle" fill="#2A7D8A">Tier 3</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="109" y="366" text-anchor="middle" fill="#3D5166">Consumption +</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="109" y="381" text-anchor="middle" fill="#3D5166">community</text>
+<text font-size="9" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="109" y="403" text-anchor="middle" fill="#5A6878">Widest pharma</text>
+<text font-size="9" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="109" y="415" text-anchor="middle" fill="#5A6878">access</text>
+
+<!-- Tier 3 cards  y=326, height=94, bottom=420 -->
+<!-- Medscape  x=186 w=190 right=376 center=281 -->
+<rect x="186" y="326" width="190" height="94" rx="4" fill="#FFFFFF" stroke="#2A7D8A" stroke-width="1.5"/>
+<text font-size="12" font-weight="700" font-family="Arial, sans-serif"
+      x="281" y="348" text-anchor="middle" fill="#1C2B4A">Medscape</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="281" y="365" text-anchor="middle" fill="#3D5166">Broad sponsorship</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="281" y="381" text-anchor="middle" fill="#3D5166">CME + display ads</text>
+<text font-size="9" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="281" y="403" text-anchor="middle" fill="#5A6878">Ad-supported</text>
+
+<!-- Sermo  x=386 w=190 right=576 center=481 -->
+<rect x="386" y="326" width="190" height="94" rx="4" fill="#FFFFFF" stroke="#2A7D8A" stroke-width="1.5"/>
+<text font-size="12" font-weight="700" font-family="Arial, sans-serif"
+      x="481" y="348" text-anchor="middle" fill="#1C2B4A">Sermo</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="481" y="365" text-anchor="middle" fill="#3D5166">Surveys + ads</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="481" y="381" text-anchor="middle" fill="#3D5166">Community context</text>
+<text font-size="9" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="481" y="403" text-anchor="middle" fill="#5A6878">Ad-supported</text>
+
+<!-- Doceree  x=586 w=190 right=776 center=681 -->
+<rect x="586" y="326" width="190" height="94" rx="4" fill="#FFFFFF" stroke="#2A7D8A" stroke-width="1.5"/>
+<text font-size="12" font-weight="700" font-family="Arial, sans-serif"
+      x="681" y="348" text-anchor="middle" fill="#1C2B4A">Doceree</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="681" y="365" text-anchor="middle" fill="#3D5166">Programmatic targeting</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="681" y="381" text-anchor="middle" fill="#3D5166">EHR + portal network</text>
+<text font-size="9" font-weight="400" font-family="Arial, sans-serif" font-style="italic"
+      x="681" y="403" text-anchor="middle" fill="#5A6878">Ad-supported</text>
+
+<!-- ─── FOOTER NOTE  (3 lines, all checked for overflow) ─────────── -->
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="410" y="456" text-anchor="middle" fill="#5A6878">Inverse pattern: pharma access decreases as physician intent increases.</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="410" y="471" text-anchor="middle" fill="#5A6878">Pharma entry point is the advertising model — ad-supported platforms at Tier 2–3 accept sponsorship.</text>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="410" y="486" text-anchor="middle" fill="#5A6878">UpToDate is the structural exception: subscription-only, zero pharma access.</text>
+
+<!-- ─── LEGEND ──────────────────────────────────────────────────── -->
+<rect x="68" y="506" width="14" height="14" rx="2" fill="#F7FBFF" stroke="#1C2B4A" stroke-width="1.5"/>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="88" y="518" fill="#3D5166">No pharma access</text>
+<rect x="252" y="506" width="14" height="14" rx="2" fill="#FEF9ED" stroke="#B87B1A" stroke-width="1.5"/>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="272" y="518" fill="#3D5166">Limited / contextual</text>
+<rect x="452" y="506" width="14" height="14" rx="2" fill="#FFFFFF" stroke="#2A7D8A" stroke-width="1.5"/>
+<text font-size="10" font-weight="400" font-family="Arial, sans-serif"
+      x="472" y="518" fill="#3D5166">Open pharma access</text>
+
+</svg>

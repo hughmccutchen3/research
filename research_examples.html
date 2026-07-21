@@ -19,7 +19,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Research — Bursera Consulting">
 <meta property="og:description" content="You bring a question your organization needs answered well; we build the evidence base under it, with sources attached and thin spots marked.">
-<meta property="og:image" content="https://burseraconsulting.com/data-lifecycle/images/Gemini-Data-Lifecycle-Cartoon-Part1-Fine.jpg">
+<meta property="og:image" content="https://burseraconsulting.com/reaching-the-physician/images/rtp-og.png">
 <meta property="og:url" content="https://burseraconsulting.com/research_examples.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,6 +37,24 @@
 .cluster .assets a{color:#2d5270}
 .cluster h2 a{color:inherit;text-decoration:none}
 .cluster h2 a:hover{text-decoration:underline;text-decoration-color:#8b6a3b}
+
+/* featured cornerstone band (BURSBUILD-S17) */
+.feature{margin:0 0 3rem;padding:0 0 2.2rem;border-bottom:2px solid #0F172A}
+.feature .feat-label{font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:#8b6a3b;margin:0 0 .9rem}
+.feature .feat-grid{display:grid;grid-template-columns:1fr;gap:1.4rem;align-items:start}
+.feature figure{margin:0;border:1px solid #e2e2e2;background:#fff;padding:.7rem}
+.feature figure img{display:block;width:100%;height:auto}
+.feature h2{font-size:clamp(1.5rem,5vw,2rem);line-height:1.2;margin:0 0 .4rem}
+.feature h2 a{color:inherit;text-decoration:none}
+.feature h2 a:hover{text-decoration:underline;text-decoration-color:#8b6a3b}
+.feature .feat-sub{font-size:1.02rem;line-height:1.55;margin:0 0 .9rem;max-width:38em}
+.feature .feat-stake{font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;color:#444;margin:0 0 1.1rem;max-width:38em}
+.feature .feat-links{margin:0;padding:0;list-style:none;font-family:Arial,Helvetica,sans-serif;font-size:14px}
+.feature .feat-links li{margin:0 0 .4rem}
+.feature .feat-links a{display:inline-block;min-height:44px;line-height:44px;color:#2d5270;font-weight:600}
+.feature .feat-links .fl-note{display:block;min-height:0;line-height:1.5;color:#666;font-weight:400;margin-top:-10px}
+@media(min-width:720px){.feature .feat-grid{grid-template-columns:minmax(0,1fr) 20rem;gap:2.2rem}
+.feature .feat-media{order:2}.feature .feat-body{order:1}}
 </style>
 </head>
 <body class="site-page">
@@ -61,6 +79,26 @@
   </header>
 
   <main id="main">
+
+    <section class="group feature">
+      <p class="feat-label">Featured research</p>
+      <div class="feat-grid">
+        <div class="feat-body">
+          <h2><a href="reaching-the-physician/">Reaching the Physician</a></h2>
+          <p class="feat-sub">An industry history and current-state analysis of how pharmaceutical manufacturers reach the physicians who prescribe their products.</p>
+          <p class="feat-stake">iPhysicianNet raised $80M to replace the pharmaceutical sales call with live video, and collapsed in 2003. This traces what it built and the twenty years of alternatives that followed, then looks at where the AI layer arriving now fits &mdash; anchored to the company&rsquo;s own SEC filing, with 42 citations listed and the thin spots marked.</p>
+          <ul class="feat-links">
+            <li><a href="reaching-the-physician/">Read the research brief &rarr;</a>
+              <span class="fl-note">Four parts and four diagrams, with a full bibliography. June 2026.</span></li>
+            <li><a href="reaching-the-physician/provenance.html">See how it was made &rarr;</a>
+              <span class="fl-note">The full audit trail: what changed in each session, where direction changed, what was corrected, and what remains unverified.</span></li>
+          </ul>
+        </div>
+        <figure class="feat-media">
+          <img src="reaching-the-physician/images/rtp-card.svg" alt="">
+        </figure>
+      </div>
+    </section>
 
     <section class="group">
       <div class="group-label">How the work is done</div>
