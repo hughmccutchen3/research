@@ -1,3 +1,7 @@
+<!-- BURSBUILD create-lane session, 2026-07-24. Added the "Human-Led Research with Bursera" featured
+     course card above the two existing free-guide clusters, linking to the new /human-led-research/
+     overview page. Featured/stands-apart treatment per Hugh's direction (card weight decision).
+     Nothing else on this page changed. -->
 <!-- BURSBUILD-S16. Page re-mastheaded as the TRAINING offering (RES-504 Option A). Nav label
      Leadership -> Training; URL unchanged (keep-at-root). Cluster split per Hugh's mindset-vs-HOW
      ruling: A Team You Have to Build and Lead + The Interns moved to advisory.html (mindset);
@@ -40,13 +44,21 @@
 .cluster .assets a{color:#2d5270}
 .cluster h2 a{color:inherit;text-decoration:none}
 .cluster h2 a:hover{text-decoration:underline;text-decoration-color:#8b6a3b}
-.intro-row{margin:0 0 2.6rem;padding:0 0 2rem;border-bottom:1px solid #e2e2e2}
-.intro-row .pillar-intro{margin:0}
-.intro-row .pillar-intro p:first-child{margin-top:0}
-.offer-card{border:1px solid var(--color-border-strong);background:var(--color-surface-alt);border-radius:8px;padding:1.1rem 1.25rem;font-family:var(--font-sans);margin:1.4rem 0 0}
-.offer-card p{margin:0;font-size:.95rem;line-height:1.55}
-.offer-card a{color:var(--color-link)}
-@media (min-width:900px){.intro-row{display:grid;grid-template-columns:1fr 300px;gap:2.5rem;align-items:start}.offer-card{margin:0}}
+/* featured course card (BURSBUILD create-lane, 2026-07-24) — stands apart from the free-guide clusters below */
+.course-feature{border:1px solid var(--color-border-strong);border-left:4px solid var(--brass-500);background:var(--color-surface-alt);border-radius:8px;padding:1.6rem 1.8rem;margin:0 0 2.8rem;max-width:46rem}
+.course-feature .feat-label{font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:#8b6a3b;margin:0 0 .7rem}
+.course-feature h2{font-size:clamp(1.4rem,4vw,1.8rem);line-height:1.2;margin:0 0 .5rem;border:none;padding:0}
+.course-feature h2 a{color:inherit;text-decoration:none}
+.course-feature h2 a:hover{text-decoration:underline;text-decoration-color:#8b6a3b}
+.course-feature p{margin:0 0 .8rem;font-size:1rem;line-height:1.55;max-width:40em}
+.course-feature p:last-of-type{margin-bottom:1.1rem}
+.course-feature .cf-link{display:inline-block;min-height:44px;line-height:44px;color:#2d5270;font-weight:600;font-family:Arial,Helvetica,sans-serif;font-size:14px}
+
+/* tailored-training callout — fresh, dark highlight so it stands apart from the course card above it */
+.callout-band{background:var(--slate-900);color:var(--white);border-radius:8px;padding:1.5rem 1.8rem;margin:0 0 2.8rem;max-width:46rem}
+.callout-band p{margin:0;font-size:1.02rem;line-height:1.6;color:var(--white)}
+.callout-band a{color:var(--brass-300);font-weight:600;text-decoration:none;border-bottom:1px solid var(--brass-500)}
+.callout-band a:hover{color:var(--brass-100);border-bottom-color:var(--brass-100)}
 </style>
 </head>
 <body class="site-page">
@@ -72,17 +84,16 @@
 
 <main id="main">
 
-<section class="group">
-  <div class="group-label">The practice, taught</div>
-<div class="intro-row">
-<div class="pillar-intro">
-  <p>I run research and writing with an LLM the way you run a team &mdash; full time and at full depth. Almost nobody needs to work the way I do. But leading the work this way has taught me a lot that carries over: the habits, the techniques, and how these tools actually behave.</p>
-  <p>Work that holds up across days and many sessions comes from directing the model the way you would direct people: you set the direction, you review the work critically, and you make the final calls. Training teaches that practice &mdash; hands-on, on your own work. The guides below are the self-serve version: read them, run them, and feel the difference between asking a tool for output and directing one.</p>
-</div>
-<aside class="offer-card">
+<section class="course-feature">
+  <p class="feat-label">The structured course</p>
+  <h2><a href="/human-led-research/">Human-Led Research with Bursera</a></h2>
+  <p>Six levels, built to teach you to run research the way I do &mdash; leading the model like a fast, capable team you're responsible for, not asking it for a shortcut.</p>
+  <p>Level 100 is five sessions that turn a topic you're curious about into a sourced, illustrated piece of research you actually trust. It's the same practice behind every paper on this site, taught hands-on, on your own work.</p>
+  <a class="cf-link" href="/human-led-research/">See the full series and Level 100 &rarr;</a>
+</section>
+
+<section class="callout-band">
   <p>Do you wish your team had these LLM leadership habits? <a href="mailto:contact@burseraconsulting.com">Contact us</a> to discuss a tailored training approach for your unique needs.</p>
-</aside>
-</div>
 </section>
 
 <section class="cluster media-entry media-left">

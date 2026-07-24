@@ -1,0 +1,222 @@
+<!-- HANDOFF
+target-path: human-led-research/index.html
+content-class: site-page
+version: v1.2
+source: BURSBUILD create-lane session, 2026-07-24 — content drawn from BEBURS/OUTPUTS/decks/training_class_101/getting-started.md (v0.4, current), revised per Hugh's round-2 review.
+date: 2026-07-24
+notes: New off-nav site page (Method/Platform pattern) reached only via the new featured card on
+llm-leadership.html. Level 100 class hooks (1-5) are drafted from the deck's outline bullets, not
+lifted verbatim — flagged for a voice pass. "The Full Series" section is a near-verbatim lift of
+slide 6 per Hugh's direction. The Class 1 deck itself (getting-started.html) is NOT linked — still
+a pilot build, internal only, per Hugh.
+v1.1: dropped the "See it done" proof-example section (Hugh) — removes the single-reference-per-
+whitepaper exception v1.0 required, no longer applicable. Dropped the boxed tool-strip panel under
+Level 100 (redundant with the logo placement below). Product logos moved to a right-hand rail next
+to the "Why this" intro (desktop), stacking to a row above the text on mobile.
+v1.2: the right-rail was too small to read (Hugh: "can't even see Gemini") — replaced with a
+full-width "Taught on the tool you already use" band directly under "Why this", logos at roughly
+5x the v1.1 size. Added a Claude mark (no source logo file existed in the deck assets; this is an
+original inline-SVG asterisk + wordmark construction, not a traced copy of Anthropic's mark),
+placed first and sized largest since Claude is the primary tool the series is built around.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human-Led Research with Bursera — Bursera Consulting</title>
+<meta name="description" content="A six-level course series teaching researchers to direct an LLM through real research. Level 100 is five sessions that turn a topic you're curious about into a sourced, illustrated piece of research you trust.">
+<link rel="canonical" href="https://burseraconsulting.com/human-led-research/">
+<link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Human-Led Research with Bursera">
+<meta property="og:description" content="A six-level course series teaching researchers to direct an LLM through real research — Level 100 turns a topic you're curious about into a sourced, illustrated piece of research you trust.">
+<meta property="og:image" content="https://burseraconsulting.com/claude-guide/images/ClaudeGuideDashboardImage.jpeg">
+<meta property="og:url" content="https://burseraconsulting.com/human-led-research/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=s16a">
+<script src="../news-flag.js" defer></script>
+<style>
+/* page-local prose + component layout; shared chrome + tokens come from /styles.css */
+.pillar-intro{max-width:44rem;margin:0 0 1.6rem}
+.pillar-intro p{margin:0 0 .9rem;font-size:1rem;line-height:1.62;color:var(--color-text)}
+.pillar-intro p:last-child{margin-bottom:0}
+
+/* why-this intro */
+.why-grid{max-width:44rem}
+
+/* tool band — full-width, large logos; Claude first and most prominent */
+.tool-band{margin:0 0 2.8rem}
+.tool-band .tb-cap{font-size:.86rem;line-height:1.5;color:var(--color-text-muted);margin:0 0 1.3rem;max-width:44rem}
+.tool-row{display:flex;align-items:center;gap:2.4rem;flex-wrap:wrap}
+.tool-row img,.tool-row svg{display:block;flex:0 0 auto}
+.tool-row .tool-claude{height:120px;width:auto}
+.tool-row img.tool-other{height:90px;width:auto;opacity:.9}
+@media (min-width:640px){
+  .tool-row{gap:3rem}
+  .tool-row .tool-claude{height:170px}
+  .tool-row img.tool-other{height:135px}
+}
+
+/* the full series — level grid */
+.level-grid{display:grid;grid-template-columns:1fr;gap:.9rem;margin:1.6rem 0 0}
+.level-card{border:1px solid var(--color-border);border-radius:8px;padding:1rem 1.15rem;background:var(--color-surface)}
+.level-card.is-live{border-left:4px solid var(--brass-500);background:var(--color-surface-alt)}
+.level-card .lv-num{font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-subtle);display:block;margin:0 0 .3rem}
+.level-card .lv-title{font-family:var(--font-heading);font-size:1.02rem;font-weight:600;color:var(--color-text-strong);display:block;margin:0 0 .25rem;text-decoration:none}
+.level-card a.lv-title:hover{color:var(--brass-700)}
+.level-card .lv-desc{font-size:.92rem;line-height:1.5;color:var(--color-text-muted);margin:0}
+@media (min-width:640px){.level-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:960px){.level-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* level 100 — five classes (reuses global .series list; classes 2-5 have no link target yet) */
+body.site-page .series .cls-title{font-family:var(--font-body);font-size:var(--text-body);font-weight:var(--weight-medium);color:var(--color-text-strong);display:inline-block}
+
+.offer-card{border:1px solid var(--color-border-strong);background:var(--color-surface-alt);border-radius:8px;padding:1.1rem 1.25rem;font-family:var(--font-sans);margin:1.6rem 0 0;max-width:46rem}
+.offer-card p{margin:0;font-size:.95rem;line-height:1.55}
+.offer-card a{color:var(--color-link)}
+</style>
+</head>
+<body class="site-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="page">
+
+<header class="site-header">
+  <a class="wordmark" href="/">Bursera <span>Consulting</span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/">Home</a>
+    <a href="/research_examples.html">Research</a>
+    <a href="/llm-leadership.html">Training</a>
+    <a href="/advisory.html">Advisory</a>
+    <a href="/about.html">About</a>
+    <a href="/news.html" class="nav-news" data-news-flag>News</a>
+  </nav>
+</header>
+
+<header class="masthead">
+  <h1>Human-Led Research with Bursera</h1>
+  <p class="lede">A six-level course series that teaches the practice behind everything Bursera publishes &mdash; how to direct an LLM through real research and come out the other side with a piece of work you'd put your name on.</p>
+</header>
+
+<main id="main">
+
+<section class="group">
+  <div class="group-label">Why this, and what you leave with</div>
+  <div class="why-grid pillar-intro">
+    <p>After five sessions you'll understand how to work with a chat tool when you actually need a confident answer on a complicated topic &mdash; not a quick one.</p>
+    <p>You'll leave Level 100 with a foundational paper on something you're genuinely curious about, a narrative that shapes the data into a story, and the diagrams and illustrations to carry it. More than the artifact, you'll have the mindset: fundamentals over tricks, iterate iterate iterate, the judgment and the leadership stay yours &mdash; and if it isn't written down, it doesn't exist.</p>
+  </div>
+</section>
+
+<section class="group tool-band">
+  <div class="group-label">Taught on the tool you already use</div>
+  <p class="tb-cap">Claude is the tool the practice is built around and what this series teaches in the most depth. Class 1 also puts your prompt in front of Gemini, ChatGPT, and Perplexity, so you can see how differently they answer the same question.</p>
+  <div class="tool-row">
+    <svg class="tool-claude" viewBox="0 0 210 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Claude">
+      <g transform="translate(30,30)" fill="#C15F3C">
+        <rect x="-4" y="-24" width="8" height="48" rx="4"/>
+        <rect x="-4" y="-24" width="8" height="48" rx="4" transform="rotate(60)"/>
+        <rect x="-4" y="-24" width="8" height="48" rx="4" transform="rotate(120)"/>
+      </g>
+      <text x="66" y="41" font-family="'DM Sans',Arial,sans-serif" font-size="36" font-weight="700" fill="#0F172A">Claude</text>
+    </svg>
+    <img class="tool-other" src="images/gemini-logo.png" alt="Google Gemini">
+    <img class="tool-other" src="images/chatgpt-logo.png" alt="ChatGPT">
+    <img class="tool-other" src="images/perplexity-logo.png" alt="Perplexity">
+  </div>
+</section>
+
+<section class="group">
+  <div class="group-label">The full series</div>
+  <div class="pillar-intro">
+    <p>The series is designed to teach you progressively more powerful methods using progressively more complex features of Claude and other tools. Level 200 and above require a Pro subscription to your chosen chat tool. Level 500 and above are for those who plan to use the Bursera Platform and want a methodology that's managed by the platform. All classes are wrapped around whatever subject sparks your curiosity, and are designed to produce concrete research you have confidence in.</p>
+  </div>
+  <div class="level-grid">
+    <div class="level-card is-live">
+      <span class="lv-num">Level 100</span>
+      <a class="lv-title" href="#level-100">Your first research paper</a>
+      <p class="lv-desc">Five sessions. Open now &mdash; detail below.</p>
+    </div>
+    <div class="level-card">
+      <span class="lv-num">Level 200</span>
+      <span class="lv-title">The project concept as a knowledge center</span>
+      <p class="lv-desc">Requires a Pro subscription to your chat tool.</p>
+    </div>
+    <div class="level-card">
+      <span class="lv-num">Level 300</span>
+      <span class="lv-title">Skills and holding context over time</span>
+      <p class="lv-desc">Requires a Pro subscription to your chat tool.</p>
+    </div>
+    <div class="level-card">
+      <span class="lv-num">Level 400</span>
+      <span class="lv-title">The parts of a personal research platform</span>
+      <p class="lv-desc">Requires a Pro subscription to your chat tool.</p>
+    </div>
+    <div class="level-card">
+      <span class="lv-num">Level 500</span>
+      <span class="lv-title">Introducing the Bursera Platform</span>
+      <p class="lv-desc">For those who plan to use the Bursera Platform.</p>
+    </div>
+    <div class="level-card">
+      <span class="lv-num">Level 600</span>
+      <span class="lv-title">The Bursera Methodology</span>
+      <p class="lv-desc">A methodology managed by the platform.</p>
+    </div>
+  </div>
+</section>
+
+<section class="group" id="level-100">
+  <div class="group-label">Level 100 &mdash; five classes</div>
+  <div class="pillar-intro">
+    <p>Lesson one of five, ending in a quality piece of personal research you have confidence in. The idea to come away with: context matters. Everything we do is in context.</p>
+  </div>
+  <ul class="series">
+    <li>
+      <span class="num">Class 1</span>
+      <span class="cls-title">Context</span>
+      <div class="s-sum">Location, location, location &mdash; for a chat tool, it's context, context, context. Learn what the model actually knows versus what you think it knows, and build the habit of arming it before you ask anything.</div>
+    </li>
+    <li>
+      <span class="num">Class 2</span>
+      <span class="cls-title">A Solid First Draft</span>
+      <div class="s-sum">Your profile, your sources, your report design &mdash; this is where a draft stops being generic and starts being yours. Tune what Claude already carries about you, catch a thread going stale before it wastes an afternoon, and bring in voices worth citing.</div>
+    </li>
+    <li>
+      <span class="num">Class 3</span>
+      <span class="cls-title">Analysis</span>
+      <div class="s-sum">Move from a pile of research to an argument. Carry context forward as the work deepens, structure the analysis so it holds together, and red-team your own conclusions before anyone else has the chance to.</div>
+    </li>
+    <li>
+      <span class="num">Class 4</span>
+      <span class="cls-title">Refining</span>
+      <div class="s-sum">The second pass is where research becomes a narrative. Advanced context-carrying, building the story the data actually supports, and a second red-team round &mdash; this time on the story, not just the facts.</div>
+    </li>
+    <li>
+      <span class="num">Class 5</span>
+      <span class="cls-title">Pretty!!!</span>
+      <div class="s-sum">A good answer deserves to look like one. Turn the research into illustrations, diagrams, and formatting that make the piece as clear to read as it was to build.</div>
+    </li>
+  </ul>
+</section>
+
+<section class="group">
+  <div class="group-label">Get started</div>
+  <div class="entry">
+    <p class="summary">Want in? <a href="mailto:contact@burseraconsulting.com">Contact us</a> to join the next Level 100 cohort &mdash; or to talk through a tailored series built around your team's own work.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+    <span class="footer-info">Bursera Consulting &middot; Human-Led &middot; AI-Enabled &middot; <a href="mailto:contact@burseraconsulting.com">Contact Us</a></span>
+    <a class="footer-reports" href="/reports.html" target="_blank" rel="noopener"><span class="fr-b">B</span>Customer Reports</a>
+  </footer>
+
+</div>
+</body>
+</html>
