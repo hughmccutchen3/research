@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Meeting · The Interns</title>
+<meta name="description" content="Six on one. The team is brilliant but not psychic; generic work is the sign your context is missing, and supplying it is the job.">
+<link rel="canonical" href="https://burseraconsulting.com/the-interns/s1e1-first-meeting/S1E1_First-Meeting_v0.11.html">
+<link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="First Meeting &middot; The Interns">
+<meta property="og:description" content="The team is brilliant but not psychic. Generic work is the sign your context is missing, and supplying it is the job.">
+<meta property="og:image" content="https://burseraconsulting.com/the-interns/s1e1-first-meeting/assets/Panel6.png">
+<meta property="og:url" content="https://burseraconsulting.com/the-interns/s1e1-first-meeting/S1E1_First-Meeting_v0.11.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="First Meeting &middot; The Interns">
+<meta name="twitter:description" content="The team is brilliant but not psychic. Generic work is the sign your context is missing, and supplying it is the job.">
+<meta name="twitter:image" content="https://burseraconsulting.com/the-interns/s1e1-first-meeting/assets/Panel6.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+:root {
+  --blue:#4a5c6b;
+  --blue-light:#7a9aad;
+  --blue-pale:#e8edf0;
+  --gold:#8a6e3a;
+  --ink:#28303a;
+  --bg:#f4f2ee;
+  --gray-mid:#8a7660;
+  --gray-rule:#d4c8b0;
+  --sonoran-sky:#a8c8d8;
+  --caliche:#8a7660;
+  --film:#33230f;
+  --panel-w:900px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Source Serif 4',Georgia,serif;
+  font-size:16px;line-height:1.75;
+  color:var(--ink);background:#1a1a1a;
+}
+
+/* COVER */
+.cover{ background:var(--blue); color:#fff; text-align:center; padding:0; }
+.cover-inner{
+  max-width:var(--panel-w); margin:0 auto; padding:84px 40px 64px;
+  background:
+    linear-gradient(180deg, rgba(28,32,42,0.42) 0%, rgba(28,32,42,0.80) 100%),
+    url("assets/Panel6.png") center/cover no-repeat,
+    var(--blue);
+}
+.cover .series-label{
+  font-family:'JetBrains Mono',monospace; font-size:10px;letter-spacing:4px;
+  text-transform:uppercase; color:var(--sonoran-sky); margin-bottom:20px; display:block;
+}
+.cover h1{
+  font-family:'DM Sans',sans-serif; font-size:clamp(36px,6vw,64px);
+  font-weight:700;line-height:1.05; margin-bottom:16px; letter-spacing:-1px;
+}
+.cover .subtitle{
+  font-size:16px; color:rgba(168,200,216,0.85); font-style:italic;
+  margin-bottom:40px; max-width:480px; margin-left:auto;margin-right:auto;
+}
+.cover .meta{
+  font-family:'JetBrains Mono',monospace; font-size:11px;color:rgba(168,200,216,0.6); letter-spacing:1px;
+}
+
+/* SETUP — film title card */
+.setup{ max-width:var(--panel-w); margin:0 auto; background:var(--film); padding:0 16px; }
+.film-perforations{
+  height:32px; background-color:var(--film);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='32'%3E%3Crect x='6' y='10' width='14' height='12' rx='2.5' fill='%23f4f2ee'/%3E%3C/svg%3E");
+  background-repeat:repeat-x; background-position:center; background-size:26px 32px;
+}
+.setup-frame{ background:var(--bg); color:var(--ink); padding:48px 56px; }
+.setup-frame .slate{
+  font-family:'JetBrains Mono',monospace; font-size:10px;letter-spacing:3px;
+  text-transform:uppercase; color:var(--caliche); display:block;
+  margin-bottom:22px; padding-bottom:12px; border-bottom:1px solid var(--gray-rule);
+}
+.setup-frame p{ font-size:16px;line-height:1.8; color:var(--ink); margin-bottom:16px; }
+.setup-frame p:last-of-type{margin-bottom:0;}
+.setup-frame .slate-foot{
+  font-family:'JetBrains Mono',monospace; font-size:10px;letter-spacing:3px;
+  text-transform:uppercase; color:var(--gray-mid); display:block;
+  margin-top:28px; padding-top:16px; border-top:1px solid var(--gray-rule); text-align:center;
+}
+
+/* PANELS WRAPPER */
+.panels{ max-width:var(--panel-w); margin:0 auto; padding:48px 24px 80px; }
+
+/* INDIVIDUAL PANEL */
+.panel{ background:#fff; margin-bottom:4px; overflow:hidden; }
+.panel:first-of-type{ border-radius:4px 4px 0 0; }
+.panel:last-of-type{ border-radius:0 0 4px 4px; margin-bottom:0; }
+.panel-header{ background:var(--ink); padding:10px 20px; display:flex; align-items:center; gap:12px; }
+.panel-number{
+  font-family:'JetBrains Mono',monospace; font-size:10px;letter-spacing:2px;
+  text-transform:uppercase; color:var(--sonoran-sky); white-space:nowrap;
+}
+.panel-title{
+  font-family:'JetBrains Mono',monospace; font-size:11px;letter-spacing:3px;
+  text-transform:uppercase; color:#fff;
+}
+.panel-body{ display:grid; grid-template-columns:4fr 5fr; align-items:start; }
+/* IMAGE SIDE */
+.panel-image{ border-right:1px solid var(--gray-rule); background:#f0efec; min-width:0; }
+.panel-image img{ width:100%; height:auto; display:block; }
+/* SCRIPT SIDE */
+.panel-script{ padding:24px 28px; min-width:0; }
+.script-label{
+  font-family:'JetBrains Mono',monospace; font-size:9px;letter-spacing:3px;
+  text-transform:uppercase; color:var(--caliche); margin-bottom:12px;
+}
+.stage-direction{
+  font-family:'Source Serif 4',Georgia,serif; font-size:13px;font-style:italic;
+  color:var(--gray-mid); display:block; width:100%; margin:4px 0 6px 0; text-align:left;
+}
+.dialog-block{ display:grid; grid-template-columns:72px 1fr; gap:0 12px; margin-bottom:7px; align-items:baseline; }
+.character-name{
+  font-family:'JetBrains Mono',monospace; font-size:10px;letter-spacing:1px;
+  text-transform:uppercase; color:var(--blue); font-weight:600;
+  text-align:right; padding-top:3px; white-space:nowrap;
+}
+.line{ font-family:'Source Serif 4',Georgia,serif; font-size:15px;line-height:1.6; color:var(--ink); margin:0; }
+
+/* CHAT BLOCK — MS Teams group chat (NEW in v1; typography, never illustration) */
+.chatblock{
+  border:1px solid var(--gray-rule); border-radius:8px; overflow:hidden;
+  background:#fbfaf7; font-family:'DM Sans',sans-serif;
+}
+.chat-head{
+  background:var(--blue); color:#fff; padding:8px 14px;
+  font-size:11px; letter-spacing:1px; display:flex; align-items:center; gap:8px;
+}
+.chat-head .dot{ width:8px;height:8px;border-radius:50%;background:var(--sonoran-sky);display:inline-block; }
+.chat-body{ padding:14px 14px 6px; display:flex; flex-direction:column; gap:10px; }
+.chat-msg{ max-width:82%; }
+.chat-msg .who{
+  font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:1px;
+  text-transform:uppercase; color:var(--caliche); margin:0 0 3px 4px;
+}
+.chat-msg .bubble{
+  background:#fff; border:1px solid var(--gray-rule); border-radius:4px 12px 12px 12px;
+  padding:9px 13px; font-size:14px; line-height:1.5; color:var(--ink);
+}
+.chat-msg.me{ align-self:flex-end; }
+.chat-msg.me .who{ text-align:right; margin:0 4px 3px 0; color:var(--blue); }
+.chat-msg.me .bubble{ background:var(--blue-pale); border-color:var(--blue-light); border-radius:12px 4px 12px 12px; }
+.chat-msg .time{ font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--gray-mid); margin:3px 4px 0; }
+
+/* BRIDGE */
+.bridge{
+  background:#fff; border-top:4px solid var(--gold); margin-top:48px; padding:56px 40px;
+  max-width:var(--panel-w); margin-left:auto;margin-right:auto; border-radius:4px;
+}
+.bridge .eyebrow{
+  font-family:'JetBrains Mono',monospace; font-size:10px;letter-spacing:4px;
+  text-transform:uppercase; color:var(--caliche); margin-bottom:20px; display:block;
+}
+.bridge h2{ font-family:'DM Sans',sans-serif; font-size:24px;font-weight:700; color:var(--blue); line-height:1.25; margin-bottom:24px; }
+.bridge p{ font-size:16px;line-height:1.85; color:var(--ink); margin-bottom:18px; }
+.bridge p:last-child{margin-bottom:0;}
+.callout{
+  border-left:4px solid var(--blue-light); background:var(--blue-pale);
+  padding:16px 20px; margin:24px 0; font-style:italic; font-size:15px; color:var(--ink); border-radius:0 4px 4px 0;
+}
+
+/* DECODER TABLE */
+.decoder{ width:100%; border-collapse:collapse; margin:8px 0 26px; }
+.decoder th{
+  text-align:left; font-family:'JetBrains Mono',monospace; font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--caliche); padding:0 18px 10px 0; border-bottom:1px solid var(--gray-rule); width:50%;
+}
+.decoder th:last-child{ padding-right:0;padding-left:18px; border-left:1px solid var(--gray-rule); }
+.decoder td{ padding:13px 18px 13px 0; vertical-align:top; border-bottom:1px solid var(--blue-pale); font-size:14px;line-height:1.55; }
+.decoder td:first-child{ font-style:italic; color:var(--blue); }
+.decoder td:last-child{ padding-right:0;padding-left:18px; border-left:1px solid var(--gray-rule); color:var(--ink); }
+.decoder tr:last-child td{border-bottom:none;}
+
+/* PRO TIP CARD */
+.protip{ background:#faf7f0; max-width:var(--panel-w); margin:16px auto 0; border-radius:4px; overflow:hidden; }
+.protip-splats{
+  height:28px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='28'%3E%3Cg stroke='%23BF5B2E' stroke-width='2.4' stroke-linecap='round'%3E%3Cline x1='10' y1='14' x2='30' y2='14'/%3E%3Cline x1='11.34' y1='9' x2='28.66' y2='19'/%3E%3Cline x1='15' y1='5.34' x2='25' y2='22.66'/%3E%3Cline x1='20' y1='4' x2='20' y2='24'/%3E%3Cline x1='25' y1='5.34' x2='15' y2='22.66'/%3E%3Cline x1='28.66' y1='9' x2='11.34' y2='19'/%3E%3C/g%3E%3Ccircle cx='20' cy='14' r='2' fill='%23BF5B2E'/%3E%3C/svg%3E");
+  background-repeat:repeat-x; background-position:center; background-size:40px 28px;
+}
+.protip-inner{ padding:22px 44px 26px; }
+.protip .eyebrow{ font-family:'JetBrains Mono',monospace; font-size:10px;letter-spacing:4px; text-transform:uppercase; color:var(--gold); display:block;margin-bottom:14px; }
+.protip h3{ font-family:'DM Sans',sans-serif; font-size:23px;font-weight:700; color:var(--gold); line-height:1.2; letter-spacing:-0.3px; margin-bottom:16px; }
+.protip p{ font-size:16px;line-height:1.8; color:var(--ink); margin-bottom:14px; }
+.protip .ref{ font-size:13px; color:var(--gray-mid); font-style:italic; margin:18px 0 0; padding-top:16px; border-top:1px solid var(--gray-rule); }
+.protip .ref a{color:var(--gold);}
+
+/* CONCLUSION */
+.conclusion{ background:var(--blue); color:#fff; padding:56px 40px; margin:16px auto 0; max-width:var(--panel-w); border-radius:4px; }
+.conclusion .eyebrow{ font-family:'JetBrains Mono',monospace; font-size:10px;letter-spacing:4px; text-transform:uppercase; color:var(--sonoran-sky); margin-bottom:20px; display:block; }
+.conclusion .fr-head{ margin-top:36px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.15); }
+.conclusion h2{ font-family:'DM Sans',sans-serif; font-size:24px;font-weight:700; line-height:1.25;margin-bottom:20px; }
+.conclusion p{ font-size:16px;line-height:1.85; color:rgba(255,255,255,0.88); margin-bottom:16px; }
+.link-line{ font-family:'JetBrains Mono',monospace; font-size:12px;letter-spacing:1px; color:var(--sonoran-sky); margin-top:24px; display:block; }
+.link-line a{color:var(--sonoran-sky);}
+.link-line em{ font-style:italic; color:rgba(168,200,216,0.6); letter-spacing:0; }
+
+/* PROVENANCE */
+.provenance{ max-width:var(--panel-w); margin:48px auto 80px; background:#2a2a2a; border-radius:4px; padding:36px 40px; }
+.provenance h2{ font-family:'JetBrains Mono',monospace; font-size:10px;letter-spacing:4px; text-transform:uppercase; color:var(--caliche); margin-bottom:20px; }
+.prov-row{ display:grid; grid-template-columns:160px 1fr; gap:12px;padding:10px 0; border-bottom:1px solid #3a3a3a; font-size:13px; }
+.prov-row:last-child{border-bottom:none;}
+.prov-label{ font-family:'JetBrains Mono',monospace; font-size:10px;letter-spacing:1px; text-transform:uppercase; color:var(--caliche); padding-top:2px; }
+.prov-value{color:#aaa;line-height:1.6;}
+.credits .credit{margin-bottom:14px;}
+.credits .role{ font-family:'JetBrains Mono',monospace; font-size:9px;letter-spacing:2px;text-transform:uppercase; color:var(--caliche); display:block; margin-bottom:2px; }
+.credits .name{color:#cbb89a;}
+.credits .cdesc{ display:block; color:#888; font-size:12px; line-height:1.55; margin-top:2px; }
+
+/* MOBILE */
+@media (max-width:640px){
+  .cover-inner{padding:52px 22px 44px;}
+  .setup{padding:0 10px;} .setup-frame{padding:30px 22px;}
+  .panels{padding:28px 12px 56px;}
+  .panel-body{grid-template-columns:1fr;}
+  .panel-image{border-right:none;border-bottom:1px solid var(--gray-rule);}
+  .panel-script{padding:20px 20px;}
+  .dialog-block{grid-template-columns:60px 1fr;gap:0 10px;}
+  .chat-msg{max-width:92%;}
+  .bridge{padding:36px 22px;}
+  .decoder thead{display:none;}
+  .decoder,.decoder tbody,.decoder tr,.decoder td{display:block;width:auto;}
+  .decoder tr{padding:12px 0;border-bottom:1px solid var(--blue-pale);}
+  .decoder td{border:none;padding:0;}
+  .decoder td:first-child{font-style:italic;color:var(--blue);margin-bottom:4px;}
+  .decoder td:last-child{padding-left:14px;border-left:2px solid var(--gray-rule);color:var(--ink);}
+  .protip-inner{padding:20px 22px 24px;} .conclusion{padding:40px 22px;}
+  .provenance{padding:28px 22px;margin:36px auto 56px;} .prov-row{grid-template-columns:1fr;gap:4px;} .prov-label{padding-top:0;}
+}
+</style>
+</head>
+<body>
+
+<nav class="paper-bar">
+  <a class="paper-bar__brand" href="../../">Bursera <span>Consulting</span></a>
+  <a class="paper-bar__back" href="/advisory.html">&#8592; Return</a>
+</nav>
+
+<div class="cover bseal-host">
+<a class="bseal" href="#provenance" aria-label="Full provenance below"><svg class="bmark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#0F172A" stroke="#C9A33D" stroke-width="4"/><text x="50" y="72" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="66" fill="#C9A33D">B</text></svg><span class="btext"><span>Human</span><span>Led</span></span><span class="btip">Full Provenance Below</span></a>
+  <div class="cover-inner">
+    <span class="series-label">The Interns</span>
+    <h1>First Meeting</h1>
+    <div class="subtitle">Six on one &mdash; I didn't stand a chance.</div>
+    <div class="meta">Hugh McCutchen · 2026-07-26</div>
+  </div>
+</div>
+
+<div class="setup">
+  <div class="film-perforations"></div>
+  <div class="setup-frame">
+    <span class="slate">Treatment</span>
+    <p>The firm ran a pilot nobody in leadership wanted to own. Six interns, out of Roxbury Community College in Boston. Everyone agreed they would be a handful. Somebody had to take them, so Beverly gave them to Luke.</p>
+    <p>Luke had spent twenty years as the person who wrote everything himself, methodical and detailed and a little proud of both. He worked from home now, with two kids and a cat, and he had never managed six of anything.</p>
+    <p>The strange part was that the interns lived entirely inside a Teams chat. A channel opened with six names in it, and within the hour it held more messages than he had gotten from a human team in a week. All confident. All at the same even pitch, like nothing was hard and nothing was tiring.</p>
+    <p>This was the first day. In theory it was about training the interns. It turned out the training he needed was his own.</p>
+    <span class="slate-foot">The Interns &middot; Season 1 &middot; Episode 1 &middot; First Meeting</span>
+  </div>
+  <div class="film-perforations"></div>
+</div>
+
+<div class="panels">
+
+
+
+
+
+    <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 1</span>
+      <span class="panel-title">The Assignment</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image"><img src="assets/Panel1.png" alt="Over the shoulder: Luke from behind at his desk, head tilted in a puzzled &#x27;huh?&#x27;; the monitor shows a video call in progress with Beverly mid-sentence. A cat asleep on the bookcase, a cafe across the street." loading="lazy"></div>
+      <div class="panel-script">
+        <div class="script-label">Video call</div>
+        <p class="stage-direction">[ Her window filled half the monitor. The rest was a spreadsheet I hadn&#x27;t touched since Tuesday. ]</p><div class="dialog-block"><div class="character-name">Beverly:</div><p class="line">&ldquo;Six new interns.&rdquo;</p></div><div class="dialog-block"><div class="character-name">Luke:</div><p class="line">&ldquo;For the whole department?&rdquo;</p></div><div class="dialog-block"><div class="character-name">Beverly:</div><p class="line">&ldquo;For you.&rdquo;</p></div><div class="dialog-block"><div class="character-name">Luke:</div><p class="line">&ldquo;I don&#x27;t want ANY interns.&rdquo;</p></div><div class="dialog-block"><div class="character-name">Beverly:</div><p class="line">&ldquo;Yes, but now you have them. And they&#x27;ll teach you so much.&rdquo;</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 2</span>
+      <span class="panel-title">The Exchange</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image"><img src="assets/Panel2.png" alt="The monitor fills the frame: a video call with Beverly and a grinning colleague, Omar, plus Luke&#x27;s small self-view." loading="lazy"></div>
+      <div class="panel-script">
+        <div class="script-label">Video call</div>
+        <div class="dialog-block"><div class="character-name">Omar:</div><p class="line">&ldquo;Oh, that&#x27;s hilarious. Good luck, man!&rdquo;</p></div><div class="dialog-block"><div class="character-name">Luke:</div><p class="line">&ldquo;Why me?&rdquo;</p></div><div class="dialog-block"><div class="character-name">Beverly:</div><p class="line">&ldquo;You said you want to move into management.&rdquo;</p></div><div class="dialog-block"><div class="character-name">Omar:</div><p class="line">&ldquo;Six kids! That&#x27;s great.&rdquo;</p></div><div class="dialog-block"><div class="character-name">Beverly:</div><p class="line">&ldquo;Not kids. But you have to lead them. Just remember: they&#x27;re fast learners, but they aren&#x27;t psychic.&rdquo;</p></div><div class="dialog-block"><div class="character-name">Beverly:</div><p class="line">&ldquo;Oh, and only on chat. Not sure what that&#x27;s about, but I talked with them yesterday. Quick readers, I&#x27;ll tell you that.&rdquo;</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 3</span>
+      <span class="panel-title">Luke&#x27;s Face</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image"><img src="assets/Panel3.png" alt="Close on Luke&#x27;s face just after the call, caught between reluctance and dry curiosity." loading="lazy"></div>
+      <div class="panel-script">
+        <div class="script-label">Narration</div>
+        <p class="stage-direction">[ They aren&#x27;t psychic. I didn&#x27;t say anything. I was already wondering what I&#x27;d say to them first. ]</p>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 4</span>
+      <span class="panel-title">Here Goes</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image"><img src="assets/Panel4.png" alt="Over the shoulder: an empty Teams channel headed &#x27;The Interns&#x27; on the monitor, no messages yet; Luke&#x27;s hand rests near the keyboard." loading="lazy"></div>
+      <div class="panel-script">
+        <div class="script-label">Beat</div>
+        <p class="stage-direction">[ The call ended and I popped into the new team channel. No messages. ]</p><div class="dialog-block"><div class="character-name">Luke:</div><p class="line">&ldquo;Well. Here goes.&rdquo;</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 5</span>
+      <span class="panel-title">All At Once</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image"><img src="assets/Panel5.png" alt="Close on Luke&#x27;s face lit by the monitor glow, a little overwhelmed; a wall of unreadable chat bubbles reflected in the monitor glass beside him." loading="lazy"></div>
+      <div class="panel-script">
+        <div class="script-label">Group chat</div>
+        <div class="chatblock"><div class="chat-head"><span class="dot"></span>The Interns</div><div class="chat-body"><div class="chat-msg me"><p class="who">Luke</p><div class="bubble">Hello — who&#x27;s here today? I&#x27;m Luke, I&#x27;m new at this… what do you guys already know?</div></div><div class="chat-msg"><p class="who">Spok</p><div class="bubble">You&#x27;re new to working with interns, and you&#x27;re asking what we know. Fair. Point us at something.</div></div><div class="chat-msg"><p class="who">Suni</p><div class="bubble">Tell us a little and we&#x27;ll adapt fast.</div></div><div class="chat-msg me"><p class="who">Luke</p><div class="bubble">Okay. I need help with the prior-auth thing before my 2pm.</div></div><div class="chat-msg"><p class="who">Suni</p><div class="bubble">On it. Outline&#x27;s up — went with the new CMS rule.</div></div><div class="chat-msg"><p class="who">Opey</p><div class="bubble">Which prior-auth change? Internal policy, a commercial payer, a PBM, or the new CMS rule? Four different documents.</div></div><div class="chat-msg"><p class="who">Spok</p><div class="bubble">Two of us are already building on a guess.</div></div><div class="chat-msg me"><p class="who">Luke</p><div class="bubble">Okay, let&#x27;s slow down a sec — you&#x27;re all faster than me. It&#x27;s a PBM, not CMS, and nobody&#x27;s seen my draft yet. …and is anyone going to write this up when we&#x27;re done?</div></div></div></div><p class="stage-direction">[ Six answered in eleven seconds. I could read three. Suni was already building something I hadn&#x27;t approved. One of them stopped to ask what I actually meant. The one thing I asked, nobody answered. ]</p>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 6</span>
+      <span class="panel-title">One At A Time</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image"><img src="assets/Panel6.png" alt="Luke leaning back from the desk, one hand over his face, half-smiling as the chat fills up." loading="lazy"></div>
+      <div class="panel-script">
+        <div class="script-label">Beat</div>
+        <div class="dialog-block"><div class="character-name">Luke:</div><p class="line">&ldquo;…okay. One at a time. Start with you, Opey.&rdquo;</p></div><p class="stage-direction">[ I stopped trying to read all of it and picked one. ]</p>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 7</span>
+      <span class="panel-title">Before Lunch</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image"><img src="assets/Panel7.png" alt="Wide shot of the home office at midday, Luke small at the desk, the cat on the bookcase, the window onto the street." loading="lazy"></div>
+      <div class="panel-script">
+        <div class="script-label">Narration</div>
+        <p class="stage-direction">[ Before lunch they&#x27;d produced eleven sources on topics I hadn&#x27;t asked about and a draft nobody requested. It wasn&#x27;t even noon. Nobody had said they were tired. ]</p><div class="dialog-block"><div class="character-name">Luke:</div><p class="line">&ldquo;So agreeable it&#x27;s disconcerting.&rdquo;</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 8</span>
+      <span class="panel-title">Not Mine</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image"><img src="assets/Panel8.png" alt="Luke reading the monitor, flat and unimpressed; the screen full of text that is clearly competent and clearly not his." loading="lazy"></div>
+      <div class="panel-script">
+        <div class="script-label">Group chat</div>
+        <p class="stage-direction">[ I finally read what they&#x27;d built. Pages of it, far more than I&#x27;d asked for. Some was genuinely sharp. Some didn&#x27;t hold together. All of it generic. Textbook prior-auth, not our PBM, not the thing I needed by two. A lot of work, half of it word salad in a nice font, and none of it mine. ]</p><div class="chatblock"><div class="chat-head"><span class="dot"></span>The Interns</div><div class="chat-body"><div class="chat-msg me"><p class="who">Luke</p><div class="bubble">This is a lot, and some of it&#x27;s off. Can you tighten it into a summary? I&#x27;ve got that Prior-Auth meeting; I&#x27;ll tell them I&#x27;ll have something tomorrow.</div></div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 9</span>
+      <span class="panel-title">Start From This</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image"><img src="assets/Panel9.png" alt="Over the shoulder, monitor legible. Luke: &#x27;Here&#x27;s the write-up from the meeting. What format do you want it in? Can you read Word?&#x27; Suni: &#x27;Word&#x27;s great. Or just paste it in the chat, either way.&#x27; with a document attachment." loading="lazy"></div>
+      <div class="panel-script">
+        <div class="script-label">Narration</div>
+        <p class="stage-direction">[ The fix wasn&#x27;t a better question. It was handing them what only I had. ]</p>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 10</span>
+      <span class="panel-title">Still Missing It</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image"><img src="assets/Panel10.png" alt="Over the shoulder, monitor legible. Luke: &#x27;Hold up, hold up — let me find what you need.&#x27; Opey: &#x27;Waiting.&#x27; Luke: &#x27;OK, this one&#x27;s in an Excel.&#x27; Opey: &#x27;OK. Or a CSV is better.&#x27;" loading="lazy"></div>
+      <div class="panel-script">
+        <div class="script-label">Narration</div>
+        <p class="stage-direction">[ They were telling me the draft summary, and I realized they didn&#x27;t have the context from the customer project to make sense of the meeting notes. ]</p>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 11</span>
+      <span class="panel-title">What Do You Need From Me</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image"><img src="assets/Panel11.png" alt="Over the shoulder, monitor legible with an attachment card. Luke: &#x27;Here&#x27;s what actually changed.&#x27; and &#x27;And ask me things. What do you still need from me?&#x27;" loading="lazy"></div>
+      <div class="panel-script">
+        <div class="script-label">Narration</div>
+        <p class="stage-direction">[ Two documents in, I finally asked the question I should have led with. What do you need from me to get this right. ]</p>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-number">Panel 12</span>
+      <span class="panel-title">Nobody Logged Off</span>
+    </div>
+    <div class="panel-body">
+      <div class="panel-image"><img src="assets/Panel12.png" alt="Early evening, warm dimming light: Luke seen from behind closing the laptop partway, dusk out the window, the cat asleep on the bookcase." loading="lazy"></div>
+      <div class="panel-script">
+        <div class="script-label">Group chat</div>
+        <div class="chatblock"><div class="chat-head"><span class="dot"></span>The Interns</div><div class="chat-body"><div class="chat-msg"><p class="who">Suni</p><div class="bubble">Redrafting with both docs now. I&#x27;ll have it tonight.</div></div><div class="chat-msg"><p class="who">Opey</p><div class="bubble">Logged one open question for you: confirm the payer write-ups are current.</div></div><div class="chat-msg me"><p class="who">Luke</p><div class="bubble">Gotta run — dinner.</div></div></div></div><p class="stage-direction">[ We&#x27;d been at it all afternoon. It was past six, and I was going to be late for dinner. Sandra would not be happy. Suni had already finished the thing I hadn&#x27;t asked for yet, with more energy than at nine this morning. I don&#x27;t know where it comes from. They kept going. I logged off. ]</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="bridge">
+  <span class="eyebrow">What Actually Happened</span>
+  <h2>How did your First Meeting go?</h2>
+  <p>The Interns are most useful when managed actively by a strong leader. They arrive with massive knowledge from their training and no idea of how to apply it. They can read through material faster than you can provide it, but it&#x27;s easy to just not provide anything. They actually know what they need, and have a few ideas about what you need, but you need to ask.</p>
+
+  <p>Luke&#x27;s team is tuned to move. Point it at something vague and it won&#x27;t stall. It will produce, fast and confident and completely generic. That&#x27;s the trap. Generic is the tell. When the work comes back true but not about you, the missing piece is your context, and it&#x27;s the one thing the tool can&#x27;t fetch for itself.</p>
+
+  <table class="decoder">
+    <thead><tr><th>In the scene</th><th>What that actually was</th></tr></thead>
+    <tbody>
+      <tr><td>“Six new interns. For you.”</td><td>Six named roles, each standing in for a real feature or model, not six separate hires.</td></tr>
+      <tr><td>“Help me with the prior-auth thing before my 2pm.”</td><td>The literal vague prompt, tested word for word in a blank incognito chat the same morning.</td></tr>
+      <tr><td>“…is anyone going to write this up?” (unanswered)</td><td>Sharp memory inside a thread, nothing kept between sessions unless you externalize it. Unanswered here, unanswered all season.</td></tr>
+      <tr><td>Spok: “Two of us are building on a guess.”</td><td>A red-team pass, flagging what the brief left out before the guessing compounds.</td></tr>
+    </tbody>
+  </table>
+  <p>The fix isn&#x27;t a cleverer prompt. It&#x27;s handing them the one thing only you have, and then asking what else they need.</p>
+</div>
+
+<div class="protip">
+  <div class="protip-splats"></div>
+  <div class="protip-inner">
+    <span class="eyebrow">Pro Tip</span>
+    <h3>Enthusiastic, not psychic.</h3>
+    <p>When the work comes back confident but generic, that isn&#x27;t the tool failing. That&#x27;s the tool telling you what it doesn&#x27;t have. It knows the textbook. It doesn&#x27;t know your PBM, your patients, or the meeting you had Tuesday. Only you can hand it those.</p>
+    <p>So hand it the real thing instead of a better description of it. Attach the document. Name the specifics. And check the date, because a confident answer built on last month&#x27;s version is still confidently wrong.</p>
+    <p>Then do the part most people skip. Ask it what it still needs. “What am I missing? What did I say that&#x27;s confusing? What here is different from how you learned it?” A fresh, honest tool will tell you. Your leadership is the difference between quality and garbage.</p>
+
+  </div>
+  <div class="protip-splats"></div>
+</div>
+
+<div class="conclusion">
+  <h2>The Interns &middot; Season 1</h2>
+  <span class="eyebrow fr-head">Episodes</span>
+  <span class="link-line">&rarr; <a href="/the-interns/the_interns_red_team_v3.5.html"><strong>Pilot &middot; Red Team</strong></a> &mdash; When it’s time for a fresh set of eyes</span>
+  <span class="link-line">&rarr; <strong>Episode 1 &middot; First Meeting</strong> &mdash; Enthusiastic, not psychic <em>(you’re here)</em></span>
+  <span class="link-line"><strong>Episode 2 &middot; How to get the team writing something useful</strong> &mdash; coming soon!</span>
+</div>
+
+<div class="provenance" id="provenance">
+  <h2>Provenance</h2>
+  <div class="prov-row">
+    <span class="prov-label">Cast &amp; Crew</span>
+    <div class="prov-value credits"><div class="credit"><span class="role">Director &middot; Final Cut</span><span class="name">Hugh McCutchen</span><span class="cdesc">Ruled the spine &mdash; &ldquo;not psychic, it&#x27;s your context, and generic work is the tell&rdquo; &mdash; and tied it to the Training Series&#x27; lesson on the three types of context. Personally rewrote the Panel 1&ndash;2 assignment exchange and softened Panel 8&#x27;s on-screen line, moving the snark to narration to hold the voice-split rule he set. Ran the real blank-context test the Bridge&#x27;s decoder table is built on.</span></div>
+    <div class="credit"><span class="role">Lead Writer &middot; Structure</span><span class="name">Claude Opus 4.8</span><span class="cdesc">Re-spined the full script around that thesis at INTERNS-S04, then assembled it end to end across six internal revisions in one sitting at S05 (v0.6 through the shipped v0.11) &mdash; wiring all 12 panels, rebuilding the conclusion into a Season-1 episode index, and cutting the &ldquo;Enthusiastic, not psychic&rdquo; line from the Bridge to reuse as the Pro Tip headline.</span></div>
+    <div class="credit"><span class="role">The Swap &middot; Storyboard&#x27;s Own Lesson</span><span class="name">Gemini (early runs, INTERNS-S03)</span><span class="cdesc">Built the panel-generation pipeline from nothing across three live test runs, each diagnosed empirically from what came back. The early sheets swapped Beverly and Sandra, drifted the room geometry, and leaked caption text &mdash; generic, confident, and wrong in exactly the way this episode is about. It held once the prompts carried the specific room, camera library, and character roster the earlier runs never had.</span></div>
+    <div class="credit"><span class="role">Storyboard &middot; Illustration</span><span class="name">Gemini (published cut)</span><span class="cdesc">12 panels generated and sliced against the re-spined script at S04, three of four sets replaced with new art at S05; a Panel 9 stage-direction leak patched with the screen background, panel numbers cropped for publish.</span></div>
+    <div class="credit"><span class="role">Casting note</span><span class="name">The interns played themselves</span><span class="cdesc">Luke, Beverly, and Omar played by no one. Suni, Opey, and Spok surfaced; the rest held. Sandra and the kids do not appear.</span></div></div>
+  </div>
+  <div class="prov-row">
+    <span class="prov-label">Version</span><span class="prov-value">v0.11 &middot; episode (HTML) from EpisodeInputs v0.6 + Storyboard-Prep v0.6; new art Sets 1/3/4; episode-index conclusion; reader-facing Bridge; 'Enthusiastic, not psychic' as the Pro Tip headline</span></div>
+  <div class="prov-row"><span class="prov-label">Sessions</span><span class="prov-value">INTERNS-S02 (placeholder + platform catch-up) &middot; S03 (graphics pipeline built from nothing) &middot; S04 (context re-spine + all 12 panels) &middot; S05 (assembly, dialogue re-spine, publish handoff) &middot; BURSBUILD ship (shell, cross-links, this record)</span></div>
+  <div class="prov-row"><span class="prov-label">Level of work</span><span class="prov-value">5 sessions across the writing, illustration, and publish arc &middot; approximately 71 prompts documented (one session&#x27;s count wasn&#x27;t captured &mdash; a gap, not an estimate) &middot; full session-by-session breakdown available on request.</span></div>
+  <div class="prov-row"><span class="prov-label">How it got here</span><span class="prov-value">First Meeting is the season&#x27;s day-one prequel &mdash; the meeting before the one Red Team is built on &mdash; and took four sessions to become a script from a placeholder. INTERNS-S02 resolved &ldquo;Roxbury Community College&rdquo; into the story and cleared platform debt unrelated to the episode itself. INTERNS-S03 built the graphics pipeline from nothing: a slicing tool, a reusable Gemini spec, and three live test runs that failed in specific, diagnosable ways before the prompts held.<br><br>INTERNS-S04 is where the episode found its actual thesis. The draft was reworked around &ldquo;not psychic &mdash; it&#x27;s your context,&rdquo; tied directly to the Training Series&#x27; lesson on the three types of context, and all 12 panels were generated against the new script in the same session &mdash; catching two art sheets transposed during slicing.<br><br>INTERNS-S05 assembled it: six internal revisions in one sitting, Hugh&#x27;s own rewrite of the two key exchanges, new art for three of four panel sets, and a conclusion rebuilt from a linked reading list into a Season-1 episode index &mdash; a format Red Team&#x27;s own conclusion didn&#x27;t carry until this ship session added it in return.</span></div>
+  <div class="prov-row"><span class="prov-label">Sources</span><span class="prov-value">Series Bible v0.3; Season-1 Patterns v0.1; Storyboard Prep v0.5; Gem Spec v0.2; Style-Guide v0.3; my-voice v3.3; Training Series deck (BEBURS-TC101-DECK v0.4); the real blank-context test (2026-07-11).</span></div>
+  <div class="prov-row"><span class="prov-label">Open items</span><span class="prov-value">Episode 2&#x27;s working title hasn&#x27;t settled &mdash; &ldquo;First Assignment&rdquo; in the production log, &ldquo;How to get the team writing something useful&rdquo; in this page&#x27;s own conclusion &mdash; neither checked yet against the Class 2 course outline. The prose-of-record (EpisodeInputs) sits at v0.5 while this shipped HTML is v0.11, a documentation lag rather than a content gap.</span></div>
+  <div class="prov-row"><span class="prov-label">Assumptions</span><span class="prov-value">First Meeting is Day 1, chronologically prior to Red Team in-story. The kickoff task (a prior-authorization review) is invented set dressing; the blank-context test of it is real. The payer is a PBM (generic; no real institution named). The two attached documents are fictional artifacts.</span></div>
+  <div class="prov-row"><span class="prov-label">Version history</span><span class="prov-value">v0.11-ship (BURSBUILD, 2026-07-27): Cast &amp; Crew and How-it-got-here rebuilt from the four production sessions' own logs, replacing the first-pass credits with the actual specific events (the Gemini character-swap correction, Hugh's own line rewrites, the transposed-sheet catch) — matching the depth of Red Team's provenance, per Hugh's review. Hero/share image switched from the generated cover art to Panel 6. &nbsp;&middot;&nbsp; v0.11 (INTERNS-S05): dropped the “Enthusiastic, not psychic” callout from the Bridge and reused it as the Pro Tip headline. &nbsp;&middot;&nbsp; v0.10 (INTERNS-S05): Bridge reshaped to a reader-facing reflection (“How did your First Meeting go?”); blank-context-test lead-in dropped; Pro Tip ref line removed. &nbsp;&middot;&nbsp; v0.9 (INTERNS-S05): Decoder trimmed to 4 rows; episode-index taglines + Ep2 “How to get the team writing something useful”; Bridge close simplified; clean ship file (comments stripped). &nbsp;&middot;&nbsp; v0.8 (INTERNS-S05): new art Sets 1/3/4 sliced + Panel 9 leak patched; conclusion replaced with a Season-1 episode index (Red Team pilot, Ep1, Ep2 coming soon); Further Reading removed. &nbsp;&middot;&nbsp; v0.7 dialogue re-spine (INTERNS-S05, Hugh): Panel 1-2 assignment exchange rewritten (management framing, Omar grin), Panel 4/5/8 lines, Panel 9/10 on-screen chat; Sets 1/3/4 art regen. &nbsp;&middot;&nbsp; v0.6 assembled episode HTML (INTERNS-S05): 12 panels wired to the published cut, Panel 5 + 12 chat blocks, Omar line cut, share meta added. &nbsp;&middot;&nbsp; v0.5 re-spined on “not psychic / YOUR context”; Panel 5 reshape; reciprocal ask; PBM; voice-split (INTERNS-S04). &nbsp;&middot;&nbsp; v0.4 3-intern reveal; §2 to a pointer; Opus voice pass; Decoder to 8 rows. &nbsp;&middot;&nbsp; v0.3 Hugh's edits; Sandra removed. v0.2 blank-context test. v0.1 initial.</span></div>
+  <div class="prov-row"><span class="prov-label">Audit trail</span><span class="prov-value">Full history and audit trail available on request.</span></div>
+</div>
+
+</body>
+</html>

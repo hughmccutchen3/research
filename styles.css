@@ -481,6 +481,16 @@ body.site-page .news-theme{
   flex:1 1 100%;
 }
 
+/* CALLOUT BADGE — small inline label distinct from running text (e.g. "New" beside a
+   headline). Never part of the title string itself. BURSBUILD-S20. */
+.badge-callout{
+  display:inline-block; font-family:var(--font-mono); font-size:0.6875rem; font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--brass-700);
+  border:1px solid var(--brass-400); border-radius:3px; padding:2px 7px; margin-left:10px;
+  vertical-align:middle; white-space:nowrap;
+}
+.badge-callout--on-dark{ color:var(--brass-200); border-color:rgba(255,255,255,.35); }
+
 /* ===========================================================================
    12. HOME REFRESH  — hero photo, offerings, seal, structure lightbox — BURSBUILD-S14
    Tree-brand home: brand text + South Mountain photo hero, three coupled
