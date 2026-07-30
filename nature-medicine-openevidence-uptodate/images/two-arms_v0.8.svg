@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 586" width="980" height="586" font-family="Segoe UI, Arial, sans-serif" style="background:#ffffff" role="img">
+  <title>How the same questions were put to each system</title>
+  <desc>The same 100 physician questions were put to three frontier models through their APIs and to two clinical products through their web interfaces. Five conditions differed between the two routes. Every answer was rated by three blinded clinicians. The underlying model of each clinical product was undisclosed during the testing window.</desc>
+  <defs>
+    <marker id="arr-gray" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#777777"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="980" height="586" fill="#ffffff"/>
+
+  <text x="582" y="30" text-anchor="middle" font-size="15" font-weight="700" fill="#1e293b">How the same questions were put to each system</text>
+  <text x="582" y="49" text-anchor="middle" font-size="10" font-weight="400" fill="#475569">Three frontier models driven through their APIs. Two clinical products used by hand through their web interfaces.</text>
+
+  <rect x="382" y="64" width="400" height="40" rx="6" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="582" y="82" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1e293b">100 real physician questions</text>
+  <text x="582" y="97" text-anchor="middle" font-size="9" font-weight="400" fill="#475569">each one put separately to every system</text>
+
+  <line x1="582" y1="104" x2="582" y2="118" stroke="#777777" stroke-width="1.5"/>
+  <line x1="395" y1="118" x2="770" y2="118" stroke="#777777" stroke-width="1.5"/>
+  <line x1="395" y1="118" x2="395" y2="132" stroke="#777777" stroke-width="1.5" marker-end="url(#arr-gray)"/>
+  <line x1="770" y1="118" x2="770" y2="132" stroke="#777777" stroke-width="1.5" marker-end="url(#arr-gray)"/>
+
+  <rect x="215" y="132" width="360" height="278" rx="5" fill="#dce8f5" stroke="#2d6eaa" stroke-width="1.5"/>
+  <rect x="215" y="132" width="360" height="48" rx="5" fill="#2d6eaa"/>
+  <rect x="215" y="160" width="360" height="20" fill="#2d6eaa"/>
+  <text x="395" y="152" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">FRONTIER MODELS · VIA API</text>
+  <text x="395" y="169" text-anchor="middle" font-size="8.5" font-weight="400" fill="#d6e4f2">GPT-5.2 · Gemini 3.1 Pro · Claude Opus 4.6</text>
+
+  <rect x="590" y="132" width="360" height="278" rx="5" fill="#fdf6e3" stroke="#b8860b" stroke-width="1.5"/>
+  <rect x="590" y="132" width="360" height="48" rx="5" fill="#b8860b"/>
+  <rect x="590" y="160" width="360" height="20" fill="#b8860b"/>
+  <text x="770" y="152" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">CLINICAL PRODUCTS · VIA WEB INTERFACE</text>
+  <text x="770" y="169" text-anchor="middle" font-size="8.5" font-weight="400" fill="#f7ecd2">OpenEvidence · UpToDate Expert AI</text>
+
+  <text x="192" y="170" text-anchor="end" font-size="9" font-weight="700" letter-spacing="0.12em" fill="#64748b">WHERE THEY DIFFER</text>
+
+  <line x1="30" y1="180" x2="950" y2="180" stroke="#cbd5e1" stroke-width="0.75"/>
+  <line x1="30" y1="226" x2="950" y2="226" stroke="#cbd5e1" stroke-width="0.75"/>
+  <line x1="30" y1="272" x2="950" y2="272" stroke="#cbd5e1" stroke-width="0.75"/>
+  <line x1="30" y1="318" x2="950" y2="318" stroke="#cbd5e1" stroke-width="0.75"/>
+  <line x1="30" y1="364" x2="950" y2="364" stroke="#cbd5e1" stroke-width="0.75"/>
+  <line x1="30" y1="410" x2="950" y2="410" stroke="#cbd5e1" stroke-width="0.75"/>
+
+  <text x="192" y="208" text-anchor="end" font-size="10.5" font-weight="700" fill="#334155">Access route</text>
+  <text x="395" y="208" text-anchor="middle" font-size="10" font-weight="400" fill="#2c4a6e">Public API, scripted</text>
+  <text x="770" y="208" text-anchor="middle" font-size="10" font-weight="400" fill="#5a3e00">Browser interface, by hand</text>
+
+  <text x="192" y="254" text-anchor="end" font-size="10.5" font-weight="700" fill="#334155">Underlying model</text>
+  <text x="395" y="254" text-anchor="middle" font-size="10" font-weight="400" fill="#2c4a6e">Named and versioned</text>
+  <text x="770" y="254" text-anchor="middle" font-size="10" font-weight="400" fill="#5a3e00">Undisclosed during testing</text>
+
+  <text x="192" y="300" text-anchor="end" font-size="10.5" font-weight="700" fill="#334155">System prompt</text>
+  <text x="395" y="300" text-anchor="middle" font-size="10" font-weight="400" fill="#2c4a6e">None — the question alone</text>
+  <text x="770" y="300" text-anchor="middle" font-size="10" font-weight="400" fill="#5a3e00">Set by the vendor, not visible</text>
+
+  <text x="192" y="346" text-anchor="end" font-size="10.5" font-weight="700" fill="#334155">Context supplied</text>
+  <text x="395" y="346" text-anchor="middle" font-size="10" font-weight="400" fill="#2c4a6e">Generic web search, may be skipped</text>
+  <text x="770" y="346" text-anchor="middle" font-size="10" font-weight="400" fill="#5a3e00">Curated medical corpus</text>
+
+  <text x="192" y="392" text-anchor="end" font-size="10.5" font-weight="700" fill="#334155">Output format</text>
+  <text x="395" y="392" text-anchor="middle" font-size="10" font-weight="400" fill="#2c4a6e">Model default</text>
+  <text x="770" y="392" text-anchor="middle" font-size="10" font-weight="400" fill="#5a3e00">Vendor-templated</text>
+
+  <line x1="395" y1="410" x2="395" y2="424" stroke="#777777" stroke-width="1.5"/>
+  <line x1="770" y1="410" x2="770" y2="424" stroke="#777777" stroke-width="1.5"/>
+  <line x1="395" y1="424" x2="770" y2="424" stroke="#777777" stroke-width="1.5"/>
+  <line x1="582" y1="424" x2="582" y2="440" stroke="#777777" stroke-width="1.5" marker-end="url(#arr-gray)"/>
+
+  <rect x="382" y="440" width="400" height="52" rx="6" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="582" y="461" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1e293b">1,500 ratings from 12 blinded clinicians</text>
+  <text x="582" y="478" text-anchor="middle" font-size="9" font-weight="400" font-style="italic" fill="#475569">three clinicians rated every answer, blind to which system produced it</text>
+
+  <text x="582" y="518" text-anchor="middle" font-size="9" font-weight="400" font-style="italic" fill="#64748b">A sixth system was also used through a browser: Google Search AI Overview.</text>
+  <text x="582" y="532" text-anchor="middle" font-size="9" font-weight="400" font-style="italic" fill="#64748b">That is the summary panel on a Google results page, not the Gemini model at left.</text>
+  <text x="582" y="546" text-anchor="middle" font-size="9" font-weight="400" font-style="italic" fill="#64748b">It scored between the two groups and brings the design total to 1,800 ratings.</text>
+  <text x="582" y="560" text-anchor="middle" font-size="9" font-weight="400" font-style="italic" fill="#64748b">32 refused items were excluded, leaving 1,704 ratings analysed.</text>
+</svg>

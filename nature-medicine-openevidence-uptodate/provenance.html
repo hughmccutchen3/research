@@ -1,0 +1,323 @@
+<!-- BURSBUILD. Provenance audit page for the LLM4MD inquiry record.
+     Rendered from the append-only record at _SYSTEM/cowork/provenance/LLM4MD-LANDSCAPE-BRIEF.json.
+     Bespoke <style> is the sanctioned exception for provenance pages. Regenerate rather
+     than hand-edit: every claim here must trace to the record. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nature Medicine vs OpenEvidence and UpToDate &#8212; Full Provenance and Audit Trail</title>
+<meta name="description" content="The full audit trail behind the Bursera Consulting inquiry record on the June 2026 Nature Medicine benchmark study: every version, what changed, who ran it, what was found and corrected, and what remains unverified.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://burseraconsulting.com/nature-medicine-openevidence-uptodate/provenance.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nature Medicine vs OpenEvidence and UpToDate &#8212; Full Provenance and Audit Trail">
+<meta property="og:description" content="The full audit trail behind the Bursera Consulting inquiry record on the June 2026 Nature Medicine benchmark study: every version, what changed, who ran it, what was found and corrected, and what remains unverified.">
+<meta property="og:url" content="https://burseraconsulting.com/nature-medicine-openevidence-uptodate/provenance.html">
+<link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&amp;family=DM+Sans:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+
+:root{
+  /* Bursera tokens, restrained: slate / brass / parchment */
+  --slate-900:#0F172A; --slate-800:#1E293B; --slate-700:#334155;
+  --slate-600:#475569; --slate-500:#64748B; --slate-300:#CBD5E1; --slate-200:#E2E8F0;
+  --brass-700:#8B6914; --brass-500:#B8860B; --brass-200:#EBD7A7;
+  --parchment:#FAF7F0; --parchment-mid:#F2EDE0; --parchment-deep:#E8E0CC;
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --mono:'JetBrains Mono','SF Mono',Menlo,Consolas,monospace;
+  --doc-w:760px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  background:var(--parchment-mid);
+  font-family:var(--serif);
+  font-size:clamp(16px,0.4vw + 15.2px,17.5px);
+  line-height:1.7;
+  color:var(--slate-800);
+}
+
+/* ---------- top bar ---------- */
+.topbar{
+  background:var(--parchment);
+  border-bottom:1px solid var(--parchment-deep);
+  padding:0 clamp(16px,4vw,32px);
+}
+.topbar-inner{
+  max-width:var(--doc-w);margin:0 auto;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:4px 20px;
+}
+.topbar a{
+  display:inline-flex;align-items:center;min-height:44px;
+  font-family:var(--sans);text-decoration:none;color:var(--brass-700);
+}
+.topbar a:hover,.topbar a:focus{color:var(--slate-900);text-decoration:underline;}
+.wordmark{font-weight:700;letter-spacing:0.02em;font-size:clamp(15px,2vw,17px);color:var(--slate-900) !important;}
+.wordmark span{color:var(--brass-700);font-weight:600;}
+.backlink{font-size:clamp(13.5px,1.8vw,15px);font-weight:600;}
+
+/* ---------- document sheet ---------- */
+.doc{
+  max-width:var(--doc-w);
+  margin:0 auto;
+  background:var(--parchment);
+  padding:clamp(28px,6vw,64px) clamp(18px,5vw,56px) clamp(48px,8vw,80px);
+  border-left:1px solid var(--parchment-deep);
+  border-right:1px solid var(--parchment-deep);
+  min-height:70vh;
+}
+
+/* ---------- structural typography ---------- */
+h1{
+  font-family:var(--sans);font-weight:700;
+  font-size:clamp(24px,4.6vw,34px);line-height:1.22;
+  color:var(--slate-900);letter-spacing:-0.01em;
+  margin:0 0 18px;
+}
+h2{
+  font-family:var(--sans);font-weight:700;
+  font-size:clamp(19px,3vw,25px);line-height:1.25;
+  color:var(--slate-900);
+  margin:44px 0 14px;
+}
+h3{
+  font-family:var(--sans);font-weight:600;
+  font-size:clamp(16.5px,2.3vw,19px);line-height:1.3;
+  color:var(--slate-800);
+  margin:32px 0 10px;
+}
+h3 .sess{font-family:var(--mono);font-weight:600;color:var(--brass-700);}
+p{margin:0 0 16px;}
+strong{font-weight:600;color:var(--slate-900);}
+em{font-style:italic;}
+hr{
+  border:0;height:1px;background:var(--parchment-deep);
+  margin:40px 0;
+}
+a{color:var(--brass-700);}
+
+/* metadata header under the title */
+.docmeta{
+  font-family:var(--mono);
+  font-size:clamp(12px,1.7vw,13px);
+  line-height:1.65;
+  color:var(--slate-600);
+  margin:0 0 22px;
+}
+.docmeta b{color:var(--slate-800);font-weight:600;}
+
+blockquote{
+  border-left:3px solid var(--brass-500);
+  background:var(--parchment-mid);
+  padding:14px 18px;
+  margin:0 0 20px;
+  color:var(--slate-700);
+}
+blockquote p:last-child{margin-bottom:0;}
+
+code{
+  font-family:var(--mono);
+  font-size:0.86em;
+  background:var(--parchment-mid);
+  border:1px solid var(--parchment-deep);
+  border-radius:3px;
+  padding:0.08em 0.34em;
+  color:var(--slate-900);
+  word-break:break-word;
+}
+
+/* ---------- tables ---------- */
+.tablewrap{overflow-x:auto;margin:0 0 22px;-webkit-overflow-scrolling:touch;}
+table{
+  border-collapse:collapse;
+  width:100%;
+  min-width:460px;
+  font-size:clamp(13.5px,1.9vw,15px);
+  line-height:1.55;
+  background:#fff;
+}
+th,td{
+  border:1px solid var(--parchment-deep);
+  padding:8px 11px;
+  text-align:left;
+  vertical-align:top;
+}
+th{
+  font-family:var(--sans);font-weight:700;
+  background:var(--parchment-mid);
+  color:var(--slate-900);
+}
+tbody td:first-child{
+  font-family:var(--sans);font-weight:600;color:var(--slate-900);
+  white-space:normal;
+}
+/* the two metadata tables read as machine record */
+.metatable table,.metatable td:first-child{font-family:var(--mono);}
+.metatable table{font-size:clamp(12.5px,1.7vw,13.5px);}
+.metatable td:first-child{
+  color:var(--brass-700);font-weight:600;
+  text-transform:none;white-space:nowrap;
+}
+tbody th[scope="row"]{
+  font-family:var(--sans);font-weight:600;color:var(--slate-900);
+  background:#fff;white-space:normal;
+}
+.metatable tbody th[scope="row"]{
+  font-family:var(--mono);color:var(--brass-700);font-weight:600;
+  text-transform:none;white-space:nowrap;
+}
+
+.closing-note{
+  font-style:italic;color:var(--slate-600);
+  margin:36px 0 20px;
+}
+footer.docfoot{
+  max-width:var(--doc-w);margin:0 auto;
+  padding:20px clamp(18px,5vw,56px) 56px;
+  font-family:var(--mono);font-size:12px;color:var(--slate-500);
+}
+@media (max-width:400px){
+  table{min-width:0;}
+  th,td{padding:7px 8px;}
+}
+
+.seedlist{margin:.6rem 0 0 1.1rem;font-size:.92em;}
+.seedlist li{margin:.3rem 0;}
+.vdetail{font-size:.93em;color:var(--slate-600);}
+@media print{
+  .topbar{display:none!important;}
+  body{background:#fff!important;}
+  th,td{color:#000!important;background:#fff!important;}
+  thead th{border-bottom:2px solid #000;}
+}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a class="wordmark" href="/">Bursera <span>Consulting</span></a>
+    <a class="backlink" href="index.html">&#8592; Return</a>
+  </div>
+</nav>
+
+<main class="doc">
+
+<h1>Nature Medicine vs OpenEvidence and UpToDate &#8212; Full Provenance and Audit Trail</h1>
+
+<p class="docmeta">
+<b>Document:</b> <em>Nature Medicine</em> Compared the Big Chat Models to OpenEvidence and UpToDate &#8212; an inquiry record<br>
+<b>Record:</b> <code>LLM4MD-LANDSCAPE-BRIEF</code> &#8212; append-only, 12 entries<br>
+<b>Published:</b> July 2026</p>
+
+<p><strong>This page is the audit trail behind the provenance block at the foot of the paper.</strong>
+It is rendered from a per-version record kept alongside the drafting and maintained by its author
+as append-only &#8212; entries are added, never rewritten. Nothing on this page is asserted that
+the record does not carry. Where a red-team finding was rejected rather than accepted, that is
+recorded too.</p>
+
+<hr>
+
+<h2>How this document was made &#8212; in one paragraph</h2>
+
+<p>Written from scratch in LLM4MD-S02 on a factual base built in S01 — the Nature Medicine paper read in full, its published evaluation pipeline read in full, and five AI-engine research dossiers landed verbatim and adjudicated before any prose was drafted. 12 entries follow, spanning v0.1 to v0.24. Of the
+eight validation passes the paper lists, four were run by reviewers outside the drafting: two
+blind red-team rounds on separate engines that never saw each other's returns, a form study, and
+a chronology check. Two of the red team's own blocking calls were rejected with reason, and the
+reasons are recorded. The figure was never reviewed outside Bursera, and the paper says so.</p>
+
+<hr>
+
+<h2>Layer 1 &#8212; the summary block this page backs</h2>
+
+<div class="tablewrap metatable">
+<table>
+<thead>
+<tr><th scope="col">Field</th><th scope="col">Value</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Document id</th><td><code>LLM4MD-LANDSCAPE-BRIEF</code></td></tr><tr><th scope="row">Owner</th><td>Hugh McCutchen</td></tr><tr><th scope="row">Provenance start</th><td>fresh &mdash; the record opens at the first draft; no earlier work is folded in</td></tr><tr><th scope="row">Type of writing</th><td>Inquiry Record</td></tr><tr><th scope="row">Entries recorded</th><td>12, spanning v0.1 to v0.24. Some entries cover a range of versions where several were cut in one pass</td></tr><tr><th scope="row">How it began</th><td>Written from scratch in LLM4MD-S02 on a factual base built in S01 — the Nature Medicine paper read in full, its published evaluation pipeline read in full, and five AI-engine research dossiers landed verbatim and adjudicated before any prose was drafted.<ul class="seedlist"><li><b>Nature Medicine 10.1038/s41591-026-04431-5, full text via PubMed Central</b> &mdash; the subject. Every number in the brief traces here</li><li><b>github.com/nyuolab/clinical-llm-benchmarks, 2,494 lines read in full by subagent</b> &mdash; the code audit — three facts the paper does not state; where paper and code disagree the code wins</li><li><b>Perplexity Deep Research dossier — reaction corpus</b> &mdash; the public argument: who said what, when, with URLs</li><li><b>Perplexity Computer mode dossier — reaction, 103KB</b> &mdash; the richest single input. Vendor responses, adoption figures, the OpenEvidence conflict thread, negative results</li><li><b>Gemini Deep Research dossier — architecture</b> &mdash; the Wolters Kluwer FAB platform picture and model-provider evidence</li><li><b>Claude Sonnet dossier — tool state</b> &mdash; the product-feature and EHR-integration picture behind the product descriptions</li><li><b>Perplexity Deep Research dossier — practitioner literature</b> &mdash; surrounding literature. Engine output, unverified, largely deferred to Stage 2</li></ul></td></tr><tr><th scope="row">Depth, confidence, level of work</th><td>Stated at document level in the paper&rsquo;s own provenance block, which this page backs rather than restates. The per-entry values below describe each increment, not the whole.</td></tr>
+</tbody>
+</table>
+</div>
+
+<hr>
+
+<h2>Version-by-version record</h2>
+
+<h3><span class="sess">0 &middot;</span> v0.1 &#8212; 2026-07-26</h3>
+<p>First draft, written against the S01 factual base.</p>
+<p class="vdetail"><b>Contributors:</b> Claude Opus 5 — drafting<br>Hugh McCutchen — direction<br><b>Steps run:</b> source work<br>synthesis<br><b>Notes:</b> Byte-exact original lost — edited in place. The version chain is broken at v0.1 and is not repairable.<br><b>This entry:</b> process type: execution; depth: working; confidence in findings: strong on the study, thin on the reaction; level of work: substantial</p>
+
+<h3><span class="sess">1 &middot;</span> v0.5 &#8212; 2026-07-26</h3>
+<p>Sentence-level tone pass — nine constructed contrasts and every body-prose em-dash removed. Reported as fixing the register problem; it did not.</p>
+<p class="vdetail"><b>Contributors:</b> Claude Opus 5<br>Hugh McCutchen — edit passes<br><b>Steps run:</b> synthesis<br><b>Notes:</b> The lesson of the arc: a tone problem that survives a sentence-level sweep is an ordering problem. Two blind engines said so independently at the next step.<br><b>This entry:</b> process type: execution; depth: working; confidence in findings: unchanged; level of work: light</p>
+
+<h3><span class="sess">2 &middot;</span> v0.6-v0.11 &#8212; 2026-07-26</h3>
+<p>Round-one red team applied. 17 findings accepted, 3 rejected with reason. One BLOCKING factual error corrected. The conclusion moved out of the opening panel into a closing observations section — the structural fix the sentence pass had missed.</p>
+<p class="vdetail"><b>Contributors:</b> Claude Opus 5<br>Claude Sonnet — blind red team<br>GPT-5.4 in Perplexity — blind red team<br>Hugh McCutchen<br><b>Steps run:</b> source work<br>synthesis<br>challenge/red-team<br><b>Notes:</b> The weaker engine could not open any primary and said so only in its closing paragraph; roughly twenty of its UNVERIFIABLE marks were its own retrieval limit. That failure produced the retrieval-declaration requirement in every later prompt.<br><b>This entry:</b> process type: mixed; depth: deep; confidence in findings: strong on the study and the code, graded on the reaction; level of work: extensive</p>
+
+<h3><span class="sess">3 &middot;</span> v0.12-v0.13 &#8212; 2026-07-27</h3>
+<p>Sources merged into one numeric group with read-status on every entry. Diagram re-axised to v0.7.</p>
+<p class="vdetail"><b>Contributors:</b> Claude Opus 5<br>Hugh McCutchen — caught the source misordering<br><b>Steps run:</b> synthesis<br><b>Notes:</b> Sources 12 and 13 had been inserted above 10 and 11, so the list read 9, 12, 13, 10, 11 and looked as though entries were missing.<br><b>This entry:</b> process type: execution; depth: working; confidence in findings: unchanged; level of work: light</p>
+
+<h3><span class="sess">4 &middot;</span> v0.14 &#8212; 2026-07-27</h3>
+<p>Round-two red team applied in one batch. The paper&#x27;s odds-ratio result added — it had been in the project&#x27;s own verified extraction since S01 and had never reached the draft. Wolters Kluwer citation corrected: two of three quoted phrases come from the 7 April FAB release, not the 3 June release the sentence cited. Talby quotation restored to full. Code facts scoped to the frontier arm. Three registers defined and marked.</p>
+<p class="vdetail"><b>Contributors:</b> Claude Opus 5<br>Claude Sonnet — blind red team<br>GPT-5.4 in Perplexity — blind red team<br>Hugh McCutchen<br><b>Steps run:</b> source work<br>synthesis<br>challenge/red-team<br>verification<br><b>Notes:</b> Two of the round&#x27;s BLOCKING calls were rejected as engine retrieval failures — PRECISE was verified Completed against the registry record, and the 1,800/1,704 arithmetic reconciles once refusals are counted as items rather than annotations. Both Wolters Kluwer releases were read in full this session to settle the citation.<br><b>This entry:</b> process type: mixed; depth: deep; confidence in findings: strong where verified, explicitly graded where not; level of work: extensive</p>
+
+<h3><span class="sess">5 &middot;</span> v0.15 &#8212; 2026-07-27</h3>
+<p>Panel delimiters paired so a panel can hold a table without silent truncation. Odds-ratio statistics replaced by three plain sentences reporting that a second measure exists and which way it points. &#x27;The authors&#x27; reserved for the study&#x27;s authors throughout.</p>
+<p class="vdetail"><b>Contributors:</b> Claude Opus 5<br>Hugh McCutchen — called the statistics unusable for the audience<br><b>Steps run:</b> synthesis<br><b>Notes:</b> Hugh&#x27;s objection was to doing statistics a reader cannot check; the counter-argument was that no commentator has made the odds-ratio point, so dropping it would report only one side of a two-sided finding. Resolved by stating the direction without the numbers.<br><b>This entry:</b> process type: mixed; depth: working; confidence in findings: unchanged; level of work: substantial</p>
+
+<h3><span class="sess">6 &middot;</span> v0.16 &#8212; 2026-07-27</h3>
+<p>Form-comparator findings applied. Orientation moved ahead of the first panel to state position and method. Farah Deshmukh added — she corroborates the conflict allegation independently of the aggregation route and reached the operator-skill point first.</p>
+<p class="vdetail"><b>Contributors:</b> Claude Opus 5<br>Claude Sonnet — form-comparator scan<br>Hugh McCutchen<br><b>Steps run:</b> source work<br>synthesis<br>challenge/red-team<br><b>Notes:</b> The scan opened eight candidate articles and found no published piece combining study explanation, dispute reportage, an adjacent-studies survey and marked opinion. Its structural explanation — that the four moves rest on four different professional warrants which do not stack — is why the piece orients the reader inline rather than leaning on a familiar form.<br><b>This entry:</b> process type: mixed; depth: deep; confidence in findings: unchanged; level of work: substantial</p>
+
+<h3><span class="sess">7 &middot;</span> v0.18 &#8212; 2026-07-27</h3>
+<p>Voice moved from Hugh personally to Bursera. Sixteen of Hugh&#x27;s annotations applied. Two sections cut and one closing table reduced; body down 14%.</p>
+<p class="vdetail"><b>Contributors:</b> Hugh McCutchen — sixteen annotations and the voice decision<br>Claude Opus 5<br><b>Steps run:</b> synthesis<br>customer review<br><b>Notes:</b> Reportage third-person and impersonal; the marked panels first person plural. The proper noun appears only in the panel label.<br><b>This entry:</b> process type: execution; depth: working; confidence in findings: unchanged; level of work: substantial</p>
+
+<h3><span class="sess">8 &middot;</span> v0.20 &#8212; 2026-07-27</h3>
+<p>Three registers collapsed to two — the attributed-explanation panel relabelled as the firm&#x27;s view, conceding that choosing which caveats to set side by side is itself a view. Publishing appendix added: the four-study comparison, the product descriptions, a dated chronology, a glossary, and the six questions that would help.</p>
+<p class="vdetail"><b>Contributors:</b> Hugh McCutchen<br>Claude Opus 5<br><b>Steps run:</b> synthesis<br>customer review<br><b>Notes:</b> Body reached its shortest since v0.4 without losing material — the reference moved to an appendix rather than being cut.<br><b>This entry:</b> process type: mixed; depth: working; confidence in findings: unchanged; level of work: substantial</p>
+
+<h3><span class="sess">9 &middot;</span> v0.21 &#8212; 2026-07-27</h3>
+<p>Final polish. All eleven revision flags closed. The chronology validated by subagent and corrected in five places before it could publish unchecked.</p>
+<p class="vdetail"><b>Contributors:</b> Claude Opus 5<br>Claude Sonnet subagent — chronology validation<br>Hugh McCutchen — flag dispositions<br><b>Steps run:</b> synthesis<br>challenge/red-team<br>verification<br><b>Notes:</b> The &#x27;four months&#x27; interval was dropped in both places it appeared: February 2026 is stated without a day anywhere in the evidence base, so the piece was claiming a precision it does not have. The Tytler paragraph was dropped whole rather than neutralised — keeping the observation without his name would absorb a point he made first.<br><b>This entry:</b> process type: execution; depth: working; confidence in findings: strong; citation integrity checked, all 21 sources used and defined; level of work: substantial</p>
+
+<h3><span class="sess">10 &middot;</span> v0.22 &#8212; 2026-07-28</h3>
+<p>A section added for the study&#x27;s authors, who had been represented only inside the vendors&#x27; section. Their standing position and the documented absence of any later statement now sit in their own §2.3. Revision-flags block retired.</p>
+<p class="vdetail"><b>Contributors:</b> Hugh McCutchen<br>Claude Opus 5<br><b>Steps run:</b> synthesis<br>customer review<br><b>Notes:</b> The absence claim — no public statement from any of the sixteen authors after 16 June — rests on documented per-author searches in the Computer-mode dossier, and is stated as what the record shows rather than as proof of silence. One concern outlived the flags block and moved into the assembly record: no reviewer has ever opened the figure.<br><b>This entry:</b> process type: execution; depth: working; confidence in findings: strong where verified; the figure remains unreviewed; level of work: light</p>
+
+<h3><span class="sess">11 &middot;</span> v0.24 &#8212; 2026-07-28</h3>
+<p>The rendered provenance block rebuilt around validation. Eight passes now listed individually with who ran each and what it found, plus what was not checked. Previously this was one fragment in a list and one dense paragraph.</p>
+<p class="vdetail"><b>Contributors:</b> Hugh McCutchen — caught that the validation record was invisible<br>Claude Opus 5<br><b>Steps run:</b> synthesis<br>customer review<br><b>Notes:</b> The piece argues that its credibility rests on visible method rather than on standing. A validation record compressed to a semicolon contradicted that argument on its own last page.<br><b>This entry:</b> process type: execution; depth: working; confidence in findings: unchanged; level of work: light</p>
+
+<hr>
+
+<h2>What was not checked</h2>
+
+<p>Carried here from the paper's own provenance block, unchanged. The figure has never been
+reviewed outside Bursera &#8212; all three red-team passes ran on the text alone, and its three
+known defects were found in-house. The paper's Extended Data was never retrieved. Its
+competing-interests declaration has not been read in the primary. Three of the four other
+studies in the appendix were not read. Four commentators' posts were retrieved by an automated
+pass and never opened at source. Each of those is labelled where it appears in the paper.</p>
+
+<p class="closing-note">A research artifact is only as good as the record behind it. This page is
+that record. If something here does not reconcile with the paper, the discrepancy is the finding
+&#8212; <a href="mailto:contact@burseraconsulting.com">tell us</a>.</p>
+
+<p class="docfoot"><a href="index.html">&#8592; Return to the paper</a></p>
+
+</main>
+</body>
+</html>

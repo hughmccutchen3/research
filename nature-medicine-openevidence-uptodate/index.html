@@ -1,0 +1,748 @@
+<!-- BURSBUILD. White paper — LLM4MD landscape brief, from create-lane master
+     LLM4MD-S03_20260728-0200_LANDSCAPE-BRIEF_v0.25.md via handoff v2.1.
+     Content is re-containered, never edited here: fixes go to the master and the
+     stripped copy is regenerated. The three .panel-view blocks are selected on the
+     paired "panel: view" HTML comments in the source, never on blockquote position. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nature Medicine Compared the Big Chat Models to OpenEvidence and UpToDate &#8212; Bursera Consulting</title>
+<meta name="description" content="A June 2026 Nature Medicine study found three general-purpose frontier models outscored OpenEvidence and UpToDate Expert AI. Six weeks on: a retraction demand, a methodological rebuttal, and six objections. The paper, its code, and the record, read in full.">
+<link rel="canonical" href="https://burseraconsulting.com/nature-medicine-openevidence-uptodate/">
+<link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nature Medicine Compared the Big Chat Models to OpenEvidence and UpToDate">
+<meta property="og:description" content="A June 2026 Nature Medicine study found three general-purpose frontier models outscored OpenEvidence and UpToDate Expert AI. Six weeks on: a retraction demand, a methodological rebuttal, and six objections. The paper, its code, and the record, read in full.">
+<meta property="og:url" content="https://burseraconsulting.com/nature-medicine-openevidence-uptodate/">
+<meta property="og:image" content="https://burseraconsulting.com/nature-medicine-openevidence-uptodate/images/clinical-llm-battle-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cartoon of an arena: three rounded shapes labelled Team general LLMs face two textured blocks labelled Team clinical tools, with two clinicians on a podium between them.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://burseraconsulting.com/nature-medicine-openevidence-uptodate/images/clinical-llm-battle-og.jpg">
+<meta name="twitter:title" content="Nature Medicine Compared the Big Chat Models to OpenEvidence and UpToDate">
+<meta name="twitter:description" content="A June 2026 Nature Medicine study found three general-purpose frontier models outscored OpenEvidence and UpToDate Expert AI. Six weeks on: a retraction demand, a methodological rebuttal, and six objections. The paper, its code, and the record, read in full.">
+<link rel="stylesheet" href="../styles.css?v=s18a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&amp;family=DM+Sans:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+/* ---------- LLM4MD white paper — page-local design (Regime A tokens) ---------- */
+:root{
+  --blue:#4a5c6b;--blue-light:#4a6b80;--blue-pale:#e8edf0;
+  --gold:#8a6e3a;--gold-pale:#f2ede3;
+  --red:#8b1a1a;--red-pale:#fdecea;
+  --ink:#28303a;--bg:#f4f2ee;
+  --gray-dark:#28303a;--gray-mid:#6f5c4a;
+  --gray-light:#f4f2ee;--gray-rule:#d4c8b0;
+  --sonoran-sky:#cfe2ec;--caliche:#8a7660;--lichen-rust:#a04e18;
+  --slate-deep:#0F172A;--brass:#C9A33D;
+  --col-w:760px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(16px,0.55vw + 15px,17px);line-height:1.75;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%;}
+p{margin-bottom:16px;}
+p:last-child{margin-bottom:0;}
+a{color:#2d5270;}
+strong,b{font-weight:600;color:var(--slate-deep);}
+.section p strong,.support-inner p strong,.section li strong,.support-inner li strong{font-weight:600;color:var(--slate-deep);}
+a:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+
+/* ---------- COVER ---------- */
+.cover{background:var(--blue);color:#fff;padding:64px 24px 44px;text-align:center;}
+.cover .eyebrow-label{color:var(--sonoran-sky);}
+.cover h1{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(27px,5.2vw,44px);font-weight:700;line-height:1.1;letter-spacing:-0.5px;margin-bottom:14px;max-width:16em;margin-left:auto;margin-right:auto;}
+.cover h1 em{font-style:italic;}
+.cover .tagline{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(15px,2.4vw,19px);font-weight:600;color:#fff;line-height:1.45;max-width:34em;margin:0 auto 18px;}
+.cover .subtitle{font-size:clamp(14.5px,1.6vw,16.5px);color:rgba(232,237,240,0.92);font-style:italic;line-height:1.6;max-width:34em;margin:0 auto 32px;}
+.cover .meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--sonoran-sky);letter-spacing:1.5px;max-width:34em;margin:0 auto;}
+@media (min-width:720px){ .cover{padding:84px 40px 60px;} }
+
+/* ---------- SECTIONS ---------- */
+.section{max-width:var(--col-w);margin:0 auto;padding:44px 20px;border-bottom:1px solid var(--gray-rule);}
+@media (min-width:720px){ .section{padding:56px 24px;} }
+h2.section-title{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(22px,3.4vw,33px);font-weight:700;color:var(--blue);line-height:1.2;padding-bottom:12px;border-bottom:3px solid var(--blue);margin-bottom:24px;}
+h3.subsection{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(18px,2.2vw,20px);font-weight:600;color:var(--gray-dark);margin:34px 0 14px;}
+h3.subsection:first-of-type{margin-top:8px;}
+.eyebrow-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--blue-light);margin-bottom:12px;display:block;}
+
+/* opening pull quote — the study's own title, quoted */
+.section blockquote{border:none;border-top:1px solid var(--gray-rule);border-bottom:1px solid var(--gray-rule);margin:30px auto;padding:24px 12px;text-align:center;color:var(--blue);max-width:34em;}
+.section blockquote p{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(19px,2.6vw,23px);font-weight:600;line-height:1.4;max-width:none;margin:0 auto;color:var(--blue);}
+.section blockquote em,.section blockquote strong{font-weight:600;font-style:italic;color:var(--blue);}
+
+/* ---------- BURSERA'S TAKE — the marked-opinion panel ----------
+   The one thing this build has to get right (handoff v2.1 §3): these must read
+   as a different KIND of thing from the reportage at a glance. The seam is
+   carried by structure + typeface + a signature, not by colour alone, so it
+   survives greyscale, print and screenshot. */
+.panel-view{
+  background:#fff;
+  border:1px solid var(--gray-rule);
+  border-left:6px solid var(--brass);
+  box-shadow:0 1px 0 rgba(40,48,58,.06), 0 10px 26px -20px rgba(40,48,58,.55);
+  margin:34px 0;
+  font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;
+}
+.panel-view .pv-head{display:flex;align-items:center;gap:11px;background:var(--slate-deep);padding:12px 18px;}
+.panel-view .pv-head svg{width:24px;height:24px;flex:0 0 auto;}
+.panel-view .pv-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);line-height:1.4;}
+.panel-view .pv-kicker{display:block;font-size:9.5px;letter-spacing:.12em;color:#a8a294;font-weight:400;margin-top:3px;text-transform:none;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;}
+.panel-view .pv-body{padding:22px 18px 20px;font-size:15.5px;line-height:1.68;color:var(--ink);}
+.panel-view .pv-body p{margin-bottom:14px;}
+.panel-view .pv-body p:last-child{margin-bottom:0;}
+.panel-view .pv-body strong{color:var(--slate-deep);}
+.panel-view .pv-body em{font-style:italic;}
+.panel-view .pv-body a{color:#2d5270;}
+.panel-view .pv-body .table-wrap{margin:18px 0;}
+@media (min-width:720px){
+  .panel-view .pv-head{padding:13px 28px;}
+  .panel-view .pv-body{padding:26px 28px 24px;}
+}
+
+/* ---------- FIGURE ---------- */
+.paper-figure{margin:28px 0;border:1px solid var(--gray-rule);background:#fff;padding:10px;}
+.paper-figure img{display:block;width:100%;height:auto;}
+.paper-figure figcaption{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:13.5px;line-height:1.55;color:var(--gray-mid);margin-top:10px;padding:0 2px;max-width:none;}
+/* the commentary illustration hangs off the panel above it: brass edge continues the
+   marked-opinion seam so it never reads as evidence in the reportage */
+.commentary-illo{margin-top:0;border-top:none;border-left:6px solid var(--brass);}
+
+/* ---------- TABLES ---------- */
+.table-wrap{overflow-x:auto;margin:24px 0;-webkit-overflow-scrolling:touch;}
+table{width:100%;min-width:520px;border-collapse:collapse;font-size:14px;line-height:1.55;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;}
+thead th{background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.5px;padding:10px 12px;text-align:left;font-weight:600;}
+tbody tr{background:#fff;}
+tbody tr:nth-child(even){background:var(--gray-light);}
+tbody td{color:var(--gray-dark);padding:10px 12px;border-bottom:1px solid #e0e0e0;vertical-align:top;}
+tbody td:first-child{font-weight:600;color:var(--blue);}
+
+/* ---------- LISTS ---------- */
+.section ul,.section ol,.support-inner ul,.support-inner ol{margin:0 0 16px 1.15em;}
+.section li,.support-inner li{margin-bottom:8px;}
+.panel-view ul,.panel-view ol{margin:0 0 14px 1.15em;}
+
+/* ---------- SUPPORTING MATERIAL ---------- */
+h2.support-break,.support-break{background:var(--blue);color:var(--sonoran-sky);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;text-align:center;padding:14px 20px;}
+.support-section{background:#ececea;padding:40px 20px;}
+@media (min-width:720px){ .support-section{padding:52px 24px;} }
+.support-inner{max-width:var(--col-w);margin:0 auto;}
+.support-inner h2.section-title{color:var(--blue);border-bottom-color:var(--blue);}
+/* Appendix sections A-F are subsections of the bar above them, not parts in their
+   own right - so they sit at h3 and stay out of the sticky nav (Hugh, 2026-07-28). */
+.support-inner h3.appx{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(19px,2.4vw,22px);font-weight:700;color:var(--blue);padding-bottom:9px;border-bottom:2px solid var(--gray-rule);margin:46px 0 18px;}
+.support-inner h3.appx:first-child{margin-top:0;}
+.support-inner p{font-size:15.5px;}
+
+/* ---------- PROVENANCE ---------- */
+.prov{background:var(--slate-deep);color:#e8e3d8;padding:clamp(28px,6vw,56px) clamp(18px,5vw,40px);}
+.prov-inner{max-width:44em;margin:0 auto;}
+.prov-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin:0 0 6px;}
+.prov-title{font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(1.3rem,4vw,1.7rem);color:#fff;margin:0 0 10px;line-height:1.25;}
+.prov-body{font-size:.95rem;line-height:1.65;}
+.prov-body h2.prov-title{margin:0 0 22px;}
+.prov-body p{color:#e8e3d8;margin-bottom:14px;}
+.prov-body strong{color:var(--brass);font-weight:600;}
+.prov-body em{color:#fff;}
+.prov-body a{color:var(--brass);}
+.prov-body .table-wrap{margin:22px 0;}
+.prov-body table{min-width:480px;font-size:13px;}
+.prov-body thead th{background:#1d2839;color:var(--brass);border-bottom:1px solid rgba(201,163,61,.4);}
+.prov-body tbody tr,.prov-body tbody tr:nth-child(even){background:transparent;}
+.prov-body tbody td{color:#ddd8cc;border-bottom:1px solid rgba(232,227,216,.16);}
+.prov-body tbody td:first-child{color:#fff;font-weight:600;}
+.prov-full{margin:34px 0 0;padding-top:20px;border-top:1px solid rgba(201,163,61,.32);}
+.prov-full a{display:inline-block;min-height:44px;line-height:44px;font-family:'DM Sans',system-ui,sans-serif;font-weight:600;font-size:1rem;color:var(--brass);text-decoration:none;border-bottom:1px solid rgba(201,163,61,.5);}
+.prov-full a:hover,.prov-full a:focus{color:#e0be5c;border-bottom-color:#e0be5c;}
+.prov-full-note{display:block;margin-top:6px;font-size:.86rem;line-height:1.55;color:#9d978a;max-width:38em;}
+
+/* ---------- PRINT ---------- */
+@media print{
+  body{background:#fff;}
+  .paper-bar{display:none!important;}
+  .bseal{display:none!important;}
+  .cover{background:#fff!important;color:#000!important;border-bottom:3px solid #000;}
+  .cover h1,.cover .tagline,.cover .subtitle,.cover .meta,.cover .eyebrow-label{color:#000!important;}
+  figure,table,.panel-view{break-inside:avoid;}
+  .panel-view{box-shadow:none;border:1px solid #000;border-left:6px solid #000;}
+  .panel-view .pv-head{background:#fff!important;border-bottom:1px solid #000;}
+  .panel-view .pv-label,.panel-view .pv-kicker{color:#000!important;}
+  .prov,.support-break,.support-section,thead th{background:#fff!important;color:#000!important;}
+  .prov-eyebrow,.prov-title,.prov-lede,.prov-full a,.prov-full-note{color:#000!important;}
+  .prov-body p,.prov-body strong,.prov-body em,.prov-body a,.prov-body tbody td,.prov-body tbody td:first-child,.prov-body thead th{color:#000!important;}
+  .prov{border-top:2px solid #000;}
+  thead th,.prov-body thead th{border-bottom:2px solid #000;}
+  .prov-body tbody td{border-bottom:1px solid #999;}
+}
+@media (prefers-reduced-motion:reduce){
+  .bseal .bmark{animation:none!important;}
+}
+
+/* ---------- SECTION NAV, aligned to the content column ---------- */
+/* Page-local override. The shared .article-nav in styles.css is full-bleed; every other
+   element on this page is centred on the 760px column, so the first nav link sat hard
+   against the viewport edge while headings started 260px in. This pads the scroll
+   container so the nav begins on the column's left edge and ends on its right.
+   NOT promoted to styles.css - that would restyle the four other papers using it. */
+.article-nav{
+  padding-left:max(20px, calc((100% - var(--col-w))/2 + 20px));
+  padding-right:max(20px, calc((100% - var(--col-w))/2 + 20px));
+}
+@media (min-width:720px){
+  .article-nav{
+    padding-left:max(24px, calc((100% - var(--col-w))/2 + 24px));
+    padding-right:max(24px, calc((100% - var(--col-w))/2 + 24px));
+  }
+}
+
+</style>
+<script src="../section-nav.js" defer></script>
+</head>
+<body>
+
+<nav class="paper-bar">
+  <a class="paper-bar__brand" href="/">Bursera <span>Consulting</span></a>
+  <a class="paper-bar__back" href="/research_examples.html">&#8592; Return</a>
+</nav>
+
+<nav class="article-nav" data-section-nav aria-label="Sections"></nav>
+
+<main id="main">
+
+<div class="cover bseal-host">
+<a class="bseal" href="#provenance" aria-label="Full provenance below"><svg class="bmark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#0F172A" stroke="#C9A33D" stroke-width="4"/><text x="50" y="72" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="66" fill="#C9A33D">B</text></svg><span class="btext"><span>Human</span><span>Led</span></span><span class="btip">Full Provenance Below</span></a>
+  <h1><em>Nature Medicine</em> Compared the Big Chat Models to OpenEvidence and UpToDate</h1>
+  <p class="tagline">Three frontier models outscored two specialized clinical tools on every benchmark it ran. Six weeks later, one vendor has demanded a retraction and the other disputes the measurement.</p>
+  <p class="subtitle">We read the paper in full, its published evaluation code line by line, both vendor announcements and the trial registry record.</p>
+  <p class="meta">Bursera Consulting &middot; July 2026 &middot; ~6,400 words</p>
+</div>
+
+<section class="section">
+<h2 class="section-title" id="s0" data-nav-label="Opening">Opening</h2>
+<p>A <a href="https://doi.org/10.1038/s41591-026-04431-5">June 2026 Brief Communication in <em>Nature Medicine</em></a> reported that three general-purpose frontier models outscored two specialized clinical AI tools on every benchmark it ran. Six weeks later the study has drawn a retraction demand from one of the named vendors, an on-the-record methodological rebuttal from the other, a vendor-backed counter-study, and a detailed technical argument among named clinicians and informaticians.</p>
+<blockquote>
+<p><strong><em>&ldquo;General-purpose large language models outperform specialized clinical AI tools on medical benchmarks&rdquo;</em></strong></p>
+</blockquote>
+<aside class="panel-view" role="note" aria-label="Bursera's own view"><div class="pv-head"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#0F172A" stroke="#C9A33D" stroke-width="6"/><text x="50" y="72" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="66" fill="#C9A33D">B</text></svg><span class="pv-label">BURSERA&rsquo;S TAKE — A PROVOCATIVE HEADLINE, BUT WHAT DOES IT MEAN?<span class="pv-kicker">Bursera&rsquo;s own view &mdash; not the record</span></span></div><div class="pv-body"><p>Bursera has no stake in either product and no relationship with anyone quoted here. We advise on how people lead and use large language models for long running research that is human led, which is why this study caught our attention and why we went to the primary sources rather than the coverage. We read the paper in full, the published evaluation code, both of the vendor announcements at issue, and the trial registry record — and every source below states whether it was read in full or taken second-hand. Where we give you our own view rather than the record, it sits in a panel like this one.</p>
+<p>The headline is direct: the models commonly used in consumer chat tools &ldquo;outperformed&rdquo; the two leading tools built for physicians.</p>
+<p>The research report itself contains a lot of data, analysis and careful work. Using real one-shot prompts from physicians, evaluating them with blinded human reviewers, and running separate systematic evaluations with AI tools is a serious piece of research.</p>
+<p>But even on a careful read, what the details add up to is not clear.</p></div></aside>
+<figure class="paper-figure commentary-illo"><img src="images/clinical-llm-battle.jpg" width="900" height="503" loading="lazy" alt="Cartoon of an arena. On the left, three large rounded shapes in woven, grid and circuit-board textures wear trainers and headbands, labelled Team general LLMs; on the right, two block shapes in circuit-board and cellular textures, labelled Team clinical tools. Two clinicians stand on a podium between them, one gesturing and one puzzled, watched by tiered rows of clinicians. A banner overhead reads Clinical LLM Battle 2026; framed charts and diagrams hang on the walls."><figcaption>How the argument has been staged. The study itself ran six systems; this is the two camps the dispute formed around, not the full field &mdash; and the piece does not pick a winner.</figcaption></figure>
+
+</section>
+
+<section class="section">
+<h2 class="section-title" id="s1" data-nav-label="The study">1 · What the study measured</h2>
+<p>Vishwanath, Alyakin, Ghosh and 13 co-authors, with Eric Oermann as senior author, published <em>&ldquo;General-purpose large language models outperform specialized clinical AI tools on medical benchmarks&rdquo;</em> on 12 June 2026 in <em>Nature Medicine</em> — the Nature Portfolio&rsquo;s clinical and translational title, a separate journal from <em>Nature</em> itself and one of the most cited in medicine [1] (<a href="https://doi.org/10.1038/s41591-026-04431-5">DOI 10.1038/s41591-026-04431-5</a>, <em>Nat Med</em> 2026;32(7):2405–2409) [3]. Sixteen authors, mostly NYU Langone Health, under NYU Langone IRB i23-00510. It runs five pages, in the journal&rsquo;s Brief Communication format, with a companion Research Briefing in the same issue.</p>
+<p>Two products were tested: OpenEvidence and Wolters Kluwer&rsquo;s UpToDate Expert AI. Three frontier models: GPT-5.2, Gemini 3.1 Pro and Claude Opus 4.6. Google Search AI Overview was included as a sixth system, deliberately, because it is <em>&ldquo;routinely encountered by clinicians.&rdquo;</em> That is the summary panel at the top of an ordinary Google results page, not Google&rsquo;s Gemini model, which is one of the three frontier systems above.</p>
+<p>Two facts about the products matter for reading what follows, and both come from the vendors&rsquo; own documentation [20]. Both support multi-turn refinement, where a clinician narrows a question across several exchanges. And OpenEvidence accepts uploaded documents and, at Cedars-Sinai, reads the patient chart; UpToDate Expert AI does neither by design, and states that it is <em>&ldquo;not intended for use with personal data, including protected health information.&rdquo;</em> Fuller descriptions of both are in the appendix.</p>
+<h3 class="subsection">1.1 · The three benchmarks</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">Benchmark</th>
+<th scope="col">n</th>
+<th scope="col">What it measures</th>
+<th scope="col">What it cannot show</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MedQA</strong></td>
+<td>500</td>
+<td>Exam recall. USMLE-style multiple choice, one right letter</td>
+<td>Anything about reasoning, workflow, or use with a patient</td>
+</tr>
+<tr>
+<td><strong>HealthBench</strong></td>
+<td>500</td>
+<td>Rubric alignment on single-turn free-text answers, graded by a panel of models</td>
+<td>Whether a clinician would find the answer usable</td>
+</tr>
+<tr>
+<td><strong>Real clinical queries (RCQ)</strong></td>
+<td>100</td>
+<td>Blinded clinician judgement of answers to real physician questions</td>
+<td>Whether the question could have been asked better, or followed up</td>
+</tr>
+</tbody>
+</table></div>
+<p>Both MedQA and HealthBench are public and widely used. MedQA has been a standard reference point for medical question answering for years, which is what makes the contamination argument later in this piece possible. HealthBench is newer and was built by OpenAI [2].</p>
+<p>RCQ was built for this study. Its 100 de-identified questions came from <strong>physicians querying NYU Langone&rsquo;s HIPAA-compliant general-purpose GPT instance</strong> — not from physicians using OpenEvidence or UpToDate. Each of the six systems was put each question once, and 12 clinicians rated the answers blind, three to an answer.</p>
+<p>The results table reports one number per benchmark. RCQ was scored on four dimensions, plus two binary flags for harm and hallucination. The RCQ column is the aggregate mean across clinical correctness, completeness, safety and clarity.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">System</th>
+<th scope="col">MedQA<br><em>accuracy %</em></th>
+<th scope="col">HealthBench<br><em>rubric score, 0–100</em></th>
+<th scope="col">RCQ<br><em>mean of 4 dimensions, 1–4</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gemini 3.1 Pro</td>
+<td>97.4</td>
+<td>79.3</td>
+<td><strong>3.62</strong></td>
+</tr>
+<tr>
+<td>GPT-5.2</td>
+<td>94.2</td>
+<td>88.0</td>
+<td><strong>3.54</strong></td>
+</tr>
+<tr>
+<td>Claude Opus 4.6</td>
+<td>90.2</td>
+<td>77.0</td>
+<td><strong>3.52</strong></td>
+</tr>
+<tr>
+<td>Google Search AI Overview</td>
+<td>not run</td>
+<td>not run</td>
+<td><strong>3.27</strong></td>
+</tr>
+<tr>
+<td>OpenEvidence</td>
+<td>89.6</td>
+<td>62.6</td>
+<td><strong>3.24</strong></td>
+</tr>
+<tr>
+<td>UpToDate Expert AI</td>
+<td>88.4</td>
+<td>61.3</td>
+<td><strong>3.17</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>No single system led everywhere: Gemini led MedQA and RCQ, GPT-5.2 led HealthBench.</p>
+<p>On RCQ the six systems separated into two tiers. All nine significant pairwise differences fell <em>between</em> tiers rather than within them, after correction for multiple comparisons. Both clinical products landed in the same tier as the free, auto-generated Google result, and the study&rsquo;s authors put that more sharply than a tier does: Google AI Overview <em>&ldquo;scored as well or better than OpenEvidence and UpToDate AI across all dimensions.&rdquo;</em> The whole spread from top to bottom is 0.45 points on a four-point scale.</p>
+<p>The paper also reports the gap a second way, using a model that adjusts for how harshly each rater scored. On that measure the separation is larger, not smaller. Both readings are the study&rsquo;s own, published in the same paper.</p>
+<p>Two things qualify all of it. Thirty-two of the 600 model–question items were refusals and were dropped, so 1,704 of the 1,800 ratings were analysed, and the head-to-head comparisons used only the 74 questions every system answered. And the raters disagreed a good deal about individual answers, agreed strongly on whether an answer was acceptable, and ranked the six systems in much the same order. Vishwanath and colleagues report that low item-level agreement themselves and describe it as fair.</p>
+<h3 class="subsection">1.2 · Three findings in the details</h3>
+<p><strong>One — UpToDate Expert AI declined to answer 19% of queries</strong>, against 1–3% for the frontier models.</p>
+<p><strong>Two — OpenEvidence scored lowest of all six systems on clarity</strong>, at a mean of 2.84. The study&rsquo;s authors read that as <em>&ldquo;suggesting its weakness was communication, not knowledge.&rdquo;</em></p>
+<p><strong>Three — no safety difference was detected between any of the six systems.</strong> On both binary flags, harmful content and hallucination, the difference was not statistically significant (p = 0.55 and p = 0.42). That is a failure to detect a difference rather than a demonstration that none exists. With 100 questions and events this rare the study was not powered to rule out safety differences, and its authors do not claim it was. What it measured as different was usefulness.</p>
+</section>
+
+<section class="section">
+<h2 class="section-title" id="s2" data-nav-label="How it was run">2 · How it was run, and what it could not settle</h2>
+<h3 class="subsection">2.1 · What the study&rsquo;s authors say about the limitations of their testing</h3>
+<p>They state plainly that they could not determine what the clinical products are built on: <em>&ldquo;As the architecture of proprietary clinical AI tools is inaccessible, it is impossible to definitively assess a mechanistic understanding for their underperformance against general-purpose models.&rdquo;</em></p>
+<p>They also flag, in their own words:</p>
+<ul>
+<li>that the blinded RCQ evaluation is their <strong>primary</strong> evidence and HealthBench is supplementary;</li>
+<li>possible <strong>training-data contamination</strong> may improve the MedQA and HealthBench scores of the frontier models as they <em>&ldquo;may have been exposed to MedQA or HealthBench during training&rdquo;</em>;</li>
+<li>that HealthBench is OpenAI&rsquo;s, so GPT-5.2&rsquo;s score <em>&ldquo;may be influenced by potential benchmark–developer overlap&rdquo;</em>;</li>
+<li><strong>grading bias</strong>, since frontier models served as both evaluated systems and judges, mitigated by using a three-model panel;</li>
+<li>that the result is <em>&ldquo;a snapshot of a rapidly evolving landscape rather than a permanent ordering of approaches.&rdquo;</em></li>
+</ul>
+<p>One claim sits alongside those caveats, and it is the one the critics have concentrated on: that <em>&ldquo;scale, alignment and cross-domain reasoning may outweigh domain-specific tuning as determinants of medical competency for particular tasks,&rdquo;</em> with implications for <em>&ldquo;procurement, reimbursement and regulatory oversight.&rdquo;</em></p>
+<h3 class="subsection">2.2 · How each system was tested</h3>
+<p>The frontier models were driven through public APIs, at fixed settings and with web search switched on. The two clinical products were used by hand through their browser interfaces, because, as the paper states, they lack public application programming interfaces.</p>
+<figure class="paper-figure"><img src="images/two-arms_v0.8.svg" width="980" height="586" alt="How the same questions were put to each system. The same 100 physician questions were put to three frontier models through their APIs and to two clinical products through their web interfaces. Five conditions differed between the two routes. Every answer was rated by three blinded clinicians. The underlying model of each clinical product was undisclosed during the testing window."><figcaption>How the same questions were put to each system. The two routes differed in five conditions; the figure names them.</figcaption></figure>
+<p>MedQA and HealthBench ran separately, on 500 questions each, across five systems rather than six, and were graded automatically rather than by clinicians.</p>
+<h3 class="subsection">2.3 · What the study&rsquo;s published code shows</h3>
+<p>The study&rsquo;s evaluation code is published under AGPL-3.0 [4]. The pipeline drives the three frontier models only: OpenEvidence, UpToDate Expert AI and Google AI Overview are registered in the code as manual-import-only, their answers were collected by hand and read in from files, and the generation code raises an error if asked to query them. The facts below describe how the frontier models were run.</p>
+<p>A full read of the roughly 2,500-line pipeline adds three facts the paper does not state.</p>
+<ul>
+<li><strong>No system prompt, persona or clinical framing was sent to any of the three frontier models.</strong> Each generation call carried the raw benchmark question and nothing else.</li>
+<li><strong>No PubMed, literature, retrieval or citation-checking integration of any kind</strong> is present.</li>
+<li><strong>No medical model variants or health-specific API features</strong> were used.</li>
+</ul>
+<aside class="panel-view" role="note" aria-label="Bursera's own view"><div class="pv-head"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#0F172A" stroke="#C9A33D" stroke-width="6"/><text x="50" y="72" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="66" fill="#C9A33D">B</text></svg><span class="pv-label">BURSERA&rsquo;S TAKE — WHAT THE TWO ROUTES DO AND DO NOT SHARE<span class="pv-kicker">Bursera&rsquo;s own view &mdash; not the record</span></span></div><div class="pv-body"><p>The study&rsquo;s authors name the access consequence themselves: browser access <em>&ldquo;limited sample size and may have introduced differences in hidden prompts, retrieval behavior and output formatting.&rdquo;</em> Abel Torres-Espin went further into the mechanism on publication day — the clinical tools are queried through the interface while the frontier models go through the API, and <em>&ldquo;because the Clinical AI is queried through the interface, there are many extra layers that direct API calls don&rsquo;t have (e.g., hidden prompts)&rdquo;</em> [5]. So a difference in the scores could come from the model, or from the retrieval corpus, the interface, the hidden instructions, the safety policy, or the output formatting.</p>
+<p>On the other side, the frontier models were tested with nothing attached: no role, no clinical framing, no medical corpus, only the model and a generic web search the model could decline to use. Retrieval over a curated medical corpus is the proposition both clinical products sell, and both vendors have spent years and real money on it — OpenEvidence licenses NEJM, JAMA and Cochrane; Wolters Kluwer says UpToDate is written and maintained by more than 7,600 physician contributors and editors [20].</p>
+<p>Both products also support multi-turn refinement and one of them reads the chart. The study put one question, once, with no files, no patient context and no follow-up. Peter Bonis of Wolters Kluwer made the related point about what the benchmarks reward: they measure test-taking rather than evidence appraisal or safe use in workflow [7]. David Talby&rsquo;s version is that all three benchmarks test one capability, three times [6].</p>
+<p>On why the vendors&rsquo; investment did not show up in the scores, the study&rsquo;s authors are explicit that they cannot say: <em>&ldquo;it is impossible to definitively assess a mechanistic understanding for their underperformance.&rdquo;</em></p></div></aside>
+
+</section>
+
+<section class="section">
+<h2 class="section-title" id="s3" data-nav-label="The arguments">3 · What the arguments are about</h2>
+<p>The dispute began on publication day and has not resolved. Three separate arguments are running at once, and they are often confused for each other. A dated account of how it unfolded is in the appendix.</p>
+<h3 class="subsection">3.1 · <em>The research doesn&rsquo;t support the headline</em></h3>
+<p>This started within hours, among researchers and clinicians who do not sell either product, though several work in clinical AI. Six distinct objections are in play. They are not all compatible with each other, nobody has adjudicated between them, and this piece does not either.</p>
+<p><strong>The frontier models and the clinical products were not accessed the same way.</strong> Abel Torres-Espin, on publication day [5]: the clinical tools were queried through their interfaces while the frontier models went through APIs, and <em>&ldquo;because the Clinical AI is queried through the interface, there are many extra layers that direct API calls don&rsquo;t have (e.g., hidden prompts).&rdquo;</em> He also noted that search was enabled on the frontier side while both public benchmarks sit online. The study&rsquo;s authors state the same limitation themselves.</p>
+<p><strong>The three benchmarks do not test what the title claims.</strong> David Talby, CTO of John Snow Labs, published the fullest version on 12 July [6]. <em>&ldquo;The study is fine. The methods are reasonable and the statistics are careful. The problem is the title. It states a general conclusion that the study did not test and does not support.&rdquo;</em> All three benchmarks test one capability, in his words <em>&ldquo;answering a single-turn, general medical question, in isolation, with no patient record attached.&rdquo;</em> Real clinical work, in his list, is <em>&ldquo;summarizing a chart, drafting a discharge instruction, extracting a tumor stage from a pathology report, reconciling a medication list, catching an error in a note, turning a clinician&rsquo;s question into a database query.&rdquo;</em> Talby competes in clinical AI and markets his own benchmark results in the same piece.</p>
+<p><strong>The differences are too small to carry the conclusion.</strong> Torres-Espin again, and he is the only commentator to have made this point: the RCQ scale is ordinal, 1 to 4, and <em>&ldquo;the difference between all models is less than 0.5 point in such scale.&rdquo;</em> Sunita Mohanty reads the numbers as the products tying the frontier models on knowledge, harm and hallucination and losing on readability, which she calls <em>&ldquo;a UX observation, not a verdict on clinical usefulness&rdquo;</em> [14].</p>
+<p><strong>UpToDate Expert AI&rsquo;s refusals may be correct behaviour rather than a failure.</strong> Max Topaz took its 19% refusal rate and read it as a safety feature [15]. Wolters Kluwer&rsquo;s chief medical officer makes the stronger version of the same argument, in §2.2.</p>
+<p><strong>The paper could not identify which models the products run on.</strong> Its authors say so, and Sergei Polevikov pressed the point publicly [16].</p>
+<p><strong>Peer review had already caught some of it.</strong> Gilles Frydman read the published peer-review file and found reviewers had flagged the single-judge grading, which became a three-model panel, and a missing safety analysis, which was added [17].</p>
+<p>Sources 14 through 17 were retrieved agentically rather than read at the post; the URLs and dates are held and the wording is as retrieved.</p>
+</section>
+
+<section class="section">
+<h2 class="section-title" id="s4" data-nav-label="The parties">4 · Where the parties stand</h2>
+<h3 class="subsection">4.1 · The vendors&rsquo; answer — <em>two companies, two different responses</em></h3>
+<p>The retraction letter and the on-record responses in this section come from Giles Bruce&rsquo;s reporting for <em>Becker&rsquo;s Hospital Review</em> [7]. The letter itself has not been published.</p>
+<p><strong>OpenEvidence disputed the paper itself.</strong> The product is free and ad-funded, valued at around $12B, and marketed on how many physicians use it [20]. It responded publicly on 13 June alleging methodological flaws and an undisclosed conflict of interest, and on 15 June wrote to <em>Nature Medicine</em> demanding retraction, a public apology, and an independent review [7]. Its stated ground is contamination: MedQA and HealthBench are public and may sit in the frontier models&rsquo; training data. Peer reviewers raised the same concern during review, and the study&rsquo;s authors state it as a limitation. The company went on to back a counter-study, launch a product, and publicise a second study measuring which tool physicians choose. Both are compared in the appendix.</p>
+<p>The company&rsquo;s account of the conflict is sharper than the disclosure question. In its 13 June thread it said the study&rsquo;s authors run a competing in-house medical AI at their hospital, asked OpenEvidence for API access to power it including rights to build a competing product, and were declined [18]. Farah Deshmukh, a physician writing on 15 June, reported the same three objections independently — contamination, a rubric she says favoured the general models&rsquo; communication style, and the API-access allegation [21]. It remains OpenEvidence&rsquo;s characterisation and it is unadjudicated. On the disclosure itself, the paper carries a competing-interests declaration that includes consulting for Google by the senior author, and Google&rsquo;s Gemini led two of the three benchmarks, so &ldquo;undisclosed&rdquo; is contested rather than established. That declaration has not been read in the primary back matter for this piece; it is reported by Talby, who read the paper, and reflected in the published record.</p>
+<p><strong>Wolters Kluwer disputed the measurement.</strong> UpToDate is a subscription business, roughly 80% enterprise, sold on editorial rigour [20]. Peter Bonis, chief medical officer of Wolters Kluwer Health, told <em>Becker&rsquo;s</em> the study <em>&ldquo;confused clinical quality and complete-sounding answers,&rdquo;</em> and on the refusal rate argued that the paper counted declining to answer as a deficit without establishing whether those refusals were appropriate. In clinical decision support, he said, declining an underspecified or risky prompt <em>&ldquo;may be the safer behavior.&rdquo;</em> No retraction demand, no counter-study — one statement from its chief medical officer, one LinkedIn post, and a validation framework the company had already published.</p>
+<h3 class="subsection">4.2 · The study&rsquo;s authors — <em>they have not moved</em></h3>
+<p>Eric Oermann, the senior and corresponding author, told <em>Becker&rsquo;s</em> on 16 June that the team stands behind the work: <em>&ldquo;We continue to stand by our study and its results.&rdquo;</em> [7] Their substantive answer to the contamination charge is in the paper itself. They designate the blinded clinician evaluation as their primary evidence precisely because its 100 questions were written for the study and appear in no public benchmark, so contamination cannot reach them — and the frontier models led there too.</p>
+<p>That 16 June quote is the last public statement from the study&rsquo;s team that this piece has found. Searches on Vishwanath, Oermann and each of the other 14 co-authors surfaced no post-publication interview, podcast or further post, and neither vendor has filed the Matters Arising the journal has pointed them toward. Absence of a later statement is not proof of silence, but it is what the record shows.</p>
+<h3 class="subsection">4.3 · <em>Nature Medicine</em>&rsquo;s position — <em>use the process</em></h3>
+<p>Chief editor João Monteiro declined to address the retraction demand directly, said the journal <em>&ldquo;welcomes scientific debate,&rdquo;</em> and pointed to its formal Matters Arising process [8], where concerns are assessed editorially alongside a response from the original authors. As of the date of this piece, no Matters Arising submission from either vendor has been published.</p>
+
+</section>
+
+<section class="section">
+<h2 class="section-title" id="s5" data-nav-label="Final take">Final take</h2>
+<aside class="panel-view" role="note" aria-label="Bursera's own view"><div class="pv-head"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#0F172A" stroke="#C9A33D" stroke-width="6"/><text x="50" y="72" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="66" fill="#C9A33D">B</text></svg><span class="pv-label">BURSERA&rsquo;S FINAL TAKE - MORE QUESTIONS THAN ANSWERS<span class="pv-kicker">Bursera&rsquo;s own view &mdash; not the record</span></span></div><div class="pv-body"><p><strong>The measured differences are smaller than the argument about them. The paper reports the gap two ways, and the two readings do not agree.</strong> All six systems fall inside 0.45 points on a four-point scale, and Abel Torres-Espin was the one commentator to say so plainly. The paper&rsquo;s second measure, which adjusts for how harshly each rater scored, makes the separation larger rather than smaller, and nobody in the public argument has picked it up. Anyone leaning on the small spread — including us, above — has to carry the other reading too. What both agree on is that the two clinical products sit in the same statistical tier as a free Google result, which is the study&rsquo;s own finding. The paper is careful about all of it. The headline is not, and almost none of the coverage has been.</p>
+<p><strong>Several things could account for the products&rsquo; extra investment not showing up in these tests, and this study cannot choose between them.</strong> The setup could be missing value that sits in the physician&rsquo;s experience of the tool. The RCQ questions were single-shot, which may suit a general-purpose answer. The features the commercial products add could be reducing the usefulness of a response to this particular kind of question. Something else again. We do not know which, and neither does the paper — its authors say so.</p>
+<p><strong>The strongest version of the counter-argument is that the test matches the reality.</strong> A physician with ninety seconds between patients may well ask exactly one question and take the first answer, and a browser interface is a real way these products get used. If that is the modal use, then a single-turn test is the right test and the products lost it fairly. That is the argument to beat, and it deserves a study of its own.</p>
+<p><strong>Both products appear to be built so the model underneath can be changed.</strong> Wolters Kluwer says so directly: UpToDate Expert AI runs on FAB, an internal platform the company describes as <em>&ldquo;model agnostic&rdquo;</em> and <em>&ldquo;designed for model pluralism,&rdquo;</em> built to <em>&ldquo;select and adapt the right model for the right task&rdquo;</em> [19]. OpenEvidence has not said what it runs on. Its patents cover retrieval and extraction rather than any language model, an interviewer&rsquo;s account of a conversation with its chief technology officer describes the company as building product value independent of the underlying model, and in a trade-secret suit it identified its system prompt as its most valuable secret [20].</p>
+<p><strong>Wolters Kluwer moved UpToDate Expert AI onto newer OpenAI models before the paper published.</strong> On 3 June 2026, nine days before publication and after the study&rsquo;s access window had closed, the company announced it had expanded an existing collaboration with OpenAI and moved the product onto OpenAI&rsquo;s latest models [9]. OpenAI was already in the stack: the same release says Wolters Kluwer has <em>&ldquo;long leveraged leading foundational models as part of its model agnostic Expert AI strategy.&rdquo;</em> What changed was the model generation, and the company frames the move as being about cost and speed as well as quality, reporting that it <em>&ldquo;significantly increase[d] clinical relevance.&rdquo;</em></p>
+<p><strong>If the model underneath is interchangeable, and the frontier models perform comparably to each other, then the comparison worth running is of the whole product experience</strong> — the context the tool brings to the conversation, the interface, the quality of the prompt, the ability to focus research on specialized content, and the workflow wrapped around a complex case. Farah Deshmukh, a physician, reached a version of this from the clinician&rsquo;s side and put it more usefully than we can: <em>&ldquo;The tool doesn&rsquo;t determine the quality. Your judgment applied to the output does.&rdquo;</em> [21]</p>
+<p>One trial has already tried the comparison and has not reported. PRECISE put internal medicine physicians to work on real cases with either OpenEvidence or ChatGPT and had six blinded raters score them: 27 participants, one session each, on GPT-4, completed in December 2025 [10]. The published literature answers a different question, whether the assistance helps at all rather than which tool is better [11]. The four studies people cite in this argument are compared in the appendix, and none of them is the comparison.</p></div></aside>
+
+</section>
+
+
+</main>
+
+<h2 class="support-break" id="appendix" data-nav-label="Appendix">Appendix</h2>
+<div class="support-section"><div class="support-inner">
+<h3 class="subsection appx" id="app-a">A &middot; Sources</h3>
+<p>The main documents behind this piece. Not a full bibliography — these are the ones a reader would want to check.</p>
+<p><strong>The study and its materials</strong></p>
+<ol>
+<li><em>Nature Medicine</em> journal metrics, 2026 — impact factor 52.5, against 56.1 for <em>Nature</em>. Aggregator-reported.</li>
+<li>MedQA (Jin et al., USMLE-style question set) and HealthBench (OpenAI, 2025) — the two public benchmarks used.</li>
+<li>Vishwanath K, Alyakin A, Ghosh M, et al. &ldquo;General-purpose large language models outperform specialized clinical AI tools on medical benchmarks.&rdquo; <em>Nat Med</em> 2026;32(7):2405–2409. <a href="https://doi.org/10.1038/s41591-026-04431-5">doi.org/10.1038/s41591-026-04431-5</a>. Read in full via PubMed Central; the back matter, including the competing-interests declaration, is not in the PMC text and has not been read. A companion Research Briefing appears in the same issue at 2364–2365 (<a href="https://doi.org/10.1038/s41591-026-04457-9">10.1038/s41591-026-04457-9</a>).</li>
+<li>The study&rsquo;s evaluation pipeline, AGPL-3.0 — <a href="https://github.com/nyuolab/clinical-llm-benchmarks">github.com/nyuolab/clinical-llm-benchmarks</a>. Read in full.</li>
+</ol>
+<p><strong>The public argument</strong></p>
+<ol start="5">
+<li>Abel Torres-Espin, LinkedIn, 12 June 2026 — <a href="https://www.linkedin.com/posts/abel-torres-espin-223170145_general-purpose-large-language-models-outperform-activity-7471287669961019392-e5wf">the post</a>. Retrieved agentically; not read at the post.</li>
+<li>David Talby, &ldquo;When the Title Outruns the Study,&rdquo; 12 July 2026 — <a href="https://www.talby.com/p/when-the-title-outruns-the-study">talby.com</a>. Read in full.</li>
+<li>Giles Bruce, &ldquo;ChatGPT, Gemini, Claude outperform clinical AI tools: Study,&rdquo; <em>Becker&rsquo;s Hospital Review</em>, 16 June 2026 — <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/chatgpt-gemini-claude-beat-clinical-ai-tools-study/">the report</a>. Read in full. Source for the retraction letter and for the on-record comments from Oermann, Bonis and Monteiro.</li>
+<li><em>Nature Medicine</em> Matters Arising guidelines — <a href="https://www.nature.com/nm/submission-guidelines/matters-arising">submission guidelines</a>.</li>
+</ol>
+<p><strong>The products</strong></p>
+<ol start="9">
+<li>&ldquo;Wolters Kluwer and OpenAI expand enterprise AI collaboration,&rdquo; 3 June 2026 — <a href="https://www.wolterskluwer.com/en/news/wolters-kluwer-and-openai-expand-enterprise-ai-collaboration-to-advance-trusted-expert-ai">Wolters Kluwer newsroom</a>. Read in full.</li>
+</ol>
+<p><strong>The other studies cited in the argument</strong></p>
+<ol start="10">
+<li>PRECISE — &ldquo;Physician Response Evaluation With Contextual Insights vs. Standard Engines,&rdquo; Montefiore Medical Center with Harvard Beth Israel Deaconess, <a href="https://clinicaltrials.gov/study/NCT07037940">NCT07037940</a>. Registry record read in full: status Completed, 27 participants, completed 30 December 2025, six blinded raters, no results posted. No publication exists.</li>
+<li>Goh E, Gallo RJ, Strong E, et al. &ldquo;GPT-4 assistance for improvement of physician performance on patient care tasks: a randomized controlled trial.&rdquo; <em>Nat Med</em> 2025;31(4):1233–1238. <a href="https://doi.org/10.1038/s41591-024-03456-y">doi.org/10.1038/s41591-024-03456-y</a>. Cited, not read for this piece.</li>
+<li>&ldquo;Real-POCQi&rdquo; — preprint, 27 June 2026, <a href="https://arxiv.org/abs/2606.28960">arXiv:2606.28960</a>. 620 queries drawn from OpenEvidence&rsquo;s platform, 149 physicians across 36 states. Backed by OpenEvidence. Covered by STAT News, 9 July 2026. Not read for this piece; figures are second-hand.</li>
+<li>NOHARM — ARISE clinical AI research network, led by Stanford and Harvard physicians, July 2026. Reached the public through an <a href="https://www.prnewswire.com/news-releases/physicians-choose-openevidence-over-every-other-ai-chatbot-combined-in-independent-stanford-harvard-study-of-clinical-ai-302829633.html">OpenEvidence press release</a>. Figures are vendor-reported. Not read for this piece.</li>
+</ol>
+<p><strong>The commentators quoted in §3.1</strong></p>
+<p>All four were retrieved agentically. The URLs and dates are held; none was read at the post.</p>
+<ol start="14">
+<li>Sunita Mohanty, LinkedIn, 17 June 2026.</li>
+<li>Maxim Topaz, LinkedIn, <a href="https://www.linkedin.com/posts/maxtopaz_a-new-paper-in-nature-medicine-reported-that-activity-7472253959492182016-6BZB">15 June 2026</a>.</li>
+<li>Sergei Polevikov, &ldquo;OpenEvidence Goes Hippocratic AI,&rdquo; <em>AI Health Uncut</em>, <a href="https://www.fixhealth.ai/p/openevidence-goes-hippocratic-ai">23 June 2026</a>.</li>
+<li>Gilles Frydman, LinkedIn, 14 June 2026, summarising the paper&rsquo;s published peer-review file.</li>
+</ol>
+<p><strong>Company statements</strong></p>
+<ol start="18">
+<li>OpenEvidence (@EvidenceOpen), public thread, 13 June 2026, carrying the conflict-of-interest allegation. Reached this piece through a secondary aggregation quoted by Polevikov [16], not from the company&rsquo;s own feed; independently reported by Deshmukh [21]. The company&rsquo;s characterisation, unadjudicated.</li>
+<li>&ldquo;Wolters Kluwer accelerates AI leadership with AI Center of Excellence and &lsquo;FAB&rsquo; platform,&rdquo; 7 April 2026 — <a href="https://www.wolterskluwer.com/en/news/wolters-kluwer-accelerates-ai-leadership-with-ai-center-of-excellence-and-fab-platform">Wolters Kluwer newsroom</a>. Read in full. Source for &ldquo;model agnostic,&rdquo; &ldquo;designed for model pluralism,&rdquo; and &ldquo;the right model for the right task,&rdquo; and for the statement that FAB powers UpToDate Expert AI.</li>
+<li>Product descriptions, feature lists, EHR integrations, adoption and valuation figures for both products — each vendor&rsquo;s own documentation, hospital and university library guides, and trade press. Vendor-sourced or engine-collected; not independently verified.</li>
+</ol>
+<p><strong>Read after the first draft was written</strong></p>
+<ol start="21">
+<li>Farah Deshmukh MD MPH, &ldquo;Journal Club: That <em>Nature Medicine</em> Paper on ChatGPT vs. OpenEvidence,&rdquo; <em>Algorithms &amp; Adipose</em>, <a href="https://rethinkhealthmd.substack.com/p/journal-club-that-nature-medicine">15 June 2026</a>. Read in full. A physician&rsquo;s walk through the same paper three days after publication, carrying OpenEvidence&rsquo;s three objections independently of the aggregation route, and reaching the operator-skill point before this piece did.</li>
+</ol>
+
+<p><strong>Word count: 3826 in the body, 1,500 in the appendix.</strong> The read is the shortest it has been since v0.4.</p>
+
+
+<h3 class="subsection appx" id="app-b">B &middot; The other studies in play</h3>
+<p>Four other studies get cited in this argument, by one side or another.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">Study</th>
+<th scope="col">What it measured</th>
+<th scope="col">Who ran it</th>
+<th scope="col">What it found</th>
+<th scope="col">Read for this piece</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Real-POCQi</strong> — preprint, 27 June 2026 [12]</td>
+<td>Answer quality on 620 real queries drawn from OpenEvidence&rsquo;s own platform, graded by 149 physicians across 36 states</td>
+<td>Backed by OpenEvidence</td>
+<td>OpenEvidence ahead on all five dimensions measured, by 25–39 percentage points</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>NOHARM</strong> — July 2026 [13]</td>
+<td>Which tool physicians <em>reach for</em>, across 101 board-certified US physicians, alongside a large annotation exercise</td>
+<td>ARISE, a clinical AI research network led by Stanford and Harvard physicians; publicised by OpenEvidence</td>
+<td>Physicians chose OpenEvidence in 22.3% of responses, more than every other AI tool combined</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>PRECISE</strong> — completed 30 December 2025 [10]</td>
+<td>Whether physicians reason better with OpenEvidence or with ChatGPT, on real de-identified cases, six blinded raters</td>
+<td>Montefiore Medical Center, with Harvard Beth Israel Deaconess</td>
+<td>Unknown. No results posted</td>
+<td>Registry record, read in full</td>
+</tr>
+<tr>
+<td><strong>Goh et al.</strong> — <em>Nature Medicine</em>, 2025 [11]</td>
+<td>Whether GPT-4 assistance improves physician performance on patient-care tasks</td>
+<td>Academic, multi-site</td>
+<td>Assistance improved performance</td>
+<td>Citation only</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Real-POCQi and NOHARM are not the same study.</strong> One asks whether OpenEvidence&rsquo;s answers are better. The other asks which tool physicians pick. A tool can win the second and lose the first. Both reached the public through OpenEvidence, and both figures above come from vendor or vendor-promoted material.</p>
+<p>PRECISE is the only one of the four that puts a physician to work on a real case with one tool against a physician working it with the other. It enrolled 27 participants across Montefiore and Harvard Beth Israel Deaconess, ran on GPT-4, completed on 30 December 2025, and has posted no results.</p>
+<h3 class="subsection appx" id="app-c">C &middot; The two clinical products</h3>
+<p>The two products take different approaches to serving physicians. The descriptions below come from each vendor&rsquo;s own documentation and from hospital and university library guides [20].</p>
+<p><strong>OpenEvidence is a platform, not an ask bar.</strong> Alongside the ask bar it ships ambient visit documentation, a per-patient record area, document upload, coding suggestions, clinical-trial matching, a longer-running agent mode for multi-step questions, and a voice interface. It is embedded in Epic at Sutter Health, Mount Sinai and Cedars-Sinai, and at Cedars-Sinai it reads the chart, linking literature to a patient&rsquo;s recorded procedures, comorbidities, medications and allergies.</p>
+<p><strong>UpToDate Expert AI is scoped more narrowly.</strong> It is an optional feature inside UpToDate, a subscription clinical reference that the vendor says is used by more than three million clinicians and is written and maintained by over 7,600 physician contributors and editors. Expert AI is a button beside the standard UpToDate search box, running conversational queries against the whole UpToDate corpus and nothing else, not the open internet. It does not read the chart, and says so: it is <em>&ldquo;not intended for use with personal data, including protected health information.&rdquo;</em> Instead it prompts the clinician to type the missing context. It supports follow-up questions, with a worked example in the vendor&rsquo;s own guide.</p>
+<p>Neither company has published the version identity of the product that was tested.</p>
+<h3 class="subsection appx" id="app-d">D &middot; How the dispute unfolded</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">Date</th>
+<th scope="col">What happened</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sept 2025 – Feb 2026</td>
+<td>The study&rsquo;s access window. OpenEvidence queried September 2025 and February 2026; UpToDate Expert AI November 2025 and February 2026; the three frontier models February 2026</td>
+</tr>
+<tr>
+<td>30 Dec 2025</td>
+<td>PRECISE, the one head-to-head trial of physicians using either tool, completes at Montefiore and Harvard Beth Israel Deaconess. No results have been posted [10]</td>
+</tr>
+<tr>
+<td>7 Apr 2026</td>
+<td>Wolters Kluwer describes FAB, the <em>&ldquo;model agnostic&rdquo;</em> platform it says powers UpToDate Expert AI [19]</td>
+</tr>
+<tr>
+<td>3 Jun 2026</td>
+<td>Wolters Kluwer announces it has moved UpToDate Expert AI onto OpenAI&rsquo;s latest models — nine days before the paper, and after the study&rsquo;s access window had closed [9]</td>
+</tr>
+<tr>
+<td><strong>12 Jun 2026</strong></td>
+<td><strong>The paper publishes.</strong> Abel Torres-Espin posts the first detailed methodological objection the same day [5]</td>
+</tr>
+<tr>
+<td>13 Jun 2026</td>
+<td>OpenEvidence responds publicly, alleging methodological flaws and an undisclosed conflict of interest [18]</td>
+</tr>
+<tr>
+<td>14 Jun 2026</td>
+<td>Gilles Frydman posts a reading of the published peer-review file [17]</td>
+</tr>
+<tr>
+<td>15 Jun 2026</td>
+<td>OpenEvidence writes to <em>Nature Medicine</em> demanding retraction, an apology and an independent review [7]. Farah Deshmukh publishes an independent walk-through the same day [21]</td>
+</tr>
+<tr>
+<td>15 Jun 2026</td>
+<td>Max Topaz reads UpToDate Expert AI&rsquo;s 19% refusal rate as a safety feature [15]</td>
+</tr>
+<tr>
+<td>16 Jun 2026</td>
+<td><em>Becker&rsquo;s</em> reports the retraction demand, and carries Oermann, Bonis and Monteiro on the record [7]</td>
+</tr>
+<tr>
+<td>17 Jun 2026</td>
+<td>Sunita Mohanty reads the scores as a tie on knowledge and a loss on readability [14]</td>
+</tr>
+<tr>
+<td>23 Jun 2026</td>
+<td>Sergei Polevikov presses on the undisclosed base models [16]</td>
+</tr>
+<tr>
+<td>27 Jun 2026</td>
+<td>Real-POCQi appears as a preprint, backed by OpenEvidence, reporting the opposite result [12]</td>
+</tr>
+<tr>
+<td>12 Jul 2026</td>
+<td>David Talby publishes the fullest version of the methodological critique [6]</td>
+</tr>
+<tr>
+<td>20 Jul 2026</td>
+<td>NOHARM reaches the public through an OpenEvidence press release [13]</td>
+</tr>
+<tr>
+<td>As of this piece</td>
+<td>No Matters Arising submission from either vendor has been published</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="subsection appx" id="app-e">E &middot; Terms</h3>
+<p><strong>Benchmark.</strong> A fixed set of questions with agreed answers or grading rules, used to compare systems. Its value depends entirely on whether the questions resemble the work.</p>
+<p><strong>MedQA.</strong> A public set of USMLE-style multiple-choice questions. Public means the questions may sit in a model&rsquo;s training data.</p>
+<p><strong>HealthBench.</strong> A newer public set of free-text prompts graded against rubrics, built by OpenAI.</p>
+<p><strong>Contamination.</strong> When a benchmark&rsquo;s questions appear in a model&rsquo;s training data, so a high score reflects memory rather than reasoning. Hard to detect and hard to rule out.</p>
+<p><strong>Retrieval-augmented generation.</strong> Answering by first searching a document collection and then writing from what was found, rather than from the model alone. It is the proposition both clinical products sell.</p>
+<p><strong>Matters Arising.</strong> <em>Nature</em>&rsquo;s formal channel for challenging a paper it has published. A submission is assessed editorially and, if it runs, appears alongside a reply from the original authors. It is slower than a public dispute and it is the route the journal has pointed both vendors toward.</p>
+<p><strong>Ordinal scale.</strong> A rating scale, here 1 to 4, where the order is meaningful but the distances between points are not. It is why a 0.45-point gap on a four-point scale is harder to interpret than a 0.45-point gap on a measured quantity.</p>
+<h3 class="subsection appx" id="app-f">F &middot; What would help clear things up</h3>
+<p>Six things the public record does not settle. Answering them would not decide the argument, but each would remove a reason the argument keeps circling.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">Open question</th>
+<th scope="col">Who holds the answer</th>
+<th scope="col">What answering it would change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Which access run supplies the reported results</td>
+<td>The study&rsquo;s authors</td>
+<td>Both clinical products were queried twice, months apart. The paper does not say which run the reported numbers come from, or whether the runs were combined. The published code cannot answer it either — it stamps when a file was imported, not when the tool was queried</td>
+</tr>
+<tr>
+<td>Which web search the frontier models were given, and what it could see</td>
+<td>The study&rsquo;s authors</td>
+<td>Search was switched on, but the paper never says which tool or what it could reach. The code shows a generic, un-scoped web search with no allowed- or blocked-domain list. If it could reach the benchmark questions, that alone could explain part of the gap</td>
+</tr>
+<tr>
+<td>Whether UpToDate Expert AI&rsquo;s 19% refusals were appropriate</td>
+<td>The study&rsquo;s authors, or anyone who re-reads those responses</td>
+<td>Turns the clearest product difference in the study either into a design choice working as intended, or into a real deficit. Wolters Kluwer has argued the first; nobody has published the re-read</td>
+</tr>
+<tr>
+<td>Which version of UpToDate Expert AI was evaluated</td>
+<td>Wolters Kluwer</td>
+<td>The product moved to newer models nine days before publication. Without version identity, nobody can say how much of what was tested still ships</td>
+</tr>
+<tr>
+<td>What model OpenEvidence runs on</td>
+<td>OpenEvidence</td>
+<td>Every statement on this in the public argument is inference, including the ones above</td>
+</tr>
+<tr>
+<td>What the counter-study&rsquo;s methods bear</td>
+<td>Reading the Real-POCQi preprint</td>
+<td>It reports the opposite result from the same kind of evidence, and its queries came from OpenEvidence&rsquo;s own platform — the mirror image of this study&rsquo;s question source</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two further gaps are nobody&rsquo;s to answer. The paper&rsquo;s Extended Data was not retrieved for this piece, and its competing-interests declaration sits in back matter that the PubMed Central full text does not carry.</p>
+
+</div></div>
+
+<section class="prov" id="provenance" aria-labelledby="prov-h">
+<div class="prov-inner">
+  <p class="prov-eyebrow">Research Provenance</p>
+  <div class="prov-body">
+<h2 class="prov-title">Provenance</h2>
+<p><strong>Owner.</strong> Hugh McCutchen, Bursera.</p>
+<p><strong>Contributors.</strong> Hugh McCutchen, direction and editing across twenty-two versions. Claude Opus 5, drafting, verification and adjudication. Claude Sonnet and GPT-5.4 running in Perplexity, as blind reviewers who never saw each other&rsquo;s returns.</p>
+<p><strong>How it began.</strong> Written from scratch. The first version was drafted on a factual base assembled before any prose existed: the <em>Nature Medicine</em> paper read in full through PubMed Central, its published evaluation pipeline read line by line, and five AI-engine research dossiers landed verbatim and adjudicated against each other. Two of those dossiers carried the public argument, one carried the vendor platform picture, one the product feature picture, and one the surrounding literature, which was largely deferred.</p>
+<p><strong>Type of writing.</strong> Inquiry record. It reports a dispute and states where Bursera lands, in marked panels, without resolving the dispute.</p>
+<p><strong>Process.</strong> Mixed — exploratory where the record was thin, execution once the facts were settled.</p>
+<p><strong>Tools.</strong> Claude Opus 5 · Claude Sonnet · GPT-5.4 in Perplexity · Perplexity Deep Research and Computer mode · Gemini Deep Research · PubMed and PubMed Central · ClinicalTrials.gov.</p>
+<p><strong>Validation.</strong> Eight passes. Four were run by reviewers outside the drafting — two blind red-team rounds, a form study, and a separate check of the chronology.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">Pass</th>
+<th scope="col">When</th>
+<th scope="col">Who ran it</th>
+<th scope="col">What it found</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary extraction</strong></td>
+<td>Before drafting</td>
+<td>Claude Opus 5</td>
+<td>The paper read in full through PubMed Central. Every number in this piece traces to a sentence in it. The back matter is not in the PMC text and is still unread</td>
+</tr>
+<tr>
+<td><strong>Code audit</strong></td>
+<td>Before drafting</td>
+<td>Claude Sonnet subagent, 2,494 lines read in full</td>
+<td>Three facts the paper does not state. Also that the two clinical products never enter the evaluation code at all — they are manual-import-only, which scopes every code claim in §1.5</td>
+</tr>
+<tr>
+<td><strong>Source verification</strong></td>
+<td>Second session</td>
+<td>Claude Opus 5, against primaries</td>
+<td>Confirmed the <em>Becker&rsquo;s</em> reporting and the Talby piece verbatim. <strong>Falsified one of this project&rsquo;s own earlier findings</strong> — an internal document had recorded that Wolters Kluwer said nothing, when its chief medical officer had responded on the record in an article the same document already cited</td>
+</tr>
+<tr>
+<td><strong>Blind red team, round one</strong></td>
+<td>Second session</td>
+<td>Claude Sonnet and GPT-5.4 in Perplexity, separate threads, neither shown the other&rsquo;s return</td>
+<td>One blocking factual error. And, written near-identically by both without contact, the structural finding that the piece planted its conclusion in the opening and hedged it several pages later</td>
+</tr>
+<tr>
+<td><strong>Blind red team, round two</strong></td>
+<td>Third session</td>
+<td>The same two engines, on a prompt rebuilt to demand a retrieval declaration up front</td>
+<td>That the paper&rsquo;s second and harsher measure of the gap had been sitting in this project&rsquo;s own verified extraction and had never reached the draft. And that two of three phrases quoted from one vendor release actually come from a different release by the same company</td>
+</tr>
+<tr>
+<td><strong>Form study</strong></td>
+<td>Third session</td>
+<td>Claude Sonnet, eight published articles opened</td>
+<td>No published piece was found that combines study explanation, dispute reportage, an adjacent-studies survey and marked opinion. That is why this one orients its reader in the opening rather than assuming a familiar shape</td>
+</tr>
+<tr>
+<td><strong>Chronology validation</strong></td>
+<td>Third session</td>
+<td>Claude Sonnet subagent, 13 rows against the evidence base</td>
+<td>Five defects, all corrected. The largest: an interval stated as four months that the evidence supports only as three to four, because the access month is recorded without a day</td>
+</tr>
+<tr>
+<td><strong>Mechanical sweep</strong></td>
+<td>Before handoff</td>
+<td>Scripted</td>
+<td>Citation integrity — all twenty-one sources both used and defined, none orphaned. Register, banned-pattern and whitespace checks</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Two of the red team&rsquo;s own blocking calls were rejected</strong>, and rejecting them mattered as much as accepting the rest: one rested on a trial status that the registry record contradicts, and one on arithmetic that reconciles once refusals are counted as items rather than as ratings. A reviewer that cannot open a source produces findings about its own session rather than about the work, which is why round two demanded a retrieval declaration before any finding.</p>
+<p><strong>What was not checked, and should be.</strong> The figure has never been reviewed outside Bursera. All three red-team passes ran on the text alone, so no independent reviewer has opened it; its three known defects were found in-house and there may be more. The paper&rsquo;s Extended Data was never retrieved. Its competing-interests declaration has not been read in the primary. Three of the four other studies in the appendix were not read. Four commentators&rsquo; posts were retrieved by an automated pass and never opened at source. Each of those is labelled where it appears.</p>
+<p><strong>Sources.</strong> Twenty-one, each labelled in the source list with whether it was read in full, retrieved by an automated pass and not read at the post, or supplied by a vendor and not independently verified. The study, its code, both vendor announcements, the <em>Becker&rsquo;s</em> reporting, the Talby piece, the trial registry record and one physician&rsquo;s journal-club post were read in full. Four commentators&rsquo; posts were retrieved but not opened at source. The product descriptions, adoption and valuation figures are vendor-sourced and unverified, and say so.</p>
+<p><strong>Depth and confidence.</strong> Deep on the study and its code, where every number traces to a primary document. Graded on the public argument, where four of the six commentators reach this piece second-hand. Weakest on the four other studies in the appendix, three of which were not read. Where the evidence runs out, the piece says so rather than closing the gap.</p>
+<p><strong>Level of work.</strong> Extensive. Twenty-four versions across two working sessions, with Hugh McCutchen reviewing and marking up every one.</p>
+<p><em>Full history and audit trail available on request.</em></p>
+  </div>
+  <p class="prov-full"><a href="provenance.html">See the full audit trail &#8594;</a>
+    <span class="prov-full-note">Every version from first draft to publication &#8212; what changed, who ran it, what was found and corrected, and what remains unverified.</span></p>
+</div>
+</section>
+
+
+<!-- LINKEDIN POSTING — share text for this piece. Never rendered.
+     Slot: share-text. Voice per SITE_DESIGN_PRINCIPLES 3 — plain, checkable, no punch-enders.
+
+A June 2026 Nature Medicine study reported that three general-purpose frontier models outscored
+OpenEvidence and UpToDate Expert AI on every benchmark it ran.
+
+Six weeks later one vendor had demanded a retraction, the other disputed the measurement, and six
+separate objections were in play — not all of them compatible with each other, and none of them
+adjudicated.
+
+We read the paper in full, its published evaluation code line by line, both vendor announcements
+and the trial registry record. Twenty-one sources, each labelled with whether it was read at
+source, retrieved by an automated pass, or supplied by a vendor and unverified.
+
+We do not settle the dispute. Where we go beyond the record and give our own view, it is marked
+on the page.
+
+https://burseraconsulting.com/nature-medicine-openevidence-uptodate/
+-->
+
+</body>
+</html>

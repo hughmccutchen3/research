@@ -1,4 +1,8 @@
-<!-- BURSBUILD-S12, renamed BURSBUILD-S20. News hub v1.1 — retitled "Updates" (from "Industry
+<!-- BURSBUILD. Carries one POINTER entry (LLM4MD, 2026-07-28) whose href is a paper on
+     the Research page rather than a story file in news/ - the piece is owned by one hub
+     (Research) and only announced here, so it is never listed twice. A pointer entry has
+     no news/ file and no provenance block of its own.
+     Earlier history: BURSBUILD-S12, renamed BURSBUILD-S20. News hub v1.1 — retitled "Updates" (from "Industry
      Updates") so the feed can carry both industry analysis and Bursera's own announcements
      (e.g. episode releases) without a framing mismatch — Hugh's call, 2026-07-27.
      CONVENTION (hold this page together):
@@ -11,10 +15,18 @@
        bottom of this file — the story file itself stays at its URL (keep-at-root).
      · On every new story: (1) prepend its <li> here, (2) update NEWS_LATEST in
        /news-flag.js to the story date, (3) update the Home color block headline.
-     · Row layout (BURSBUILD-S12b): a story's <li> carries a .news-item-main block
-       (date + headline, left) and an optional .news-update-badge (right, own href
-       to the story's #update anchor) when that story has a dated Update section.
-       .news-theme always forces to its own full-width line.
+     · Row layout (BURSBUILD 2026-07-29, option B - supersedes S12b): each <li> is a
+       block. The .news-thumb share image FLOATS right, so the meta line, headline and
+       summary wrap around it and continue underneath - the earlier flex column held a
+       gutter open that the summary could never use. THE THUMB MUST COME FIRST in source
+       order or the float does not take. The meta line carries date + category + an
+       optional .news-badge on ONE line, so a missing badge reserves no space.
+       Layout CSS is page-local in this file - see the <style> block and its note.
+     · Thumbnails live in news/images/thumb-<slug>.jpg, 264x138 (2x a 132px slot),
+       cropped to 1.91 so all rows match. Decorative: alt="" and aria-hidden, since
+       the headline link already names the destination.
+     · Short entries leave the image overhanging below the text - by design, not a bug.
+       The fix is a fuller summary, not a layout change.
      Site-page class — no PROVENANCE block. -->
 <!DOCTYPE html>
 <html lang="en">
@@ -22,20 +34,65 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Updates — Bursera Consulting</title>
-<meta name="description" content="Short analyses of AI industry news and updates from Bursera's own work — read plainly, for leaders who run LLMs in production.">
+<meta name="description" content="Our latest analysis of AI industry news, research papers, and other examples of Bursera's work &mdash; each one human-led, and published with the record of how it was made.">
 <link rel="canonical" href="https://burseraconsulting.com/news.html">
 <link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Updates — Bursera Consulting">
-<meta property="og:description" content="Short analyses of AI industry news and updates from Bursera's own work.">
+<meta property="og:description" content="Our latest analysis of AI industry news, research papers, and other examples of Bursera's work &mdash; each one human-led, and published with the record of how it was made.">
 <meta property="og:url" content="https://burseraconsulting.com/news.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=s16a">
+<link rel="stylesheet" href="styles.css?v=s18a">
 <script src="news-flag.js" defer></script>
+<style>
+/* Updates row layout, page-local (BURSBUILD 2026-07-29, option B).
+   The share image FLOATS right instead of occupying a flex column, so the meta line,
+   headline and summary all wrap around it and continue underneath. The previous flex
+   arrangement held a 132px gutter open for the full row height, which the summary could
+   never use; before that, .news-theme also carried max-width:66ch (~75% of the band).
+   The thumb must come FIRST in source order for the float to take.
+   Candidate for promotion into styles.css if it holds. */
+body.site-page .news-item{
+  display:block; overflow:hidden;
+  padding:var(--space-4) 0;
+}
+body.site-page .news-thumb{
+  float:right; width:132px; display:block; line-height:0;
+  margin:3px 0 12px var(--space-5);
+  border:1px solid var(--color-border); background:var(--white);
+}
+body.site-page .news-thumb img{ display:block; width:100%; height:auto; }
+body.site-page .news-meta{
+  display:flex; align-items:center; flex-wrap:wrap; gap:2px 10px; margin:0 0 5px;
+}
+body.site-page .news-date{ margin-bottom:0; }
+body.site-page .news-cat{
+  font-family:var(--font-mono); font-size:var(--text-label); letter-spacing:.1em;
+  text-transform:uppercase; color:var(--color-text-subtle);
+}
+body.site-page .news-badge{
+  font-family:var(--font-mono); font-size:.625rem; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:#b3261e; border:1px solid rgba(179,38,30,.45);
+  border-radius:3px; padding:1px 6px; text-decoration:none; white-space:nowrap;
+}
+a.news-badge:hover{ color:#8f1e17; border-color:#8f1e17; }
+/* block, not inline-block: line boxes must shorten around the float rather than the
+   whole element being pushed beside it */
+body.site-page .news-headline{ display:block; font-size:1.1875rem; }
+body.site-page .news-theme{ max-width:none; flex:none; display:block; margin-top:5px; }
+@media (max-width:719px){
+  body.site-page .news-thumb{ width:84px; margin-left:var(--space-4); }
+  body.site-page .news-headline{ font-size:1.0625rem; }
+}
+@media print{
+  body.site-page .news-thumb{ display:none; }
+}
+</style>
+
 </head>
 <body class="site-page">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -55,7 +112,7 @@
 
   <header class="masthead">
     <h1>Updates</h1>
-    <p class="lede">Short analyses of AI industry news, and updates from Bursera's own work. Each one takes a story worth knowing about, checks it against the primary source, and states plainly what changed for leaders who run these systems.</p>
+    <p class="lede">Our latest analysis of AI industry news, research papers, and other examples of Bursera&rsquo;s work. Each one is human-led, built on the Bursera platform, and published with the record of how it was made.</p>
   </header>
 
   <main id="main">
@@ -65,20 +122,28 @@
 
       <ol class="news-list">
         <li class="news-item">
-          <div class="news-item-main">
-            <span class="news-date">July 27, 2026</span>
-            <a class="news-headline" href="/news/the-interns-first-meeting.html">The Interns, Episode 1 &#8212; First Meeting</a>
-          </div>
-          <span class="news-update-badge">New</span>
-          <span class="news-theme">Bursera update &middot; Six interns land in a single Teams channel, and their new manager learns the team is brilliant and not remotely psychic. Generic work is the tell; the fix is handing over the one thing only he has.</span>
+          <a class="news-thumb" href="/nature-medicine-openevidence-uptodate/" tabindex="-1" aria-hidden="true"><img src="news/images/thumb-llm4md.jpg" width="264" height="138" alt="" loading="lazy"></a>
+          <p class="news-meta"><span class="news-date">July 29, 2026</span> <span class="news-cat">Clinical AI</span> <span class="news-badge">New</span> </p>
+          <a class="news-headline" href="/nature-medicine-openevidence-uptodate/"><em>Nature Medicine</em> compared the big chat models to OpenEvidence and UpToDate</a>
+          <p class="news-theme">A June 2026 <em>Nature Medicine</em> study reported that three general-purpose frontier models outscored OpenEvidence and UpToDate Expert AI on every benchmark it ran. Six weeks later one vendor had demanded a retraction, the other disputed the measurement, and six separate objections were in play &mdash; none of them adjudicated. We read the paper in full and its published evaluation code line by line.</p>
         </li>
         <li class="news-item">
-          <div class="news-item-main">
-            <span class="news-date">July 10, 2026</span>
-            <a class="news-headline" href="/news/jspace-directors-chair.html">J-space &#8212; what a team leader needs to know</a>
-          </div>
-          <a class="news-update-badge" href="/news/jspace-directors-chair.html#update">UPDATE July 12, 2026</a>
-          <span class="news-theme">Interpretability &middot; Anthropic published a way to see where a model strains while it works. The coverage called it a miracle or a monster; the paper shows better vetting, upstream.</span>
+          <a class="news-thumb" href="/reaching-the-physician/" tabindex="-1" aria-hidden="true"><img src="news/images/thumb-reaching-the-physician.jpg" width="264" height="138" alt="" loading="lazy"></a>
+          <p class="news-meta"><span class="news-date">July 28, 2026</span> <span class="news-cat">Industry analysis</span> </p>
+          <a class="news-headline" href="/reaching-the-physician/">Reaching the Physician</a>
+          <p class="news-theme">How pharmaceutical manufacturers reach the physicians who prescribe their products. iPhysicianNet raised $80M to replace the sales call with live video and collapsed in 2003; this traces what it built, the twenty years of alternatives that followed, and where the AI layer arriving now fits. Anchored to the company&rsquo;s own SEC filing, with 42 citations listed and the thin spots marked.</p>
+        </li>
+        <li class="news-item">
+          <a class="news-thumb" href="/news/the-interns-first-meeting.html" tabindex="-1" aria-hidden="true"><img src="news/images/thumb-interns-s1e1.jpg" width="264" height="138" alt="" loading="lazy"></a>
+          <p class="news-meta"><span class="news-date">July 27, 2026</span> <span class="news-cat">Bursera update</span> </p>
+          <a class="news-headline" href="/news/the-interns-first-meeting.html">The Interns, Episode 1 &#8212; First Meeting</a>
+          <p class="news-theme">Six interns land in a single Teams channel, and their new manager learns the team is brilliant and not remotely psychic. Generic work is the tell; the fix is handing over the one thing only he has.</p>
+        </li>
+        <li class="news-item">
+          <a class="news-thumb" href="/news/jspace-directors-chair.html" tabindex="-1" aria-hidden="true"><img src="news/images/thumb-jspace.jpg" width="264" height="138" alt="" loading="lazy"></a>
+          <p class="news-meta"><span class="news-date">July 10, 2026</span> <span class="news-cat">Interpretability</span> <a class="news-badge" href="/news/jspace-directors-chair.html#update">Update July 12</a> </p>
+          <a class="news-headline" href="/news/jspace-directors-chair.html">J-space &#8212; what a team leader needs to know</a>
+          <p class="news-theme">Anthropic published a way to see where a model strains while it works. The coverage called it a miracle or a monster; the paper shows better vetting, upstream.</p>
         </li>
       </ol>
     </section>

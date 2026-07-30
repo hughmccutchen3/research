@@ -171,10 +171,16 @@ body.site-page header.masthead h1{
   line-height:var(--leading-heading); color:var(--color-text-strong);
   letter-spacing:-.02em; margin:0 0 var(--space-3);
 }
+/* Lede width follows the band's composition (Hugh, 2026-07-29). A masthead with no
+   image has nothing to balance against, so the lede runs the full body width; the flat
+   60ch cap was leaving roughly a third of the band empty on all seven image-less pages.
+   Where a hero photo IS present (Home), the text column is deliberately narrower than
+   the old cap so the two sit as a pair rather than competing. */
 body.site-page header.masthead .lede{
   font-family:var(--font-body); font-style:italic; font-size:var(--text-lede);
-  line-height:var(--leading-caption); color:var(--color-text-muted); max-width:60ch; margin:0;
+  line-height:var(--leading-caption); color:var(--color-text-muted); max-width:none; margin:0;
 }
+body.site-page .hero-inner .lede{ max-width:52ch; }
 
 /* --- main + section groups --- */
 body.site-page main{ padding:var(--space-2) var(--gutter-mobile) var(--space-11); }
