@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 552" width="1000" height="552">
+<rect x="0" y="0" width="1000" height="552" fill="#ffffff"/>
+<text x="20" y="28" font-size="14" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#0F172A">The terminology ladder</text>
+<text x="20" y="46" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#64748b">Canonical: _SYSTEM/INFRA.md &#167;4 (RES-178 lock, re-homed CWE-S117) &#8212; every use of these words in this deck follows this ladder</text>
+<rect x="30" y="56" width="600" height="54" rx="8" fill="#e8e0f5" stroke="#5b3d9e" stroke-width="1.3"/>
+<text x="46" y="78" font-size="13" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">project family</text>
+<text x="46" y="96" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">a collection of related projects &#183; one or more surfaces &#183; shares inputs + governance</text>
+<rect x="46" y="114" width="568" height="54" rx="8" fill="#eef4fa" stroke="#2d6eaa" stroke-width="1.3"/>
+<text x="62" y="136" font-size="13" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">project</text>
+<text x="62" y="154" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">one Claude project, bound to one surface &#183; twin folder on Drive, local folder on Cowork</text>
+<rect x="62" y="172" width="536" height="54" rx="8" fill="#e8e0f5" stroke="#5b3d9e" stroke-width="1.3"/>
+<text x="78" y="194" font-size="13" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">arc</text>
+<text x="78" y="212" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">a sequence of sessions &#183; one objective to terminal state</text>
+<rect x="78" y="230" width="504" height="54" rx="8" fill="#e8e0f5" stroke="#5b3d9e" stroke-width="1.3"/>
+<text x="94" y="252" font-size="13" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">session</text>
+<text x="94" y="270" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">one or more threads &#183; one bounded piece of work &#183; a single objective pursued to done</text>
+<rect x="94" y="288" width="472" height="54" rx="8" fill="#eef4fa" stroke="#2d6eaa" stroke-width="1.3"/>
+<text x="110" y="310" font-size="13" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">thread</text>
+<text x="110" y="328" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">a sequence of turns &#183; one continuous conversation &#183; carries the id, e.g. CWE-S114</text>
+<rect x="110" y="346" width="440" height="54" rx="8" fill="#eef4fa" stroke="#2d6eaa" stroke-width="1.3"/>
+<text x="126" y="368" font-size="13" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">turn</text>
+<text x="126" y="386" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">one prompt and its response &#183; the unit the gauge counts</text>
+<rect x="126" y="404" width="192" height="54" rx="8" fill="#eef4fa" stroke="#2d6eaa" stroke-width="1.3"/>
+<text x="142" y="426" font-size="13" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">prompt</text>
+<text x="142" y="444" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">one user message (input)</text>
+<defs><marker id="arr-tl" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#2d6eaa"/></marker></defs>
+<line x1="318" y1="431" x2="342" y2="431" stroke="#2d6eaa" stroke-width="1.6" marker-end="url(#arr-tl)"/>
+<rect x="342" y="404" width="192" height="54" rx="8" fill="#eef4fa" stroke="#2d6eaa" stroke-width="1.3"/>
+<text x="358" y="426" font-size="13" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">response</text>
+<text x="358" y="444" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">Claude's reply (output)</text>
+<rect x="20" y="466" width="960" height="42" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+<rect x="34" y="479" width="14" height="14" rx="3" fill="#e8e0f5" stroke="#5b3d9e" stroke-width="1.2"/>
+<text x="56" y="490" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">NEW WITH THE PLATFORM</text>
+<text x="204" y="490" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">logical containers for tracking and managing how the work gets done — nothing in Claude corresponds to them</text>
+<rect x="34" y="497" width="14" height="14" rx="3" fill="#eef4fa" stroke="#2d6eaa" stroke-width="1.2"/>
+<text x="56" y="508" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">ALREADY IN CLAUDE</text>
+<text x="204" y="508" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">the surface as it ships — the platform binds to these, it does not invent them</text>
+<text x="20" y="534" font-size="9" font-style="italic" font-family="Segoe UI, Arial, sans-serif" fill="#64748b">The id (e.g. CWE-S114) is minted per THREAD. The naming reads like a session id and is not one &#8212; that is the trap this ladder exists to close.</text>
+</svg>

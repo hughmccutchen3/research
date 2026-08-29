@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1340 680" width="1340" height="680">
+<rect width="1340" height="680" fill="#ffffff"/>
+<g><rect x="225" y="16" width="375" height="15" rx="4" fill="#2a7a50"/><text x="412" y="27.5" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing="2" font-family="Segoe UI, Arial, sans-serif" fill="#ffffff">WHERE WE ARE</text></g>
+
+<rect x="225" y="36" width="375" height="34" rx="6" fill="#1e5c38"/>
+<text x="412" y="58" text-anchor="middle" font-size="12.5" font-weight="700" letter-spacing="1.2" font-family="Segoe UI, Arial, sans-serif" fill="#ffffff">H1 · WORKS FOR ME</text>
+<rect x="608" y="36" width="375" height="34" rx="6" fill="#1a3a5c"/>
+<text x="795" y="58" text-anchor="middle" font-size="12.5" font-weight="700" letter-spacing="1.2" font-family="Segoe UI, Arial, sans-serif" fill="#ffffff">H2 · WORKS FOR A TEAM</text>
+<rect x="991" y="36" width="375" height="34" rx="6" fill="#5a3e00"/>
+<text x="1178" y="58" text-anchor="middle" font-size="12.5" font-weight="700" letter-spacing="1.2" font-family="Segoe UI, Arial, sans-serif" fill="#ffffff">H3 · WORKS FOR A CUSTOMER</text>
+
+<rect x="20" y="78" width="195" height="86" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<rect x="20" y="78" width="5" height="86" rx="2.5" fill="#94a3b8"/>
+<text x="38" y="106" font-size="13" font-weight="700" letter-spacing="1.1" font-family="Segoe UI, Arial, sans-serif" fill="#0F172A">EXPERIENCE</text>
+<text x="38" y="126" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#64748b">What a person actually</text>
+<text x="38" y="140" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#64748b">touches, and what ships</text>
+
+<rect x="225" y="78" width="375" height="86" rx="6" fill="#ddf0e8" stroke="#1e5c38" stroke-width="1.4"/>
+<text x="241" y="104" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e5c38">Chat and Cowork threads, decks like this one</text>
+<text x="241" y="124" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2a6b46">The Bursera site, built and deployed from the tree</text>
+<text x="241" y="141" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2a6b46">Research content published as papers and pages</text>
+
+<rect x="608" y="78" width="375" height="86" rx="6" fill="#e8eef5" stroke="#1a3a5c" stroke-width="1.4" opacity="0.85"/>
+<text x="624" y="104" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">Dashboards per person</text>
+<text x="624" y="124" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">Each person sees their own sessions and state</text>
+<text x="624" y="141" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">Shared decks and content, one house style</text>
+
+<rect x="991" y="78" width="375" height="86" rx="6" fill="#fdf6e3" stroke="#5a3e00" stroke-width="1.4" opacity="0.7"/>
+<text x="1007" y="104" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">Client-facing views</text>
+<text x="1007" y="124" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#7a5c1e">The customer sees their own work, not ours</text>
+<text x="1007" y="141" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#7a5c1e">Delivery gated, branded, and provenanced</text>
+
+<rect x="20" y="172" width="195" height="86" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<rect x="20" y="172" width="5" height="86" rx="2.5" fill="#94a3b8"/>
+<text x="38" y="200" font-size="13" font-weight="700" letter-spacing="1.1" font-family="Segoe UI, Arial, sans-serif" fill="#0F172A">RUNTIME</text>
+<text x="38" y="220" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#64748b">The Claude agent loop</text>
+<text x="38" y="234" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#64748b">and the skills it loads</text>
+
+<rect x="225" y="172" width="375" height="86" rx="6" fill="#ddf0e8" stroke="#1e5c38" stroke-width="1.4"/>
+<text x="241" y="198" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e5c38">36 skills, tiered by load</text>
+<text x="241" y="218" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2a6b46">An always-load set at open, the rest on trigger</text>
+<text x="241" y="235" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2a6b46">Loading is logged, so coverage is measurable</text>
+
+<rect x="608" y="172" width="375" height="86" rx="6" fill="#e8eef5" stroke="#1a3a5c" stroke-width="1.4" opacity="0.85"/>
+<text x="624" y="198" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">Shared skill release train</text>
+<text x="624" y="218" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">One catalog, versioned, installed for everyone</text>
+<text x="624" y="235" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">No more one-thread-at-a-time skill editing</text>
+
+<rect x="991" y="172" width="375" height="86" rx="6" fill="#fdf6e3" stroke="#5a3e00" stroke-width="1.4" opacity="0.7"/>
+<text x="1007" y="198" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">Packaged as a plugin</text>
+<text x="1007" y="218" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#7a5c1e">Installs inside the customer's own Claude</text>
+<text x="1007" y="235" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#7a5c1e">Upgrades without touching their content</text>
+
+<rect x="20" y="266" width="195" height="86" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<rect x="20" y="266" width="5" height="86" rx="2.5" fill="#94a3b8"/>
+<text x="38" y="294" font-size="13" font-weight="700" letter-spacing="1.1" font-family="Segoe UI, Arial, sans-serif" fill="#0F172A">ENGINE</text>
+<text x="38" y="314" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#64748b">The services that hold</text>
+<text x="38" y="328" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#64748b">authority over the work</text>
+
+<rect x="225" y="266" width="375" height="86" rx="6" fill="#ddf0e8" stroke="#1e5c38" stroke-width="1.4"/>
+<text x="241" y="292" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e5c38">Scripts and gates on one machine</text>
+<text x="241" y="312" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2a6b46">45 Python scripts; open and close both verified</text>
+<text x="241" y="329" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2a6b46">Run by hand, from inside the session</text>
+
+<rect x="608" y="266" width="375" height="86" rx="6" fill="#e8eef5" stroke="#1a3a5c" stroke-width="1.4" opacity="0.85"/>
+<text x="624" y="292" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">Identity, ledger, registry as services</text>
+<text x="624" y="312" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">Every row carries who wrote it</text>
+<text x="624" y="329" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">Gates served centrally, not copied per project</text>
+
+<rect x="991" y="266" width="375" height="86" rx="6" fill="#fdf6e3" stroke="#5a3e00" stroke-width="1.4" opacity="0.7"/>
+<text x="1007" y="292" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">Hosted, multi-tenant, signed</text>
+<text x="1007" y="312" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#7a5c1e">Skills customised per customer</text>
+<text x="1007" y="329" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#7a5c1e">Their own instructions, profile and house rules</text>
+
+<rect x="20" y="360" width="195" height="86" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<rect x="20" y="360" width="5" height="86" rx="2.5" fill="#94a3b8"/>
+<text x="38" y="388" font-size="13" font-weight="700" letter-spacing="1.1" font-family="Segoe UI, Arial, sans-serif" fill="#0F172A">STATE</text>
+<text x="38" y="408" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#64748b">Store, ledger, registry,</text>
+<text x="38" y="422" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#64748b">library — the memory</text>
+
+<rect x="225" y="360" width="375" height="86" rx="6" fill="#ddf0e8" stroke="#1e5c38" stroke-width="1.4"/>
+<text x="241" y="386" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e5c38">Files and JSONL on the Work tree</text>
+<text x="241" y="406" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2a6b46">Append-only — a correction is a new row</text>
+<text x="241" y="423" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2a6b46">Readable, greppable, and backed up nightly</text>
+
+<rect x="608" y="360" width="375" height="86" rx="6" fill="#e8eef5" stroke="#1a3a5c" stroke-width="1.4" opacity="0.85"/>
+<text x="624" y="386" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">Database, actor on every row</text>
+<text x="624" y="406" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">Concurrent writers without collision</text>
+<text x="624" y="423" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">A real catalog, not a folder convention</text>
+
+<rect x="991" y="360" width="375" height="86" rx="6" fill="#fdf6e3" stroke="#5a3e00" stroke-width="1.4" opacity="0.7"/>
+<text x="1007" y="386" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">Per-customer isolation</text>
+<text x="1007" y="406" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#7a5c1e">One tenant's state never reaches another's</text>
+<text x="1007" y="423" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#7a5c1e">Retention and export are theirs to set</text>
+
+<rect x="20" y="454" width="195" height="86" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<rect x="20" y="454" width="5" height="86" rx="2.5" fill="#94a3b8"/>
+<text x="38" y="482" font-size="13" font-weight="700" letter-spacing="1.1" font-family="Segoe UI, Arial, sans-serif" fill="#0F172A">INFRA</text>
+<text x="38" y="502" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#64748b">Where it runs and what</text>
+<text x="38" y="516" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#64748b">it is wired into</text>
+
+<rect x="225" y="454" width="375" height="86" rx="6" fill="#ddf0e8" stroke="#1e5c38" stroke-width="1.4"/>
+<text x="241" y="480" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e5c38">One laptop, wired into real services</text>
+<text x="241" y="500" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2a6b46">Linear · Git · GitHub · Google Drive</text>
+<text x="241" y="517" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2a6b46">Web content deployed to burseraconsulting.com</text>
+
+<rect x="608" y="454" width="375" height="86" rx="6" fill="#e8eef5" stroke="#1a3a5c" stroke-width="1.4" opacity="0.85"/>
+<text x="624" y="480" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">Cloud org, dev and prod split</text>
+<text x="624" y="500" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">Shared accounts, not one person's machine</text>
+<text x="624" y="517" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">Remotes and CI on every repo</text>
+
+<rect x="991" y="454" width="375" height="86" rx="6" fill="#fdf6e3" stroke="#5a3e00" stroke-width="1.4" opacity="0.7"/>
+<text x="1007" y="480" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">SSO, DR, compliance</text>
+<text x="1007" y="500" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#7a5c1e">What a security review will ask for</text>
+<text x="1007" y="517" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#7a5c1e">Runs in their tenancy or ours</text>
+
+<text x="20" y="568" font-size="9" font-weight="700" letter-spacing="0.14em" font-family="Segoe UI, Arial, sans-serif" fill="#475569">THE GATE OUT OF EACH HORIZON</text>
+<rect x="225" y="578" width="375" height="56" rx="6" fill="#f2faf6" stroke="#1e5c38" stroke-width="1.2"/>
+<text x="241" y="600" font-size="11.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e5c38">One operator works without losing state</text>
+<text x="241" y="620" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2a6b46">A research question carried end to end, no mid-flight fix</text>
+<rect x="608" y="578" width="375" height="56" rx="6" fill="#f4f7fb" stroke="#1a3a5c" stroke-width="1.2"/>
+<text x="624" y="600" font-size="11.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">Several people work without colliding</text>
+<text x="624" y="620" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">The first external anchor asks for access</text>
+<rect x="991" y="578" width="375" height="56" rx="6" fill="#fdfaf2" stroke="#5a3e00" stroke-width="1.2"/>
+<text x="1007" y="600" font-size="11.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">Someone else can run it</text>
+<text x="1007" y="620" font-size="10.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#7a5c1e">External demand, not an internal decision</text>
+
+<text x="20" y="660" font-size="10" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#64748b">Positions, not dates. Every layer changes at H2 and only two change much at H3 — the expensive step is one operator to several, not several to a customer.</text>
+</svg>

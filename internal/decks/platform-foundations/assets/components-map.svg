@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 522" width="1200" height="522">
+  <defs>
+    <marker id="arr-g" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#777777"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1200" height="522" fill="#ffffff"/>
+
+  <rect x="20" y="20" width="1160" height="58" rx="6" fill="#f8f9fa" stroke="#94a3b8" stroke-width="1.2"/>
+  <text x="38" y="42" font-size="9" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#475569" letter-spacing="0.14em">SURFACES</text>
+  <rect x="220" y="30" width="460" height="38" rx="4" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+  <text x="234" y="46" font-size="10" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Cowork — where work runs</text>
+  <text x="234" y="60" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#475569">mounts the tree · runs scripts · writes state · schedules tasks</text>
+  <rect x="710" y="30" width="460" height="38" rx="4" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+  <text x="724" y="46" font-size="10" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Chat — where you think</text>
+  <text x="724" y="60" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#475569">no mount · may propose and draft · must not write system state</text>
+  <line x1="702" y1="49" x2="682" y2="49" stroke="#777777" stroke-width="1.6" marker-end="url(#arr-g)"/>
+  <text x="692" y="71" text-anchor="middle" font-size="7.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#777777">chat proposes &#183; Cowork commits</text>
+
+  <rect x="20" y="94" width="228" height="198" rx="6" fill="#fdece0" stroke="#c2660d" stroke-width="1.6"/>
+  <text x="34" y="115" font-size="10" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#7a3a00">SKILLS REPO</text>
+  <text x="34" y="130" font-size="8" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#8a4a10">a SEPARATE git tree, own mount</text>
+  <text x="34" y="152" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#7a3a00">36 skills written for this</text>
+  <text x="34" y="165" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#7a3a00">platform, versioned here.</text>
+  <text x="34" y="185" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#7a3a00">Committing here is NOT</text>
+  <text x="34" y="198" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#7a3a00">installing — a separate call</text>
+  <text x="34" y="211" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#7a3a00">changes what actually runs.</text>
+  <text x="34" y="231" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#7a3a00">No remote — same as the</text>
+  <text x="34" y="244" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#7a3a00">Work tree, local canon.</text>
+  <text x="34" y="264" font-size="8" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#c2660d">drift between repo and</text>
+  <text x="34" y="277" font-size="8" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#c2660d">installed is a gate check now</text>
+
+  <rect x="264" y="94" width="700" height="198" rx="6" fill="#f8fafc" stroke="#2d6eaa" stroke-width="1.6"/>
+  <text x="282" y="116" font-size="10.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">THE CANONICAL TREE — the docs call it CANON</text>
+  <text x="282" y="132" font-size="8" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">One folder on one machine. Canonical = if two copies ever disagree, this one is right. Its own git repo — no remote, by design.</text>
+
+  <rect x="280" y="142" width="336" height="136" rx="5" fill="#e0f5f5" stroke="#2d7d7d" stroke-width="1.2"/>
+  <text x="294" y="159" font-size="9" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a4a4a">MACHINE STATE — _SYSTEM/</text>
+  <circle cx="296" cy="176" r="3" fill="#b8860b"/>
+  <text x="304" y="179" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1a4a4a">ledger.jsonl — every artifact and event</text>
+  <circle cx="296" cy="190" r="3" fill="#2d7d3d"/>
+  <text x="304" y="193" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1a4a4a">registry.jsonl — 23-project index</text>
+  <circle cx="296" cy="204" r="3" fill="#b8860b"/>
+  <text x="304" y="207" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1a4a4a">manifest-artifacts.jsonl — name to id to path</text>
+  <circle cx="296" cy="218" r="3" fill="#2d7d3d"/>
+  <text x="304" y="221" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1a4a4a">session-logs · handoffs · findings</text>
+  <circle cx="296" cy="232" r="3" fill="#2d7d3d"/>
+  <text x="304" y="235" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a4a4a">_bin/ — 45 Python scripts, the gates and the log harness</text>
+  <circle cx="296" cy="246" r="3" fill="#2d7d3d"/>
+  <text x="304" y="249" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a4a4a">instruction-history/ — profile + instructions, archived</text>
+  <text x="304" y="264" font-size="7.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2d7d7d">the LIVE profile is an in-app field, not a tree file — this only archives every version it ever held</text>
+
+  <rect x="628" y="142" width="322" height="136" rx="5" fill="#dce8f5" stroke="#2d6eaa" stroke-width="1.2"/>
+  <text x="642" y="159" font-size="9" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">HUMAN CONTENT — Family/Project/</text>
+  <text x="642" y="175" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">Charter or instructions — the anchor</text>
+  <text x="642" y="189" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">INPUTS/ — finalized consumables</text>
+  <text x="642" y="203" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">OUTPUTS/ — drafts and finals, incl. decks</text>
+  <text x="642" y="217" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">ARCHIVE/ — superseded versions</text>
+  <text x="642" y="231" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">INDEX.md — the lane's own catalog</text>
+  <text x="642" y="248" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2d6eaa">23 projects share this shape — 16 active</text>
+  <text x="642" y="261" font-size="7.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2d6eaa">one operator, run at multi-project scale</text>
+  <text x="642" y="272" font-size="7.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2d6eaa">no state here — state lives to the left</text>
+
+  <rect x="980" y="94" width="200" height="198" rx="6" fill="#e8e0f5" stroke="#5b3d9e" stroke-width="1.6"/>
+  <text x="994" y="115" font-size="10" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">LINEAR</text>
+  <text x="994" y="130" font-size="8" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">mutable state — outside the tree entirely</text>
+  <text x="994" y="152" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">Open questions and</text>
+  <text x="994" y="165" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">decisions in flight.</text>
+  <text x="994" y="185" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">Defects and enhancements,</text>
+  <text x="994" y="198" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">filed as found.</text>
+  <text x="994" y="218" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">NEEDS-RULING labels</text>
+  <text x="994" y="231" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">what waits on The Human Leader.</text>
+  <text x="994" y="255" font-size="8" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5b3d9e">files hold stable content;</text>
+  <text x="994" y="268" font-size="8" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5b3d9e">Linear holds what moves</text>
+
+  <rect x="20" y="304" width="1160" height="140" rx="6" fill="#fdf6e3" stroke="#b8860b" stroke-width="1.6"/>
+  <text x="38" y="324" font-size="10" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">GOVERNANCE — applies across everything above</text>
+
+  <rect x="36" y="332" width="216" height="98" rx="4" fill="#ffffff" stroke="#b8860b" stroke-width="0.9"/>
+  <text x="48" y="349" font-size="9" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">Layer model</text>
+  <text x="48" y="365" font-size="8" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">Facts, process, bindings —</text>
+  <text x="48" y="376" font-size="8" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">each owned at one level.</text>
+  <text x="48" y="391" font-size="7.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#8a6508">reference, never</text>
+  <text x="48" y="402" font-size="7.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#8a6508">replicate</text>
+
+  <rect x="264" y="332" width="216" height="98" rx="4" fill="#ffffff" stroke="#b8860b" stroke-width="0.9"/>
+  <text x="276" y="349" font-size="9" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">Identity</text>
+  <text x="276" y="365" font-size="8" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">A file-header id plus the</text>
+  <text x="276" y="376" font-size="8" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">manifest resolve name to file.</text>
+  <text x="276" y="391" font-size="7.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#8a6508">latest version wins</text>
+  <text x="276" y="402" font-size="7.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#8a6508">per id</text>
+
+  <rect x="492" y="332" width="216" height="98" rx="4" fill="#ffffff" stroke="#b8860b" stroke-width="0.9"/>
+  <text x="504" y="349" font-size="9" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">Write safety</text>
+  <text x="504" y="365" font-size="8" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">Append state; rewrite whole</text>
+  <text x="504" y="376" font-size="8" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">files; verify real bytes.</text>
+  <text x="504" y="391" font-size="7.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#8a6508">a success message</text>
+  <text x="504" y="402" font-size="7.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#8a6508">is not proof</text>
+
+  <rect x="720" y="332" width="216" height="98" rx="4" fill="#ffffff" stroke="#b03030" stroke-width="1.1"/>
+  <text x="732" y="349" font-size="9" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a0000">Gates</text>
+  <text x="732" y="365" font-size="8" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#7a1c1c">One at open, one at close.</text>
+  <text x="732" y="376" font-size="8" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#7a1c1c">They check shape, not truth.</text>
+  <text x="732" y="391" font-size="7.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">report-only — topic</text>
+  <text x="732" y="402" font-size="7.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">three</text>
+
+  <rect x="948" y="332" width="232" height="98" rx="4" fill="#ffffff" stroke="#2d7d3d" stroke-width="1.1"/>
+  <text x="960" y="349" font-size="9" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a4a2e">Durability</text>
+  <text x="960" y="365" font-size="8" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1a4a2e">Daily + weekly one-way backup,</text>
+  <text x="960" y="376" font-size="8" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1a4a2e">plus an off-machine copy.</text>
+  <text x="960" y="391" font-size="7.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2d7d3d">Work &amp; Skills: git,</text>
+  <text x="960" y="402" font-size="7.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2d7d3d">no remote (local canon)</text>
+  <text x="960" y="416" font-size="7.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2d7d3d">internal: has a remote,</text>
+  <text x="960" y="427" font-size="7.5" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2d7d3d">The Human Leader pushes it</text>
+
+  
+  <rect x="20" y="452" width="1160" height="34" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="34" y="473" font-size="8" font-weight="700" letter-spacing="0.08em" font-family="Segoe UI, Arial, sans-serif" fill="#475569">LEGEND</text>
+  <circle cx="118" cy="469" r="3.5" fill="#2d7d3d"/>
+  <text x="128" y="472" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">git-tracked — code and human-authored files</text>
+  <circle cx="460" cy="469" r="3.5" fill="#b8860b"/>
+  <text x="470" y="472" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">backup only — high-churn machine state, versioned by the daily backup, not git</text>
+
+  <text x="20" y="504" font-size="9" font-style="italic" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#64748b">Git tracks the code and the human-authored record. High-churn machine state (the ledger, the manifest) is deliberately excluded — versioned by the daily backup, not by commit.</text>
+</svg>
