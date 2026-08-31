@@ -1,0 +1,519 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A Solid First Draft — Bursera Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#4a5c6b;--blue-light:#7a9aad;--blue-pale:#e8edf0;--gold:#8a6e3a;--gold-pale:#f2ede3;
+--green:#1a5c2a;--red:#8b1a1a;--ink:#28303a;--bg:#f4f2ee;--caliche:#8a7660;--gray-rule:#d4c8b0;
+--sonoran-sky:#a8c8d8;--lichen-rust:#a04e18;--nav:264px;
+/* 6 "fun" card-band accents, drawn from the Bursera desert palette */
+--c1:#8a6e3a;--c2:#4f8fa6;--c3:#2f7d3a;--c4:#a04e18;--c5:#4a5c6b;--c6:#a5875a;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#20262e;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;color:var(--ink);overflow:hidden;}
+/* nav */
+.deck-nav{position:fixed;top:0;left:0;width:var(--nav);height:100vh;background:var(--blue);color:#fff;overflow-y:auto;z-index:40;padding-bottom:40px;}
+.nav-title{font-weight:700;font-size:16px;color:#fff;padding:20px;border-bottom:1px solid rgba(255,255,255,.14);position:sticky;top:0;background:var(--blue);}
+.nav-sec{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--sonoran-sky);padding:16px 20px 6px;cursor:pointer;}
+.nav-sec:hover{color:#fff;}
+.nav-item{display:block;padding:7px 20px 7px 30px;font-size:13px;line-height:1.35;color:#7f8b96;cursor:pointer;border-left:3px solid transparent;position:relative;}
+/* slide number on hover in the left nav (RES-587 follow-on, CWE-S83) */
+.nav-item::after,.nav-sec::after{content:attr(data-idx);position:absolute;right:8px;top:50%;transform:translateY(-50%);
+font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0;color:var(--gold);
+background:rgba(0,0,0,.35);border-radius:9px;padding:1px 6px;opacity:0;transition:opacity .12s;pointer-events:none;}
+.nav-item:hover::after,.nav-sec:hover::after{opacity:1;}
+.nav-sec{position:relative;}
+.nav-item:hover{color:#fff;background:rgba(255,255,255,.06);}
+.nav-item.active{color:#fff;border-left-color:var(--gold);background:rgba(255,255,255,.12);font-weight:600;}
+.nav-sec.active{color:#fff;}
+/* stage (index-based deck) */
+.stage{position:fixed;top:0;left:var(--nav);right:0;bottom:0;overflow:hidden;transition:left .45s ease;}
+.deck-nav{transition:transform .45s ease;}
+body.cover-mode .deck-nav{transform:translateX(-100%);}
+body.cover-mode .stage{left:0;}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-start;
+padding:7vh 5vw 60px;background:var(--bg);overflow-y:auto;
+transition:transform .55s cubic-bezier(.4,0,.2,1),opacity .5s ease;will-change:transform,opacity;}
+.slide::before{content:"";position:absolute;top:0;left:0;width:6px;height:100%;background:var(--gold);opacity:0;transition:opacity .4s;}
+.slide.active::before{opacity:1;}
+/* transition modes (press 't' to cycle) */
+[data-tr="slide"] .slide{transform:translateX(calc(var(--pos,1)*102%));}
+[data-tr="vertical"] .slide{transform:translateY(calc(var(--pos,1)*102%));}
+[data-tr="fade"] .slide{transform:none;opacity:0;pointer-events:none;}
+[data-tr="fade"] .slide.active{opacity:1;pointer-events:auto;}
+[data-tr="zoom"] .slide{transform:scale(.88);opacity:0;pointer-events:none;}
+[data-tr="zoom"] .slide.active{transform:scale(1);opacity:1;pointer-events:auto;}
+[data-tr="flip"] .slide{transform:perspective(1400px) rotateY(calc(var(--pos,1)*35deg)) translateX(calc(var(--pos,1)*60%));opacity:0;}
+[data-tr="flip"] .slide.active{transform:none;opacity:1;}
+/* typography */
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:16px;letter-spacing:3px;text-transform:uppercase;color:var(--blue-light);margin-bottom:14px;}
+h1{font-family:'DM Sans',sans-serif;font-weight:700;line-height:1.08;}
+h2{font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(36px,4.3vw,55px);color:var(--blue);line-height:1.12;border-bottom:3px solid var(--blue);padding-bottom:14px;margin-bottom:28px;flex:0 0 auto;}
+p{font-family:'Source Serif 4',Georgia,serif;line-height:1.55;margin-bottom:12px;}
+ul{margin:0 0 10px 22px;} li{font-family:'Source Serif 4',Georgia,serif;line-height:1.5;margin-bottom:8px;}
+em{color:var(--gold);font-style:italic;} strong{color:var(--blue);}
+.cover,.section{justify-content:center;align-items:center;text-align:center;background:var(--blue);color:#fff;}
+.cover h1{font-size:clamp(53px,7.2vw,96px);margin-bottom:20px;}
+.cover .subtitle{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(20px,2vw,29px);color:var(--sonoran-sky);margin-bottom:40px;}
+.cover .meta{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:2px;color:var(--sonoran-sky);}
+.cover .eyebrow{color:var(--sonoran-sky);}
+.section .sec-num{font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:4px;text-transform:uppercase;color:var(--sonoran-sky);margin-bottom:18px;}
+.section h1{font-size:clamp(46px,6vw,82px);color:#fff;}
+/* Bursera photo — cover: centered full-bleed; sections: half-on-page (alternating L/R) */
+.cover>*,.section>*{position:relative;z-index:1;}
+.cover{background:linear-gradient(180deg,rgba(11,18,32,.66),rgba(11,18,32,.30) 46%,rgba(11,18,32,.70)),url(assets/bursera-tree-photo.jpg) center/cover no-repeat;}
+.section{background:#0F172A;overflow:hidden;}
+.section .sec-photo{position:absolute;top:0;height:100%;width:auto;z-index:0;pointer-events:none;}
+.section .sec-photo img{height:100%;width:auto;display:block;}
+.sec-right .sec-photo{right:0;} .sec-right .sec-photo img{transform:translateX(50%);}
+.sec-left .sec-photo{left:0;} .sec-left .sec-photo img{transform:translateX(-50%);}
+.section .sec-fade{position:absolute;inset:0;z-index:1;pointer-events:none;}
+.sec-right .sec-fade{background:linear-gradient(90deg,#0F172A 46%,rgba(15,23,42,.62) 80%,rgba(15,23,42,.18) 100%);}
+.sec-right{align-items:flex-start;text-align:left;} .sec-left{align-items:flex-end;text-align:right;}
+.outline .outline-wrap{flex:1 1 auto;display:flex;align-items:center;justify-content:center;padding:2vh 0;}
+.outline-svg{max-width:96%;max-height:64vh;height:auto;overflow:visible;}
+.outline .muted{color:var(--caliche);font-family:'JetBrains Mono',monospace;}
+/* two-pane */
+.panes{display:grid;grid-template-columns:1fr 1fr;gap:3vw;align-items:start;flex:1 1 auto;}
+.panes.stacked{display:flex;flex-direction:column;gap:2vh;grid-template-columns:none;}
+.two-pane.stacked .left{flex:0 0 auto;}
+.two-pane.stacked .right{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;}
+.two-pane.stacked .right .embed{width:100%;height:100%;display:flex;align-items:center;justify-content:center;margin:0;}
+.two-pane.stacked .right .embed img{width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 6px 18px rgba(0,0,0,.12);}
+.two-pane .left p,.two-pane .left li{font-size:clamp(16px,1.52vw,23px);}
+.two-pane .left h3.sub3{font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(18px,1.6vw,25px);color:var(--ink);text-transform:none;letter-spacing:0;margin:0 0 12px;}
+.homework .left p,.homework .left li{font-size:clamp(20px,1.92vw,29px);line-height:1.5;}
+.right{display:flex;flex-direction:column;gap:16px;}
+.right.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center;}
+.embed img{width:100%;border:1px solid var(--gray-rule);border-radius:4px;box-shadow:0 6px 18px rgba(0,0,0,.12);background:#fff;}
+.right.grid2 .embed img{border:2px solid var(--gray-rule);border-radius:8px;padding:10px;object-fit:contain;max-height:26vh;}
+.right.hw .embed img{width:80%;margin:0 auto;display:block;}
+.homework h2{color:var(--gold);border-bottom-color:var(--gold);}
+.embed.placeholder{border:2px dashed var(--caliche);border-radius:6px;min-height:40vh;display:flex;align-items:center;justify-content:center;color:var(--caliche);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:2px;font-size:14px;}
+/* grids */
+.card-intro{font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(18px,1.68vw,25px);line-height:1.5;color:var(--ink);margin:-8px 0 22px;}
+.card-intro p{margin:0 0 6px;} .card-intro strong{font-weight:400;}
+.grid{display:grid;gap:2.2vw;grid-template-columns:repeat(var(--n,3),1fr);flex:1 1 auto;align-content:start;}
+.columns .cell h3{font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(19px,1.84vw,27px);color:var(--blue);padding-bottom:10px;margin-bottom:14px;border-bottom:3px solid var(--blue-light);}
+.columns li{font-size:clamp(18px,1.68vw,25px);line-height:1.45;margin-bottom:10px;}
+.columns .cell p{font-size:clamp(15px,1.44vw,21px);line-height:1.5;}
+.cards .cell{background:#fff;border:1px solid var(--gray-rule);border-top:5px solid var(--band,var(--gold));border-radius:8px;padding:22px 24px;box-shadow:0 3px 12px rgba(0,0,0,.06);}
+.cards .cell h3{font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(20px,1.92vw,29px);color:var(--ink);margin-bottom:8px;}
+.cards .cell p,.cards .cell li{font-size:clamp(15px,1.44vw,21px);}
+.hold{border:2px dashed var(--blue-light);background:var(--blue-pale);color:var(--blue);border-radius:8px;min-height:22vh;display:flex;flex-direction:column;justify-content:center;padding:18px 20px;font-family:'JetBrains Mono',monospace;font-size:16px;line-height:1.5;}
+.hold-tag{font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;font-weight:600;}
+.callout{border-left:4px solid var(--gold);background:var(--gold-pale);padding:16px 20px;border-radius:0 4px 4px 0;}
+.callout ul{margin-left:18px;} .callout li{font-size:clamp(14px,1.36vw,20px);}
+/* [BASE BANNER] — bright-blue callout bar, centered at bottom, fixed 2-line height, width tracks text */
+.base-banner{position:absolute;left:50%;bottom:56px;transform:translateX(-50%);z-index:8;
+max-width:82%;min-width:200px;display:flex;align-items:center;justify-content:center;text-align:center;
+background:#0d6efd;border-radius:10px;padding:12px 30px;box-shadow:0 8px 22px rgba(13,110,253,.35);}
+.base-banner p{margin:0;color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;
+font-size:clamp(17px,1.7vw,24px);line-height:1.3;min-height:2.6em;display:flex;align-items:center;
+justify-content:center;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+/* deck tables (RES-842). Sized for slide distance: the status pill is the scan target. */
+.deck-table{width:100%;border-collapse:collapse;margin:18px 0 8px;font-size:clamp(14px,1.16vw,19px);}
+/* [table] layout — hero-table treatment (RES-587, BEBURS-S06) */
+.slide.table .table-stage{flex:1;display:flex;flex-direction:column;justify-content:center;}
+.slide.table .table-stage .deck-table{font-size:clamp(15px,1.35vw,22px);margin:0;}
+.slide.table .table-foot{margin-top:20px;padding-top:16px;border-top:1px solid var(--gray-rule);}
+.deck-table th{font-family:'JetBrains Mono',monospace;font-size:clamp(10px,.8vw,13px);letter-spacing:2px;
+text-transform:uppercase;color:var(--blue);text-align:left;padding:0 14px 9px;border-bottom:3px solid var(--blue-light);white-space:nowrap;}
+.deck-table td{padding:11px 14px;border-bottom:1px solid var(--gray-rule);vertical-align:top;line-height:1.38;}
+.deck-table tr:last-child td{border-bottom:none;}
+.deck-table td:first-child{font-weight:600;color:var(--ink);}
+.pill{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.78em;font-weight:700;
+letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:999px;white-space:nowrap;}
+.st-started{background:#dceaf1;color:#215d75;}
+.st-holding{background:var(--gold-pale);color:var(--gold);}
+.st-resolved{background:#dcece0;color:var(--green);}
+.st-forming{background:#ece7f1;color:#5b4a86;}
+a{color:var(--gold);}
+/* speaker-notes drawer */
+.pdf-btn{position:fixed;bottom:48px;left:20px;z-index:60;border:none;border-radius:20px;padding:9px 15px;background:var(--gold);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.28);}
+.pdf-btn:hover{filter:brightness(1.12);}
+.deck-nav-btn{position:fixed;bottom:48px;z-index:60;width:36px;height:36px;border:none;border-radius:50%;background:var(--blue);color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:18px;line-height:1;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.25);}
+.deck-nav-btn:hover{filter:brightness(1.15);}
+.deck-nav-btn:disabled{opacity:.32;cursor:default;filter:none;}
+#deckPrev{left:112px;}
+#deckNext{left:156px;}
+.notes-btn{position:absolute;bottom:48px;left:96px;z-index:12;width:40px;height:40px;border:none;border-radius:50%;
+background:var(--gold);color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:20px;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.25);}
+.notes-btn:hover{filter:brightness(1.1);}
+/* cover-mode collapses the left nav and sets .stage{left:0} (see the setCur() script below), which
+   moves this per-slide absolute-positioned button into the same screen region as the fixed
+   deck-nav-btn pair — hide it there; notes stay fully reachable on every other slide (CWE-S114). */
+body.cover-mode .notes-btn,body.cover-mode .notes-drawer{display:none;}
+.notes-drawer{position:absolute;left:0;right:0;bottom:0;max-height:52%;overflow-y:auto;background:#28303a;color:#eae4d8;
+transform:translateY(101%);transition:transform .4s cubic-bezier(.4,0,.2,1);z-index:11;box-shadow:0 -8px 24px rgba(0,0,0,.3);}
+.notes-drawer.open{transform:translateY(0);}
+.notes-inner{padding:24px 30px 30px 70px;}
+.notes-inner h4{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sonoran-sky);margin-bottom:12px;}
+.notes-inner p,.notes-inner li{font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.55;color:#eae4d8;}
+.notes-inner em{color:var(--gold);}
+/* chrome */
+.deck-progress{position:fixed;top:0;left:0;right:0;height:4px;background:rgba(122,154,173,.25);z-index:50;}
+.deck-progress-fill{height:100%;width:0;background:var(--gold);transition:width .3s ease;}
+.deck-counter{position:fixed;bottom:2.5vh;right:2vw;z-index:50;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--caliche);background:rgba(244,242,238,.85);padding:5px 12px;border-radius:20px;}
+.deck-counter b{color:var(--blue);}
+.deck-mode{position:fixed;bottom:2.5vh;right:9vw;z-index:50;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#fff;background:var(--gold);padding:5px 10px;border-radius:20px;opacity:0;transition:opacity .3s;}
+.deck-mode.show{opacity:1;}
+/* per-slide brand footer — B badge · name · url · confidential · page */
+.slide-foot{position:absolute;left:0;right:0;bottom:0;height:36px;display:flex;align-items:center;justify-content:space-between;
+padding:0 24px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1px;color:var(--caliche);
+border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
+.slide-foot .brand{display:flex;align-items:center;gap:9px;font-weight:600;color:#7a6a52;}
+.bbadge{display:inline-flex;align-items:center;justify-content:center;width:21px;height:21px;border-radius:5px;background:var(--gold);color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0;}
+.slide-foot .foot-right{display:flex;align-items:center;gap:18px;}
+.slide-foot .conf{color:var(--lichen-rust);}
+.slide-foot .pg{color:var(--blue);font-weight:600;}
+.cover .slide-foot,.section .slide-foot{color:rgba(255,255,255,.55);border-top-color:rgba(255,255,255,.16);}
+.cover .slide-foot .brand,.section .slide-foot .brand{color:rgba(255,255,255,.82);}
+.cover .slide-foot .conf,.section .slide-foot .conf{color:#e6b98c;}
+.cover .slide-foot .pg,.section .slide-foot .pg{color:var(--sonoran-sky);}
+@media print{body{overflow:visible;}.deck-nav,.deck-progress,.deck-counter,.deck-mode,.notes-btn,.notes-drawer,.pdf-btn{display:none;}
+.stage{position:static;overflow:visible;}.slide{position:relative!important;transform:none!important;opacity:1!important;height:100vh;page-break-after:always;padding:6vh 6vw;outline:1.5px solid #9aa4b0;outline-offset:-16px;}.slide::before{opacity:1;}@page{size:landscape;}}
+</style></head><body data-tr="slide">
+<nav class="deck-nav"><div class="nav-title">A Solid First Draft</div><div class="nav-sec" data-idx="0" title="Slide 0" onclick="goTo(0)">A Solid First Draft</div><div class="nav-item" data-idx="1" title="Slide 1" onclick="goTo(1)">Welcome Back</div><div class="nav-item" data-idx="2" title="Slide 2" onclick="goTo(2)">Session 1: Where We Left Off</div><div class="nav-item" data-idx="3" title="Slide 3" onclick="goTo(3)">Session 2: How to Build Something You Keep *(+5)*</div><div class="nav-item" data-idx="4" title="Slide 4" onclick="goTo(4)">Session 2: What We'll Cover</div><div class="nav-sec" data-idx="5" title="Slide 5" onclick="goTo(5)">Tune Your Profile</div><div class="nav-item" data-idx="6" title="Slide 6" onclick="goTo(6)">Demonstration — My Profile, Live *(+15)*</div><div class="nav-item" data-idx="7" title="Slide 7" onclick="goTo(7)">Gemini with no Instructions</div><div class="nav-item" data-idx="8" title="Slide 8" onclick="goTo(8)">Gemini with Instructions to Challenge</div><div class="nav-item" data-idx="9" title="Slide 9" onclick="goTo(9)">What Belongs In There</div><div class="nav-item" data-idx="10" title="Slide 10" onclick="goTo(10)">Your Turn — Write Three Lines *(+20)*</div><div class="nav-item" data-idx="11" title="Slide 11" onclick="goTo(11)">Sharing — What Did You Put In</div><div class="nav-sec" data-idx="12" title="Slide 12" onclick="goTo(12)">A Research Example</div><div class="nav-item" data-idx="13" title="Slide 13" onclick="goTo(13)">My Demo Research Case</div><div class="nav-item" data-idx="14" title="Slide 14" onclick="goTo(14)">Pro-Tips</div><div class="nav-item" data-idx="15" title="Slide 15" onclick="goTo(15)">Pro-Tips — More From This Thread</div><div class="nav-sec" data-idx="16" title="Slide 16" onclick="goTo(16)">Watch for Thread Rot</div><div class="nav-item" data-idx="17" title="Slide 17" onclick="goTo(17)">Like a meeting with real Interns... or is it?</div><div class="nav-item" data-idx="18" title="Slide 18" onclick="goTo(18)">Context Window Reality — Free vs. Paid</div><div class="nav-item" data-idx="19" title="Slide 19" onclick="goTo(19)">What Triggers Compaction</div><div class="nav-item" data-idx="20" title="Slide 20" onclick="goTo(20)">The Four Symptoms</div><div class="nav-item" data-idx="21" title="Slide 21" onclick="goTo(21)">Discussion — examples? *(+30)*</div><div class="nav-item" data-idx="22" title="Slide 22" onclick="goTo(22)">What To Do About It</div><div class="nav-sec" data-idx="23" title="Slide 23" onclick="goTo(23)">Add Respected Experts</div><div class="nav-item" data-idx="24" title="Slide 24" onclick="goTo(24)">Demonstration — Naming Names *(+40)*</div><div class="nav-item" data-idx="25" title="Slide 25" onclick="goTo(25)">Finding Who To Name</div><div class="nav-item" data-idx="26" title="Slide 26" onclick="goTo(26)">Your Turn — Find Some Voices Other Than Your Own *(+45)*</div><div class="nav-sec" data-idx="27" title="Slide 27" onclick="goTo(27)">Design the Report</div><div class="nav-item" data-idx="28" title="Slide 28" onclick="goTo(28)">Demonstration — Skeleton First *(+50)*</div><div class="nav-item" data-idx="29" title="Slide 29" onclick="goTo(29)">The Parts of a Design</div><div class="nav-item" data-idx="30" title="Slide 30" onclick="goTo(30)">Your Turn — Sketch Yours *(+55)*</div><div class="nav-item" data-idx="31" title="Slide 31" onclick="goTo(31)">Sharing *(+65)*</div><div class="nav-sec" data-idx="32" title="Slide 32" onclick="goTo(32)">In Conclusion</div><div class="nav-item" data-idx="33" title="Slide 33" onclick="goTo(33)">It's a Wrap</div><div class="nav-item" data-idx="34" title="Slide 34" onclick="goTo(34)">Homework — Lead Your Interns</div><div class="nav-sec" data-idx="35" title="Slide 35" onclick="goTo(35)">Appendix</div><div class="nav-item" data-idx="36" title="Slide 36" onclick="goTo(36)">100 Level Outline</div><div class="nav-item" data-idx="37" title="Slide 37" onclick="goTo(37)">1) Context</div><div class="nav-item" data-idx="38" title="Slide 38" onclick="goTo(38)">2) A Solid First Draft</div><div class="nav-item" data-idx="39" title="Slide 39" onclick="goTo(39)">3) Analysis</div><div class="nav-item" data-idx="40" title="Slide 40" onclick="goTo(40)">4) Refining</div><div class="nav-item" data-idx="41" title="Slide 41" onclick="goTo(41)">5) Pretty!!!</div><div class="nav-sec" data-idx="42" title="Slide 42" onclick="goTo(42)">Provenance</div><div class="nav-item" data-idx="43" title="Slide 43" onclick="goTo(43)">Details</div></nav>
+<div class="deck-progress"><div class="deck-progress-fill" id="pf"></div></div>
+<div class="stage"><section class="slide cover" data-idx="1">
+      <div class="eyebrow">Training Series · Session 2</div>
+      <h1>A Solid First Draft</h1>
+      <div class="subtitle">Getting the Tool to Build Something You Can Stand Behind</div>
+      <div class="meta">Hugh McCutchen · v0.1 · September 2026</div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>Session 2 of 5. Everyone should arrive with a topic and a prompt from Session 1.</p><p>This session is built around demonstrations with users mirroring similar activity themselves.</p><p>Do not let a demo run long.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">1 / 44</span></span></footer></section>
+<section class="slide two-pane cembed" data-idx="2">
+      
+      <h2>Welcome Back</h2>
+      <div class="panes"><div class="left"><h3 class="sub3">Since Last Time</h3>
+<ul><li>Who used it during the week</li><li>What did you try</li><li>What annoyed you</li><li>Did anyone abandon their topic</li></ul></div>
+      <div class="right "><figure class="embed"><img src="assets/image-20260810141420205.png" alt="image-20260810141420205"></figure></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">2 / 44</span></span></footer></section>
+<section class="slide columns" data-idx="3" style="--n:3">
+      
+      <h2>Session 1: Where We Left Off</h2>
+      <div class="card-intro"><p>Session 1 was about context and creating a good seed prompt</p></div>
+      <div class="grid"><div class="cell"><h3>YOUR Context</h3><p>You know things the tool does not</p></div>
+<div class="cell"><h3>TOOL Context</h3><p>Different training, different sources, different blind spots</p></div>
+<div class="cell"><h3>THREAD Context</h3><p><em>The thread is the context you actually control</em></p></div></div><div class="base-banner"><p>Use that awareness and iterate with the tool to create a quality prompt</p></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">3 / 44</span></span></footer></section>
+<section class="slide columns" data-idx="4" style="--n:2">
+      
+      <h2>Session 2: How to Build Something You Keep <em>(+5)</em></h2>
+      
+      <div class="grid"><div class="cell"><h3>Some Good Answers</h3><ul><li>Right now</li><li>In the thread</li><li>You copy pieces out</li><li>Dies with the thread</li></ul></div>
+<div class="cell"><h3><em>A Solid Draft</em></h3><ul><li><em>Structured to your purpose</em></li><li><em>Validated Sources</em></li><li><em>Generally has the right information</em></li><li><em>Survives the thread</em></li></ul></div></div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>Chat can give you some good answers.  But a draft is something you plan to keep and evolve.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">4 / 44</span></span></footer></section>
+<section class="slide cards" data-idx="5" style="--n:3">
+      
+      <h2>Session 2: What We'll Cover</h2>
+      
+      <div class="grid"><div class="cell" style="--band:var(--c1)"><h3>Your Profile Instructions</h3></div>
+<div class="cell" style="--band:var(--c2)"><h3>A Research Example</h3></div>
+<div class="cell" style="--band:var(--c3)"><h3>Thread Rot — What Is It?</h3></div>
+<div class="cell" style="--band:var(--c4)"><h3>Adding Respected Experts</h3></div>
+<div class="cell" style="--band:var(--c5)"><h3>Designing the Report</h3></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">5 / 44</span></span></footer></section>
+<section class="slide section sec-right" data-idx="6">
+      <div class="sec-photo"><img src="assets/bursera-tree-photo.jpg" alt=""></div><div class="sec-fade"></div>
+      <div class="sec-num">Section 02</div>
+      <h1>Tune Your Profile</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">6 / 44</span></span></footer></section>
+<section class="slide two-pane cembed" data-idx="7">
+      
+      <h2>Demonstration — My Profile, Live <em>(+15)</em></h2>
+      <div class="panes"><div class="left"><h3 class="sub3">This Is Mine, Really</h3>
+<p>I am going to open my actual profile and scroll it. Then run one question with it on, and the same question with it off.</p>
+<div class="callout gold"><p>A profile is not settings. It is the standing instruction you stop having to repeat.</p></div></div>
+      <div class="right grid2"><figure class="embed"><img src="assets/image-20260831084518498.png" alt="image-20260831084518498"></figure>
+<figure class="embed"><img src="assets/image-20260831090059356.png" alt="image-20260831090059356"></figure></div></div><div class="base-banner"><p>And my Claude Profile Instructions are a bit more elaborate :-)</p></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">7 / 44</span></span></footer></section>
+<section class="slide two-pane cembed" data-idx="8">
+      
+      <h2>Gemini with no Instructions</h2>
+      <div class="panes"><div class="left"><p>Soft challenge</p>
+<p>no data table</p></div>
+      <div class="right "><figure class="embed"><img src="assets/image-20260831125113115.png" alt="image-20260831125113115"></figure></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">8 / 44</span></span></footer></section>
+<section class="slide two-pane cembed" data-idx="9">
+      
+      <h2>Gemini with Instructions to Challenge</h2>
+      <div class="panes"><div class="left"><p>Immediate press back</p>
+<p>Does have a data table down more</p></div>
+      <div class="right "><figure class="embed"><img src="assets/image-20260831125307480.png" alt="image-20260831125307480"></figure></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">9 / 44</span></span></footer></section>
+<section class="slide columns" data-idx="10" style="--n:3">
+      
+      <h2>What Belongs In There</h2>
+      <div class="card-intro"><p>Not your life story. The things you would otherwise retype every single thread.</p></div>
+      <div class="grid"><div class="cell"><h3>How You Want To Be Talked To</h3><ul><li>Close with a summary</li><li>Keep it brief</li><li>Use a professional, undramatic voice</li><li>Format — tables vs lists</li></ul></div>
+<div class="cell"><h3>Where You Are Coming From</h3><ul><li>I have a technical background</li><li>I am a manager of 20 years</li><li>I am generally pushing the boundary of new and innovative tech</li></ul></div>
+<div class="cell"><h3>How You Work</h3><ul><li>Tell me what you understand</li><li>Ask me about things where I am unclear</li><li>Ground work in sources that are validated</li></ul></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">10 / 44</span></span></footer></section>
+<section class="slide columns" data-idx="11" style="--n:3">
+      
+      <h2>Your Turn — Write Three Lines <em>(+20)</em></h2>
+      <div class="card-intro"><p>Open your profile. Add three lines. Do not overthink them — you will change them all week.</p></div>
+      <div class="grid"><div class="cell"><h3>Pick From</h3><ul><li>One line about who you are</li><li>One line about how you want answers</li><li>One line about a habit you want it to have</li></ul></div>
+<div class="cell"><h3>Then</h3><ul><li>Re-run a question you asked last week</li><li>Notice what changed</li><li>Notice what did not</li></ul></div>
+<div class="cell"><h3>Watch Out</h3><ul><li><em>Long profiles get ignored</em></li><li><em>Contradictions get ignored</em></li><li><em>Be specific or skip it</em></li></ul></div></div><div class="base-banner"><p>Three lines. Five minutes. Raise your hand when it's saved.</p></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">11 / 44</span></span></footer></section>
+<section class="slide cards" data-idx="12" style="--n:2">
+      
+      <h2>Sharing — What Did You Put In</h2>
+      
+      <div class="grid"><div class="cell" style="--band:var(--c1)"><h3>What Was Hardest To Name</h3></div>
+<div class="cell" style="--band:var(--c2)"><h3>Did Anything Change</h3></div>
+<div class="cell" style="--band:var(--c3)"><h3>Did Anything Get Worse</h3></div>
+<div class="cell" style="--band:var(--c4)"><h3>What Do You Want To Add Later</h3></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">12 / 44</span></span></footer></section>
+<section class="slide section sec-right" data-idx="13">
+      <div class="sec-photo"><img src="assets/bursera-tree-photo.jpg" alt=""></div><div class="sec-fade"></div>
+      <div class="sec-num">Section 03</div>
+      <h1>A Research Example</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">13 / 44</span></span></footer></section>
+<section class="slide two-pane cembed" data-idx="14">
+      
+      <h2>My Demo Research Case</h2>
+      <div class="panes"><div class="left"><h3 class="sub3">Watch, Then Do</h3>
+<p><a href="https://share.gemini.google/sl0xi7ZguYZM">My Gemini thread</a></p>
+<h3 class="sub3">The article I'm researching:</h3>
+<p><a href="https://arstechnica.com/security/2026/08/claude-codex-and-hermes-installed-unowned-code-inside-corporate-networks/">"Claude, Codex, and Hermes installed unowned code inside corporate networks"</a></p></div>
+      <div class="right "><figure class="embed"><img src="assets/image-20260831082621971.png" alt="image-20260831082621971"></figure></div></div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>The Pro-Tips on the next two slides are not a lecture list — every one of them is a move</p><p>actually made in this thread. Walk the thread live and point to where each one happens:</p><p>opening neutral, asking it to challenge you, demanding exact quotes, asking it clarifying</p><p>questions before it answers, auditing its own work, and cross-checking it with a second tool.</p><p>The habit is demonstrated here, even though the slide itself can't show the doing.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">14 / 44</span></span></footer></section>
+<section class="slide cards" data-idx="15" style="--n:3">
+      
+      <h2>Pro-Tips</h2>
+      <div class="card-intro"><p>Some habits I try to use</p></div>
+      <div class="grid"><div class="cell" style="--band:var(--c1)"><h3>Make it prove it read your content</h3></div>
+<div class="cell" style="--band:var(--c2)"><h3>Open neutral as possible</h3></div>
+<div class="cell" style="--band:var(--c3)"><h3>Use the tool as your research partner</h3></div>
+<div class="cell" style="--band:var(--c4)"><h3>Find trusted content</h3></div>
+<div class="cell" style="--band:var(--c5)"><h3>Draft when you have a solid set of content</h3></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">15 / 44</span></span></footer></section>
+<section class="slide cards" data-idx="16" style="--n:3">
+      
+      <h2>Pro-Tips — More From This Thread</h2>
+      
+      <div class="grid"><div class="cell" style="--band:var(--c1)"><h3>Make It Ask You First</h3><p>Before a scoped or technical answer, tell it to ask clarifying questions rather than guess your intent</p></div>
+<div class="cell" style="--band:var(--c2)"><h3>Demand Exact Quotes, Not Paraphrase</h3><p>"Give me exact quotes" turns a vague synthesis into something you can check against the source</p></div>
+<div class="cell" style="--band:var(--c3)"><h3>Have It Audit Its Own Work</h3><p>Before you rely on a draft, ask it to re-verify its own claims against the source material</p></div>
+<div class="cell" style="--band:var(--c4)"><h3>Cross-Check With a Second Tool</h3><p>Don't let one model grade its own homework — bring the output to a different tool and ask it to find the holes</p></div>
+<div class="cell" style="--band:var(--c5)"><h3>Notice When It Asserts What It Can't Know</h3><p>Watch for confident answers about things the tool has no way to actually verify — that's a tell, not just a thread-rot symptom</p></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">16 / 44</span></span></footer></section>
+<section class="slide section sec-right" data-idx="17">
+      <div class="sec-photo"><img src="assets/bursera-tree-photo.jpg" alt=""></div><div class="sec-fade"></div>
+      <div class="sec-num">Section 04</div>
+      <h1>Watch for Thread Rot</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">17 / 44</span></span></footer></section>
+<section class="slide two-pane cembed" data-idx="18">
+      
+      <h2>Like a meeting with real Interns... or is it?</h2>
+      <div class="panes"><div class="left"><h3 class="sub3">"It's been 2 hours I need a break"</h3>
+<p>What they really need is to tag team in a fresh set of workers.  A break can make things worse.</p>
+<h3 class="sub3">"We talked about that over an hour ago"</h3>
+<p>Was someone taking notes?</p>
+<h3 class="sub3">"How was I supposed to know that was important"</h3>
+<p>What are you going to hand to the next set of workers?</p></div>
+      <div class="right "><figure class="embed"><img src="assets/image-20260831114312157.png" alt="image-20260831114312157"></figure></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">18 / 44</span></span></footer></section>
+<section class="slide table" data-idx="19">
+      
+      <h2>Context Window Reality — Free vs. Paid</h2>
+      <div class="table-stage"><table class="deck-table"><thead><tr><th>Platform</th><th>Free tier</th><th>Paid tier</th><th>Key catch</th></tr></thead><tbody><tr><td>Claude</td><td>Not fixed — varies with demand</td><td>200K standard, up to 1M on Sonnet 5 / Opus 5</td><td>Auto-compacts around 500K tokens on Sonnet 5 — full history stays referenceable after</td></tr><tr><td>Gemini</td><td>32,000 tokens (~50 pages)</td><td>1,000,000 tokens on AI Pro/Ultra</td><td>One 30-page PDF can eat most of the free window in a single turn</td></tr><tr><td>ChatGPT</td><td>~8K–32K historically; message cap dropped Aug 2026, window limit is separate</td><td>Up to ~1.05M on GPT-5.6 reasoning modes; 32K–128K on Instant, varies by plan</td><td>Oldest content silently drops once the window fills</td></tr></tbody></table></div>
+      <div class="table-foot"></div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>Sources (for Q&amp;A, not for the slide): Claude — Anthropic support ("varies with demand";</p><p>context summarization behavior). Gemini — Google's Gemini Apps help page (32K free tier)</p><p>and the Gemini Pro/Ultra limits page (1M). ChatGPT — OpenAI's Aug 6 2026 free-tier message-cap</p><p>removal announcement; context-window figures vary by source and reasoning mode, flag that</p><p>live rather than quoting one number as fixed.</p></div></aside><div class="base-banner"><p>All three vendors' free-tier numbers move fast — verify against the vendor's own help page the week you present</p></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">19 / 44</span></span></footer></section>
+<section class="slide table" data-idx="20">
+      
+      <h2>What Triggers Compaction</h2>
+      <div class="table-stage"><table class="deck-table"><thead><tr><th>Platform</th><th>Official behavior</th><th>What users report</th></tr></thead><tbody><tr><td>Claude</td><td>Auto-summarizes as the window fills; designed so full history stays referenceable with warning at compaction</td><td>Not widely reported as a failure — matches documented design</td></tr><tr><td>Gemini</td><td>Free: rolling FIFO, oldest turns drop. Paid: 1M window meant to avoid mid-session compaction</td><td>Active complaints of context loss even on paid tiers — support threads report retention "broken" in the newest model</td></tr><tr><td>ChatGPT</td><td>Oldest content silently drops once the window fills — no summarization step</td><td>Consistent with official behavior — the "forgetting" is the documented mechanism, not a bug</td></tr></tbody></table></div>
+      <div class="table-foot"><div class="callout gold"><p>Documented behavior and user experience are not always the same.</p></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">20 / 44</span></span></footer></section>
+<section class="slide columns" data-idx="21" style="--n:4">
+      
+      <h2>The Four Symptoms</h2>
+      <div class="card-intro"><p>The window is finite. Some tools will signal that the thread is 'compacting' or 'compressing'.</p></div>
+      <div class="grid"><div class="cell"><h3>You have to repeat instructions</h3><p>You had some idea figured out with the chat and now you are having to explain it all over again</p></div>
+<div class="cell"><h3>It is making less sense not more</h3><p>If the thread was tracking well and providing useful insights and now it is giving you nonsense or the opposite from prior</p></div>
+<div class="cell"><h3>Drafts degrade</h3><p>If you are drafting and it is dropping content</p></div>
+<div class="cell"><h3>Thread Lock up</h3><p>This used to be common.  It would spin endlessly, or just not return, or otherwise become unresponsive</p></div></div><div class="base-banner"><p>Normally after 20 or 30 turns — especially if you pulled in a lot of content or images to parse</p></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">21 / 44</span></span></footer></section>
+<section class="slide plain" data-idx="22"><h2>Discussion — examples? <em>(+30)</em></h2><p>Go around and share your experiences</p><div class="base-banner"><p>Have you seen anything like this?</p></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">22 / 44</span></span></footer></section>
+<section class="slide cards" data-idx="23" style="--n:2">
+      
+      <h2>What To Do About It</h2>
+      <div class="card-intro"><p>You do not fix a rotted thread. You leave it.</p></div>
+      <div class="grid"><div class="cell" style="--band:var(--c1)"><h3>Draft... and Save copies</h3></div>
+<div class="cell" style="--band:var(--c2)"><h3>Keep the Good References</h3></div>
+<div class="cell" style="--band:var(--c3)"><h3>Then Start Fresh</h3></div>
+<div class="cell" style="--band:var(--c4)"><h3>It is going to degrade more</h3></div></div><div class="base-banner"><p>Watch how many turns you are in. Be mindful of how much you are loading in. Watch for quality degradation.</p></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">23 / 44</span></span></footer></section>
+<section class="slide section sec-right" data-idx="24">
+      <div class="sec-photo"><img src="assets/bursera-tree-photo.jpg" alt=""></div><div class="sec-fade"></div>
+      <div class="sec-num">Section 05</div>
+      <h1>Add Respected Experts</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">24 / 44</span></span></footer></section>
+<section class="slide two-pane cembed" data-idx="25">
+      
+      <h2>Demonstration — Naming Names <em>(+40)</em></h2>
+      <div class="panes"><div class="left"><h3 class="sub3">Going Deeper with Experts</h3>
+<div class="callout gold"><p>It will not tell you it was drawing on nothing in particular. You have to tell it whose shoulders to stand on.</p></div></div>
+      <div class="right "><figure class="embed"><img src="assets/image-20260831113441931.png" alt="image-20260831113441931"></figure></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">25 / 44</span></span></footer></section>
+<section class="slide columns" data-idx="26" style="--n:3">
+      
+      <h2>Finding Who To Name</h2>
+      <div class="card-intro"><p>You do not need to already know the field. You need to make the tool tell you.</p></div>
+      <div class="grid"><div class="cell"><h3>Ask It</h3><ul><li>"Who are the serious voices here"</li><li>"Who disagrees with them"</li><li>"Who is popular but not respected"</li></ul></div>
+<div class="cell"><h3>Check Them</h3><ul><li>Ask for details about what they think</li><li>Ask for quotes or links</li><li><em>Did the tool invent one</em></li></ul></div>
+<div class="cell"><h3>Then Use Them</h3><ul><li>"Weigh X's position heavily"</li><li>"Where would Y object"</li><li><em>"What would they both miss"</em></li></ul></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">26 / 44</span></span></footer></section>
+<section class="slide columns" data-idx="27" style="--n:3">
+      
+      <h2>Your Turn — Find Some Voices Other Than Your Own <em>(+45)</em></h2>
+      <div class="card-intro"><p>Ask your tool who the serious voices are on your topic. Pick three. Verify they exist.</p></div>
+      <div class="grid"><div class="cell"><h3>Do</h3><ul><li>Get a list of five to ten</li><li>Look up three of them</li><li>Add the surviving names to your prompt</li></ul></div>
+<div class="cell"><h3>Notice</h3><ul><li>Did it invent anyone</li><li>Did it name only Americans</li><li><em>Did it name only living people</em></li></ul></div>
+<div class="cell"><h3>Then</h3><ul><li>Re-run and compare sources</li></ul></div></div><div class="base-banner"><p>Push for details and examples so you know they are real.</p></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">27 / 44</span></span></footer></section>
+<section class="slide section sec-right" data-idx="28">
+      <div class="sec-photo"><img src="assets/bursera-tree-photo.jpg" alt=""></div><div class="sec-fade"></div>
+      <div class="sec-num">Section 06</div>
+      <h1>Design the Report</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">28 / 44</span></span></footer></section>
+<section class="slide two-pane cembed" data-idx="29">
+      
+      <h2>Demonstration — Skeleton First <em>(+50)</em></h2>
+      <div class="panes"><div class="left"><h3 class="sub3">Figure out the Shape First</h3>
+<p>Not "write me a report." A section list, in order, with what each section is for.</p>
+<div class="callout gold"><p>The tool will happily choose the shape for you. Its shape is the average of everything it has read.</p></div></div>
+      <div class="right "><figure class="embed"><img src="assets/image-20260831114720370.png" alt="image-20260831114720370"></figure></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">29 / 44</span></span></footer></section>
+<section class="slide columns" data-idx="30" style="--n:3">
+      
+      <h2>The Parts of a Design</h2>
+      <div class="card-intro"><p>Six lines is usually enough. Write them before you write anything else.</p></div>
+      <div class="grid"><div class="cell"><h3>What It Is For</h3><ul><li>Who reads it</li><li>What they decide</li></ul></div>
+<div class="cell"><h3>What Is In It</h3><ul><li>Sections, in order</li><li>What each one answers</li></ul></div>
+<div class="cell"><h3>What Is Not</h3><ul><li><em>Out of scope, explicitly</em></li><li><em>Where you expect thin evidence</em></li></ul></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">30 / 44</span></span></footer></section>
+<section class="slide columns" data-idx="31" style="--n:3">
+      
+      <h2>Your Turn — Sketch Yours <em>(+55)</em></h2>
+      <div class="card-intro"><p>Write the skeleton for the paper you are building across these five sessions.</p></div>
+      <div class="grid"><div class="cell"><h3>Write</h3><ul><li>One line: who this is for</li><li>Four to six section names</li><li>One line each: what it answers</li></ul></div>
+<div class="cell"><h3>Then Hand It Over</h3><ul><li>"Here is my structure"</li><li>"What is missing"</li><li>"What is in the wrong order"</li></ul></div>
+<div class="cell"><h3>Do Not Yet</h3><ul><li><em>Do not ask it to write the whole thing</em></li><li><em>One section is enough today</em></li></ul></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">31 / 44</span></span></footer></section>
+<section class="slide cards" data-idx="32" style="--n:3">
+      
+      <h2>Sharing <em>(+65)</em></h2>
+      
+      <div class="grid"><div class="cell" style="--band:var(--c1)"><h3>Whose Shape Changed After Feedback</h3></div>
+<div class="cell" style="--band:var(--c2)"><h3>Who Cut a Section</h3></div>
+<div class="cell" style="--band:var(--c3)"><h3>What Did It Push Back On</h3></div>
+<div class="cell" style="--band:var(--c4)"><h3>Where Did You Overrule It</h3></div>
+<div class="cell" style="--band:var(--c5)"><h3>What Are You Taking Into Next Week</h3></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">32 / 44</span></span></footer></section>
+<section class="slide section sec-right" data-idx="33">
+      <div class="sec-photo"><img src="assets/bursera-tree-photo.jpg" alt=""></div><div class="sec-fade"></div>
+      <div class="sec-num">Section 07</div>
+      <h1>In Conclusion</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">33 / 44</span></span></footer></section>
+<section class="slide cards" data-idx="34" style="--n:3">
+      
+      <h2>It's a Wrap</h2>
+      <div class="card-intro"><p>Help me make the series better!</p></div>
+      <div class="grid"><div class="cell" style="--band:var(--c1)"><h3>Were the Demos Useful</h3></div>
+<div class="cell" style="--band:var(--c2)"><h3>Too Many, Too Few</h3></div>
+<div class="cell" style="--band:var(--c3)"><h3>What Did You Want to See Me Do</h3></div>
+<div class="cell" style="--band:var(--c4)"><h3>What Are You Still Unsure About</h3></div>
+<div class="cell" style="--band:var(--c5)"><h3>Any More Feedback?</h3></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">34 / 44</span></span></footer></section>
+<section class="slide two-pane homework" data-idx="35">
+      
+      <h2>Homework — Lead Your Interns</h2>
+      <div class="panes"><div class="left"><ul><li>Run your skeleton and get a set of content you actually like</li><li>Watch one thread until you can name the rot</li><li>Adjust your profile</li></ul></div>
+      <div class="right hw"><figure class="embed"><img src="assets/Panel6 (1).png" alt=""></figure></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">35 / 44</span></span></footer></section>
+<section class="slide section sec-right" data-idx="36">
+      <div class="sec-photo"><img src="assets/bursera-tree-photo.jpg" alt=""></div><div class="sec-fade"></div>
+      <div class="sec-num">Section 08</div>
+      <h1>Appendix</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">36 / 44</span></span></footer></section>
+<section class="slide outline" data-idx="37">
+      <h2>100 Level Outline</h2>
+      <div class="outline-wrap"><svg viewBox="0 0 1160 250" xmlns="http://www.w3.org/2000/svg" class="outline-svg" preserveAspectRatio="xMidYMid meet"><polyline points="140,88 360,88 580,88 800,88 1020,88" fill="none" stroke="#CBD5E1" stroke-width="4"/><circle cx="140" cy="88" r="42" fill="#F5E6B8" stroke="#B8860B" stroke-width="3"/><text x="140" y="99" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="700" font-size="41" fill="#0F172A">1</text><text x="140" y="158" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="600" font-size="20" fill="#1E293B">1) Context</text><circle cx="360" cy="88" r="42" fill="#F5E6B8" stroke="#B8860B" stroke-width="3"/><text x="360" y="99" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="700" font-size="41" fill="#0F172A">2</text><text x="360" y="158" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="600" font-size="20" fill="#1E293B">2) A Solid First</text><text x="360" y="179" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="600" font-size="20" fill="#1E293B">Draft</text><circle cx="580" cy="88" r="42" fill="#F5E6B8" stroke="#B8860B" stroke-width="3"/><text x="580" y="99" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="700" font-size="41" fill="#0F172A">3</text><text x="580" y="158" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="600" font-size="20" fill="#1E293B">3) Analysis</text><circle cx="800" cy="88" r="42" fill="#F5E6B8" stroke="#B8860B" stroke-width="3"/><text x="800" y="99" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="700" font-size="41" fill="#0F172A">4</text><text x="800" y="158" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="600" font-size="20" fill="#1E293B">4) Refining</text><circle cx="1020" cy="88" r="42" fill="#F5E6B8" stroke="#B8860B" stroke-width="3"/><text x="1020" y="99" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="700" font-size="41" fill="#0F172A">5</text><text x="1020" y="158" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="600" font-size="20" fill="#1E293B">5) Pretty!!!</text></svg></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">37 / 44</span></span></footer></section>
+<section class="slide cards" data-idx="38" style="--n:3">
+      
+      <h2>1) Context</h2>
+      
+      <div class="grid"><div class="cell" style="--band:var(--c1)"><h3>Introduction</h3></div>
+<div class="cell" style="--band:var(--c2)"><h3>Prompting — Let's Ask the Tools</h3></div>
+<div class="cell" style="--band:var(--c3)"><h3>Build Your Own Seed Prompt</h3></div>
+<div class="cell" style="--band:var(--c4)"><h3>Compare Our Experiences</h3></div>
+<div class="cell" style="--band:var(--c5)"><h3>Iterate</h3></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">38 / 44</span></span></footer></section>
+<section class="slide cards" data-idx="39" style="--n:2">
+      
+      <h2>2) A Solid First Draft</h2>
+      
+      <div class="grid"><div class="cell" style="--band:var(--c1)"><h3>Tune Your Profile to Help</h3></div>
+<div class="cell" style="--band:var(--c2)"><h3>Watch for Thread Rot</h3></div>
+<div class="cell" style="--band:var(--c3)"><h3>Add Respected Experts</h3></div>
+<div class="cell" style="--band:var(--c4)"><h3>Design a Report</h3></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">39 / 44</span></span></footer></section>
+<section class="slide cards" data-idx="40" style="--n:3">
+      
+      <h2>3) Analysis</h2>
+      
+      <div class="grid"><div class="cell" style="--band:var(--c1)"><h3>Basic Carrying Context</h3></div>
+<div class="cell" style="--band:var(--c2)"><h3>Structuring the Analysis</h3></div>
+<div class="cell" style="--band:var(--c3)"><h3>Red Team</h3></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">40 / 44</span></span></footer></section>
+<section class="slide cards" data-idx="41" style="--n:3">
+      
+      <h2>4) Refining</h2>
+      
+      <div class="grid"><div class="cell" style="--band:var(--c1)"><h3>Advanced Carrying Context</h3></div>
+<div class="cell" style="--band:var(--c2)"><h3>Creating the Narrative</h3></div>
+<div class="cell" style="--band:var(--c3)"><h3>Red Team</h3></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">41 / 44</span></span></footer></section>
+<section class="slide cards" data-idx="42" style="--n:3">
+      
+      <h2>5) Pretty!!!</h2>
+      
+      <div class="grid"><div class="cell" style="--band:var(--c1)"><h3>Illustration</h3></div>
+<div class="cell" style="--band:var(--c2)"><h3>Diagram</h3></div>
+<div class="cell" style="--band:var(--c3)"><h3>Formatting</h3></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">42 / 44</span></span></footer></section>
+<section class="slide section sec-right" data-idx="43">
+      <div class="sec-photo"><img src="assets/bursera-tree-photo.jpg" alt=""></div><div class="sec-fade"></div>
+      <div class="sec-num">Section 09</div>
+      <h1>Provenance</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">43 / 44</span></span></footer></section>
+<section class="slide cards" data-idx="44" style="--n:3">
+      
+      <h2>Details</h2>
+      
+      <div class="grid"><div class="cell" style="--band:var(--c1)"><h3>Deck</h3><p>A Solid First Draft · v0.1 · training_class_102 (BEBURS)</p>
+<p>Facilitator: Hugh McCutchen</p></div>
+<div class="cell" style="--band:var(--c2)"><h3>Drafted</h3><p>Structural draft by Claude from the Level 100 outline in Session 1's appendix — content to be written by Hugh</p></div>
+<div class="cell" style="--band:var(--c3)"><h3>Demonstration Design</h3><p>Five watch-then-do slots; three run live, two use material prepared beforehand</p></div>
+<div class="cell" style="--band:var(--c4)"><h3>Interns Material</h3><p>Narrative and image drawn from Bursera's "The Interns" (burseraconsulting.com/the-interns/)</p></div>
+<div class="cell" style="--band:var(--c5)"><h3>Built With</h3><p>Bursera html-slides engine, v1.7</p>
+<p>Markdown source → single-file HTML</p></div>
+<div class="cell" style="--band:var(--c6)"><h3>Session</h3><p>BEBURS-S05 / S06 · Cowork</p>
+<p>August 2026</p></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">44 / 44</span></span></footer></section></div>
+<div class="deck-mode" id="md"></div>
+<button class="pdf-btn" onclick="window.print()" title="Save, print, or send as PDF">⤓ PDF</button>
+<button class="deck-nav-btn" id="deckPrev" onclick="window.goPrev()" aria-label="previous slide" title="Previous (← or ↓, right-click)">‹</button>
+<button class="deck-nav-btn" id="deckNext" onclick="window.goNext()" aria-label="next slide" title="Next (any key, click, or →)">›</button>
+<script>
+(function(){
+  var N=44, cur=0;
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var navs=[].slice.call(document.querySelectorAll('.deck-nav [data-idx]'));
+  var pf=document.getElementById('pf'),md=document.getElementById('md');
+  var prevBtn=document.getElementById('deckPrev'),nextBtn=document.getElementById('deckNext');
+  var modes=['slide','fade','vertical','zoom','flip'],mi=0;
+  var CHROME='.deck-nav,.deck-nav-btn,.pdf-btn,.notes-btn,.notes-drawer,a,button,[tabindex]';
+  function setCur(i){cur=Math.max(0,Math.min(N-1,i));
+    slides.forEach(function(s,j){s.style.setProperty('--pos',j-cur);s.classList.toggle('active',j===cur);
+      if(j!==cur){var d=s.querySelector('.notes-drawer.open');if(d)d.classList.remove('open');}});
+    navs.forEach(function(n){n.classList.toggle('active',+n.getAttribute('data-idx')===cur);});
+    document.body.classList.toggle('cover-mode',cur===0);pf.style.width=(cur/(N-1)*100)+'%';
+    if(prevBtn)prevBtn.disabled=(cur===0);if(nextBtn)nextBtn.disabled=(cur===N-1);}
+  window.goTo=setCur;
+  window.goPrev=function(){setCur(cur-1);};
+  window.goNext=function(){setCur(cur+1);};
+  window.toggleNotes=function(btn){btn.parentElement.querySelector('.notes-drawer').classList.toggle('open');};
+  /* common-navigation input model (v1.6): any left click or keyboard tap advances; a right-click
+     or the back/down arrow goes back. Excluded from both: the nav rail, PDF/notes/deck-nav
+     buttons, and links — clicking or keying through those keeps their own behavior. */
+  document.addEventListener('click',function(e){
+    if(e.target&&e.target.closest&&e.target.closest(CHROME))return;
+    setCur(cur+1);
+  });
+  document.addEventListener('contextmenu',function(e){
+    if(e.target&&e.target.closest&&e.target.closest(CHROME))return;
+    e.preventDefault();setCur(cur-1);
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.ctrlKey||e.metaKey||e.altKey)return;
+    if(['Tab','Escape','Shift','Control','Alt','Meta','CapsLock'].includes(e.key)||/^F\d{1,2}$/.test(e.key))return;
+    if(e.key==='ArrowLeft'||e.key==='ArrowDown'){e.preventDefault();setCur(cur-1);}
+    else if(e.key==='Home'){e.preventDefault();setCur(0);}
+    else if(e.key==='End'){e.preventDefault();setCur(N-1);}
+    else if(e.key==='t'||e.key==='T'){mi=(mi+1)%modes.length;document.body.setAttribute('data-tr',modes[mi]);
+      md.textContent='transition: '+modes[mi];md.classList.add('show');clearTimeout(window._mt);window._mt=setTimeout(function(){md.classList.remove('show');},1400);}
+    else if(e.target&&e.target.closest&&e.target.closest(CHROME))return;
+    else{e.preventDefault();setCur(cur+1);}
+  });
+  setCur(0);
+})();
+</script>
+</body></html>
