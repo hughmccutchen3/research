@@ -13,12 +13,31 @@
 body{background:#20262e;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;color:var(--ink);overflow:hidden;}
 /* nav */
 .deck-nav{position:fixed;top:0;left:0;width:var(--nav);height:100vh;background:var(--blue);color:#fff;overflow-y:auto;z-index:40;padding-bottom:40px;}
-.nav-title{font-weight:700;font-size:16px;color:#fff;padding:20px;border-bottom:1px solid rgba(255,255,255,.14);position:sticky;top:0;background:var(--blue);}
+.nav-header{position:sticky;top:0;background:var(--blue);border-bottom:1px solid rgba(255,255,255,.14);z-index:1;}
+.nav-title{font-weight:700;font-size:16px;color:#fff;padding:20px 20px 4px;}
+/* v1.16 (BEBURS-S08, RES-740): the author's own hand-declared meta:: line, lifted off the cover
+   (the only place it lived through v1.15) into the same sticky header the build-stamp already
+   uses — otherwise "what version is this" is answered only once, on a slide most viewing sessions
+   scroll past in the first second. Hugh's own words: "the only version I see is on the cover."
+   Same source line, same semantics (hand-declared, does not move on rebuild) — just visible on
+   every slide now, not filed on one. Empty when a deck has no meta:: line — no placeholder shown. */
+.deck-version{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.3px;color:rgba(255,255,255,.78);padding:0 20px 6px;}
+body.cover-mode .deck-version{display:none;}
+/* v1.15 (RES-587/RES-740): build-time identity stamp, in the one place an author's eye already
+   lands — the nav header, above every slide, never scrolled past. Answers "same build as last
+   time?" without opening git or asking Claude. See BUILT_AT above for what it deliberately is
+   and isn't. Folded into one sticky .nav-header with .nav-title (rather than each sticking
+   itself at a guessed pixel offset) so the header's height can change without re-tuning a magic
+   number here. */
+.build-stamp{display:block;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:10px;letter-spacing:.5px;color:rgba(255,255,255,.55);padding:0 20px 14px;}
+body.cover-mode .build-stamp{display:none;}
 .nav-sec{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--sonoran-sky);padding:16px 20px 6px;cursor:pointer;}
 .nav-sec:hover{color:#fff;}
 .nav-item{display:block;padding:7px 20px 7px 30px;font-size:13px;line-height:1.35;color:#7f8b96;cursor:pointer;border-left:3px solid transparent;position:relative;}
-/* slide number on hover in the left nav (RES-587 follow-on, CWE-S83) */
-.nav-item::after,.nav-sec::after{content:attr(data-idx);position:absolute;right:8px;top:50%;transform:translateY(-50%);
+/* slide number on hover in the left nav (RES-587 follow-on, CWE-S83).
+   v1.8: displays data-num (1-based, matches the footer's page count) — data-idx stays
+   0-based underneath because goTo()/active-state matching in the client script key off it. */
+.nav-item::after,.nav-sec::after{content:attr(data-num);position:absolute;right:8px;top:50%;transform:translateY(-50%);
 font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0;color:var(--gold);
 background:rgba(0,0,0,.35);border-radius:9px;padding:1px 6px;opacity:0;transition:opacity .12s;pointer-events:none;}
 .nav-item:hover::after,.nav-sec:hover::after{opacity:1;}
@@ -33,18 +52,30 @@ body.cover-mode .deck-nav{transform:translateX(-100%);}
 body.cover-mode .stage{left:0;}
 .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-start;
 padding:7vh 5vw 60px;background:var(--bg);overflow-y:auto;
-transition:transform .55s cubic-bezier(.4,0,.2,1),opacity .5s ease;will-change:transform,opacity;}
+transition:transform .55s cubic-bezier(.4,0,.2,1),opacity .5s ease;}
 .slide::before{content:"";position:absolute;top:0;left:0;width:6px;height:100%;background:var(--gold);opacity:0;transition:opacity .4s;}
 .slide.active::before{opacity:1;}
-/* transition modes (press 't' to cycle) */
-[data-tr="slide"] .slide{transform:translateX(calc(var(--pos,1)*102%));}
-[data-tr="vertical"] .slide{transform:translateY(calc(var(--pos,1)*102%));}
-[data-tr="fade"] .slide{transform:none;opacity:0;pointer-events:none;}
-[data-tr="fade"] .slide.active{opacity:1;pointer-events:auto;}
-[data-tr="zoom"] .slide{transform:scale(.88);opacity:0;pointer-events:none;}
-[data-tr="zoom"] .slide.active{transform:scale(1);opacity:1;pointer-events:auto;}
-[data-tr="flip"] .slide{transform:perspective(1400px) rotateY(calc(var(--pos,1)*35deg)) translateX(calc(var(--pos,1)*60%));opacity:0;}
-[data-tr="flip"] .slide.active{transform:none;opacity:1;}
+/* transition modes (press 't' to cycle)
+   v1.12: will-change:transform moved OFF the unconditional base .slide rule above and onto only
+   the off-stage (non-.active) variant below, with an explicit will-change:auto on .active. Per
+   spec, will-change:transform alone — regardless of the actual computed transform value —
+   makes the element a containing block for position:fixed descendants, same as a real transform
+   would. So v1.11's "transform:none on .active" fix was incomplete: .slide (and therefore its
+   nested position:fixed .slide-foot) stayed promoted the whole time because will-change never
+   went away. This is why the footer bug could still resurface intermittently rather than being
+   fully gone. Scoping will-change to the pre-transition state only (a real hint: "this element is
+   about to animate") and clearing it to auto on .active removes the containing block exactly when
+   the footer needs the true viewport - the visible/active slide. No animation or visual change. */
+[data-tr="slide"] .slide{transform:translateX(calc(var(--pos,1)*102%));will-change:transform;}
+[data-tr="slide"] .slide.active{transform:none;will-change:auto;}
+[data-tr="vertical"] .slide{transform:translateY(calc(var(--pos,1)*102%));will-change:transform;}
+[data-tr="vertical"] .slide.active{transform:none;will-change:auto;}
+[data-tr="fade"] .slide{transform:none;opacity:0;pointer-events:none;will-change:opacity;}
+[data-tr="fade"] .slide.active{opacity:1;pointer-events:auto;will-change:auto;}
+[data-tr="zoom"] .slide{transform:scale(.88);opacity:0;pointer-events:none;will-change:transform,opacity;}
+[data-tr="zoom"] .slide.active{transform:none;opacity:1;pointer-events:auto;will-change:auto;}
+[data-tr="flip"] .slide{transform:perspective(1400px) rotateY(calc(var(--pos,1)*35deg)) translateX(calc(var(--pos,1)*60%));opacity:0;will-change:transform,opacity;}
+[data-tr="flip"] .slide.active{transform:none;opacity:1;will-change:auto;}
 /* typography */
 .eyebrow{font-family:'JetBrains Mono',monospace;font-size:16px;letter-spacing:3px;text-transform:uppercase;color:var(--blue-light);margin-bottom:14px;}
 h1{font-family:'DM Sans',sans-serif;font-weight:700;line-height:1.08;}
@@ -55,7 +86,6 @@ em{color:var(--gold);font-style:italic;} strong{color:var(--blue);}
 .cover,.section{justify-content:center;align-items:center;text-align:center;background:var(--blue);color:#fff;}
 .cover h1{font-size:clamp(53px,7.2vw,96px);margin-bottom:20px;}
 .cover .subtitle{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(20px,2vw,29px);color:var(--sonoran-sky);margin-bottom:40px;}
-.cover .meta{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:2px;color:var(--sonoran-sky);}
 .cover .eyebrow{color:var(--sonoran-sky);}
 .section .sec-num{font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:4px;text-transform:uppercase;color:var(--sonoran-sky);margin-bottom:18px;}
 .section h1{font-size:clamp(46px,6vw,82px);color:#fff;}
@@ -75,11 +105,23 @@ em{color:var(--gold);font-style:italic;} strong{color:var(--blue);}
 .outline .muted{color:var(--caliche);font-family:'JetBrains Mono',monospace;}
 /* two-pane */
 .panes{display:grid;grid-template-columns:1fr 1fr;gap:3vw;align-items:start;flex:1 1 auto;}
-.panes.stacked{display:flex;flex-direction:column;gap:2vh;grid-template-columns:none;}
+/* v1.14 (RES-587) FOUND THE ACTUAL BUG: .panes{align-items:start} (above) is written for the
+   GRID version of this layout (top-aligns the two grid cells), but .panes.stacked switches
+   display to flex WITHOUT resetting align-items — so the flex-column .panes.stacked inherited
+   align-items:start too. For flex-direction:column the cross axis is horizontal, and
+   align-items:start means "don't stretch cross-axis, shrink to content and hug the start (left)
+   edge" — so .right (and .left) never spanned the pane's full width at all; each shrank to its own
+   content's width and left-aligned. A stacked image centered inside that accidentally-narrow box
+   still LOOKS left-aligned on the slide, because the box itself never reached center. All of
+   v1.13's flex/margin centering was centering the image inside a box that was already in the
+   wrong place. Fix: align-items:stretch here so .panes.stacked's children span full width, same
+   as the grid version's columns always have. Kept v1.13's belt-and-suspenders centering below —
+   redundant now, defensive against this ever regressing again. */
+.panes.stacked{display:flex;flex-direction:column;align-items:stretch;gap:2vh;grid-template-columns:none;}
 .two-pane.stacked .left{flex:0 0 auto;}
-.two-pane.stacked .right{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;}
-.two-pane.stacked .right .embed{width:100%;height:100%;display:flex;align-items:center;justify-content:center;margin:0;}
-.two-pane.stacked .right .embed img{width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 6px 18px rgba(0,0,0,.12);}
+.two-pane.stacked .right{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;text-align:center;width:100%;}
+.two-pane.stacked .right .embed{width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;margin:0;}
+.two-pane.stacked .right .embed img{display:inline-block;margin:0 auto;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 6px 18px rgba(0,0,0,.12);}
 .two-pane .left p,.two-pane .left li{font-size:clamp(16px,1.52vw,23px);}
 .two-pane .left h3.sub3{font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(18px,1.6vw,25px);color:var(--ink);text-transform:none;letter-spacing:0;margin:0 0 12px;}
 .homework .left p,.homework .left li{font-size:clamp(20px,1.92vw,29px);line-height:1.5;}
@@ -106,13 +148,29 @@ em{color:var(--gold);font-style:italic;} strong{color:var(--blue);}
 .callout ul{margin-left:18px;} .callout li{font-size:clamp(14px,1.36vw,20px);}
 /* [BASE BANNER] — bright-blue callout bar, centered at bottom, fixed 2-line height, width tracks text */
 .base-banner{position:absolute;left:50%;bottom:56px;transform:translateX(-50%);z-index:8;
-max-width:82%;min-width:200px;display:flex;align-items:center;justify-content:center;text-align:center;
+max-width:98%;min-width:55%;display:flex;align-items:center;justify-content:center;text-align:center;
 background:#0d6efd;border-radius:10px;padding:12px 30px;box-shadow:0 8px 22px rgba(13,110,253,.35);}
 .base-banner p{margin:0;color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;
 font-size:clamp(17px,1.7vw,24px);line-height:1.3;min-height:2.6em;display:flex;align-items:center;
 justify-content:center;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 /* deck tables (RES-842). Sized for slide distance: the status pill is the scan target. */
 .deck-table{width:100%;border-collapse:collapse;margin:18px 0 8px;font-size:clamp(14px,1.16vw,19px);}
+/* [table] layout — hero-table treatment (RES-587, BEBURS-S06) */
+.slide.table .table-stage{flex:1;display:flex;flex-direction:column;justify-content:center;}
+.slide.table .table-stage .deck-table{font-size:clamp(15px,1.35vw,22px);margin:0;}
+.slide.table .table-foot{margin-top:20px;padding-top:16px;border-top:1px solid var(--gray-rule);}
+/* [doc-table] layout - documentation register (RES-587, BEBURS-S09). Fixed small px type on
+   purpose: this table is read at desk distance, so it must NOT scale with the display type ramp. */
+.slide.doctable .doc-stage{flex:1;min-height:0;overflow-y:auto;padding-right:6px;}
+.slide.doctable h2{margin-bottom:12px;}
+.slide.doctable .deck-table{font-size:13px;margin:0 0 14px;
+font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;}
+.slide.doctable .deck-table th{font-size:10px;letter-spacing:1.4px;padding:0 10px 6px;
+border-bottom:2px solid var(--blue-light);}
+.slide.doctable .deck-table td{font-size:13px;padding:7px 10px;line-height:1.5;}
+.slide.doctable .deck-table td:first-child{white-space:nowrap;width:1%;font-weight:600;}
+.slide.doctable p,.slide.doctable li{font-size:13px;line-height:1.55;}
+.slide.doctable .doc-stage>p:last-child{color:var(--ink-soft,#5a6270);font-style:italic;}
 .deck-table th{font-family:'JetBrains Mono',monospace;font-size:clamp(10px,.8vw,13px);letter-spacing:2px;
 text-transform:uppercase;color:var(--blue);text-align:left;padding:0 14px 9px;border-bottom:3px solid var(--blue-light);white-space:nowrap;}
 .deck-table td{padding:11px 14px;border-bottom:1px solid var(--gray-rule);vertical-align:top;line-height:1.38;}
@@ -126,13 +184,22 @@ letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:999
 .st-forming{background:#ece7f1;color:#5b4a86;}
 a{color:var(--gold);}
 /* speaker-notes drawer */
-.pdf-btn{position:fixed;bottom:48px;left:20px;z-index:60;border:none;border-radius:20px;padding:9px 15px;background:var(--gold);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.28);}
+/* v1.18 (BEBURS-S08, RES-587): pdf/prev/next moved from bottom-left (over the nav rail) to
+   top-right, floating over the page. Direct fix for Hugh: the v1.12 .nav-chrome-panel backing
+   these buttons at the bottom of the nav rail was itself hiding the bottom of a long scrolled
+   TOC — occluding the text was the whole point of that panel, and a long deck made "the text
+   it occludes" and "the text you're trying to read" the same text. Moving the buttons off the
+   nav rail entirely removes the need for a backing panel at all — top-right is screen real
+   estate Hugh doesn't use for anything else, per his own call. .nav-chrome-panel is REMOVED,
+   not just relocated; nothing replaces it because nothing sits under these buttons anymore.
+   Same z-index:60 (still above everything real: photo backgrounds, nav rail, slide content). */
+.pdf-btn{position:fixed;top:20px;right:120px;z-index:60;border:none;border-radius:20px;padding:9px 15px;background:var(--gold);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.28);}
 .pdf-btn:hover{filter:brightness(1.12);}
-.deck-nav-btn{position:fixed;bottom:48px;z-index:60;width:36px;height:36px;border:none;border-radius:50%;background:var(--blue);color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:18px;line-height:1;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.25);}
+.deck-nav-btn{position:fixed;top:20px;z-index:60;width:36px;height:36px;border:none;border-radius:50%;background:var(--blue);color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:18px;line-height:1;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.25);}
 .deck-nav-btn:hover{filter:brightness(1.15);}
 .deck-nav-btn:disabled{opacity:.32;cursor:default;filter:none;}
-#deckPrev{left:112px;}
-#deckNext{left:156px;}
+#deckPrev{right:68px;}
+#deckNext{right:20px;}
 .notes-btn{position:absolute;bottom:48px;left:96px;z-index:12;width:40px;height:40px;border:none;border-radius:50%;
 background:var(--gold);color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:20px;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.25);}
 .notes-btn:hover{filter:brightness(1.1);}
@@ -154,10 +221,14 @@ transform:translateY(101%);transition:transform .4s cubic-bezier(.4,0,.2,1);z-in
 .deck-counter b{color:var(--blue);}
 .deck-mode{position:fixed;bottom:2.5vh;right:9vw;z-index:50;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#fff;background:var(--gold);padding:5px 10px;border-radius:20px;opacity:0;transition:opacity .3s;}
 .deck-mode.show{opacity:1;}
-/* per-slide brand footer — B badge · name · url · confidential · page */
-.slide-foot{position:absolute;left:0;right:0;bottom:0;height:36px;display:flex;align-items:center;justify-content:space-between;
+/* per-slide brand footer — B badge · name · url · confidential · page
+   v1.10: fixed to the browser window (not the per-slide scroll container) so it stays put
+   when a tall slide's content scrolls; left tracks --nav like .stage does, collapsing to 0
+   in cover-mode. */
+.slide-foot{position:fixed;left:var(--nav);right:0;bottom:0;height:36px;display:flex;align-items:center;justify-content:space-between;
 padding:0 24px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1px;color:var(--caliche);
-border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
+border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;transition:left .45s ease;background:var(--bg);}
+body.cover-mode .slide-foot{left:0;background:transparent;}
 .slide-foot .brand{display:flex;align-items:center;gap:9px;font-weight:600;color:#7a6a52;}
 .bbadge{display:inline-flex;align-items:center;justify-content:center;width:21px;height:21px;border-radius:5px;background:var(--gold);color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0;}
 .slide-foot .foot-right{display:flex;align-items:center;gap:18px;}
@@ -170,18 +241,18 @@ border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
 @media print{body{overflow:visible;}.deck-nav,.deck-progress,.deck-counter,.deck-mode,.notes-btn,.notes-drawer,.pdf-btn{display:none;}
 .stage{position:static;overflow:visible;}.slide{position:relative!important;transform:none!important;opacity:1!important;height:100vh;page-break-after:always;padding:6vh 6vw;outline:1.5px solid #9aa4b0;outline-offset:-16px;}.slide::before{opacity:1;}@page{size:landscape;}}
 </style></head><body data-tr="slide">
-<nav class="deck-nav"><div class="nav-title">The Bursera Platform</div><div class="nav-sec" data-idx="0" title="Slide 0" onclick="goTo(0)">The Bursera Platform</div><div class="nav-sec" data-idx="1" title="Slide 1" onclick="goTo(1)">Why</div><div class="nav-item" data-idx="2" title="Slide 2" onclick="goTo(2)">What Bursera does</div><div class="nav-item" data-idx="3" title="Slide 3" onclick="goTo(3)">Claude does it best</div><div class="nav-item" data-idx="4" title="Slide 4" onclick="goTo(4)">LLM is still LLM</div><div class="nav-item" data-idx="5" title="Slide 5" onclick="goTo(5)">Claude fragments vs a Cowork Platform</div><div class="nav-sec" data-idx="6" title="Slide 6" onclick="goTo(6)">What is the Platform</div><div class="nav-item" data-idx="7" title="Slide 7" onclick="goTo(7)">The principles that govern the work</div><div class="nav-item" data-idx="8" title="Slide 8" onclick="goTo(8)">Sounds like a team of humans... but...</div><div class="nav-item" data-idx="9" title="Slide 9" onclick="goTo(9)">The hierarchy enhanced - organizing projects and threads</div><div class="nav-item" data-idx="10" title="Slide 10" onclick="goTo(10)">A Bursera thread has a structure</div><div class="nav-item" data-idx="11" title="Slide 11" onclick="goTo(11)">The Platform Structures</div><div class="nav-item" data-idx="12" title="Slide 12" onclick="goTo(12)">The documents that define the platform</div><div class="nav-item" data-idx="13" title="Slide 13" onclick="goTo(13)">Four kinds of artifact</div><div class="nav-item" data-idx="14" title="Slide 14" onclick="goTo(14)">The scripts that do the checking</div><div class="nav-item" data-idx="15" title="Slide 15" onclick="goTo(15)">The skills that instruct how the work is done</div><div class="nav-sec" data-idx="16" title="Slide 16" onclick="goTo(16)">Connecting the Threads</div><div class="nav-item" data-idx="17" title="Slide 17" onclick="goTo(17)">Claude is forced through gates</div><div class="nav-item" data-idx="18" title="Slide 18" onclick="goTo(18)">The gate is a script, not a self-assessment</div><div class="nav-item" data-idx="19" title="Slide 19" onclick="goTo(19)">Four roles learning to work together</div><div class="nav-sec" data-idx="20" title="Slide 20" onclick="goTo(20)">Roadmap</div><div class="nav-item" data-idx="21" title="Slide 21" onclick="goTo(21)">Where we are</div><div class="nav-item" data-idx="22" title="Slide 22" onclick="goTo(22)">The Platform is what enables the Team</div><div class="nav-sec" data-idx="23" title="Slide 23" onclick="goTo(23)">Appendix</div><div class="nav-item" data-idx="24" title="Slide 24" onclick="goTo(24)">Total amnesia, by default</div><div class="nav-item" data-idx="25" title="Slide 25" onclick="goTo(25)">Key Terms</div><div class="nav-item" data-idx="26" title="Slide 26" onclick="goTo(26)">What has to be true at each gate</div></nav>
+<nav class="deck-nav"><div class="nav-header"><div class="nav-title">The Bursera Platform</div><div class="deck-version">Hugh McCutchen · v1.6 · 3 September 2026</div><div class="build-stamp">Built 2026-09-05 18:33 UTC · git cb00930</div></div><div class="nav-sec" data-idx="0" data-num="1" title="Slide 1" onclick="goTo(0)">The Bursera Platform</div><div class="nav-sec" data-idx="1" data-num="2" title="Slide 2" onclick="goTo(1)">Why</div><div class="nav-item" data-idx="2" data-num="3" title="Slide 3" onclick="goTo(2)">What Bursera does</div><div class="nav-item" data-idx="3" data-num="4" title="Slide 4" onclick="goTo(3)">Claude does it best</div><div class="nav-item" data-idx="4" data-num="5" title="Slide 5" onclick="goTo(4)">LLM is still LLM</div><div class="nav-item" data-idx="5" data-num="6" title="Slide 6" onclick="goTo(5)">Claude fragments vs a Cowork Platform</div><div class="nav-sec" data-idx="6" data-num="7" title="Slide 7" onclick="goTo(6)">What is the Platform</div><div class="nav-item" data-idx="7" data-num="8" title="Slide 8" onclick="goTo(7)">The principles that govern the work</div><div class="nav-item" data-idx="8" data-num="9" title="Slide 9" onclick="goTo(8)">Sounds like a team of humans... but...</div><div class="nav-item" data-idx="9" data-num="10" title="Slide 10" onclick="goTo(9)">The hierarchy enhanced - organizing projects and threads</div><div class="nav-item" data-idx="10" data-num="11" title="Slide 11" onclick="goTo(10)">A Bursera thread has a structure</div><div class="nav-item" data-idx="11" data-num="12" title="Slide 12" onclick="goTo(11)">The Platform Structures</div><div class="nav-item" data-idx="12" data-num="13" title="Slide 13" onclick="goTo(12)">The documents that define the platform</div><div class="nav-item" data-idx="13" data-num="14" title="Slide 14" onclick="goTo(13)">Write, read, prove</div><div class="nav-item" data-idx="14" data-num="15" title="Slide 15" onclick="goTo(14)">Four kinds of artifact</div><div class="nav-item" data-idx="15" data-num="16" title="Slide 16" onclick="goTo(15)">The scripts that do the checking</div><div class="nav-item" data-idx="16" data-num="17" title="Slide 17" onclick="goTo(16)">The skills that instruct how the work is done</div><div class="nav-sec" data-idx="17" data-num="18" title="Slide 18" onclick="goTo(17)">Connecting the Threads</div><div class="nav-item" data-idx="18" data-num="19" title="Slide 19" onclick="goTo(18)">Claude is forced through gates</div><div class="nav-item" data-idx="19" data-num="20" title="Slide 20" onclick="goTo(19)">The gate is a script, not a self-assessment</div><div class="nav-item" data-idx="20" data-num="21" title="Slide 21" onclick="goTo(20)">Four roles learning to work together</div><div class="nav-sec" data-idx="21" data-num="22" title="Slide 22" onclick="goTo(21)">Roadmap</div><div class="nav-item" data-idx="22" data-num="23" title="Slide 23" onclick="goTo(22)">Where we are</div><div class="nav-item" data-idx="23" data-num="24" title="Slide 24" onclick="goTo(23)">The Platform is what enables the Team</div><div class="nav-sec" data-idx="24" data-num="25" title="Slide 25" onclick="goTo(24)">Appendix</div><div class="nav-item" data-idx="25" data-num="26" title="Slide 26" onclick="goTo(25)">Total amnesia, by default</div><div class="nav-item" data-idx="26" data-num="27" title="Slide 27" onclick="goTo(26)">Key Terms</div><div class="nav-item" data-idx="27" data-num="28" title="Slide 28" onclick="goTo(27)">What has to be true at each gate</div></nav>
 <div class="deck-progress"><div class="deck-progress-fill" id="pf"></div></div>
 <div class="stage"><section class="slide cover" data-idx="1">
       <div class="eyebrow">Platform Foundations</div>
       <h1>The Bursera Platform</h1>
       <div class="subtitle">The structures — the layers, the roles, the procedures. Why it was built and under what principles.</div>
-      <div class="meta">Hugh McCutchen · v1.4 · 28 August 2026</div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
-    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>These slides describe what the platform is and why it is built this way.</p><p>It is updated as significant new work is done.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">1 / 27</span></span></footer></section>
+      <button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>These slides describe what the platform is and why it is built this way.</p><p>It is updated as significant new work is done.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">1 / 28</span></span></footer></section>
 <section class="slide section sec-right" data-idx="2">
       <div class="sec-photo"><img src="assets/bursera-tree-photo.jpg" alt=""></div><div class="sec-fade"></div>
-      
-      <h1>Why</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">2 / 27</span></span></footer></section>
+      <div class="sec-num">Section 01</div>
+      <h1>Why</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">2 / 28</span></span></footer></section>
 <section class="slide cards" data-idx="3" style="--n:3">
       <div class="eyebrow">The work this platform exists to serve</div>
       <h2>What Bursera does</h2>
@@ -192,7 +263,7 @@ border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
 <div class="cell" style="--band:var(--c4)"><h3>The method</h3><p>Two layers, measured. <em>"We clearly show how we maximize the analyst or researcher's role in each piece of work."</em></p></div>
 <div class="cell" style="--band:var(--c5)"><h3>The mark</h3><p><em>"Every published piece carries the Bursera mark and a provenance record you can inspect."</em></p></div>
 <div class="cell" style="--band:var(--c6)"><h3>Why that needs a platform</h3><p>A promise about how work is done is only as good as the machinery that makes the work actually get done that way, every time.</p></div></div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
-    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>This slide was missing until v0.9. The deck named the company on the cover and</p><p>never returned to it, so a cold reader could describe the machinery in detail</p><p>and still not say what any of it was for. Distilled from the home and about</p><p>pages of burseraconsulting.com; the two quoted lines are verbatim from the site.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">3 / 27</span></span></footer></section>
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>This slide was missing until v0.9. The deck named the company on the cover and</p><p>never returned to it, so a cold reader could describe the machinery in detail</p><p>and still not say what any of it was for. Distilled from the home and about</p><p>pages of burseraconsulting.com; the two quoted lines are verbatim from the site.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">3 / 28</span></span></footer></section>
 <section class="slide cards" data-idx="4" style="--n:3">
       
       <h2>Claude does it best</h2>
@@ -202,7 +273,7 @@ border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
 <div class="cell" style="--band:var(--c3)"><h3>Reasoning and Rendering</h3><p>The first to market with excellent diagraming and document outputs</p></div>
 <div class="cell" style="--band:var(--c4)"><h3>Skills</h3><p>One of the first to offer skills to carry abilities between projects and threads</p></div>
 <div class="cell" style="--band:var(--c5)"><h3>Agentic Capabilities</h3><p>Co-work and Code both offer a level of orchestration that expands the work past chat</p></div>
-<div class="cell" style="--band:var(--c6)"><h3>Ethics</h3><p>Balancing speed with safety and how it's tools are used</p></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">4 / 27</span></span></footer></section>
+<div class="cell" style="--band:var(--c6)"><h3>Ethics</h3><p>Balancing speed with safety and how it's tools are used</p></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">4 / 28</span></span></footer></section>
 <section class="slide columns" data-idx="5" style="--n:4">
       <div class="eyebrow">Do anything... that is the problem</div>
       <h2>LLM is still LLM</h2>
@@ -211,17 +282,17 @@ border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
 <div class="cell"><h3>It doesn't like rules</h3><p>Creating rules and skills is easy. USING THEM consistently is optional</p></div>
 <div class="cell"><h3>Sprawl comes naturally</h3><p>You can produce lots of threads, and projects, and skills and documents but they just end up a jumble</p></div>
 <div class="cell"><h3>Like working with interns</h3><p>Smart and eager, but know nothing and unpredictable unless managed</p></div></div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
-    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>The bridge into section two: a firm whose product is a provenance record cannot</p><p>run on a tool that is unreliable about following its own instructions. Every</p><p>structure in this deck is that gap, closed one piece at a time.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">5 / 27</span></span></footer></section>
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>The bridge into section two: a firm whose product is a provenance record cannot</p><p>run on a tool that is unreliable about following its own instructions. Every</p><p>structure in this deck is that gap, closed one piece at a time.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">5 / 28</span></span></footer></section>
 <section class="slide columns" data-idx="6" style="--n:2">
       <div class="eyebrow">The same tool, two different ambitions</div>
       <h2>Claude fragments vs a Cowork Platform</h2>
       <div class="card-intro"><p>You can work in Cowork or Claude out of the box but you have a LOT to figure out if you want to do anything more than small separate efforts</p></div>
       <div class="grid"><div class="cell"><h3>Use Claude to take bites</h3><ul><li>Help me write this</li><li>What is the answer to that</li><li>Draw this diagram for me</li><li>Automate a newsletter</li><li>Build a slide deck</li></ul></div>
-<div class="cell"><h3>Use Claude as a full work space</h3><ul><li>Developing and maintaining a polished web site year round</li><li>Working on a research project for 3 months entirely in Claude for every draft</li><li>Designing and managing a new automation through all requirements, iterations, and automations</li><li><em>...and all with versioning and releases</em></li></ul></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">6 / 27</span></span></footer></section>
+<div class="cell"><h3>Use Claude as a full work space</h3><ul><li>Developing and maintaining a polished web site year round</li><li>Working on a research project for 3 months entirely in Claude for every draft</li><li>Designing and managing a new automation through all requirements, iterations, and automations</li><li><em>...and all with versioning and releases</em></li></ul></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">6 / 28</span></span></footer></section>
 <section class="slide section sec-right" data-idx="7">
       <div class="sec-photo"><img src="assets/bursera-tree-photo.jpg" alt=""></div><div class="sec-fade"></div>
-      
-      <h1>What is the Platform</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">7 / 27</span></span></footer></section>
+      <div class="sec-num">Section 02</div>
+      <h1>What is the Platform</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">7 / 28</span></span></footer></section>
 <section class="slide cards" data-idx="8" style="--n:3">
       
       <h2>The principles that govern the work</h2>
@@ -231,21 +302,21 @@ border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
 <div class="cell" style="--band:var(--c3)"><h3>Optimize Skills and scripts</h3><p>Skills for re-usable capabilities such as a role played or a narrow ability to do work. Scripts to deliver consistent results such as formatted documents.</p></div>
 <div class="cell" style="--band:var(--c4)"><h3>Layer Instructions for Impact and efficiency</h3><p>Profile instructions; Cowork instructions; project instructions; system and project manifests.</p></div>
 <div class="cell" style="--band:var(--c5)"><h3>Prove daily system and thread integrity</h3><p>A skill can be created and never load. Small obstacles can cause Claude to skip steps. Force Claude to show it is ready to move on.</p></div>
-<div class="cell" style="--band:var(--c6)"><h3>Maximize system memory and awareness</h3><p>The structures are documented. The processes are documented. The skills understand how to use them all and do the work.</p></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">8 / 27</span></span></footer></section>
+<div class="cell" style="--band:var(--c6)"><h3>Maximize system memory and awareness</h3><p>The structures are documented. The processes are documented. The skills understand how to use them all and do the work.</p></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">8 / 28</span></span></footer></section>
 <section class="slide cards" data-idx="9" style="--n:3">
       <div class="eyebrow">What kind of team this actually is</div>
       <h2>Sounds like a team of humans... but...</h2>
       
       <div class="grid"><div class="cell" style="--band:var(--c1)"><h3>This team loves to write</h3><p>An LLM does ALL communication in writing... if anything too much.  And if it is unclear... that is because it is confused but doesn't know it.</p></div>
 <div class="cell" style="--band:var(--c2)"><h3>This team loves to read</h3><p>It can read faster than any human or any team of humans, and synthesize and analyse it.</p></div>
-<div class="cell" style="--band:var(--c3)"><h3>LLM breathes words - Bursera knows it</h3><p>The system is habituated around knowing what is important, reading it, and with new insights, writing it down in the proper place</p></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">9 / 27</span></span></footer></section>
+<div class="cell" style="--band:var(--c3)"><h3>LLM breathes words - Bursera knows it</h3><p>The system is habituated around knowing what is important, reading it, and with new insights, writing it down in the proper place</p></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">9 / 28</span></span></footer></section>
 <section class="slide two-pane cembed stacked" data-idx="10">
       <div class="eyebrow">Structure for where users do their work</div>
       <h2>The hierarchy enhanced - organizing projects and threads</h2>
       <div class="panes stacked"><div class="left"><p>The system manages the work across <strong>six levels</strong>.</p>
 <p>A <strong>thread</strong> is one continuous conversation, what the app shows as a single chat, and it is the thing that carries an id: <code>CWE-S114</code> names a thread. A <strong>session</strong> is a collection of threads working towards the same objective.</p>
 <p><strong>The three purple rungs do not exist in Claude.</strong> Project family, arc and session are the platform's own logical containers.</p></div>
-      <div class="right "><figure class="embed"><img src="assets/terminology-ladder.svg" alt=""></figure></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">10 / 27</span></span></footer></section>
+      <div class="right "><figure class="embed"><img src="assets/terminology-ladder.svg" alt=""></figure></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">10 / 28</span></span></footer></section>
 <section class="slide two-pane cembed stacked" data-idx="11">
       <div class="eyebrow">The intended loop</div>
       <h2>A Bursera thread has a structure</h2>
@@ -253,13 +324,13 @@ border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
 <p>The four numbered drops are the vertical writes into the canonical store — after LOAD, after WORK, after CLOSE GATE, after LOG + HANDOFF. Those four, not the stage-to-stage flow, are where the hardest work was needed.</p>
 <p><em>WIRING of 1, 2, 3, 4 was almost impossible. Claude is creative and takes short-cuts. It is not careful and methodical.</em></p></div>
       <div class="right "><figure class="embed"><img src="assets/session-flow.svg" alt=""></figure></div></div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
-    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>The team has no memory between sessions. Every session starts cold with a new group of players. The handoff file is the entire mechanism by which one session's context reaches the next one. That is why the last joint in this picture matters as much as the first.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">11 / 27</span></span></footer></section>
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>The team has no memory between sessions. Every session starts cold with a new group of players. The handoff file is the entire mechanism by which one session's context reaches the next one. That is why the last joint in this picture matters as much as the first.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">11 / 28</span></span></footer></section>
 <section class="slide two-pane cembed stacked" data-idx="12">
       
       <h2>The Platform Structures</h2>
       <div class="panes stacked"><div class="left"><p>Extending the core features of Claude. The file system, Linear, Git, GitHub and other services are leveraged to provide structure for the work.</p></div>
       <div class="right "><figure class="embed"><img src="assets/components-map.svg" alt=""></figure></div></div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
-    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>The ledger and the manifest are deliberately gitignored — high-churn machine</p><p>state, versioned by the daily backup rather than by commit. This version marks</p><p>git status per item instead of as a blanket claim, and adds the Skills repo as</p><p>its own box: a separate git tree with no remote, where committing is step one</p><p>of two — save_skill is what actually changes the procedure in use.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">12 / 27</span></span></footer></section>
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>The ledger and the manifest are deliberately gitignored — high-churn machine</p><p>state, versioned by the daily backup rather than by commit. This version marks</p><p>git status per item instead of as a blanket claim, and adds the Skills repo as</p><p>its own box: a separate git tree with no remote, where committing is step one</p><p>of two — save_skill is what actually changes the procedure in use.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">12 / 28</span></span></footer></section>
 <section class="slide cards" data-idx="13" style="--n:3">
       <div class="eyebrow">Where the rules actually live</div>
       <h2>The documents that define the platform</h2>
@@ -270,8 +341,13 @@ border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
 <div class="cell" style="--band:var(--c4)"><h3>Where it is going</h3><p><em>Platform future map</em> — the phases and the gates between them. What counts as "next" at the architecture level, and when the investment is justified.</p></div>
 <div class="cell" style="--band:var(--c5)"><h3>What is queued</h3><p><em>Key needs</em> — the sixteen groupings every open ticket files under. How work gets triaged rather than accumulated.</p></div>
 <div class="cell" style="--band:var(--c6)"><h3>The deck's own rules</h3><p><em>Deck instructions</em> — what belongs in this deck versus the weekly status one, and the build and versioning discipline for both.</p></div></div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
-    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>Added at v0.11 at the human leader's request. Checked against the tree rather</p><p>than transcribed: all six resolve, and the principles doc is at v0.21, current.</p><p>Two findings from that check are now both closed, and the second was not what</p><p>it looked like. The two byte-identical copies of the system-design document</p><p>turned out to be a ruled pair — a production copy and a declared consumable</p><p>twin — both already indexed. The real defect was elsewhere: that document had</p><p>been quietly superseded seven weeks earlier and nobody marked it, so it still</p><p>read "current." It now carries a supersede banner and its terminology ladder</p><p>has moved into the infrastructure document. The deck's own manifest rows, the</p><p>other finding, are current again.</p><p>The lesson worth keeping: the governance failure was not a missing row. It was</p><p>a handover nothing recorded.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">13 / 27</span></span></footer></section>
-<section class="slide columns" data-idx="14" style="--n:4">
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>Added at v0.11 at the human leader's request. Checked against the tree rather</p><p>than transcribed: all six resolve, and the principles doc is at v0.21, current.</p><p>Two findings from that check are now both closed, and the second was not what</p><p>it looked like. The two byte-identical copies of the system-design document</p><p>turned out to be a ruled pair — a production copy and a declared consumable</p><p>twin — both already indexed. The real defect was elsewhere: that document had</p><p>been quietly superseded seven weeks earlier and nobody marked it, so it still</p><p>read "current." It now carries a supersede banner and its terminology ladder</p><p>has moved into the infrastructure document. The deck's own manifest rows, the</p><p>other finding, are current again.</p><p>The lesson worth keeping: the governance failure was not a missing row. It was</p><p>a handover nothing recorded.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">13 / 28</span></span></footer></section>
+<section class="slide two-pane cembed stacked" data-idx="14">
+      <div class="eyebrow">Where the rules actually live · the cycle underneath</div>
+      <h2>Write, read, prove</h2>
+      <div class="panes stacked"><div class="left"><p>If it isn't written down, it didn't happen. If it isn't read, the writing doesn't matter. If you can't prove it happened, it isn't believed. The documents on the previous slide only work as a set if all three stages run.</p></div>
+      <div class="right "><figure class="embed"><img src="assets/write-read-rule-cycle_v0.1.svg" alt="The write, read, prove cycle"></figure></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">14 / 28</span></span></footer></section>
+<section class="slide columns" data-idx="15" style="--n:4">
       
       <h2>Four kinds of artifact</h2>
       <div class="card-intro"><p>Python, instructions, the profile, and skills all read like "rules." They carry different guarantees, and confusing them is the recurring failure — treating a skill like code, or a script like a suggestion.</p></div>
@@ -279,8 +355,8 @@ border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
 <div class="cell"><h3>Instruction documents</h3><p>Prose that states a fact or a ruling — INFRA.md, charters, the drill and method docs. Read, not run. Lives in the tree, git-tracked.</p></div>
 <div class="cell"><h3>Platform instructions and profile</h3><p>The standing rules for how Claude behaves — project instructions and the personal profile. In-app fields, not tree files; archived on every bump.</p></div>
 <div class="cell"><h3>Skills</h3><p>Written procedures loaded on demand for a piece of recurring work. Live in a separate git repo; committing there is not the same as installing.</p></div></div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
-    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>This slide exists because The Human Leader caught the deck itself making the mistake —</p><p>labeling a Python script the same way as a written procedure. The distinction</p><p>that matters: only the left two columns are enforced by running code. The</p><p>right two are enforced by nothing except a session choosing to read them.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">14 / 27</span></span></footer></section>
-<section class="slide cards" data-idx="15" style="--n:3">
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>This slide exists because The Human Leader caught the deck itself making the mistake —</p><p>labeling a Python script the same way as a written procedure. The distinction</p><p>that matters: only the left two columns are enforced by running code. The</p><p>right two are enforced by nothing except a session choosing to read them.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">15 / 28</span></span></footer></section>
+<section class="slide cards" data-idx="16" style="--n:3">
       <div class="eyebrow">The scripts directory</div>
       <h2>The scripts that do the checking</h2>
       <div class="card-intro"><p>Forty-odd of them, in five groups. All deterministic — none makes a judgment call; each reads state off disk and prints a verdict.</p></div>
@@ -289,8 +365,8 @@ border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
 <div class="cell" style="--band:var(--c3)"><h3>Skills and drift · 7</h3><p>The nightly two-pass sweep for things that have quietly diverged, an audit of whether a project's setup matches what it declared, and the check that catches a skill's repository copy disagreeing with the one actually installed.</p></div>
 <div class="cell" style="--band:var(--c4)"><h3>Session lifecycle · 4</h3><p>Minting session numbers so two threads can never claim the same one, and tracking what is currently running.</p></div>
 <div class="cell" style="--band:var(--c5)"><h3>Research, Linear and provenance · 7</h3><p>Feeding the daily and weekly reviews from the ticket tracker, and building the provenance block a reader sees along with the audit page behind it.</p></div></div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
-    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>Consolidated back to one slide at v0.10. It had been split in two at S114 to</p><p>give each category room; with the script filenames removed the descriptions</p><p>carry the meaning on their own and the five categories read better together</p><p>than apart.</p><p>The point for a reader who has only seen the diagrams: none of the checking in</p><p>this deck is Claude grading its own work. It is a script, reading a file,</p><p>printing a number.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">15 / 27</span></span></footer></section>
-<section class="slide two-pane cembed stacked" data-idx="16">
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>Consolidated back to one slide at v0.10. It had been split in two at S114 to</p><p>give each category room; with the script filenames removed the descriptions</p><p>carry the meaning on their own and the five categories read better together</p><p>than apart.</p><p>The point for a reader who has only seen the diagrams: none of the checking in</p><p>this deck is Claude grading its own work. It is a script, reading a file,</p><p>printing a number.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">16 / 28</span></span></footer></section>
+<section class="slide two-pane cembed stacked" data-idx="17">
       <div class="eyebrow">The behavior layer</div>
       <h2>The skills that instruct how the work is done</h2>
       <div class="panes stacked"><div class="left"><p>A skill is a written set of instructions with a description. The descriptions are always in memory. The bodies are not — a body loads only when the session matches its description and chooses to read it.</p>
@@ -298,18 +374,18 @@ border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
 <ul><li><strong>They are tiered by load.</strong> Eight always-loaded, eight more per project, the rest on demand. Loading every declared skill collided with the token budget, which is what forced the split.</li><li><strong>Committing a skill is not installing it.</strong> The repository copy is version history; a separate call changes the procedure in use. Both directions of drift have happened. This is now checked at every open gate.</li><li><strong>The surface grows and reliability falls.</strong> More skills means each description competes harder for a match. Growth makes the loading problem worse, not better — a real balance to hold, not a solved problem.</li></ul>
 <p><em>The progress read on all of this is in the running-status deck — this slide is the architecture.</em></p></div>
       <div class="right "><figure class="embed"><img src="assets/skills-grid.svg" alt=""></figure></div></div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
-    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>The remaining exposure is maturity: most of the platform's own skills are</p><p>unrated, and the rubric that would rate them ties on nearly every pair.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">16 / 27</span></span></footer></section>
-<section class="slide section sec-right" data-idx="17">
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>The remaining exposure is maturity: most of the platform's own skills are</p><p>unrated, and the rubric that would rate them ties on nearly every pair.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">17 / 28</span></span></footer></section>
+<section class="slide section sec-right" data-idx="18">
       <div class="sec-photo"><img src="assets/bursera-tree-photo.jpg" alt=""></div><div class="sec-fade"></div>
-      
-      <h1>Connecting the Threads</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">17 / 27</span></span></footer></section>
-<section class="slide two-pane cembed" data-idx="18">
+      <div class="sec-num">Section 03</div>
+      <h1>Connecting the Threads</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">18 / 28</span></span></footer></section>
+<section class="slide two-pane cembed" data-idx="19">
       <div class="eyebrow">A human notices a gate, or the lack of one</div>
       <h2>Claude is forced through gates</h2>
       <div class="panes"><div class="left"><p>At every boundary Claude has to render a gate that PROVES it has met the requirements — the right session number, the mounts connected, the skills actually loaded, the work logged. The gate is visual: a card that stands out in the chat flow, so success or trouble is legible at a glance. And Claude has to stop there and wait.</p></div>
       <div class="right "><figure class="embed"><img src="assets/gate-panel-screenshot.png" alt=""></figure></div></div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
-    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>The stop is the part that matters. A verdict nobody reads is a log line; a</p><p>verdict that halts the work is a decision point. Worth considering: this</p><p>screenshot shows a PASS. A FAIL card would show the mechanism doing its actual</p><p>job, and is the more persuasive picture if one is available.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">18 / 27</span></span></footer></section>
-<section class="slide two-pane cembed" data-idx="19">
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>The stop is the part that matters. A verdict nobody reads is a log line; a</p><p>verdict that halts the work is a decision point. Worth considering: this</p><p>screenshot shows a PASS. A FAIL card would show the mechanism doing its actual</p><p>job, and is the more persuasive picture if one is available.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">19 / 28</span></span></footer></section>
+<section class="slide two-pane cembed" data-idx="20">
       <div class="eyebrow">What the checking is, and what it is not</div>
       <h2>The gate is a script, not a self-assessment</h2>
       <div class="panes"><div class="left"><p>Machine-checked and self-attested are different guarantees, and the gate says which is which on every line. That distinction is the whole reason to believe any of it.</p>
@@ -317,26 +393,26 @@ border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
 <p>A script reads the file on disk and prints the verdict. Session number, mounts, delete permission, prime chain, repo-versus-installed drift. No opinion is involved.</p>
 <h3 class="sub3">Attested</h3>
 <p>A handful of things a script cannot see from disk — whether a skill was truly read, which instructions the app loaded. The gate prints these as ATTEST and labels them self-reported, rather than passing them off as checks.</p></div>
-      <div class="right "><figure class="embed"><img src="assets/gate-attest-lines.png" alt=""></figure></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">19 / 27</span></span></footer></section>
-<section class="slide cards" data-idx="20" style="--n:2">
+      <div class="right "><figure class="embed"><img src="assets/gate-attest-lines.png" alt=""></figure></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">20 / 28</span></span></footer></section>
+<section class="slide cards" data-idx="21" style="--n:2">
       <div class="eyebrow">The Human has the most to learn</div>
       <h2>Four roles learning to work together</h2>
       <div class="card-intro"><p>The human leader leverages custom Claude Skills as specific disciplines trained on the platform.</p></div>
       <div class="grid"><div class="cell" style="--band:var(--c1)"><h3><em>The Human Leader</em></h3><p><em>Holds the team to account, architects the platform, and drives the research work. The one role nothing else on this slide can substitute for.</em></p></div>
 <div class="cell" style="--band:var(--c2)"><h3>The Platform Architect</h3><p>Owns system change — finds the real problem, keeps every related document updated in the same pass.</p></div>
 <div class="cell" style="--band:var(--c3)"><h3>The Librarian</h3><p>Owns filing and retrieval — where a document goes, which version is current, what loads at open.</p></div>
-<div class="cell" style="--band:var(--c4)"><h3>The Team Lead</h3><p>Owns the close-boundary sweep and the review of what is stalled or flagged twice without a decision.</p></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">20 / 27</span></span></footer></section>
-<section class="slide section sec-right" data-idx="21">
+<div class="cell" style="--band:var(--c4)"><h3>The Team Lead</h3><p>Owns the close-boundary sweep and the review of what is stalled or flagged twice without a decision.</p></div></div><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">21 / 28</span></span></footer></section>
+<section class="slide section sec-right" data-idx="22">
       <div class="sec-photo"><img src="assets/bursera-tree-photo.jpg" alt=""></div><div class="sec-fade"></div>
-      
-      <h1>Roadmap</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">21 / 27</span></span></footer></section>
-<section class="slide two-pane cembed stacked" data-idx="22">
+      <div class="sec-num">Section 04</div>
+      <h1>Roadmap</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">22 / 28</span></span></footer></section>
+<section class="slide two-pane cembed stacked" data-idx="23">
       <div class="eyebrow">Ready to Scale</div>
       <h2>Where we are</h2>
       <div class="panes stacked"><div class="left"><p>Three horizons. The gate out of each is a change in who can use the platform, not a feature count.</p></div>
       <div class="right "><figure class="embed"><img src="assets/horizons-layers.svg" alt=""></figure></div></div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
-    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>The diagram makes the H2 cost visible: every layer changes at H2 and only two</p><p>change much at H3. The expensive step is going from one operator to several,</p><p>not from several to a customer.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">22 / 27</span></span></footer></section>
-<section class="slide cards" data-idx="23" style="--n:3">
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>The diagram makes the H2 cost visible: every layer changes at H2 and only two</p><p>change much at H3. The expensive step is going from one operator to several,</p><p>not from several to a customer.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">23 / 28</span></span></footer></section>
+<section class="slide cards" data-idx="24" style="--n:3">
       <div class="eyebrow">Close</div>
       <h2>The Platform is what enables the Team</h2>
       <div class="card-intro"><p>All of this complexity ON TOP OF CLAUDE... for what?</p></div>
@@ -346,12 +422,12 @@ border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
 <div class="cell" style="--band:var(--c4)"><h3>Gates that verify the boring stuff</h3><p>Work logged, files checked in, deployments pushed — a script confirms it, nobody has to remember.</p></div>
 <div class="cell" style="--band:var(--c5)"><h3>Human Leadership Expected</h3><p>The Human Leader must provide vision, planning, coach the team, push the team and choose the right fork. Monitors the systems each day to ensure integrity.</p></div>
 <div class="cell" style="--band:var(--c6)"><h3>Claude is most powerful when managed</h3><p>Research, synthesize, analyze, recommend, flag the fork, execute the settled spec and ask for leadership.</p></div></div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
-    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>This is the payoff slide and now the close. Everything before it is machinery</p><p>in service of these six sentences. If a reader remembers nothing else from</p><p>this deck, this is the slide that should stick.</p><p>Dropped the old two-part "Two lanes, one core" close — this slide now carries</p><p>that job, and does it in the team's terms rather than a workshop metaphor.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">23 / 27</span></span></footer></section>
-<section class="slide section sec-right" data-idx="24">
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>This is the payoff slide and now the close. Everything before it is machinery</p><p>in service of these six sentences. If a reader remembers nothing else from</p><p>this deck, this is the slide that should stick.</p><p>Dropped the old two-part "Two lanes, one core" close — this slide now carries</p><p>that job, and does it in the team's terms rather than a workshop metaphor.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">24 / 28</span></span></footer></section>
+<section class="slide section sec-right" data-idx="25">
       <div class="sec-photo"><img src="assets/bursera-tree-photo.jpg" alt=""></div><div class="sec-fade"></div>
-      
-      <h1>Appendix</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">24 / 27</span></span></footer></section>
-<section class="slide two-pane cembed" data-idx="25">
+      <div class="sec-num">Section 05</div>
+      <h1>Appendix</h1><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">25 / 28</span></span></footer></section>
+<section class="slide two-pane cembed" data-idx="26">
       <div class="eyebrow">The premise everything else answers</div>
       <h2>Total amnesia, by default</h2>
       <div class="panes"><div class="left"><p>A session has perfect recall inside its own context window and none at all outside it. The next session opens knowing nothing. Everything that survives the gap does so because something wrote it down and something else went and read it.</p>
@@ -359,8 +435,8 @@ border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
 <div class="callout gold"><p>Encoding happens at close. Retrieval happens at open. Both are steps Claude has to PROVE it has taken.</p></div>
 <div class="callout gold"><p>🚩 <strong>And thread rot if you run too long</strong> — a session degrades the longer it runs. The session handoff and written memory creates fidelity across threads and sessions and projects.</p></div></div>
       <div class="right "><figure class="embed"><img src="assets/memory-cycle.svg" alt=""></figure></div></div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
-    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>Moved to the appendix at v1.1. It is the premise the rest of the deck answers,</p><p>but a reader who already accepts that an assistant forgets between sessions</p><p>does not need it argued — and one who does not can be sent here.</p><p>The point to land for a non-technical listener: the assistant is not</p><p>forgetful, it is amnesiac. There is no partial recall to fall back on. That is</p><p>why the fourth missing wire — nothing triggers the read — was not a small</p><p>inconvenience. It was the difference between a system that accumulates and one</p><p>that starts over.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">25 / 27</span></span></footer></section>
-<section class="slide cards" data-idx="26" style="--n:3">
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>Moved to the appendix at v1.1. It is the premise the rest of the deck answers,</p><p>but a reader who already accepts that an assistant forgets between sessions</p><p>does not need it argued — and one who does not can be sent here.</p><p>The point to land for a non-technical listener: the assistant is not</p><p>forgetful, it is amnesiac. There is no partial recall to fall back on. That is</p><p>why the fourth missing wire — nothing triggers the read — was not a small</p><p>inconvenience. It was the difference between a system that accumulates and one</p><p>that starts over.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">26 / 28</span></span></footer></section>
+<section class="slide cards" data-idx="27" style="--n:3">
       <div class="eyebrow">Words this deck uses in a specific way</div>
       <h2>Key Terms</h2>
       <div class="card-intro"><p>Ordinary English everywhere else. On this platform each one names an exact thing.</p></div>
@@ -370,22 +446,22 @@ border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
 <div class="cell" style="--band:var(--c4)"><h3>Skill</h3><p>A written set of instructions with a description. The description is always in memory; Claude loads the instructions when it sees a need.</p></div>
 <div class="cell" style="--band:var(--c5)"><h3>Handoff</h3><p>The file one session writes for the next — what was decided, what is open, what to load first. The only thing that crosses the gap.</p></div>
 <div class="cell" style="--band:var(--c6)"><h3>Drift</h3><p>Two copies of the same thing quietly disagreeing — a skill in the repo versus the one actually installed, a document versus its index row.</p></div></div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
-    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>Added at v0.9 after a cold reader listed twenty-three terms the deck used</p><p>without ever defining. OMUP and PORTGOV were cut from the deck entirely rather</p><p>than glossed. The six that remain are the ones that carry weight later and are</p><p>not self-explaining on first sight.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">26 / 27</span></span></footer></section>
-<section class="slide columns" data-idx="27" style="--n:3">
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>Added at v0.9 after a cold reader listed twenty-three terms the deck used</p><p>without ever defining. OMUP and PORTGOV were cut from the deck entirely rather</p><p>than glossed. The six that remain are the ones that carry weight later and are</p><p>not self-explaining on first sight.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">27 / 28</span></span></footer></section>
+<section class="slide columns" data-idx="28" style="--n:3">
       <div class="eyebrow">The three horizons</div>
       <h2>What has to be true at each gate</h2>
       
       <div class="grid"><div class="cell"><h3>H1 — works for me</h3><p>One operator. The core functions run daily and state survives between sessions. <em>Gate out: a research question carried end to end without a structural fix mid-flight.</em></p></div>
 <div class="cell"><h3>H2 — works for a team</h3><p>Several internal engineers and researchers on the same platform. Needs identity on every row, served instructions and a real catalog — the things one person holds in his head and a team cannot. <em>Gate out: first external anchor.</em></p></div>
 <div class="cell"><h3>H3 — works for a customer</h3><p>Installed inside someone else's Claude, or run as a service. <em>Gate out: external demand.</em></p></div></div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
-    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>The horizons are positions, not a schedule — no dates are claimed and none</p><p>should be read in. Source structure is the five-layer target architecture in</p><p>the Platform Future Map.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">27 / 27</span></span></footer></section></div>
+    <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>The horizons are positions, not a schedule — no dates are claimed and none</p><p>should be read in. Source structure is the five-layer target architecture in</p><p>the Platform Future Map.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">28 / 28</span></span></footer></section></div>
 <div class="deck-mode" id="md"></div>
 <button class="pdf-btn" onclick="window.print()" title="Save, print, or send as PDF">⤓ PDF</button>
 <button class="deck-nav-btn" id="deckPrev" onclick="window.goPrev()" aria-label="previous slide" title="Previous (← or ↓, right-click)">‹</button>
 <button class="deck-nav-btn" id="deckNext" onclick="window.goNext()" aria-label="next slide" title="Next (any key, click, or →)">›</button>
 <script>
 (function(){
-  var N=27, cur=0;
+  var N=28, cur=0;
   var slides=[].slice.call(document.querySelectorAll('.slide'));
   var navs=[].slice.call(document.querySelectorAll('.deck-nav [data-idx]'));
   var pf=document.getElementById('pf'),md=document.getElementById('md');
@@ -404,9 +480,16 @@ border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
   window.toggleNotes=function(btn){btn.parentElement.querySelector('.notes-drawer').classList.toggle('open');};
   /* common-navigation input model (v1.6): any left click or keyboard tap advances; a right-click
      or the back/down arrow goes back. Excluded from both: the nav rail, PDF/notes/deck-nav
-     buttons, and links — clicking or keying through those keeps their own behavior. */
+     buttons, and links — clicking or keying through those keeps their own behavior.
+     v1.9: a click event fires on mouseup even when the mousedown->mouseup was a drag that
+     selected text, so highlighting a word to copy it was silently advancing the deck. The
+     browser's own Selection API is the natural discriminator - dragging to select text leaves
+     window.getSelection() non-empty at click time, while an ordinary click collapses any prior
+     selection on mousedown, so a plain tap reads empty by the time this handler runs. */
   document.addEventListener('click',function(e){
     if(e.target&&e.target.closest&&e.target.closest(CHROME))return;
+    var sel=window.getSelection();
+    if(sel&&sel.toString().length>0)return;
     setCur(cur+1);
   });
   document.addEventListener('contextmenu',function(e){

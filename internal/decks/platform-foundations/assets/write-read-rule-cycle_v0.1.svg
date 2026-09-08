@@ -1,0 +1,64 @@
+<svg viewBox="0 0 1000 720" xmlns="http://www.w3.org/2000/svg" font-family="'DM Sans', 'Gill Sans', Trebuchet, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4a5c6b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="720" fill="#f4f2ee"/>
+
+  <text x="500" y="50" text-anchor="middle" font-size="26" fill="#28303a" font-weight="bold">The Write / Read / Prove Cycle</text>
+  <text x="500" y="76" text-anchor="middle" font-size="14" fill="#8a7660" font-style="italic">How the platform keeps what a session learns — in its own vocabulary</text>
+
+  <!-- Cycle arrows (triangle layout) -->
+  <!-- WRITE (top) -> READ (bottom right) -->
+  <path d="M 590 195 C 730 260, 790 330, 760 420" fill="none" stroke="#4a5c6b" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <!-- READ (bottom right) -> PROVE (bottom left) -->
+  <path d="M 690 470 C 550 520, 450 520, 310 470" fill="none" stroke="#4a5c6b" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <!-- PROVE (bottom left) -> WRITE (top) -->
+  <path d="M 240 420 C 210 330, 270 260, 410 195" fill="none" stroke="#4a5c6b" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- WRITE node -->
+  <circle cx="500" cy="160" r="88" fill="#f2ede3" stroke="#8a6e3a" stroke-width="2.5"/>
+  <text x="500" y="150" text-anchor="middle" font-size="24" fill="#28303a" font-weight="bold" letter-spacing="2">WRITE</text>
+  <text x="500" y="175" text-anchor="middle" font-size="11.5" fill="#4a5c6b">learning lands in the</text>
+  <text x="500" y="190" text-anchor="middle" font-size="11.5" fill="#4a5c6b">living principles doc</text>
+
+  <!-- READ node -->
+  <circle cx="760" cy="470" r="88" fill="#e4ede4" stroke="#1a5c2a" stroke-width="2.5"/>
+  <text x="760" y="460" text-anchor="middle" font-size="24" fill="#28303a" font-weight="bold" letter-spacing="2">READ</text>
+  <text x="760" y="485" text-anchor="middle" font-size="11.5" fill="#28303a">loaded at the start of</text>
+  <text x="760" y="500" text-anchor="middle" font-size="11.5" fill="#28303a">the next session</text>
+
+  <!-- PROVE node -->
+  <circle cx="240" cy="470" r="88" fill="#f0e2df" stroke="#a04e18" stroke-width="2.5"/>
+  <text x="240" y="460" text-anchor="middle" font-size="24" fill="#28303a" font-weight="bold" letter-spacing="2">PROVE</text>
+  <text x="240" y="485" text-anchor="middle" font-size="11.5" fill="#28303a">the gate checks it was</text>
+  <text x="240" y="500" text-anchor="middle" font-size="11.5" fill="#28303a">actually done</text>
+
+  <!-- Grounding text blocks -->
+  <g font-size="12.5" fill="#28303a">
+    <!-- WRITE block -->
+    <text x="500" y="620" text-anchor="middle" font-weight="bold" fill="#8a6e3a">WRITE</text>
+    <text x="500" y="638" text-anchor="middle">"Written to at the end of any session that learned something" —</text>
+    <text x="500" y="654" text-anchor="middle" font-style="italic">"The living principles," platform-foundations.md</text>
+    <text x="500" y="670" text-anchor="middle">"Documentation is memory" — PLATFORM-DESIGN-PRINCIPLES §4</text>
+
+    <!-- READ block -->
+    <text x="820" y="600" text-anchor="middle" font-weight="bold" fill="#1a5c2a">READ</text>
+    <text x="820" y="618" text-anchor="middle">"...read at the start of any session that might repeat it" —</text>
+    <text x="820" y="634" text-anchor="middle" font-style="italic">"The living principles," platform-foundations.md</text>
+
+    <!-- PROVE block -->
+    <text x="180" y="600" text-anchor="middle" font-weight="bold" fill="#a04e18">PROVE</text>
+    <text x="180" y="618" text-anchor="middle">"Claude has to render a gate that PROVES it has met the</text>
+    <text x="180" y="634" text-anchor="middle">requirements... Claude has to stop there and wait." —</text>
+    <text x="180" y="650" text-anchor="middle" font-style="italic">"Claude is forced through gates," platform-foundations.md</text>
+  </g>
+
+  <!-- Footer note on machine vs self-attested -->
+  <rect x="120" y="686" width="760" height="26" fill="none"/>
+  <text x="500" y="700" text-anchor="middle" font-size="11.5" fill="#8a7660" font-style="italic">
+    "The gate is a script, not a self-assessment" — Machine-verified (read from disk) vs. Attested (self-reported), platform-foundations.md
+  </text>
+</svg>

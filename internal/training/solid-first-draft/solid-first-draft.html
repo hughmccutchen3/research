@@ -13,12 +13,31 @@
 body{background:#20262e;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;color:var(--ink);overflow:hidden;}
 /* nav */
 .deck-nav{position:fixed;top:0;left:0;width:var(--nav);height:100vh;background:var(--blue);color:#fff;overflow-y:auto;z-index:40;padding-bottom:40px;}
-.nav-title{font-weight:700;font-size:16px;color:#fff;padding:20px;border-bottom:1px solid rgba(255,255,255,.14);position:sticky;top:0;background:var(--blue);}
+.nav-header{position:sticky;top:0;background:var(--blue);border-bottom:1px solid rgba(255,255,255,.14);z-index:1;}
+.nav-title{font-weight:700;font-size:16px;color:#fff;padding:20px 20px 4px;}
+/* v1.16 (BEBURS-S08, RES-740): the author's own hand-declared meta:: line, lifted off the cover
+   (the only place it lived through v1.15) into the same sticky header the build-stamp already
+   uses — otherwise "what version is this" is answered only once, on a slide most viewing sessions
+   scroll past in the first second. Hugh's own words: "the only version I see is on the cover."
+   Same source line, same semantics (hand-declared, does not move on rebuild) — just visible on
+   every slide now, not filed on one. Empty when a deck has no meta:: line — no placeholder shown. */
+.deck-version{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.3px;color:rgba(255,255,255,.78);padding:0 20px 6px;}
+body.cover-mode .deck-version{display:none;}
+/* v1.15 (RES-587/RES-740): build-time identity stamp, in the one place an author's eye already
+   lands — the nav header, above every slide, never scrolled past. Answers "same build as last
+   time?" without opening git or asking Claude. See BUILT_AT above for what it deliberately is
+   and isn't. Folded into one sticky .nav-header with .nav-title (rather than each sticking
+   itself at a guessed pixel offset) so the header's height can change without re-tuning a magic
+   number here. */
+.build-stamp{display:block;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:10px;letter-spacing:.5px;color:rgba(255,255,255,.55);padding:0 20px 14px;}
+body.cover-mode .build-stamp{display:none;}
 .nav-sec{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--sonoran-sky);padding:16px 20px 6px;cursor:pointer;}
 .nav-sec:hover{color:#fff;}
 .nav-item{display:block;padding:7px 20px 7px 30px;font-size:13px;line-height:1.35;color:#7f8b96;cursor:pointer;border-left:3px solid transparent;position:relative;}
-/* slide number on hover in the left nav (RES-587 follow-on, CWE-S83) */
-.nav-item::after,.nav-sec::after{content:attr(data-idx);position:absolute;right:8px;top:50%;transform:translateY(-50%);
+/* slide number on hover in the left nav (RES-587 follow-on, CWE-S83).
+   v1.8: displays data-num (1-based, matches the footer's page count) — data-idx stays
+   0-based underneath because goTo()/active-state matching in the client script key off it. */
+.nav-item::after,.nav-sec::after{content:attr(data-num);position:absolute;right:8px;top:50%;transform:translateY(-50%);
 font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0;color:var(--gold);
 background:rgba(0,0,0,.35);border-radius:9px;padding:1px 6px;opacity:0;transition:opacity .12s;pointer-events:none;}
 .nav-item:hover::after,.nav-sec:hover::after{opacity:1;}
@@ -33,18 +52,30 @@ body.cover-mode .deck-nav{transform:translateX(-100%);}
 body.cover-mode .stage{left:0;}
 .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-start;
 padding:7vh 5vw 60px;background:var(--bg);overflow-y:auto;
-transition:transform .55s cubic-bezier(.4,0,.2,1),opacity .5s ease;will-change:transform,opacity;}
+transition:transform .55s cubic-bezier(.4,0,.2,1),opacity .5s ease;}
 .slide::before{content:"";position:absolute;top:0;left:0;width:6px;height:100%;background:var(--gold);opacity:0;transition:opacity .4s;}
 .slide.active::before{opacity:1;}
-/* transition modes (press 't' to cycle) */
-[data-tr="slide"] .slide{transform:translateX(calc(var(--pos,1)*102%));}
-[data-tr="vertical"] .slide{transform:translateY(calc(var(--pos,1)*102%));}
-[data-tr="fade"] .slide{transform:none;opacity:0;pointer-events:none;}
-[data-tr="fade"] .slide.active{opacity:1;pointer-events:auto;}
-[data-tr="zoom"] .slide{transform:scale(.88);opacity:0;pointer-events:none;}
-[data-tr="zoom"] .slide.active{transform:scale(1);opacity:1;pointer-events:auto;}
-[data-tr="flip"] .slide{transform:perspective(1400px) rotateY(calc(var(--pos,1)*35deg)) translateX(calc(var(--pos,1)*60%));opacity:0;}
-[data-tr="flip"] .slide.active{transform:none;opacity:1;}
+/* transition modes (press 't' to cycle)
+   v1.12: will-change:transform moved OFF the unconditional base .slide rule above and onto only
+   the off-stage (non-.active) variant below, with an explicit will-change:auto on .active. Per
+   spec, will-change:transform alone — regardless of the actual computed transform value —
+   makes the element a containing block for position:fixed descendants, same as a real transform
+   would. So v1.11's "transform:none on .active" fix was incomplete: .slide (and therefore its
+   nested position:fixed .slide-foot) stayed promoted the whole time because will-change never
+   went away. This is why the footer bug could still resurface intermittently rather than being
+   fully gone. Scoping will-change to the pre-transition state only (a real hint: "this element is
+   about to animate") and clearing it to auto on .active removes the containing block exactly when
+   the footer needs the true viewport - the visible/active slide. No animation or visual change. */
+[data-tr="slide"] .slide{transform:translateX(calc(var(--pos,1)*102%));will-change:transform;}
+[data-tr="slide"] .slide.active{transform:none;will-change:auto;}
+[data-tr="vertical"] .slide{transform:translateY(calc(var(--pos,1)*102%));will-change:transform;}
+[data-tr="vertical"] .slide.active{transform:none;will-change:auto;}
+[data-tr="fade"] .slide{transform:none;opacity:0;pointer-events:none;will-change:opacity;}
+[data-tr="fade"] .slide.active{opacity:1;pointer-events:auto;will-change:auto;}
+[data-tr="zoom"] .slide{transform:scale(.88);opacity:0;pointer-events:none;will-change:transform,opacity;}
+[data-tr="zoom"] .slide.active{transform:none;opacity:1;pointer-events:auto;will-change:auto;}
+[data-tr="flip"] .slide{transform:perspective(1400px) rotateY(calc(var(--pos,1)*35deg)) translateX(calc(var(--pos,1)*60%));opacity:0;will-change:transform,opacity;}
+[data-tr="flip"] .slide.active{transform:none;opacity:1;will-change:auto;}
 /* typography */
 .eyebrow{font-family:'JetBrains Mono',monospace;font-size:16px;letter-spacing:3px;text-transform:uppercase;color:var(--blue-light);margin-bottom:14px;}
 h1{font-family:'DM Sans',sans-serif;font-weight:700;line-height:1.08;}
@@ -55,7 +86,6 @@ em{color:var(--gold);font-style:italic;} strong{color:var(--blue);}
 .cover,.section{justify-content:center;align-items:center;text-align:center;background:var(--blue);color:#fff;}
 .cover h1{font-size:clamp(53px,7.2vw,96px);margin-bottom:20px;}
 .cover .subtitle{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(20px,2vw,29px);color:var(--sonoran-sky);margin-bottom:40px;}
-.cover .meta{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:2px;color:var(--sonoran-sky);}
 .cover .eyebrow{color:var(--sonoran-sky);}
 .section .sec-num{font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:4px;text-transform:uppercase;color:var(--sonoran-sky);margin-bottom:18px;}
 .section h1{font-size:clamp(46px,6vw,82px);color:#fff;}
@@ -75,11 +105,23 @@ em{color:var(--gold);font-style:italic;} strong{color:var(--blue);}
 .outline .muted{color:var(--caliche);font-family:'JetBrains Mono',monospace;}
 /* two-pane */
 .panes{display:grid;grid-template-columns:1fr 1fr;gap:3vw;align-items:start;flex:1 1 auto;}
-.panes.stacked{display:flex;flex-direction:column;gap:2vh;grid-template-columns:none;}
+/* v1.14 (RES-587) FOUND THE ACTUAL BUG: .panes{align-items:start} (above) is written for the
+   GRID version of this layout (top-aligns the two grid cells), but .panes.stacked switches
+   display to flex WITHOUT resetting align-items — so the flex-column .panes.stacked inherited
+   align-items:start too. For flex-direction:column the cross axis is horizontal, and
+   align-items:start means "don't stretch cross-axis, shrink to content and hug the start (left)
+   edge" — so .right (and .left) never spanned the pane's full width at all; each shrank to its own
+   content's width and left-aligned. A stacked image centered inside that accidentally-narrow box
+   still LOOKS left-aligned on the slide, because the box itself never reached center. All of
+   v1.13's flex/margin centering was centering the image inside a box that was already in the
+   wrong place. Fix: align-items:stretch here so .panes.stacked's children span full width, same
+   as the grid version's columns always have. Kept v1.13's belt-and-suspenders centering below —
+   redundant now, defensive against this ever regressing again. */
+.panes.stacked{display:flex;flex-direction:column;align-items:stretch;gap:2vh;grid-template-columns:none;}
 .two-pane.stacked .left{flex:0 0 auto;}
-.two-pane.stacked .right{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;}
-.two-pane.stacked .right .embed{width:100%;height:100%;display:flex;align-items:center;justify-content:center;margin:0;}
-.two-pane.stacked .right .embed img{width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 6px 18px rgba(0,0,0,.12);}
+.two-pane.stacked .right{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:0;text-align:center;width:100%;}
+.two-pane.stacked .right .embed{width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;margin:0;}
+.two-pane.stacked .right .embed img{display:inline-block;margin:0 auto;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 6px 18px rgba(0,0,0,.12);}
 .two-pane .left p,.two-pane .left li{font-size:clamp(16px,1.52vw,23px);}
 .two-pane .left h3.sub3{font-family:'DM Sans',sans-serif;font-weight:700;font-size:clamp(18px,1.6vw,25px);color:var(--ink);text-transform:none;letter-spacing:0;margin:0 0 12px;}
 .homework .left p,.homework .left li{font-size:clamp(20px,1.92vw,29px);line-height:1.5;}
@@ -106,7 +148,7 @@ em{color:var(--gold);font-style:italic;} strong{color:var(--blue);}
 .callout ul{margin-left:18px;} .callout li{font-size:clamp(14px,1.36vw,20px);}
 /* [BASE BANNER] — bright-blue callout bar, centered at bottom, fixed 2-line height, width tracks text */
 .base-banner{position:absolute;left:50%;bottom:56px;transform:translateX(-50%);z-index:8;
-max-width:82%;min-width:200px;display:flex;align-items:center;justify-content:center;text-align:center;
+max-width:98%;min-width:55%;display:flex;align-items:center;justify-content:center;text-align:center;
 background:#0d6efd;border-radius:10px;padding:12px 30px;box-shadow:0 8px 22px rgba(13,110,253,.35);}
 .base-banner p{margin:0;color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;
 font-size:clamp(17px,1.7vw,24px);line-height:1.3;min-height:2.6em;display:flex;align-items:center;
@@ -117,6 +159,18 @@ justify-content:center;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orie
 .slide.table .table-stage{flex:1;display:flex;flex-direction:column;justify-content:center;}
 .slide.table .table-stage .deck-table{font-size:clamp(15px,1.35vw,22px);margin:0;}
 .slide.table .table-foot{margin-top:20px;padding-top:16px;border-top:1px solid var(--gray-rule);}
+/* [doc-table] layout - documentation register (RES-587, BEBURS-S09). Fixed small px type on
+   purpose: this table is read at desk distance, so it must NOT scale with the display type ramp. */
+.slide.doctable .doc-stage{flex:1;min-height:0;overflow-y:auto;padding-right:6px;}
+.slide.doctable h2{margin-bottom:12px;}
+.slide.doctable .deck-table{font-size:13px;margin:0 0 14px;
+font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;}
+.slide.doctable .deck-table th{font-size:10px;letter-spacing:1.4px;padding:0 10px 6px;
+border-bottom:2px solid var(--blue-light);}
+.slide.doctable .deck-table td{font-size:13px;padding:7px 10px;line-height:1.5;}
+.slide.doctable .deck-table td:first-child{white-space:nowrap;width:1%;font-weight:600;}
+.slide.doctable p,.slide.doctable li{font-size:13px;line-height:1.55;}
+.slide.doctable .doc-stage>p:last-child{color:var(--ink-soft,#5a6270);font-style:italic;}
 .deck-table th{font-family:'JetBrains Mono',monospace;font-size:clamp(10px,.8vw,13px);letter-spacing:2px;
 text-transform:uppercase;color:var(--blue);text-align:left;padding:0 14px 9px;border-bottom:3px solid var(--blue-light);white-space:nowrap;}
 .deck-table td{padding:11px 14px;border-bottom:1px solid var(--gray-rule);vertical-align:top;line-height:1.38;}
@@ -130,13 +184,22 @@ letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:999
 .st-forming{background:#ece7f1;color:#5b4a86;}
 a{color:var(--gold);}
 /* speaker-notes drawer */
-.pdf-btn{position:fixed;bottom:48px;left:20px;z-index:60;border:none;border-radius:20px;padding:9px 15px;background:var(--gold);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.28);}
+/* v1.18 (BEBURS-S08, RES-587): pdf/prev/next moved from bottom-left (over the nav rail) to
+   top-right, floating over the page. Direct fix for Hugh: the v1.12 .nav-chrome-panel backing
+   these buttons at the bottom of the nav rail was itself hiding the bottom of a long scrolled
+   TOC — occluding the text was the whole point of that panel, and a long deck made "the text
+   it occludes" and "the text you're trying to read" the same text. Moving the buttons off the
+   nav rail entirely removes the need for a backing panel at all — top-right is screen real
+   estate Hugh doesn't use for anything else, per his own call. .nav-chrome-panel is REMOVED,
+   not just relocated; nothing replaces it because nothing sits under these buttons anymore.
+   Same z-index:60 (still above everything real: photo backgrounds, nav rail, slide content). */
+.pdf-btn{position:fixed;top:20px;right:120px;z-index:60;border:none;border-radius:20px;padding:9px 15px;background:var(--gold);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.28);}
 .pdf-btn:hover{filter:brightness(1.12);}
-.deck-nav-btn{position:fixed;bottom:48px;z-index:60;width:36px;height:36px;border:none;border-radius:50%;background:var(--blue);color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:18px;line-height:1;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.25);}
+.deck-nav-btn{position:fixed;top:20px;z-index:60;width:36px;height:36px;border:none;border-radius:50%;background:var(--blue);color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:18px;line-height:1;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.25);}
 .deck-nav-btn:hover{filter:brightness(1.15);}
 .deck-nav-btn:disabled{opacity:.32;cursor:default;filter:none;}
-#deckPrev{left:112px;}
-#deckNext{left:156px;}
+#deckPrev{right:68px;}
+#deckNext{right:20px;}
 .notes-btn{position:absolute;bottom:48px;left:96px;z-index:12;width:40px;height:40px;border:none;border-radius:50%;
 background:var(--gold);color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:20px;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.25);}
 .notes-btn:hover{filter:brightness(1.1);}
@@ -158,10 +221,14 @@ transform:translateY(101%);transition:transform .4s cubic-bezier(.4,0,.2,1);z-in
 .deck-counter b{color:var(--blue);}
 .deck-mode{position:fixed;bottom:2.5vh;right:9vw;z-index:50;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#fff;background:var(--gold);padding:5px 10px;border-radius:20px;opacity:0;transition:opacity .3s;}
 .deck-mode.show{opacity:1;}
-/* per-slide brand footer — B badge · name · url · confidential · page */
-.slide-foot{position:absolute;left:0;right:0;bottom:0;height:36px;display:flex;align-items:center;justify-content:space-between;
+/* per-slide brand footer — B badge · name · url · confidential · page
+   v1.10: fixed to the browser window (not the per-slide scroll container) so it stays put
+   when a tall slide's content scrolls; left tracks --nav like .stage does, collapsing to 0
+   in cover-mode. */
+.slide-foot{position:fixed;left:var(--nav);right:0;bottom:0;height:36px;display:flex;align-items:center;justify-content:space-between;
 padding:0 24px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1px;color:var(--caliche);
-border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
+border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;transition:left .45s ease;background:var(--bg);}
+body.cover-mode .slide-foot{left:0;background:transparent;}
 .slide-foot .brand{display:flex;align-items:center;gap:9px;font-weight:600;color:#7a6a52;}
 .bbadge{display:inline-flex;align-items:center;justify-content:center;width:21px;height:21px;border-radius:5px;background:var(--gold);color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0;}
 .slide-foot .foot-right{display:flex;align-items:center;gap:18px;}
@@ -174,13 +241,13 @@ border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
 @media print{body{overflow:visible;}.deck-nav,.deck-progress,.deck-counter,.deck-mode,.notes-btn,.notes-drawer,.pdf-btn{display:none;}
 .stage{position:static;overflow:visible;}.slide{position:relative!important;transform:none!important;opacity:1!important;height:100vh;page-break-after:always;padding:6vh 6vw;outline:1.5px solid #9aa4b0;outline-offset:-16px;}.slide::before{opacity:1;}@page{size:landscape;}}
 </style></head><body data-tr="slide">
-<nav class="deck-nav"><div class="nav-title">A Solid First Draft</div><div class="nav-sec" data-idx="0" title="Slide 0" onclick="goTo(0)">A Solid First Draft</div><div class="nav-item" data-idx="1" title="Slide 1" onclick="goTo(1)">Welcome Back</div><div class="nav-item" data-idx="2" title="Slide 2" onclick="goTo(2)">Session 1: Where We Left Off</div><div class="nav-item" data-idx="3" title="Slide 3" onclick="goTo(3)">Session 2: How to Build Something You Keep *(+5)*</div><div class="nav-item" data-idx="4" title="Slide 4" onclick="goTo(4)">Session 2: What We'll Cover</div><div class="nav-sec" data-idx="5" title="Slide 5" onclick="goTo(5)">Tune Your Profile</div><div class="nav-item" data-idx="6" title="Slide 6" onclick="goTo(6)">Demonstration — My Profile, Live *(+15)*</div><div class="nav-item" data-idx="7" title="Slide 7" onclick="goTo(7)">Gemini with no Instructions</div><div class="nav-item" data-idx="8" title="Slide 8" onclick="goTo(8)">Gemini with Instructions to Challenge</div><div class="nav-item" data-idx="9" title="Slide 9" onclick="goTo(9)">What Belongs In There</div><div class="nav-item" data-idx="10" title="Slide 10" onclick="goTo(10)">Your Turn — Write Three Lines *(+20)*</div><div class="nav-item" data-idx="11" title="Slide 11" onclick="goTo(11)">Sharing — What Did You Put In</div><div class="nav-sec" data-idx="12" title="Slide 12" onclick="goTo(12)">A Research Example</div><div class="nav-item" data-idx="13" title="Slide 13" onclick="goTo(13)">My Demo Research Case</div><div class="nav-item" data-idx="14" title="Slide 14" onclick="goTo(14)">Pro-Tips</div><div class="nav-item" data-idx="15" title="Slide 15" onclick="goTo(15)">Pro-Tips — More From This Thread</div><div class="nav-sec" data-idx="16" title="Slide 16" onclick="goTo(16)">Watch for Thread Rot</div><div class="nav-item" data-idx="17" title="Slide 17" onclick="goTo(17)">Like a meeting with real Interns... or is it?</div><div class="nav-item" data-idx="18" title="Slide 18" onclick="goTo(18)">Context Window Reality — Free vs. Paid</div><div class="nav-item" data-idx="19" title="Slide 19" onclick="goTo(19)">What Triggers Compaction</div><div class="nav-item" data-idx="20" title="Slide 20" onclick="goTo(20)">The Four Symptoms</div><div class="nav-item" data-idx="21" title="Slide 21" onclick="goTo(21)">Discussion — examples? *(+30)*</div><div class="nav-item" data-idx="22" title="Slide 22" onclick="goTo(22)">What To Do About It</div><div class="nav-sec" data-idx="23" title="Slide 23" onclick="goTo(23)">Add Respected Experts</div><div class="nav-item" data-idx="24" title="Slide 24" onclick="goTo(24)">Demonstration — Naming Names *(+40)*</div><div class="nav-item" data-idx="25" title="Slide 25" onclick="goTo(25)">Finding Who To Name</div><div class="nav-item" data-idx="26" title="Slide 26" onclick="goTo(26)">Your Turn — Find Some Voices Other Than Your Own *(+45)*</div><div class="nav-sec" data-idx="27" title="Slide 27" onclick="goTo(27)">Design the Report</div><div class="nav-item" data-idx="28" title="Slide 28" onclick="goTo(28)">Demonstration — Skeleton First *(+50)*</div><div class="nav-item" data-idx="29" title="Slide 29" onclick="goTo(29)">The Parts of a Design</div><div class="nav-item" data-idx="30" title="Slide 30" onclick="goTo(30)">Your Turn — Sketch Yours *(+55)*</div><div class="nav-item" data-idx="31" title="Slide 31" onclick="goTo(31)">Sharing *(+65)*</div><div class="nav-sec" data-idx="32" title="Slide 32" onclick="goTo(32)">In Conclusion</div><div class="nav-item" data-idx="33" title="Slide 33" onclick="goTo(33)">It's a Wrap</div><div class="nav-item" data-idx="34" title="Slide 34" onclick="goTo(34)">Homework — Lead Your Interns</div><div class="nav-sec" data-idx="35" title="Slide 35" onclick="goTo(35)">Appendix</div><div class="nav-item" data-idx="36" title="Slide 36" onclick="goTo(36)">100 Level Outline</div><div class="nav-item" data-idx="37" title="Slide 37" onclick="goTo(37)">1) Context</div><div class="nav-item" data-idx="38" title="Slide 38" onclick="goTo(38)">2) A Solid First Draft</div><div class="nav-item" data-idx="39" title="Slide 39" onclick="goTo(39)">3) Analysis</div><div class="nav-item" data-idx="40" title="Slide 40" onclick="goTo(40)">4) Refining</div><div class="nav-item" data-idx="41" title="Slide 41" onclick="goTo(41)">5) Pretty!!!</div><div class="nav-sec" data-idx="42" title="Slide 42" onclick="goTo(42)">Provenance</div><div class="nav-item" data-idx="43" title="Slide 43" onclick="goTo(43)">Details</div></nav>
+<nav class="deck-nav"><div class="nav-header"><div class="nav-title">A Solid First Draft</div><div class="deck-version">Hugh McCutchen · v0.1 · September 2026</div><div class="build-stamp">Built 2026-09-05 18:33 UTC · git 0a2b1a4</div></div><div class="nav-sec" data-idx="0" data-num="1" title="Slide 1" onclick="goTo(0)">A Solid First Draft</div><div class="nav-item" data-idx="1" data-num="2" title="Slide 2" onclick="goTo(1)">Welcome Back</div><div class="nav-item" data-idx="2" data-num="3" title="Slide 3" onclick="goTo(2)">Session 1: Where We Left Off</div><div class="nav-item" data-idx="3" data-num="4" title="Slide 4" onclick="goTo(3)">Session 2: How to Build Something You Keep *(+5)*</div><div class="nav-item" data-idx="4" data-num="5" title="Slide 5" onclick="goTo(4)">Session 2: What We'll Cover</div><div class="nav-sec" data-idx="5" data-num="6" title="Slide 6" onclick="goTo(5)">Tune Your Profile</div><div class="nav-item" data-idx="6" data-num="7" title="Slide 7" onclick="goTo(6)">Demonstration — My Profile, Live *(+15)*</div><div class="nav-item" data-idx="7" data-num="8" title="Slide 8" onclick="goTo(7)">Gemini with no Instructions</div><div class="nav-item" data-idx="8" data-num="9" title="Slide 9" onclick="goTo(8)">Gemini with Instructions to Challenge</div><div class="nav-item" data-idx="9" data-num="10" title="Slide 10" onclick="goTo(9)">What Belongs In There</div><div class="nav-item" data-idx="10" data-num="11" title="Slide 11" onclick="goTo(10)">Your Turn — Write Three Lines *(+20)*</div><div class="nav-item" data-idx="11" data-num="12" title="Slide 12" onclick="goTo(11)">Sharing — What Did You Put In</div><div class="nav-sec" data-idx="12" data-num="13" title="Slide 13" onclick="goTo(12)">A Research Example</div><div class="nav-item" data-idx="13" data-num="14" title="Slide 14" onclick="goTo(13)">My Demo Research Case</div><div class="nav-item" data-idx="14" data-num="15" title="Slide 15" onclick="goTo(14)">Pro-Tips</div><div class="nav-item" data-idx="15" data-num="16" title="Slide 16" onclick="goTo(15)">Pro-Tips — More From This Thread</div><div class="nav-sec" data-idx="16" data-num="17" title="Slide 17" onclick="goTo(16)">Watch for Thread Rot</div><div class="nav-item" data-idx="17" data-num="18" title="Slide 18" onclick="goTo(17)">Like a meeting with real Interns... or is it?</div><div class="nav-item" data-idx="18" data-num="19" title="Slide 19" onclick="goTo(18)">Context Window Reality — Free vs. Paid</div><div class="nav-item" data-idx="19" data-num="20" title="Slide 20" onclick="goTo(19)">What Triggers Compaction</div><div class="nav-item" data-idx="20" data-num="21" title="Slide 21" onclick="goTo(20)">The Four Symptoms</div><div class="nav-item" data-idx="21" data-num="22" title="Slide 22" onclick="goTo(21)">Discussion — examples? *(+30)*</div><div class="nav-item" data-idx="22" data-num="23" title="Slide 23" onclick="goTo(22)">What To Do About It</div><div class="nav-sec" data-idx="23" data-num="24" title="Slide 24" onclick="goTo(23)">Add Respected Experts</div><div class="nav-item" data-idx="24" data-num="25" title="Slide 25" onclick="goTo(24)">Demonstration — Naming Names *(+40)*</div><div class="nav-item" data-idx="25" data-num="26" title="Slide 26" onclick="goTo(25)">Finding Who To Name</div><div class="nav-item" data-idx="26" data-num="27" title="Slide 27" onclick="goTo(26)">Your Turn — Find Some Voices Other Than Your Own *(+45)*</div><div class="nav-sec" data-idx="27" data-num="28" title="Slide 28" onclick="goTo(27)">Design the Report</div><div class="nav-item" data-idx="28" data-num="29" title="Slide 29" onclick="goTo(28)">Demonstration — Skeleton First *(+50)*</div><div class="nav-item" data-idx="29" data-num="30" title="Slide 30" onclick="goTo(29)">The Parts of a Design</div><div class="nav-item" data-idx="30" data-num="31" title="Slide 31" onclick="goTo(30)">Your Turn — Sketch Yours *(+55)*</div><div class="nav-item" data-idx="31" data-num="32" title="Slide 32" onclick="goTo(31)">Sharing *(+65)*</div><div class="nav-sec" data-idx="32" data-num="33" title="Slide 33" onclick="goTo(32)">In Conclusion</div><div class="nav-item" data-idx="33" data-num="34" title="Slide 34" onclick="goTo(33)">It's a Wrap</div><div class="nav-item" data-idx="34" data-num="35" title="Slide 35" onclick="goTo(34)">Homework — Lead Your Interns</div><div class="nav-sec" data-idx="35" data-num="36" title="Slide 36" onclick="goTo(35)">Appendix</div><div class="nav-item" data-idx="36" data-num="37" title="Slide 37" onclick="goTo(36)">100 Level Outline</div><div class="nav-item" data-idx="37" data-num="38" title="Slide 38" onclick="goTo(37)">1) Context</div><div class="nav-item" data-idx="38" data-num="39" title="Slide 39" onclick="goTo(38)">2) A Solid First Draft</div><div class="nav-item" data-idx="39" data-num="40" title="Slide 40" onclick="goTo(39)">3) Analysis</div><div class="nav-item" data-idx="40" data-num="41" title="Slide 41" onclick="goTo(40)">4) Refining</div><div class="nav-item" data-idx="41" data-num="42" title="Slide 42" onclick="goTo(41)">5) Pretty!!!</div><div class="nav-sec" data-idx="42" data-num="43" title="Slide 43" onclick="goTo(42)">Provenance</div><div class="nav-item" data-idx="43" data-num="44" title="Slide 44" onclick="goTo(43)">Details</div></nav>
 <div class="deck-progress"><div class="deck-progress-fill" id="pf"></div></div>
 <div class="stage"><section class="slide cover" data-idx="1">
       <div class="eyebrow">Training Series · Session 2</div>
       <h1>A Solid First Draft</h1>
       <div class="subtitle">Getting the Tool to Build Something You Can Stand Behind</div>
-      <div class="meta">Hugh McCutchen · v0.1 · September 2026</div><button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
+      <button class="notes-btn" onclick="toggleNotes(this)" aria-label="talking points">?</button>
     <aside class="notes-drawer"><div class="notes-inner"><h4>Talking points</h4><p>Session 2 of 5. Everyone should arrive with a topic and a prompt from Session 1.</p><p>This session is built around demonstrations with users mirroring similar activity themselves.</p><p>Do not let a demo run long.</p></div></aside><footer class="slide-foot"><span class="brand"><span class="bbadge">B</span>Bursera Consulting</span><span class="foot-right"><span class="url">burseraconsulting.com</span><span class="conf">Confidential · © 2026</span><span class="pg">1 / 44</span></span></footer></section>
 <section class="slide two-pane cembed" data-idx="2">
       
@@ -493,9 +560,16 @@ border-top:1px solid rgba(138,118,96,.22);z-index:9;pointer-events:none;}
   window.toggleNotes=function(btn){btn.parentElement.querySelector('.notes-drawer').classList.toggle('open');};
   /* common-navigation input model (v1.6): any left click or keyboard tap advances; a right-click
      or the back/down arrow goes back. Excluded from both: the nav rail, PDF/notes/deck-nav
-     buttons, and links — clicking or keying through those keeps their own behavior. */
+     buttons, and links — clicking or keying through those keeps their own behavior.
+     v1.9: a click event fires on mouseup even when the mousedown->mouseup was a drag that
+     selected text, so highlighting a word to copy it was silently advancing the deck. The
+     browser's own Selection API is the natural discriminator - dragging to select text leaves
+     window.getSelection() non-empty at click time, while an ordinary click collapses any prior
+     selection on mousedown, so a plain tap reads empty by the time this handler runs. */
   document.addEventListener('click',function(e){
     if(e.target&&e.target.closest&&e.target.closest(CHROME))return;
+    var sel=window.getSelection();
+    if(sel&&sel.toString().length>0)return;
     setCur(cur+1);
   });
   document.addEventListener('contextmenu',function(e){
