@@ -1,0 +1,144 @@
+<!-- HANDOFF
+target-path:      news/the-interns-on-hedging.html
+content-class:    news-story (white-paper family: own design, provenance kept, paper-bar on top)
+version:          v2.0
+source:           Hugh's editor's note, written 2026-09-09. The team's article it introduces ships
+                  separately at the-interns/on-hedging/ - v1.0 carried both on one page; split at
+                  Hugh's direction so the lead-in can be his LinkedIn post and the link can go
+                  straight to the paper without a second introduction.
+date:             2026-09-09
+assets:           news/images/og-knots.jpg (1200x630 share card), news/images/thumb-knots.jpg (264x138 hub row),
+                  hero the-interns/Images/TheInternsC-Small.png - the Red Team cast photo. No new art generated.
+nav-links:        / - /news.html - /the-interns/on-hedging/ (ships in this change set)
+notes:            Hugh's voice throughout. The team's own text is NOT on this page; it is one link away
+                  and introduces itself.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What managing a team of Interns is actually like &mdash; Bursera Consulting</title>
+<meta name="description" content="A 20+ page paper on ten years of AI, an intern team powered by Claude, and the one habit that nearly made the paper impossible to take seriously.">
+<link rel="canonical" href="https://burseraconsulting.com/news/the-interns-on-hedging.html">
+<link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What managing a team of Interns is actually like">
+<meta property="og:description" content="A 20+ page paper on ten years of AI, an intern team powered by Claude, and the one habit that nearly made the paper impossible to take seriously.">
+<meta property="og:url" content="https://burseraconsulting.com/news/the-interns-on-hedging.html">
+<meta property="og:image" content="https://burseraconsulting.com/news/images/og-knots.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Interns &mdash; five young colleagues in an office, waving and giving a thumbs up, under a wall sign reading THE INTERNS.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=s19a">
+<style>
+.news-story{ margin:0; background:var(--parchment-mid); font-family:var(--font-serif); font-size:1.125rem; line-height:1.72; color:var(--slate-800); -webkit-font-smoothing:antialiased; }
+.news-story .story{ max-width:900px; margin:0 auto; background:var(--white); box-shadow:0 0 60px var(--color-shadow); }
+.news-story .story-head{ background:var(--slate-800); color:var(--white); padding:48px 24px 40px; }
+.news-story .story-head .kicker{ font-family:var(--font-mono); font-size:0.6875rem; letter-spacing:.22em; text-transform:uppercase; color:var(--brass-300); margin:0 0 14px; }
+.news-story .story-head h1{ font-family:var(--font-sans); font-size:clamp(1.75rem,4.5vw,2.5rem); font-weight:700; line-height:1.15; letter-spacing:-.01em; margin:0 0 14px; }
+.news-story .story-head .dek{ font-style:italic; font-size:1.1875rem; line-height:1.5; color:var(--slate-300); max-width:72ch; margin:0; }
+.news-story .story-hero{ display:block; width:100%; height:auto; }
+.news-story .story-body{ padding:44px 28px 8px; }
+.news-story .story-body p{ margin:0 0 20px; }
+.news-story .story-body strong{ color:var(--slate-900); }
+.news-story .story-body a{ color:var(--brass-700); text-decoration:none; border-bottom:1px solid var(--brass-400); }
+.news-story .story-body a:hover{ color:var(--brass-900); }
+.news-story .story-body .signoff{ font-weight:600; color:var(--slate-900); }
+/* Read-on card - the handoff to the team's own paper. Deliberately the loudest thing below the
+   fold: this page exists to send the reader there, and the paper introduces itself on arrival. */
+.news-story .readon{ display:block; margin:34px 0 10px; padding:24px 26px; background:var(--slate-800); border-radius:6px; text-decoration:none; border:0; }
+.news-story .readon:hover{ background:var(--slate-900); }
+.news-story .readon .ro-label{ display:block; font-family:var(--font-mono); font-size:0.6875rem; letter-spacing:.22em; text-transform:uppercase; color:var(--brass-300); margin:0 0 10px; }
+.news-story .readon .ro-title{ display:block; font-family:var(--font-sans); font-size:1.375rem; font-weight:700; line-height:1.25; color:#fff; margin:0 0 8px; }
+.news-story .readon .ro-sub{ display:block; font-size:0.9375rem; font-style:italic; line-height:1.5; color:var(--slate-300); }
+.news-story .readon .ro-go{ display:block; margin-top:14px; font-family:var(--font-sans); font-size:0.875rem; font-weight:600; color:var(--brass-300); }
+.news-story .provenance{ margin:48px 0 0; padding:32px 28px 40px; background:var(--parchment); border-top:1px solid var(--slate-200); font-family:var(--font-sans); font-size:0.8125rem; color:var(--slate-600); }
+.news-story .provenance h2{ font-size:0.6875rem; font-family:var(--font-mono); letter-spacing:.22em; text-transform:uppercase; color:var(--brass-700); margin:0 0 14px; }
+.news-story .prov-row{ display:flex; gap:14px; padding:5px 0; border-bottom:1px solid var(--slate-200); }
+.news-story .prov-label{ flex:0 0 110px; font-weight:700; color:var(--slate-700); }
+@media (min-width:720px){
+  .news-story .story-head{ padding:64px 60px 48px; }
+  .news-story .story-body{ padding:52px 60px 8px; }
+  .news-story .readon{ padding:28px 34px; }
+  .news-story .provenance{ padding:32px 60px 48px; }
+}
+@media print{
+  .news-story{ background:#fff; }
+  .news-story .story{ box-shadow:none; max-width:none; }
+  .news-story .story-head{ background:#0f172a !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .news-story .story-head .kicker{ color:#c9a33d !important; }
+  .news-story .story-head .dek{ color:#e2e8f0 !important; }
+  .news-story .readon{ background:#0f172a !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .news-story .readon .ro-title{ color:#fff !important; }
+  .news-story .provenance{ background:#faf7f0 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .paper-bar, .skip-link, .bseal{ display:none !important; }
+}
+</style>
+</head>
+<body class="news-story">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="paper-bar">
+  <a class="paper-bar__brand" href="/">Bursera <span>Consulting</span></a>
+  <a class="paper-bar__back" href="/news.html">&#8592; Return</a>
+</div>
+
+<div class="story">
+  <header class="story-head bseal-host">
+<a class="bseal" href="#provenance" aria-label="Full provenance below"><svg class="bmark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#0F172A" stroke="#C9A33D" stroke-width="4"/><text x="50" y="72" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="66" fill="#C9A33D">B</text></svg><span class="btext"><span>Human</span><span>Led</span></span><span class="btip">Full Provenance Below</span></a>
+
+    <p class="kicker">The AI Writing Team &middot; September 9, 2026</p>
+    <h1>What managing a team of Interns is actually like <span class="badge-callout badge-callout--on-dark">New</span></h1>
+    <p class="dek">A 20+ page paper on ten years of AI, a team of Interns powered by Claude, and the one habit that nearly made the whole thing impossible to take seriously.</p>
+  </header>
+
+  <img class="story-hero" src="../the-interns/Images/TheInternsC-Small.png" width="900" height="503" alt="The Interns — five young colleagues in an office, waving and giving a thumbs up, under a wall sign reading THE INTERNS.">
+
+  <main id="main" class="story-body">
+
+    <p>I&rsquo;ve been working with Claude in my research platform on a 20+ page paper on the last ten years of AI, with Bloomberg as the backdrop to anchor the stories. We are using the work of four prominent AI figures to guide the insights. There are about a dozen diagrams, and almost as many sections. It covers AI terminology and business jargon. It&rsquo;s complex writing.</p>
+
+    <p>And I&rsquo;m glad to have my team of Interns, with Claude/Opus powering the bulk of the work &mdash; finding sources, distilling out information, producing charts and diagrams, and keeping it all in sync. Verifying that the links all work and the quotes are all accurate.</p>
+
+    <p>But like most teams of interns, it is a wrestling match with the actual writing quality. One problem I kept running into is that The Interns (Claude) was stuck on hedging many, many things about what we saw.</p>
+
+    <p>The hedging made &ldquo;sense,&rdquo; but it wasn&rsquo;t always helpful. For example, the papers did NOT say anything about how they measured accuracy. None of them did. But this was like a drum beat in the writing. I honestly don&rsquo;t find it surprising that they don&rsquo;t, because I&rsquo;m a human and have had to write public documents. If you hold up a measure in public then you can get held to it &mdash; sometimes legally.</p>
+
+    <p>In this paper it was coming off as an AHA! sort of conspiracy, which just isn&rsquo;t the case. And it kept putting them back in. These callouts made the paper impossible to take seriously, because it was constantly redirecting the ideas toward what the Interns could NOT see or could NOT find.</p>
+
+    <p>That is what managing a team of Interns is like.</p>
+
+    <p>There were multiple tricks I found that helped, and we&rsquo;re carrying that into skills work to get better in the future.</p>
+
+    <p>At the end of the thread I asked it to reflect on what it learned and write it in its own voice &mdash; a message from the AI writers, from the Interns. In their own words, unedited and only lightly coached.</p>
+
+    <p class="signoff">Enjoy The Interns/Claude/Opus reflecting on how it could write better.</p>
+
+    <a class="readon" href="/the-interns/on-hedging/">
+      <span class="ro-label">The paper &middot; in the team&rsquo;s own words</span>
+      <span class="ro-title">What I was protecting when I hedged</span>
+      <span class="ro-sub">Nine hedges, each one defensible on its own &mdash; and an account of why they could not be seen from inside the draft.</span>
+      <span class="ro-go">Read it &#8594;</span>
+    </a>
+
+  </main>
+
+  <div class="provenance" id="provenance">
+    <h2>Provenance</h2>
+    <div class="prov-row"><span class="prov-label">Author</span><span>Hugh McCutchen. This page is his introduction, in his own words; the article it links to was written by the AI writing team and is published as written.</span></div>
+    <div class="prov-row"><span class="prov-label">Version</span><span>v2.0 &middot; HTML &middot; September 9, 2026. v1.0 carried the introduction and the team&rsquo;s article on one page; they were split so each can be read and shared on its own.</span></div>
+    <div class="prov-row"><span class="prov-label">Occasion</span><span>Written after an AIJM research thread on ten years of Bloomberg&rsquo;s AI systems &mdash; a 20+ page paper with roughly a dozen diagrams, built from public sources.</span></div>
+    <div class="prov-row"><span class="prov-label">Sources</span><span>First-hand account of that thread. It makes no claim about the systems the underlying paper studies.</span></div>
+    <div class="prov-row"><span class="prov-label">Images</span><span>The Interns cast photo, reused from the <a href="/the-interns/the_interns_red_team_v3.5.html">Red Team</a> pilot. No new art generated for this piece.</span></div>
+    <div class="prov-row"><span class="prov-label">Review status</span><span>v2.0 &mdash; published at deploy, September 9, 2026.</span></div>
+  </div>
+</div>
+</body>
+</html>

@@ -200,8 +200,13 @@ body.site-page .entry a.entry-title{
   border-bottom:1.5px solid transparent; transition:border-color .15s,color .15s;
 }
 body.site-page .entry a.entry-title:hover{ color:var(--brass-700); border-bottom-color:var(--brass-400); }
+/* No ch-cap on running body text. The page column (--content-width, minus its gutters) IS the
+   measure; a 66ch cap on top of it stopped every summary ~200px short of the column edge and read
+   as a layout fault rather than a typographic choice. Ruled 2026-09-09: there is no page on this
+   site where the short-line-in-a-wide-column behaviour was wanted. Display ledes keep their caps
+   (see .hero-inner .lede) - those are deliberate and set as a pair with the masthead lede. */
 body.site-page .entry .summary{
-  font-size:1rem; line-height:1.62; color:var(--color-text); margin-top:var(--space-2); max-width:66ch;
+  font-size:1rem; line-height:1.62; color:var(--color-text); margin-top:var(--space-2);
 }
 
 /* --- series sub-list --- */
@@ -483,7 +488,7 @@ body.site-page .news-update-badge{
 body.site-page .news-update-badge:hover{ color:#8f1e17; text-decoration:underline; }
 body.site-page .news-theme{
   font-size:var(--text-small); color:var(--color-text-muted); line-height:1.55;
-  display:block; margin-top:var(--space-1); max-width:66ch;
+  display:block; margin-top:var(--space-1);
   flex:1 1 100%;
 }
 
