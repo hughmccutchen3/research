@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 380" width="980" height="380" role="img" aria-labelledby="ti de" style="background:#ffffff;font-family:'Segoe UI',Helvetica,Arial,sans-serif">
+<title id="ti">Autonomy reach did not rise over time — three agentic-lane cases plotted against the period bands</title>
+<desc id="de">Two systems from before 2019 publish to the wire with no person reviewing the individual instance. The one system Bloomberg calls agentic, launched in 2026, gathers and returns to a person and takes no autonomous action on the world. The 2019-2022 band has no validated case in any mode this study reaches. Autonomy reach is highest early and lowest in the system carrying the label.</desc>
+<rect x="0" y="0" width="980" height="380" fill="#ffffff"/>
+<text x="20" y="28" font-size="13" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Autonomy reach across the agentic lane: earlier is higher, not lower</text>
+<text x="20" y="46" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">The system Bloomberg calls agentic returns an answer to a person. The two systems from a decade earlier published without one.</text>
+
+<!-- Y axis labels -->
+<text x="150" y="110" text-anchor="end" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Publishes without</text>
+<text x="150" y="123" text-anchor="end" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">per-instance review</text>
+<text x="150" y="290" text-anchor="end" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Gathers, returns to a</text>
+<text x="150" y="303" text-anchor="end" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">person; no autonomous action</text>
+
+<!-- horizontal guide lines -->
+<line x1="160" y1="115" x2="960" y2="115" stroke="#e5e2da" stroke-width="1"/>
+<line x1="160" y1="295" x2="960" y2="295" stroke="#e5e2da" stroke-width="1"/>
+
+<!-- period band backgrounds and labels -->
+<rect x="160" y="70" width="240" height="260" fill="#fafaf7"/>
+<rect x="400" y="70" width="240" height="260" fill="#f1efe8" fill-opacity="0.6"/>
+<rect x="640" y="70" width="320" height="260" fill="#fafaf7"/>
+<text x="280" y="345" text-anchor="middle" font-size="10" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">pre-2019</text>
+<text x="520" y="345" text-anchor="middle" font-size="10" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">2019–2022</text>
+<text x="520" y="360" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#888780">no validated case in any mode</text>
+<text x="800" y="345" text-anchor="middle" font-size="10" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">2023–2026</text>
+
+<!-- Cyborg: 2016, high tier, solid dot at x~230 -->
+<circle cx="230" cy="115" r="9" fill="#a8d4f2" stroke="#2d6eaa" stroke-width="1.5"/>
+<text x="230" y="98" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Project Cyborg</text>
+<text x="230" y="145" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">Apr 2016 memo</text>
+
+<!-- BAI: interval, high tier, uncertain span from ~2016 into the empty band, hatched tail -->
+<line x1="270" y1="115" x2="470" y2="115" stroke="#2d6eaa" stroke-width="4" stroke-dasharray="2,4"/>
+<circle cx="270" cy="115" r="9" fill="#a8d4f2" stroke="#2d6eaa" stroke-width="1.5"/>
+<text x="270" y="175" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Bloomberg Automated</text>
+<text x="270" y="188" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Intelligence</text>
+<text x="270" y="204" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">origin not established —</text>
+<text x="270" y="216" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">interval, not a date</text>
+
+<!-- ASKB: 2026, low tier, solid dot -->
+<circle cx="880" cy="295" r="9" fill="#a8d4f2" stroke="#2d6eaa" stroke-width="1.5"/>
+<text x="880" y="278" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">ASKB</text>
+<text x="880" y="325" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">Feb 2026 launch</text>
+
+<!-- legend -->
+<circle cx="170" cy="358" r="6" fill="#a8d4f2" stroke="#2d6eaa" stroke-width="1.25"/>
+<text x="184" y="362" font-size="9" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Dated attestation</text>
+<line x1="290" y1="358" x2="320" y2="358" stroke="#2d6eaa" stroke-width="3" stroke-dasharray="2,4"/>
+<text x="326" y="362" font-size="9" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Uncertain interval, no fixed origin</text>
+</svg>

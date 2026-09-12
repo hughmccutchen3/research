@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 400" width="980" height="400" role="img" aria-labelledby="ti de" style="background:#ffffff;font-family:'Segoe UI',Helvetica,Arial,sans-serif">
+<title id="ti">Which pipeline stages are learned, written, or undocumented — LQA, the emissions model, and IBVAL compared</title>
+<desc id="de">A five-stage by three-case grid. Model is mixed in all three cases. Input and post-processing are not stated for LQA and the emissions model, and are written for IBVAL. Preparation is not stated for all three. Destination is written for all three. The repeated undocumented column is the finding: operational description is thin to absent across the lane, not a per-case accident.</desc>
+<rect x="0" y="0" width="980" height="400" fill="#ffffff"/>
+<text x="20" y="28" font-size="13" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Five pipeline stages, three cases: where the record is silent</text>
+<text x="20" y="46" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">Model is mixed in all three. Input and post-processing are undocumented for two of three. The gray column, not the colored one, is the finding.</text>
+
+<!-- column headers -->
+<text x="235" y="82" text-anchor="middle" font-size="10.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Input</text>
+<text x="395" y="82" text-anchor="middle" font-size="10.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Preparation</text>
+<text x="555" y="82" text-anchor="middle" font-size="10.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Model</text>
+<text x="715" y="82" text-anchor="middle" font-size="10.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Post-processing</text>
+<text x="875" y="82" text-anchor="middle" font-size="10.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Destination</text>
+
+<!-- row labels -->
+<text x="20" y="140" font-size="11" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">LQA</text>
+<text x="20" y="156" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">pre-2019</text>
+<text x="20" y="230" font-size="11" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Emissions</text>
+<text x="20" y="246" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">2019–2022</text>
+<text x="20" y="320" font-size="11" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">IBVAL</text>
+<text x="20" y="336" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">2023–2026</text>
+
+<!-- gridlines: 5 columns x 3 rows, cell 150 wide x 70 tall, col centers 160/320/480/640/800, col left edges 160,320,480,640,800 -->
+<!-- ROW 1: LQA — Input not-stated, Prep not-stated, Model mixed, Post not-stated, Dest written -->
+<rect x="160" y="96" width="150" height="64" rx="5" fill="#f1efe8" stroke="#888780" stroke-width="1.1" stroke-dasharray="4,3"/>
+<rect x="320" y="96" width="150" height="64" rx="5" fill="#f1efe8" stroke="#888780" stroke-width="1.1" stroke-dasharray="4,3"/>
+<rect x="480" y="96" width="75" height="64" fill="#d3b3f0" stroke="none"/>
+<rect x="555" y="96" width="75" height="64" fill="#a8d4f2" stroke="none"/>
+<rect x="480" y="96" width="150" height="64" rx="5" fill="none" stroke="#5b3d9e" stroke-width="1.1"/>
+<rect x="640" y="96" width="150" height="64" rx="5" fill="#f1efe8" stroke="#888780" stroke-width="1.1" stroke-dasharray="4,3"/>
+<rect x="800" y="96" width="150" height="64" rx="5" fill="#a8d4f2" stroke="#2d6eaa" stroke-width="1.1"/>
+<text x="555" y="132" text-anchor="middle" font-size="8" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">cluster + parametric</text>
+
+<!-- ROW 2: Emissions — same pattern as LQA -->
+<rect x="160" y="186" width="150" height="64" rx="5" fill="#f1efe8" stroke="#888780" stroke-width="1.1" stroke-dasharray="4,3"/>
+<rect x="320" y="186" width="150" height="64" rx="5" fill="#f1efe8" stroke="#888780" stroke-width="1.1" stroke-dasharray="4,3"/>
+<rect x="480" y="186" width="75" height="64" fill="#d3b3f0" stroke="none"/>
+<rect x="555" y="186" width="75" height="64" fill="#a8d4f2" stroke="none"/>
+<rect x="480" y="186" width="150" height="64" rx="5" fill="none" stroke="#5b3d9e" stroke-width="1.1"/>
+<rect x="640" y="186" width="150" height="64" rx="5" fill="#f1efe8" stroke="#888780" stroke-width="1.1" stroke-dasharray="4,3"/>
+<rect x="800" y="186" width="150" height="64" rx="5" fill="#a8d4f2" stroke="#2d6eaa" stroke-width="1.1"/>
+<text x="555" y="222" text-anchor="middle" font-size="8" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">model + waterfall</text>
+
+<!-- ROW 3: IBVAL — Input written, Prep not-stated, Model mixed, Post written, Dest written -->
+<rect x="160" y="276" width="150" height="64" rx="5" fill="#a8d4f2" stroke="#2d6eaa" stroke-width="1.1"/>
+<rect x="320" y="276" width="150" height="64" rx="5" fill="#f1efe8" stroke="#888780" stroke-width="1.1" stroke-dasharray="4,3"/>
+<rect x="480" y="276" width="75" height="64" fill="#d3b3f0" stroke="none"/>
+<rect x="555" y="276" width="75" height="64" fill="#a8d4f2" stroke="none"/>
+<rect x="480" y="276" width="150" height="64" rx="5" fill="none" stroke="#5b3d9e" stroke-width="1.1"/>
+<rect x="640" y="276" width="150" height="64" rx="5" fill="#a8d4f2" stroke="#2d6eaa" stroke-width="1.1"/>
+<rect x="800" y="276" width="150" height="64" rx="5" fill="#a8d4f2" stroke="#2d6eaa" stroke-width="1.1"/>
+<text x="555" y="312" text-anchor="middle" font-size="8" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">ML + rules-based</text>
+<text x="235" y="312" text-anchor="middle" font-size="8" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Iceberg + Trino</text>
+<text x="715" y="312" text-anchor="middle" font-size="8" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">regression tests</text>
+
+<!-- legend -->
+<rect x="160" y="364" width="16" height="16" fill="#a8d4f2" stroke="#2d6eaa" stroke-width="1"/>
+<text x="182" y="376" font-size="9" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Written</text>
+<rect x="240" y="364" width="16" height="16" fill="#d3b3f0" stroke="#5b3d9e" stroke-width="1"/>
+<text x="262" y="376" font-size="9" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Learned</text>
+<rect x="325" y="364" width="8" height="16" fill="#d3b3f0" stroke="none"/>
+<rect x="333" y="364" width="8" height="16" fill="#a8d4f2" stroke="none"/>
+<rect x="325" y="364" width="16" height="16" fill="none" stroke="#5b3d9e" stroke-width="1"/>
+<text x="347" y="376" font-size="9" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Mixed</text>
+<rect x="405" y="364" width="16" height="16" fill="#f1efe8" stroke="#888780" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="427" y="376" font-size="9" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Not stated in any source found</text>
+</svg>

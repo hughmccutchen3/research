@@ -1,0 +1,51 @@
+<svg viewBox="0 0 980 320" xmlns="http://www.w3.org/2000/svg">
+<title>Three lanes: predictive, generative, agentic</title>
+<desc>Three-card diagram distinguishing the paper's three output-type lanes — predictive, generative, agentic — each with a plain-language definition and its three example cases, one per period band, drawn from the paper's own mode-by-period case grid.</desc>
+
+<!-- PREDICTIVE card -->
+<g>
+<rect x="20" y="40" width="300" height="220" rx="8" fill="#dce8f5" stroke="#2d6eaa" stroke-width="1.5"/>
+<rect x="20" y="40" width="300" height="40" rx="8" fill="#2d6eaa"/>
+<rect x="20" y="68" width="300" height="12" fill="#2d6eaa"/>
+<text x="170" y="65" text-anchor="middle" font-size="14" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#ffffff" letter-spacing="0.08em">PREDICTIVE</text>
+<text x="170" y="100" text-anchor="middle" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">Scores, classifies, or forecasts</text>
+<text x="170" y="114" text-anchor="middle" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">from data Bloomberg already has.</text>
+<line x1="36" y1="128" x2="304" y2="128" stroke="#2d6eaa" stroke-width="0.75" opacity="0.4"/>
+<text x="36" y="146" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c" letter-spacing="0.08em">THIS PAPER'S EXAMPLES</text>
+<text x="36" y="163" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">pre-2019: LQA</text>
+<text x="36" y="181" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">2019–2022: GHG emissions model</text>
+<text x="36" y="199" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">2023–2026: IBVAL</text>
+</g>
+
+<!-- GENERATIVE card -->
+<g>
+<rect x="340" y="40" width="300" height="220" rx="8" fill="#e8e0f5" stroke="#5b3d9e" stroke-width="1.5"/>
+<rect x="340" y="40" width="300" height="40" rx="8" fill="#5b3d9e"/>
+<rect x="340" y="68" width="300" height="12" fill="#5b3d9e"/>
+<text x="490" y="65" text-anchor="middle" font-size="14" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#ffffff" letter-spacing="0.08em">GENERATIVE</text>
+<text x="490" y="100" text-anchor="middle" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">Creates new text that did not</text>
+<text x="490" y="114" text-anchor="middle" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">exist before — drafts, not facts.</text>
+<line x1="356" y1="128" x2="624" y2="128" stroke="#5b3d9e" stroke-width="0.75" opacity="0.4"/>
+<text x="356" y="146" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060" letter-spacing="0.08em">THIS PAPER'S EXAMPLES</text>
+<text x="356" y="163" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">pre-2019: Project Cyborg</text>
+<text x="356" y="181" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">2019–2022: EntSUM</text>
+<text x="356" y="199" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#4a2d8a">2023–2026: News summaries</text>
+</g>
+
+<!-- AGENTIC card -->
+<g>
+<rect x="660" y="40" width="300" height="220" rx="8" fill="#fdf6e3" stroke="#b8860b" stroke-width="1.5"/>
+<rect x="660" y="40" width="300" height="40" rx="8" fill="#b8860b"/>
+<rect x="660" y="68" width="300" height="12" fill="#b8860b"/>
+<text x="810" y="65" text-anchor="middle" font-size="14" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#ffffff" letter-spacing="0.08em">AGENTIC</text>
+<text x="810" y="100" text-anchor="middle" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">Takes multi-step actions with</text>
+<text x="810" y="114" text-anchor="middle" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">tools, not just a single output.</text>
+<line x1="676" y1="128" x2="944" y2="128" stroke="#b8860b" stroke-width="0.75" opacity="0.4"/>
+<text x="676" y="146" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00" letter-spacing="0.08em">THIS PAPER'S EXAMPLES</text>
+<text x="676" y="163" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">pre-2019: Automated Intelligence</text>
+<text x="676" y="181" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00" font-style="italic">2019–2022: no validated case</text>
+<text x="676" y="199" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">2023–2026: ASKB</text>
+</g>
+
+<text x="490" y="292" text-anchor="middle" font-size="9" font-weight="400" font-style="italic" font-family="Segoe UI, Arial, sans-serif" fill="#64748b">One example case per period, per lane — see the body for all eleven systems.</text>
+</svg>

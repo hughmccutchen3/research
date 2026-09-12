@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 240" width="980" height="240" role="img" aria-labelledby="ti de" style="background:#ffffff;font-family:'Segoe UI',Helvetica,Arial,sans-serif">
+<title id="ti">Where the person sits</title>
+<desc id="de">A single horizontal band showing four positions along one axis of autonomy, from a person reviewing and approving every output to no person in the loop at each step. The band carries no arrow of progress: systems from every date band in this paper occupy every position.</desc>
+<rect x="0" y="0" width="980" height="240" fill="#ffffff"/>
+<text x="20" y="30" font-size="15" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Where the person sits</text>
+<text x="20" y="50" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#475569">One axis of autonomy, four positions. No arrow of progress — every date band in this paper has systems at every position.</text>
+
+<rect x="20" y="76" width="940" height="10" rx="5" fill="#e2e8f0"/>
+
+<g>
+<rect x="20" y="98" width="225" height="70" rx="6" fill="#f0f4f8" stroke="#2d5270" stroke-width="1.25"/>
+<text x="132" y="118" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e3a52">Reviews and approves</text>
+<text x="132" y="132" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e3a52">every output</text>
+<text x="132" y="152" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">A person signs off before</text>
+<text x="132" y="164" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">each output ships.</text>
+</g>
+
+<g>
+<rect x="257" y="98" width="225" height="70" rx="6" fill="#f0f4f8" stroke="#2d5270" stroke-width="1.25"/>
+<text x="369" y="118" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e3a52">Reviews a sample, or</text>
+<text x="369" y="132" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e3a52">handles exceptions</text>
+<text x="369" y="152" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">A person spot-checks output</text>
+<text x="369" y="164" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">or is called in when it fails.</text>
+</g>
+
+<g>
+<rect x="494" y="98" width="225" height="70" rx="6" fill="#f0f4f8" stroke="#2d5270" stroke-width="1.25"/>
+<text x="606" y="118" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e3a52">Receives the output and</text>
+<text x="606" y="132" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e3a52">decides what to do with it</text>
+<text x="606" y="152" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">The output reaches a person</text>
+<text x="606" y="164" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">who acts on it downstream.</text>
+</g>
+
+<g>
+<rect x="731" y="98" width="229" height="70" rx="6" fill="#f0f4f8" stroke="#2d5270" stroke-width="1.25"/>
+<text x="845" y="118" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e3a52">No person in the loop</text>
+<text x="845" y="132" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e3a52">at each step</text>
+<text x="845" y="152" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">The system acts and the</text>
+<text x="845" y="164" text-anchor="middle" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c4a6e">output ships unreviewed.</text>
+</g>
+
+<text x="20" y="200" font-size="9.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">Positions are read off what a source says the person does at that step, not off when the system launched. The 2014 wire-filing system sits further along this band than several systems built a decade later.</text>
+</svg>
