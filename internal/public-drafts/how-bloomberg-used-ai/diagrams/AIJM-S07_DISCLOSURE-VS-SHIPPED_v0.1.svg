@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 460" width="980" height="460" role="img" aria-labelledby="ti de" style="background:#ffffff;font-family:'Segoe UI',Helvetica,Arial,sans-serif">
+<title id="ti">Where the architecture is disclosed, nothing shipped — seven generative-lane cases plotted by disclosure and deployment</title>
+<desc id="de">A two-by-two grid, architecture disclosed (yes/no) against shipped as a product (yes/no). BloombergGPT and EntSUM are fully disclosed and both never shipped. The five deployed products — Project Cyborg, Bloomberg Automated Intelligence, The Bulletin, AI-Powered Earnings Call Summaries, AI-Powered News Summaries — all withhold or only partially state their architecture. The populated diagonal is the finding.</desc>
+<rect x="0" y="0" width="980" height="460" fill="#ffffff"/>
+<text x="20" y="28" font-size="13" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Disclosure and deployment do not overlap</text>
+<text x="20" y="46" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">Every case that shipped withholds its architecture. Every case with a disclosed architecture never shipped.</text>
+
+<!-- axes -->
+<text x="500" y="70" text-anchor="middle" font-size="10.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Architecture disclosed?</text>
+<text x="270" y="86" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">No / withheld</text>
+<text x="730" y="86" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">Yes / fully stated</text>
+
+<text x="46" y="240" text-anchor="middle" font-size="10.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b" transform="rotate(-90 46 240)">Shipped as a product?</text>
+
+<!-- quadrant boxes: left col 100-460, right col 500-940; top row (shipped=yes) 100-260, bottom row (shipped=no) 280-440 -->
+<text x="80" y="115" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">Yes,</text>
+<text x="80" y="128" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">shipped</text>
+<text x="80" y="340" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">No, research</text>
+<text x="80" y="353" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">only</text>
+
+<!-- top-left quadrant: shipped, undisclosed -->
+<rect x="100" y="100" width="360" height="170" rx="6" fill="#f1efe8" stroke="#888780" stroke-width="1.25" stroke-dasharray="4,3"/>
+<text x="120" y="122" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Project Cyborg — rules stated, no model named</text>
+<text x="120" y="140" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Bloomberg Automated Intelligence — "500 templates," no method</text>
+<text x="120" y="158" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">The Bulletin — "machine learning and AI technology"</text>
+<text x="120" y="176" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Earnings Call Summaries — "state-of-the-art generative AI"</text>
+<text x="120" y="194" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">News Summaries — no model named, ever</text>
+<text x="120" y="220" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">All five reach readers. None names its machinery beyond a category label.</text>
+
+<!-- top-right quadrant: shipped, disclosed -- empty -->
+<rect x="500" y="100" width="360" height="170" rx="6" fill="#ffffff" stroke="#c9c5ba" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="680" y="190" text-anchor="middle" font-size="11" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#c9c5ba">empty</text>
+
+<!-- bottom-left quadrant: not shipped, undisclosed -- empty -->
+<rect x="100" y="280" width="360" height="150" rx="6" fill="#ffffff" stroke="#c9c5ba" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="280" y="360" text-anchor="middle" font-size="11" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#c9c5ba">empty</text>
+
+<!-- bottom-right quadrant: not shipped, disclosed -->
+<rect x="500" y="280" width="360" height="150" rx="6" fill="#d3b3f0" fill-opacity="0.35" stroke="#5b3d9e" stroke-width="1.25"/>
+<text x="520" y="312" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">BloombergGPT — full architecture, training log, hardware</text>
+<text x="520" y="330" font-size="9.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">EntSUM — full method, ablations, human-annotation pipeline</text>
+<text x="520" y="356" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">Both are papers. Barlow, on the record: "BloombergGPT... is actually not used at all in any of our products."</text>
+
+<!-- legend -->
+<rect x="100" y="440" width="14" height="14" fill="#f1efe8" stroke="#888780" stroke-width="1" stroke-dasharray="3,2"/>
+<text x="120" y="451" font-size="9" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Populated — shipped, architecture withheld or thin</text>
+<rect x="480" y="440" width="14" height="14" fill="#d3b3f0" fill-opacity="0.35" stroke="#5b3d9e" stroke-width="1"/>
+<text x="500" y="451" font-size="9" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Populated — disclosed, never shipped</text>
+</svg>

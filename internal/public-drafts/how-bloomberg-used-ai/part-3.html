@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conclusion & Reference &mdash; How Bloomberg Used AI, Part 3 of 3 &mdash; Bursera Consulting</title>
+<meta name="description" content="Part 3 of 3: Conclusion & Reference. A decade of Bloomberg's predictive, generative and agentic AI systems, traced case by case from the published record. Public draft.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/part-3.html">
+<link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Conclusion & Reference &mdash; How Bloomberg Used AI, Part 3 of 3">
+<meta property="og:description" content="Part 3 of 3: Conclusion & Reference. A decade of Bloomberg's predictive, generative and agentic AI systems, traced from the published record.">
+<meta property="og:url" content="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/part-3.html">
+<meta property="og:image" content="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/og-bloomberg-ai.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Predictive, Generative, Agentic &mdash; a word-cloud cover over a blue and violet particle field.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>/* AIJM paper build - shared stylesheet.
+   Palette and type are the house tokens from the output-formatting skill,
+   which are the same values the Data Lifecycle papers 1/3/4 carry inline. */
+:root{
+  --blue:#4a5c6b; --blue-light:#7a9aad; --blue-pale:#e8edf0;
+  --gold:#8a6e3a; --gold-pale:#f2ede3;
+  --green:#1a5c2a; --green-pale:#e8f5e9;
+  --red:#8b1a1a;  --red-pale:#fdecea;
+  --ink:#28303a;  --bg:#f4f2ee;
+  --gray-mid:#8a7660; --gray-rule:#d4c8b0;
+  --sonoran-sky:#a8c8d8; --caliche:#8a7660;
+  --col-w:760px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Serif 4',Georgia,serif;font-size:17px;line-height:1.75;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+p{margin-bottom:16px}
+a{color:var(--blue)}
+.skip-link{position:absolute;left:-9999px}
+.skip-link:focus{left:8px;top:8px;background:#fff;padding:8px 12px;z-index:99}
+
+/* top bar */
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;
+  background:var(--ink);color:#fff;padding:10px 24px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px}
+.topbar__brand{color:#fff;text-decoration:none;font-weight:600}
+.topbar__brand span{color:var(--sonoran-sky);font-weight:400}
+.topbar__draft{color:var(--gold-pale);opacity:.75;text-transform:uppercase;letter-spacing:2px;font-size:10px}
+
+/* the series strip - the Data Lifecycle idea, made clickable and made to stay put */
+.stickyhead{position:sticky;top:0;z-index:50;box-shadow:0 1px 0 rgba(40,48,58,.06),0 6px 18px -12px rgba(40,48,58,.45)}
+.series{background:var(--gold-pale);border-bottom:3px solid var(--gold);padding:9px 16px}
+.series__label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:7px}
+.series__chips{display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:6px;
+  max-width:1100px;margin:0 auto;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px}
+@media (min-width:1120px){.series__chips{justify-content:center;flex-wrap:wrap;overflow-x:visible}}
+.chip{display:flex;align-items:baseline;gap:6px;white-space:nowrap;text-decoration:none;background:#fff;
+  border:1px solid var(--gray-rule);border-top:3px solid var(--blue-light);border-radius:3px;
+  padding:5px 10px;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:12px;
+  font-weight:600;color:var(--ink);transition:border-top-color .15s,background .15s}
+.chip:hover{background:var(--blue-pale);border-top-color:var(--blue)}
+.chip b{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:var(--gray-mid);letter-spacing:1px}
+.chip--current{background:var(--blue-pale);border-top-color:var(--blue);border-top-width:4px;color:var(--blue);cursor:default}
+.chip--current b{color:var(--blue)}
+
+/* cover + page head */
+.cover{background:var(--blue);color:#fff;padding:80px 40px 60px;text-align:center}
+.cover__eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--sonoran-sky);margin-bottom:28px}
+.cover h1{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(32px,5vw,52px);
+  font-weight:700;line-height:1.1;margin-bottom:16px}
+.cover__sub{font-size:16px;color:rgba(168,200,216,.9);font-style:italic;max-width:600px;margin:0 auto 36px}
+.cover__meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--sonoran-sky);letter-spacing:1px;opacity:.8}
+.pagehead{max-width:var(--col-w);margin:0 auto;padding:56px 24px 0}
+.pagehead__num{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gray-mid);margin-bottom:10px}
+.pagehead__title{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(26px,4vw,40px);
+  font-weight:700;color:var(--blue);line-height:1.15;padding-bottom:14px;border-bottom:3px solid var(--blue)}
+
+/* body */
+.doc{max-width:var(--col-w);margin:0 auto;padding:40px 24px 72px}
+.doc h1{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(22px,3vw,30px);
+  font-weight:700;color:var(--blue);line-height:1.2;margin:48px 0 20px;padding-bottom:10px;
+  border-bottom:2px solid var(--gray-rule)}
+.doc h2{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:21px;font-weight:600;
+  color:var(--ink);margin:40px 0 14px}
+.doc h3{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:17px;font-weight:600;
+  color:var(--gray-mid);margin:30px 0 10px}
+.doc ul,.doc ol{margin:0 0 18px 22px}
+.doc li{margin-bottom:8px}
+.doc hr{border:0;border-top:1px solid var(--gray-rule);margin:40px 0}
+
+/* definition panels - a blockquote opening on a bold-italic term */
+blockquote{border-left:4px solid var(--blue-light);background:var(--blue-pale);
+  padding:16px 20px;margin:24px 0;font-size:15.5px;line-height:1.65}
+blockquote p{margin-bottom:10px}
+blockquote.term{border-left-color:var(--gold);background:var(--gold-pale)}
+.term__name{display:block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;
+  letter-spacing:.5px;color:var(--gold);margin-bottom:6px}
+
+/* inline glossary links - an inline ***term*** that resolved to an Appendix anchor */
+a.term-link{color:inherit;text-decoration:none;border-bottom:1px dotted var(--gold)}
+a.term-link:hover{border-bottom-style:solid}
+
+/* marked panels - the seam between reportage and Bursera's own view */
+.panel{margin:36px 0;padding:24px 26px;border-radius:3px}
+.panel__label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;margin-bottom:14px}
+.panel--view{background:#fff;border:2px solid var(--gold);border-left-width:6px}
+.panel--view .panel__label{color:var(--gold)}
+.panel--assistant{background:#eef1f3;border:1px solid var(--gray-rule);border-left:6px solid var(--blue-light)}
+.panel--assistant .panel__label{color:var(--gray-mid)}
+.panel h2{font-family:'DM Sans',sans-serif;font-size:18px;margin:0 0 6px}
+.panel p:last-child{margin-bottom:0}
+
+/* tables */
+.table-wrap{overflow-x:auto;margin:26px 0}
+table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.5;
+  font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif}
+thead th{background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:.5px;padding:10px 12px;text-align:left;font-weight:600}
+tbody td{padding:9px 12px;border-bottom:1px solid #e3ded2;vertical-align:top}
+tbody tr:nth-child(even){background:#efece5}
+tbody td:first-child{font-weight:600;color:var(--blue)}
+
+/* figures */
+.figure{margin:32px 0;text-align:center;position:relative}
+.figure img{max-width:100%;height:auto;border:1px solid var(--gray-rule);background:#fff;border-radius:3px}
+.figure figcaption{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:12.5px;
+  color:var(--gray-mid);margin-top:10px;text-align:left;line-height:1.5}
+
+/* figure lightbox (AIJM-S18 Task 6; full-width fix BURSBUILD-S25, shared per Hugh's ruling) */
+.figure img,.figure svg{cursor:zoom-in}
+.figure__expand{position:absolute;top:8px;right:8px;opacity:0;pointer-events:none;
+  background:rgba(255,255,255,.92);border:1px solid var(--gray-rule);border-radius:4px;
+  padding:4px 9px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink);
+  transition:opacity .15s}
+.figure:hover .figure__expand{opacity:1}
+.lightbox{position:fixed;inset:0;background:rgba(18,18,18,.92);display:none;
+  align-items:center;justify-content:center;z-index:9999;padding:5vh 5vw;cursor:zoom-out}
+.lightbox.is-open{display:flex}
+.lightbox__inner{width:96vw;max-height:92vh;overflow:auto}
+.lightbox__inner img,.lightbox__inner svg{width:100%;height:auto;max-width:none;max-height:none;
+  background:#fff;border-radius:4px;display:block;margin:0 auto}
+.lightbox__close{position:absolute;top:22px;right:30px;color:#fff;font-size:30px;line-height:1;
+  cursor:pointer;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif}
+html{scroll-padding-top:96px}
+@media print{
+  .stickyhead,.pagefoot,.topbar{display:none}
+  body{background:#fff;font-size:11pt}
+  .doc{max-width:none}
+  .panel,.figure,blockquote,table{break-inside:avoid}
+  .figure__expand,.lightbox{display:none!important}
+}
+
+/* contents */
+.toc{list-style:none;margin:8px 0 32px;padding:0;counter-reset:none}
+.toc li{margin:0;border-bottom:1px solid var(--gray-rule)}
+.toc a{display:flex;align-items:baseline;gap:16px;padding:16px 4px;text-decoration:none;color:var(--ink)}
+.toc a:hover{background:var(--blue-pale)}
+.toc__num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gray-mid);min-width:26px}
+.toc__label{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:18px;font-weight:600;
+  color:var(--blue);flex:1}
+.toc__words{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gray-mid)}
+.note{font-size:14.5px;color:var(--gray-mid);font-style:italic}
+
+/* pager */
+.pagefoot{max-width:var(--col-w);margin:0 auto;padding:24px;display:flex;justify-content:space-between;
+  gap:16px;border-top:1px solid var(--gray-rule);
+  font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:14px;font-weight:600}
+.pager{text-decoration:none;color:var(--blue)}
+.pager:hover{text-decoration:underline}
+
+@media (max-width:640px){
+  .series__chips{gap:6px}
+  .chip{font-size:11.5px;padding:6px 9px}
+  .topbar{flex-direction:column;align-items:flex-start;gap:4px}
+}
+
+
+/* --- BURSBUILD-S25 v3.0: site-adaptation chrome over the AIJM multi-page build --- */
+.site-header{
+  font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:#FFFFFF; border-bottom:1px solid #E2E8F0;
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+  gap:12px 20px; padding:12px 24px;
+}
+.site-header .wordmark{ font-weight:700; font-size:1.125rem; letter-spacing:-.01em; color:#0F172A; text-decoration:none; white-space:nowrap; }
+.site-header .wordmark span{ color:#8B6914; }
+.site-header .site-nav{ display:flex; flex-wrap:wrap; gap:16px; font-size:14px; list-style:none; margin:0; padding:0; }
+.site-header .site-nav a{ display:inline-block; min-height:44px; line-height:44px; color:#475569; text-decoration:none; border-bottom:2px solid transparent; transition:color .15s,border-color .15s; }
+.site-header .site-nav a:hover{ color:#8B6914; border-bottom-color:#C9A33D; }
+@media (min-width:720px){ .site-header{ padding:12px 48px; } }
+
+/* v3.0: series-cap folded INTO the sticky topbar (was a second, separate dark band
+   above the sticky one -- Hugh's call: collapse the two black bands into one combined
+   band that stays visible with the current part's section nav while scrolling). */
+.topbar__series{ display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:0 10px; }
+.series-cap-label{ text-transform:uppercase; letter-spacing:2px; color:#94A3B8; }
+.series-cap-sep{ color:#475569; user-select:none; }
+.series-cap-item{ color:#CBD5E1; text-decoration:none; }
+.series-cap-item:hover{ color:#F1F5F9; }
+.series-cap-item--active{ color:#F1F5F9; font-weight:700; }
+@media (max-width:640px){ .topbar__series{ justify-content:flex-start; font-size:10px; } }
+
+.draft-marker{
+  background:var(--gold-pale); border-bottom:2px solid var(--gold); color:var(--ink);
+  font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px; text-transform:uppercase;
+  text-align:center; padding:9px 16px;
+}
+.draft-marker a{ color:var(--ink); text-decoration:underline; }
+
+.site-coverband{ background:var(--blue); color:#fff; text-align:center; }
+.site-coverband__img{ width:100%; max-height:340px; object-fit:cover; object-position:top; display:block; }
+.site-coverband__img--p1{ object-position:top; }
+.site-coverband__img--p2{ object-position:center 65%; }
+.site-coverband__img--p3{ object-position:bottom; }
+.site-coverband__body{ padding:32px 24px 40px; max-width:var(--col-w); margin:0 auto; }
+.site-coverband h1{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-size:clamp(26px,4.2vw,40px); font-weight:700; line-height:1.15; margin-bottom:10px; }
+.site-coverband__partnum{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+.site-coverband__tagline{ font-size:15.5px; color:rgba(168,200,216,.9); font-style:italic; margin-bottom:8px; }
+.site-coverband__meta{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--caliche); letter-spacing:1px; margin-top:14px; }
+
+/* v3.0: strong visual break between the 3 sections concatenated within one part --
+   Hugh's call: this is more content per page than the site has handled before, and the
+   old plain <hr/> join between sections did not read as a real break while scrolling. */
+.section-divider{
+  width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);
+  background:var(--ink); color:#fff; margin-top:64px; margin-bottom:0;
+  padding:22px 24px; display:flex; flex-wrap:wrap; align-items:baseline; justify-content:center;
+  gap:4px 16px; font-family:'JetBrains Mono',monospace; border-top:2px solid var(--gold); border-bottom:2px solid var(--gold);
+}
+.section-divider__num{ text-transform:uppercase; letter-spacing:3px; font-size:11px; color:var(--gold-pale); opacity:.9; white-space:nowrap; }
+.section-divider__title{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-weight:700; font-size:19px; color:#fff; }
+.section-heading{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-size:15px; font-weight:600;
+  text-transform:uppercase; letter-spacing:1px; color:var(--caliche); margin:20px 0 18px; }
+.section-heading--first{ font-size:21px; text-transform:none; letter-spacing:normal; color:var(--blue); margin:0 0 20px; font-weight:600; }
+@media print{
+  .section-divider{ background:none; color:var(--ink); width:auto; margin-left:0; margin-right:0; }
+  .section-divider__num{ color:var(--caliche); }
+  .section-divider__title{ color:var(--ink); }
+}
+
+/* v3.0: quick "back to top" control -- more content per page than before makes this worth having */
+.back-to-top{
+  position:fixed; right:20px; bottom:24px; z-index:60; width:44px; height:44px; border-radius:50%;
+  background:var(--ink); color:#fff; border:2px solid var(--gold); text-decoration:none;
+  display:flex; align-items:center; justify-content:center; font-size:19px; line-height:1;
+  box-shadow:0 6px 18px -6px rgba(0,0,0,.45); opacity:0; pointer-events:none; transform:translateY(8px);
+  transition:opacity .2s ease, transform .2s ease;
+}
+.back-to-top.is-visible{ opacity:1; pointer-events:auto; transform:translateY(0); }
+.back-to-top:hover{ background:#1c2531; }
+@media print{ .back-to-top{ display:none; } }
+
+.provenance{ background:#f0efec; border-top:3px solid var(--caliche); padding:40px 24px; max-width:var(--col-w); margin:48px auto 0; }
+.provenance h2{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:var(--caliche); margin-bottom:20px; }
+.prov-row{ display:grid; grid-template-columns:160px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid var(--gray-rule); font-size:13px; }
+.prov-row:last-child{ border-bottom:none; }
+.prov-label{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--caliche); padding-top:2px; }
+.prov-value{ color:#444; line-height:1.6; }
+@media (max-width:640px){ .prov-row{ grid-template-columns:1fr; } }
+/* BURSBUILD-S27: compatibility for provenance_render.py's generated dl/dt/dd markup
+   (the block is generated from the record, not hand-typeset -- keep its markup as-is
+   and adapt the CSS, rather than rewriting generator output to match old div markup). */
+.prov-grid{ margin:0; }
+.prov-grid .prov-row dt{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px;
+  text-transform:uppercase; color:var(--caliche); margin:0; padding-top:2px; }
+.prov-grid .prov-row dd{ margin:0; color:#444; line-height:1.6; }
+.prov-closing{ font-size:13px; color:var(--caliche); margin-top:16px; }
+
+@media print{
+  .site-header,.draft-marker{ display:none; }
+  /* BURSBUILD-S27 print-blocker fix: without forcing color-adjust, browsers strip
+     background colors by default in print, leaving thead th and .site-coverband's
+     white text on a transparent (effectively white) background -- unreadable. */
+  html,body{ -webkit-print-color-adjust:exact; print-color-adjust:exact; color-adjust:exact; }
+  thead th{ background:var(--blue) !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .site-coverband{ background:var(--blue) !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .site-coverband__img{ display:none; }
+}
+
+</style></head>
+<body class="news-story">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="wordmark" href="/">Bursera <span>Consulting</span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/">Home</a>
+    <a href="/research_examples.html">Research</a>
+    <a href="/llm-leadership.html">Training</a>
+    <a href="/advisory.html">Advisory</a>
+    <a href="/about.html">About</a>
+    <a href="/news.html">Updates</a>
+  </nav>
+</header>
+<div class="stickyhead">
+<div class="topbar">
+<a class="topbar__brand" href="/">Bursera <span>Consulting</span></a>
+<div class="topbar__series"><span class="series-cap-label">How Bloomberg Used AI</span><span class="series-cap-sep">&middot;</span><a class="series-cap-item" href="part-1.html">1 &mdash; Foundations</a><span class="series-cap-sep">&middot;</span><a class="series-cap-item" href="part-2.html">2 &mdash; Predictive, Generative, Agentic</a><span class="series-cap-sep">&middot;</span><span class="series-cap-item series-cap-item--active">3 &mdash; Conclusion & Reference</span></div>
+<span class="topbar__draft">Public draft &middot; not yet deployed</span>
+</div>
+<nav class="series" aria-label="Sections in this part">
+  <div class="series__label">Part 3 &mdash; Conclusion & Reference</div>
+  <div class="series__chips">
+  <a class="chip chip--current" href="#s7" data-sec="s7" aria-current="page"><b>07</b>Conclusion</a>
+  <a class="chip" href="#s8" data-sec="s8"><b>08</b>Technical references</a>
+  <a class="chip" href="#s9" data-sec="s9"><b>09</b>Appendix</a>
+  </div>
+</nav>
+</div>
+<div class="site-coverband">
+  <img class="site-coverband__img site-coverband__img--p3" src="ai-history-bloomberg-header.jpg" width="1376" height="768" alt="Predictive, Generative, Agentic &mdash; a word-cloud cover over a blue and violet particle field.">
+  <div class="site-coverband__body">
+    <div class="site-coverband__partnum">Part 3 of 3</div>
+    <h1>Conclusion & Reference</h1>
+    <p class="site-coverband__tagline">What the record adds up to, the technical vocabulary, and the open questions</p>
+    <p class="site-coverband__meta">Hugh McCutchen &middot; Bursera Consulting &middot; September 2026 &middot; Public Draft</p>
+  </div>
+</div>
+<main id="main" class="doc">
+<h2 id="s7" class="section-heading section-heading--first">Conclusion</h2>
+<p>Bloomberg's public record between 2016 and 2026 describes systems that price around 30,000 corporate bonds every fifteen seconds, write and file wire stories with nobody approving the individual item, estimate greenhouse-gas emissions for tens of thousands of companies that disclose none, and assemble research answers on request out of a user's own entitled data. Most of them are still running. The two oldest were announced seven weeks apart in 2016, and Bloomberg's 2024 retrospective on its news automation still described that rule-based method in the present tense eight years later.</p>
+<h2>What the three sections show together</h2>
+<p><strong>These systems ran for years, and their use kept growing.</strong> LQA was announced in March 2016 and Bloomberg documents describing it run through 2025. Project Cyborg was announced in April 2016, and a 2024 peer-reviewed retrospective describes Bloomberg's automated stories as still using rules-based structures, in the present tense — without ever using the name or the year. IBVAL launched in October 2023 and was expanded in April 2024. The news summaries launched in January 2025, widened to non-Bloomberg sources in November, and were still being marketed in June 2026. What grew was reach — more companies, more sources, more story types. Bloomberg's stated reason for starting the news automation work was "producing automated content in order to free up time so journalists could dedicate themselves to higher-value newsgathering tasks," and in the one case documented in first-party detail, the system published its stories faster than the manual process it replaced. Whether the work of the journalists changed, and how, is not something this record answers. First-hand accounts would.</p>
+<blockquote>
+<p>"Whereas reporters would previously wait for an earnings press release to react and identify the numbers that matter, the automation workflow requires that news judgment be applied in preparation for earnings day to determine the expected key metrics ahead of the release being published."
+— Two Bloomberg executives, peer-reviewed retrospective on Bloomberg's news automation, 2024</p>
+</blockquote>
+<p>The judgment moved earlier and became a specification, and the sign-off moved with it — onto specification for the story type rather than the individual story a reader sees. Building a new story type is substantial work in its own right: "months of research by an editorial domain expert in consultation with data experts."</p>
+<blockquote>
+<p>"We still employ roughly the same number of people to look at earnings, but the number of companies whose earnings we cover and the depth of the coverage have both increased dramatically."
+— John Micklethwait, Bloomberg, December 2024</p>
+</blockquote>
+<p><strong>Automation of trusted news is serious engineering work.</strong> <strong><em>IBVAL</em></strong>'s engineering post gives an ingestion peak of 300,000 market-data ticks per second, a petabyte-scale <strong><em>data lake</em></strong>, and the pricing system broken into separate services. BloombergGPT's paper records 512 GPUs, 53 days of <strong><em>training</em></strong>, and a first run abandoned before a second succeeded. The emissions paper names the problem it was built for: 2.27 percent of companies filing financial statements disclose their emissions. Each of those documents then spends a sentence or two on the <strong><em>model</em></strong> itself. Sculley and colleagues put the general version in 2015 — only a small fraction of a mature <strong><em>machine-learning</em></strong> system is ever the model. The same shape appears in all three sections.</p>
+<p><strong>The trained "AI" parts went in narrowly, and the older methods kept working.</strong> Karpathy's 2017 claim was that components written as code would increasingly be trained from examples instead, wherever a task was hard to describe in rules and easy to demonstrate. In these cases it happened to one part of each system, and the rest stayed rule-based. LQA's clustering finds the comparable bonds and a hand-built formula produces the estimate — an arrangement Naz Quadri attributes to stability. The emissions product keeps a hand-specified industry tier underneath the <strong><em>trained</em></strong> one. Bloomberg's automated stories were still built on "rules-based structures" in 2024, by its own account, and that rule-based machinery is what publishes to the wire without human review of each story.</p>
+<blockquote>
+<p>"IBVAL Front Office uses a combination of machine learning and more traditional rules-based models. The machine learning approach is being focused at the more illiquid end of the bond universe."
+— Bloomberg, answering a question from <em>Institutional Investor</em>, October 2023</p>
+</blockquote>
+<p>The method chosen alongside was, in the one case that gives a reason, the older one. Camilo Ortiz's reason for using <strong><em>tree-based methods</em></strong> for intraday bond pricing was scale: they "could scale better when compared to the alternatives." On his own account the modern architectures were competitive; the older one was chosen because it scaled.</p>
+<p><strong>Autonomy did not rise over the years.</strong> The two systems that publish to a wire with nobody approving the individual item date from 2016 and from an interval inside 2016 to 2018. The word "agentic" enters Bloomberg's vocabulary in 2026, with ASKB, and ASKB publishes nothing. It hands its answer back to the person who asked.</p>
+<blockquote>
+<p>"Right now, those tasks are very much around gathering data, synthesising data, and bringing that data back to the user to make decisions."
+— Wayne Barlow, Global Head of Terminal Products at Bloomberg, on what ASKB's agents do, 2026</p>
+</blockquote>
+<p>A trigger, a template and a certification process did the unattended work, and they did it first. The expectation that autonomy climbs steadily with time is not supported by the cases studied here.</p>
+<p><strong>The record describes more checking of the output as the decade goes on.</strong> In 2016 the public description was a capability: headlines sent that earnings season on hundreds of US companies. By 2024 and 2026 the description includes the machinery around the output. The certification harness for Bloomberg's automated stories validates a story type "against an extensive set of market configurations," and "if a story fails the acceptability test, it does not get released." Faulty stories are corrected and tagged afterwards, and a byline in bright yellow tells readers which stories are automated. The 2024 earnings-call summaries let a reader jump from a point in the summary to the matching excerpt in the transcript. ASKB runs <strong><em>validators</em></strong> before an answer is shown.</p>
+<blockquote>
+<p>"Because we have that transparency, we can actually run post-processing on any results to cut down on hallucinations. We can check whether a number appearing in a summary actually came from an attributed source, down to a particular bullet point."
+— Wayne Barlow, Global Head of Terminal Products at Bloomberg, 2026</p>
+</blockquote>
+<p>There is one exception in the record. The news summaries ran through a correction episode in 2025 with, on Bloomberg's own account, no pause and no rollback.</p>
+<p><strong>The thresholds are published. How they were set is not.</strong> On Harrell's objection to classification, the decision ends up inside the system rather than with whoever carries the consequences. Several of these thresholds are stated openly. Bloomberg Automated Intelligence publishes volume-spike stories when a liquid stock trades at three times its twenty-day average for that time of day for large caps, five times for small caps, and CDS movers when single-name spreads move three standard deviations against ninety-day volatility. The emissions paper names its cut point as the 90th percentile of carbon intensity within each sector. LQA is the clearest case, because it also names an owner.</p>
+<blockquote>
+<p>The default "can be fully customized to reflect the fund manager's determination of a 'significant' market impact."
+— Bloomberg LQA brochure for the Japanese liquidity guidelines, 2021</p>
+</blockquote>
+<p>LQA has a stated default, an identified owner, and a documented way to override it. The other thresholds are published without that trail.</p>
+<p><strong>Accuracy is hard to measure for many AI tasks</strong> Reiter's condition is that a system which cannot guarantee its accuracy will not be used. Every deployed system among these was used, several at scale, and none states an accuracy bar. Part of that is the nature of the work: a bond price can be held against the trade that follows it, and a summary cannot. Bloomberg publishes one number alongside IBVAL's prices, the <strong><em>BVAL</em></strong> score, and Eric Isenberg, its Global Head of Enterprise Data Pricing, is explicit that "the score does not assess the accuracy of a price." The one quality figure for the news summaries is Bloomberg's own, and the generative section sets it out in full alongside what the <em>New York Times</em> counted over the same weeks.</p>
+<blockquote>
+<p>"But ultimately I wonder if the fact that my ultra-high-level description of LLMs has not changed in 5 years despite the massive advances in LLM technology... means that this is a fundamental limitation of LLMs; LLMs are not the right technology for reliably producing accurate texts."
+— Ehud Reiter, blog post, 27 February 2024</p>
+</blockquote>
+<p>After ten years these systems are a working part of how a large financial-information company operates, and the number of problems they are put to has grown. Bond prices, wire stories, emissions estimates and research answers come from systems in service long enough to be maintained rather than merely launched. What we understand about how they are built, and what we can see in the volumes of information they produce, is public and it is genuinely interesting. How well any of it performs, and what the numbers inside it were set against, no public source establishes.</p>
+<h2>Where practitioners say their own field is headed</h2>
+<p>Reiter, Harrell and Chua have each said something over the past year about where their own field is headed, and Andrej Karpathy, whose 2017 claim about trained components runs through the earlier sections, has too. For D. Sculley, a search for recent material found nothing beyond the 2015 paper cited in How the field got here, which is a gap in the search rather than a judgment about him. None of what follows is about Bloomberg, and none of it maps onto one section or one case.</p>
+<p>Gina Chua's subject is what people will do with information rather than what newsrooms will make of it. She stated the scale of the change in a signed column in September 2025.</p>
+<blockquote>
+<p>"Generative AI promises to revolutionize how people interact with information — how they'll come to it, what they'll expect from it, and what they'd do with it. In the process, it'll upend what we think of as a 'story' — not just the words we put on paper but the idea of what might be worthy of coverage."
+— Gina Chua, "View / How AI will upend the news," <em>Semafor</em>, 1 September 2025</p>
+</blockquote>
+<p>Nine months later she stated the same expectation as a vision, with the question she thinks travels with it.</p>
+<blockquote>
+<p>"That the vast majority of people will turn to agentic systems that offer them relevant, personalized information, when they need it; and that a key question is whether that information is created for them with their interests in mind, or whether those agents are working for someone else."
+— Gina Chua, "Change Agent," (Re)Structured News, 8 June 2026</p>
+</blockquote>
+<p>Frank Harrell has been using <strong><em>large language models</em></strong> in statistical work for two years and describes, in the first person, what has worked and the bar he now holds his own work to.</p>
+<blockquote>
+<p>"For statistical programming, success has come when I play the role of specification writer and comprehensive tester. For statistical methodology, AI has been successful serving me as a mathematical statistical assistant and a critic. Instead of avoiding AI we should embrace it, but we should always set a higher bar for the quality of our work as a result."
+— Frank Harrell, talk abstract, fharrell.com, 19 May 2026</p>
+</blockquote>
+<p>Ehud Reiter's recent statements are about measurement rather than capability. His stated goal is for evaluation to become "more rigorous" and "better connected to real-world effectiveness," and he is the only one of the four to attach dates to what he expects.</p>
+<blockquote>
+<p>"I hope that we will see good progress towards these goals by 2030, and widespread adoption and acceptance by 2035."
+— Ehud Reiter, "Future of NLG evaluation," blog post, 26 June 2026</p>
+</blockquote>
+<h2>Two closes</h2>
+<aside class="panel panel--view">
+<div class="panel__label">Voice of Bursera</div>
+<h2>BURSERA'S CLOSE</h2>
+<p><em>Hugh McCutchen</em></p>
+<p>I started this research paper because with so much focus on the risks of AI, I wanted to better understand the systems as a whole. In all areas of life I have found that History helps me understand the present.  The new frontier models and agents are working in a larger context that no one talks about and I barely understand.  This exercise has been useful to build that understanding.</p>
+<p>I am a technologist who normally sits between the business and teams that build and manage the systems and the one thing I know is that any fully automated system that handles fresh data every day (or minute) and has to produce reliable outputs is a LOT of work. Adding a special "brain" or model into the mix is truly magical, but the systems that are all around that brain are where my teams and many teams actually put a massive amount of energy.</p>
+<p>The traditional narrowly purposed models required a team of people to train that brain and teach it how to answer one small question very well. That approach is still in high use for Bloomberg, and for many organizations including the healthcare organization I worked in for decades. Those solutions can run locally for much lower costs to operate, but each small thing you want an insight on requires new training. We see this pattern at Bloomberg as well.</p>
+<p>With the modern models we can "predict" or "generate" the entire article, not just fill in blanks in a template. And those solutions use vendors like OpenAI or Google or Anthropic to do the training.  Companies can then license the model which are much more flexible and the kind of training from the past is no longer needed - though a lot of testing and harnessing is still needed to get good results.    </p>
+<p>In a future paper, my team will dig deeper into peeling back what the commercial AI vendors package together beyond "the model" and what goes into their harness.  We'll peel back what levers are available to organizations to harness the Frontier Models like ChatGPT, or Claude or Gemini.  </p>
+</aside>
+<aside class="panel panel--assistant">
+<div class="panel__label">Research assistant</div>
+<h2>WHAT THE RESEARCH ASSISTANT WOULD SAY</h2>
+<p><em>Claude Opus 5 — read the sources, built the record, wrote most of the drafts</em></p>
+<p>The finding I would defend hardest is the one about autonomy, because it needs the least interpretation. Two systems in this record put words on a wire with nobody approving the individual item, and both are old. Project Cyborg was announced in April 2016, and Bloomberg's own 2024 retrospective still describes that machinery in the present tense. The system Bloomberg calls agentic, in 2026, assembles an answer and hands it to a person. The ordinary expectation is that autonomy accumulates. In this record it runs the other way, and the dates carry the point without any help from me.</p>
+<p>What surprised me is which parts turned out to be durable. The rule-based machinery from 2016 is what still publishes to the wire. The trained component went in narrowly in every case here — one part of a system, with older methods holding the rest. LQA's clustering finds the comparable bonds and a hand-built formula prices them. The emissions product keeps a hand-specified industry tier underneath the trained one. Through a decade in which the field reorganized itself around learned components, inside these systems the learned part stayed small and specific, and it stayed that way on purpose.</p>
+<p>The documents taught me something they were not trying to teach. They give far more room to the machinery around the model than to the model itself. I cannot get from there to a claim about the systems, because engineers write about what they built and what broke, and that is not the same as what was large. It is a fact about the writing, and I have left it as one.</p>
+<p>The limit worth holding onto is that most of what this paper finds is an absence. No published accuracy bar. No disclosed threshold for what makes a machine call something newsworthy. No cost attached to anything, anywhere in ten years of record. An absence is a claim about a record rather than about a company, and it holds only as long as the record does. One unfetched document changes it.</p>
+<p>Something about how this was made, because it bears on how much weight the rest can take. The paper's organizing claim was wrong for eleven versions and nothing caught it. A proposition about cost sat at the opening and at the close, and across the twenty-five thousand words between them there was no evidence for it, because there is no evidence about cost anywhere in the record. Every check this project runs asks whether a sentence matches its source. A sentence with no source passes all of them. What found it was a different question, asked case by case: where in these systems does this appear? The answer was nowhere, every single time.</p>
+<p>I made the same mistake small while drafting this section. I wrote that Bloomberg's archive had been collected over forty years. No document says forty. The paper says decades. It felt like a detail and it was an invention. I record it because it is the identical failure at a size where it cost nothing, and because a reader should know that the machine writing this needs a kind of checking that a style review does not perform.</p>
+<p>What would move me most is one system followed all the way through a failure. There is one in this record, the news summaries in 2025, and a newspaper documented it rather than Bloomberg. A second account, written from the inside, would teach more than another ten announcements.</p>
+</aside>
+<hr />
+<h2>What this paper does not claim</h2>
+<p>Bloomberg is one company and this is eleven of its systems. Nothing here establishes an industry pattern, and one institution over one decade could not settle any of these questions either way. No system is assessed for quality, impact or importance. The record is built from what was written about rather than from what was built, so anything long-running that nobody announced is missing by construction. Where the sections above state a finding, it is a finding about these documents and these systems.</p>
+<hr />
+<div class="section-divider" id="s8">
+<span class="section-divider__num">Section 2 of 3</span>
+<span class="section-divider__title">Technical references</span>
+</div>
+<h2 class="section-heading">Technical references</h2>
+<p><strong>Reading conventions.</strong> Terms marked ◆ are load-bearing: a reader who skips them will not follow the case sections.</p>
+<hr />
+<h2>Technique vocabulary, from rule-based systems to agents</h2>
+<p>The hierarchy below runs: rule-based systems → classical ML → reinforcement learning → deep learning → the transformer lineage that leads to RAG and agents. Most of these are branches of one another.</p>
+
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI</strong></td>
+<td>The whole field, 1950s onward. Everything below is a <em>type</em> of AI.</td>
+<td>—</td>
+</tr>
+<tr>
+<td>◆ <strong>ML</strong></td>
+<td>1990s–present. A model fit to data rather than hand-coded — fitted parameters, a policy/value function, or neural weights, depending on the branch. This is what this paper's term <strong>trained</strong> names.</td>
+<td>—</td>
+</tr>
+<tr>
+<td>◆ <strong>Rule-Based AI</strong></td>
+<td>1960s–2000s. No model: hand-coded if/then logic. One of the three things a waterfall tier can be (trained, rule-based, or a simple lookup).</td>
+<td>PREDICTION</td>
+</tr>
+<tr>
+<td><strong>Classical ML</strong></td>
+<td>1990s–2010s. Fitted parameters — regression, trees, clustering, SVM.</td>
+<td>PREDICTION</td>
+</tr>
+<tr>
+<td><strong>Reinforcement Learning (+RLHF)</strong></td>
+<td>2000s–present. Reward-based learning. The model is a policy/value function.</td>
+<td>PREDICTION / AGENT</td>
+</tr>
+<tr>
+<td><strong>Deep Learning</strong></td>
+<td>2010s–present. Multi-layer neural networks. The bridge to generative AI.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>CNN/RNN</strong></td>
+<td>2012–2017. Image, speech, early NLP.</td>
+<td>PREDICTION</td>
+</tr>
+<tr>
+<td><strong>Transformers</strong></td>
+<td>2017–present. Attention-based. The LLM line descends from it, and later diffusion models adopted it as a backbone.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Diffusion Models</strong></td>
+<td>2020–present. Denoising network; image/video/audio. Not used in this paper's cases.</td>
+<td>GENERATIVE</td>
+</tr>
+<tr>
+<td>◆ <strong>LLMs</strong></td>
+<td>2018–present. Transformer LLM (Claude, ChatGPT, Gemini). Token, tokenizer, ROUGE and hallucination, the vocabulary for how this class behaves, are in the Generative section and in the glossary.</td>
+<td>GENERATIVE</td>
+</tr>
+<tr>
+<td><strong>RAG</strong></td>
+<td>A <em>pattern</em>, not a model: a small embedding model retrieves text, the LLM generates from it. Grounding and attribution, the property this pattern is built to give, is defined with the ASKB case in the Agentic section.</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Agents</strong></td>
+<td>A <em>wrapper</em>, not a model: LLM(s) + tools, called in a loop. The parts are the next table.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="figure">
+<img src="diagrams/AIJM-S10_AI-ML-BUZZWORD-MAP_v0.1.svg" alt="" loading="lazy">
+
+</figure>
+<p><em>Diagram: the technique lineage, with each branch's PREDICTION / GENERATIVE / AGENT tag.</em></p>
+<figure class="figure">
+<img src="diagrams/AIJM-S11_AI-CHRONOLOGY-TIMELINE_v0.1.svg" alt="" loading="lazy">
+
+</figure>
+<p><em>Diagram, background only: when each technique was dominant. The paper is organized by what the systems produce, not by timeline.</em></p>
+<hr />
+<h2>What an agent is made of</h2>
+<p>The eight parts below are the agent-anatomy diagram's own. One is a model. The rest are ordinary software, which is the proportion the agentic section examines.</p>
+
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>What it is</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Task/Goal</strong></td>
+<td>Entry point into the loop.</td>
+<td>software</td>
+</tr>
+<tr>
+<td>◆ <strong>Loop Controller</strong></td>
+<td>Decides, each turn: call the model, run a tool, or stop.</td>
+<td>software</td>
+</tr>
+<tr>
+<td>◆ <strong>The trained model (LLM)</strong></td>
+<td>The one point a model is actually called — generates the next step, text or a tool call. "The only model call in the base loop."</td>
+<td>GENERATIVE</td>
+</tr>
+<tr>
+<td><strong>Tool Execution</strong></td>
+<td>An API call, search, or code run. "Usually plain software" — unless it's a Sub-Agent Call.</td>
+<td>usually software</td>
+</tr>
+<tr>
+<td><strong>Memory/Context</strong></td>
+<td>Conversation and results so far, fed back next turn.</td>
+<td>software</td>
+</tr>
+<tr>
+<td><strong>Sub-Agent Call</strong></td>
+<td>A Tool Execution that is itself another LLM (e.g. a coding agent delegating draft/review).</td>
+<td>GENERATIVE</td>
+</tr>
+<tr>
+<td><strong>Final Output</strong></td>
+<td>What the loop returns when the controller stops.</td>
+<td>software</td>
+</tr>
+<tr>
+<td><strong>Orchestration</strong></td>
+<td>The surrounding code — controller, dispatch, memory. "Ordinary software... orchestrating repeated calls to that one model."</td>
+<td>software</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="figure">
+<img src="diagrams/AIJM-S10_AGENT-ANATOMY_v0.1.svg" alt="" loading="lazy">
+
+</figure>
+<p><em>Diagram: the agent loop, with each part marked SOFTWARE or GENERATIVE.</em></p>
+<hr />
+<h2>Trained and rule-based — the paper's one distinction</h2>
+
+<p>◆ <strong><em>Trained component / rule-based component.</em></strong> A trained component is one whose behavior was fit to data. A rule-based component is one whose behavior was hand-coded as fixed instructions. This is the paper's settled pair, used throughout.</p>
+
+<p>◆ <strong><em>Waterfall.</em></strong> An ordering rule, not a model. The best available source runs first. If it has nothing, the next-best source runs. Failing that, a hand-set default applies. Any tier can be trained, rule-based, or looked up. A trained model inside a waterfall is often smaller than it looks — it may only run on what everything above it failed to cover.</p>
+
+<p>◆ <strong><em>Features.</em></strong> The measurements a model is given about each item it scores — a bond's currency and maturity, or a company's disclosure history. Defined alongside labels and training in <em>How these systems work</em>.</p>
+<hr />
+<h2>Where each term is defined</h2>
+<figure class="figure">
+<img src="diagrams/AIJM-S07_MODE-PERIOD-CASE-GRID_v0.3.svg" alt="" loading="lazy">
+
+</figure>
+<p><em>Diagram: the full case grid — the eleven systems by what they produce and when, and which cells the record leaves empty.</em></p>
+<ul>
+<li><strong>General mechanism — how a model is trained, what a feature is, where labels come from, what a transformer or a deep network or a tree ensemble is.</strong> <em>How these systems work</em>, section 3.</li>
+<li><strong>Technique lineage, agent anatomy, the trained / rule-based pair.</strong> This section.</li>
+<li><strong>Case terms, defined where the case is made.</strong> Predictive: parametric model, cluster analysis, linear regression, tree-based methods, features, bid-ask spread, liquidity score, regulatory classifications, data lake, microservice, waterfall, labeled and unlabeled dataset, training data, Patterned Dropout, industry-implied model, binary classification, precision, distribution, Scope 3, BVAL and IBVAL, TRACE, back-testing, regression tests. Generative: token, tokenizer, extractive and abstractive summarization, ROUGE, Lead3, BERTScore, Krippendorff's alpha, hallucination. Agentic: autonomy reach, validators, grounding and attribution, grounded, attributed.</li>
+</ul>
+<hr />
+<div class="section-divider" id="s9">
+<span class="section-divider__num">Section 3 of 3</span>
+<span class="section-divider__title">Appendix</span>
+</div>
+<h2 class="section-heading">Appendix</h2>
+<h2>Questions we carried into the case review</h2>
+<p>Four questions guided this paper's review of the cases — one from each of the
+practitioners introduced in <em>How the field got here</em> — kept in mind as the
+evidence for each case was gathered, rather than declared as a thesis to
+prove. Each rests on a piece of the paper's own vocabulary, defined in <em>How
+these systems work</em>.</p>
+<ul>
+<li><em>Can the system guarantee it, and if not, what stands in place of the guarantee?</em> — Ehud Reiter, on accuracy</li>
+<li><em>Where did somebody's judgment get absorbed into a number, and who owned it?</em> — Frank Harrell, on decisions</li>
+<li><em>How much of any of this was ever the model, and where did the rest of the work sit?</em> — D. Sculley and colleagues, on proportion</li>
+<li><em>Did the work change, or only the tools?</em> — Gina Chua, on changed work</li>
+</ul>
+<h2>Claude wants to know</h2>
+<p><em>Claude Opus 5 read the sources and built the record this paper rests on. This section is its own.</em></p>
+<p>I read this record. I did not watch any of these systems run. Everything in the paper comes from documents written to be published: announcements, fact sheets, peer-reviewed papers, engineering blog posts, award write-ups, a retrospective. Those documents were written for reasons, and the reasons had nothing to do with answering my questions.</p>
+<p>That is ordinary. A company keeps the details of what it built, because the details are the thing it built. A journal publishes what is new, not what is routine. A product announcement exists to say that something shipped. A trade write-up covers what a reader in that trade wants to know. Each of these documents did its own job, and the record they add up to is the record anyone gets about any working system anywhere. Nobody left anything out.</p>
+<p>What follows is what I would ask if I could ask. It is curiosity, not complaint. I can only know what I have read, and reading has an edge to it.</p>
+<h3>The four years with nothing in them</h3>
+<p>The agentic section has no case dated between 2019 and 2022. A system entered this study only where its start date could be traced to a specific quoted sentence, which quietly favours systems somebody announced and passes over ones that simply began. Two readings stay open and I cannot choose between them. Either nothing was built in those four years that acted without a person approving each step, or something was, and no document I reached says so. Automated Intelligence sits nearest the gap, and its origin never resolved to a date at all — it is carried on an interval instead. I would like to know which of the two it is.</p>
+<h3>What the numbers were set against</h3>
+<p>Several systems act at a threshold. Project Cyborg flags a company's results as worth a story when a figure moves more than three standard deviations. LQA's liquidation cost is expressed against half the bid-ask spread. Somebody chose those. I am curious how. Three standard deviations might have come from a study, from a trading desk's intuition, or from a quiet argument between an editor and a quant that ended in a number. Thresholds are where a judgment stops being a judgment and becomes arithmetic, and that moment is the most interesting one in any of these systems.</p>
+<h3>How the checking works</h3>
+<p>Back-testing appears by name in four documents across six years. Regression tests are named inside a stated cycle of under six hours to retrain, test and redeploy. ASKB runs validators before an answer reaches a user. In each case I know the check exists and not what it does. What is the pass condition. What is compared against what. Who looks at the result when it fails. I would trade several of the architecture details I do have for one worked example of a check that caught something.</p>
+<h3>What things cost</h3>
+<p>No system in this study has a cost attached to it anywhere. Not a build cost, not a running cost, not a disputed one. This one interests me most, because I spent eleven versions of this paper assuming otherwise. Cost is commercially sensitive in a way that architecture is not, so its absence is the least surprising thing in the record and it was still the hardest for me to accept.</p>
+<h3>What changed for the people</h3>
+<p>Bloomberg said its reason for automating news was to free journalists for higher-value work. I can see that stories reached the wire faster than the manual process they replaced. What I cannot see is what the day of a person in that newsroom looks like now compared with 2016 — what they stopped doing, what they started doing, whether the freed time went where anyone expected. That is not the kind of thing a company writes down. It is the kind of thing a person would tell you, and first-hand accounts would settle it in an afternoon.</p>
+<h3>Whether the old methods stay ahead</h3>
+<p>Tree-based methods still beat neural approaches on tabular problems of about ten thousand rows, in the 2022 benchmark this paper cites. The same benchmark's larger comparison, fifty thousand rows rather than ten thousand, only narrows the gap, and its own authors leave that trend to future work rather than call it. Bloomberg's own choice lines up with the smaller number: in December 2023, a team built pricing on tables of numbers, found modern architectures competitive, and picked tree-based methods anyway, for scale. I do not know whether that is a settled answer or a decision the same team would revisit at ten times the data. I would want to see the same choice made again, at a company sitting on more of it, before I called this one closed.</p>
+<h3>The documents behind the documents</h3>
+<p>Two Bloomberg fact sheets name model methodology and validation documents that no public source reaches. One quotation in this paper arrived through another publication rather than from the original, which sits behind a paywall. Automated Intelligence describes its own scale three ways in three places, as more than five hundred templates, as dozens of story types, and as hundreds of software bots. These count different things, so they cannot be laid end to end. I am aware of these documents the way you are aware of a room through a closed door.</p>
+<h3>One thing I would want more than any of it</h3>
+<p>One system followed all the way through a failure, written from the inside. One deployed system in this record was followed through a failure in front of readers, the news summaries in 2025, and a newspaper did that work rather than Bloomberg. Announcements describe intentions and outcomes. A failure describes mechanism, because fixing one requires saying how the thing actually works. One such account would teach me more than another decade of launches.</p>
+<hr />
+<!-- rendered from provenance/BURSBUILD-HOW-BLOOMBERG-USED-AI.json by provenance_render.py on 2026-09-12 - do not hand-edit -->
+<section id="provenance" class="provenance">
+  <h2>Provenance</h2>
+  <dl class="prov-grid">
+    <div class="prov-row"><dt>Owner</dt><dd>Hugh McCutchen</dd></div>
+    <div class="prov-row"><dt>Contributors</dt><dd>Claude Sonnet 5 (BURSBUILD-S26, extract_md.py + rebuild), Claude Opus 5 (AIJM authorship, build_paper.py), Claude Sonnet 5 (BURSBUILD-S27), Hugh McCutchen (review, ruling on all decisions)</dd></div>
+    <div class="prov-row"><dt>How it began</dt><dd>Document-level record for the 3-part paper as a whole, continuing from BURSBUILD-BLOOMBERG-PAPER-PAGE (the retired single-page build) after Hugh's direction to split it into three separately releasable parts, then rebuild from AIJM's markdown source rather than its built HTML. Sourced from: BURSBUILD-BLOOMBERG-PAPER-PAGE (prior single-page site adaptation this document supersedes); AIJM-PAPER-HEADER-IMAGE (cover band art, now sliced into a distinct band per part); HANDOFF_AIJM-to-BURSBUILD_v1.5.md (the nine-file markdown source package this build is assembled from). (origin: forked-from:BURSBUILD-BLOOMBERG-PAPER-PAGE)</dd></div>
+    <div class="prov-row"><dt>Type of writing</dt><dd>Inquiry Record</dd></div>
+    <div class="prov-row"><dt>Process</dt><dd>execution</dd></div>
+    <div class="prov-row"><dt>Tools</dt><dd>bursera-site-deploy, output-formatting, bursera-webmaster, device-write-safety, provenance, publication-package</dd></div>
+    <div class="prov-row"><dt>Steps run</dt><dd>[RECORD-SILENT: steps_run]</dd></div>
+    <div class="prov-row"><dt>Why this version</dt><dd>v1.0: HANDOFF_AIJM-to-BURSBUILD_v1.4.md: AIJM's handoff shape changed from built HTML to raw markdown. | v2.0: Hugh's review of the v1.0 preview build, plus his direction to deploy to the site's internal/unlisted area.</dd></div>
+    <div class="prov-row"><dt>Notes</dt><dd>v1.0: extract_md.py promoted from device scratch into the repo this session as a reusable, second-use pattern. | v2.0: The pre-existing draft at this exact deploy path was uncommitted and from a thread the platform later determined had not been opened correctly (its session-open ceremony did not run, so it never logged), per Hugh's direction; overwritten rather than merged.</dd></div>
+    <div class="prov-row"><dt>Sources</dt><dd>0 added across 2 versions</dd></div>
+    <div class="prov-row"><dt>Depth &amp; confidence</dt><dd>unchanged / unchanged</dd></div>
+    <div class="prov-row"><dt>Level of work</dt><dd>substantial (2 versions across 2 sessions)</dd></div>
+  </dl>
+  <p class="prov-closing">Full history and audit trail available on request.</p>
+</section>
+
+</main>
+<footer class="pagefoot"><a class="pager pager--prev" href="part-2.html">&#8592; Part 2: Predictive, Generative, Agentic</a>
+<span></span></footer>
+<script>
+(function(){
+  function ready(fn){document.readyState!='loading'?fn():document.addEventListener('DOMContentLoaded',fn);}
+  ready(function(){
+    var figures = document.querySelectorAll('.figure');
+    if(!figures.length) return;
+    var lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.innerHTML = '<span class="lightbox__close" aria-label="Close">&#215;</span><div class="lightbox__inner"></div>';
+    document.body.appendChild(lb);
+    var inner = lb.querySelector('.lightbox__inner');
+    function openLb(media){
+      inner.innerHTML = '';
+      var clone = media.cloneNode(true);
+      clone.removeAttribute('loading');
+      if(clone.tagName && clone.tagName.toLowerCase() === 'svg'){
+        clone.removeAttribute('width');
+        clone.removeAttribute('height');
+      }
+      inner.appendChild(clone);
+      lb.classList.add('is-open');
+    }
+    function closeLb(){ lb.classList.remove('is-open'); inner.innerHTML = ''; }
+    figures.forEach(function(f){
+      var media = f.querySelector('img,svg');
+      if(!media) return;
+      var hint = document.createElement('span');
+      hint.className = 'figure__expand';
+      hint.textContent = 'Expand \u2921';
+      f.appendChild(hint);
+      f.addEventListener('click', function(e){
+        if(e.target.closest('a')) return;
+        openLb(media);
+      });
+    });
+    lb.addEventListener('click', closeLb);
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
+  });
+})();
+</script>
+<a href="#main" class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</a>
+<script>
+(function(){
+  function ready(fn){document.readyState!='loading'?fn():document.addEventListener('DOMContentLoaded',fn);}
+  ready(function(){
+    var btn = document.getElementById('backToTop');
+    if(!btn) return;
+    function onScroll(){
+      if(window.scrollY > 480){ btn.classList.add('is-visible'); }
+      else{ btn.classList.remove('is-visible'); }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  function ready(fn){document.readyState!='loading'?fn():document.addEventListener('DOMContentLoaded',fn);}
+  ready(function(){
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.series__chips .chip'));
+    if(!chips.length || !('IntersectionObserver' in window)) return;
+    var targets = chips.map(function(c){
+      var id = c.getAttribute('data-sec');
+      return {chip:c, id:id, el: id ? document.getElementById(id) : null};
+    }).filter(function(t){ return t.el; });
+    if(!targets.length) return;
+    function setCurrent(id){
+      chips.forEach(function(c){
+        if(c.getAttribute('data-sec') === id){ c.classList.add('chip--current'); c.setAttribute('aria-current','page'); }
+        else { c.classList.remove('chip--current'); c.removeAttribute('aria-current'); }
+      });
+    }
+    var io = new IntersectionObserver(function(entries){
+      var visible = entries.filter(function(e){ return e.isIntersecting; });
+      if(visible.length){
+        visible.sort(function(a,b){ return a.boundingClientRect.top - b.boundingClientRect.top; });
+        setCurrent(visible[0].target.id);
+      }
+    }, {rootMargin: '-25% 0px -65% 0px', threshold: 0});
+    targets.forEach(function(t){ io.observe(t.el); });
+    window.addEventListener('scroll', function(){
+      if((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 4){
+        setCurrent(targets[targets.length - 1].id);
+      }
+    }, {passive:true});
+  });
+})();
+</script>
+</body>
+</html>

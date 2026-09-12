@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Predictive, Generative, Agentic &mdash; How Bloomberg Used AI, Part 2 of 3 &mdash; Bursera Consulting</title>
+<meta name="description" content="Part 2 of 3: Predictive, Generative, Agentic. A decade of Bloomberg's predictive, generative and agentic AI systems, traced case by case from the published record. Public draft.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/part-2.html">
+<link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Predictive, Generative, Agentic &mdash; How Bloomberg Used AI, Part 2 of 3">
+<meta property="og:description" content="Part 2 of 3: Predictive, Generative, Agentic. A decade of Bloomberg's predictive, generative and agentic AI systems, traced from the published record.">
+<meta property="og:url" content="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/part-2.html">
+<meta property="og:image" content="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/og-bloomberg-ai.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Predictive, Generative, Agentic &mdash; a word-cloud cover over a blue and violet particle field.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>/* AIJM paper build - shared stylesheet.
+   Palette and type are the house tokens from the output-formatting skill,
+   which are the same values the Data Lifecycle papers 1/3/4 carry inline. */
+:root{
+  --blue:#4a5c6b; --blue-light:#7a9aad; --blue-pale:#e8edf0;
+  --gold:#8a6e3a; --gold-pale:#f2ede3;
+  --green:#1a5c2a; --green-pale:#e8f5e9;
+  --red:#8b1a1a;  --red-pale:#fdecea;
+  --ink:#28303a;  --bg:#f4f2ee;
+  --gray-mid:#8a7660; --gray-rule:#d4c8b0;
+  --sonoran-sky:#a8c8d8; --caliche:#8a7660;
+  --col-w:760px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Serif 4',Georgia,serif;font-size:17px;line-height:1.75;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+p{margin-bottom:16px}
+a{color:var(--blue)}
+.skip-link{position:absolute;left:-9999px}
+.skip-link:focus{left:8px;top:8px;background:#fff;padding:8px 12px;z-index:99}
+
+/* top bar */
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;
+  background:var(--ink);color:#fff;padding:10px 24px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px}
+.topbar__brand{color:#fff;text-decoration:none;font-weight:600}
+.topbar__brand span{color:var(--sonoran-sky);font-weight:400}
+.topbar__draft{color:var(--gold-pale);opacity:.75;text-transform:uppercase;letter-spacing:2px;font-size:10px}
+
+/* the series strip - the Data Lifecycle idea, made clickable and made to stay put */
+.stickyhead{position:sticky;top:0;z-index:50;box-shadow:0 1px 0 rgba(40,48,58,.06),0 6px 18px -12px rgba(40,48,58,.45)}
+.series{background:var(--gold-pale);border-bottom:3px solid var(--gold);padding:9px 16px}
+.series__label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:7px}
+.series__chips{display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:6px;
+  max-width:1100px;margin:0 auto;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px}
+@media (min-width:1120px){.series__chips{justify-content:center;flex-wrap:wrap;overflow-x:visible}}
+.chip{display:flex;align-items:baseline;gap:6px;white-space:nowrap;text-decoration:none;background:#fff;
+  border:1px solid var(--gray-rule);border-top:3px solid var(--blue-light);border-radius:3px;
+  padding:5px 10px;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:12px;
+  font-weight:600;color:var(--ink);transition:border-top-color .15s,background .15s}
+.chip:hover{background:var(--blue-pale);border-top-color:var(--blue)}
+.chip b{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:var(--gray-mid);letter-spacing:1px}
+.chip--current{background:var(--blue-pale);border-top-color:var(--blue);border-top-width:4px;color:var(--blue);cursor:default}
+.chip--current b{color:var(--blue)}
+
+/* cover + page head */
+.cover{background:var(--blue);color:#fff;padding:80px 40px 60px;text-align:center}
+.cover__eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--sonoran-sky);margin-bottom:28px}
+.cover h1{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(32px,5vw,52px);
+  font-weight:700;line-height:1.1;margin-bottom:16px}
+.cover__sub{font-size:16px;color:rgba(168,200,216,.9);font-style:italic;max-width:600px;margin:0 auto 36px}
+.cover__meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--sonoran-sky);letter-spacing:1px;opacity:.8}
+.pagehead{max-width:var(--col-w);margin:0 auto;padding:56px 24px 0}
+.pagehead__num{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gray-mid);margin-bottom:10px}
+.pagehead__title{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(26px,4vw,40px);
+  font-weight:700;color:var(--blue);line-height:1.15;padding-bottom:14px;border-bottom:3px solid var(--blue)}
+
+/* body */
+.doc{max-width:var(--col-w);margin:0 auto;padding:40px 24px 72px}
+.doc h1{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(22px,3vw,30px);
+  font-weight:700;color:var(--blue);line-height:1.2;margin:48px 0 20px;padding-bottom:10px;
+  border-bottom:2px solid var(--gray-rule)}
+.doc h2{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:21px;font-weight:600;
+  color:var(--ink);margin:40px 0 14px}
+.doc h3{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:17px;font-weight:600;
+  color:var(--gray-mid);margin:30px 0 10px}
+.doc ul,.doc ol{margin:0 0 18px 22px}
+.doc li{margin-bottom:8px}
+.doc hr{border:0;border-top:1px solid var(--gray-rule);margin:40px 0}
+
+/* definition panels - a blockquote opening on a bold-italic term */
+blockquote{border-left:4px solid var(--blue-light);background:var(--blue-pale);
+  padding:16px 20px;margin:24px 0;font-size:15.5px;line-height:1.65}
+blockquote p{margin-bottom:10px}
+blockquote.term{border-left-color:var(--gold);background:var(--gold-pale)}
+.term__name{display:block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;
+  letter-spacing:.5px;color:var(--gold);margin-bottom:6px}
+
+/* inline glossary links - an inline ***term*** that resolved to an Appendix anchor */
+a.term-link{color:inherit;text-decoration:none;border-bottom:1px dotted var(--gold)}
+a.term-link:hover{border-bottom-style:solid}
+
+/* marked panels - the seam between reportage and Bursera's own view */
+.panel{margin:36px 0;padding:24px 26px;border-radius:3px}
+.panel__label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;margin-bottom:14px}
+.panel--view{background:#fff;border:2px solid var(--gold);border-left-width:6px}
+.panel--view .panel__label{color:var(--gold)}
+.panel--assistant{background:#eef1f3;border:1px solid var(--gray-rule);border-left:6px solid var(--blue-light)}
+.panel--assistant .panel__label{color:var(--gray-mid)}
+.panel h2{font-family:'DM Sans',sans-serif;font-size:18px;margin:0 0 6px}
+.panel p:last-child{margin-bottom:0}
+
+/* tables */
+.table-wrap{overflow-x:auto;margin:26px 0}
+table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.5;
+  font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif}
+thead th{background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:.5px;padding:10px 12px;text-align:left;font-weight:600}
+tbody td{padding:9px 12px;border-bottom:1px solid #e3ded2;vertical-align:top}
+tbody tr:nth-child(even){background:#efece5}
+tbody td:first-child{font-weight:600;color:var(--blue)}
+
+/* figures */
+.figure{margin:32px 0;text-align:center;position:relative}
+.figure img{max-width:100%;height:auto;border:1px solid var(--gray-rule);background:#fff;border-radius:3px}
+.figure figcaption{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:12.5px;
+  color:var(--gray-mid);margin-top:10px;text-align:left;line-height:1.5}
+
+/* figure lightbox (AIJM-S18 Task 6; full-width fix BURSBUILD-S25, shared per Hugh's ruling) */
+.figure img,.figure svg{cursor:zoom-in}
+.figure__expand{position:absolute;top:8px;right:8px;opacity:0;pointer-events:none;
+  background:rgba(255,255,255,.92);border:1px solid var(--gray-rule);border-radius:4px;
+  padding:4px 9px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink);
+  transition:opacity .15s}
+.figure:hover .figure__expand{opacity:1}
+.lightbox{position:fixed;inset:0;background:rgba(18,18,18,.92);display:none;
+  align-items:center;justify-content:center;z-index:9999;padding:5vh 5vw;cursor:zoom-out}
+.lightbox.is-open{display:flex}
+.lightbox__inner{width:96vw;max-height:92vh;overflow:auto}
+.lightbox__inner img,.lightbox__inner svg{width:100%;height:auto;max-width:none;max-height:none;
+  background:#fff;border-radius:4px;display:block;margin:0 auto}
+.lightbox__close{position:absolute;top:22px;right:30px;color:#fff;font-size:30px;line-height:1;
+  cursor:pointer;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif}
+html{scroll-padding-top:96px}
+@media print{
+  .stickyhead,.pagefoot,.topbar{display:none}
+  body{background:#fff;font-size:11pt}
+  .doc{max-width:none}
+  .panel,.figure,blockquote,table{break-inside:avoid}
+  .figure__expand,.lightbox{display:none!important}
+}
+
+/* contents */
+.toc{list-style:none;margin:8px 0 32px;padding:0;counter-reset:none}
+.toc li{margin:0;border-bottom:1px solid var(--gray-rule)}
+.toc a{display:flex;align-items:baseline;gap:16px;padding:16px 4px;text-decoration:none;color:var(--ink)}
+.toc a:hover{background:var(--blue-pale)}
+.toc__num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gray-mid);min-width:26px}
+.toc__label{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:18px;font-weight:600;
+  color:var(--blue);flex:1}
+.toc__words{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gray-mid)}
+.note{font-size:14.5px;color:var(--gray-mid);font-style:italic}
+
+/* pager */
+.pagefoot{max-width:var(--col-w);margin:0 auto;padding:24px;display:flex;justify-content:space-between;
+  gap:16px;border-top:1px solid var(--gray-rule);
+  font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:14px;font-weight:600}
+.pager{text-decoration:none;color:var(--blue)}
+.pager:hover{text-decoration:underline}
+
+@media (max-width:640px){
+  .series__chips{gap:6px}
+  .chip{font-size:11.5px;padding:6px 9px}
+  .topbar{flex-direction:column;align-items:flex-start;gap:4px}
+}
+
+
+/* --- BURSBUILD-S25 v3.0: site-adaptation chrome over the AIJM multi-page build --- */
+.site-header{
+  font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:#FFFFFF; border-bottom:1px solid #E2E8F0;
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+  gap:12px 20px; padding:12px 24px;
+}
+.site-header .wordmark{ font-weight:700; font-size:1.125rem; letter-spacing:-.01em; color:#0F172A; text-decoration:none; white-space:nowrap; }
+.site-header .wordmark span{ color:#8B6914; }
+.site-header .site-nav{ display:flex; flex-wrap:wrap; gap:16px; font-size:14px; list-style:none; margin:0; padding:0; }
+.site-header .site-nav a{ display:inline-block; min-height:44px; line-height:44px; color:#475569; text-decoration:none; border-bottom:2px solid transparent; transition:color .15s,border-color .15s; }
+.site-header .site-nav a:hover{ color:#8B6914; border-bottom-color:#C9A33D; }
+@media (min-width:720px){ .site-header{ padding:12px 48px; } }
+
+/* v3.0: series-cap folded INTO the sticky topbar (was a second, separate dark band
+   above the sticky one -- Hugh's call: collapse the two black bands into one combined
+   band that stays visible with the current part's section nav while scrolling). */
+.topbar__series{ display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:0 10px; }
+.series-cap-label{ text-transform:uppercase; letter-spacing:2px; color:#94A3B8; }
+.series-cap-sep{ color:#475569; user-select:none; }
+.series-cap-item{ color:#CBD5E1; text-decoration:none; }
+.series-cap-item:hover{ color:#F1F5F9; }
+.series-cap-item--active{ color:#F1F5F9; font-weight:700; }
+@media (max-width:640px){ .topbar__series{ justify-content:flex-start; font-size:10px; } }
+
+.draft-marker{
+  background:var(--gold-pale); border-bottom:2px solid var(--gold); color:var(--ink);
+  font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px; text-transform:uppercase;
+  text-align:center; padding:9px 16px;
+}
+.draft-marker a{ color:var(--ink); text-decoration:underline; }
+
+.site-coverband{ background:var(--blue); color:#fff; text-align:center; }
+.site-coverband__img{ width:100%; max-height:340px; object-fit:cover; object-position:top; display:block; }
+.site-coverband__img--p1{ object-position:top; }
+.site-coverband__img--p2{ object-position:center 65%; }
+.site-coverband__img--p3{ object-position:bottom; }
+.site-coverband__body{ padding:32px 24px 40px; max-width:var(--col-w); margin:0 auto; }
+.site-coverband h1{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-size:clamp(26px,4.2vw,40px); font-weight:700; line-height:1.15; margin-bottom:10px; }
+.site-coverband__partnum{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+.site-coverband__tagline{ font-size:15.5px; color:rgba(168,200,216,.9); font-style:italic; margin-bottom:8px; }
+.site-coverband__meta{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--caliche); letter-spacing:1px; margin-top:14px; }
+
+/* v3.0: strong visual break between the 3 sections concatenated within one part --
+   Hugh's call: this is more content per page than the site has handled before, and the
+   old plain <hr/> join between sections did not read as a real break while scrolling. */
+.section-divider{
+  width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);
+  background:var(--ink); color:#fff; margin-top:64px; margin-bottom:0;
+  padding:22px 24px; display:flex; flex-wrap:wrap; align-items:baseline; justify-content:center;
+  gap:4px 16px; font-family:'JetBrains Mono',monospace; border-top:2px solid var(--gold); border-bottom:2px solid var(--gold);
+}
+.section-divider__num{ text-transform:uppercase; letter-spacing:3px; font-size:11px; color:var(--gold-pale); opacity:.9; white-space:nowrap; }
+.section-divider__title{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-weight:700; font-size:19px; color:#fff; }
+.section-heading{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-size:15px; font-weight:600;
+  text-transform:uppercase; letter-spacing:1px; color:var(--caliche); margin:20px 0 18px; }
+.section-heading--first{ font-size:21px; text-transform:none; letter-spacing:normal; color:var(--blue); margin:0 0 20px; font-weight:600; }
+@media print{
+  .section-divider{ background:none; color:var(--ink); width:auto; margin-left:0; margin-right:0; }
+  .section-divider__num{ color:var(--caliche); }
+  .section-divider__title{ color:var(--ink); }
+}
+
+/* v3.0: quick "back to top" control -- more content per page than before makes this worth having */
+.back-to-top{
+  position:fixed; right:20px; bottom:24px; z-index:60; width:44px; height:44px; border-radius:50%;
+  background:var(--ink); color:#fff; border:2px solid var(--gold); text-decoration:none;
+  display:flex; align-items:center; justify-content:center; font-size:19px; line-height:1;
+  box-shadow:0 6px 18px -6px rgba(0,0,0,.45); opacity:0; pointer-events:none; transform:translateY(8px);
+  transition:opacity .2s ease, transform .2s ease;
+}
+.back-to-top.is-visible{ opacity:1; pointer-events:auto; transform:translateY(0); }
+.back-to-top:hover{ background:#1c2531; }
+@media print{ .back-to-top{ display:none; } }
+
+.provenance{ background:#f0efec; border-top:3px solid var(--caliche); padding:40px 24px; max-width:var(--col-w); margin:48px auto 0; }
+.provenance h2{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:var(--caliche); margin-bottom:20px; }
+.prov-row{ display:grid; grid-template-columns:160px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid var(--gray-rule); font-size:13px; }
+.prov-row:last-child{ border-bottom:none; }
+.prov-label{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--caliche); padding-top:2px; }
+.prov-value{ color:#444; line-height:1.6; }
+@media (max-width:640px){ .prov-row{ grid-template-columns:1fr; } }
+/* BURSBUILD-S27: compatibility for provenance_render.py's generated dl/dt/dd markup
+   (the block is generated from the record, not hand-typeset -- keep its markup as-is
+   and adapt the CSS, rather than rewriting generator output to match old div markup). */
+.prov-grid{ margin:0; }
+.prov-grid .prov-row dt{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px;
+  text-transform:uppercase; color:var(--caliche); margin:0; padding-top:2px; }
+.prov-grid .prov-row dd{ margin:0; color:#444; line-height:1.6; }
+.prov-closing{ font-size:13px; color:var(--caliche); margin-top:16px; }
+
+@media print{
+  .site-header,.draft-marker{ display:none; }
+  /* BURSBUILD-S27 print-blocker fix: without forcing color-adjust, browsers strip
+     background colors by default in print, leaving thead th and .site-coverband's
+     white text on a transparent (effectively white) background -- unreadable. */
+  html,body{ -webkit-print-color-adjust:exact; print-color-adjust:exact; color-adjust:exact; }
+  thead th{ background:var(--blue) !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .site-coverband{ background:var(--blue) !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .site-coverband__img{ display:none; }
+}
+
+</style></head>
+<body class="news-story">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="wordmark" href="/">Bursera <span>Consulting</span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/">Home</a>
+    <a href="/research_examples.html">Research</a>
+    <a href="/llm-leadership.html">Training</a>
+    <a href="/advisory.html">Advisory</a>
+    <a href="/about.html">About</a>
+    <a href="/news.html">Updates</a>
+  </nav>
+</header>
+<div class="stickyhead">
+<div class="topbar">
+<a class="topbar__brand" href="/">Bursera <span>Consulting</span></a>
+<div class="topbar__series"><span class="series-cap-label">How Bloomberg Used AI</span><span class="series-cap-sep">&middot;</span><a class="series-cap-item" href="part-1.html">1 &mdash; Foundations</a><span class="series-cap-sep">&middot;</span><span class="series-cap-item series-cap-item--active">2 &mdash; Predictive, Generative, Agentic</span><span class="series-cap-sep">&middot;</span><a class="series-cap-item" href="part-3.html">3 &mdash; Conclusion & Reference</a></div>
+<span class="topbar__draft">Public draft &middot; not yet deployed</span>
+</div>
+<nav class="series" aria-label="Sections in this part">
+  <div class="series__label">Part 2 &mdash; Predictive, Generative, Agentic</div>
+  <div class="series__chips">
+  <a class="chip chip--current" href="#s4" data-sec="s4" aria-current="page"><b>04</b>Predictive</a>
+  <a class="chip" href="#s5" data-sec="s5"><b>05</b>Generative</a>
+  <a class="chip" href="#s6" data-sec="s6"><b>06</b>Agentic</a>
+  </div>
+</nav>
+</div>
+<div class="site-coverband">
+  <img class="site-coverband__img site-coverband__img--p2" src="ai-history-bloomberg-header.jpg" width="1376" height="768" alt="Predictive, Generative, Agentic &mdash; a word-cloud cover over a blue and violet particle field.">
+  <div class="site-coverband__body">
+    <div class="site-coverband__partnum">Part 2 of 3</div>
+    <h1>Predictive, Generative, Agentic</h1>
+    <p class="site-coverband__tagline">The three modes, case by case, from the published record</p>
+    <p class="site-coverband__meta">Hugh McCutchen &middot; Bursera Consulting &middot; September 2026 &middot; Public Draft</p>
+  </div>
+</div>
+<main id="main" class="doc">
+<h2 id="s4" class="section-heading section-heading--first">Predictive: systems that produce a number</h2>
+<p>Nothing forces anyone to say in advance what a right answer would look like, and nothing forces anyone to check the estimate against what happened next. Jean-Philippe Bouchaud, of the quantitative fund Capital Fund Management, made a version of that point to a trade reporter writing about machine learning for market impact in general. He named no Bloomberg system, and his answer turned on how much data exists to check a method against rather than on the method itself. At low frequencies, he said, data is too limited to avoid misleading results, oversampling, overfitting or to gain new insights, and "all the nonlinear effects machine learning has found at low frequencies we have already found using more traditional data analysis methods or intuition." At the high-frequency scale of a few seconds or a few minutes, by contrast, "there's typically enough data that a sort of automated search for correlation, which machine learning is providing, can work."</p>
+<p>The three systems below sit at different points on that scale: a liquidation cost realized only if someone sells, a company's emissions disclosed only once a year if at all, a bond price that updates every fifteen seconds. The last of those is close to the frequency Bouchaud calls defensible. The record does not say whether that speed was ever put to a test resembling the one he describes, or only to the test of arriving quickly.</p>
+<h2>LQA — March 2016</h2>
+<h3>The first model needed an older formula added</h3>
+<p>Bloomberg's first attempt at a liquidity model ran into trouble, and the account of that comes from a trade magazine. Risk.net, in an April 2017 feature on machine learning for market impact, reported on the method Bloomberg tried first — grouping similar bonds together and pricing an untraded one off its neighbors, a method called <strong><em>cluster analysis</em></strong>: "Initially, Bloomberg had tried cluster analysis by itself, running a <strong><em>linear regression</em></strong> model on the clusters to produce expected costs. But this did not provide the results it had hoped for. Clustering alone can result in instabilities, where a small change in the underlying data causes large unexpected changes in cluster composition." The instability is stated by Risk.net as a general property of clustering. Bloomberg's case is the illustration that follows it.</p>
+<p>Bloomberg's next step, per the same feature, was to bring in something older. "Instead, the company learned it needed to incorporate a <strong><em>parametric model</em></strong> to introduce stability" — a hand-specified market-impact formula, its shape written by an analyst rather than learned, with its parameters fitted to the pooled data. Naz Quadri, then head of quant engineering and research at Bloomberg Enterprise Solutions, in the same feature: "Our research suggests clustering is most useful, and results are more stable, when it is used with a structural market impact model." This account of the first attempt comes from Risk.net's reporting. No Bloomberg-authored document found for the case gives its own version.</p>
+<p>The product is LQA, the Liquidity Assessment Tool, announced on 9 March 2016. It estimates what it would cost to sell a stated quantity of a bond, and how long that would take. The problem it addresses is that most bonds barely trade, so there is nothing recent to price against. Bloomberg's own March 2016 client deck states the mechanism in three lines under "Machine Learning Engine": "Problem : A lack of trade data gives &lt; 100% coverage / Solution : Cluster Analysis is used to identify comparable assets."</p>
+<p>As set out in the introduction, every bond is measured against a handful of things known about it — currency, duration, time to maturity, amount outstanding — and those measurements, known as its <strong><em>features</em></strong>, place it near some bonds and far from others. The 2017 feature goes further than that, and describes what happens to the nearby bonds once they have been found. The sorting runs in two stages: bonds are first put into "broad, intuitively similar buckets," and cluster analysis then "collect[s] together the most comparable products in each bucket." The neighbors are not themselves the answer. Risk.net's worked example is a trade of 500 lots of an obscure US Treasury bond: LQA identifies the other US Treasury bonds nearest to it in that space, and "will then use their combined pool of data to calibrate the parametric model." What the clustering produces is a body of data large enough to fit a formula to.</p>
+<p>So the <strong><em>trained component</em></strong> finds the data, and the <strong><em>rule-based component</em></strong> estimates the cost. Reiter's recommendation for data-to-text systems is structurally the same move. Do the analytics and insight creation outside the model, then hand those insights to the model as input. He states the reason as capability rather than checkability — large language models "are poor at signal analysis and data interpretation, and it is a mistake to expect them to do these tasks." The record does not say Bloomberg chose the arrangement for that reason. The reason Quadri gives is stability.</p>
+<figure class="figure">
+<img src="diagrams/AIJM-S07_PIPELINE-COMPARISON_v0.1.svg" alt="Which pipeline stages are trained, rule-based, or undocumented — LQA, the emissions model, and IBVAL compared" loading="lazy">
+<figcaption>Which pipeline stages are trained, rule-based, or undocumented — LQA, the emissions model, and IBVAL compared</figcaption>
+</figure>
+<p>LQA emits a liquidation cost and a horizon, a <strong><em>liquidity score</em></strong>, and, by the December 2019 fact sheet, <strong><em>regulatory classifications</em></strong>. The classifications are where a continuous estimate stops being one. Bloomberg's 2021 brochure for the Japanese guidelines lists the buckets: highly liquid under three business days, medium four to seven, low over eight, non-liquid over eight "with significant market impact." Those boundaries are the regulator's. The word "significant" is not. Bloomberg supplies a default — half the <strong><em>bid-ask spread</em></strong>, the difference between a bond's buy price and its sell price, with the cost measured from the mid-point between them — and the brochure says it "can be fully customized to reflect the fund manager's determination of a 'significant' market impact."</p>
+<p>LQA is the one case in this section where Harrell's objection to classification is visible on the page, and where the ownership of the decision is written down. The cut points belong to the regulator, the discretionary term belongs to the fund manager, and Bloomberg ships a default that can be overridden. The record does not say what that default figure was calibrated against.</p>
+<h2>The corporate emissions model — July 2021</h2>
+<h3>Only 2.27 percent of filers disclose emissions</h3>
+<p>Corporate emissions disclosure is voluntary, and almost nobody does it. The four authors of the July 2021 workshop paper, three at Bloomberg Quant Research and one who had done the work there, put the figure at "merely 2.27% of companies filing financial statements are disclosing their GHG emissions according to our Environmental, Social and Governance (ESG) datasets." The set of examples where the answer is already known — the <strong><em>labeled dataset</em></strong>, the companies that do disclose — is 24,052 annual emissions figures from 3,960 companies. The set they need to predict for, the <strong><em>unlabeled dataset</em></strong>, is 619,703 records from 61,467 companies.</p>
+<p>The harder problem is that those two sets do not look alike. Companies that disclose emissions tend to disclose everything else too. The paper's example, in its own wording: "energy consumption is disclosed by 97% companies in the labeled dataset while by only 20% companies in the unlabeled dataset." Almost every disclosing company reports its energy use. Only one in five of the rest does. The model has over a thousand measurements available to look at — the paper calls them features — and 525 of them are missing more than ninety percent of the time. A model trained on the <strong><em>training data</em></strong> of disclosing companies learns to lean on fields the non-disclosing companies do not have.</p>
+<p>The paper's answer is to break the training data on purpose. "We augment the training data with a masked dataset that is created by applying the feature missing patterns of the unlabeled data to the original labeled data." They call it <strong><em>Patterned Dropout</em></strong>, and the masker itself is not written by hand but trained from examples in turn, fitted to reproduce realistic patterns of missing data. This is a training-time device. It makes the disclosing companies look, to the model, like the non-disclosing ones it will actually be asked about. The paper is then explicit about which score counts, and about why: "performance on the masked data is more important," because that is the condition the model will actually meet.</p>
+<p>The shipped product contains the paper's model and more besides. Bloomberg's product white paper describes a <strong><em>waterfall</em></strong> — a separate mechanism from Patterned Dropout, and one that operates at the other end of the process. Patterned Dropout governs how the model is trained. The waterfall governs which number gets published when the model is not the best available source.</p>
+<blockquote class="term"><p><span class="term__name">Waterfall</span>
+A waterfall is an ordering rule, not a model. The best available source runs first. If it has nothing, the next-best source runs. If that has nothing too, the process falls through to a hand-set default. Any of the tiers can be trained, rule-based, or looked up — the waterfall just decides which one gets asked first. A trained model sitting inside a waterfall is often smaller than it looks: it may only ever run on the cases everything above it failed to cover.</p>
+</blockquote>
+<p>Reported company figures come first. Then "Smart Estimate", which is the paper's trained model and the only tier of the three that is a model at all. Then "Industry Implied — GHG emissions is estimated using an industry GHG intensity model," an <strong><em>industry-implied model</em></strong>. That third tier is the sector-average heuristic the paper opens by criticizing, kept in service underneath the trained model rather than replaced by it. <strong><em>Scope 3</em></strong> estimates run on separate machinery again, partly bottom-up, using "the conversion factors available in the tables published by the UK Government."</p>
+<p>The paper's headline evaluation is a yes/no sort into two groups, a <strong><em>binary classification</em></strong> task. "As a practical use case, we compare the three models in a binary classification task: decide if a company is a high-intensity emitter." The cut point is the 90th percentile of carbon intensity within each sector, chosen by the authors, and the first results table reports <strong><em>precision</em></strong> on that task. The design premise had been that a single number "do[es] not suffice" and the output must be a <strong><em>distribution</em></strong>. The classification result is reported on two buckets, though the distribution is what feeds them. The 99th percentile of each is used to compute the intensity that gets sorted.</p>
+<p>Outside assessment of vendor emissions estimates has been published. A 2023 PLOS Climate paper found that vendor methods "remain largely a black box" and that "the absolute magnitude of their prediction errors is rarely disclosed." Three of its authors work for a company selling carbon risk data, a competing interest the paper declares, and its Bloomberg analysis covers reported Scope 3 figures — a company's indirect emissions from its wider value chain, its suppliers and its customers, as distinct from the emissions of its own operations — rather than modeled ones. That finding is evidence about what buyers of vendor emissions data can see, not about how well Bloomberg's model works.</p>
+<h2>IBVAL — October 2023</h2>
+<h3>A bond price that updates every fifteen seconds</h3>
+<blockquote class="term"><p><span class="term__name">BVAL</span> and <strong><em>IBVAL</em></strong>
+These are two services, and the distinction matters for what follows. BVAL is Bloomberg's evaluated pricing service, launched in 2008. It covers fixed income instruments and over-the-counter derivatives, and it produces pricing snapshots at several specified times each day. IBVAL Front Office — Intraday BVAL — launched in 2023 and is described by Bloomberg as "distinct from, but complementary to" BVAL. It prices continuously rather than in snapshots, as fast as every fifteen seconds. When the record refers to a regulatory action, a staff of hundreds, or a data-quality score, it is usually referring to BVAL, the older service. When it refers to a machine learning model, it is referring to IBVAL.</p>
+</blockquote>
+<p>IBVAL Front Office prices around 30,000 corporate bonds every fifteen seconds. Bloomberg's engineering post from December 2023 is unusually forthcoming about the machinery: a <strong><em>data lake</em></strong> on Apache Iceberg holding petabytes, queries routed through Trino, "Each day, the system processes approximately 6-7 billion fixed income market data ticks via its data pipelines, ingesting a peak of 300,000 ticks per second." Junling Wang, whose team built the infrastructure: "We didn't design the system as a monolith. It's not one component that does everything. We broke down the whole pricing system pipeline into multiple <strong><em>microservice</em></strong> components."</p>
+<p>The method chosen is the older one: a family of approaches that builds many small decision rules and adds their answers together, <strong><em>tree-based methods</em></strong>. Camilo Ortiz, manager of the AI Finance Engineering division: "While several of the modern machine learning architectures were competitive in our research process, we ultimately settled on using tree-based methods as these methods could scale better when compared to the alternatives, even though we're dealing with tens of thousands of trees." The reason given is scale. On Ortiz's own account the modern architectures were competitive, so the choice did not turn on accuracy.</p>
+<p>The marketing language changed. The record shows no matching change in the method. The October 2023 launch release calls IBVAL "a proprietary machine learning model." The April 2024 expansion release, on the same product, is subheaded "Using the latest approaches in AI." That is one case, and it should not be read as a pattern across the section.</p>
+<p>Their existence surfaces in Institutional Investor's launch-day story. "When asked if any human analysts had a material part in IBVAL's price predictions, Bloomberg said: 'IBVAL Front Office uses a combination of machine learning and more traditional rules-based models. The machine learning approach is being focused at the more illiquid end of the bond universe.'" By that account the trained component is being focused at the more illiquid end of the bond universe, and the rule-based component covers the rest. No source found states why the split falls where it does.</p>
+<p>The same reporter states the limit of what was disclosed: "How IBVAL is calculating bid and offer predictions is not completely clear... The company didn't share specifics beyond that."</p>
+<p>Users do get an uncertainty signal, and it is not an accuracy figure. A BVAL score from 1 to 10 accompanies the price. Eric Isenberg, Global Head of Enterprise Data Pricing, on the record with The DESK: "While the score does not assess the accuracy of a price, it does provide a window into the underlying data inputs used by BVAL in arriving at that price." The score measures how much comparable market data existed. It also carries the snapshot cadence of the predecessor service — several times a day — attached to a price that updates every fifteen seconds.</p>
+<p>The predecessor is where the regulatory record sits. In January 2023 the SEC fined Bloomberg $5 million over BVAL, finding that "from at least 2016 through October 2022, Bloomberg failed to disclose to its BVAL customers that the valuations for certain fixed-income securities could be based on a single data input, such as a broker quote, which did not adhere to methodologies it had previously disclosed." The order predates IBVAL. Asked about IBVAL's data demands, Bloomberg pointed the reporter to its remedial efforts under that order.</p>
+<h2>Observations for the predictive cases</h2>
+<h3>What counts as a right answer</h3>
+<p>Harrell's condition for machine learning working well is the one these three are measured against here. The three systems differ in whether an answer arrives at all.</p>
+<p>A bond price is the strong case, because the next trade settles it. TRACE, FINRA's trade-reporting system, is named as an input to IBVAL in the launch release, in the reporter's account and in Isenberg's interview.</p>
+<blockquote class="term"><p><span class="term__name">TRACE</span>
+The Trade Reporting and Compliance Engine is FINRA's public record of corporate-bond trades: dealers report each transaction, and the price becomes part of the record within minutes. It is the closest thing bond markets have to a stock ticker. A model that prices TRACE-eligible bonds has, in principle, a fast and independent check available on every price it produces — whether or not that check is ever run. No source found says IBVAL prices are scored against TRACE prints afterwards. The engineering post confirms that evaluation happens: financial experts "were crucial in helping to define the best practices that became codified into real-time and offline evaluations." What those evaluations measure is not stated.</p>
+</blockquote>
+<p>A liquidation cost has an answer only if someone liquidates, and only at that size, in that week. Bloomberg's 2019 fact sheet says "Detailed quality assurance processes combined with a granular <strong><em>back-testing</em></strong> framework ensure the model output matches expectations." The word back-testing recurs across four documents from 2019 to 2025: two Bloomberg fact sheets and two Risk.net award write-ups, one of them sponsored content. What the model's estimate is compared against, and over what period, is never stated. The term does the work of an accuracy claim across six years. By 2021 the bar has moved to the customer. Users "are able to ensure the model output matches their expected output figures."</p>
+<p>An emissions estimate, as discussed in the emissions case above, has an answer only if the company later starts disclosing, which is the outcome the whole system exists to substitute for. The record does not show that test being run, which means the model's central claim — that it can stand in for a disclosure that never came — is not measured against the thing it substitutes for. The white paper's closest analogue is to hold one company out of the training examples: remove Apple, mask its data to look like a non-discloser, then "compare to Apple's reported values." That measures the model against a company that always disclosed.</p>
+<p>None of the three cases documents a before-and-after accuracy check — ground truth arriving from the world and being scored against a prediction the system made earlier. On the evidence of these three records, none of the three is in a position to state what its accuracy is, let alone guarantee it.</p>
+<p>Bouchaud of Capital Fund Management, quoted in the 2017 Risk.net feature about machine learning for market impact generally rather than about LQA, put the underlying worry plainly: at low frequencies data is too limited to avoid misleading results, and "all the nonlinear effects machine learning has found at low frequencies we have already found using more traditional data analysis methods or intuition." Where answers arrive rarely, there are few of them to learn from and few of them to check against.</p>
+<h3>What the record shows</h3>
+<p><strong>No accuracy bar is stated.</strong> It bears directly on Reiter's condition. Reiter's bar is a guarantee, and a system that cannot give one will not be used. Whether that bar transfers to a bond price or an emissions estimate is this paper's extension, not his claim. All three of these systems were used. What stands in place of the guarantee, in each case, is something adjacent to accuracy but not accuracy: back-testing for LQA, a precision figure on a two-bucket sort for the emissions model, and for IBVAL a score that Isenberg says explicitly "does not assess the accuracy of a price."</p>
+<p><strong>Documentation outweighs evidence.</strong> Sculley and colleagues offered it as a rule of thumb that a mature system might end up being mostly glue code and only a sliver of machine-learning code. IBVAL's engineering post is the clearest illustration in the section, and it illustrates the ratio in the documentation as well as in the system. The post gives tick rates, ingestion peaks, storage format, query engine, and how the pricing system is split into components. It gives two sentences on model selection and one on evaluation.</p>
+<p><strong>The substitution happened in part, and stopped.</strong> In Karpathy's terms the substitution ran only partway across these three. In two of these cases the rule-based component stayed, and in the third it arguably did as well. LQA needed the parametric market-impact model back to be stable. IBVAL runs "a combination of machine learning and more traditional rules-based models." The emissions system keeps a hand-specified industry-implied tier inside the shipped waterfall, alongside a hand-set sector fallback rule and a published table of government conversion factors. Two cases state it outright and one shows it in the product architecture.</p>
+<hr />
+<p><em>Technical terms specific to these cases are defined in the reference appendix at the end of the paper.</em></p>
+<div class="section-divider" id="s5">
+<span class="section-divider__num">Section 2 of 3</span>
+<span class="section-divider__title">Generative: systems that produce content</span>
+</div>
+<h2 class="section-heading">Generative: systems that produce content</h2>
+<p>A fluent sentence and a true one are not the same achievement, and a reader has no reliable way to tell which one they are looking at from the sentence alone. Hagar, Diakopoulos and Gilbert argue that newsroom tools should be built to keep that distinction visible — architectures that enforce attribution rather than optimize for fluency, so a claim can be checked rather than merely believed. Fluency is what a language model is for.</p>
+<p>None of the seven systems below is judged, anywhere in the record, by whether its output reads well — Bloomberg publishes no fluency score any more than it publishes an accuracy one. What the record does contain is what happened once fluent text reached a reader. An editor worried aloud that readers would mistake a summary for the story it stood in for, and was told the honest answer was that some of them would. A company stated that its summaries "meet our editorial standards," a criterion it both sets and grades. And in the one case where a trivial method was tested against eleven systems in a paper with Bloomberg's name on it, none of them beat simply taking the first three sentences of the article that mention the entity.</p>
+<h2>Project Cyborg — April 2016</h2>
+<h3>Bloomberg's own retrospective never uses the name</h3>
+<p>In April 2016 John Micklethwait, Bloomberg's editor-in-chief, told staff that "Project Cyborg is helping our editors send headlines this earnings season on hundreds of U.S. companies." The memo's Cyborg-specific claim is narrower than its general one. The broader sentence, "the computer will generate the story or headline by itself," is said of the automation program rather than of this system. Eight years later two Bloomberg executives published a retrospective on exactly this capability in <em>AI Magazine</em>, and the word "Cyborg" appears in it zero times. Neither does "2016". The nearest thing the paper offers is an unnamed description: "One very early automated story aimed at empowering editors to report on earnings releases from top global companies." Only the memo and the press that picked it up use the name.</p>
+<p>The paper does not date the work to 2016 either. It says "In 2015, Bloomberg created its News Automation team, with the mandate of producing automated content in order to free up time so journalists could dedicate themselves to higher-value newsgathering tasks." That is a team, not a system, described nine years after the fact. The memo, written contemporaneously, describes Cyborg as already running and announces a further "10-strong team" under Brad Skillman and Monique White, neither of whom appears in the paper. These may be two separate organizational events. Nothing in the record reconciles them.</p>
+<p>What the paper does state, unambiguously, is the method, and it states it in the present tense in 2024: "Currently, stories use rules-based structures to determine which market conditions or new financial data updates trigger a narrative." The pipeline is given in one sentence. "Most rule-based automated stories start with a trigger event that starts a process which retrieves data from Bloomberg systems and applies relevant business logic. It can combine several datasets or previously published stories, add automated charts and tables, apply headlines and lead waterfall logic, and publish in multiple languages." That is the Wordsmith architecture from How the field got here, running at Bloomberg, seven years after Karpathy predicted that <strong><em>trained</em></strong> components would increasingly replace the rule-based kind. The system generates content and nothing in it was trained.</p>
+<p>Reiter's recommendation — do the analytics outside the model and hand it the result — describes Cyborg exactly, except that there is no model. The analysis is in code and the expression is in code too. The accuracy problem is handled by never letting a language model near the facts, and by a test harness that is described in more detail than any evaluation anywhere else in this section. "Automated stories are only released to the wire after extensive testing, and every single new version goes through this process. The tests typically consist of validating the story output against an extensive set of market configurations to ensure every data point and corresponding context reflects reality... We also test for fairness, robustness, and overall acceptability of the output. Only after these extensive tests are concluded, and the human editor signs off, is it made available to readers. If a story fails the acceptability test, it does not get released."</p>
+<p>The sign-off sits on the story type, not the story. For fully automated types the machine writes and publishes to the wire with nobody approving that instance, which is the AP arrangement of 2014 with a larger template library. Readers are told by byline: "every automated story includes 'By Bloomberg Automation,' language, which is then highlighted in bright yellow." The byline half of that policy is attested six years before the paper, in a 2018 Micklethwait interview. The highlighting is stated only in 2024.</p>
+<p>The workflow claim is the one that bears on Gina Chua's question, and it is Bloomberg's own. "Designed as automation assistance to ensure reporting consistency, the tool introduced an entirely new workflow. Whereas reporters would previously wait for an earnings press release to react and identify the numbers that matter, the automation workflow requires that news judgment be applied in preparation for earnings day to determine the expected key metrics ahead of the release being published." The judgment did not go away. It moved earlier, into a specification written before the release. What that preparation takes is stated too: "The creation process of an automated story requires months of research by an editorial domain expert in consultation with data experts."</p>
+<p>On headcount, Micklethwait said in December 2024 that "we still employ roughly the same number of people to look at earnings, but the number of companies whose earnings we cover and the depth of the coverage have both increased dramatically." At the same lecture he was reported as saying that of the 5,000 or so stories Bloomberg publishes daily, more than a third use some form of automation. It is the reporter's paraphrase rather than a quotation, and it is a 2024 figure that characterizes no earlier year. It is also a different and better-specified claim than the widely repeated "roughly a third" line from 2019, which was a <em>New York Times</em> reporter's own words with no attribution to any Bloomberg source and was not confirmed by any Bloomberg source when checked. Chua, then publishing as Reginald Chua and serving as Thomson Reuters' executive editor for editorial operations, data and innovation, had put the competitive logic bluntly in 2016 — "you can't compete if you don't automate" — a quotation reaching this study second-hand, inside a Tow Center report.</p>
+<h2>The Bulletin — September 2018</h2>
+<h3>A filter that keeps the summarizer off hard stories</h3>
+<p>The Bulletin, launched by Bloomberg Media's innovation lab BHIVE on 18 September 2018, put one-sentence summaries of three stories at the top of the consumer mobile app. <em>AI-Powered Earnings Call Summaries</em>, launched on the Terminal five years and four months later, put summary points beside an earnings-call transcript — one consumer and one professional, one from before large language models reached products and one built on them. Neither record contains an accuracy figure, an error rate, an evaluation method, or a stated bar. Each record contains an architectural admission instead.</p>
+<p>The Bulletin's is an eligibility filter, and the reason Digiday gives for it is the summarizer's competence: "Bulletin doesn't scan opinions, editorials or special investigative stories, because the technology that reads the stories to summarize them is best at understanding documents that have similar structure, such as stories about company's quarterly earnings, or the fluctuations in a commodity market." Whole genres were kept away from the system, on the stated ground that it handled structured stories best.</p>
+<p>The Bulletin's method is described in the sources as "machine learning and AI technology" and "natural language processing".</p>
+<p>The measured evidence amounts to one number. Of a random 20 percent of app users shown The Bulletin in a preliminary test, 26 percent refreshed the feed at least once. BHIVE's head said engagement had risen since and "wouldn't share specifics." That is an engagement figure with a test-cohort denominator, not a quality figure.</p>
+<p>Whether the summaries were reviewed by a person is not stated, and the record is explicit that this is a silence and not a finding: no source says a human editor reviewed, approved or spot-checked summaries before display, and no source says one did not. The Bulletin's own fate is likewise undetermined. There is no discontinuation announcement, and the feature appears on no current first-party surface. BHIVE's blog carried nothing further about The Bulletin after February 2020, though the blog itself continued — a later post is dated December 2021. The only contrary evidence about the product is a 2022 App Store review from a user asking for it back.</p>
+<h2>Bloomberg Automated Intelligence — 2016–2018</h2>
+<h3>Sources disagree on its size, and none dates its start</h3>
+<p>Bloomberg Automated Intelligence is described by Bloomberg's own quants as "a fully automated news service that explores Bloomberg's vast proprietary data sets to identify market irregularities." Its triggers are statistical and published: "Volume spike articles are published intraday when trading in a liquid stock is at least 3 times above its 20-day average volume for that time of day for large-cap companies and 5 times above for small-cap companies." Another: "CDS movers are published intraday when spreads on single-name contracts move 3 standard deviations based on 90-day historical volatility." A threshold breach becomes a wire story with no person in the loop at that instance.</p>
+<p>Nobody knows when it started. No source states when BAI began, was named, or launched. The earliest first-party attestation of the name is June 2020, from two artifacts — a Bloomberg Quant Research white paper carrying the internal datestamp "©2020 Bloomberg. 814306 DIG 0620", and a Bloomberg Professional Insights article whose body reads "This article was originally published on June, 29, 2020" while its content-management date reads March 2022. That the system was operating earlier is derivable only from a study's sample boundary, "from May 2018 to January 2020", which is a sample window and not an origin. The interval this study can defend is 2016 to 2018, and it declines to pick a year inside it.</p>
+<p>The obvious move would be to call BAI an outgrowth of the 2016 automation initiative. No document says so. The 2024 peer-reviewed retrospective never uses the name Automated Intelligence. The 2020 white paper never mentions Cyborg, the News Automation team, or 2015 or 2016. The 2016 memo does not use the name. There are three bodies of evidence about template-driven wire generation at one company, and nothing bridges them.</p>
+<p>Its scale is stated three ways that do not agree. "More than 500 templates" in marketing, "dozens of story types" in the white paper of the same month, "hundreds of software bots" in the 2024 paper. The first two are first-party, roughly contemporaneous, and differ by an order of magnitude. They may count different things, and the sequence is not evidence of growth.</p>
+<p>BAI is also the one case in this section where Bloomberg criticizes its own system in writing. Bloomberg's quants report that when signals on insider buying, implied volatility and active bond trading are published close together, they precede M&amp;A announcements 16.7 percent of the time — "more than 3 times the expected amount of announcements" in the white paper's own wording, rendered "more than triple the expected rate" in the companion Professional Insights article . They then observe that the system publishes too much: "In order to avoid excess publication, we suggest updating current trigger rules by filtering on those events." The companion Professional Insights article adds a caveat of a kind that appears nowhere else in this record: "The triggering mechanisms for some types of automated stories are evolving over time, so the system is not stationary across the board. This could introduce bias and merits further examination." By January 2024 the Terminal news product page no longer carried the "500 templates" language. A different and later product, Automated Intelligence on Demand, sits there instead, first attested October 2024. No source states that BAI was retired.</p>
+<h2>EntSUM — April 2022</h2>
+<h3>No system beat the trivial baseline</h3>
+<p>EntSUM is peer-reviewed, at ACL 2022, and it is the only document in this section where a Bloomberg generative result loses in public.</p>
+<p>The task is summarizing a document with respect to one named entity in it, and the paper's finding is that the trivial method wins. "The absolute results also show there is further room for improvement in entity-centric summarization approaches, given that performance of automated methods still lags behind Lead3ent, whereas this is currently surpassed by automated methods in generic summarization." <strong><em>Lead3</em></strong> means: take the first three sentences. Eleven benchmarked systems, four families, and none of them beat taking the first three sentences that mention the entity. Two established controllable-summarization methods did worse than a system that ignored the entity entirely — "these methods actually obtain lower results by 4.93 <strong><em>BERTScore</em></strong> — a semantic-similarity score, not raw word overlap — and 7.43 ROUGE-L than the entity-agnostic GSumovr method."</p>
+<blockquote class="term"><p><span class="term__name">Extractive and abstractive summarization, and ROUGE</span>
+An <strong><em>extractive</em></strong> summarizer selects sentences out of the source and reprints them. An <strong><em>abstractive</em></strong> one writes new sentences, which is where a model can say something the document does not. The two fail differently: extraction can only be irrelevant, abstraction can be wrong. <strong><em>ROUGE</em></strong> is the standard automatic score for both, and it measures word overlap between the output and a reference summary someone wrote by hand. It rewards saying the same words as the reference and knows nothing about whether a claim is true. A high ROUGE score is evidence that a summary resembles a good summary, which is not the same evidence as a bond price checked against the next trade.</p>
+</blockquote>
+<p>The paper is mostly annotation: a four-stage human pipeline with vendor annotators "who were hired and trained for completing this task through training sessions", redundancy escalating to as many as five annotations where no majority emerges, and agreement reported at every stage in <strong><em>Krippendorff's alpha</em></strong>, the standard statistic for how well multiple human raters agree. The published artefact is 2,788 human-written summaries across 645 documents. The corpus was cut down to get there, not built up: 1.8 million <em>New York Times</em> articles from 1987 to 2007, sampled to 10,000 entities across 693 documents, then filtered to 645. The choice of that corpus over the more popular alternatives was a legal one — "because of the clarity of the data licensing terms on the NYT corpus for research purposes."</p>
+<p>Mounica Maddela, the first author, is at the Georgia Institute of Technology, with the footnote "Work done during an internship at Bloomberg". She is not a Bloomberg-affiliated author. And the paper is strongly news-framed and never mentions finance, markets or financial text at all. Its place in a study of a financial-information company rests on affiliation, not on any sentence in it.</p>
+<h2>BloombergGPT — March 2023</h2>
+<h3>Training that went wrong, and got written down</h3>
+<p>BloombergGPT is the only system in this section whose construction was written down while it was going wrong. The paper's Appendix C exists because version 3 added it, in a tradition the authors name: "we found the OPT chronicles, experiences of the BLOOM team… to be crucial enablers of our work." What it records is a first run abandoned when curriculum learning left the model stuck on both training and validation loss, then a second run in trouble: "After four failed attempts to fix the run, we considered the possibility of this run being unsalvageable and contemplated starting from scratch." A bug is named — weight decay applied to a parameter that should have been skipped. Three mid-run interventions are given by step number. The authors then decline the conclusion a reader wants: "we cannot conclude which of these changes was decisive in leading to a successful training run."</p>
+<p>The scale is stated precisely. 50.6 billion parameters. 512 A100 GPUs across 64 machines, on rented AWS infrastructure, at 102 TFLOPs and 32.5 seconds per training step. 139,200 steps over roughly 53 days. And a <strong><em>token</em></strong> count that is routinely misreported.</p>
+<blockquote class="term"><p><span class="term__name">Tokens and tokenizers</span>
+A language model does not read words. Text is first cut into <strong><em>tokens</em></strong> — word fragments, whole words, punctuation — by a <strong><em>tokenizer</em></strong>, a fixed rule for making that cut, learned once before training and never changed afterwards. Corpus size and model appetite are both measured in tokens, which is why token counts are the currency of this kind of work. The choice of tokenizer is a real design decision rather than a formality: it fixes how much text a fixed context window can hold, and it decides whether specialized vocabulary arrives as one unit or as debris. Bloomberg chose a Unigram tokenizer over the more common byte-pair merge approach, and ranks that choice second among the three things it credits for the result.</p>
+</blockquote>
+<p>The model was trained on 569 billion tokens out of the 709 billion available, and stopped there: "We ended training early because the loss on our held-out development set was no longer improving, although it's possible that substantially longer training may have yielded further improvements." The paper also states that the corpus was too small for the compute: "These calculations imply that our dataset of ~700B tokens is too small for a 'Chinchilla optimal' configuration given our compute budget." By the paper's own calculation, the limit was the size of the archive rather than the compute.</p>
+<p>That archive is the stated enabling condition, and the authors rank the causes themselves: "We attribute this, in decreasing order of impact, to 1. a well-curated internal dataset, 2. our unique choice in tokenizer, and 3. an up-to-date architecture." FinPile is 363 billion tokens of Bloomberg financial documents, matched with 345 billion tokens of public text. Only 5 billion tokens of FinPile — 0.70 percent of the whole training corpus — are Bloomberg-authored content. The largest single component is 298 billion tokens of web text.</p>
+<p>The archive is also why the model was withheld. "One of Bloomberg's core business propositions is around providing access to data that has been collected over the course of decades. As is well known, LLMs are susceptible to data leakage attacks and it is possible to extract significant segments of text given model weights… Without strong privacy guarantees, we must be concerned that providing access to model weights entails giving access to FinPile." The decision follows: "we err on the side of caution and follow the practice of other LLM developers in not releasing our model."</p>
+<p>Nothing was built on it either. Wayne Barlow, Bloomberg's Global Head of Terminal Products, in April 2026: "BloombergGPT was a research model and is actually not used at all in any of our products." That is a stronger negative than anything in the paper, which speaks only prospectively — "As we move to develop products built on this technology, we will apply existing testing procedures, as well as risk and compliance controls." The BloombergGPT paper is an arXiv preprint at version 3, with no journal reference of any kind, and must be cited as unrefereed. And a widely circulating claim that BloombergGPT powers Bloomberg's news summaries traces to a page carrying its own disclaimer that its content may be AI-generated. Barlow's sentence contradicts it directly.</p>
+<p>Sculley's ratio shows here as it did in the predictive section, and again the documentation is lopsided in the same direction. The paper describes the hardware, the sharding strategy, the storage throughput, a split-and-merge scheme for training a tokenizer across 5,632 chunks of text, and a policy of running every comparison model in-house — "We prefer running models ourselves to ensure identical evaluation setups." It flags one question as open: "quantifying the potential for the generation of harmful language remains an open question."</p>
+<h2>AI-Powered Earnings Call Summaries — January 2024</h2>
+<h3>Transparency by link</h3>
+<p><em>AI-Powered Earnings Call Summaries</em> launched on the Terminal on 22 January 2024. Its architectural admission, unlike the Bulletin's filter, is a path back to the source: "For more transparency, the solution also makes it possible for users to click on each point in the summary sidebar to easily jump to the corresponding excerpts in the call transcript." Verification is offered to the analyst, and it is the analyst who would perform it. That is close to what Hagar, Diakopoulos and Gilbert argue newsroom tools need — architectures that enforce attribution rather than optimize for fluency — with the qualification that a click-through offers attribution rather than enforcing it.</p>
+<p>The sources describe the method as "state-of-the-art generative AI" and "the large language models used in this solution", and no model is named. What is stated is a human input to training: "Bloomberg Intelligence analysts help train the large language models used in this solution to more accurately understand the nuances of financial language and anticipate what's most important to investors." Guardrail systems are named for this product line only in the April 2025 successor release, and cannot be read back into January 2024.</p>
+<p>The release contains no scale figure at all — no count of calls, companies, transcripts or users. Its one large number, "hundreds of millions of trusted company and industry documents", belongs, in the release's own sentence, to a different Terminal product. Whether a person reviews the summaries before they appear is, as with the Bulletin, not stated on either side of the question.</p>
+<h2>AI-Powered News Summaries — January 2025</h2>
+<h3>Corrected within eleven weeks, after an outside check</h3>
+<p><em>AI-Powered News Summaries</em> launched on 15 January 2025 and puts three bullet points at the top of a Bloomberg News story. Within eleven weeks the <em>New York Times</em> reported that "the news outlet has had to correct at least three dozen A.I.-generated summaries of articles published this year." The named failures are specific: a summary saying Trump had imposed tariffs on Canadian goods the previous year rather than that year; a hallucinated start date for US auto tariffs; a summary that "failed to distinguish between actively and passively managed funds, providing incorrect figures as a result"; references to the wrong US presidential election. A separate count, a third party's and reaching this study through an aggregator, puts removals after publication at "at least 20 instances."</p>
+<blockquote class="term"><p><span class="term__name">Hallucination</span>
+A language model generating text produces the continuation its training makes likely, not the continuation that is true. When those diverge, the output is fluent, well-formed and wrong, and it carries no internal marker distinguishing it from the parts that are right. The industry word for this is <strong><em>hallucination</em></strong>, which is a poor metaphor for an ordinary property: nothing in the mechanism separates recalling a fact from constructing a plausible one. This is the failure mode that has no analogue in a template. A template that has never been told a tariff date cannot invent one.</p>
+</blockquote>
+<p>Bloomberg's answer contains the only quality figure in this section, and it is carefully not an accuracy rate: "currently 99 percent of A.I. summaries meet our editorial standards." Three things travel with it. It is Bloomberg's own figure, not anybody's measurement. "Meet our editorial standards" is broader and softer than "are factually correct". And Bloomberg's own word "currently" time-indexes it. The sentence reaches this study relay-verified rather than read from the original, which is paywalled.</p>
+<p>The system was in use throughout the correction episode. There was no pause and no rollback. By June 2025 Nieman Lab reported that Bloomberg planned to extend summaries to opinion pieces. In November 2025 coverage widened to non-Bloomberg sources, on a first-party release this study reached only through an aggregator. In June 2026 it was still being marketed. Bloomberg's own retrospective account, ten weeks after the <em>Times</em> story, does not mention the episode: "Reader feedback — both in comments to Bloomberg and what the newsroom has seen in the data — has been very positive."</p>
+<p>Who could stop a summary is disputed on the record and this study does not settle it. Bloomberg: "Journalists have full control over whether a summary appears—both before and after publication—and can remove any that don't meet our standards." The trade outlet <em>Status</em>, four days after the <em>Times</em> piece: "Bloomberg insists its journalists have 'full control' over its error-prone A.I. bot—but staffers tell Status they can't stop it from publishing errors." The staffers' specific accounts sit behind a hard paywall and were not obtained. Both sentences are on the record and they disagree, and the correction record — errors found and fixed after publication — is consistent with either.</p>
+<p>Micklethwait had described the newsroom's position a month before launch. Customers "like it. They can quickly see what the story is about." The journalists "are much more suspicious" because they "worry that people will read the summary rather than their story. To which the honest answer is: yes, a reader might well do that."</p>
+<p>Nieman Lab put the same question about newsroom workflow to several publishers in one article. It described the <em>Wall Street Journal</em>'s answer — "The summary tool is built directly into the Journal's CMS and, once generated, the bullet points follow the same workflow as the story itself with the newsroom reviewing for accuracy, clarity, and house style" — and Bloomberg offered no equivalent sentence. That is a silence under questioning, not an absence of process.</p>
+<h2>Observations for the generative cases</h2>
+<h3>What counts as a right answer</h3>
+<p>Harrell's condition for machine learning working well is the test here. The seven systems differ sharply in whether an answer arrives at all. Where one does, they differ again in what it is an answer to.</p>
+<p>Cyborg comes closest to an arriving answer before publication rather than after it: a story is tested against "an extensive set of market configurations" and must pass a human sign-off gate before release, which is a check on the story type rather than a check against the world. BAI's self-reported 16.7 percent M&amp;A precursor rate is a check the system runs on itself, and it is a check on how often the system over-publishes, not on whether any individual story was accurate. BloombergGPT is the one case with a real arriving number. Training stopped because "the loss on our held-out development set was no longer improving," a measured answer, but one about the model's own next-token prediction rather than about any claim a reader could check. EntSUM's ROUGE and BERTScore scores are checked against a reference a person wrote by hand, a proxy answer, and the paper's own finding is that none of eleven systems beat the trivial one.</p>
+<p>For the three deployed summarizers, no answer arrives at all. A summary has no settlement date the way a bond trade or an earnings release does, so a bar can be asserted and never measured. Bloomberg's own figure for its news summaries is 99 percent, on the softer criterion of "meet our editorial standards" rather than "are factually correct," and the system was in use throughout, with no pause and no rollback.</p>
+<h3>What the record shows</h3>
+<figure class="figure">
+<img src="diagrams/AIJM-S07_DISCLOSURE-VS-SHIPPED_v0.1.svg" alt="The generative section's seven cases, plotted by whether their architecture was disclosed and whether they shipped" loading="lazy">
+<figcaption>The generative section's seven cases, plotted by whether their architecture was disclosed and whether they shipped</figcaption>
+</figure>
+<p><strong>Where the architecture is disclosed, nothing shipped.</strong> Two of the disclosure-versus-deployment grid's four quadrants hold every case in this section, and the other two are empty. BloombergGPT and EntSUM state their methods in full detail and neither reached a reader as a product. The five that did reach readers are Cyborg, BAI, The Bulletin, the Earnings Call summaries and the News Summaries. No model is named for any deployed system in this section, at any date. And where the detail is given it is given about the apparatus rather than the model: BloombergGPT's paper covers hardware, sharding strategy, storage throughput and a tokenizer trained across 5,632 chunks of text, and gives one sentence to the harmful-language question it calls open. In the deployed cases the asymmetry runs the other way. The engineering is undisclosed and the only volunteered figures are business ones — BAI's trigger thresholds are stated exactly while the record states no accuracy figure for BAI at all.</p>
+<p><strong>No accuracy bar is stated for any deployed system.</strong> Reiter's accuracy bar for data-to-text is nowhere stated for these systems, let alone measured against them. All five deployed systems in this section were used. What stands in for the guarantee is, case by case, a test harness whose acceptability criteria are not in the record for Cyborg, a self-critical precursor-rate figure about over-publication rather than accuracy for BAI, an engagement percentage from a test cohort for The Bulletin, nothing at all for the Earnings Call summaries, and for the News Summaries a self-reported 99 percent on a criterion — "meet our editorial standards" — that Bloomberg both sets and grades.</p>
+<p><strong>The substitution arrived unevenly, and late.</strong> Cyborg was still rule-based in 2024, by Bloomberg's own present-tense sentence, and BAI was rule-based and template-driven, with natural-language processing on some story types. Both publish to the wire without a person approving each story — Cyborg since 2016, BAI since some point in an interval its own documents do not fix. The trained generative systems arrived afterwards, and one of them produced at least three dozen corrections in its first eleven weeks. Generated text and autonomous filing did not have to wait for trained models. What the trained models added was generality, and with it a failure mode that a template does not have.</p>
+<hr />
+<p><em>Technical terms specific to these cases are defined in the reference appendix at the end of the paper.</em></p>
+<div class="section-divider" id="s6">
+<span class="section-divider__num">Section 3 of 3</span>
+<span class="section-divider__title">Agentic: systems that act without a person in the loop</span>
+</div>
+<h2 class="section-heading">Agentic: systems that act without a person in the loop</h2>
+<p>Frank Harrell writes that classification "represents a premature decision", because it "usurps the decision maker in specifying costs of wrong decisions". The usurping is what takes a choice away from whoever should own it, whether or not the fused system is any good at the prediction half. This section asks whether the record shows anyone actually letting each of the three systems below choose. Model capability is a separate question. Wayne Barlow, Bloomberg's Global Head of Terminal Products, states the company's own position on that question directly: "we expect the human to be the one directing."</p>
+<p>Barlow was speaking about one system. The record read here never applies his phrase to the other two.</p>
+<h2>Project Cyborg — April 2016</h2>
+<h3>Editors approve the story type, not each published story</h3>
+<p>John Micklethwait's staff memo, dated 26 April 2016 in the fuller of its two trade-press reprints, announced an expansion of story automation. Project Cyborg was running before the memo announced anything — "Project Cyborg is helping our editors send headlines this earnings season on hundreds of U.S. companies" — and the memo's actual news was a hiring plan: "So this week we are forming a 10-strong team to lead this initiative," with roles for "project coordinators, template writers and engineers."</p>
+<p>The memo's Cyborg-specific claim is narrower than its general one. Cyborg is "helping our editors send headlines". The broader sentence, "the computer will generate the story or headline by itself," is said of the automation program rather than of this system. Bloomberg's own 2024 retrospective describes the same early period the same way: "In its early stages, automation was focused on generating headlines when certain trigger conditions were met."</p>
+<p>Cyborg's <strong><em>autonomy reach</em></strong> has several settings, and which one applies depends on the story type. Bloomberg's 2024 retrospective in <em>AI Magazine</em>, written by two Bloomberg executives and peer-reviewed, describes types "ranging from on-demand, that is, where journalists request the needed analysis for fresh and up-to-the-second data retrieval, to human-assisted stories, where either (i) reporters and editors report on critical data and the machine adds context before the story is published or (ii) where the machine collects the data and then sends it to the newsroom to be finalized and published." For the fully automated types the machine writes and publishes to the wire with nobody approving that instance. The human gate sits at certification of the story type, one level up from anything a reader sees.</p>
+<p>The paper states what that certification consists of:</p>
+<blockquote>
+<p>"Testing for quality and performance is an integral part of the process. Automated stories are only released to the wire after extensive testing, and every single new version goes through this process. The tests typically consist of validating the story output against an extensive set of market configurations to ensure every data point and corresponding context reflects reality. That is, we test the story output for a diverse range of market conditions and context to ensure factuality. We also test for fairness, robustness, and overall acceptability of the output. Only after these extensive tests are concluded, and the human editor signs off, is it made available to readers. If a story fails the acceptability test, it does not get released."</p>
+</blockquote>
+<p>This is the closest thing in the section to Reiter's bar being operationalized — an accuracy requirement enforced by a test harness across "an extensive set of market configurations." What counts as passing is not in the record this study reached.</p>
+<p>A correction path sits underneath the gate. "Quality control continues after the story is released and is part of the daily operation. If even a single data point is found to be faulty, the affected stories are immediately corrected, adding a tagline to clarify the reason for the correction." Readers are told which stories these are. Every automated story carries a "By Bloomberg Automation" byline "highlighted in bright yellow." Micklethwait had stated the byline-or-tagline policy publicly by October 2018.</p>
+<p>The method never changed. The 2024 paper says the stories "use rules-based structures to determine which market conditions or new financial data updates trigger a narrative," in the present tense, eight years after the memo. Karpathy's written-to-<strong><em>trained</em></strong> substitution did not happen to this system. What grew was the surrounding apparatus. The paper describes localization across "more than a hundred currencies," a build process requiring "months of research by an editorial domain expert in consultation with data experts," and a lab overseeing "hundreds of software bots."</p>
+<p>Gina Chua's question is whether changed tooling is the same thing as changed work. Cyborg is the one case here with a direct first-party answer. The paper describes the workflow inverting rather than compressing: "Whereas reporters would previously wait for an earnings press release to react and identify the numbers that matter, the automation workflow requires that news judgment be applied in preparation for earnings day to determine the expected key metrics ahead of the release being published." Judgment moved earlier and moved up a level, from the story to the story type, which is exactly where the sign-off moved too. On headcount, Micklethwait said in a December 2024 lecture that "we still employ roughly the same number of people to look at earnings, but the number of companies whose earnings we cover and the depth of the coverage have both increased dramatically." That is trade press quoting a named executive at a datable public event, and it is the only labor statement in this section.</p>
+<p>The name "Cyborg" does not appear in Bloomberg's own 2024 retrospective on this exact capability. The year 2016 does not appear either. The name appears only in the April 2016 memo and the press that reported it. There is no independent evaluation of Cyborg by anyone.</p>
+<h2>Bloomberg Automated Intelligence — 2016–2018</h2>
+<h3>A numeric cutoff decides whether a story is published</h3>
+<p>Bloomberg Automated Intelligence decides whether a story is published by comparing a number to a cutoff. From the June 2020 Bloomberg Quant Research white paper: "Volume spike articles are published intraday when trading in a liquid stock is at least 3 times above its 20-day average volume for that time of day for large-cap companies and 5 times above for small-cap companies." And: "CDS movers are published intraday when spreads on single-name contracts move 3 standard deviations based on 90-day historical volatility." Insider alerts fire "when the SEC releases the filing."</p>
+<p>Harrell's objection to classification is that it fuses a prediction with a decision and takes the decision away from whoever should own it. BAI shows that objection plainly, because the decision the threshold absorbs is an editorial one. Three standard deviations is where the system decides a CDS move is newsworthy. Five times average volume rather than three is a judgment about small-cap companies. No source states who set those numbers, against what, or whether an editor was in the room. The cutoffs are published. Where they came from is not.</p>
+<p>Bloomberg's own description of the reach is one clause: "a fully automated news service that explores Bloomberg's vast proprietary data sets to identify market irregularities." The stories go to the wires — "Bloomberg Terminal users can see automated intelligence stories at Bloomberg News and Bloomberg First Word" — and the marketing puts the library at "more than 500 templates."</p>
+<p>That 500 does not sit easily beside the other counts. The same June 2020 white paper says the universe "covers dozens of story types," and the 2024 <em>AI Magazine</em> paper describes "hundreds of software bots." These are three different units — templates, story types, bots — all three first-party, two of them roughly contemporaneous and an order of magnitude apart. They should not be merged and the sequence should not be read as growth.</p>
+<p>The most useful document in this case is the one where Bloomberg's quants examine Bloomberg's own publication stream as data, and criticize the trigger design: "In order to avoid excess publication, we suggest updating current trigger rules by filtering on those events." That is over-triggering, acknowledged in first-party writing, which almost nothing else in this corpus does. They also record that the system is moving underneath them: "The triggering mechanisms for some types of automated stories are evolving over time, so the system is not stationary across the board. This could introduce bias and merits further examination." The system publishes without per-instance review, its publication rules change over time, and its own analysts say the non-stationarity merits examination. Almost nothing else in this record describes the continuing work of keeping a system like this running.</p>
+<p>When BAI began is not established. No source states when it was named, began, or launched. The name is first attested in June 2020, in two independent first-party artifacts. The white paper's data window opens in May 2018 — "from May 2018 to January 2020" — but that is a study sample boundary and it is not an origin date. The interval is 2016 to 2018 and this study declines to pick a year inside it. The claim that BAI was an outgrowth of the 2016 automation initiative is an unsourced inference: the 2016 memo never uses the name, the 2020 white paper never mentions Cyborg or the News Automation team, and the 2024 paper uses neither "Automated Intelligence" nor "BAI." Nothing bridges them.</p>
+<p>The Terminal news page no longer carries the language, per the generative section's account of when it disappeared. No source states that BAI was retired.</p>
+<h2>ASKB — February 2026</h2>
+<h3>It hands the answer back to a person</h3>
+<p>The furthest ASKB is allowed to go on its own is to start work on a schedule or a market trigger. Bloomberg's 16 April 2026 release describes the outer edge of what shipped: users can automate recurring multi-step research tasks, "such as Customized Morning Briefs or weekly thesis health checks – by scheduling them to run at a certain time or based on certain market triggers." The system assembles research. It does not place an order, move a position, or write to a system of record, and no source claims it does.</p>
+<p>Wayne Barlow, Bloomberg's Global Head of Terminal Products, was asked directly where the line sits, by an analyst at A-Team Insight in April 2026. "We can imagine a world where there will be additional things these systems can do, but we expect the human to be the one directing. Right now, those tasks are very much around gathering data, synthesising data, and bringing that data back to the user to make decisions." The phrase "deliberately bounded" belongs to the analyst who wrote the piece, not to Bloomberg.</p>
+<p>ASKB launched on 23 February 2026 as "a powerful new conversational AI interface, now in beta." Bloomberg's own framing is agentic and unhedged: "a coordinated network of AI agents working in parallel," built on "multiple commercial and open weight LLMs." No commercial model vendor is named by Bloomberg in any source found. When the beta began is not stated by any source, first-party or otherwise. The earliest evidence it was already live is 21 January 2026, from Ted Merz, a former Bloomberg global head of news product writing on his own site, who explicitly disclaims having spoken to Bloomberg about the feature.</p>
+<p>On 18 August 2026 Bloomberg described "coordinated AI agents with access to user-entitled data" and "built-in validators that check for accuracy before an answer is shown to a user." Those <strong><em>validators</em></strong> are automated. A human review step in production is not stated by any source. Barlow's "we expect the human to be the one directing" is a statement about who starts the task, not about who reads the output before it is shown.</p>
+<p>What the validators can do rests on an architectural property, which Barlow puts in explicitly causal form: "Because we have that transparency, we can actually run post-processing on any results to cut down on hallucinations. We can check whether a number appearing in a summary actually came from an attributed source, down to a particular bullet point."</p>
+<blockquote class="term"><p><span class="term__name">Grounding and attribution</span>
+A <strong><em>grounded</em></strong> system is one whose answers are assembled from source documents put in front of it rather than from what the model absorbed during training, and an <strong><em>attributed</em></strong> one keeps a link from each statement back to the document it came from. How those documents reach the system is a separate question, and no Bloomberg source answers it: no index, search step or retrieval architecture is named in anything Bloomberg has published. Attribution is usually described as a courtesy to the reader. It is also a machine-readable property. If every number in an answer carries a pointer to where it came from, a second process can check the pointer without understanding the finance. That check catches a number the model invented. It does not catch a number correctly copied from a source that was wrong, and it does not judge whether the right documents were put in front of the model in the first place.</p>
+</blockquote>
+<p>This is close to what Hagar, Diakopoulos and Gilbert argue newsroom tools need — architectures that enforce attribution rather than optimize for fluency — and ASKB is a case where the architecture is stated to do exactly that, by the executive responsible, in a trade interview. It is not a case where anyone published a measurement of how well it works. The same analyst piece states the gap: "Bloomberg does not currently publish accuracy benchmarks for ASKB itself." The same piece notes that Bloomberg publishes historical accuracy for Second Measure and other alternative datasets against company-reported figures, so the accuracy of the data layer is measured and disclosed while the accuracy of the AI layer consuming it is not.</p>
+<p>Reiter's accuracy bar is the standard ASKB has never been measured against. ASKB is in use at scale, and the institution that built it has published no figure of any kind about it — no accuracy figure, no time-saved figure, no satisfaction figure, and no adoption figure. Every user number in circulation is somebody else's. Wired reported in April 2026 that the beta was open to "roughly a third of the software's 375,000 users". Merz wrote in January of a terminal "used by 325,000 financial professionals" and "small batches of clients" being enabled. What Bloomberg did publish as growth was its supply side: sell-side and independent research providers went from "over 800" on 23 February to "over 1,200" on 16 April, while the live product page still said 800 in August.</p>
+<p>Sculley's ratio shows up here in an unusual form. Model routing, grounding, <strong><em>attribution</em></strong> machinery, post-hoc validators, and evaluation criteria are all recoverable for ASKB. Bloomberg's own published documents describe <strong><em>orchestration</em></strong> at roughly one sentence: "a coordinated network of AI agents working in parallel." Everything substantive — that "different layers may use different models," that there are "internal evaluation criteria that we always aim to achieve," that feedback is tracked as "an error of fact, as opposed to an error of presentation or an error of relevance," that the estate is "multi-vendor, multi-cloud" — comes from that one analyst interview and appears in no Bloomberg-published document. No Bloomberg statement names an orchestration framework, a router, a planner, a retrieval architecture, an entity-resolution system, a model vendor, an eval suite, or a red-team process.</p>
+<p>Failures reach the record from outside as well. Merz's January piece names the beta's limits — it could not access portfolios, market data was not real time, and it was "not connected to the open Internet" — and relays a reported failure case, Alex Thorn of Galaxy tweeting that it "got hung up for two hours." The April roadmap's PORT integration is directly responsive to the portfolio gap. Bloomberg's own Chief Technology Officer, Shawn Edwards, told <em>Wired</em> the flattest caveat anyone in this section offers: "These tools are not magical. They don't make an average [employee] all of a sudden great. The difference will be your ideas […] If you're a mediocre analyst, they'll be 10 mediocre ideas."</p>
+<p>The 18 August 2026 release does not use the word "beta," though the product page still carried it on 20 August. Bloomberg has not announced a full release, and trade press notes that no date for one was given.</p>
+<h2>Observations for the agentic cases</h2>
+<figure class="figure">
+<img src="diagrams/AIJM-S07_AUTONOMY-REACH-TIMELINE_v0.1.svg" alt="Autonomy reach did not rise over time — three the agentic section's cases plotted against the period bands" loading="lazy">
+<figcaption>Autonomy reach did not rise over time — three the agentic section's cases plotted against the period bands</figcaption>
+</figure>
+<p>The two systems that publish without a person reviewing the individual item sit on the left. The system carrying the label "agentic," on the right, gathers and returns.</p>
+<h3>What the record shows</h3>
+<p><strong>Autonomy reach does not track chronology, and the machinery that delivered it was rule-based.</strong> The two systems that publish to a wire with nobody approving the individual item are from 2016 and from an interval ending in 2018. The system Bloomberg calls agentic, launched in 2026, returns its answer to the person who asked and takes no action on the world. Both of the older two are rules and templates, stated unambiguously, and one of them was still stated to be rules-based in 2024. The trained component in this section is confined to the 2026 case.</p>
+<p><strong>No accuracy bar is stated for any of the three.</strong> Cyborg comes closest and stops short: an extensive test harness with a stated veto and no stated threshold. ASKB has automated validators, stated internal evaluation criteria, and an analyst's flat observation that no accuracy benchmark is published. BAI has no accuracy statement of any kind — only a self-criticism about over-triggering and a caveat that its own trigger rules are not stationary.</p>
+<p><strong>The engineering account tracks the document, not the system.</strong> Cyborg's is the richest orchestration description in the corpus and sits in a peer-reviewed paper written by two Bloomberg executives, which is not the same as an independent one. BAI's sits in a first-party quant white paper in a marketing register. ASKB's substantive account exists because a trade analyst asked an executive direct questions, and none of it appears in anything Bloomberg published itself.</p>
+<p>The three cases show one relationship between autonomy and disclosure inside Bloomberg's own record: the earliest systems, not the latest, took action without a person reviewing each instance, and the system carrying Bloomberg's own word for autonomy is also the one system in the set that does not.</p>
+<hr />
+<p><em>Technical terms specific to these cases are defined in the reference appendix at the end of the paper.</em></p>
+</main>
+<footer class="pagefoot"><a class="pager pager--prev" href="part-1.html">&#8592; Part 1: Foundations</a>
+<a class="pager pager--next" href="part-3.html">Part 3: Conclusion & Reference &#8594;</a></footer>
+<script>
+(function(){
+  function ready(fn){document.readyState!='loading'?fn():document.addEventListener('DOMContentLoaded',fn);}
+  ready(function(){
+    var figures = document.querySelectorAll('.figure');
+    if(!figures.length) return;
+    var lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.innerHTML = '<span class="lightbox__close" aria-label="Close">&#215;</span><div class="lightbox__inner"></div>';
+    document.body.appendChild(lb);
+    var inner = lb.querySelector('.lightbox__inner');
+    function openLb(media){
+      inner.innerHTML = '';
+      var clone = media.cloneNode(true);
+      clone.removeAttribute('loading');
+      if(clone.tagName && clone.tagName.toLowerCase() === 'svg'){
+        clone.removeAttribute('width');
+        clone.removeAttribute('height');
+      }
+      inner.appendChild(clone);
+      lb.classList.add('is-open');
+    }
+    function closeLb(){ lb.classList.remove('is-open'); inner.innerHTML = ''; }
+    figures.forEach(function(f){
+      var media = f.querySelector('img,svg');
+      if(!media) return;
+      var hint = document.createElement('span');
+      hint.className = 'figure__expand';
+      hint.textContent = 'Expand \u2921';
+      f.appendChild(hint);
+      f.addEventListener('click', function(e){
+        if(e.target.closest('a')) return;
+        openLb(media);
+      });
+    });
+    lb.addEventListener('click', closeLb);
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
+  });
+})();
+</script>
+<a href="#main" class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</a>
+<script>
+(function(){
+  function ready(fn){document.readyState!='loading'?fn():document.addEventListener('DOMContentLoaded',fn);}
+  ready(function(){
+    var btn = document.getElementById('backToTop');
+    if(!btn) return;
+    function onScroll(){
+      if(window.scrollY > 480){ btn.classList.add('is-visible'); }
+      else{ btn.classList.remove('is-visible'); }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  function ready(fn){document.readyState!='loading'?fn():document.addEventListener('DOMContentLoaded',fn);}
+  ready(function(){
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.series__chips .chip'));
+    if(!chips.length || !('IntersectionObserver' in window)) return;
+    var targets = chips.map(function(c){
+      var id = c.getAttribute('data-sec');
+      return {chip:c, id:id, el: id ? document.getElementById(id) : null};
+    }).filter(function(t){ return t.el; });
+    if(!targets.length) return;
+    function setCurrent(id){
+      chips.forEach(function(c){
+        if(c.getAttribute('data-sec') === id){ c.classList.add('chip--current'); c.setAttribute('aria-current','page'); }
+        else { c.classList.remove('chip--current'); c.removeAttribute('aria-current'); }
+      });
+    }
+    var io = new IntersectionObserver(function(entries){
+      var visible = entries.filter(function(e){ return e.isIntersecting; });
+      if(visible.length){
+        visible.sort(function(a,b){ return a.boundingClientRect.top - b.boundingClientRect.top; });
+        setCurrent(visible[0].target.id);
+      }
+    }, {rootMargin: '-25% 0px -65% 0px', threshold: 0});
+    targets.forEach(function(t){ io.observe(t.el); });
+    window.addEventListener('scroll', function(){
+      if((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 4){
+        setCurrent(targets[targets.length - 1].id);
+      }
+    }, {passive:true});
+  });
+})();
+</script>
+</body>
+</html>

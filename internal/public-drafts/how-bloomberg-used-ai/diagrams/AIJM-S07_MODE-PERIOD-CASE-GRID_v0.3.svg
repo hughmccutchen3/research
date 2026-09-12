@@ -1,0 +1,365 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 1898" width="1240" height="1898" role="img" aria-labelledby="ti de" style="background:#ffffff;font-family:'Segoe UI',Helvetica,Arial,sans-serif">
+<title id="ti">Bloomberg AI and ML cases: three modes by three periods, one representative case per cell</title>
+<desc id="de">Eight representative Bloomberg cases, one per populated mode-by-period cell, drawn from the eleven systems this paper traces. Arranged as three mode blocks by three period columns. Each case is broken into business problem, inputs, action, outputs, destination, platform build and notes. Silences in the record are marked. The agentic middle period holds no case.</desc>
+<rect x="0" y="0" width="1240" height="1898" fill="#ffffff"/>
+<text x="16" y="34" font-size="17" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">One structure, eight of eleven cases shown</text>
+<text x="16" y="54" font-size="11" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#475569">Three modes down, three periods across, one representative case per populated cell. Every case broken on the same seven slots. Marked silences are properties of the record, not of the system.</text>
+<text x="678" y="63" text-anchor="middle" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#888780" letter-spacing="0.18em">PERIOD</text>
+<rect x="132" y="66" width="356" height="26" rx="4" fill="#f1efe8"/>
+<text x="310" y="84" text-anchor="middle" font-size="11.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">pre-2019</text>
+<rect x="500" y="66" width="356" height="26" rx="4" fill="#f1efe8"/>
+<text x="678" y="84" text-anchor="middle" font-size="11.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">2019-2022</text>
+<rect x="868" y="66" width="356" height="26" rx="4" fill="#f1efe8"/>
+<text x="1046" y="84" text-anchor="middle" font-size="11.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">2023-2026</text>
+<text x="10" y="900" text-anchor="middle" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#888780" letter-spacing="0.18em" transform="rotate(-90 10 900)">MODE</text>
+<rect x="16" y="104" width="1208" height="28" rx="4" fill="#5b3d9e"/>
+<text x="30" y="123" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#ffffff" letter-spacing="0.12em">PREDICTIVE</text>
+<rect x="16" y="184" width="1208" height="64" fill="#fafaf8"/>
+<text x="22" y="214" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060" letter-spacing="0.08em">BUSINESS</text>
+<text x="22" y="226" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060" letter-spacing="0.08em">PROBLEM</text>
+<text x="22" y="284" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060" letter-spacing="0.08em">INPUTS</text>
+<rect x="16" y="312" width="1208" height="64" fill="#fafaf8"/>
+<text x="22" y="342" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060" letter-spacing="0.08em">ACTION /</text>
+<text x="22" y="354" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060" letter-spacing="0.08em">PROCESS</text>
+<text x="22" y="412" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060" letter-spacing="0.08em">OUTPUTS</text>
+<rect x="16" y="440" width="1208" height="64" fill="#fafaf8"/>
+<text x="22" y="476" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060" letter-spacing="0.08em">DESTINATION</text>
+<text x="22" y="534" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060" letter-spacing="0.08em">PLATFORM</text>
+<text x="22" y="546" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060" letter-spacing="0.08em">BUILD</text>
+<rect x="16" y="568" width="1208" height="64" fill="#fafaf8"/>
+<text x="22" y="604" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060" letter-spacing="0.08em">NOTES</text>
+<rect x="132" y="132" width="356" height="500" rx="6" fill="#ffffff" stroke="#5b3d9e" stroke-width="1.2"/>
+<rect x="132" y="132" width="356" height="52" rx="6" fill="#e8e0f5"/>
+<rect x="132" y="176" width="356" height="8" fill="#e8e0f5"/>
+<text x="142" y="149" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">LQA · liquidity</text>
+<text x="142" y="162" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">9 Mar 2016 · 17 of 18 fields</text>
+<rect x="142" y="167" width="118" height="13" rx="3" fill="#fdf6e3"/>
+<text x="201" y="176.5" text-anchor="middle" font-size="7.8" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">press release</text>
+<rect x="266" y="167" width="92" height="13" rx="3" fill="#ddf0e8"/>
+<text x="312" y="176.5" text-anchor="middle" font-size="7.8" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">deployed</text>
+<line x1="132" y1="184" x2="488" y2="184" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="210.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Liquidity risk has no consistent</text>
+<text x="142" y="225.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">measure across asset classes</text>
+<line x1="132" y1="248" x2="488" y2="248" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="274.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Market + transaction data</text>
+<text x="142" y="289.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Proprietary · daily batch</text>
+<line x1="132" y1="312" x2="488" y2="312" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="338.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Classical statistical ML —</text>
+<text x="142" y="353.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">'cluster analysis' on comparables</text>
+<line x1="132" y1="376" x2="488" y2="376" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="402.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">A liquidity score per security</text>
+<text x="142" y="417.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Daily, across 5m+ securities</text>
+<line x1="132" y1="440" x2="488" y2="440" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="459.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Data License, API, Terminal, Excel</text>
+<text x="142" y="474.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Clients override the defaults</text>
+<text x="142" y="489.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Stops at a person</text>
+<line x1="132" y1="504" x2="488" y2="504" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="523.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Delivery layer only — validation,</text>
+<text x="142" y="538.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">cleansing, outlier removal</text>
+<text x="142" y="553.0" font-size="9.6" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">&#9650; Retraining not described</text>
+<line x1="132" y1="568" x2="488" y2="568" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="587.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">No shortfall stated. No model change</text>
+<text x="142" y="602.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">since 2016 in any source. Change</text>
+<text x="142" y="617.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">material rests on sponsored content</text>
+<rect x="500" y="132" width="356" height="500" rx="6" fill="#ffffff" stroke="#5b3d9e" stroke-width="1.2"/>
+<rect x="500" y="132" width="356" height="52" rx="6" fill="#e8e0f5"/>
+<rect x="500" y="176" width="356" height="8" fill="#e8e0f5"/>
+<text x="510" y="149" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">GHG emissions model</text>
+<text x="510" y="162" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">23 Jul 2021 · 16 of 18 fields</text>
+<rect x="510" y="167" width="118" height="13" rx="3" fill="#ddf0e8"/>
+<text x="569" y="176.5" text-anchor="middle" font-size="7.8" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">peer-reviewed</text>
+<rect x="634" y="167" width="92" height="13" rx="3" fill="#ddf0e8"/>
+<text x="680" y="176.5" text-anchor="middle" font-size="7.8" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">deployed</text>
+<line x1="500" y1="184" x2="856" y2="184" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="510" y="203.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Almost nobody reports — 'merely 2.27%</text>
+<text x="510" y="218.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">of companies filing financial</text>
+<text x="510" y="233.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">statements are disclosing'</text>
+<line x1="500" y1="248" x2="856" y2="248" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="510" y="267.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">'More than 1,000 features' — ESG,</text>
+<text x="510" y="282.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">industry, financials, locations</text>
+<text x="510" y="297.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Proprietary · per fiscal year</text>
+<line x1="500" y1="312" x2="856" y2="312" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="510" y="331.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Gradient boosted decision trees,</text>
+<text x="510" y="346.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">recalibrated by normalizing flows</text>
+<text x="510" y="361.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">LightGBM named</text>
+<line x1="500" y1="376" x2="856" y2="376" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="510" y="402.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">An emissions distribution per company</text>
+<text x="510" y="417.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">plus a 1-10 confidence score</text>
+<line x1="500" y1="440" x2="856" y2="440" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="510" y="459.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">A Bloomberg product; investors pick</text>
+<text x="510" y="474.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">75% or 95% certainty</text>
+<text x="510" y="489.0" font-size="9.6" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">&#9650; Autonomy reach not stated</text>
+<line x1="500" y1="504" x2="856" y2="504" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="510" y="523.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Research pipeline only — masker model,</text>
+<text x="510" y="538.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">recalibration on the validation set</text>
+<text x="510" y="553.0" font-size="9.6" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">&#9650; Production stack not described</text>
+<line x1="500" y1="568" x2="856" y2="568" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="510" y="587.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Deployment stated only in a post, not</text>
+<text x="510" y="602.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">the paper. Feature count unreconciled</text>
+<text x="510" y="617.0" font-size="9.6" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">&#9650; Succession not stated</text>
+<rect x="868" y="132" width="356" height="500" rx="6" fill="#ffffff" stroke="#5b3d9e" stroke-width="1.2"/>
+<rect x="868" y="132" width="356" height="52" rx="6" fill="#e8e0f5"/>
+<rect x="868" y="176" width="356" height="8" fill="#e8e0f5"/>
+<text x="878" y="149" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">IBVAL · pricing</text>
+<text x="878" y="162" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2e1060">4 Dec 2023 · 17 of 18 fields</text>
+<rect x="878" y="167" width="118" height="13" rx="3" fill="#dce8f5"/>
+<text x="937" y="176.5" text-anchor="middle" font-size="7.8" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#1a3a5c">engineering post</text>
+<rect x="1002" y="167" width="92" height="13" rx="3" fill="#ddf0e8"/>
+<text x="1048" y="176.5" text-anchor="middle" font-size="7.8" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">deployed</text>
+<line x1="868" y1="184" x2="1224" y2="184" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="203.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Bilateral markets hide the price —</text>
+<text x="878" y="218.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">OTC pricing 'notoriously difficult</text>
+<text x="878" y="233.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">to predict'</text>
+<line x1="868" y1="248" x2="1224" y2="248" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="267.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Market + reference data + trade</text>
+<text x="878" y="282.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">metadata · proprietary</text>
+<text x="878" y="297.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Real-time — 'changes by the millisecond'</text>
+<line x1="868" y1="312" x2="1224" y2="312" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="331.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Tree ensembles — 'settled on using</text>
+<text x="878" y="346.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">tree-based methods'</text>
+<text x="878" y="361.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Explicitly NOT deep learning</text>
+<line x1="868" y1="376" x2="1224" y2="376" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="395.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">A price 'every 15 seconds'</text>
+<text x="878" y="410.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">plus a 1-10 data-quality score</text>
+<text x="878" y="425.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">and spread metrics</text>
+<line x1="868" y1="440" x2="1224" y2="440" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="459.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Terminal + feed into client workflow</text>
+<text x="878" y="474.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">automation, 'including trade execution'</text>
+<text x="878" y="489.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Leaves Bloomberg unapproved</text>
+<line x1="868" y1="504" x2="1224" y2="504" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="523.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Microservices, Iceberg lake, Trino,</text>
+<text x="878" y="538.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">6-7bn ticks a day. '&lt;6 hours to re-train,</text>
+<text x="878" y="553.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">regression test, and deploy'</text>
+<line x1="868" y1="568" x2="1224" y2="568" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="587.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">No empty field. The dossier's 'deep</text>
+<text x="878" y="602.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">learning' coding was unsupported and</text>
+<text x="878" y="617.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">is corrected here</text>
+<rect x="16" y="650" width="1208" height="28" rx="4" fill="#2a7a50"/>
+<text x="30" y="669" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#ffffff" letter-spacing="0.12em">GENERATIVE</text>
+<rect x="16" y="730" width="1208" height="64" fill="#fafaf8"/>
+<text x="22" y="760" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#133d26" letter-spacing="0.08em">BUSINESS</text>
+<text x="22" y="772" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#133d26" letter-spacing="0.08em">PROBLEM</text>
+<text x="22" y="830" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#133d26" letter-spacing="0.08em">INPUTS</text>
+<rect x="16" y="858" width="1208" height="64" fill="#fafaf8"/>
+<text x="22" y="888" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#133d26" letter-spacing="0.08em">ACTION /</text>
+<text x="22" y="900" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#133d26" letter-spacing="0.08em">PROCESS</text>
+<text x="22" y="958" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#133d26" letter-spacing="0.08em">OUTPUTS</text>
+<rect x="16" y="986" width="1208" height="64" fill="#fafaf8"/>
+<text x="22" y="1022" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#133d26" letter-spacing="0.08em">DESTINATION</text>
+<text x="22" y="1080" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#133d26" letter-spacing="0.08em">PLATFORM</text>
+<text x="22" y="1092" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#133d26" letter-spacing="0.08em">BUILD</text>
+<rect x="16" y="1114" width="1208" height="64" fill="#fafaf8"/>
+<text x="22" y="1150" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#133d26" letter-spacing="0.08em">NOTES</text>
+<rect x="132" y="678" width="356" height="500" rx="6" fill="#ffffff" stroke="#2a7a50" stroke-width="1.2"/>
+<rect x="132" y="678" width="356" height="52" rx="6" fill="#ddf0e8"/>
+<rect x="132" y="722" width="356" height="8" fill="#ddf0e8"/>
+<text x="142" y="695" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">Project Cyborg</text>
+<text x="142" y="708" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">Apr 2016 · 18 of 18 fields</text>
+<rect x="142" y="713" width="118" height="13" rx="3" fill="#ddf0e8"/>
+<text x="201" y="722.5" text-anchor="middle" font-size="7.8" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">peer-reviewed</text>
+<rect x="266" y="713" width="92" height="13" rx="3" fill="#ddf0e8"/>
+<text x="312" y="722.5" text-anchor="middle" font-size="7.8" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">deployed</text>
+<line x1="132" y1="730" x2="488" y2="730" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="756.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Journalists 'could previously only report</text>
+<text x="142" y="771.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">on a subset of company names of interest'</text>
+<line x1="132" y1="794" x2="488" y2="794" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="813.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Structured financial data from</text>
+<text x="142" y="828.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Bloomberg systems</text>
+<text x="142" y="843.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Real-time, event-triggered</text>
+<line x1="132" y1="858" x2="488" y2="858" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="884.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Rules and templates — and still</text>
+<text x="142" y="899.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">rules-based as at 2024</text>
+<line x1="132" y1="922" x2="488" y2="922" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="941.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">2016: headlines on hundreds of firms</text>
+<text x="142" y="956.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">2024: stories, charts, tables,</text>
+<text x="142" y="971.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">multiple languages</text>
+<line x1="132" y1="986" x2="488" y2="986" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="1005.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">The wire, byline 'By Bloomberg</text>
+<text x="142" y="1020.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Automation'. Gate at story TYPE,</text>
+<text x="142" y="1035.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">never at the instance</text>
+<line x1="132" y1="1050" x2="488" y2="1050" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="1069.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Pre-release test harness across market</text>
+<text x="142" y="1084.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">conditions; correction path; months per</text>
+<text x="142" y="1099.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">story type; localisation; byline disclosure</text>
+<line x1="132" y1="1114" x2="488" y2="1114" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="1133.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Origin unresolved: a 2015 retrospective</text>
+<text x="142" y="1148.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">vs a 26 Apr 2016 memo. 'Cyborg' appears</text>
+<text x="142" y="1163.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">zero times in Bloomberg's own 2024 paper</text>
+<rect x="500" y="678" width="356" height="500" rx="6" fill="#ffffff" stroke="#2a7a50" stroke-width="1.2"/>
+<rect x="500" y="678" width="356" height="52" rx="6" fill="#ddf0e8"/>
+<rect x="500" y="722" width="356" height="8" fill="#ddf0e8"/>
+<text x="510" y="695" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">EntSUM</text>
+<text x="510" y="708" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">5 Apr 2022 · 16 of 18 fields</text>
+<rect x="510" y="713" width="118" height="13" rx="3" fill="#ddf0e8"/>
+<text x="569" y="722.5" text-anchor="middle" font-size="7.8" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">peer-reviewed</text>
+<rect x="634" y="713" width="92" height="13" rx="3" fill="#eeeeee"/>
+<text x="680" y="722.5" text-anchor="middle" font-size="7.8" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#444444">research only</text>
+<line x1="500" y1="730" x2="856" y2="730" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="510" y="749.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">'each user may have a distinct</text>
+<text x="510" y="764.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">information need' — one summary</text>
+<text x="510" y="779.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">does not suit every reader</text>
+<line x1="500" y1="794" x2="856" y2="794" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="510" y="813.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Licensed NYT archive 1987-2007</text>
+<text x="510" y="828.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">plus human annotations</text>
+<text x="510" y="843.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Not proprietary · retrospective, fixed</text>
+<line x1="500" y1="858" x2="856" y2="858" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="510" y="884.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Eleven benchmarked systems: GSum on</text>
+<text x="510" y="899.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">BART, BERTSum, CTRLSum, ConvNet, Lead3</text>
+<line x1="500" y1="922" x2="856" y2="922" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="510" y="941.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">A dataset — '2,788 human-generated</text>
+<text x="510" y="956.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">entity-centric summaries across 645</text>
+<text x="510" y="971.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">documents', plus eval scores</text>
+<line x1="500" y1="986" x2="856" y2="986" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="510" y="1005.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">A public release - Zenodo and GitHub</text>
+<text x="510" y="1020.0" font-size="9.6" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">&#9650; No deployment sentence exists</text>
+<text x="510" y="1035.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">anywhere in the paper</text>
+<line x1="500" y1="1050" x2="856" y2="1050" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="510" y="1069.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">An annotation factory - internal platform,</text>
+<text x="510" y="1084.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">trained vendors, redundancy to five on</text>
+<text x="510" y="1099.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">disagreement, agreement scored throughout</text>
+<line x1="500" y1="1114" x2="856" y2="1114" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="510" y="1133.0" font-size="9.6" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">&#9650; Autonomy reach empty, and the emptiness</text>
+<text x="510" y="1148.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">is the finding. Stated plainly: no automated</text>
+<text x="510" y="1163.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">method beats the trivial Lead3 baseline</text>
+<rect x="868" y="678" width="356" height="500" rx="6" fill="#ffffff" stroke="#2a7a50" stroke-width="1.2"/>
+<rect x="868" y="678" width="356" height="52" rx="6" fill="#ddf0e8"/>
+<rect x="868" y="722" width="356" height="8" fill="#ddf0e8"/>
+<text x="878" y="695" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">News summaries</text>
+<text x="878" y="708" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">15 Jan 2025 · 17 of 18 fields</text>
+<rect x="878" y="713" width="118" height="13" rx="3" fill="#f4ecec"/>
+<text x="937" y="722.5" text-anchor="middle" font-size="7.8" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#6b2020">press release + trade</text>
+<rect x="1002" y="713" width="92" height="13" rx="3" fill="#ddf0e8"/>
+<text x="1048" y="722.5" text-anchor="middle" font-size="7.8" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">deployed</text>
+<line x1="868" y1="730" x2="1224" y2="730" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="749.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Too much to read - help readers 'save</text>
+<text x="878" y="764.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">time through the efficient discovery of</text>
+<text x="878" y="779.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">relevant and timely information'</text>
+<line x1="868" y1="794" x2="1224" y2="794" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="813.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Bloomberg news articles, proprietary</text>
+<text x="878" y="828.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Automatic atop articles; the company</text>
+<text x="878" y="843.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">view is invoked by the user</text>
+<line x1="868" y1="858" x2="1224" y2="858" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="877.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">'Bloomberg uses generative AI technology'</text>
+<text x="878" y="892.0" font-size="9.6" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">&#9650; The model is never named, by anyone,</text>
+<text x="878" y="907.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">at any date</text>
+<line x1="868" y1="922" x2="1224" y2="922" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="941.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">'three succinct bullet points at the top</text>
+<text x="878" y="956.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">of Bloomberg News content'</text>
+<text x="878" y="971.0" font-size="9.6" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">&#9650; Volume not stated - no figure exists</text>
+<line x1="868" y1="986" x2="1224" y2="986" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="1005.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Terminal, Bloomberg.com, mobile</text>
+<text x="878" y="1020.0" font-size="9.6" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">&#9650; CONTESTED - Bloomberg says journalists</text>
+<text x="878" y="1035.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">have full control; staffers say otherwise</text>
+<line x1="868" y1="1050" x2="1224" y2="1050" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="1069.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Offline expert review to refine the model;</text>
+<text x="878" y="1084.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">a removal and correction path in production</text>
+<text x="878" y="1099.0" font-size="9.6" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">&#9650; Trigger, pipeline, monitoring not described</text>
+<line x1="868" y1="1114" x2="1224" y2="1114" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="1133.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Fullest shortfall record in the corpus -</text>
+<text x="878" y="1148.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">'at least three dozen' corrections, 20+</text>
+<text x="878" y="1163.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">removals, named hallucinations, no rollback</text>
+<rect x="16" y="1196" width="1208" height="28" rx="4" fill="#b8860b"/>
+<text x="30" y="1215" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#ffffff" letter-spacing="0.12em">AGENTIC</text>
+<rect x="16" y="1276" width="1208" height="64" fill="#fafaf8"/>
+<text x="22" y="1306" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00" letter-spacing="0.08em">BUSINESS</text>
+<text x="22" y="1318" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00" letter-spacing="0.08em">PROBLEM</text>
+<text x="22" y="1376" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00" letter-spacing="0.08em">INPUTS</text>
+<rect x="16" y="1404" width="1208" height="64" fill="#fafaf8"/>
+<text x="22" y="1434" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00" letter-spacing="0.08em">ACTION /</text>
+<text x="22" y="1446" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00" letter-spacing="0.08em">PROCESS</text>
+<text x="22" y="1504" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00" letter-spacing="0.08em">OUTPUTS</text>
+<rect x="16" y="1532" width="1208" height="64" fill="#fafaf8"/>
+<text x="22" y="1568" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00" letter-spacing="0.08em">DESTINATION</text>
+<text x="22" y="1626" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00" letter-spacing="0.08em">PLATFORM</text>
+<text x="22" y="1638" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00" letter-spacing="0.08em">BUILD</text>
+<rect x="16" y="1660" width="1208" height="64" fill="#fafaf8"/>
+<text x="22" y="1696" font-size="8.5" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00" letter-spacing="0.08em">NOTES</text>
+<rect x="132" y="1224" width="356" height="500" rx="6" fill="#ffffff" stroke="#b8860b" stroke-width="1.2"/>
+<rect x="132" y="1224" width="356" height="52" rx="6" fill="#fdf6e3"/>
+<rect x="132" y="1268" width="356" height="8" fill="#fdf6e3"/>
+<text x="142" y="1241" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">Automated Intelligence</text>
+<text x="142" y="1254" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">origin NOT ESTABLISHED · 2016-18 · 15 of 18</text>
+<rect x="142" y="1259" width="118" height="13" rx="3" fill="#f4ecec"/>
+<text x="201" y="1268.5" text-anchor="middle" font-size="7.8" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#6b2020">marketing</text>
+<rect x="266" y="1259" width="92" height="13" rx="3" fill="#ddf0e8"/>
+<text x="312" y="1268.5" text-anchor="middle" font-size="7.8" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">deployed</text>
+<line x1="132" y1="1276" x2="488" y2="1276" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="1302.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">'The data has outpaced what human</text>
+<text x="142" y="1317.5" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">analysts alone can handle'</text>
+<line x1="132" y1="1340" x2="488" y2="1340" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="1359.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Market + reference data, filings, news</text>
+<text x="142" y="1374.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">and social analytics · proprietary</text>
+<text x="142" y="1389.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Real-time, threshold-triggered</text>
+<line x1="132" y1="1404" x2="488" y2="1404" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="1423.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Rules and templates - 'more than 500</text>
+<text x="142" y="1438.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">templates'; 'some story types rely on</text>
+<text x="142" y="1453.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">natural language processing'</text>
+<line x1="132" y1="1468" x2="488" y2="1468" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="1487.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Wire stories, plus the publish action</text>
+<text x="142" y="1502.0" font-size="9.6" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">&#9650; Scale conflicted: 500+ templates vs</text>
+<text x="142" y="1517.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">dozens of story types vs hundreds of bots</text>
+<line x1="132" y1="1532" x2="488" y2="1532" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="1551.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">'a fully automated news service' on</text>
+<text x="142" y="1566.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Bloomberg News and First Word</text>
+<text x="142" y="1581.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Gate at story TYPE; an editor signs off once</text>
+<line x1="132" y1="1596" x2="488" y2="1596" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="1615.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Threshold triggers, retrieval, business</text>
+<text x="142" y="1630.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">logic, headline waterfall, wire routing</text>
+<text x="142" y="1645.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Template authoring; 100+ currencies</text>
+<line x1="132" y1="1660" x2="488" y2="1660" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="142" y="1679.0" font-size="9.6" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">&#9650; ORIGIN NOT ESTABLISHED - no source says</text>
+<text x="142" y="1694.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">when it began. Name first attested Jun 2020.</text>
+<text x="142" y="1709.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Register: first-party marketing</text>
+<rect x="500" y="1224" width="356" height="500" rx="6" fill="#fcfcfb" stroke="#c3c2b7" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="678" y="1464" text-anchor="middle" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5f5e5a">No agentic case in this period</text>
+<text x="678" y="1484" text-anchor="middle" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#888780">2019 and 2020 hold no case in any mode.</text>
+<text x="678" y="1500" text-anchor="middle" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#888780">The band is empty because the record is.</text>
+<rect x="868" y="1224" width="356" height="500" rx="6" fill="#ffffff" stroke="#b8860b" stroke-width="1.2"/>
+<rect x="868" y="1224" width="356" height="52" rx="6" fill="#fdf6e3"/>
+<rect x="868" y="1268" width="356" height="8" fill="#fdf6e3"/>
+<text x="878" y="1241" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">ASKB</text>
+<text x="878" y="1254" font-size="8.5" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#5a3e00">23 Feb 2026 · 17 of 18 fields</text>
+<rect x="878" y="1259" width="118" height="13" rx="3" fill="#f4ecec"/>
+<text x="937" y="1268.5" text-anchor="middle" font-size="7.8" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#6b2020">corporate comms</text>
+<rect x="1002" y="1259" width="92" height="13" rx="3" fill="#ddf0e8"/>
+<text x="1048" y="1268.5" text-anchor="middle" font-size="7.8" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#133d26">deployed</text>
+<line x1="868" y1="1276" x2="1224" y2="1276" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="1295.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Research is 'fragmented and manual -</text>
+<text x="878" y="1310.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">jump between screens, assemble</text>
+<text x="878" y="1325.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">information, spend hours synthesizing'</text>
+<line x1="868" y1="1340" x2="1224" y2="1340" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="1359.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Structured data + unstructured documents,</text>
+<text x="878" y="1374.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">news and research from 'over 1,200'</text>
+<text x="878" y="1389.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">providers · at request, or on a trigger</text>
+<line x1="868" y1="1404" x2="1224" y2="1404" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="1423.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">'a coordinated network of AI agents working</text>
+<text x="878" y="1438.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">in parallel', on commercial + open-weight LLMs</text>
+<text x="878" y="1453.0" font-size="9.6" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">&#9650; No model vendor named by Bloomberg</text>
+<line x1="868" y1="1468" x2="1224" y2="1468" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="1487.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Attributed answers, query code, charts</text>
+<text x="878" y="1502.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">and tables, reusable templates</text>
+<text x="878" y="1517.0" font-size="9.6" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">&#9650; No adoption or output figure published</text>
+<line x1="868" y1="1532" x2="1224" y2="1532" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="1551.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Back to the user who asked</text>
+<text x="878" y="1566.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">'no autonomous action on the world; no</text>
+<text x="878" y="1581.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">trade execution, no order placement'</text>
+<line x1="868" y1="1596" x2="1224" y2="1596" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="1615.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Grounding, attribution, entitlement-aware</text>
+<text x="878" y="1630.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">access, post-processing for hallucinations</text>
+<text x="878" y="1645.0" font-size="9.6" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">&#9650; No named router, planner or eval suite</text>
+<line x1="868" y1="1660" x2="1224" y2="1660" stroke="#e1e0d9" stroke-width="0.6"/>
+<text x="878" y="1679.0" font-size="9.6" font-weight="600" font-family="Segoe UI, Arial, sans-serif" fill="#b03030">&#9650; Routing, evaluation and feedback all come</text>
+<text x="878" y="1694.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">from ONE analyst interview, appearing in no</text>
+<text x="878" y="1709.0" font-size="9.6" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#2c2c2a">Bloomberg-published document</text>
+<rect x="16" y="1746" width="1208" height="112" rx="6" fill="#f8f9fa" stroke="#cbd5e1" stroke-width="0.75"/>
+<text x="32" y="1768" font-size="12" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">How to read this</text>
+<line x1="16" y1="1776" x2="1224" y2="1776" stroke="#cbd5e1" stroke-width="0.75"/>
+<text x="32" y="1794" font-size="10" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Block colour = mode.</text>
+<text x="208" y="1794" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#475569">Purple predictive, green generative, gold agentic. A case appears once, in the mode row chosen as its exemplar.</text>
+<text x="32" y="1811" font-size="10" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">First chip = source register.</text>
+<text x="208" y="1811" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#475569">Peer-reviewed, engineering post, press release, marketing. Read the PLATFORM BUILD row against this chip, never alone.</text>
+<text x="32" y="1828" font-size="10" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">Second chip = did it run.</text>
+<text x="208" y="1828" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#475569">Deployed, research only, not deployed. A published paper is not evidence of deployment.</text>
+<text x="32" y="1845" font-size="10" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1e293b">&#9650; red = a silence in the record.</text>
+<text x="208" y="1845" font-size="10" font-weight="400" font-family="Segoe UI, Arial, sans-serif" fill="#475569">Not a property of the system. An empty field and a stated zero are different things and are worded differently.</text>
+</svg>

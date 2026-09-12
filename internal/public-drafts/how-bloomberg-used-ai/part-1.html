@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foundations &mdash; How Bloomberg Used AI, Part 1 of 3 &mdash; Bursera Consulting</title>
+<meta name="description" content="Part 1 of 3: Foundations. A decade of Bloomberg's predictive, generative and agentic AI systems, traced case by case from the published record. Public draft.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/part-1.html">
+<link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Foundations &mdash; How Bloomberg Used AI, Part 1 of 3">
+<meta property="og:description" content="Part 1 of 3: Foundations. A decade of Bloomberg's predictive, generative and agentic AI systems, traced from the published record.">
+<meta property="og:url" content="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/part-1.html">
+<meta property="og:image" content="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/og-bloomberg-ai.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Predictive, Generative, Agentic &mdash; a word-cloud cover over a blue and violet particle field.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>/* AIJM paper build - shared stylesheet.
+   Palette and type are the house tokens from the output-formatting skill,
+   which are the same values the Data Lifecycle papers 1/3/4 carry inline. */
+:root{
+  --blue:#4a5c6b; --blue-light:#7a9aad; --blue-pale:#e8edf0;
+  --gold:#8a6e3a; --gold-pale:#f2ede3;
+  --green:#1a5c2a; --green-pale:#e8f5e9;
+  --red:#8b1a1a;  --red-pale:#fdecea;
+  --ink:#28303a;  --bg:#f4f2ee;
+  --gray-mid:#8a7660; --gray-rule:#d4c8b0;
+  --sonoran-sky:#a8c8d8; --caliche:#8a7660;
+  --col-w:760px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Serif 4',Georgia,serif;font-size:17px;line-height:1.75;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+p{margin-bottom:16px}
+a{color:var(--blue)}
+.skip-link{position:absolute;left:-9999px}
+.skip-link:focus{left:8px;top:8px;background:#fff;padding:8px 12px;z-index:99}
+
+/* top bar */
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;
+  background:var(--ink);color:#fff;padding:10px 24px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px}
+.topbar__brand{color:#fff;text-decoration:none;font-weight:600}
+.topbar__brand span{color:var(--sonoran-sky);font-weight:400}
+.topbar__draft{color:var(--gold-pale);opacity:.75;text-transform:uppercase;letter-spacing:2px;font-size:10px}
+
+/* the series strip - the Data Lifecycle idea, made clickable and made to stay put */
+.stickyhead{position:sticky;top:0;z-index:50;box-shadow:0 1px 0 rgba(40,48,58,.06),0 6px 18px -12px rgba(40,48,58,.45)}
+.series{background:var(--gold-pale);border-bottom:3px solid var(--gold);padding:9px 16px}
+.series__label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:7px}
+.series__chips{display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:6px;
+  max-width:1100px;margin:0 auto;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px}
+@media (min-width:1120px){.series__chips{justify-content:center;flex-wrap:wrap;overflow-x:visible}}
+.chip{display:flex;align-items:baseline;gap:6px;white-space:nowrap;text-decoration:none;background:#fff;
+  border:1px solid var(--gray-rule);border-top:3px solid var(--blue-light);border-radius:3px;
+  padding:5px 10px;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:12px;
+  font-weight:600;color:var(--ink);transition:border-top-color .15s,background .15s}
+.chip:hover{background:var(--blue-pale);border-top-color:var(--blue)}
+.chip b{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:var(--gray-mid);letter-spacing:1px}
+.chip--current{background:var(--blue-pale);border-top-color:var(--blue);border-top-width:4px;color:var(--blue);cursor:default}
+.chip--current b{color:var(--blue)}
+
+/* cover + page head */
+.cover{background:var(--blue);color:#fff;padding:80px 40px 60px;text-align:center}
+.cover__eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--sonoran-sky);margin-bottom:28px}
+.cover h1{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(32px,5vw,52px);
+  font-weight:700;line-height:1.1;margin-bottom:16px}
+.cover__sub{font-size:16px;color:rgba(168,200,216,.9);font-style:italic;max-width:600px;margin:0 auto 36px}
+.cover__meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--sonoran-sky);letter-spacing:1px;opacity:.8}
+.pagehead{max-width:var(--col-w);margin:0 auto;padding:56px 24px 0}
+.pagehead__num{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gray-mid);margin-bottom:10px}
+.pagehead__title{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(26px,4vw,40px);
+  font-weight:700;color:var(--blue);line-height:1.15;padding-bottom:14px;border-bottom:3px solid var(--blue)}
+
+/* body */
+.doc{max-width:var(--col-w);margin:0 auto;padding:40px 24px 72px}
+.doc h1{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(22px,3vw,30px);
+  font-weight:700;color:var(--blue);line-height:1.2;margin:48px 0 20px;padding-bottom:10px;
+  border-bottom:2px solid var(--gray-rule)}
+.doc h2{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:21px;font-weight:600;
+  color:var(--ink);margin:40px 0 14px}
+.doc h3{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:17px;font-weight:600;
+  color:var(--gray-mid);margin:30px 0 10px}
+.doc ul,.doc ol{margin:0 0 18px 22px}
+.doc li{margin-bottom:8px}
+.doc hr{border:0;border-top:1px solid var(--gray-rule);margin:40px 0}
+
+/* definition panels - a blockquote opening on a bold-italic term */
+blockquote{border-left:4px solid var(--blue-light);background:var(--blue-pale);
+  padding:16px 20px;margin:24px 0;font-size:15.5px;line-height:1.65}
+blockquote p{margin-bottom:10px}
+blockquote.term{border-left-color:var(--gold);background:var(--gold-pale)}
+.term__name{display:block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;
+  letter-spacing:.5px;color:var(--gold);margin-bottom:6px}
+
+/* inline glossary links - an inline ***term*** that resolved to an Appendix anchor */
+a.term-link{color:inherit;text-decoration:none;border-bottom:1px dotted var(--gold)}
+a.term-link:hover{border-bottom-style:solid}
+
+/* marked panels - the seam between reportage and Bursera's own view */
+.panel{margin:36px 0;padding:24px 26px;border-radius:3px}
+.panel__label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;margin-bottom:14px}
+.panel--view{background:#fff;border:2px solid var(--gold);border-left-width:6px}
+.panel--view .panel__label{color:var(--gold)}
+.panel--assistant{background:#eef1f3;border:1px solid var(--gray-rule);border-left:6px solid var(--blue-light)}
+.panel--assistant .panel__label{color:var(--gray-mid)}
+.panel h2{font-family:'DM Sans',sans-serif;font-size:18px;margin:0 0 6px}
+.panel p:last-child{margin-bottom:0}
+
+/* tables */
+.table-wrap{overflow-x:auto;margin:26px 0}
+table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.5;
+  font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif}
+thead th{background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:.5px;padding:10px 12px;text-align:left;font-weight:600}
+tbody td{padding:9px 12px;border-bottom:1px solid #e3ded2;vertical-align:top}
+tbody tr:nth-child(even){background:#efece5}
+tbody td:first-child{font-weight:600;color:var(--blue)}
+
+/* figures */
+.figure{margin:32px 0;text-align:center;position:relative}
+.figure img{max-width:100%;height:auto;border:1px solid var(--gray-rule);background:#fff;border-radius:3px}
+.figure figcaption{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:12.5px;
+  color:var(--gray-mid);margin-top:10px;text-align:left;line-height:1.5}
+
+/* figure lightbox (AIJM-S18 Task 6; full-width fix BURSBUILD-S25, shared per Hugh's ruling) */
+.figure img,.figure svg{cursor:zoom-in}
+.figure__expand{position:absolute;top:8px;right:8px;opacity:0;pointer-events:none;
+  background:rgba(255,255,255,.92);border:1px solid var(--gray-rule);border-radius:4px;
+  padding:4px 9px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink);
+  transition:opacity .15s}
+.figure:hover .figure__expand{opacity:1}
+.lightbox{position:fixed;inset:0;background:rgba(18,18,18,.92);display:none;
+  align-items:center;justify-content:center;z-index:9999;padding:5vh 5vw;cursor:zoom-out}
+.lightbox.is-open{display:flex}
+.lightbox__inner{width:96vw;max-height:92vh;overflow:auto}
+.lightbox__inner img,.lightbox__inner svg{width:100%;height:auto;max-width:none;max-height:none;
+  background:#fff;border-radius:4px;display:block;margin:0 auto}
+.lightbox__close{position:absolute;top:22px;right:30px;color:#fff;font-size:30px;line-height:1;
+  cursor:pointer;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif}
+html{scroll-padding-top:96px}
+@media print{
+  .stickyhead,.pagefoot,.topbar{display:none}
+  body{background:#fff;font-size:11pt}
+  .doc{max-width:none}
+  .panel,.figure,blockquote,table{break-inside:avoid}
+  .figure__expand,.lightbox{display:none!important}
+}
+
+/* contents */
+.toc{list-style:none;margin:8px 0 32px;padding:0;counter-reset:none}
+.toc li{margin:0;border-bottom:1px solid var(--gray-rule)}
+.toc a{display:flex;align-items:baseline;gap:16px;padding:16px 4px;text-decoration:none;color:var(--ink)}
+.toc a:hover{background:var(--blue-pale)}
+.toc__num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gray-mid);min-width:26px}
+.toc__label{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:18px;font-weight:600;
+  color:var(--blue);flex:1}
+.toc__words{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gray-mid)}
+.note{font-size:14.5px;color:var(--gray-mid);font-style:italic}
+
+/* pager */
+.pagefoot{max-width:var(--col-w);margin:0 auto;padding:24px;display:flex;justify-content:space-between;
+  gap:16px;border-top:1px solid var(--gray-rule);
+  font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:14px;font-weight:600}
+.pager{text-decoration:none;color:var(--blue)}
+.pager:hover{text-decoration:underline}
+
+@media (max-width:640px){
+  .series__chips{gap:6px}
+  .chip{font-size:11.5px;padding:6px 9px}
+  .topbar{flex-direction:column;align-items:flex-start;gap:4px}
+}
+
+
+/* --- BURSBUILD-S25 v3.0: site-adaptation chrome over the AIJM multi-page build --- */
+.site-header{
+  font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:#FFFFFF; border-bottom:1px solid #E2E8F0;
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+  gap:12px 20px; padding:12px 24px;
+}
+.site-header .wordmark{ font-weight:700; font-size:1.125rem; letter-spacing:-.01em; color:#0F172A; text-decoration:none; white-space:nowrap; }
+.site-header .wordmark span{ color:#8B6914; }
+.site-header .site-nav{ display:flex; flex-wrap:wrap; gap:16px; font-size:14px; list-style:none; margin:0; padding:0; }
+.site-header .site-nav a{ display:inline-block; min-height:44px; line-height:44px; color:#475569; text-decoration:none; border-bottom:2px solid transparent; transition:color .15s,border-color .15s; }
+.site-header .site-nav a:hover{ color:#8B6914; border-bottom-color:#C9A33D; }
+@media (min-width:720px){ .site-header{ padding:12px 48px; } }
+
+/* v3.0: series-cap folded INTO the sticky topbar (was a second, separate dark band
+   above the sticky one -- Hugh's call: collapse the two black bands into one combined
+   band that stays visible with the current part's section nav while scrolling). */
+.topbar__series{ display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:0 10px; }
+.series-cap-label{ text-transform:uppercase; letter-spacing:2px; color:#94A3B8; }
+.series-cap-sep{ color:#475569; user-select:none; }
+.series-cap-item{ color:#CBD5E1; text-decoration:none; }
+.series-cap-item:hover{ color:#F1F5F9; }
+.series-cap-item--active{ color:#F1F5F9; font-weight:700; }
+@media (max-width:640px){ .topbar__series{ justify-content:flex-start; font-size:10px; } }
+
+.draft-marker{
+  background:var(--gold-pale); border-bottom:2px solid var(--gold); color:var(--ink);
+  font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px; text-transform:uppercase;
+  text-align:center; padding:9px 16px;
+}
+.draft-marker a{ color:var(--ink); text-decoration:underline; }
+
+.site-coverband{ background:var(--blue); color:#fff; text-align:center; }
+.site-coverband__img{ width:100%; max-height:340px; object-fit:cover; object-position:top; display:block; }
+.site-coverband__img--p1{ object-position:top; }
+.site-coverband__img--p2{ object-position:center 65%; }
+.site-coverband__img--p3{ object-position:bottom; }
+.site-coverband__body{ padding:32px 24px 40px; max-width:var(--col-w); margin:0 auto; }
+.site-coverband h1{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-size:clamp(26px,4.2vw,40px); font-weight:700; line-height:1.15; margin-bottom:10px; }
+.site-coverband__partnum{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+.site-coverband__tagline{ font-size:15.5px; color:rgba(168,200,216,.9); font-style:italic; margin-bottom:8px; }
+.site-coverband__meta{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--caliche); letter-spacing:1px; margin-top:14px; }
+
+/* v3.0: strong visual break between the 3 sections concatenated within one part --
+   Hugh's call: this is more content per page than the site has handled before, and the
+   old plain <hr/> join between sections did not read as a real break while scrolling. */
+.section-divider{
+  width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);
+  background:var(--ink); color:#fff; margin-top:64px; margin-bottom:0;
+  padding:22px 24px; display:flex; flex-wrap:wrap; align-items:baseline; justify-content:center;
+  gap:4px 16px; font-family:'JetBrains Mono',monospace; border-top:2px solid var(--gold); border-bottom:2px solid var(--gold);
+}
+.section-divider__num{ text-transform:uppercase; letter-spacing:3px; font-size:11px; color:var(--gold-pale); opacity:.9; white-space:nowrap; }
+.section-divider__title{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-weight:700; font-size:19px; color:#fff; }
+.section-heading{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-size:15px; font-weight:600;
+  text-transform:uppercase; letter-spacing:1px; color:var(--caliche); margin:20px 0 18px; }
+.section-heading--first{ font-size:21px; text-transform:none; letter-spacing:normal; color:var(--blue); margin:0 0 20px; font-weight:600; }
+@media print{
+  .section-divider{ background:none; color:var(--ink); width:auto; margin-left:0; margin-right:0; }
+  .section-divider__num{ color:var(--caliche); }
+  .section-divider__title{ color:var(--ink); }
+}
+
+/* v3.0: quick "back to top" control -- more content per page than before makes this worth having */
+.back-to-top{
+  position:fixed; right:20px; bottom:24px; z-index:60; width:44px; height:44px; border-radius:50%;
+  background:var(--ink); color:#fff; border:2px solid var(--gold); text-decoration:none;
+  display:flex; align-items:center; justify-content:center; font-size:19px; line-height:1;
+  box-shadow:0 6px 18px -6px rgba(0,0,0,.45); opacity:0; pointer-events:none; transform:translateY(8px);
+  transition:opacity .2s ease, transform .2s ease;
+}
+.back-to-top.is-visible{ opacity:1; pointer-events:auto; transform:translateY(0); }
+.back-to-top:hover{ background:#1c2531; }
+@media print{ .back-to-top{ display:none; } }
+
+.provenance{ background:#f0efec; border-top:3px solid var(--caliche); padding:40px 24px; max-width:var(--col-w); margin:48px auto 0; }
+.provenance h2{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:var(--caliche); margin-bottom:20px; }
+.prov-row{ display:grid; grid-template-columns:160px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid var(--gray-rule); font-size:13px; }
+.prov-row:last-child{ border-bottom:none; }
+.prov-label{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--caliche); padding-top:2px; }
+.prov-value{ color:#444; line-height:1.6; }
+@media (max-width:640px){ .prov-row{ grid-template-columns:1fr; } }
+/* BURSBUILD-S27: compatibility for provenance_render.py's generated dl/dt/dd markup
+   (the block is generated from the record, not hand-typeset -- keep its markup as-is
+   and adapt the CSS, rather than rewriting generator output to match old div markup). */
+.prov-grid{ margin:0; }
+.prov-grid .prov-row dt{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px;
+  text-transform:uppercase; color:var(--caliche); margin:0; padding-top:2px; }
+.prov-grid .prov-row dd{ margin:0; color:#444; line-height:1.6; }
+.prov-closing{ font-size:13px; color:var(--caliche); margin-top:16px; }
+
+@media print{
+  .site-header,.draft-marker{ display:none; }
+  /* BURSBUILD-S27 print-blocker fix: without forcing color-adjust, browsers strip
+     background colors by default in print, leaving thead th and .site-coverband's
+     white text on a transparent (effectively white) background -- unreadable. */
+  html,body{ -webkit-print-color-adjust:exact; print-color-adjust:exact; color-adjust:exact; }
+  thead th{ background:var(--blue) !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .site-coverband{ background:var(--blue) !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .site-coverband__img{ display:none; }
+}
+
+</style></head>
+<body class="news-story">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="wordmark" href="/">Bursera <span>Consulting</span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/">Home</a>
+    <a href="/research_examples.html">Research</a>
+    <a href="/llm-leadership.html">Training</a>
+    <a href="/advisory.html">Advisory</a>
+    <a href="/about.html">About</a>
+    <a href="/news.html">Updates</a>
+  </nav>
+</header>
+<div class="stickyhead">
+<div class="topbar">
+<a class="topbar__brand" href="/">Bursera <span>Consulting</span></a>
+<div class="topbar__series"><span class="series-cap-label">How Bloomberg Used AI</span><span class="series-cap-sep">&middot;</span><span class="series-cap-item series-cap-item--active">1 &mdash; Foundations</span><span class="series-cap-sep">&middot;</span><a class="series-cap-item" href="part-2.html">2 &mdash; Predictive, Generative, Agentic</a><span class="series-cap-sep">&middot;</span><a class="series-cap-item" href="part-3.html">3 &mdash; Conclusion & Reference</a></div>
+<span class="topbar__draft">Public draft &middot; not yet deployed</span>
+</div>
+<nav class="series" aria-label="Sections in this part">
+  <div class="series__label">Part 1 &mdash; Foundations</div>
+  <div class="series__chips">
+  <a class="chip chip--current" href="#s1" data-sec="s1" aria-current="page"><b>01</b>Introduction</a>
+  <a class="chip" href="#s2" data-sec="s2"><b>02</b>How the field got here</a>
+  <a class="chip" href="#s3" data-sec="s3"><b>03</b>How these systems work</a>
+  </div>
+</nav>
+</div>
+<div class="site-coverband">
+  <img class="site-coverband__img site-coverband__img--p1" src="ai-history-bloomberg-header.jpg" width="1376" height="768" alt="Predictive, Generative, Agentic &mdash; a word-cloud cover over a blue and violet particle field.">
+  <div class="site-coverband__body">
+    <div class="site-coverband__partnum">Part 1 of 3</div>
+    <h1>Foundations</h1>
+    <p class="site-coverband__tagline">What AI is, how the field got here, and how these systems actually work</p>
+    <p class="site-coverband__meta">Hugh McCutchen &middot; Bursera Consulting &middot; September 2026 &middot; Public Draft</p>
+  </div>
+</div>
+<main id="main" class="doc">
+<h2 id="s1" class="section-heading section-heading--first">AI is hot but it isn't new</h2>
+<p>We hear about <strong><em>Large Language Models</em></strong> and chat tools and "AI" a lot these days. If you were in the technology field during the 2010s you likely knew AI was already proving valuable in industries like finance and healthcare, that the work was done by data scientists, and that it involved <strong><em>models</em></strong> and <strong><em>training</em></strong>.</p>
+<p>Businesses like Bloomberg were among the successes, and used AI extensively. This is how a news story hits the wire seconds after an earnings release, and how an analyst gets a usable summary of a call while it still matters. AI takes raw news and financial data and, step by step, works out how to produce something a person wants to read. And this work was being done with earlier forms of AI, long before the ChatGPT era.</p>
+<p>This paper traces eleven of Bloomberg's publicly documented AI systems from the past ten years, to show how the technical tools have changed and how their use has changed with them.</p>
+<aside class="panel panel--view">
+<div class="panel__label">Voice of Bursera</div>
+<h2>BURSERA'S TAKE — HISTORY TELLS US ABOUT THE PRESENT!</h2>
+<p>Thirty years in technology, more than twenty of them as a data engineering practitioner. "AI" has been a buzzword for a few decades and it never landed in a practical way for the data problems my own organizations needed to solve — consistent analysis and reporting on structured data. And yet it was plainly solving very specific problems for some businesses. My read is that despite a great deal of excitement and investment there were far more failures at finding high-value uses for AI in business than there were successes, and that Bloomberg is one of the places to look at what a success actually consisted of.</p>
+<p>From my own work with these tools I think implementation is as much about the systems wrapped around a model as about the model itself.</p>
+<p>I have limited knowledge of the full AI toolset and no hands-on experience building these systems. So rather than tease out a story in the history, I worked with Claude to assemble a panel of four researchers who do have that knowledge, and used their writing as the lens for reading what Bloomberg built.</p>
+<p>Bloomberg was chosen as a single organization because it has been unusually public about its use of AI, and because it uses AI in a way many adults in the US can follow and have probably experienced without recognizing it.</p>
+<p><em>Where you are reading my view rather than the record, it sits in a panel like this one.</em></p>
+</aside>
+<hr />
+<h2>How the paper is organized</h2>
+<p>The eleven systems are grouped by what they produce. Some produce a number, a score or a ranking (Predictive). Some produce content — prose, code, images (Generative). Some take actions in other systems without a person approving each step (Agentic). All three kinds appear across the whole period, which is why the paper is organized by kind rather than by era.</p>
+<figure class="figure">
+<img src="diagrams/AIJM-S10_THREE-LANES_v0.1.svg" alt="" loading="lazy">
+
+</figure>
+<p>Each system is also placed in one of three date bands: before 2019, 2019 to 2022, and 2023 to 2026 just to provide another way to see the field of cases we're reviewing.  They aren't obvious "periods" of AI.</p>
+<figure class="figure">
+<img src="diagrams/AIJM-S18_MODE-PERIOD-CASE-GRID_v0.4.svg" alt="The eleven systems, by what they produce and when" loading="lazy">
+<figcaption>The eleven systems, by what they produce and when</figcaption>
+</figure>
+<hr />
+<hr />
+<div class="section-divider" id="s2">
+<span class="section-divider__num">Section 2 of 3</span>
+<span class="section-divider__title">How the field got here</span>
+</div>
+<h2 class="section-heading">How the field got here</h2>
+<h2>Automated news writing already worked in 2014</h2>
+<p>Automated production of text is older than most accounts of it. In its simplest form this is a "mail merge" with a lot of rules around what to merge and when to send it. By 2014, Automated Insights' Wordsmith was producing publishable earnings copy from market data, and the Associated Press was filing it. AP's own account is precise about how far the automation ran: the stories were "generated and sent directly out on the AP wires without human intervention," while "story templates were built for the automated output by experienced AP editors" and "the journalists have to watch for any errors and correct them."</p>
+<p>A number became prose and the prose reached the wire with nobody approving that particular story. People were thoroughly present in building and managing the system and absent from each individual item. The same split recurs in many systems in this paper.</p>
+<p>The machinery underneath was that fancy mail merge — all of those templates and rules. Wordsmith filled slots according to conditions someone had written. It did not learn to write. Calling it generative is accurate about the output and misleading about the method. What it lacked was generality: it wrote earnings stories because someone had written the rules for earnings stories, and pointing it at a new subject meant doing that work again.</p>
+<h2>What building a model took in 2015</h2>
+<p>In 2015, building one typically meant a specialized team writing code against raw data and running batch jobs on dedicated machines, with no product interface in the process. Someone decided which measurements the system would look at. Someone else assembled a set of examples where the answer was already known, so the system had something to learn from. The result solved one problem and could not be pointed at another. Two systems built a year apart inside the same company would share a vocabulary and might even use the same kind of model, but the training would have to be done again from the start, and so would everything built around it. By the end of the period this paper covers, the equivalent task could mean opening a chat window or calling an API into a general-purpose model that nobody at the company had built.</p>
+<h2>The machines started picking what to look at</h2>
+<p>Someone used to decide what a system would look at. From 2009 onward, first in speech recognition, then in images, then in language, systems began working that out for themselves from the raw data, and they started beating the systems whose measurements people had chosen. The hand-picked stage was removed rather than improved. Google Translate is the clearest public case, and it is more specific than the usual telling: what it replaced in 2016 was not a set of hand-written translation rules but an earlier statistical system that had itself been learned from data, running since 2006.</p>
+<p>The architecture that made this work well on written language at scale was published by researchers at Google in 2017. It made it practical to train one very large model on an enormous quantity of ordinary text that nobody had to label, then point that same model at particular jobs — sometimes with a modest set of examples, sometimes with nothing but an instruction. Products followed: search ranking from 2019, a model that could be redirected by a handful of examples typed into the prompt in 2020, GitHub Copilot in 2021, and ChatGPT at the end of 2022, which is where most people's version of this history begins.</p>
+<p>Andrej Karpathy named the shift "Software 2.0" in 2017: components that had been written as code would increasingly be trained from examples instead, wherever a task was hard to describe in rules and easy to demonstrate.</p>
+<p>Bloomberg's systems went part of the way down that path and stopped.</p>
+<h2>Where older methods kept working</h2>
+<p>On tables of numbers — instruments, customers, transactions — a family of methods that builds many small decision rules — the kind of logic a nested if/then statement or a SQL CASE statement expresses — and adds their answers together remained the ordinary industrial choice throughout the whole period. The benchmark evidence points the same way: a 2022 study found these methods still ahead of neural approaches — the large-model family described above — on medium-sized tabular problems of roughly ten thousand examples. The study's own larger comparison, fifty thousand examples rather than ten, suggests only that more data narrows the gap, and its authors leave that trend to future work. Whether neural approaches ever close it on tabular problems is among the paper's open questions rather than its findings.</p>
+<p>In December 2023, a Bloomberg team building intraday bond pricing tried a range of modern approaches and chose the older family anyway. Camilo Ortiz, manager of the AI Finance Engineering division, gave the reason: "While several of the modern machine learning architectures were competitive in our research process, we ultimately settled on using tree-based methods as these methods could scale better when compared to the alternatives …"</p>
+<p>The argument did not end. What stayed open was not whether one family is better outright, but which problems call for which family.</p>
+<hr />
+<h2>The experts whose questions the paper carries</h2>
+<p>Four experts supply the questions this paper puts to the Bloomberg record. None of them writes about Bloomberg. Each was publishing on one part of the decade above while it ran, and each question rests on a piece of the vocabulary in <em>How these systems work</em>, named in the bio that carries it.</p>
+<p>[add a sentence to each section that has their impressive credentials]</p>
+<h3>Ehud Reiter</h3>
+<aside class="panel panel--practitioner">
+<p><strong>Ehud Reiter</strong> built systems that turn data into text long before the current wave, and his constraint is blunt. Accuracy is the most basic requirement, and a system that cannot guarantee 99.99 percent accuracy is not going to be used. His recommendation is architectural — do the analytics outside the model, then hand the result to it. He states the reason as capability rather than checkability. Several of Bloomberg's systems are built that way, though the record does not say they were built that way for his reason, and the paper's question is whether the checkable part is doing the work claimed for it. What counts as the model in that arrangement is <em>What "model" means, and what it does not cover</em>, in <em>How these systems work</em>. <em>Can the system guarantee it, and if not, what stands in place of the guarantee?</em></p>
+<blockquote>
+<p>"Benchmarks and test-sets can serve as screening tools, which filter out really bad approaches, but they cannot identify good approaches." — Ehud Reiter</p>
+</blockquote>
+</aside>
+<h3>Frank Harrell</h3>
+<aside class="panel panel--practitioner">
+<p><strong>Frank Harrell</strong> identifies the condition underneath Reiter's bar: <strong><em>machine learning</em></strong> works well where feedback comes quickly and a real answer eventually arrives. It has succeeded on problems where something ordinary resolves the question quickly — a bond trade settles, and the price either matches or it does not. Whether a news summary is "correct" has no such resolution: it is a judgment call, and different readers can reach different judgments without either being wrong. What that difference does to a system is <em>Where labels come from decides what is possible</em>, in <em>How these systems work</em>. Harrell also separates a prediction from a decision: a system that outputs a probability leaves the hard call with whoever owns the consequences, while a system that outputs a yes or a no has already made that call, usually in a line of code, often without the person who would have made it knowing. Harrell puts it directly: "In many decisionmaking contexts, classification represents a premature decision, because classification combines prediction and decision making and usurps the decision maker in specifying costs of wrong decisions". <em>Where did somebody's judgment get absorbed into a number, and who owned it?</em></p>
+<p>The same test applies reflexively. Ask what the important developments in AI have been over ten years, and the material a model would learn from does not agree with itself — different experts reach different answers, in different words. A model trained on that inherits the disagreement rather than resolving it, the same way a forecast can be scored against what happened and a paragraph cannot.</p>
+<p><strong>Technically.</strong> Learning requires a consistent target. Where the source material is inconsistent about what counts as correct, a model reproduces the inconsistency, and no evaluation after the fact recovers a standard the training data never contained.</p>
+<blockquote>
+<p>"ML and AI have had their greatest successes in high signal:noise situations… What distinguishes these is quick feedback while training, and availability of the answer." — Frank Harrell</p>
+</blockquote>
+</aside>
+<h3>D. Sculley</h3>
+<aside class="panel panel--practitioner">
+<p><strong>D. Sculley</strong>, a Google research scientist, and colleagues named the gap in a widely-cited 2015 paper on the hidden costs of production machine-learning systems, "Hidden Technical Debt in Machine Learning Systems" (NeurIPS 2015). Verbatim, on why a team might build native rather than reuse a generic package:</p>
+<blockquote>
+<p>"Because a mature system might end up being (at most) 5% machine learning code and (at least) 95% glue code, it may be less costly to create a clean native solution rather than re-use a generic package." — D. Sculley et al., <em>Hidden Technical Debt in Machine Learning Systems</em>, NeurIPS 2015</p>
+</blockquote>
+<p>And the paper's own summary of that same imbalance, Figure 1's caption:</p>
+<blockquote>
+<p>"Only a small fraction of real-world ML systems is composed of the ML code, as shown by the small black box in the middle." — Figure 1 caption, same paper</p>
+</blockquote>
+<p>Their question is about proportion, which is <em>Most of a working system is not the model</em>, in <em>How these systems work</em>. <em>How much of any of this was ever the model, and where did the rest of the work sit?</em></p>
+<p>A working system is mostly not the model. Getting the data in, confirming it arrived, keeping versions, watching for trouble, catching a bad answer and passing it to a person — people build and maintain all of that. And where a system trains its own model, keeping that model current is its own continuing job. It has to be retrained, tested and redeployed as the data it learned from goes out of date.</p>
+<p><strong>Technically.</strong> Model code is a small proportion of a production system. Pipelines, serving, versioning, monitoring and evaluation dominate.</p>
+</aside>
+<h3>Gina Chua</h3>
+<aside class="panel panel--practitioner">
+<p><strong>Gina Chua</strong> (publishing as Reginald Chua until 2020) has been writing about machine learning in newsrooms since the early 2010s and is writing about it still, and her subject throughout has been whether the underlying work changes rather than the tooling around it. The question this paper takes from that subject is its own formulation. A decade of change in newsroom tooling is not the same thing as a decade of change in what reporting consists of, and a record made largely of product announcements makes the two easy to confuse. Her question is about changed work, not changed tools. <em>How these systems work</em> takes up that distinction under the heading <em>Where a person sits is not a property of the technique</em>. <em>Did the work change, or only the tools?</em></p>
+<p>Early systems produced a number or a label — a price, a score, a yes or no. Later ones produce sentences a person reads.</p>
+<p><strong>Technically.</strong> Output moved from scalar prediction and classification to generation.</p>
+<blockquote>
+<p>"The form of words is increasingly less valuable, because machines create the form of words." — Gina Chua</p>
+</blockquote>
+</aside>
+<hr />
+<div class="section-divider" id="s3">
+<span class="section-divider__num">Section 3 of 3</span>
+<span class="section-divider__title">AI Fundamentals</span>
+</div>
+<h2 class="section-heading">AI Fundamentals</h2>
+<h2>Models and training</h2>
+<h3>What a model is, and what training means</h3>
+<p>Some parts of these systems are rule-based, written by people. Some were trained from examples. The trained parts are the models, and they are usually the smaller part.</p>
+<blockquote>
+<p><strong>Models and training</strong>
+A model is not a program in the ordinary sense. Nobody writes its logic. A model is a large collection of numbers, and those numbers are arrived at by showing the system examples where the answer is already known, then adjusting the numbers until it reproduces those answers. That adjusting is called <strong><em>training</em></strong>. Statisticians have long called the same operation <em>fitting</em>, and it is the same thing. It is closer to learning a language by immersion than from a rulebook. Nobody hands the model a grammar. It picks up the pattern underneath many examples instead of a stated rule. Statisticians and then computer scientists spent more than a century on this same problem of fitting numbers to examples. No single person or moment accounts for it.</p>
+<p>The purpose is not to reproduce the examples. It is to work on cases the system has never seen, which is called <strong><em>generalization</em></strong>. A model can reproduce every example it was shown and be useless on anything new, having memorized the accidents of those particular examples rather than the pattern behind them. That failure is common enough to have a name — <strong><em>overfitting</em></strong> — and much of the apparatus of training exists to detect it and hold it off.</p>
+</blockquote>
+<p>The two kinds of model in this paper are both trained, and the word covers two very different operations.</p>
+<p>A narrow model of the kind built in 2016 begins with a person deciding what the system will look at. For a bond, that might be its currency, its duration, its time to maturity, the amount outstanding — a handful of measurements chosen because somebody with domain knowledge believed they carried the signal. Then a set of examples with known answers is assembled, often by hand. Training fits the numbers to those examples, and it runs in minutes or hours on ordinary hardware. The result answers one question. Bloomberg's bond-liquidity system - which was an AI solution - could not be asked about anything but bonds. And then just a few things about them.</p>
+<p>A <strong><em>large language model</em></strong> begins from the opposite end. It is trained on an enormous quantity of ordinary text that nobody labeled, using a task that supplies its own answers: hide a word, predict it, check, adjust, repeat, billions of times. Nobody assembles examples, because the text is the examples. Training runs for weeks across hundreds of specialized machines. The result is not trained to be perfect at a specific job, but it is useful for many. Pointing it at a new job takes a modest set of examples. Sometimes only an instruction.</p>
+<p>Both are models and both were trained. What separates them is what they were shown and how many different questions one of them can answer afterwards.</p>
+<h3>Three states a model can be in</h3>
+<p>The same <strong><em>architecture</em></strong> can occupy any of the three. What separates them is how much data the model was trained on, and whether that training was aimed at a single job, aimed at many, or has not happened yet.</p>
+
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>What it is</th>
+<th>What it is called</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Untrained</td>
+<td>The <strong>architecture</strong> — the arrangement of parameters and the procedure for combining them — with its numbers set at random. It runs, and it produces nothing useful.</td>
+<td>There is no settled single noun. Practitioners say <em>untrained</em> or <em>randomly initialized</em> model, and <em>architecture</em> for the design on its own.</td>
+</tr>
+<tr>
+<td>Trained for one job</td>
+<td>Parameters fit to examples of a single task, using measurements chosen for that task. It answers one question, and what it learned transfers to other tasks only narrowly.</td>
+<td><strong><em>Task-specific model</em></strong>, or <em>fine-tuned model</em> where it was adapted from a larger model rather than built from scratch.</td>
+</tr>
+<tr>
+<td>Trained broadly, then adapted</td>
+<td>Parameters fit to an enormous quantity of general data with no particular task in view, then adjusted cheaply for particular jobs.</td>
+<td><strong><em>Foundation model</em></strong> for the broad one, <em>base model</em> for the version before any adaptation. <em>Frontier model</em> is used for the largest and most capable models available at a given moment, which makes it a moving label rather than a technical category, and usage varies.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Training: features, labels, and fitting</h3>
+<p><strong><em>Features</em></strong> are the measurements the model is given about each item it scores. For a bond, its currency, its duration, its time to maturity, the amount outstanding. <strong><em>Labels</em></strong> are the known answers attached to examples the model is shown: this bond traded at this cost, this email was spam. <strong><em>Training</em></strong> means adjusting the parameters until the model's outputs come as close as possible to the labels on the examples it was shown. Statistics calls the same operation <strong><em>fitting</em></strong>, and it is the same operation.</p>
+<p>Choosing the features and training the model are separate jobs, usually done by different people. A person with knowledge of the subject decides which measurements matter and how each one is computed. Training then fits numbers to that fixed set of measurements. It cannot recover a signal nobody thought to measure. The standard detection is to hold back part of the examples, train on the rest, and measure the model only on the part it never saw.</p>
+<h2>Learning from data</h2>
+<h3>Where labels come from decides what is possible</h3>
+<p><strong><em>Ground truth</em></strong> is the answer taken as correct — the source of the labels used in training, and the standard a system's output is scored against. It arrives in four ways, and which one applies decides what can be built and what can be measured.</p>
+
+
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source of labels</th>
+<th>How it behaves</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The world supplies it</td>
+<td>The bond traded, the customer clicked, the machine failed. The answer arrives in seconds or days, costs nothing, and can be fed straight back into training.</td>
+</tr>
+<tr>
+<td>The data supplies it</td>
+<td>The label is taken out of the data itself: hide a word in a sentence and the hidden word is the answer. This is called <strong>self-supervised</strong> training, and it is what makes training on enormous unlabeled bodies of text possible.</td>
+</tr>
+<tr>
+<td>People manufacture it</td>
+<td>People read examples one at a time and mark the answer. Slow, expensive, and it carries the readers' disagreements into the model.</td>
+</tr>
+<tr>
+<td>There is none</td>
+<td>A summary is not right or wrong the way a price is. A bar can be asserted but never measured.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Hand-built features and learned representations</h3>
+<p>A <strong><em>classifier</em></strong> is a model whose output is one of a fixed set of categories rather than a quantity — spam or not spam, one of six kinds of defect. Most classifiers produce a probability for each category, and a separate step turns that into a single answer.</p>
+<p>Before deep networks displaced them, a team classifying photographs wrote code to detect edges, corners and textures, then fed those measurements to a classifier. The detectors were designed by people who had thought hard about images. A <strong><em>deep network</em></strong> is a model built from many successive layers of parameters, each layer taking the previous layer's output as its input. Given raw pixels, it works out its own intermediate descriptions of the image during training, with early layers settling on something like edges and later layers on something like shapes, none of it specified in advance. Those intermediate descriptions are <strong><em>learned representations</em></strong>. The same substitution happened to language. Word meanings that had been encoded by hand in dictionaries and rules were replaced by positions in a learned numerical space, derived from how words were used across a large body of text.</p>
+<h2>Architectures</h2>
+<h3>Decision trees, ensembles and gradient boosted trees</h3>
+<p>A <strong><em>decision tree</em></strong> is a branching sequence of yes-or-no questions about the input that ends in an answer. Is the coupon above four percent? Is the maturity beyond ten years? Each answer sends the item down one branch, and a branch ends in a value. One tree is crude.</p>
+<p>An <strong><em>ensemble</em></strong> combines many models into a single answer. <strong><em>Gradient boosted trees</em></strong> are the ensemble in ordinary industrial use: hundreds or thousands of small trees are built in sequence, each one fit to the errors made by the trees before it, and their answers are added together. A <strong><em>random forest</em></strong> is the other common tree ensemble, and it builds its trees independently on different samples of the data rather than in a correcting sequence. <strong><em>Logistic regression</em></strong>, the simplest member of the same toolkit, fits one weight per feature and converts the weighted sum into a probability.</p>
+<p>On tables of numbers, gradient boosted trees work well. They train in minutes on ordinary hardware, tolerate missing values and features on wildly different scales, retrain cheaply when new data arrives, and can be inspected for which inputs drove a result. A team choosing them over a deep network is choosing operational properties.</p>
+<figure class="figure">
+<img src="diagrams/AIJM-S07_METHOD-FAMILIES_v0.3.svg" alt="" loading="lazy">
+
+</figure>
+<p><em>Diagram: which family of methods fits which kind of problem, by the kind of data and the shape of the demand for answers.</em></p>
+<h3>Transformers, pre-training and adaptation</h3>
+<p>A <strong><em>transformer</em></strong> is an architecture for models that read sequences, most often text. It takes in a whole passage at once rather than one word at a time, and for each word it weighs how much every other word should influence that word's interpretation. Reading the passage in parallel is what made it practical to train very large models on very large amounts of text.</p>
+<p><strong><em>Pre-training</em></strong> means running such a model over an enormous body of ordinary text with a <strong><em>self-supervised</em></strong> objective, so nobody has to label anything. The result has absorbed a great deal about how language behaves and is good at no particular task. <strong><em>Adaptation</em></strong> means adjusting that model to a particular job afterwards. It takes a modest set of examples — and for some jobs no training at all, only an instruction in the prompt — and it costs a small fraction of what the pre-training cost.</p>
+<figure class="figure">
+<img src="diagrams/AIJM-S07_BUILD-VS-ADAPT_v0.1.svg" alt="" loading="lazy">
+
+</figure>
+<p><em>Diagram: three problems each built end to end in 2015, against one pre-trained model adapted three times in 2023.</em></p>
+<h3>Retrieval-augmented generation</h3>
+<p><strong><em>Retrieval-augmented generation</em></strong>, or RAG, is an arrangement of components rather than a kind of model. When a question arrives, a retrieval step finds the passages most relevant to it from a body of documents, usually by comparing a numerical representation of the question against one held for each passage. Those passages are placed in front of the model along with the question, and the model writes its answer from them. The facts come from passages that can be inspected. The model supplies the language and is not relied on for the facts.</p>
+<p>RAG changes where an answer's facts come from. It does not check them. A passage retrieved and copied correctly can still be wrong, and the retrieval step can return the wrong passages.</p>
+<h2>Beyond the model</h2>
+<h3>Most of a working system is not the model</h3>
+<p>A trained model is one component among many, and it is usually the smallest. Something has to collect the input data and confirm it arrived. Something has to compute the features the same way when the system is running as when it was trained, or the model quietly sees different numbers from the ones it learned on. <strong><em>Serving</em></strong> is that running state, where the trained model is applied to new inputs it has never seen. Something else has to store versions, retrain on a schedule, notice when the world has moved and the model has not, route bad outputs to a person, and record what was corrected. None of that is machine learning. All of it has to exist before the model is of any use.</p>
+<p>The paper's pair for describing the mix inside one system, <strong><em>trained component</em></strong> and <strong><em>rule-based component</em></strong>, is defined in <em>Technical references</em> and used throughout. The surrounding apparatus described above is sometimes called orchestration in the wider industry. This paper does not use the word that way. Here <strong><em>orchestration</em></strong> names the agent loop and nothing else, meaning the controller, the dispatch of tools, and the memory that carries results from one turn to the next.</p>
+<figure class="figure">
+<img src="diagrams/AIJM-S07_LEARNED-AND-WRITTEN_v0.3.svg" alt="" loading="lazy">
+
+</figure>
+<p><em>Diagram: the five stages of one pipeline, shaded by whether each stage was trained from data, hand-coded as rules, or performed by a person.</em></p>
+<h3>Where a person sits is not a property of the technique</h3>
+<p>A rule-based system can file to a news wire with nobody approving the individual item. A large trained model can be held behind review of every output. Position and technique vary independently, and the paper's term for how far a system acts without a person reviewing each output is <strong><em>autonomy reach</em></strong>, defined in <em>the Appendix</em>, at the end of the paper.</p>
+<figure class="figure">
+<img src="diagrams/AIJM-S07_HUMAN-POSITION_v0.1.svg" alt="" loading="lazy">
+
+</figure>
+<p><em>Diagram: four positions a person can occupy relative to a system's output, from approving every item to none.</em></p>
+<hr />
+</main>
+<footer class="pagefoot"><a class="pager pager--prev" href="/internal/public-drafts/">&#8592; All public drafts</a>
+<a class="pager pager--next" href="part-2.html">Part 2: Predictive, Generative, Agentic &#8594;</a></footer>
+<script>
+(function(){
+  function ready(fn){document.readyState!='loading'?fn():document.addEventListener('DOMContentLoaded',fn);}
+  ready(function(){
+    var figures = document.querySelectorAll('.figure');
+    if(!figures.length) return;
+    var lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.innerHTML = '<span class="lightbox__close" aria-label="Close">&#215;</span><div class="lightbox__inner"></div>';
+    document.body.appendChild(lb);
+    var inner = lb.querySelector('.lightbox__inner');
+    function openLb(media){
+      inner.innerHTML = '';
+      var clone = media.cloneNode(true);
+      clone.removeAttribute('loading');
+      if(clone.tagName && clone.tagName.toLowerCase() === 'svg'){
+        clone.removeAttribute('width');
+        clone.removeAttribute('height');
+      }
+      inner.appendChild(clone);
+      lb.classList.add('is-open');
+    }
+    function closeLb(){ lb.classList.remove('is-open'); inner.innerHTML = ''; }
+    figures.forEach(function(f){
+      var media = f.querySelector('img,svg');
+      if(!media) return;
+      var hint = document.createElement('span');
+      hint.className = 'figure__expand';
+      hint.textContent = 'Expand \u2921';
+      f.appendChild(hint);
+      f.addEventListener('click', function(e){
+        if(e.target.closest('a')) return;
+        openLb(media);
+      });
+    });
+    lb.addEventListener('click', closeLb);
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
+  });
+})();
+</script>
+<a href="#main" class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</a>
+<script>
+(function(){
+  function ready(fn){document.readyState!='loading'?fn():document.addEventListener('DOMContentLoaded',fn);}
+  ready(function(){
+    var btn = document.getElementById('backToTop');
+    if(!btn) return;
+    function onScroll(){
+      if(window.scrollY > 480){ btn.classList.add('is-visible'); }
+      else{ btn.classList.remove('is-visible'); }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  function ready(fn){document.readyState!='loading'?fn():document.addEventListener('DOMContentLoaded',fn);}
+  ready(function(){
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.series__chips .chip'));
+    if(!chips.length || !('IntersectionObserver' in window)) return;
+    var targets = chips.map(function(c){
+      var id = c.getAttribute('data-sec');
+      return {chip:c, id:id, el: id ? document.getElementById(id) : null};
+    }).filter(function(t){ return t.el; });
+    if(!targets.length) return;
+    function setCurrent(id){
+      chips.forEach(function(c){
+        if(c.getAttribute('data-sec') === id){ c.classList.add('chip--current'); c.setAttribute('aria-current','page'); }
+        else { c.classList.remove('chip--current'); c.removeAttribute('aria-current'); }
+      });
+    }
+    var io = new IntersectionObserver(function(entries){
+      var visible = entries.filter(function(e){ return e.isIntersecting; });
+      if(visible.length){
+        visible.sort(function(a,b){ return a.boundingClientRect.top - b.boundingClientRect.top; });
+        setCurrent(visible[0].target.id);
+      }
+    }, {rootMargin: '-25% 0px -65% 0px', threshold: 0});
+    targets.forEach(function(t){ io.observe(t.el); });
+    window.addEventListener('scroll', function(){
+      if((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 4){
+        setCurrent(targets[targets.length - 1].id);
+      }
+    }, {passive:true});
+  });
+})();
+</script>
+</body>
+</html>
