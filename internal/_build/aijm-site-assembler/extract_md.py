@@ -36,6 +36,24 @@ sys.path.insert(0, AIJM_DIR)
 import build_paper as B
 
 
+def strip_practitioner_eyebrow(html):
+    """Task 3 (BURSBUILD-S27): strip the redundant eyebrow label specifically
+    inside practitioner panels. build_paper.py's panel template (line 89)
+    renders the same '<div class="panel__label">KIND</div>' eyebrow for all
+    three panel kinds; Hugh wants it removed only for panel--practitioner,
+    since the colored <h3> name heading + indent treatment already carries
+    that signal. Scoped by the panel--practitioner wrapper so panel--view
+    and panel--assistant eyebrows are untouched. Done here (BURSBUILD layer,
+    post-processing build_paper.py's output) rather than editing
+    build_paper.py itself, per the two-owner/two-layer principle: AIJM owns
+    content/markdown, BURSBUILD owns presentation."""
+    pattern = re.compile(
+        r'(<aside class="panel panel--practitioner">\n)'
+        r'<div class="panel__label">Practitioner</div>\n'
+    )
+    return pattern.sub(r"\1", html)
+
+
 def convert_title_split(html):
     """Pull the leading <h1>...</h1> out as the section title, matching
     extract.py's existing contract against build_paper.py's built HTML
@@ -53,6 +71,7 @@ def main():
         path = os.path.join(AIJM_DIR, fn)
         raw = io.open(path, encoding="utf-8").read()
         html = B.convert(raw)
+        html = strip_practitioner_eyebrow(html)
         title, body = convert_title_split(html)
         if title is None:
             print("  WARNING: no <h1> found in %s, falling back to build_paper.py's SECTIONS label" % fn)

@@ -214,7 +214,7 @@ html{scroll-padding-top:96px}
 .draft-marker a{ color:var(--ink); text-decoration:underline; }
 
 .site-coverband{ background:var(--blue); color:#fff; text-align:center; }
-.site-coverband__img{ width:100%; max-height:340px; object-fit:cover; display:block; }
+.site-coverband__img{ width:100%; max-height:340px; object-fit:cover; object-position:top; display:block; }
 .site-coverband__body{ padding:32px 24px 40px; max-width:var(--col-w); margin:0 auto; }
 .site-coverband h1{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-size:clamp(26px,4.2vw,40px); font-weight:700; line-height:1.15; margin-bottom:10px; }
 .site-coverband__partnum{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
@@ -267,8 +267,6 @@ html{scroll-padding-top:96px}
 
 </style></head>
 <body class="news-story">
-<div style="background:#fff3cd;color:#664d03;border-bottom:2px dashed #997404;font:600 13px/1.4 -apple-system,sans-serif;text-align:center;padding:8px 12px;">PREVIEW BUILD &mdash; not the deployed page &middot; source: extract_md.py → assemble.py (unchanged) from HANDOFF_AIJM-to-BURSBUILD_v1.4.md &middot; commit 3f16618 &middot; built 2026-09-12 00:04 UTC</div>
-
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <a class="wordmark" href="/">Bursera <span>Consulting</span></a>
@@ -344,7 +342,7 @@ html{scroll-padding-top:96px}
 — Bloomberg LQA brochure for the Japanese liquidity guidelines, 2021</p>
 </blockquote>
 <p>LQA has a stated default, an identified owner, and a documented way to override it. The other thresholds are published without that trail.</p>
-<p><strong>Accuracy is hard to measure here, and no system publishes a number.</strong> Reiter's condition is that a system which cannot guarantee its accuracy will not be used. Every deployed system among these was used, several at scale, and none states an accuracy bar. Part of that is the nature of the work: a bond price can be held against the trade that follows it, and a summary cannot. Bloomberg publishes one number alongside IBVAL's prices, the <strong><em>BVAL</em></strong> score, and Eric Isenberg, its Global Head of Enterprise Data Pricing, is explicit that "the score does not assess the accuracy of a price." The one quality figure for the news summaries is Bloomberg's own, and the generative section sets it out in full alongside what the <em>New York Times</em> counted over the same weeks.</p>
+<p><strong>Accuracy is hard to measure for many AI tasks</strong> Reiter's condition is that a system which cannot guarantee its accuracy will not be used. Every deployed system among these was used, several at scale, and none states an accuracy bar. Part of that is the nature of the work: a bond price can be held against the trade that follows it, and a summary cannot. Bloomberg publishes one number alongside IBVAL's prices, the <strong><em>BVAL</em></strong> score, and Eric Isenberg, its Global Head of Enterprise Data Pricing, is explicit that "the score does not assess the accuracy of a price." The one quality figure for the news summaries is Bloomberg's own, and the generative section sets it out in full alongside what the <em>New York Times</em> counted over the same weeks.</p>
 <blockquote>
 <p>"But ultimately I wonder if the fact that my ultra-high-level description of LLMs has not changed in 5 years despite the massive advances in LLM technology... means that this is a fundamental limitation of LLMs; LLMs are not the right technology for reliably producing accurate texts."
 — Ehud Reiter, blog post, 27 February 2024</p>
@@ -377,12 +375,11 @@ html{scroll-padding-top:96px}
 <div class="panel__label">Voice of Bursera</div>
 <h2>BURSERA'S CLOSE</h2>
 <p><em>Hugh McCutchen</em></p>
-<p>I started this research paper because I myself am not always certain of how the AI solutions are put together. There has been a lot of evolution over the years. I am a technologist who normally sits between the business and teams that build and manage the systems and the one thing I know is that any fully automated system that handles fresh data every day (or minute) and has to produce reliable outputs is a LOT of work. Adding a special "brain" or model into the mix is truly magical, but the systems that are all around that brain are where my teams and many teams actually put a massive amount of energy.</p>
-<p>Reviewing these AI projects for Bloomberg showed that same focus for where the engineering work is done OVER and OVER.</p>
+<p>I started this research paper because with so much focus on the risks of AI, I wanted to better understand the systems as a whole. In all areas of life I have found that History helps me understand the present.  The new frontier models and agents are working in a larger context that no one talks about and I barely understand.  This exercise has been useful to build that understanding.</p>
+<p>I am a technologist who normally sits between the business and teams that build and manage the systems and the one thing I know is that any fully automated system that handles fresh data every day (or minute) and has to produce reliable outputs is a LOT of work. Adding a special "brain" or model into the mix is truly magical, but the systems that are all around that brain are where my teams and many teams actually put a massive amount of energy.</p>
 <p>The traditional narrowly purposed models required a team of people to train that brain and teach it how to answer one small question very well. That approach is still in high use for Bloomberg, and for many organizations including the healthcare organization I worked in for decades. Those solutions can run locally for much lower costs to operate, but each small thing you want an insight on requires new training. We see this pattern at Bloomberg as well.</p>
-<p>With the modern models we can "predict" or "generate" the entire article, not just fill in blanks in a template. And those solutions use the vendors to do the training and license the model and those models are much more flexible and more expensive to run than the old ones.</p>
-<p>But what stayed the same at Bloomberg even as the newer models are introduced? There is still great care and investment in the systems that are needed to wrap around that whole automation and in testing it to make sure it is doing what is needed. The work those systems do is now broader, more flexible and powerful, but it is far bigger than the amazing new incredibly smart brain that sits in the stream of that data to give insights.</p>
-<p>In a future paper, my team will dig deeper into peeling back what the commercial AI vendors package together beyond "the model" because much like what we see with these Bloomberg solutions that have massive amounts of machinery around the thing that uses the model, that same thing is true even when we call those models. Calling "ChatGPT" is not just calling the model. That model has a harness and a lot around it.</p>
+<p>With the modern models we can "predict" or "generate" the entire article, not just fill in blanks in a template. And those solutions use vendors like OpenAI or Google or Anthropic to do the training.  Companies can then license the model which are much more flexible and the kind of training from the past is no longer needed - though a lot of testing and harnessing is still needed to get good results.    </p>
+<p>In a future paper, my team will dig deeper into peeling back what the commercial AI vendors package together beyond "the model" and what goes into their harness.  We'll peel back what levers are available to organizations to harness the Frontier Models like ChatGPT, or Claude or Gemini.  </p>
 </aside>
 <aside class="panel panel--assistant">
 <div class="panel__label">Research assistant</div>

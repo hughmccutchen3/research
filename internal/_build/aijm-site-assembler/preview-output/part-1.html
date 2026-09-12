@@ -214,7 +214,7 @@ html{scroll-padding-top:96px}
 .draft-marker a{ color:var(--ink); text-decoration:underline; }
 
 .site-coverband{ background:var(--blue); color:#fff; text-align:center; }
-.site-coverband__img{ width:100%; max-height:340px; object-fit:cover; display:block; }
+.site-coverband__img{ width:100%; max-height:340px; object-fit:cover; object-position:top; display:block; }
 .site-coverband__body{ padding:32px 24px 40px; max-width:var(--col-w); margin:0 auto; }
 .site-coverband h1{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-size:clamp(26px,4.2vw,40px); font-weight:700; line-height:1.15; margin-bottom:10px; }
 .site-coverband__partnum{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
@@ -267,8 +267,6 @@ html{scroll-padding-top:96px}
 
 </style></head>
 <body class="news-story">
-<div style="background:#fff3cd;color:#664d03;border-bottom:2px dashed #997404;font:600 13px/1.4 -apple-system,sans-serif;text-align:center;padding:8px 12px;">PREVIEW BUILD &mdash; not the deployed page &middot; source: extract_md.py → assemble.py (unchanged) from HANDOFF_AIJM-to-BURSBUILD_v1.4.md &middot; commit 3f16618 &middot; built 2026-09-12 00:04 UTC</div>
-
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <a class="wordmark" href="/">Bursera <span>Consulting</span></a>
@@ -312,10 +310,10 @@ html{scroll-padding-top:96px}
 <p>This paper traces eleven of Bloomberg's publicly documented AI systems from the past ten years, to show how the technical tools have changed and how their use has changed with them.</p>
 <aside class="panel panel--view">
 <div class="panel__label">Voice of Bursera</div>
-<h2>BURSERA'S TAKE — WHY THIS PAPER EXISTS AND WHAT I BRING TO IT</h2>
+<h2>BURSERA'S TAKE — HISTORY TELLS US ABOUT THE PRESENT!</h2>
 <p>Thirty years in technology, more than twenty of them as a data engineering practitioner. "AI" has been a buzzword for a few decades and it never landed in a practical way for the data problems my own organizations needed to solve — consistent analysis and reporting on structured data. And yet it was plainly solving very specific problems for some businesses. My read is that despite a great deal of excitement and investment there were far more failures at finding high-value uses for AI in business than there were successes, and that Bloomberg is one of the places to look at what a success actually consisted of.</p>
 <p>From my own work with these tools I think implementation is as much about the systems wrapped around a model as about the model itself.</p>
-<p>I have no deep knowledge of the full AI toolset and no hands-on experience building these systems. So rather than tease out a story in the history, I worked with Claude to assemble a panel of four researchers who do have that knowledge, and used their writing as the lens for reading what Bloomberg built.</p>
+<p>I have limited knowledge of the full AI toolset and no hands-on experience building these systems. So rather than tease out a story in the history, I worked with Claude to assemble a panel of four researchers who do have that knowledge, and used their writing as the lens for reading what Bloomberg built.</p>
 <p>Bloomberg was chosen as a single organization because it has been unusually public about its use of AI, and because it uses AI in a way many adults in the US can follow and have probably experienced without recognizing it.</p>
 <p><em>Where you are reading my view rather than the record, it sits in a panel like this one.</em></p>
 </aside>
@@ -338,28 +336,27 @@ html{scroll-padding-top:96px}
 <span class="section-divider__title">How the field got here</span>
 </div>
 <h2 class="section-heading">How the field got here</h2>
-<p>Automated text, <strong><em>trained</em></strong> models and the machinery around them all go back a decade or longer. Let's start with a look at the trends more broadly than just Bloomberg.</p>
-<h2>Automated news writing in 2014</h2>
+<h2>Automated news writing already worked in 2014</h2>
 <p>Automated production of text is older than most accounts of it. In its simplest form this is a "mail merge" with a lot of rules around what to merge and when to send it. By 2014, Automated Insights' Wordsmith was producing publishable earnings copy from market data, and the Associated Press was filing it. AP's own account is precise about how far the automation ran: the stories were "generated and sent directly out on the AP wires without human intervention," while "story templates were built for the automated output by experienced AP editors" and "the journalists have to watch for any errors and correct them."</p>
-<p>AI converted a number to prose and that went out of the wire with nobody approving the story (or words that were a part of a in the story) ahead of time. People were thoroughly present in building and managing the system and approving what was built but these news processes were automated. </p>
-<p>The machinery underneath was a sort of fancy mail merge — what data to use with what templates and what rules. Bloomberg's "Wordsmith" system filled slots according to conditions someone had written. It did not learn to write. Calling it generative is accurate about the output of a field and misleading about the method. What it lacked was generality: it wrote earnings stories because someone had written the rules for earnings stories, and trying to write a different kind of story meant doing that work again.</p>
+<p>A number became prose and the prose reached the wire with nobody approving that particular story. People were thoroughly present in building and managing the system and absent from each individual item. The same split recurs in many systems in this paper.</p>
+<p>The machinery underneath was that fancy mail merge — all of those templates and rules. Wordsmith filled slots according to conditions someone had written. It did not learn to write. Calling it generative is accurate about the output and misleading about the method. What it lacked was generality: it wrote earnings stories because someone had written the rules for earnings stories, and pointing it at a new subject meant doing that work again.</p>
 <h2>What building a model took in 2015</h2>
-<p><strong><em>Models</em></strong> are at the heart of all of these AI solutions. They are the predictive brains that decide what word(s) or value(s) to use. In 2015, building one typically meant a specialized team writing code against raw data and running batch jobs on dedicated machines, with no product interface in the process. Someone decided which measurements the system would look at. Someone else assembled a set of examples where the answer was already known, so the system had something to learn from. The result solved one problem and could not be pointed at another. Two systems built a year apart inside the same company would share a vocabulary and might even use the same kind of model, but the <strong><em>training</em></strong> would have to be done again from the start, and so would everything built around it. By the end of the period this paper covers, the equivalent task could mean opening a chat window or calling an API into a general-purpose model that nobody at the company had built.</p>
-<h2>Systems started choosing what to look at</h2>
-<p>Someone used to decide what a system would look at. From 2009 onward, first in speech recognition, then in images, then in language, systems began working that out for themselves from the raw data, and they started beating the systems built on measurements a person had picked by hand. Google Translate is the clearest public case, and it is more specific than the usual telling: what it replaced in 2016 was not a set of hand-written translation rules but an earlier statistical system that had itself been learned from data, running since 2006.</p>
-<p>The architecture that made this work well on written language at scale — the <strong><em>transformer</em></strong> — was published by researchers at Google in 2017; <em>How these systems work</em> covers what it does. It made it practical to train one very large model on an enormous quantity of ordinary text that nobody had to label, then point that same model at particular jobs — sometimes with a modest set of examples, sometimes with nothing but an instruction. Products followed: search ranking from 2019, a model that could be redirected by a handful of examples typed into the prompt in 2020, GitHub Copilot in 2021, and ChatGPT at the end of 2022, which is where most people's version of this history begins.</p>
+<p>In 2015, building one typically meant a specialized team writing code against raw data and running batch jobs on dedicated machines, with no product interface in the process. Someone decided which measurements the system would look at. Someone else assembled a set of examples where the answer was already known, so the system had something to learn from. The result solved one problem and could not be pointed at another. Two systems built a year apart inside the same company would share a vocabulary and might even use the same kind of model, but the training would have to be done again from the start, and so would everything built around it. By the end of the period this paper covers, the equivalent task could mean opening a chat window or calling an API into a general-purpose model that nobody at the company had built.</p>
+<h2>The machines started picking what to look at</h2>
+<p>Someone used to decide what a system would look at. From 2009 onward, first in speech recognition, then in images, then in language, systems began working that out for themselves from the raw data, and they started beating the systems whose measurements people had chosen. The hand-picked stage was removed rather than improved. Google Translate is the clearest public case, and it is more specific than the usual telling: what it replaced in 2016 was not a set of hand-written translation rules but an earlier statistical system that had itself been learned from data, running since 2006.</p>
+<p>The architecture that made this work well on written language at scale was published by researchers at Google in 2017. It made it practical to train one very large model on an enormous quantity of ordinary text that nobody had to label, then point that same model at particular jobs — sometimes with a modest set of examples, sometimes with nothing but an instruction. Products followed: search ranking from 2019, a model that could be redirected by a handful of examples typed into the prompt in 2020, GitHub Copilot in 2021, and ChatGPT at the end of 2022, which is where most people's version of this history begins.</p>
 <p>Andrej Karpathy named the shift "Software 2.0" in 2017: components that had been written as code would increasingly be trained from examples instead, wherever a task was hard to describe in rules and easy to demonstrate.</p>
-<p>The cases that follow are read against this history: which of the two eras a given system belongs to, and what changed when it crossed from one to the other.</p>
+<p>Bloomberg's systems went part of the way down that path and stopped.</p>
 <h2>Where older methods kept working</h2>
-<p>On tables of numbers — instruments, customers, transactions — the family of <strong><em>tree-based methods</em></strong> remained the ordinary industrial choice throughout the whole period. It builds many small decision rules, the kind of logic a nested if/then statement or a SQL CASE statement expresses, and adds their answers together. The benchmark evidence points the same way: a 2022 study found these methods still ahead of neural approaches — the large-model family described above — on medium-sized tabular problems of roughly ten thousand examples. The study's own larger comparison, fifty thousand examples rather than ten, suggests only that more data narrows the gap, and its authors leave that trend to future work. Whether <strong><em>neural approaches</em></strong> ever close it on tabular problems is an open question, taken up in <em>Claude wants to know</em> at the end of the paper.</p>
+<p>On tables of numbers — instruments, customers, transactions — a family of methods that builds many small decision rules — the kind of logic a nested if/then statement or a SQL CASE statement expresses — and adds their answers together remained the ordinary industrial choice throughout the whole period. The benchmark evidence points the same way: a 2022 study found these methods still ahead of neural approaches — the large-model family described above — on medium-sized tabular problems of roughly ten thousand examples. The study's own larger comparison, fifty thousand examples rather than ten, suggests only that more data narrows the gap, and its authors leave that trend to future work. Whether neural approaches ever close it on tabular problems is among the paper's open questions rather than its findings.</p>
 <p>In December 2023, a Bloomberg team building intraday bond pricing tried a range of modern approaches and chose the older family anyway. Camilo Ortiz, manager of the AI Finance Engineering division, gave the reason: "While several of the modern machine learning architectures were competitive in our research process, we ultimately settled on using tree-based methods as these methods could scale better when compared to the alternatives …"</p>
-<p>The open question is which problems call for which family.</p>
+<p>The argument did not end. What stayed open was not whether one family is better outright, but which problems call for which family.</p>
 <hr />
-<h2>The practitioners whose questions the paper carries</h2>
-<p>Four practitioners supply the questions this paper puts to the Bloomberg record. None of them writes about Bloomberg. Each was publishing on one part of the decade above while it ran, and each question rests on a piece of the vocabulary in <em>How these systems work</em>, named in the bio that carries it.</p>
+<h2>The experts whose questions the paper carries</h2>
+<p>Four experts supply the questions this paper puts to the Bloomberg record. None of them writes about Bloomberg. Each was publishing on one part of the decade above while it ran, and each question rests on a piece of the vocabulary in <em>How these systems work</em>, named in the bio that carries it.</p>
+<p>[add a sentence to each section that has their impressive credentials]</p>
 <h3>Ehud Reiter</h3>
 <aside class="panel panel--practitioner">
-<div class="panel__label">Practitioner</div>
 <p><strong>Ehud Reiter</strong> built systems that turn data into text long before the current wave, and his constraint is blunt. Accuracy is the most basic requirement, and a system that cannot guarantee 99.99 percent accuracy is not going to be used. His recommendation is architectural — do the analytics outside the model, then hand the result to it. He states the reason as capability rather than checkability. Several of Bloomberg's systems are built that way, though the record does not say they were built that way for his reason, and the paper's question is whether the checkable part is doing the work claimed for it. What counts as the model in that arrangement is <em>What "model" means, and what it does not cover</em>, in <em>How these systems work</em>. <em>Can the system guarantee it, and if not, what stands in place of the guarantee?</em></p>
 <blockquote>
 <p>"Benchmarks and test-sets can serve as screening tools, which filter out really bad approaches, but they cannot identify good approaches." — Ehud Reiter</p>
@@ -367,7 +364,6 @@ html{scroll-padding-top:96px}
 </aside>
 <h3>Frank Harrell</h3>
 <aside class="panel panel--practitioner">
-<div class="panel__label">Practitioner</div>
 <p><strong>Frank Harrell</strong> identifies the condition underneath Reiter's bar: <strong><em>machine learning</em></strong> works well where feedback comes quickly and a real answer eventually arrives. It has succeeded on problems where something ordinary resolves the question quickly — a bond trade settles, and the price either matches or it does not. Whether a news summary is "correct" has no such resolution: it is a judgment call, and different readers can reach different judgments without either being wrong. What that difference does to a system is <em>Where labels come from decides what is possible</em>, in <em>How these systems work</em>. Harrell also separates a prediction from a decision: a system that outputs a probability leaves the hard call with whoever owns the consequences, while a system that outputs a yes or a no has already made that call, usually in a line of code, often without the person who would have made it knowing. Harrell puts it directly: "In many decisionmaking contexts, classification represents a premature decision, because classification combines prediction and decision making and usurps the decision maker in specifying costs of wrong decisions". <em>Where did somebody's judgment get absorbed into a number, and who owned it?</em></p>
 <p>The same test applies reflexively. Ask what the important developments in AI have been over ten years, and the material a model would learn from does not agree with itself — different experts reach different answers, in different words. A model trained on that inherits the disagreement rather than resolving it, the same way a forecast can be scored against what happened and a paragraph cannot.</p>
 <p><strong>Technically.</strong> Learning requires a consistent target. Where the source material is inconsistent about what counts as correct, a model reproduces the inconsistency, and no evaluation after the fact recovers a standard the training data never contained.</p>
@@ -377,7 +373,6 @@ html{scroll-padding-top:96px}
 </aside>
 <h3>D. Sculley</h3>
 <aside class="panel panel--practitioner">
-<div class="panel__label">Practitioner</div>
 <p><strong>D. Sculley</strong>, a Google research scientist, and colleagues named the gap in a widely-cited 2015 paper on the hidden costs of production machine-learning systems, "Hidden Technical Debt in Machine Learning Systems" (NeurIPS 2015). Verbatim, on why a team might build native rather than reuse a generic package:</p>
 <blockquote>
 <p>"Because a mature system might end up being (at most) 5% machine learning code and (at least) 95% glue code, it may be less costly to create a clean native solution rather than re-use a generic package." — D. Sculley et al., <em>Hidden Technical Debt in Machine Learning Systems</em>, NeurIPS 2015</p>
@@ -392,7 +387,6 @@ html{scroll-padding-top:96px}
 </aside>
 <h3>Gina Chua</h3>
 <aside class="panel panel--practitioner">
-<div class="panel__label">Practitioner</div>
 <p><strong>Gina Chua</strong> (publishing as Reginald Chua until 2020) has been writing about machine learning in newsrooms since the early 2010s and is writing about it still, and her subject throughout has been whether the underlying work changes rather than the tooling around it. The question this paper takes from that subject is its own formulation. A decade of change in newsroom tooling is not the same thing as a decade of change in what reporting consists of, and a record made largely of product announcements makes the two easy to confuse. Her question is about changed work, not changed tools. <em>How these systems work</em> takes up that distinction under the heading <em>Where a person sits is not a property of the technique</em>. <em>Did the work change, or only the tools?</em></p>
 <p>Early systems produced a number or a label — a price, a score, a yes or no. Later ones produce sentences a person reads.</p>
 <p><strong>Technically.</strong> Output moved from scalar prediction and classification to generation.</p>
@@ -403,9 +397,9 @@ html{scroll-padding-top:96px}
 <hr />
 <div class="section-divider" id="s3">
 <span class="section-divider__num">Section 3 of 3</span>
-<span class="section-divider__title">How these systems work</span>
+<span class="section-divider__title">AI Fundamentals</span>
 </div>
-<h2 class="section-heading">How these systems work</h2>
+<h2 class="section-heading">AI Fundamentals</h2>
 <h2>Models and training</h2>
 <h3>What a model is, and what training means</h3>
 <p>Some parts of these systems are rule-based, written by people. Some were trained from examples. The trained parts are the models, and they are usually the smaller part.</p>
@@ -418,10 +412,8 @@ A model is not a program in the ordinary sense. Nobody writes its logic. A model
 <p>A narrow model of the kind built in 2016 begins with a person deciding what the system will look at. For a bond, that might be its currency, its duration, its time to maturity, the amount outstanding — a handful of measurements chosen because somebody with domain knowledge believed they carried the signal. Then a set of examples with known answers is assembled, often by hand. Training fits the numbers to those examples, and it runs in minutes or hours on ordinary hardware. The result answers one question. Bloomberg's bond-liquidity system - which was an AI solution - could not be asked about anything but bonds. And then just a few things about them.</p>
 <p>A <strong><em>large language model</em></strong> begins from the opposite end. It is trained on an enormous quantity of ordinary text that nobody labeled, using a task that supplies its own answers: hide a word, predict it, check, adjust, repeat, billions of times. Nobody assembles examples, because the text is the examples. Training runs for weeks across hundreds of specialized machines. The result is not trained to be perfect at a specific job, but it is useful for many. Pointing it at a new job takes a modest set of examples. Sometimes only an instruction.</p>
 <p>Both are models and both were trained. What separates them is what they were shown and how many different questions one of them can answer afterwards.</p>
-<h3>What "model" means, and what it does not cover</h3>
-<p>A model is a component whose behavior was fit to data rather than written out by a person. It consists of a large collection of numbers, called <strong><em>parameters</em></strong> or <strong><em>weights</em></strong>, and a fixed procedure for combining those numbers with an input to produce an output. Nobody writes the logic. The numbers are arrived at by training.</p>
-<p>The term model is correct for anything trained: a regression, a tree ensemble, a deep network, a large language model. It is not correct for a rule-based system. A template that fills slots according to conditions somebody wrote contains no model, however finished its output looks. It is also not correct for an agent or a retrieval system, which are arrangements of several components with one or more models inside. General reporting and marketing stretch "AI model" to cover whole products like ChatGPT or Gemini. Used that way, the phrase names the product rather than the trained part.</p>
 <h3>Three states a model can be in</h3>
+<p>The same <strong><em>architecture</em></strong> can occupy any of the three. What separates them is how much data the model was trained on, and whether that training was aimed at a single job, aimed at many, or has not happened yet.</p>
 
 <div class="table-wrap"><table>
 <thead>
@@ -440,22 +432,22 @@ A model is not a program in the ordinary sense. Nobody writes its logic. A model
 <tr>
 <td>Trained for one job</td>
 <td>Parameters fit to examples of a single task, using measurements chosen for that task. It answers one question, and what it learned transfers to other tasks only narrowly.</td>
-<td><em>Task-specific model</em>, or <em>fine-tuned model</em> where it was adapted from a larger model rather than built from scratch.</td>
+<td><strong><em>Task-specific model</em></strong>, or <em>fine-tuned model</em> where it was adapted from a larger model rather than built from scratch.</td>
 </tr>
 <tr>
 <td>Trained broadly, then adapted</td>
 <td>Parameters fit to an enormous quantity of general data with no particular task in view, then adjusted cheaply for particular jobs.</td>
-<td><em>Foundation model</em> for the broad one, <em>base model</em> for the version before any adaptation. <em>Frontier model</em> is used for the largest and most capable models available at a given moment, which makes it a moving label rather than a technical category, and usage varies.</td>
+<td><strong><em>Foundation model</em></strong> for the broad one, <em>base model</em> for the version before any adaptation. <em>Frontier model</em> is used for the largest and most capable models available at a given moment, which makes it a moving label rather than a technical category, and usage varies.</td>
 </tr>
 </tbody>
 </table></div>
-<p>These are not three kinds of machinery. The same <strong><em>architecture</em></strong> can occupy any of the three. What separates them is how much data the model was trained on, and whether that training was aimed at a single job, aimed at many, or has not happened yet.</p>
 <h3>Training: features, labels, and fitting</h3>
 <p><strong><em>Features</em></strong> are the measurements the model is given about each item it scores. For a bond, its currency, its duration, its time to maturity, the amount outstanding. <strong><em>Labels</em></strong> are the known answers attached to examples the model is shown: this bond traded at this cost, this email was spam. <strong><em>Training</em></strong> means adjusting the parameters until the model's outputs come as close as possible to the labels on the examples it was shown. Statistics calls the same operation <strong><em>fitting</em></strong>, and it is the same operation.</p>
 <p>Choosing the features and training the model are separate jobs, usually done by different people. A person with knowledge of the subject decides which measurements matter and how each one is computed. Training then fits numbers to that fixed set of measurements. It cannot recover a signal nobody thought to measure. The standard detection is to hold back part of the examples, train on the rest, and measure the model only on the part it never saw.</p>
 <h2>Learning from data</h2>
 <h3>Where labels come from decides what is possible</h3>
 <p><strong><em>Ground truth</em></strong> is the answer taken as correct — the source of the labels used in training, and the standard a system's output is scored against. It arrives in four ways, and which one applies decides what can be built and what can be measured.</p>
+
 
 <div class="table-wrap"><table>
 <thead>
