@@ -263,12 +263,17 @@ html{scroll-padding-top:96px}
 
 @media print{
   .site-header,.draft-marker{ display:none; }
+  /* BURSBUILD-S27 print-blocker fix: without forcing color-adjust, browsers strip
+     background colors by default in print, leaving thead th and .site-coverband's
+     white text on a transparent (effectively white) background -- unreadable. */
+  html,body{ -webkit-print-color-adjust:exact; print-color-adjust:exact; color-adjust:exact; }
+  thead th{ background:var(--blue) !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .site-coverband{ background:var(--blue) !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .site-coverband__img{ display:none; }
 }
 
 </style></head>
 <body class="news-story">
-<div style="background:#fff3cd;color:#664d03;border-bottom:2px dashed #997404;font:600 13px/1.4 -apple-system,sans-serif;text-align:center;padding:8px 12px;">PREVIEW BUILD &mdash; not the deployed page &middot; source: extract_md.py → assemble.py (unchanged) from HANDOFF_AIJM-to-BURSBUILD_v1.5.md &middot; 3 refinements (header crop, vocab-link skip, practitioner eyebrow strip) &middot; commit c88719e &middot; built 2026-09-12 02:26 UTC</div>
-
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <a class="wordmark" href="/">Bursera <span>Consulting</span></a>
