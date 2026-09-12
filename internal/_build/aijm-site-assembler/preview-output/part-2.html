@@ -215,6 +215,9 @@ html{scroll-padding-top:96px}
 
 .site-coverband{ background:var(--blue); color:#fff; text-align:center; }
 .site-coverband__img{ width:100%; max-height:340px; object-fit:cover; object-position:top; display:block; }
+.site-coverband__img--p1{ object-position:top; }
+.site-coverband__img--p2{ object-position:center 65%; }
+.site-coverband__img--p3{ object-position:bottom; }
 .site-coverband__body{ padding:32px 24px 40px; max-width:var(--col-w); margin:0 auto; }
 .site-coverband h1{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-size:clamp(26px,4.2vw,40px); font-weight:700; line-height:1.15; margin-bottom:10px; }
 .site-coverband__partnum{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
@@ -274,8 +277,6 @@ html{scroll-padding-top:96px}
 
 </style></head>
 <body class="news-story">
-<div style="background:#fff3cd;color:#664d03;border-bottom:2px dashed #997404;font:600 13px/1.4 -apple-system,sans-serif;text-align:center;padding:8px 12px;">PREVIEW BUILD &mdash; not the deployed page &middot; source: extract_md.py → assemble.py (unchanged) from HANDOFF_AIJM-to-BURSBUILD_v1.5.md &middot; refinements: header crop, vocab-link skip (ruling reaffirmed), practitioner eyebrow strip, print-color-adjust fix &middot; commit 5afdaa8 &middot; built 2026-09-12 02:45 UTC</div>
-
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <a class="wordmark" href="/">Bursera <span>Consulting</span></a>
@@ -304,7 +305,7 @@ html{scroll-padding-top:96px}
 </nav>
 </div>
 <div class="site-coverband">
-  <img class="site-coverband__img" src="ai-history-bloomberg-header.jpg" width="1376" height="768" alt="Predictive, Generative, Agentic &mdash; a word-cloud cover over a blue and violet particle field.">
+  <img class="site-coverband__img site-coverband__img--p2" src="ai-history-bloomberg-header.jpg" width="1376" height="768" alt="Predictive, Generative, Agentic &mdash; a word-cloud cover over a blue and violet particle field.">
   <div class="site-coverband__body">
     <div class="site-coverband__partnum">Part 2 of 3</div>
     <h1>Predictive, Generative, Agentic</h1>

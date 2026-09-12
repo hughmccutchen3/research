@@ -58,6 +58,9 @@ SITE_CSS = """
 
 .site-coverband{ background:var(--blue); color:#fff; text-align:center; }
 .site-coverband__img{ width:100%; max-height:340px; object-fit:cover; object-position:top; display:block; }
+.site-coverband__img--p1{ object-position:top; }
+.site-coverband__img--p2{ object-position:center 65%; }
+.site-coverband__img--p3{ object-position:bottom; }
 .site-coverband__body{ padding:32px 24px 40px; max-width:var(--col-w); margin:0 auto; }
 .site-coverband h1{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-size:clamp(26px,4.2vw,40px); font-weight:700; line-height:1.15; margin-bottom:10px; }
 .site-coverband__partnum{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
@@ -340,7 +343,7 @@ def build_part(part):
 </header>
 %s
 <div class="site-coverband">
-  <img class="site-coverband__img" src="ai-history-bloomberg-header.jpg" width="1376" height="768" alt="Predictive, Generative, Agentic &mdash; a word-cloud cover over a blue and violet particle field.">
+  <img class="site-coverband__img site-coverband__img--p%d" src="ai-history-bloomberg-header.jpg" width="1376" height="768" alt="Predictive, Generative, Agentic &mdash; a word-cloud cover over a blue and violet particle field.">
   <div class="site-coverband__body">
     <div class="site-coverband__partnum">Part %d of 3</div>
     <h1>%s</h1>
@@ -359,6 +362,7 @@ def build_part(part):
 </body>
 </html>''' % (
         build_stickyhead(part),
+        n,
         n, part["title"], part["tagline"],
         main_html,
         build_pagefoot(n),
