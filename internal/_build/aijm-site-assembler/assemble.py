@@ -20,6 +20,10 @@ PARTS = [
      "tagline": "What the record adds up to, the technical vocabulary, and the open questions"},
 ]
 
+PROVENANCE_BLOCK_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "provenance_block_generated.html")
+with open(PROVENANCE_BLOCK_PATH, encoding="utf-8") as f:
+    PROVENANCE_BLOCK_HTML = f.read()
+
 with open(os.path.join(SCRATCH, "aijm_css.txt"), encoding="utf-8") as f:
     AIJM_CSS = f.read()
 
@@ -106,6 +110,14 @@ SITE_CSS = """
 .prov-label{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--caliche); padding-top:2px; }
 .prov-value{ color:#444; line-height:1.6; }
 @media (max-width:640px){ .prov-row{ grid-template-columns:1fr; } }
+/* BURSBUILD-S27: compatibility for provenance_render.py's generated dl/dt/dd markup
+   (the block is generated from the record, not hand-typeset -- keep its markup as-is
+   and adapt the CSS, rather than rewriting generator output to match old div markup). */
+.prov-grid{ margin:0; }
+.prov-grid .prov-row dt{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px;
+  text-transform:uppercase; color:var(--caliche); margin:0; padding-top:2px; }
+.prov-grid .prov-row dd{ margin:0; color:#444; line-height:1.6; }
+.prov-closing{ font-size:13px; color:var(--caliche); margin-top:16px; }
 
 @media print{
   .site-header,.draft-marker{ display:none; }
@@ -300,6 +312,11 @@ def build_part(part):
     for i, sn in enumerate(part["secs"]):
         body_parts.append(build_section_block(sn, i + 1, part_size))
     main_html = "\n".join(body_parts)
+    if n == 3:
+        # Document-level provenance: one consolidated, generated block at the end of
+        # the full paper (Part 3), never repeated per-page -- per the standing lock and
+        # Hugh's direction at BURSBUILD-S27.
+        main_html += "\n" + PROVENANCE_BLOCK_HTML
 
     head = '''<!DOCTYPE html>
 <html lang="en">

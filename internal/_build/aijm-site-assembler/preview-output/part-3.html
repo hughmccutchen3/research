@@ -263,6 +263,14 @@ html{scroll-padding-top:96px}
 .prov-label{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--caliche); padding-top:2px; }
 .prov-value{ color:#444; line-height:1.6; }
 @media (max-width:640px){ .prov-row{ grid-template-columns:1fr; } }
+/* BURSBUILD-S27: compatibility for provenance_render.py's generated dl/dt/dd markup
+   (the block is generated from the record, not hand-typeset -- keep its markup as-is
+   and adapt the CSS, rather than rewriting generator output to match old div markup). */
+.prov-grid{ margin:0; }
+.prov-grid .prov-row dt{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px;
+  text-transform:uppercase; color:var(--caliche); margin:0; padding-top:2px; }
+.prov-grid .prov-row dd{ margin:0; color:#444; line-height:1.6; }
+.prov-closing{ font-size:13px; color:var(--caliche); margin-top:16px; }
 
 @media print{
   .site-header,.draft-marker{ display:none; }
@@ -277,8 +285,6 @@ html{scroll-padding-top:96px}
 
 </style></head>
 <body class="news-story">
-<div style="background:#fff3cd;color:#664d03;border-bottom:2px dashed #997404;font:600 13px/1.4 -apple-system,sans-serif;text-align:center;padding:8px 12px;">PREVIEW BUILD &mdash; not the deployed page &middot; source: extract_md.py -&gt; assemble.py (unchanged) from HANDOFF_AIJM-to-BURSBUILD_v1.5.md &middot; refinements: header crop, vocab-link skip, practitioner eyebrow strip, print-color-adjust fix, per-part header band &middot; commit 535961b &middot; built 2026-09-12 03:20 UTC</div>
-
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <a class="wordmark" href="/">Bursera <span>Consulting</span></a>
@@ -620,6 +626,26 @@ these systems work</em>.</p>
 <h3>One thing I would want more than any of it</h3>
 <p>One system followed all the way through a failure, written from the inside. One deployed system in this record was followed through a failure in front of readers, the news summaries in 2025, and a newspaper did that work rather than Bloomberg. Announcements describe intentions and outcomes. A failure describes mechanism, because fixing one requires saying how the thing actually works. One such account would teach me more than another decade of launches.</p>
 <hr />
+<!-- rendered from provenance/BURSBUILD-HOW-BLOOMBERG-USED-AI.json by provenance_render.py on 2026-09-12 - do not hand-edit -->
+<section id="provenance" class="provenance">
+  <h2>Provenance</h2>
+  <dl class="prov-grid">
+    <div class="prov-row"><dt>Owner</dt><dd>Hugh McCutchen</dd></div>
+    <div class="prov-row"><dt>Contributors</dt><dd>Claude Sonnet 5 (BURSBUILD-S26, extract_md.py + rebuild), Claude Opus 5 (AIJM authorship, build_paper.py), Claude Sonnet 5 (BURSBUILD-S27), Hugh McCutchen (review, ruling on all decisions)</dd></div>
+    <div class="prov-row"><dt>How it began</dt><dd>Document-level record for the 3-part paper as a whole, continuing from BURSBUILD-BLOOMBERG-PAPER-PAGE (the retired single-page build) after Hugh's direction to split it into three separately releasable parts, then rebuild from AIJM's markdown source rather than its built HTML. Sourced from: BURSBUILD-BLOOMBERG-PAPER-PAGE (prior single-page site adaptation this document supersedes); AIJM-PAPER-HEADER-IMAGE (cover band art, now sliced into a distinct band per part); HANDOFF_AIJM-to-BURSBUILD_v1.5.md (the nine-file markdown source package this build is assembled from). (origin: forked-from:BURSBUILD-BLOOMBERG-PAPER-PAGE)</dd></div>
+    <div class="prov-row"><dt>Type of writing</dt><dd>Inquiry Record</dd></div>
+    <div class="prov-row"><dt>Process</dt><dd>execution</dd></div>
+    <div class="prov-row"><dt>Tools</dt><dd>bursera-site-deploy, output-formatting, bursera-webmaster, device-write-safety, provenance, publication-package</dd></div>
+    <div class="prov-row"><dt>Steps run</dt><dd>[RECORD-SILENT: steps_run]</dd></div>
+    <div class="prov-row"><dt>Why this version</dt><dd>v1.0: HANDOFF_AIJM-to-BURSBUILD_v1.4.md: AIJM's handoff shape changed from built HTML to raw markdown. | v2.0: Hugh's review of the v1.0 preview build, plus his direction to deploy to the site's internal/unlisted area.</dd></div>
+    <div class="prov-row"><dt>Notes</dt><dd>v1.0: extract_md.py promoted from device scratch into the repo this session as a reusable, second-use pattern. | v2.0: The pre-existing draft at this exact deploy path was uncommitted and from a thread the platform later determined had not been opened correctly (its session-open ceremony did not run, so it never logged), per Hugh's direction; overwritten rather than merged.</dd></div>
+    <div class="prov-row"><dt>Sources</dt><dd>0 added across 2 versions</dd></div>
+    <div class="prov-row"><dt>Depth &amp; confidence</dt><dd>unchanged / unchanged</dd></div>
+    <div class="prov-row"><dt>Level of work</dt><dd>substantial (2 versions across 2 sessions)</dd></div>
+  </dl>
+  <p class="prov-closing">Full history and audit trail available on request.</p>
+</section>
+
 </main>
 <footer class="pagefoot"><a class="pager pager--prev" href="part-2.html">&#8592; Part 2: Predictive, Generative, Agentic</a>
 <span></span></footer>

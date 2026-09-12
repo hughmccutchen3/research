@@ -263,6 +263,14 @@ html{scroll-padding-top:96px}
 .prov-label{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--caliche); padding-top:2px; }
 .prov-value{ color:#444; line-height:1.6; }
 @media (max-width:640px){ .prov-row{ grid-template-columns:1fr; } }
+/* BURSBUILD-S27: compatibility for provenance_render.py's generated dl/dt/dd markup
+   (the block is generated from the record, not hand-typeset -- keep its markup as-is
+   and adapt the CSS, rather than rewriting generator output to match old div markup). */
+.prov-grid{ margin:0; }
+.prov-grid .prov-row dt{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px;
+  text-transform:uppercase; color:var(--caliche); margin:0; padding-top:2px; }
+.prov-grid .prov-row dd{ margin:0; color:#444; line-height:1.6; }
+.prov-closing{ font-size:13px; color:var(--caliche); margin-top:16px; }
 
 @media print{
   .site-header,.draft-marker{ display:none; }
@@ -277,8 +285,6 @@ html{scroll-padding-top:96px}
 
 </style></head>
 <body class="news-story">
-<div style="background:#fff3cd;color:#664d03;border-bottom:2px dashed #997404;font:600 13px/1.4 -apple-system,sans-serif;text-align:center;padding:8px 12px;">PREVIEW BUILD &mdash; not the deployed page &middot; source: extract_md.py -&gt; assemble.py (unchanged) from HANDOFF_AIJM-to-BURSBUILD_v1.5.md &middot; refinements: header crop, vocab-link skip, practitioner eyebrow strip, print-color-adjust fix, per-part header band &middot; commit 535961b &middot; built 2026-09-12 03:20 UTC</div>
-
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <a class="wordmark" href="/">Bursera <span>Consulting</span></a>
