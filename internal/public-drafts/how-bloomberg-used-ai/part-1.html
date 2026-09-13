@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Foundations &mdash; How Bloomberg Used AI, Part 1 of 3 &mdash; Bursera Consulting</title>
-<meta name="description" content="Part 1 of 3: Foundations. A decade of Bloomberg's predictive, generative and agentic AI systems, traced case by case from the published record. Public draft.">
+<title>Foundations &mdash; How Bloomberg Used AI, Part 1 of 4 &mdash; Bursera Consulting</title>
+<meta name="description" content="Part 1 of 4: Foundations. A decade of Bloomberg's predictive, generative and agentic AI systems, traced case by case from the published record. Public draft.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/part-1.html">
 <link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Foundations &mdash; How Bloomberg Used AI, Part 1 of 3">
-<meta property="og:description" content="Part 1 of 3: Foundations. A decade of Bloomberg's predictive, generative and agentic AI systems, traced from the published record.">
+<meta property="og:title" content="Foundations &mdash; How Bloomberg Used AI, Part 1 of 4">
+<meta property="og:description" content="Part 1 of 4: Foundations. A decade of Bloomberg's predictive, generative and agentic AI systems, traced from the published record.">
 <meta property="og:url" content="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/part-1.html">
 <meta property="og:image" content="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/og-bloomberg-ai.jpg">
 <meta property="og:image:width" content="1200">
@@ -218,6 +218,7 @@ html{scroll-padding-top:96px}
 .site-coverband__img--p1{ object-position:top; }
 .site-coverband__img--p2{ object-position:center 65%; }
 .site-coverband__img--p3{ object-position:bottom; }
+.site-coverband__img--p4{ object-position:top left; }
 .site-coverband__body{ padding:32px 24px 40px; max-width:var(--col-w); margin:0 auto; }
 .site-coverband h1{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-size:clamp(26px,4.2vw,40px); font-weight:700; line-height:1.15; margin-bottom:10px; }
 .site-coverband__partnum{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
@@ -300,7 +301,7 @@ html{scroll-padding-top:96px}
 <div class="stickyhead">
 <div class="topbar">
 <a class="topbar__brand" href="/">Bursera <span>Consulting</span></a>
-<div class="topbar__series"><span class="series-cap-label">How Bloomberg Used AI</span><span class="series-cap-sep">&middot;</span><span class="series-cap-item series-cap-item--active">1 &mdash; Foundations</span><span class="series-cap-sep">&middot;</span><a class="series-cap-item" href="part-2.html">2 &mdash; Predictive, Generative, Agentic</a><span class="series-cap-sep">&middot;</span><a class="series-cap-item" href="part-3.html">3 &mdash; Conclusion & Reference</a></div>
+<div class="topbar__series"><span class="series-cap-label">How Bloomberg Used AI</span><span class="series-cap-sep">&middot;</span><span class="series-cap-item series-cap-item--active">1 &mdash; Foundations</span><span class="series-cap-sep">&middot;</span><a class="series-cap-item" href="part-2.html">2 &mdash; Predictive, Generative, Agentic</a><span class="series-cap-sep">&middot;</span><a class="series-cap-item" href="part-3.html">3 &mdash; Conclusion & Reference</a><span class="series-cap-sep">&middot;</span><a class="series-cap-item" href="part-4.html">4 &mdash; Bibliography</a></div>
 <span class="topbar__draft">Public draft &middot; not yet deployed</span>
 </div>
 <nav class="series" aria-label="Sections in this part">
@@ -315,7 +316,7 @@ html{scroll-padding-top:96px}
 <div class="site-coverband">
   <img class="site-coverband__img site-coverband__img--p1" src="ai-history-bloomberg-header.jpg" width="1376" height="768" alt="Predictive, Generative, Agentic &mdash; a word-cloud cover over a blue and violet particle field.">
   <div class="site-coverband__body">
-    <div class="site-coverband__partnum">Part 1 of 3</div>
+    <div class="site-coverband__partnum">Part 1 of 4</div>
     <h1>Foundations</h1>
     <p class="site-coverband__tagline">What AI is, how the field got here, and how these systems actually work</p>
     <p class="site-coverband__meta">Hugh McCutchen &middot; Bursera Consulting &middot; September 2026 &middot; Public Draft</p>
@@ -339,7 +340,7 @@ html{scroll-padding-top:96px}
 <h2>How the paper is organized</h2>
 <p>The eleven systems are grouped by what they produce. Some produce a number, a score or a ranking (Predictive). Some produce content — prose, code, images (Generative). Some take actions in other systems without a person approving each step (Agentic). All three kinds appear across the whole period, which is why the paper is organized by kind rather than by era.</p>
 <figure class="figure">
-<img src="diagrams/AIJM-S10_THREE-LANES_v0.1.svg" alt="" loading="lazy">
+<img src="diagrams/AIJM-S10_THREE-LANES_v0.1.svg" alt="Three lanes: predictive, generative, agentic" loading="lazy">
 
 </figure>
 <p>Each system is also placed in one of three date bands: before 2019, 2019 to 2022, and 2023 to 2026 just to provide another way to see the field of cases we're reviewing.  They aren't obvious "periods" of AI.</p>
@@ -361,7 +362,7 @@ html{scroll-padding-top:96px}
 <h2>What building a model took in 2015</h2>
 <p>In 2015, building one typically meant a specialized team writing code against raw data and running batch jobs on dedicated machines, with no product interface in the process. Someone decided which measurements the system would look at. Someone else assembled a set of examples where the answer was already known, so the system had something to learn from. The result solved one problem and could not be pointed at another. Two systems built a year apart inside the same company would share a vocabulary and might even use the same kind of model, but the training would have to be done again from the start, and so would everything built around it. By the end of the period this paper covers, the equivalent task could mean opening a chat window or calling an API into a general-purpose model that nobody at the company had built.</p>
 <h2>The machines started picking what to look at</h2>
-<p>Someone used to decide what a system would look at. From 2009 onward, first in speech recognition, then in images, then in language, systems began working that out for themselves from the raw data, and they started beating the systems whose measurements people had chosen. The hand-picked stage was removed rather than improved. Google Translate is the clearest public case, and it is more specific than the usual telling: what it replaced in 2016 was not a set of hand-written translation rules but an earlier statistical system that had itself been learned from data, running since 2006.</p>
+<p>Someone used to decide what a system would look at. From 2009 onward, first in speech recognition, then in images, then in language, systems began working that out for themselves from the raw data, and they started beating the systems whose measurements people had chosen. The hand-picked stage was removed rather than improved. Google Translate is the clearest public case, and it is more specific than the usual telling: what it began replacing in 2016 was not a set of hand-written translation rules but an earlier statistical system that had itself been learned from data, running since 2006 — the switchover rolled out language pair by language pair over the following year rather than all at once.</p>
 <p>The architecture that made this work well on written language at scale was published by researchers at Google in 2017. It made it practical to train one very large model on an enormous quantity of ordinary text that nobody had to label, then point that same model at particular jobs — sometimes with a modest set of examples, sometimes with nothing but an instruction. Products followed: search ranking from 2019, a model that could be redirected by a handful of examples typed into the prompt in 2020, GitHub Copilot in 2021, and ChatGPT at the end of 2022, which is where most people's version of this history begins.</p>
 <p>Andrej Karpathy named the shift "Software 2.0" in 2017: components that had been written as code would increasingly be trained from examples instead, wherever a task was hard to describe in rules and easy to demonstrate.</p>
 <p>Bloomberg's systems went part of the way down that path and stopped.</p>
@@ -499,10 +500,10 @@ A model is not a program in the ordinary sense. Nobody writes its logic. A model
 <h2>Architectures</h2>
 <h3>Decision trees, ensembles and gradient boosted trees</h3>
 <p>A <strong><em>decision tree</em></strong> is a branching sequence of yes-or-no questions about the input that ends in an answer. Is the coupon above four percent? Is the maturity beyond ten years? Each answer sends the item down one branch, and a branch ends in a value. One tree is crude.</p>
-<p>An <strong><em>ensemble</em></strong> combines many models into a single answer. <strong><em>Gradient boosted trees</em></strong> are the ensemble in ordinary industrial use: hundreds or thousands of small trees are built in sequence, each one fit to the errors made by the trees before it, and their answers are added together. A <strong><em>random forest</em></strong> is the other common tree ensemble, and it builds its trees independently on different samples of the data rather than in a correcting sequence. <strong><em>Logistic regression</em></strong>, the simplest member of the same toolkit, fits one weight per feature and converts the weighted sum into a probability.</p>
+<p>An <strong><em>ensemble</em></strong> combines many models into a single answer. <strong><em>Gradient boosted trees</em></strong> are the ensemble in ordinary industrial use: hundreds or thousands of small trees are built in sequence, each one fit to the errors made by the trees before it, and their answers are added together. A <strong><em>random forest</em></strong> is the other common tree ensemble, and it builds its trees independently on different samples of the data rather than in a correcting sequence. <strong><em>Logistic regression</em></strong>, the simplest member of the same toolkit, fits one weight per feature and converts the weighted sum into a probability. Logistic regression is one example of a <strong><em>parametric model</em></strong>: a fixed, hand-chosen mathematical form whose numbers are then fit to data, the form itself never changing. A hand-built pricing formula of the kind described later in this paper, in one of its own cases, is a parametric model of the same kind — a person writes the shape, and the numbers inside it are fit to data the same way any other trained method's numbers are.</p>
 <p>On tables of numbers, gradient boosted trees work well. They train in minutes on ordinary hardware, tolerate missing values and features on wildly different scales, retrain cheaply when new data arrives, and can be inspected for which inputs drove a result. A team choosing them over a deep network is choosing operational properties.</p>
 <figure class="figure">
-<img src="diagrams/AIJM-S07_METHOD-FAMILIES_v0.3.svg" alt="" loading="lazy">
+<img src="diagrams/AIJM-S07_METHOD-FAMILIES_v0.3.svg" alt="Which family of methods fits which kind of problem" loading="lazy">
 
 </figure>
 <p><em>Diagram: which family of methods fits which kind of problem, by the kind of data and the shape of the demand for answers.</em></p>
@@ -510,7 +511,7 @@ A model is not a program in the ordinary sense. Nobody writes its logic. A model
 <p>A <strong><em>transformer</em></strong> is an architecture for models that read sequences, most often text. It takes in a whole passage at once rather than one word at a time, and for each word it weighs how much every other word should influence that word's interpretation. Reading the passage in parallel is what made it practical to train very large models on very large amounts of text.</p>
 <p><strong><em>Pre-training</em></strong> means running such a model over an enormous body of ordinary text with a <strong><em>self-supervised</em></strong> objective, so nobody has to label anything. The result has absorbed a great deal about how language behaves and is good at no particular task. <strong><em>Adaptation</em></strong> means adjusting that model to a particular job afterwards. It takes a modest set of examples — and for some jobs no training at all, only an instruction in the prompt — and it costs a small fraction of what the pre-training cost.</p>
 <figure class="figure">
-<img src="diagrams/AIJM-S07_BUILD-VS-ADAPT_v0.1.svg" alt="" loading="lazy">
+<img src="diagrams/AIJM-S07_BUILD-VS-ADAPT_v0.1.svg" alt="Two ways to get a working system, 2015 and 2023" loading="lazy">
 
 </figure>
 <p><em>Diagram: three problems each built end to end in 2015, against one pre-trained model adapted three times in 2023.</em></p>
@@ -522,14 +523,15 @@ A model is not a program in the ordinary sense. Nobody writes its logic. A model
 <p>A trained model is one component among many, and it is usually the smallest. Something has to collect the input data and confirm it arrived. Something has to compute the features the same way when the system is running as when it was trained, or the model quietly sees different numbers from the ones it learned on. <strong><em>Serving</em></strong> is that running state, where the trained model is applied to new inputs it has never seen. Something else has to store versions, retrain on a schedule, notice when the world has moved and the model has not, route bad outputs to a person, and record what was corrected. None of that is machine learning. All of it has to exist before the model is of any use.</p>
 <p>The paper's pair for describing the mix inside one system, <strong><em>trained component</em></strong> and <strong><em>rule-based component</em></strong>, is defined in <em>Technical references</em> and used throughout. The surrounding apparatus described above is sometimes called orchestration in the wider industry. This paper does not use the word that way. Here <strong><em>orchestration</em></strong> names the agent loop and nothing else, meaning the controller, the dispatch of tools, and the memory that carries results from one turn to the next.</p>
 <figure class="figure">
-<img src="diagrams/AIJM-S07_LEARNED-AND-WRITTEN_v0.3.svg" alt="" loading="lazy">
+<img src="diagrams/AIJM-S07_LEARNED-AND-WRITTEN_v0.4.svg" alt="Which parts of a system are trained and which are rule-based" loading="lazy">
 
 </figure>
 <p><em>Diagram: the five stages of one pipeline, shaded by whether each stage was trained from data, hand-coded as rules, or performed by a person.</em></p>
+<p>This pipeline's five stages describe a system that is already built and running. The five stages named earlier in this section for pre-training and adaptation — data collection, hand-chosen features, labeling, training, serving — describe a system being built. They are two different things, not two labelings of the same thing, and a reader is not meant to line them up stage for stage.</p>
 <h3>Where a person sits is not a property of the technique</h3>
-<p>A rule-based system can file to a news wire with nobody approving the individual item. A large trained model can be held behind review of every output. Position and technique vary independently, and the paper's term for how far a system acts without a person reviewing each output is <strong><em>autonomy reach</em></strong>, defined in <em>the Appendix</em>, at the end of the paper.</p>
+<p>A rule-based system can file to a news wire with nobody approving the individual item. A large trained model can be held behind review of every output. Position and technique vary independently, and the paper's term for how far a system acts without a person reviewing each output is <strong><em>autonomy reach</em></strong>, defined in <em>the Appendix</em>, at the end of the paper. The diagram below's four positions and the three categories used in the mode-period-case grid (on-demand, human-assisted, fully automated) measure related but different things — the diagram is a finer axis of review, the grid a coarser regime label — and nothing in this paper converts one into the other.</p>
 <figure class="figure">
-<img src="diagrams/AIJM-S07_HUMAN-POSITION_v0.1.svg" alt="" loading="lazy">
+<img src="diagrams/AIJM-S07_HUMAN-POSITION_v0.2.svg" alt="Where the person sits" loading="lazy">
 
 </figure>
 <p><em>Diagram: four positions a person can occupy relative to a system's output, from approving every item to none.</em></p>

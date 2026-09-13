@@ -36,6 +36,46 @@ sys.path.insert(0, AIJM_DIR)
 import build_paper as B
 
 
+def fill_diagram_alt(html, aijm_dir):
+    """SHOULD-FIX found at BURSBUILD-S28's pre-placement gate: build_paper.py's
+    `<!-- html: diagram path=... -->` directive form emits `alt=""` on the
+    <img> it produces -- 8 of this paper's 12 diagrams shipped this way,
+    already live, before this session touched anything. Each source SVG
+    already carries its own accessible <title id="ti"> internally (role="img"
+    aria-labelledby), but a browser does not expose an SVG's internal title
+    to assistive tech when the SVG is only *referenced* by an <img src=...>
+    (as opposed to inlined) -- only the <img>'s own alt attribute counts.
+    This pulls that already-authored title text out and uses it as the alt,
+    site-wide, for every diagram-directive image with an empty alt. Done
+    here (BURSBUILD post-processing layer), not in build_paper.py itself,
+    per the same two-owner/two-layer principle as strip_practitioner_eyebrow
+    above: AIJM owns the SVGs and their internal titles; BURSBUILD owns how
+    the site exposes them. The 4 diagrams already carrying real alt text
+    (the plain markdown `![alt](path)` form) are untouched -- this only
+    fills genuinely empty alt attributes, never overwrites a real one."""
+    import html as htmlmod
+
+    def repl(m):
+        svg_rel = m.group(1)
+        svg_path = os.path.join(aijm_dir, svg_rel)
+        try:
+            with io.open(svg_path, encoding="utf-8") as sf:
+                svg_src = sf.read()
+        except OSError:
+            return m.group(0)
+        tm = re.search(r'<title[^>]*>(.*?)</title>', svg_src, flags=re.S)
+        if not tm:
+            return m.group(0)
+        title_text = re.sub(r"\s+", " ", tm.group(1)).strip()
+        if not title_text:
+            return m.group(0)
+        alt = htmlmod.escape(title_text, quote=True)
+        return '<img src="%s" alt="%s" loading="lazy">' % (svg_rel, alt)
+
+    pattern = re.compile(r'<img src="(diagrams/[^"]+\.svg)" alt="" loading="lazy">')
+    return pattern.sub(repl, html)
+
+
 def strip_practitioner_eyebrow(html):
     """Task 3 (BURSBUILD-S27): strip the redundant eyebrow label specifically
     inside practitioner panels. build_paper.py's panel template (line 89)
@@ -72,6 +112,7 @@ def main():
         raw = io.open(path, encoding="utf-8").read()
         html = B.convert(raw)
         html = strip_practitioner_eyebrow(html)
+        html = fill_diagram_alt(html, AIJM_DIR)
         title, body = convert_title_split(html)
         if title is None:
             print("  WARNING: no <h1> found in %s, falling back to build_paper.py's SECTIONS label" % fn)

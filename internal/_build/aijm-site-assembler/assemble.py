@@ -9,6 +9,7 @@ SHORT_LABEL = {
     1: "Introduction", 2: "How the field got here", 3: "How these systems work",
     4: "Predictive", 5: "Generative", 6: "Agentic",
     7: "Conclusion", 8: "Technical references", 9: "Appendix",
+    10: "Bibliography",
 }
 
 PARTS = [
@@ -18,6 +19,8 @@ PARTS = [
      "tagline": "The three modes, case by case, from the published record"},
     {"n": 3, "file": "part-3.html", "title": "Conclusion & Reference", "secs": [7, 8, 9],
      "tagline": "What the record adds up to, the technical vocabulary, and the open questions"},
+    {"n": 4, "file": "part-4.html", "title": "Bibliography", "secs": [10],
+     "tagline": "92 sources for the whole paper, grouped by source, not by chapter"},
 ]
 
 PROVENANCE_BLOCK_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "provenance_block_generated.html")
@@ -65,6 +68,7 @@ SITE_CSS = """
 .site-coverband__img--p1{ object-position:top; }
 .site-coverband__img--p2{ object-position:center 65%; }
 .site-coverband__img--p3{ object-position:bottom; }
+.site-coverband__img--p4{ object-position:top left; }
 .site-coverband__body{ padding:32px 24px 40px; max-width:var(--col-w); margin:0 auto; }
 .site-coverband h1{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-size:clamp(26px,4.2vw,40px); font-weight:700; line-height:1.15; margin-bottom:10px; }
 .site-coverband__partnum{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
@@ -312,7 +316,7 @@ def build_part(part):
     for i, sn in enumerate(part["secs"]):
         body_parts.append(build_section_block(sn, i + 1, part_size))
     main_html = "\n".join(body_parts)
-    if n == 3:
+    if n == 4:
         # Document-level provenance: one consolidated, generated block at the end of
         # the full paper (Part 3), never repeated per-page -- per the standing lock and
         # Hugh's direction at BURSBUILD-S27.
@@ -323,16 +327,16 @@ def build_part(part):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>%s &mdash; How Bloomberg Used AI, Part %d of 3 &mdash; Bursera Consulting</title>
-<meta name="description" content="Part %d of 3: %s. A decade of Bloomberg's predictive, generative and agentic AI systems, traced case by case from the published record. Public draft.">
+<title>%s &mdash; How Bloomberg Used AI, Part %d of %d &mdash; Bursera Consulting</title>
+<meta name="description" content="Part %d of %d: %s. A decade of Bloomberg's predictive, generative and agentic AI systems, traced case by case from the published record. Public draft.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/%s">
 <link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
 <meta property="og:type" content="article">
-<meta property="og:title" content="%s &mdash; How Bloomberg Used AI, Part %d of 3">
-<meta property="og:description" content="Part %d of 3: %s. A decade of Bloomberg's predictive, generative and agentic AI systems, traced from the published record.">
+<meta property="og:title" content="%s &mdash; How Bloomberg Used AI, Part %d of %d">
+<meta property="og:description" content="Part %d of %d: %s. A decade of Bloomberg's predictive, generative and agentic AI systems, traced from the published record.">
 <meta property="og:url" content="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/%s">
 <meta property="og:image" content="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/og-bloomberg-ai.jpg">
 <meta property="og:image:width" content="1200">
@@ -343,7 +347,7 @@ def build_part(part):
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>%s
 %s
-</style></head>''' % (part["title"], n, n, part["title"], part["file"], part["title"], n, n, part["title"], part["file"], AIJM_CSS, SITE_CSS)
+</style></head>''' % (part["title"], n, len(PARTS), n, len(PARTS), part["title"], part["file"], part["title"], n, len(PARTS), n, len(PARTS), part["title"], part["file"], AIJM_CSS, SITE_CSS)
 
     body = '''<body class="news-story">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -362,7 +366,7 @@ def build_part(part):
 <div class="site-coverband">
   <img class="site-coverband__img site-coverband__img--p%d" src="ai-history-bloomberg-header.jpg" width="1376" height="768" alt="Predictive, Generative, Agentic &mdash; a word-cloud cover over a blue and violet particle field.">
   <div class="site-coverband__body">
-    <div class="site-coverband__partnum">Part %d of 3</div>
+    <div class="site-coverband__partnum">Part %d of %d</div>
     <h1>%s</h1>
     <p class="site-coverband__tagline">%s</p>
     <p class="site-coverband__meta">Hugh McCutchen &middot; Bursera Consulting &middot; September 2026 &middot; Public Draft</p>
@@ -380,7 +384,7 @@ def build_part(part):
 </html>''' % (
         build_stickyhead(part),
         n,
-        n, part["title"], part["tagline"],
+        n, len(PARTS), part["title"], part["tagline"],
         main_html,
         build_pagefoot(n),
         LIGHTBOX_JS,

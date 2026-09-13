@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bibliography &mdash; How Bloomberg Used AI, Part 4 of 4 &mdash; Bursera Consulting</title>
+<meta name="description" content="Part 4 of 4: Bibliography. A decade of Bloomberg's predictive, generative and agentic AI systems, traced case by case from the published record. Public draft.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/part-4.html">
+<link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bibliography &mdash; How Bloomberg Used AI, Part 4 of 4">
+<meta property="og:description" content="Part 4 of 4: Bibliography. A decade of Bloomberg's predictive, generative and agentic AI systems, traced from the published record.">
+<meta property="og:url" content="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/part-4.html">
+<meta property="og:image" content="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/og-bloomberg-ai.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Predictive, Generative, Agentic &mdash; a word-cloud cover over a blue and violet particle field.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>/* AIJM paper build - shared stylesheet.
+   Palette and type are the house tokens from the output-formatting skill,
+   which are the same values the Data Lifecycle papers 1/3/4 carry inline. */
+:root{
+  --blue:#4a5c6b; --blue-light:#7a9aad; --blue-pale:#e8edf0;
+  --gold:#8a6e3a; --gold-pale:#f2ede3;
+  --green:#1a5c2a; --green-pale:#e8f5e9;
+  --red:#8b1a1a;  --red-pale:#fdecea;
+  --ink:#28303a;  --bg:#f4f2ee;
+  --gray-mid:#8a7660; --gray-rule:#d4c8b0;
+  --sonoran-sky:#a8c8d8; --caliche:#8a7660;
+  --col-w:760px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Serif 4',Georgia,serif;font-size:17px;line-height:1.75;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+p{margin-bottom:16px}
+a{color:var(--blue)}
+.skip-link{position:absolute;left:-9999px}
+.skip-link:focus{left:8px;top:8px;background:#fff;padding:8px 12px;z-index:99}
+
+/* top bar */
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;
+  background:var(--ink);color:#fff;padding:10px 24px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px}
+.topbar__brand{color:#fff;text-decoration:none;font-weight:600}
+.topbar__brand span{color:var(--sonoran-sky);font-weight:400}
+.topbar__draft{color:var(--gold-pale);opacity:.75;text-transform:uppercase;letter-spacing:2px;font-size:10px}
+
+/* the series strip - the Data Lifecycle idea, made clickable and made to stay put */
+.stickyhead{position:sticky;top:0;z-index:50;box-shadow:0 1px 0 rgba(40,48,58,.06),0 6px 18px -12px rgba(40,48,58,.45)}
+.series{background:var(--gold-pale);border-bottom:3px solid var(--gold);padding:9px 16px}
+.series__label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:7px}
+.series__chips{display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:6px;
+  max-width:1100px;margin:0 auto;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px}
+@media (min-width:1120px){.series__chips{justify-content:center;flex-wrap:wrap;overflow-x:visible}}
+.chip{display:flex;align-items:baseline;gap:6px;white-space:nowrap;text-decoration:none;background:#fff;
+  border:1px solid var(--gray-rule);border-top:3px solid var(--blue-light);border-radius:3px;
+  padding:5px 10px;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:12px;
+  font-weight:600;color:var(--ink);transition:border-top-color .15s,background .15s}
+.chip:hover{background:var(--blue-pale);border-top-color:var(--blue)}
+.chip b{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:var(--gray-mid);letter-spacing:1px}
+.chip--current{background:var(--blue-pale);border-top-color:var(--blue);border-top-width:4px;color:var(--blue);cursor:default}
+.chip--current b{color:var(--blue)}
+
+/* cover + page head */
+.cover{background:var(--blue);color:#fff;padding:80px 40px 60px;text-align:center}
+.cover__eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--sonoran-sky);margin-bottom:28px}
+.cover h1{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(32px,5vw,52px);
+  font-weight:700;line-height:1.1;margin-bottom:16px}
+.cover__sub{font-size:16px;color:rgba(168,200,216,.9);font-style:italic;max-width:600px;margin:0 auto 36px}
+.cover__meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--sonoran-sky);letter-spacing:1px;opacity:.8}
+.pagehead{max-width:var(--col-w);margin:0 auto;padding:56px 24px 0}
+.pagehead__num{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gray-mid);margin-bottom:10px}
+.pagehead__title{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(26px,4vw,40px);
+  font-weight:700;color:var(--blue);line-height:1.15;padding-bottom:14px;border-bottom:3px solid var(--blue)}
+
+/* body */
+.doc{max-width:var(--col-w);margin:0 auto;padding:40px 24px 72px}
+.doc h1{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(22px,3vw,30px);
+  font-weight:700;color:var(--blue);line-height:1.2;margin:48px 0 20px;padding-bottom:10px;
+  border-bottom:2px solid var(--gray-rule)}
+.doc h2{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:21px;font-weight:600;
+  color:var(--ink);margin:40px 0 14px}
+.doc h3{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:17px;font-weight:600;
+  color:var(--gray-mid);margin:30px 0 10px}
+.doc ul,.doc ol{margin:0 0 18px 22px}
+.doc li{margin-bottom:8px}
+.doc hr{border:0;border-top:1px solid var(--gray-rule);margin:40px 0}
+
+/* definition panels - a blockquote opening on a bold-italic term */
+blockquote{border-left:4px solid var(--blue-light);background:var(--blue-pale);
+  padding:16px 20px;margin:24px 0;font-size:15.5px;line-height:1.65}
+blockquote p{margin-bottom:10px}
+blockquote.term{border-left-color:var(--gold);background:var(--gold-pale)}
+.term__name{display:block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;
+  letter-spacing:.5px;color:var(--gold);margin-bottom:6px}
+
+/* inline glossary links - an inline ***term*** that resolved to an Appendix anchor */
+a.term-link{color:inherit;text-decoration:none;border-bottom:1px dotted var(--gold)}
+a.term-link:hover{border-bottom-style:solid}
+
+/* marked panels - the seam between reportage and Bursera's own view */
+.panel{margin:36px 0;padding:24px 26px;border-radius:3px}
+.panel__label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;margin-bottom:14px}
+.panel--view{background:#fff;border:2px solid var(--gold);border-left-width:6px}
+.panel--view .panel__label{color:var(--gold)}
+.panel--assistant{background:#eef1f3;border:1px solid var(--gray-rule);border-left:6px solid var(--blue-light)}
+.panel--assistant .panel__label{color:var(--gray-mid)}
+.panel h2{font-family:'DM Sans',sans-serif;font-size:18px;margin:0 0 6px}
+.panel p:last-child{margin-bottom:0}
+
+/* tables */
+.table-wrap{overflow-x:auto;margin:26px 0}
+table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.5;
+  font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif}
+thead th{background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:.5px;padding:10px 12px;text-align:left;font-weight:600}
+tbody td{padding:9px 12px;border-bottom:1px solid #e3ded2;vertical-align:top}
+tbody tr:nth-child(even){background:#efece5}
+tbody td:first-child{font-weight:600;color:var(--blue)}
+
+/* figures */
+.figure{margin:32px 0;text-align:center;position:relative}
+.figure img{max-width:100%;height:auto;border:1px solid var(--gray-rule);background:#fff;border-radius:3px}
+.figure figcaption{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:12.5px;
+  color:var(--gray-mid);margin-top:10px;text-align:left;line-height:1.5}
+
+/* figure lightbox (AIJM-S18 Task 6; full-width fix BURSBUILD-S25, shared per Hugh's ruling) */
+.figure img,.figure svg{cursor:zoom-in}
+.figure__expand{position:absolute;top:8px;right:8px;opacity:0;pointer-events:none;
+  background:rgba(255,255,255,.92);border:1px solid var(--gray-rule);border-radius:4px;
+  padding:4px 9px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink);
+  transition:opacity .15s}
+.figure:hover .figure__expand{opacity:1}
+.lightbox{position:fixed;inset:0;background:rgba(18,18,18,.92);display:none;
+  align-items:center;justify-content:center;z-index:9999;padding:5vh 5vw;cursor:zoom-out}
+.lightbox.is-open{display:flex}
+.lightbox__inner{width:96vw;max-height:92vh;overflow:auto}
+.lightbox__inner img,.lightbox__inner svg{width:100%;height:auto;max-width:none;max-height:none;
+  background:#fff;border-radius:4px;display:block;margin:0 auto}
+.lightbox__close{position:absolute;top:22px;right:30px;color:#fff;font-size:30px;line-height:1;
+  cursor:pointer;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif}
+html{scroll-padding-top:96px}
+@media print{
+  .stickyhead,.pagefoot,.topbar{display:none}
+  body{background:#fff;font-size:11pt}
+  .doc{max-width:none}
+  .panel,.figure,blockquote,table{break-inside:avoid}
+  .figure__expand,.lightbox{display:none!important}
+}
+
+/* contents */
+.toc{list-style:none;margin:8px 0 32px;padding:0;counter-reset:none}
+.toc li{margin:0;border-bottom:1px solid var(--gray-rule)}
+.toc a{display:flex;align-items:baseline;gap:16px;padding:16px 4px;text-decoration:none;color:var(--ink)}
+.toc a:hover{background:var(--blue-pale)}
+.toc__num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gray-mid);min-width:26px}
+.toc__label{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:18px;font-weight:600;
+  color:var(--blue);flex:1}
+.toc__words{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gray-mid)}
+.note{font-size:14.5px;color:var(--gray-mid);font-style:italic}
+
+/* pager */
+.pagefoot{max-width:var(--col-w);margin:0 auto;padding:24px;display:flex;justify-content:space-between;
+  gap:16px;border-top:1px solid var(--gray-rule);
+  font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:14px;font-weight:600}
+.pager{text-decoration:none;color:var(--blue)}
+.pager:hover{text-decoration:underline}
+
+@media (max-width:640px){
+  .series__chips{gap:6px}
+  .chip{font-size:11.5px;padding:6px 9px}
+  .topbar{flex-direction:column;align-items:flex-start;gap:4px}
+}
+
+
+/* --- BURSBUILD-S25 v3.0: site-adaptation chrome over the AIJM multi-page build --- */
+.site-header{
+  font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:#FFFFFF; border-bottom:1px solid #E2E8F0;
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+  gap:12px 20px; padding:12px 24px;
+}
+.site-header .wordmark{ font-weight:700; font-size:1.125rem; letter-spacing:-.01em; color:#0F172A; text-decoration:none; white-space:nowrap; }
+.site-header .wordmark span{ color:#8B6914; }
+.site-header .site-nav{ display:flex; flex-wrap:wrap; gap:16px; font-size:14px; list-style:none; margin:0; padding:0; }
+.site-header .site-nav a{ display:inline-block; min-height:44px; line-height:44px; color:#475569; text-decoration:none; border-bottom:2px solid transparent; transition:color .15s,border-color .15s; }
+.site-header .site-nav a:hover{ color:#8B6914; border-bottom-color:#C9A33D; }
+@media (min-width:720px){ .site-header{ padding:12px 48px; } }
+
+/* v3.0: series-cap folded INTO the sticky topbar (was a second, separate dark band
+   above the sticky one -- Hugh's call: collapse the two black bands into one combined
+   band that stays visible with the current part's section nav while scrolling). */
+.topbar__series{ display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:0 10px; }
+.series-cap-label{ text-transform:uppercase; letter-spacing:2px; color:#94A3B8; }
+.series-cap-sep{ color:#475569; user-select:none; }
+.series-cap-item{ color:#CBD5E1; text-decoration:none; }
+.series-cap-item:hover{ color:#F1F5F9; }
+.series-cap-item--active{ color:#F1F5F9; font-weight:700; }
+@media (max-width:640px){ .topbar__series{ justify-content:flex-start; font-size:10px; } }
+
+.draft-marker{
+  background:var(--gold-pale); border-bottom:2px solid var(--gold); color:var(--ink);
+  font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px; text-transform:uppercase;
+  text-align:center; padding:9px 16px;
+}
+.draft-marker a{ color:var(--ink); text-decoration:underline; }
+
+.site-coverband{ background:var(--blue); color:#fff; text-align:center; }
+.site-coverband__img{ width:100%; max-height:340px; object-fit:cover; object-position:top; display:block; }
+.site-coverband__img--p1{ object-position:top; }
+.site-coverband__img--p2{ object-position:center 65%; }
+.site-coverband__img--p3{ object-position:bottom; }
+.site-coverband__img--p4{ object-position:top left; }
+.site-coverband__body{ padding:32px 24px 40px; max-width:var(--col-w); margin:0 auto; }
+.site-coverband h1{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-size:clamp(26px,4.2vw,40px); font-weight:700; line-height:1.15; margin-bottom:10px; }
+.site-coverband__partnum{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+.site-coverband__tagline{ font-size:15.5px; color:rgba(168,200,216,.9); font-style:italic; margin-bottom:8px; }
+.site-coverband__meta{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--caliche); letter-spacing:1px; margin-top:14px; }
+
+/* v3.0: strong visual break between the 3 sections concatenated within one part --
+   Hugh's call: this is more content per page than the site has handled before, and the
+   old plain <hr/> join between sections did not read as a real break while scrolling. */
+.section-divider{
+  width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);
+  background:var(--ink); color:#fff; margin-top:64px; margin-bottom:0;
+  padding:22px 24px; display:flex; flex-wrap:wrap; align-items:baseline; justify-content:center;
+  gap:4px 16px; font-family:'JetBrains Mono',monospace; border-top:2px solid var(--gold); border-bottom:2px solid var(--gold);
+}
+.section-divider__num{ text-transform:uppercase; letter-spacing:3px; font-size:11px; color:var(--gold-pale); opacity:.9; white-space:nowrap; }
+.section-divider__title{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-weight:700; font-size:19px; color:#fff; }
+.section-heading{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-size:15px; font-weight:600;
+  text-transform:uppercase; letter-spacing:1px; color:var(--caliche); margin:20px 0 18px; }
+.section-heading--first{ font-size:21px; text-transform:none; letter-spacing:normal; color:var(--blue); margin:0 0 20px; font-weight:600; }
+@media print{
+  .section-divider{ background:none; color:var(--ink); width:auto; margin-left:0; margin-right:0; }
+  .section-divider__num{ color:var(--caliche); }
+  .section-divider__title{ color:var(--ink); }
+}
+
+/* v3.0: quick "back to top" control -- more content per page than before makes this worth having */
+.back-to-top{
+  position:fixed; right:20px; bottom:24px; z-index:60; width:44px; height:44px; border-radius:50%;
+  background:var(--ink); color:#fff; border:2px solid var(--gold); text-decoration:none;
+  display:flex; align-items:center; justify-content:center; font-size:19px; line-height:1;
+  box-shadow:0 6px 18px -6px rgba(0,0,0,.45); opacity:0; pointer-events:none; transform:translateY(8px);
+  transition:opacity .2s ease, transform .2s ease;
+}
+.back-to-top.is-visible{ opacity:1; pointer-events:auto; transform:translateY(0); }
+.back-to-top:hover{ background:#1c2531; }
+@media print{ .back-to-top{ display:none; } }
+
+.provenance{ background:#f0efec; border-top:3px solid var(--caliche); padding:40px 24px; max-width:var(--col-w); margin:48px auto 0; }
+.provenance h2{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:var(--caliche); margin-bottom:20px; }
+.prov-row{ display:grid; grid-template-columns:160px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid var(--gray-rule); font-size:13px; }
+.prov-row:last-child{ border-bottom:none; }
+.prov-label{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--caliche); padding-top:2px; }
+.prov-value{ color:#444; line-height:1.6; }
+@media (max-width:640px){ .prov-row{ grid-template-columns:1fr; } }
+/* BURSBUILD-S27: compatibility for provenance_render.py's generated dl/dt/dd markup
+   (the block is generated from the record, not hand-typeset -- keep its markup as-is
+   and adapt the CSS, rather than rewriting generator output to match old div markup). */
+.prov-grid{ margin:0; }
+.prov-grid .prov-row dt{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px;
+  text-transform:uppercase; color:var(--caliche); margin:0; padding-top:2px; }
+.prov-grid .prov-row dd{ margin:0; color:#444; line-height:1.6; }
+.prov-closing{ font-size:13px; color:var(--caliche); margin-top:16px; }
+
+@media print{
+  .site-header,.draft-marker{ display:none; }
+  /* BURSBUILD-S27 print-blocker fix: without forcing color-adjust, browsers strip
+     background colors by default in print, leaving thead th and .site-coverband's
+     white text on a transparent (effectively white) background -- unreadable. */
+  html,body{ -webkit-print-color-adjust:exact; print-color-adjust:exact; color-adjust:exact; }
+  thead th{ background:var(--blue) !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .site-coverband{ background:var(--blue) !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .site-coverband__img{ display:none; }
+}
+
+</style></head>
+<body class="news-story">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="wordmark" href="/">Bursera <span>Consulting</span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/">Home</a>
+    <a href="/research_examples.html">Research</a>
+    <a href="/llm-leadership.html">Training</a>
+    <a href="/advisory.html">Advisory</a>
+    <a href="/about.html">About</a>
+    <a href="/news.html">Updates</a>
+  </nav>
+</header>
+<div class="stickyhead">
+<div class="topbar">
+<a class="topbar__brand" href="/">Bursera <span>Consulting</span></a>
+<div class="topbar__series"><span class="series-cap-label">How Bloomberg Used AI</span><span class="series-cap-sep">&middot;</span><a class="series-cap-item" href="part-1.html">1 &mdash; Foundations</a><span class="series-cap-sep">&middot;</span><a class="series-cap-item" href="part-2.html">2 &mdash; Predictive, Generative, Agentic</a><span class="series-cap-sep">&middot;</span><a class="series-cap-item" href="part-3.html">3 &mdash; Conclusion & Reference</a><span class="series-cap-sep">&middot;</span><span class="series-cap-item series-cap-item--active">4 &mdash; Bibliography</span></div>
+<span class="topbar__draft">Public draft &middot; not yet deployed</span>
+</div>
+<nav class="series" aria-label="Sections in this part">
+  <div class="series__label">Part 4 &mdash; Bibliography</div>
+  <div class="series__chips">
+  <a class="chip chip--current" href="#s10" data-sec="s10" aria-current="page"><b>10</b>Bibliography</a>
+  </div>
+</nav>
+</div>
+<div class="site-coverband">
+  <img class="site-coverband__img site-coverband__img--p4" src="ai-history-bloomberg-header.jpg" width="1376" height="768" alt="Predictive, Generative, Agentic &mdash; a word-cloud cover over a blue and violet particle field.">
+  <div class="site-coverband__body">
+    <div class="site-coverband__partnum">Part 4 of 4</div>
+    <h1>Bibliography</h1>
+    <p class="site-coverband__tagline">92 sources for the whole paper, grouped by source, not by chapter</p>
+    <p class="site-coverband__meta">Hugh McCutchen &middot; Bursera Consulting &middot; September 2026 &middot; Public Draft</p>
+  </div>
+</div>
+<main id="main" class="doc">
+<h2 id="s10" class="section-heading section-heading--first">Bibliography — the whole paper, one list, grouped by source</h2>
+<p>RES-1188 ruled: one bibliography for the whole paper, grouped by source, not by chapter. This
+document is that consolidation. It absorbs the existing 37-entry Generative-lane list
+(<code>AIJM-S12_BIBLIOGRAPHY-GENERATIVE_v0.1.md</code>, entries F1–F7, C1–C6, B1–B5, A1–A4, E1, G1–G3, D1–D2,
+N1–N9 — that document's own numbering is kept as a cross-reference key below rather than
+re-verified) and adds every source named in prose across the other eight live sections: Intro
+(v0.20), Field-history (v0.7), How-these-systems-work (v0.7), Method-Predictive (v0.18),
+Method-Agentic (v0.11), Terminology (v0.12), Appendix (v0.9) and Conclusion (v0.18).</p>
+<p><strong>Constraint honored throughout.</strong> Every entry below comes from a document already on disk in this
+project — a case dossier, a source-pull file, a research dossier, a verification pass, or the
+generative bibliography itself. Nowhere below is a URL or date supplied from this assistant's own
+knowledge of the source. Where the project's own record holds no link, the entry says so, in bold,
+and that is reported as a finding rather than completed. Two sentences in the live paper — the
+Sculley NeurIPS quotation and one unattributed Reiter quotation carried since the trends-brief era —
+have <strong>no locatable source anywhere in the project's record at all</strong>, not even a thin one; both are
+flagged under "Passages with no usable citation" at the end, because that absence is more serious
+than a thin entry.</p>
+<hr />
+<h2>Two decisions, made before building the list</h2>
+<h3>(a) Short-form in-text reference format</h3>
+<p><strong>Decision: <code>(Source, short tag, Year)</code></strong> — the publishing organization or named author, a two-to-
+five-word tag distinguishing that document from others by the same source, and the year. Examples:
+<code>(Bloomberg, LQA launch release, 2016)</code> · <code>(Bloomberg, BAI white paper, 2020)</code> ·
+<code>(Reiter, "still not trustworthy", 2024)</code> · <code>(Chua, Semafor column, 2025)</code> ·
+<code>(Sculley et al., NeurIPS 2015)</code> · <code>(SEC, BVAL order, 2023)</code>. Where a source has more than one
+document from the same source and year, add a letter: <code>(Reiter, 2026a)</code> / <code>(Reiter, 2026b)</code>,
+keyed to the numbered entry below.</p>
+<p><strong>Why this form and not another.</strong> The paper's own prose already names people and organizations
+in-line ("John Micklethwait, Bloomberg, December 2024"), so a numbered footnote scheme would
+duplicate work the prose already does and would force renumbering on every edit. A full
+author-year form (APA-style) fails here because a third of the record's entries have no named
+author — a press release, a product page, a corporate blog post — and "Bloomberg, n.d." repeated
+sixty times is less useful than a short descriptive tag a reader can match to the entry by eye.
+The tag form also matches the register distinction this whole exercise turned on: <code>(Bloomberg, ...)</code>
+and <code>(Press Gazette, reporting Bloomberg, ...)</code> read differently on the page, which is the point —
+collapsing them into one undifferentiated author-year form would erase exactly the distinction
+RES-1188 asked this document to preserve. This is a recommendation for the format only; per scope,
+no in-text marker is added to the body prose in this pass.</p>
+<h3>(b) Register vocabulary — reconciled from 11 down to 9</h3>
+<p>The generative bibliography's own closing note states the authoritative six-category scheme this
+project declared for its case records: <strong>first-party Bloomberg, peer-reviewed, trade press,
+mainstream press, aggregator-relayed, sponsored content</strong> (<code>AIJM-S12_BIBLIOGRAPHY-GENERATIVE_v0.1.md</code>,
+opening paragraph and closing register-mix note). That same document then needed five more to cover
+sources outside the case records: practitioner expert blog, preprint (not peer-reviewed),
+research-institute report, conference paper held without a locator, and user-generated — eleven in
+total, "not a project source" recorded twelfth as an exclusion flag rather than a register.</p>
+<p>Pulling in the Predictive and Agentic lanes' own dossiers, plus the newly reviewed Field-history,
+Terminology, Appendix and Conclusion prose, adds two categories that recur too often and carry too
+different an evidentiary weight to fold into any of the six: a U.S. government regulatory action
+(the SEC's BVAL order) and preprints that are never going to become peer-reviewed within this
+paper's window (BloombergGPT, the Hagar/Diakopoulos/Gilbert paper, several GHG-adjacent arXiv
+postings). This document's reconciled set is <strong>nine registers</strong>, collapsed and extended as follows:</p>
+<ol>
+<li><strong>First-party Bloomberg</strong> — unchanged from the original six.</li>
+<li><strong>Peer-reviewed</strong> — unchanged, and now also absorbs the generative list's "conference paper held
+   without a locator" (F5, Sculley) — it is peer-reviewed (NeurIPS 2015) regardless of whether this
+   project holds its locator; "held without a locator" was describing this project's access, not the
+   source's own status, so it does not need to be its own register.</li>
+<li><strong>Preprint / working paper, not peer-reviewed</strong> — kept as its own category rather than folded
+   into peer-reviewed, because the generative bibliography's own BloombergGPT entry (G1) is
+   emphatic that this distinction is load-bearing for how the paper cites it.</li>
+<li><strong>Practitioner expert blog / independent commentary</strong> — kept as its own category. It recurs
+   across every lane that touches Reiter, Harrell, Karpathy or Chua's personal-voice pieces, and
+   folding it into trade press (as the six-category scheme would require) would misstate the
+   authorship — these are the source's own first-person statement, not a reporter's account of one.</li>
+<li><strong>Trade press</strong> — unchanged, and now absorbs the generative list's "research-institute report"
+   (F7, the Tow Center report cited inside Graefe 2016) — a nonprofit research-institute report
+   about the trade functions evidentially the same way a trade-press piece does here: independent
+   of Bloomberg, written for an industry audience, not peer-reviewed.</li>
+<li><strong>Mainstream press</strong> — unchanged.</li>
+<li><strong>Aggregator-relayed</strong> — unchanged, and now absorbs the generative list's "user-generated"
+   category (the single Apple App Store review, A5) — both are third-party content produced for a
+   purpose other than reporting on the source, and both reach this study at one or more removes from
+   anyone who could be asked a follow-up question. Collapsing them loses only the distinction between
+   an anonymous relay and an anonymous review, which this project's own record does not otherwise
+   use anywhere else.</li>
+<li><strong>Regulatory</strong> — new. The SEC's BVAL order is categorically different from a trade-press account
+   of that order (S06_PULL-IBVAL S6, S7): it is the primary enforcement document itself, carries
+   legal weight none of the other eight registers share, and appears only in the Predictive lane
+   and the Conclusion.</li>
+<li><strong>Sponsored content</strong> — unchanged (a genuine register in the LQA and GHG pulls' Risk.net awards
+   entries, even though the generative list's own case record used it zero times).</li>
+</ol>
+<p><strong>"Not a project source"</strong> stays outside the register system entirely, as an exclusion flag rather
+than a category — a document identified as contamination (aicerts.ai, G3) is not weighed as
+evidence at all, so giving it a register would imply it belongs in this list on the same footing as
+the other 90-plus entries. It stays here only because the paper names and rebuts it.</p>
+<hr />
+<h2>Bloomberg — first-party channels</h2>
+<p>Every document Bloomberg published itself, self-hosted or through a wire service, across all four
+lanes that cite Bloomberg. Grouped chronologically by first attestation.</p>
+<ol>
+<li><strong>PR Newswire (carrying Bloomberg), "Bloomberg Delivers First Quantitative Model For Calculating
+   Liquidity Risk."</strong> 9 March 2016, dateline "NEW YORK, March 9, 2016." No author (corporate
+   release). <code>https://www.prnewswire.com/news-releases/bloomberg-delivers-first-quantitative-model-for-calculating-liquidity-risk-300233068.html</code>.
+   Register: first-party Bloomberg. Lanes: Predictive. Source of the LQA launch date and the launch
+   description. (<code>AIJM-S06_PULL-LQA_v0.1.md</code> S1.)</li>
+<li><strong>Bloomberg L.P., "Bloomberg Regulatory Solutions" client deck.</strong> March 2016 (title slide);
+   copyright block reads "©2015 Bloomberg Finance L.P." No author.
+   <code>https://data.bloomberglp.com/professional/sites/12/2017/05/Reg_solutions.pdf</code>. Register:
+   first-party Bloomberg (technical/marketing). Lanes: Predictive. Source of the "Problem : A lack
+   of trade data..." three-line client-deck quote confirmed by the S19 Predictive audit.
+   (<code>AIJM-S06_PULL-LQA_v0.1.md</code> S9.)</li>
+<li><strong>Bloomberg L.P., LQA Fact Sheet.</strong> Copyright block "©2019 Bloomberg 673876 DIG 1219," i.e.
+   December 2019. No author. <code>https://data.bloomberglp.com/professional/sites/10/LQA-Fact-Sheet-December-2019.pdf</code>.
+   Register: first-party Bloomberg. Lanes: Predictive. (<code>AIJM-S06_PULL-LQA_v0.1.md</code> S10.)</li>
+<li><strong>Bloomberg L.P., "Liquidity &amp; regulation: SEC 22e-4" fact sheet.</strong> Copyright block "©2017
+   Bloomberg L.P. S771321102 0517." No author.
+   <code>https://data.bloomberglp.com/professional/sites/10/SEC-22e-4-Fact-Sheet.pdf</code>. Register:
+   first-party Bloomberg (regulatory-facing). Lanes: Predictive. (<code>AIJM-S06_PULL-LQA_v0.1.md</code> S11.)</li>
+<li><strong>Bloomberg L.P., JFSA/JITA Liquidity Guidelines Brochure.</strong> Copyright block "©2021 Bloomberg
+   1006892 DIG 0421." No author. <code>https://assets.bbhub.io/professional/sites/10/JFSA-JITA-Liquidity-Guidelines-Brochure.pdf</code>.
+   Register: first-party Bloomberg (regulatory-facing). Lanes: Predictive, Conclusion. Source of the
+   bucket boundaries and of the Conclusion's directly quoted "can be fully customized to reflect the
+   fund manager's determination of a 'significant' market impact." (<code>AIJM-S06_PULL-LQA_v0.1.md</code> S12.)</li>
+<li><strong>Bloomberg Professional Services, LQA product page.</strong> <code>meta-article:modified_time</code> 26 February</li>
+<li>No author. <code>https://professional.bloomberg.com/products/risk/lqa</code>. Register: first-party
+   Bloomberg marketing. Lanes: Predictive. (<code>AIJM-S06_PULL-LQA_v0.1.md</code> S13.)</li>
+<li><strong>John Micklethwait, staff memo, reprinted in full by Talking Biz News.</strong> 26 April 2016. Register:
+   trade press reprinting a first-party document — grouped here by content-origin, listed again
+   under Talking Biz News below by venue. Lanes: Generative (C2), Agentic. Full detail: generative
+   bibliography C2.</li>
+<li><strong>Bloomberg L.P., "Bloomberg Media's Innovation Lab launches 'The Bulletin'" press release.</strong>
+   18 September 2018. Register: first-party Bloomberg press release. Lanes: Generative (B1). Full
+   detail: generative bibliography B1.</li>
+<li><strong>Karen Johnson, BHIVE / Medium.</strong> 13 December 2018. Register: first-party Bloomberg team blog.
+   Lanes: Generative (B3). Full detail: generative bibliography B3.</li>
+<li><strong>BHIVE / Medium, final post.</strong> 27 February 2020. Register: first-party Bloomberg team blog.
+    Lanes: Generative (B4). Full detail: generative bibliography B4.</li>
+<li><strong>Mohammad Fesanghary and Arun Verma, "Predictive Analysis of Bloomberg Automated
+    Intelligence."</strong> June 2020 (by its own copyright block). Register: first-party Bloomberg quant
+    white paper. Lanes: Generative (A1), Agentic (same BAI case, per the S19 agentic audit). Full
+    detail: generative bibliography A1.</li>
+<li><strong>"Using Bloomberg automated news stories to predict market events," Bloomberg Professional
+    Insights.</strong> Body-stated 29 June 2020; CMS <code>date</code> field 2022-03-31. Register: first-party
+    Bloomberg marketing. Lanes: Generative (A2), Agentic. Full detail: generative bibliography A2.</li>
+<li><strong>Bloomberg Terminal news product page.</strong> <code>article:modified_time</code> 5 January 2024. Register:
+    first-party Bloomberg product marketing. Lanes: Generative (A3), Agentic. Full detail: generative
+    bibliography A3.</li>
+<li><strong>Bloomberg Professional, item on Automated Intelligence on Demand (AID).</strong> CMS <code>date</code>
+    2024-10-17T19:49:22. <strong>No title, no URL in record.</strong> Register: first-party Bloomberg marketing.
+    Lanes: Generative (A4), Agentic.</li>
+<li><strong>Quinonez and Meij, "A new era of AI-assisted journalism at Bloomberg."</strong> <em>AI Magazine</em>
+    45(2):187–199, first published 5 June 2024. DOI 10.1002/aaai.12181.
+    <code>https://onlinelibrary.wiley.com/doi/full/10.1002/aaai.12181</code>. Register: peer-reviewed and
+    first-party Bloomberg simultaneously (both authors are Bloomberg executives). Lanes: Generative
+    (C1), Agentic (confirmed by the S19 agentic audit as the source of "more than a hundred
+    currencies" and "hundreds of software bots"), Conclusion (the "reporters would previously wait
+    for an earnings press release..." block quote and "months of research by an editorial domain
+    expert..."). This is the single most cross-lane-cited document in the paper. Full detail:
+    generative bibliography C1.</li>
+<li><strong>"Bloomberg Launches AI-Powered Earnings Call Summaries," PR Newswire.</strong> 22 January 2024.
+    <code>https://www.prnewswire.com/news-releases/bloomberg-launches-ai-powered-earnings-call-summaries-302040670.html</code>.
+    Register: first-party Bloomberg press release. Lanes: Generative (D1). Full detail: generative
+    bibliography D1.</li>
+<li><strong>Bloomberg press release announcing <em>AI-Powered Document Insights</em>.</strong> PR Newswire, 7 April 2025.
+    <strong>No URL in record.</strong> Register: first-party Bloomberg press release. Lanes: Generative (D2).</li>
+<li><strong>Bloomberg LP — Tech At Bloomberg, "How Bloomberg Uses Machine Learning For Intraday Pricing
+    Transparency."</strong> 4 December 2023. Quotes David Krein, Timothy O'Brien, Junling Wang, Camilo
+    Ortiz. <code>https://www.bloomberg.com/company/stories/how-bloomberg-uses-machine-learning-intraday-pricing-transparency</code>.
+    Register: first-party Bloomberg engineering. Lanes: Predictive, Conclusion (Ortiz "scale better"
+    quote; the &lt; 6-hour retrain figure; the 6–7 billion ticks/day and 300,000 ticks/second figures).
+    (<code>AIJM-S06_PULL-IBVAL_v0.1.md</code> S1.)</li>
+<li><strong>PR Newswire (carrying Bloomberg), "Bloomberg Launches Front Office Pricing Solution..."</strong>
+    17 October 2023, quotes Tony McManus.
+    <code>https://www.prnewswire.com/news-releases/bloomberg-launches-front-office-pricing-solution-providing-greater-visibility-into-fixed-income-trading-301957528.html</code>.
+    Register: first-party Bloomberg marketing. Lanes: Predictive. (<code>AIJM-S06_PULL-IBVAL_v0.1.md</code> S2.)</li>
+<li><strong>PR Newswire (carrying Bloomberg), "Bloomberg Expands IBVAL Front Office Pricing to Europe..."</strong>
+    16 April 2024, quotes Eric Isenberg.
+    <code>https://www.prnewswire.com/news-releases/bloomberg-expands-ibval-front-office-pricing-to-europe-backed-by-contextual-metadata-for-greater-transparency-302116423.html</code>.
+    Register: first-party Bloomberg marketing. Lanes: Predictive. (<code>AIJM-S06_PULL-IBVAL_v0.1.md</code> S3.)</li>
+<li><strong>Bloomberg LP (asset CDN), "Fixed Income Cash Pricing Sources" fact sheet.</strong> Copyright block
+    "©2016 ... S739104556 1216." <code>https://data.bloomberglp.com/professional/sites/10/Fixed-Income-Cash-Pricing-Sources.pdf</code>.
+    Register: first-party Bloomberg marketing. Lanes: Predictive. (<code>AIJM-S06_PULL-IBVAL_v0.1.md</code> S9.)</li>
+<li><strong>Bloomberg Professional Services, IBVAL Front Office product page.</strong> Modified 9 February 2024.
+    <code>https://professional.bloomberg.com/products/data/enterprise-catalog/pricing/ibval-front-office/</code>.
+    Register: first-party Bloomberg marketing. Lanes: Predictive. (<code>AIJM-S06_PULL-IBVAL_v0.1.md</code> S10.)</li>
+<li><strong>Bloomberg Finance L.P., "Bloomberg's Greenhouse Gas Emissions Estimates Model: A Summary of
+    Challenges and Modeling Solutions."</strong> Copyright "©2022," document code "2238051 0223" (reads
+    February 2023). No author. <code>https://assets.bbhub.io/professional/sites/10/GHG.pdf</code>. Register:
+    first-party Bloomberg marketing/technical. Lanes: Predictive. Source of the "nearly 70,000
+    companies," "over 100,000... vs approximately 4,500 self-reported," and "over 800 individual
+    features" figures. (<code>AIJM-S06_PULL-GHG_v0.1.md</code> S3.)</li>
+<li><strong>PR Newswire (carrying Bloomberg), "Bloomberg Increases Carbon Emissions Data to Cover 100,000
+    Companies."</strong> 24 October 2022, quotes Brad Foster.
+    <code>https://www.prnewswire.com/news-releases/bloomberg-increases-carbon-emissions-data-to-cover-100-000-companies-301656554.html</code>.
+    Register: first-party Bloomberg marketing. Lanes: Predictive. (<code>AIJM-S06_PULL-GHG_v0.1.md</code> S4.)</li>
+<li><strong>Bloomberg L.P. (Tech at Bloomberg), "Our published AI research" index page.</strong> Undated; content
+    current to at least 2026 (page robot-blocks direct fetch; confirmed via two independent search-index
+    snapshots showing 2026 entries, including a July 2026 ACL 2026 papers post — GLM/Perplexity
+    verification, 2026-09-12). <code>https://www.bloomberg.com/company/values/tech-at-bloomberg/artificial-intelligence-ai/our-published-ai-research/</code>.
+    Register: first-party Bloomberg engineering. Lanes: Predictive. (<code>AIJM-S06_PULL-GHG_v0.1.md</code> S5.)</li>
+<li><strong>"Bloomberg Launches Gen AI Summarization for News Content."</strong> 15 January 2025. Register:
+    first-party Bloomberg press release. Lanes: Generative (N1). Full detail: generative
+    bibliography N1.</li>
+<li><strong>"Investors Harness Bloomberg's Expanded AI Tools to Discover and Summarize News."</strong> 24 November<ol start="2025">
+<li><code>https://www.bloomberg.com/company/press/investors-harness-bloombergs-expanded-ai-tools-to-discover-and-summarize-news/</code>
+— confirmed rendering in full (GLM/Perplexity verification, 2026-09-12): on-record quote from
+Adela Quinones (Global Head of News Discovery), the 175,000-source / 1.5 million-stories-daily
+figures, launch of AI Summary for Company News and expanded AI-Powered News Summaries. The original
+research-time "would not render on five attempts" note was a transient bloomberg.com anti-bot
+block, not a property of the source — corrected from aggregator-relayed to first-party. Register:
+first-party Bloomberg press release. Lanes: Generative (N7). Full detail: generative bibliography N7.</li>
+</ol>
+</li>
+<li><strong>Bloomberg Professional, "Pro Tips" marketing item.</strong> CMS <code>date</code> 25 June 2026. <strong>No title, no
+    author, no URL in record.</strong> Register: first-party Bloomberg marketing. Lanes: Generative (N9).</li>
+<li><strong>Bloomberg (self-published), ASKB launch release.</strong> 23 February 2026 — "Bloomberg introduced
+    ASKB, a powerful new conversational AI interface, now in beta..." Best verbatim reprint at
+    <code>https://www.marketsmedia.com/bloomberg-introduces-agentic-ai-to-the-terminal/</code>, corroborated at
+    <code>https://www.thetradenews.com/bloomberg-embeds-agentic-ai-into-the-terminal/</code>. Register:
+    first-party Bloomberg press release, reaching this study via verbatim trade-press reprint. Lanes:
+    Agentic. (<code>AIJM-S04_CASE-THREADS-BC_v0.1.md</code>, CASE C2.)</li>
+<li><strong>Bloomberg (self-published), ASKB roadmap release.</strong> 16 April 2026 — expands sell-side/
+    independent research providers "over 800" to "over 1,200." <strong>No working URL for the original
+    Bloomberg page or its best reprint (<code>radicaldatascience.wordpress.com</code>) is recorded — the
+    dossier names the reprint host but not the full URL.</strong> Register: first-party Bloomberg press
+    release. Lanes: Agentic.</li>
+<li><strong>Bloomberg via PR Newswire, ASKB mobile-parity release.</strong> 18 August 2026, quotes Fahd Arshad.
+    PR Newswire transmission ID 302853450. <strong>No full URL in record — only the transmission ID.</strong>
+    Register: first-party Bloomberg press release, wire-distributed. Lanes: Agentic.</li>
+<li><strong>Bloomberg product page, "AI at Bloomberg Terminal."</strong> <code>professional.bloomberg.com/products/
+    bloomberg-terminal/ai/</code>, retrieved 20 August 2026. <strong>Full URL as retrieved not separately
+    recorded beyond the path fragment quoted in the dossier.</strong> Register: first-party Bloomberg
+    marketing. Lanes: Agentic.</li>
+<li>Remaining generative-lane Bloomberg entries carried forward without re-verification, cross-listed
+    by lane where the audits confirm shared use: <strong>B2 (no — Digiday, listed under Trade press),
+    C3 (Poynter reprint, listed under Trade press), C4 (Press Gazette, listed under Trade press,
+    cross-listed Agentic/Conclusion), C5 (Global Editors Network Q&amp;A, listed under Trade press,
+    cross-listed Agentic), C6 (NYT, listed under Mainstream press), G2 (A-Team Insight, listed under
+    Trade press, cross-listed Agentic), G3 (aicerts.ai, listed under Excluded), N2–N6, N8 (listed
+    under Trade/mainstream/aggregator press below).</strong></li>
+</ol>
+<hr />
+<h2>Regulatory</h2>
+<ol start="34">
+<li><strong>U.S. Securities and Exchange Commission, Office of Public Affairs, press release 2023-14.</strong>
+    23 January 2023. Quotes Osman Nawaz. <code>https://www.sec.gov/newsroom/press-releases/2023-14</code>.
+    Underlying order at <code>https://www.sec.gov/litigation/admin/2023/33-11150.pdf</code> (not fetched by this
+    project — cited via the press release only). Register: regulatory. Lanes: Predictive,
+    Conclusion. Source of the $5 million BVAL penalty and the "at least 2016 through October 2022"
+    period; the lane correctly notes the order predates IBVAL. (<code>AIJM-S06_PULL-IBVAL_v0.1.md</code> S7.)</li>
+</ol>
+<hr />
+<h2>Peer-reviewed and preprint literature</h2>
+<ol start="35">
+<li><strong>Han, Gopal, Ouyang and Key, "Machine Learning for GHG Emissions Prediction."</strong> ICML 2021
+    workshop, Climate Change AI (CCAI). Venue page <code>https://www.climatechange.ai/papers/icml2021/4</code>;
+    preprint <code>https://arxiv.org/abs/2109.04318</code> (v1, 9 Sept 2021). Register: peer-reviewed (reviewed
+    workshop paper). Lanes: Predictive. THE primary source for the GHG case's 2.27%, 24,052/3,960,
+    619,703/61,467 and 97%/20% figures. (<code>AIJM-S06_PULL-GHG_v0.1.md</code> S1/S2.)</li>
+<li><strong>Ouyang and Key, sibling paper on Patterned Dropout / missingness shift.</strong> NeurIPS 2021
+    DistShift workshop. <code>https://arxiv.org/abs/2111.10344</code>. Register: peer-reviewed (workshop).
+    Lanes: Predictive (background for the GHG methodology). (<code>AIJM-S06_PULL-GHG_v0.1.md</code> S6.)</li>
+<li><strong>Nguyen, Diaz-Rainey, Kitto, McNeil, Pittman and Zhang, "Scope 3 emissions: Data quality and
+    machine learning prediction accuracy."</strong> <em>PLOS Climate</em>, published 15 November 2023. DOI
+    10.1371/journal.pclm.0000208. <code>https://journals.plos.org/climate/article?id=10.1371%2Fjournal.pclm.0000208</code>.
+    Register: peer-reviewed, third-party — <strong>with a declared competing interest</strong>: three authors work
+    for EMMI, a company selling carbon risk data. Lanes: Predictive. Source of "remain largely a
+    black box" and the disclosed-vs-modeled Scope 3 distinction. (<code>AIJM-S06_PULL-GHG_v0.1.md</code> S7.)</li>
+<li><strong>Maddela, Kulkarni and Preoţiuc-Pietro, "EntSUM."</strong> ACL 2022 (main conference).
+    <code>https://aclanthology.org/2022.acl-long.237/</code>; preprint <code>https://arxiv.org/abs/2204.02213</code> (v1
+    only, 5 April 2022). Register: peer-reviewed. Lanes: Generative (E1). Full detail: generative
+    bibliography E1.</li>
+<li><strong>"BloombergGPT: A Large Language Model for Finance."</strong> <code>https://arxiv.org/abs/2303.17564</code>,
+    v3 (21 December 2023). Register: arXiv preprint, <strong>not peer-reviewed</strong> (no Journal-ref field).
+    Lanes: Generative (G1), Conclusion (512 GPUs, 53 days of training figures). Full detail:
+    generative bibliography G1.</li>
+<li><strong>Hagar, Diakopoulos and Gilbert.</strong> arXiv:2509.25494. <strong>Title, author given names and date not
+    in record.</strong> Register: preprint, logged REPORTED not VERIFIED (paraphrase, not a quotation read
+    from the paper). Lanes: Generative (F1). Full detail: generative bibliography F1.</li>
+<li><strong>D. Sculley et al., "Hidden Technical Debt in Machine Learning Systems."</strong> NeurIPS 2015,
+    §5. <strong>No URL, DOI or page reference anywhere in this project's record</strong>, despite the paper's
+    title and venue now being stated with confidence in Field-history and Terminology (a richer
+    attribution than the generative bibliography's own F5 entry carries, which additionally lacked
+    the title). The exact quotations used in Field-history ("Because a mature system might end up
+    being (at most) 5%..." and the Figure 1 caption) have no traced source document anywhere in the
+    project's dossiers — see "Passages with no usable citation" below. Register: peer-reviewed
+    (NeurIPS main conference), held without a locator. Lanes: Generative (F5), Field-history,
+    Terminology, Conclusion. Cross-check performed: <code>AIJM-S11_RESEARCH-DOSSIER_practitioner-recency_v0.1.md</code>
+    confirms Sculley's identity (now Kaggle CEO) but explicitly states no 2015 paper URL was ever
+    pulled by this project.</li>
+<li><strong>D. Sculley, William Cukierski, et al., "Position: AI Competitions Provide the Gold Standard for
+    Empirical Rigor in GenAI Evaluation."</strong> arXiv:2505.00612, posted 1 May 2025; ICML 2025 (Position
+    Paper Track), oral, 16 July 2025. <code>https://arxiv.org/abs/2505.00612</code> ·
+    <code>https://icml.cc/virtual/2025/poster/40139</code>. Register: peer-reviewed / preprint (conference
+    accepted, arXiv version cited). <strong>Not used in the live paper text</strong> — surfaced only in the S11
+    recency dossier as an adjacent, not directly on-point, 2025 Sculley source. Lanes: none currently
+    (background research only). Listed here because it is the only 2024–2026 Sculley document this
+    project holds a URL for. (<code>AIJM-S11_RESEARCH-DOSSIER_practitioner-recency_v0.1.md</code>.)</li>
+</ol>
+<hr />
+<h2>Trade and financial press</h2>
+<ol start="43">
+<li><strong>Poynter, reprint of the Micklethwait memo.</strong> 27 April 2016. Register: trade press. Lanes:
+    Generative (C3). Full detail: generative bibliography C3.</li>
+<li><strong>Bron Maher, Press Gazette.</strong> 18 December 2024.
+    <code>https://pressgazette.co.uk/media_business/john-micklethwait-bloomberg-paywalls-ai-zxc/</code>.
+    Register: trade press. Lanes: Generative (C4), Agentic (Micklethwait pre-launch quotations),
+    Conclusion (the "roughly the same number of people to look at earnings" quotation is attributed
+    in the Conclusion simply to "John Micklethwait, Bloomberg, December 2024" — this is its source).
+    Full detail: generative bibliography C4.</li>
+<li><strong>John Micklethwait, Q&amp;A with the Global Editors Network.</strong> 18 October 2018. <strong>No title,
+    interviewer or URL in record.</strong> Register: trade press Q&amp;A. Lanes: Generative (C5), Agentic
+    (byline-disclosure date), Field-history/How-these-systems-work (cross-checked, not separately
+    quoted). Full detail: generative bibliography C5.</li>
+<li><strong>Digiday.</strong> 21 September 2018. <strong>No title, author or URL in record.</strong> Register: trade press.
+    Lanes: Generative (B2). Full detail: generative bibliography B2.</li>
+<li><strong>Wayne Barlow, interviewed by A-Team Insight.</strong> 28 April 2026.
+    <code>https://a-teaminsight.com/blog/inside-bloombergs-askb-roadmap-the-data-moat-behind-the-ai/</code>.
+    Register: trade press carrying an on-record first-party executive. Lanes: Generative (G2,
+    BloombergGPT "not used at all in any of our products" quote), Agentic (the "we expect the human
+    to be the one directing" and post-processing/hallucination-check quotes, plus the "orchestrated
+    portfolio" analyst framing that the ASKB re-extraction pass used to strike the fabricated "core
+    innovation" claim), Conclusion. This is the single most cross-lane-cited trade-press interview in
+    the paper. Full detail: generative bibliography G2.</li>
+<li><strong>Bron Maher / WatersTechnology, John Brazier, "Bloomberg launches liquidity assessment tool for
+    bond liquidity risk."</strong> 9 March 2016. <code>https://www.waterstechnology.com/trading-tech/2450311/bloomberg-launches-liquidity-assessment-tool-for-bond-liquidity-risk</code>.
+    Register: trade press. Lanes: Predictive. (<code>AIJM-S06_PULL-LQA_v0.1.md</code> S3.)</li>
+<li><strong>Terry Flanagan, Markets Media, "Bloomberg Delivers First Quantitative Model..."</strong> 9 March 2016.
+    <code>https://www.marketsmedia.com/bloomberg-delivers-first-quantitative-model-calculating-liquidity-risk/</code>.
+    Register: first-party marketing republished as trade press (verbatim republication of the launch
+    release). Lanes: Predictive. (<code>AIJM-S06_PULL-LQA_v0.1.md</code> S2.)</li>
+<li><strong>Pablo C Conde-Herman, Structured Retail Products.</strong> 16 March 2016.
+    <code>https://www.structuredretailproducts.com/insights/21955/bloomberg-releases-cross-asset-security-level-liquidity-risk-model</code>.
+    Register: trade press (editorial rewrite of the launch release). Lanes: Predictive.
+    (<code>AIJM-S06_PULL-LQA_v0.1.md</code> S4.)</li>
+<li><strong>Risk.net (Buy-side Awards 2016).</strong> No byline. 1 December 2016.
+    <code>https://www.risk.net/asset-management/2478745/liquidity-risk-technology-provider-year-bloomberg</code>.
+    Register: trade press — award coverage, unlabelled, built on a vendor interview (Naz Quadri).
+    Lanes: Predictive. (<code>AIJM-S06_PULL-LQA_v0.1.md</code> S5.)</li>
+<li><strong>Sebastian Day, Risk.net, "Quants turn to machine learning to model market impact."</strong> 5 April<ol start="2017">
+<li><code>https://www.risk.net/asset-management/4644191/quants-turn-to-machine-learning-to-model-market-impact</code>.
+Register: trade press (editorial feature). Lanes: Predictive. Source of the Naz Quadri
+quotations and the Jean-Philippe Bouchaud material — <strong>Bouchaud's first name is not given in
+this article per the S19 predictive audit's own check; it is carried in the paper as a
+longstanding, unverified addition and flagged <code>[UNVERIFIED]</code> rather than confirmed here.</strong>
+(<code>AIJM-S06_PULL-LQA_v0.1.md</code> S6.)</li>
+</ol>
+</li>
+<li><strong>Risk.net (Asia Risk Awards 2021).</strong> "Risk Staff." 27 September 2021.
+    <code>https://www.risk.net/awards/7879741/liquidity-risk-solution-of-the-year-bloomberg</code>. Register:
+    trade press — award coverage, unlabelled, built entirely on vendor quotes (Brad Foster). Lanes:
+    Predictive. (<code>AIJM-S06_PULL-LQA_v0.1.md</code> S7.)</li>
+<li><strong>Risk.net (Risk Markets Technology Awards 2026).</strong> 16 December 2025.
+    <code>https://www.risk.net/awards/7962728/market-liquidity-risk-product-of-the-year-bloomberg</code>.
+    <strong>Register: sponsored content</strong> — explicitly tagged <code>iim-sponsored: sponsored</code> on the page
+    itself, and the record notes it carries an "LLM-generated summary box, 'edited by humans.'"
+    Lanes: Predictive. (<code>AIJM-S06_PULL-LQA_v0.1.md</code> S8.)</li>
+<li><strong>Environmental Finance (Field Gibson Media), Sustainable Investment Awards 2024.</strong> No byline.
+    <code>https://www.environmental-finance.com/content/awards/sustainable-investment-awards-2024/winners/esg-data-provider-of-the-year-americas-bloomberg-esg-data.html</code>.
+    Register: trade press — awards coverage, carrying vendor-supplied claims; <strong>checked for
+    Advertisement/Sponsored tags: none present</strong>, so it is not classed sponsored despite the awards
+    format. Lanes: Predictive. (<code>AIJM-S06_PULL-GHG_v0.1.md</code> S8.)</li>
+<li><strong>Michael Thrasher, Institutional Investor.</strong> 17 October 2023.
+    <code>https://www.institutionalinvestor.com/article/2cc01z896579jxju9f08w/portfolio/bloomberg-says-its-using-machine-learning-to-deliver-near-real-time-bond-prices</code>.
+    Register: trade press (original reporting, adversarial questions, launch-day). Lanes: Predictive,
+    Conclusion (the "combination of machine learning and more traditional rules-based models" quote).
+    (<code>AIJM-S06_PULL-IBVAL_v0.1.md</code> S4.)</li>
+<li><strong>Alex Pugh, The DESK (Markets Media Europe).</strong> 16 April 2024.
+    <code>https://www.fi-desk.com/bloomberg-expands-ibval-front-office-pricing-solution/</code>. Register: trade
+    press (original interview with Eric Isenberg). Lanes: Predictive. (<code>AIJM-S06_PULL-IBVAL_v0.1.md</code> S5.)</li>
+<li><strong>Dan Barnes, The DESK (Markets Media Europe).</strong> 24 January 2023.
+    <code>https://www.fi-desk.com/sec-fines-bloomberg-us5-million-for-failure-to-disclose-single-quotes-as-bval-source/</code>.
+    Register: trade press. Lanes: Predictive. (<code>AIJM-S06_PULL-IBVAL_v0.1.md</code> S6.)</li>
+<li><strong>A-Team Insight, unbylined brief.</strong> 18 October 2023.
+    <code>https://a-teaminsight.com/briefs/bloomberg-adds-intraday-bval-front-office-pricing-solution-for-fixed-income-trading/</code>.
+    Register: trade press (rewritten press release). Lanes: Predictive. (<code>AIJM-S06_PULL-IBVAL_v0.1.md</code> S8.)</li>
+<li><strong>Mark Samuels, Diginomica, "How Bloomberg uses machine learning to create a competitive
+    advantage."</strong> Published 27 December 2018.
+    <code>https://diginomica.com/how-bloomberg-uses-machine-learning-to-create-a-competitive-advantage</code>.
+    Register: trade press. Lanes: Agentic (background — Shawn Edwards table-reading quote; not
+    confirmed as load-bearing in the live v0.11 lane text, but present in the case dossier).
+    (<code>AIJM-S04_CASE-THREADS-BC_v0.1.md</code>, line 295.)</li>
+<li><strong>Ted Merz, ted-merz.com, "Bloomberg launches its own ChatGPT."</strong> 21 January 2026.
+    <code>https://ted-merz.com/2026/01/21/bloomberg-launches-its-own-chatgpt/</code>. Register: trade press /
+    independent observer — Merz is a former Bloomberg global head of news product who explicitly
+    disclaims Bloomberg contact for this piece. Lanes: Agentic, Conclusion (background for the
+    "325,000 financial professionals" and beta-timing figures). (<code>AIJM-S04_CASE-THREADS-BC_v0.1.md</code>.)</li>
+<li><strong>MarketsMedia, verbatim reprint of the ASKB launch release.</strong>
+    <code>https://www.marketsmedia.com/bloomberg-introduces-agentic-ai-to-the-terminal/</code>, 23 February<ol start="2026">
+<li>Register: first-party content republished verbatim by trade press. Lanes: Agentic. Listed
+here by venue; content grouped with Bloomberg above.</li>
+</ol>
+</li>
+<li><strong>TheTradeNews, rewrite (not a reprint) with accurate direct quotes, corroborating the ASKB
+    launch date.</strong> <code>https://www.thetradenews.com/bloomberg-embeds-agentic-ai-into-the-terminal/</code>,
+    23 February 2026, 5:00 PM GMT. Register: trade press. Lanes: Agentic.</li>
+<li><strong>Radical Data Science (WordPress), reprint of the 16 April 2026 ASKB roadmap release.</strong>
+    Domain named in the case dossier (<code>radicaldatascience.wordpress.com</code>); <strong>no full URL recorded.</strong>
+    Register: trade press (verbatim reprint). Lanes: Agentic.</li>
+<li><strong>Wired, on ASKB.</strong> 28 April 2026, quoting Shawn Edwards ("It has become more and more
+    untenable...", "not magical... 10 mediocre ideas") and stating the "roughly a third of the
+    software's 375,000 users" beta figure. <strong>The wired.com original could not be retrieved directly
+    — it timed out on two fetch attempts. The project's only access to this text is the Slashdot
+    mirror, whose own URL is not recorded either</strong> — only "via Slashdot mirror" is noted in the
+    dossier. Register: mainstream/trade press, reaching this study aggregator-relayed. Lanes:
+    Agentic. This is a genuinely thin, load-bearing citation: several quoted phrases in the Agentic
+    lane rest on a source this project cannot directly link to.</li>
+<li><strong>Talking Biz News, full reprint of the Micklethwait memo.</strong> 26 April 2016. Register: trade press
+    reprinting a first-party document in full — the record's designated copy of record. Lanes:
+    Generative (C2), Agentic. Full detail: generative bibliography C2.</li>
+</ol>
+<hr />
+<h2>Mainstream press</h2>
+<ol start="67">
+<li><strong>Jaclyn Peiser, "The Rise of the Robot Reporter."</strong> <em>The New York Times</em>, 5 February 2019.
+    Register: mainstream press. Lanes: Generative (C6). Full detail: generative bibliography C6.
+    Recorded UNSUPPORTED AS CITED for the "roughly a third" automation-share figure.</li>
+<li><strong>Katie Robertson, "Bloomberg Has a Rocky Start With A.I. Summaries."</strong> <em>The New York Times</em>,
+    29 March 2025. Register: mainstream press, carrying a first-party Bloomberg statement.
+    <strong>Paywalled — every quotation from it in this project is relay-verified, not read from the
+    original.</strong> Lanes: Generative (N2). Full detail: generative bibliography N2.</li>
+</ol>
+<hr />
+<h2>Practitioner / independent expert commentary</h2>
+<ol start="69">
+<li><strong>Ehud Reiter, personal blog, 10 August 2020 post.</strong> <code>ehudreiter.com/2020/08/10/</code>. Register:
+    practitioner expert blog. Lanes: Generative (F2). Full detail: generative bibliography F2.</li>
+<li><strong>Ehud Reiter, personal blog, 29 June 2023 post.</strong> <code>ehudreiter.com/2023/06/29/</code>. Register:
+    practitioner expert blog. Lanes: Generative (F3). Full detail: generative bibliography F3.</li>
+<li><strong>Ehud Reiter, "In 2019 LM output was fluent but not trustworthy: still true in 2024."</strong> Ehud
+    Reiter's Blog, 27 February 2024. <code>https://ehudreiter.com/2024/02/27/lm-output-still-fluent-not-trustworthy/</code>.
+    Register: practitioner expert blog. Lanes: Conclusion (the "But ultimately I wonder if the fact
+    that my ultra-high-level description of LLMs has not changed in 5 years..." block quote).
+    (<code>AIJM-S11_RESEARCH-DOSSIER_practitioner-recency_v0.1.md</code>, item confirming the 27 Feb 2024 date
+    and URL.)</li>
+<li><strong>Ehud Reiter, "Real-world usage of LLMs in Journalism."</strong> Ehud Reiter's Blog, 23 April 2024.
+    <code>https://ehudreiter.com/2024/04/23/usage-llms-journalism/</code>. Register: practitioner expert blog.
+    Lanes: none currently in the live paper text — surfaced in the recency dossier as background;
+    listed for completeness since it was fetched in full and is directly on-topic.</li>
+<li><strong>Ehud Reiter, "Defining hallucination is not straightforward."</strong> Ehud Reiter's Blog,
+    10 September 2025. <code>https://ehudreiter.com/2025/09/10/defining-hallucination-is-not-straightforward/</code>.
+    Register: practitioner expert blog. Lanes: none currently quoted in the live text; background
+    only.</li>
+<li><strong>Ehud Reiter, "Comparing performance of LLMs is not very interesting."</strong> Ehud Reiter's Blog,
+    24 March 2026. <code>https://ehudreiter.com/2026/03/24/comparing-performance-of-llms-is-not-very-interesting/</code>.
+    Register: practitioner expert blog. Lanes: none currently quoted; background only.</li>
+<li><strong>Ehud Reiter, "AI for Healthcare: Great benchmark scores but minimal impact."</strong> Ehud Reiter's
+    Blog, 5 August 2026. <code>https://ehudreiter.com/2026/08/05/aimed-great-benchmarks-minimal-impact/</code>.
+    Register: practitioner expert blog. Lanes: none currently quoted; background only.</li>
+<li><strong>Ehud Reiter, "Future of NLG evaluation."</strong> Ehud Reiter's Blog, 26 June 2026.
+    <code>https://ehudreiter.com/2026/06/26/future-of-nlg-evaluation-2/</code>. Register: practitioner expert
+    blog. Lanes: Conclusion (the "I hope that we will see good progress towards these goals by
+    2030..." block quote). (<code>AIJM-S11_RESEARCH-DOSSIER_future-direction-quotes_v0.1.md</code>, item 1a.)</li>
+<li><strong>Frank Harrell, "Road Map for Choosing Between Statistical Modeling and Machine Learning."</strong>
+    <code>fharrell.com/post/stat-ml/</code>, published 30 April 2018, modified 24 December 2023. Register:
+    practitioner expert blog. Lanes: Generative (F4), Field-history (the "quick feedback while
+    training" and classification quotations). Full detail: generative bibliography F4.</li>
+<li><strong>Frank Harrell, talk abstract.</strong> Statistical Thinking (fharrell.com), talk given at the
+    Regression Modeling Strategies Course 2026. <code>https://www.fharrell.com/talk/ai/</code>; slide deck at
+    <code>https://hbiostat.org/talks/ai.html</code>. Register: practitioner expert blog / talk materials. Lanes:
+    Conclusion (the "For statistical programming, success has come when I play the role of
+    specification writer..." block quote, dated 19 May 2026 in the paper's own attribution).
+    (<code>AIJM-S11_RESEARCH-DOSSIER_future-direction-quotes_v0.1.md</code>.)</li>
+<li><strong>Andrej Karpathy, "Software 2.0."</strong> Medium, November 2017; listed at karpathy.ai. Register:
+    practitioner essay. Lanes: Generative (F6), Field-history ("Karpathy named the shift 'Software
+    2.0' in 2017..."), Conclusion (referenced by name but — see "Passages with no usable citation"
+    below — not actually quoted in the live v0.18 Conclusion text; a quotable block was cut by Hugh
+    at v0.18 per that file's own Provenance). Full detail: generative bibliography F6.</li>
+<li><strong>Andrej Karpathy, bearblog post, "Sequoia Ascent 2026."</strong> <code>https://karpathy.bearblog.dev/sequoia-ascent-2026/</code>.
+    Register: practitioner expert blog. <strong>Not cited anywhere in the live paper text</strong> — this is the
+    2026 recency source the S11 dossier located for Karpathy, but the Conclusion's "Karpathy...
+    has too [said something about where the field is headed]" sentence (line 81) currently points to
+    no quote at all, because the quoted block was cut in the v0.18 edit pass. Listed here as a
+    finding: the paper names Karpathy as a fourth voice in "Where practitioners say their own field
+    is headed" but carries no quotation for him, while a usable, project-verified 2026 source exists
+    and is unused. See SUGGESTED TICKETS.
+    (<code>AIJM-S11_RESEARCH-DOSSIER_future-direction-quotes_v0.1.md</code>, item on Karpathy.)</li>
+<li><strong>Gina Chua, quoted in the paper's practitioner bio (undated composite).</strong> Register: practitioner
+    expert blog / column, multiple pieces — see the two dated entries below, which supply the two
+    quotations the Conclusion actually uses. The bio's own closing quotation ("The form of words is
+    increasingly less valuable, because machines create the form of words.") has <strong>no dated source or
+    URL recorded anywhere in the project's dossiers found in this pass</strong> — see "Passages with no
+    usable citation."</li>
+<li><strong>Gina Chua, "View / How AI will upend the news."</strong> <em>Semafor</em>, 1 September 2025, 7:49pm ET.
+    <code>https://www.semafor.com/article/09/01/2025/view-how-ai-will-upend-the-news</code>. Register:
+    practitioner expert commentary (signed opinion column). Lanes: Conclusion (the "Generative AI
+    promises to revolutionize how people interact with information..." block quote).
+    (<code>AIJM-S11_RESEARCH-DOSSIER_practitioner-recency_v0.1.md</code>.)</li>
+<li><strong>Gina Chua, "Change Agent."</strong> (Re)Structured News, her own Substack, 8 June 2026.
+    <code>https://restructurednews.substack.com/p/change-agent</code>. Register: practitioner expert commentary.
+    Lanes: Conclusion (the "That the vast majority of people will turn to agentic systems..." block
+    quote). (<code>AIJM-S11_RESEARCH-DOSSIER_future-direction-quotes_v0.1.md</code>, item 4a.)</li>
+<li><strong>Gina Chua, interviewed, "'How can we have the best of machines and the best of humans?'"</strong>
+    Nieman Reports, 12 January 2026. <code>https://niemanreports.org/gina-chua-ai-news-industry-disruption/</code>.
+    Register: practitioner expert commentary (edited excerpts, first-person). Lanes: Field-history
+    (named in that section's own Provenance as a cross-check source for the Chua bio's accuracy, not
+    directly quoted in the live body text). (<code>AIJM-S11_RESEARCH-DOSSIER_future-direction-quotes_v0.1.md</code>,
+    item 4b.)</li>
+</ol>
+<hr />
+<h2>Aggregator-relayed</h2>
+<ol start="85">
+<li><strong>Apple App Store user review</strong>, storefront CA, user "Iarya55," 2 February 2022. Retrieved from
+    apps.apple.com 20 August 2026. <strong>No permanent link in record.</strong> Register: aggregator-relayed
+    (folded from "user-generated" per decision (b) above). Lanes: Generative (B5, listed as A5 in
+    the source document's own lettering — case-B numbering). Full detail: generative bibliography B5.</li>
+<li><strong>Slashdot, "Bloomberg's AI-Generated News Summaries Had At Least 36 Errors Since January."</strong>
+    30 March 2025. Register: aggregator-relayed. Lanes: Generative (N3). Full detail: generative
+    bibliography N3.</li>
+<li><strong>Washington Times.</strong> 29 March 2025. <strong>No title, author or URL in record.</strong> Register:
+    aggregator-relayed (the count inside it is a third party's, not Bloomberg's, not the <em>Times</em>'s).
+    Lanes: Generative (N4). Full detail: generative bibliography N4.</li>
+<li><strong>Oliver Darcy, <em>Status</em>.</strong> 2 April 2025. <strong>No title or URL in record; body behind a hard
+    paywall.</strong> Register: trade press reaching this study at a remove — kept under Generative's own
+    "trade press" tag there; cross-listed here because its relay function matches this category's
+    evidentiary posture. Lanes: Generative (N5). Full detail: generative bibliography N5.</li>
+<li><strong>Nieman Lab.</strong> 5 June 2025. <strong>No title, author or URL in record.</strong> Register: trade press,
+    carrying four distinct facts the Generative chapter treats as load-bearing (Chris Collins's
+    "Reader feedback... has been very positive," the coverage rule, the opinion-pieces expansion
+    plan, and the <em>Wall Street Journal</em>'s CMS-workflow answer). Lanes: Generative (N6). Full detail:
+    generative bibliography N6. <strong>This is the thinnest-cited load-bearing source in the whole paper</strong>
+    — no title, author or link, for four distinct facts across two sections.</li>
+<li><strong>InPublishing.</strong> 2 December 2025. <strong>No title, author or URL in record.</strong> Register:
+    aggregator-relayed (near-verbatim relay of N7). Lanes: Generative (N8). Full detail: generative
+    bibliography N8.</li>
+<li><strong>Slashdot mirror of the Wired ASKB piece (28 April 2026).</strong> <strong>URL not recorded</strong> — see entry 65
+    above under Trade and financial press, where the Wired original is listed; the mirror is the
+    project's only actual point of access to that text and its own address was never captured.
+    Register: aggregator-relayed. Lanes: Agentic.</li>
+</ol>
+<hr />
+<h2>Excluded — not a project source</h2>
+<ol start="92">
+<li><strong>aicerts.ai, "Bloomberg AI Summaries Reshape Financial Tech."</strong> 25 November 2025. Register: not
+    a project source — flagged "purge on sight" by the project's own record; carries an AI-generated
+    content disclaimer and asserts, unsourced, a claim Wayne Barlow directly contradicts. Lanes:
+    Generative (G3) — listed there only because the chapter names and rebuts it. Full detail:
+    generative bibliography G3.</li>
+</ol>
+<hr />
+<h2>Passages with no usable citation</h2>
+<p>Two items in the live paper carry a direct or near-direct quotation with <strong>no traceable source
+document anywhere in this project's record</strong>, which is a stronger gap than a "thin" entry (title/
+date only, no URL) — those at least have an identified document. These two have no identified
+document at all.</p>
+<ol>
+<li><strong>Field-history's Sculley quotations.</strong> "Because a mature system might end up being (at most) 5%
+   machine learning code and (at least) 95% glue code..." and the Figure 1 caption, "Only a small
+   fraction of real-world ML systems is composed of the ML code..." Both are attributed to "D.
+   Sculley et al., <em>Hidden Technical Debt in Machine Learning Systems</em>, NeurIPS 2015" with page/
+   section precision ("§5," "Figure 1 caption") that implies the paper was read directly. No file in
+   this project — not the generative bibliography's own F5 entry, not the S11 recency dossier, not
+   any Terminology or Intro version — carries a URL, DOI or page scan for this paper. The generative
+   bibliography logs the underlying figure as "REPORTED, not VERIFIED" (F5); Field-history's more
+   precise quotation and figure-caption citation do not resolve that status, they just make it more
+   visible. <strong>Recommendation:</strong> either locate the paper (it is a well-known, findable NeurIPS 2015
+   paper) and verify the two quotations against the original text, or de-quote both back to the
+   paraphrased "rule of thumb" form the Intro used before v0.13, consistent with how this project
+   already treats the Hagar preprint (F1) and Chua's own field-history bio quote (below).</li>
+<li><strong>Field-history's unattributed Reiter quotation.</strong> "Benchmarks and test-sets can serve as
+   screening tools, which filter out really bad approaches, but they cannot identify good
+   approaches." — attributed only to "Ehud Reiter" with no post title, date or URL anywhere this
+   quotation appears across eighteen-plus versions of this document and its ancestors (checked by
+   direct search across every file in OUTPUTS/ containing the string). This is a verbatim quotation
+   with a named living source and zero traceable origin in the project's own record, distinct from
+   the properly dated and linked Reiter quotations elsewhere in Field-history, Conclusion and the
+   generative bibliography (F2, F3, and entries 71/76 above). <strong>Recommendation:</strong> search
+   ehudreiter.com's own post index (already partially covered by the S11 recency dossier) for this
+   exact phrase, or drop the quotation and paraphrase.</li>
+<li><strong>Field-history's Gina Chua closing quotation.</strong> "The form of words is increasingly less
+   valuable, because machines create the form of words." Same defect as above — no date, venue or
+   URL anywhere in the project's record, distinct from her two properly dated and linked 2025/2026
+   statements (entries 82–83 above).</li>
+</ol>
+<hr />
+<h2>Count by completeness tier</h2>
+<ul>
+<li><strong>Fully cited (organization/title/date/author-if-any + a working URL or permanent identifier
+  such as a DOI or arXiv ID):</strong> 61 of 92 numbered entries above.</li>
+<li><strong>Thin (organization and date established, but no title, no author, and/or no URL in the
+  project's record — a true finding about the paper's sourcing, not padded):</strong> 28 of 92.</li>
+<li><strong>No usable citation at all (a quotation with no traceable source document):</strong> 3, listed
+  separately above and not counted in either tier.</li>
+</ul>
+<p>This splits close to the generative lane's own standalone ratio (21 of 37, or 57%, fully linked) —
+the whole-paper number is somewhat higher (66%) mainly because the Predictive lane's S06 source
+pulls are unusually well-linked (nearly every entry carries a URL), which pulls the paper-wide
+average up from where the Generative lane alone would put it. The Agentic lane's ASKB case is the
+weakest link in the whole paper: five of its distinct citations (the 16 April and 18 August 2026
+Bloomberg releases, the product page, the Wired piece, and its Slashdot mirror) have no working
+URL anywhere in the project's record, despite carrying some of the lane's most load-bearing
+quotations (Edwards's "not magical... 10 mediocre ideas," Barlow's autonomy-reach statement).</p>
+<hr />
+<!-- rendered from provenance/BURSBUILD-HOW-BLOOMBERG-USED-AI.json by provenance_render.py on 2026-09-13 - do not hand-edit -->
+<section id="provenance" class="provenance">
+  <h2>Provenance</h2>
+  <dl class="prov-grid">
+    <div class="prov-row"><dt>Owner</dt><dd>Hugh McCutchen</dd></div>
+    <div class="prov-row"><dt>Contributors</dt><dd>Claude Sonnet 5 (BURSBUILD-S26, extract_md.py + rebuild), Claude Opus 5 (AIJM authorship, build_paper.py), Claude Sonnet 5 (BURSBUILD-S27), Hugh McCutchen (review, ruling on all decisions), Claude Sonnet 5 (BURSBUILD-S28), Hugh McCutchen (ruling on bibliography placement, citation style, and alt-text fix scope)</dd></div>
+    <div class="prov-row"><dt>How it began</dt><dd>Document-level record for the 3-part paper as a whole, continuing from BURSBUILD-BLOOMBERG-PAPER-PAGE (the retired single-page build) after Hugh's direction to split it into three separately releasable parts, then rebuild from AIJM's markdown source rather than its built HTML. Sourced from: BURSBUILD-BLOOMBERG-PAPER-PAGE (prior single-page site adaptation this document supersedes); AIJM-PAPER-HEADER-IMAGE (cover band art, now sliced into a distinct band per part); HANDOFF_AIJM-to-BURSBUILD_v1.5.md (the nine-file markdown source package this build is assembled from). (origin: forked-from:BURSBUILD-BLOOMBERG-PAPER-PAGE)</dd></div>
+    <div class="prov-row"><dt>Type of writing</dt><dd>Inquiry Record</dd></div>
+    <div class="prov-row"><dt>Process</dt><dd>execution</dd></div>
+    <div class="prov-row"><dt>Tools</dt><dd>bursera-site-deploy, output-formatting, bursera-webmaster, device-write-safety, provenance, publication-package, platform-orientation, librarian, linear-ticket-creator</dd></div>
+    <div class="prov-row"><dt>Steps run</dt><dd>[RECORD-SILENT: steps_run]</dd></div>
+    <div class="prov-row"><dt>Why this version</dt><dd>v1.0: HANDOFF_AIJM-to-BURSBUILD_v1.4.md: AIJM's handoff shape changed from built HTML to raw markdown. | v2.0: Hugh's review of the v1.0 preview build, plus his direction to deploy to the site's internal/unlisted area. | v3.0: AIJM's HANDOFF_AIJM-to-BURSBUILD_v1.6.md (AIJM-S19): field-history correction, bibliography corrections, and the new consolidated bibliography handed off with its site placement left to BURSBUILD's discretion. Rejected: Holding the bibliography back as an internal-only reference, and linking it without building it as a full page -- Hugh chose to build it as a 4th part instead.</dd></div>
+    <div class="prov-row"><dt>Notes</dt><dd>v1.0: extract_md.py promoted from device scratch into the repo this session as a reusable, second-use pattern. | v2.0: The pre-existing draft at this exact deploy path was uncommitted and from a thread the platform later determined had not been opened correctly (its session-open ceremony did not run, so it never logged), per Hugh's direction; overwritten rather than merged. | v3.0: 3 stale, now-unreferenced superseded diagram SVGs (HUMAN-POSITION v0.1, LEARNED-AND-WRITTEN v0.3, MODE-PERIOD-CASE-GRID v0.3) were left in place in the deploy clone's diagrams/ folder rather than deleted -- flagged as litter per the librarian's LITTER convention, delete pending Hugh's approval.</dd></div>
+    <div class="prov-row"><dt>Sources</dt><dd>1 added across 3 versions (public)</dd></div>
+    <div class="prov-row"><dt>Depth &amp; confidence</dt><dd>unchanged / unchanged / unchanged</dd></div>
+    <div class="prov-row"><dt>Level of work</dt><dd>substantial (3 versions across 3 sessions)</dd></div>
+  </dl>
+  <p class="prov-closing">Full history and audit trail available on request.</p>
+</section>
+
+</main>
+<footer class="pagefoot"><a class="pager pager--prev" href="part-3.html">&#8592; Part 3: Conclusion & Reference</a>
+<span></span></footer>
+<script>
+(function(){
+  function ready(fn){document.readyState!='loading'?fn():document.addEventListener('DOMContentLoaded',fn);}
+  ready(function(){
+    var figures = document.querySelectorAll('.figure');
+    if(!figures.length) return;
+    var lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.innerHTML = '<span class="lightbox__close" aria-label="Close">&#215;</span><div class="lightbox__inner"></div>';
+    document.body.appendChild(lb);
+    var inner = lb.querySelector('.lightbox__inner');
+    function openLb(media){
+      inner.innerHTML = '';
+      var clone = media.cloneNode(true);
+      clone.removeAttribute('loading');
+      if(clone.tagName && clone.tagName.toLowerCase() === 'svg'){
+        clone.removeAttribute('width');
+        clone.removeAttribute('height');
+      }
+      inner.appendChild(clone);
+      lb.classList.add('is-open');
+    }
+    function closeLb(){ lb.classList.remove('is-open'); inner.innerHTML = ''; }
+    figures.forEach(function(f){
+      var media = f.querySelector('img,svg');
+      if(!media) return;
+      var hint = document.createElement('span');
+      hint.className = 'figure__expand';
+      hint.textContent = 'Expand \u2921';
+      f.appendChild(hint);
+      f.addEventListener('click', function(e){
+        if(e.target.closest('a')) return;
+        openLb(media);
+      });
+    });
+    lb.addEventListener('click', closeLb);
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
+  });
+})();
+</script>
+<a href="#main" class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</a>
+<script>
+(function(){
+  function ready(fn){document.readyState!='loading'?fn():document.addEventListener('DOMContentLoaded',fn);}
+  ready(function(){
+    var btn = document.getElementById('backToTop');
+    if(!btn) return;
+    function onScroll(){
+      if(window.scrollY > 480){ btn.classList.add('is-visible'); }
+      else{ btn.classList.remove('is-visible'); }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  function ready(fn){document.readyState!='loading'?fn():document.addEventListener('DOMContentLoaded',fn);}
+  ready(function(){
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.series__chips .chip'));
+    if(!chips.length || !('IntersectionObserver' in window)) return;
+    var targets = chips.map(function(c){
+      var id = c.getAttribute('data-sec');
+      return {chip:c, id:id, el: id ? document.getElementById(id) : null};
+    }).filter(function(t){ return t.el; });
+    if(!targets.length) return;
+    function setCurrent(id){
+      chips.forEach(function(c){
+        if(c.getAttribute('data-sec') === id){ c.classList.add('chip--current'); c.setAttribute('aria-current','page'); }
+        else { c.classList.remove('chip--current'); c.removeAttribute('aria-current'); }
+      });
+    }
+    var io = new IntersectionObserver(function(entries){
+      var visible = entries.filter(function(e){ return e.isIntersecting; });
+      if(visible.length){
+        visible.sort(function(a,b){ return a.boundingClientRect.top - b.boundingClientRect.top; });
+        setCurrent(visible[0].target.id);
+      }
+    }, {rootMargin: '-25% 0px -65% 0px', threshold: 0});
+    targets.forEach(function(t){ io.observe(t.el); });
+    window.addEventListener('scroll', function(){
+      if((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 4){
+        setCurrent(targets[targets.length - 1].id);
+      }
+    }, {passive:true});
+  });
+})();
+</script>
+</body>
+</html>
