@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Foundations &mdash; How Bloomberg Used AI, Part 1 of 4 &mdash; Bursera Consulting</title>
-<meta name="description" content="Part 1 of 4: Foundations. A decade of Bloomberg's predictive, generative and agentic AI systems, traced case by case from the published record. Public draft.">
-<meta name="robots" content="noindex">
-<link rel="canonical" href="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/part-1.html">
+<meta name="description" content="Part 1 of 4: Foundations. A decade of Bloomberg's predictive, generative and agentic AI systems, traced case by case from the published record.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://burseraconsulting.com/how-bloomberg-used-ai/part-1.html">
 <link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Foundations &mdash; How Bloomberg Used AI, Part 1 of 4">
 <meta property="og:description" content="Part 1 of 4: Foundations. A decade of Bloomberg's predictive, generative and agentic AI systems, traced from the published record.">
-<meta property="og:url" content="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/part-1.html">
-<meta property="og:image" content="https://burseraconsulting.com/internal/public-drafts/how-bloomberg-used-ai/og-bloomberg-ai.jpg">
+<meta property="og:url" content="https://burseraconsulting.com/how-bloomberg-used-ai/part-1.html">
+<meta property="og:image" content="https://burseraconsulting.com/how-bloomberg-used-ai/og-bloomberg-ai.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Predictive, Generative, Agentic &mdash; a word-cloud cover over a blue and violet particle field.">
@@ -219,6 +219,20 @@ html{scroll-padding-top:96px}
 .site-coverband__img--p2{ object-position:center 65%; }
 .site-coverband__img--p3{ object-position:bottom; }
 .site-coverband__img--p4{ object-position:top left; }
+
+/* ================= PROVENANCE SEAL (.bseal) — ported from styles.css BURSBUILD-S16 =================
+   The B mark + stacked text link on the cover; jumps to this piece's provenance section. */
+.bseal-host{ position:relative; }
+.bseal{ position:absolute; top:12px; right:14px; display:flex; align-items:stretch; gap:6px; text-decoration:none; z-index:5; }
+.bseal .bmark{ display:block; width:26px; height:26px; border-radius:5px; animation:bglow 3s ease-out 1; }
+.bseal .btext{ display:flex; flex-direction:column; justify-content:space-between; height:26px; }
+.bseal .btext span{ font-family:Georgia,"Times New Roman",serif; font-size:10.5px; line-height:1.15; color:#e8d9ae; text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px; text-decoration-color:rgba(201,163,61,.8); }
+.bseal:hover .btext span{ color:#C9A33D; }
+.bseal .btip{ position:absolute; top:calc(100% + 7px); right:0; white-space:nowrap; background:#0F172A; border:1px solid rgba(201,163,61,.6); color:#e8d9ae; font-size:10px; font-family:Georgia,serif; padding:4px 9px; border-radius:4px; opacity:0; transform:translateY(-3px); pointer-events:none; transition:opacity .18s ease, transform .18s ease; }
+.bseal:hover .btip, .bseal:focus .btip{ opacity:1; transform:translateY(0); }
+@keyframes bglow{ 0%{box-shadow:0 0 0 0 rgba(201,163,61,0);} 22%{box-shadow:0 0 10px 2px rgba(201,163,61,.75);} 55%{box-shadow:0 0 7px 1px rgba(201,163,61,.35);} 100%{box-shadow:0 0 0 0 rgba(201,163,61,0);} }
+@media (prefers-reduced-motion:reduce){ .bseal .bmark{ animation:none; } }
+
 .site-coverband__body{ padding:32px 24px 40px; max-width:var(--col-w); margin:0 auto; }
 .site-coverband h1{ font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif; font-size:clamp(26px,4.2vw,40px); font-weight:700; line-height:1.15; margin-bottom:10px; }
 .site-coverband__partnum{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
@@ -302,7 +316,7 @@ html{scroll-padding-top:96px}
 <div class="topbar">
 <a class="topbar__brand" href="/">Bursera <span>Consulting</span></a>
 <div class="topbar__series"><span class="series-cap-label">How Bloomberg Used AI</span><span class="series-cap-sep">&middot;</span><span class="series-cap-item series-cap-item--active">1 &mdash; Foundations</span><span class="series-cap-sep">&middot;</span><a class="series-cap-item" href="part-2.html">2 &mdash; Predictive, Generative, Agentic</a><span class="series-cap-sep">&middot;</span><a class="series-cap-item" href="part-3.html">3 &mdash; Conclusion & Reference</a><span class="series-cap-sep">&middot;</span><a class="series-cap-item" href="part-4.html">4 &mdash; Bibliography</a></div>
-<span class="topbar__draft">Public draft &middot; not yet deployed</span>
+<span class="topbar__draft">Published</span>
 </div>
 <nav class="series" aria-label="Sections in this part">
   <div class="series__label">Part 1 &mdash; Foundations</div>
@@ -313,13 +327,14 @@ html{scroll-padding-top:96px}
   </div>
 </nav>
 </div>
-<div class="site-coverband">
+<div class="site-coverband bseal-host">
+  <a class="bseal" href="part-4.html#provenance" aria-label="Provenance for this piece"><svg class="bmark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#0F172A" stroke="#C9A33D" stroke-width="4"/><text x="50" y="72" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="66" fill="#C9A33D">B</text></svg><span class="btext"><span>Bursera</span><span>Provenance</span></span><span class="btip">Provenance for this piece</span></a>
   <img class="site-coverband__img site-coverband__img--p1" src="ai-history-bloomberg-header.jpg" width="1376" height="768" alt="Predictive, Generative, Agentic &mdash; a word-cloud cover over a blue and violet particle field.">
   <div class="site-coverband__body">
     <div class="site-coverband__partnum">Part 1 of 4</div>
     <h1>Foundations</h1>
     <p class="site-coverband__tagline">What AI is, how the field got here, and how these systems actually work</p>
-    <p class="site-coverband__meta">Hugh McCutchen &middot; Bursera Consulting &middot; September 2026 &middot; Public Draft</p>
+    <p class="site-coverband__meta">Hugh McCutchen &middot; Bursera Consulting &middot; September 2026 &middot; Published</p>
   </div>
 </div>
 <main id="main" class="doc">
@@ -537,7 +552,7 @@ A model is not a program in the ordinary sense. Nobody writes its logic. A model
 <p><em>Diagram: four positions a person can occupy relative to a system's output, from approving every item to none.</em></p>
 <hr />
 </main>
-<footer class="pagefoot"><a class="pager pager--prev" href="/internal/public-drafts/">&#8592; All public drafts</a>
+<footer class="pagefoot"><a class="pager pager--prev" href="/research_examples.html">&#8592; All Research</a>
 <a class="pager pager--next" href="part-2.html">Part 2: Predictive, Generative, Agentic &#8594;</a></footer>
 <script>
 (function(){
