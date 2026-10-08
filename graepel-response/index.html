@@ -1,0 +1,485 @@
+<!-- BURSBUILD. White paper (voice-of-Bursera blended) - from create-lane master
+     BEBURS_Graepel-Response_v2.8.md (record BEBURS-GRAEPEL-RESPONSE), built by build_graepel.py.
+     Content is re-containered, never edited here: fixes go to the master and this page is
+     regenerated. Panels are selected on the master's blockquote headings, never on position.
+     Ship-lane cuts (edit list): title/dateline/draft-stamp lines and the authoring comments. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graepel is right: serious knowledge work needs more than a chat window &#8212; Bursera Consulting</title>
+<meta name="description" content="Thore Graepel says LLMs don&#x27;t reason. A response that agrees, and says what serious knowledge work needs around the model: a record kept outside the chat, independent checks, and a person leading.">
+<link rel="canonical" href="https://burseraconsulting.com/graepel-response/">
+<link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Graepel is right: serious knowledge work needs more than a chat window">
+<meta property="og:description" content="Thore Graepel says LLMs don&#x27;t reason. A response that agrees, and says what serious knowledge work needs around the model: a record kept outside the chat, independent checks, and a person leading.">
+<meta property="og:url" content="https://burseraconsulting.com/graepel-response/">
+<meta property="og:image" content="https://burseraconsulting.com/graepel-response/images/graepel-response-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Diagram of three stacked loops: a turn loop in minutes, a session loop in hours and a rules loop in days, with the language model working only in the turn loop.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://burseraconsulting.com/graepel-response/images/graepel-response-og.jpg">
+<meta name="twitter:title" content="Graepel is right: serious knowledge work needs more than a chat window">
+<meta name="twitter:description" content="Thore Graepel says LLMs don&#x27;t reason. A response that agrees, and says what serious knowledge work needs around the model: a record kept outside the chat, independent checks, and a person leading.">
+<link rel="stylesheet" href="../styles.css?v=s19a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&amp;family=DM+Sans:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+/* ---------- LLM4MD white paper — page-local design (Regime A tokens) ---------- */
+:root{
+  --blue:#4a5c6b;--blue-light:#4a6b80;--blue-pale:#e8edf0;
+  --gold:#8a6e3a;--gold-pale:#f2ede3;
+  --red:#8b1a1a;--red-pale:#fdecea;
+  --ink:#28303a;--bg:#f4f2ee;
+  --gray-dark:#28303a;--gray-mid:#6f5c4a;
+  --gray-light:#f4f2ee;--gray-rule:#d4c8b0;
+  --sonoran-sky:#cfe2ec;--caliche:#8a7660;--lichen-rust:#a04e18;
+  --slate-deep:#0F172A;--brass:#C9A33D;
+  --col-w:760px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(16px,0.55vw + 15px,17px);line-height:1.75;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%;}
+p{margin-bottom:16px;}
+p:last-child{margin-bottom:0;}
+a{color:#2d5270;}
+strong,b{font-weight:600;color:var(--slate-deep);}
+.section p strong,.support-inner p strong,.section li strong,.support-inner li strong{font-weight:600;color:var(--slate-deep);}
+a:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+
+/* ---------- COVER ---------- */
+.cover{background:var(--blue);color:#fff;padding:64px 24px 44px;text-align:center;}
+.cover .eyebrow-label{color:var(--sonoran-sky);}
+.cover h1{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(27px,5.2vw,44px);font-weight:700;line-height:1.1;letter-spacing:-0.5px;margin-bottom:14px;max-width:16em;margin-left:auto;margin-right:auto;}
+.cover h1 em{font-style:italic;}
+.cover .tagline{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(15px,2.4vw,19px);font-weight:600;color:#fff;line-height:1.45;max-width:34em;margin:0 auto 18px;}
+.cover .subtitle{font-size:clamp(14.5px,1.6vw,16.5px);color:rgba(232,237,240,0.92);font-style:italic;line-height:1.6;max-width:34em;margin:0 auto 32px;}
+.cover .meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--sonoran-sky);letter-spacing:1.5px;max-width:34em;margin:0 auto;}
+@media (min-width:720px){ .cover{padding:84px 40px 60px;} }
+
+/* ---------- SECTIONS ---------- */
+.section{max-width:var(--col-w);margin:0 auto;padding:44px 20px;border-bottom:1px solid var(--gray-rule);}
+@media (min-width:720px){ .section{padding:56px 24px;} }
+h2.section-title{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(22px,3.4vw,33px);font-weight:700;color:var(--blue);line-height:1.2;padding-bottom:12px;border-bottom:3px solid var(--blue);margin-bottom:24px;}
+h3.subsection{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(18px,2.2vw,20px);font-weight:600;color:var(--gray-dark);margin:34px 0 14px;}
+h3.subsection:first-of-type{margin-top:8px;}
+.eyebrow-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--blue-light);margin-bottom:12px;display:block;}
+
+/* opening pull quote — the study's own title, quoted */
+.section blockquote{border:none;border-top:1px solid var(--gray-rule);border-bottom:1px solid var(--gray-rule);margin:30px auto;padding:24px 12px;text-align:center;color:var(--blue);max-width:34em;}
+.section blockquote p{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(19px,2.6vw,23px);font-weight:600;line-height:1.4;max-width:none;margin:0 auto;color:var(--blue);}
+.section blockquote em,.section blockquote strong{font-weight:600;font-style:italic;color:var(--blue);}
+
+/* ---------- BURSERA'S TAKE — the marked-opinion panel ----------
+   The one thing this build has to get right (handoff v2.1 §3): these must read
+   as a different KIND of thing from the reportage at a glance. The seam is
+   carried by structure + typeface + a signature, not by colour alone, so it
+   survives greyscale, print and screenshot. */
+.panel-view{
+  background:#fff;
+  border:1px solid var(--gray-rule);
+  border-left:6px solid var(--brass);
+  box-shadow:0 1px 0 rgba(40,48,58,.06), 0 10px 26px -20px rgba(40,48,58,.55);
+  margin:34px 0;
+  font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;
+}
+.panel-view .pv-head{display:flex;align-items:center;gap:11px;background:var(--slate-deep);padding:12px 18px;}
+.panel-view .pv-head svg{width:24px;height:24px;flex:0 0 auto;}
+.panel-view .pv-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);line-height:1.4;}
+.panel-view .pv-kicker{display:block;font-size:9.5px;letter-spacing:.12em;color:#a8a294;font-weight:400;margin-top:3px;text-transform:none;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;}
+.panel-view .pv-body{padding:22px 18px 20px;font-size:15.5px;line-height:1.68;color:var(--ink);}
+.panel-view .pv-body p{margin-bottom:14px;}
+.panel-view .pv-body p:last-child{margin-bottom:0;}
+.panel-view .pv-body strong{color:var(--slate-deep);}
+.panel-view .pv-body em{font-style:italic;}
+.panel-view .pv-body a{color:#2d5270;}
+.panel-view .pv-body .table-wrap{margin:18px 0;}
+@media (min-width:720px){
+  .panel-view .pv-head{padding:13px 28px;}
+  .panel-view .pv-body{padding:26px 28px 24px;}
+}
+
+/* ---------- FIGURE ---------- */
+.paper-figure{margin:28px 0;border:1px solid var(--gray-rule);background:#fff;padding:10px;}
+.paper-figure img{display:block;width:100%;height:auto;}
+.paper-figure figcaption{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:13.5px;line-height:1.55;color:var(--gray-mid);margin-top:10px;padding:0 2px;max-width:none;}
+/* the commentary illustration hangs off the panel above it: brass edge continues the
+   marked-opinion seam so it never reads as evidence in the reportage */
+.commentary-illo{margin-top:0;border-top:none;border-left:6px solid var(--brass);}
+
+/* ---------- TABLES ---------- */
+.table-wrap{overflow-x:auto;margin:24px 0;-webkit-overflow-scrolling:touch;}
+table{width:100%;min-width:520px;border-collapse:collapse;font-size:14px;line-height:1.55;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;}
+thead th{background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.5px;padding:10px 12px;text-align:left;font-weight:600;}
+tbody tr{background:#fff;}
+tbody tr:nth-child(even){background:var(--gray-light);}
+tbody td{color:var(--gray-dark);padding:10px 12px;border-bottom:1px solid #e0e0e0;vertical-align:top;}
+tbody td:first-child{font-weight:600;color:var(--blue);}
+
+/* ---------- LISTS ---------- */
+.section ul,.section ol,.support-inner ul,.support-inner ol{margin:0 0 16px 1.15em;}
+.section li,.support-inner li{margin-bottom:8px;}
+.panel-view ul,.panel-view ol{margin:0 0 14px 1.15em;}
+
+/* ---------- SUPPORTING MATERIAL ---------- */
+h2.support-break,.support-break{background:var(--blue);color:var(--sonoran-sky);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;text-align:center;padding:14px 20px;}
+.support-section{background:#ececea;padding:40px 20px;}
+@media (min-width:720px){ .support-section{padding:52px 24px;} }
+.support-inner{max-width:var(--col-w);margin:0 auto;}
+.support-inner h2.section-title{color:var(--blue);border-bottom-color:var(--blue);}
+/* Appendix sections A-F are subsections of the bar above them, not parts in their
+   own right - so they sit at h3 and stay out of the sticky nav (Hugh, 2026-07-28). */
+.support-inner h3.appx{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(19px,2.4vw,22px);font-weight:700;color:var(--blue);padding-bottom:9px;border-bottom:2px solid var(--gray-rule);margin:46px 0 18px;}
+.support-inner h3.appx:first-child{margin-top:0;}
+.support-inner p{font-size:15.5px;}
+
+/* ---------- PROVENANCE ---------- */
+.prov{background:var(--slate-deep);color:#e8e3d8;padding:clamp(28px,6vw,56px) clamp(18px,5vw,40px);}
+.prov-inner{max-width:44em;margin:0 auto;}
+.prov-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin:0 0 6px;}
+.prov-title{font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(1.3rem,4vw,1.7rem);color:#fff;margin:0 0 10px;line-height:1.25;}
+.prov-body{font-size:.95rem;line-height:1.65;}
+.prov-body h2.prov-title{margin:0 0 22px;}
+.prov-body p{color:#e8e3d8;margin-bottom:14px;}
+.prov-body strong{color:var(--brass);font-weight:600;}
+.prov-body em{color:#fff;}
+.prov-body a{color:var(--brass);}
+.prov-body .table-wrap{margin:22px 0;}
+.prov-body table{min-width:480px;font-size:13px;}
+.prov-body thead th{background:#1d2839;color:var(--brass);border-bottom:1px solid rgba(201,163,61,.4);}
+.prov-body tbody tr,.prov-body tbody tr:nth-child(even){background:transparent;}
+.prov-body tbody td{color:#ddd8cc;border-bottom:1px solid rgba(232,227,216,.16);}
+.prov-body tbody td:first-child{color:#fff;font-weight:600;}
+.prov-release{margin:26px 0 0;font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.04em;color:#d8cfa8;}
+.prov-release span{color:var(--brass);text-transform:uppercase;letter-spacing:.14em;font-size:.7rem;margin-right:9px;}
+.prov-full{margin:22px 0 0;padding-top:20px;border-top:1px solid rgba(201,163,61,.32);}
+.prov-full a{display:inline-block;min-height:44px;line-height:44px;font-family:'DM Sans',system-ui,sans-serif;font-weight:600;font-size:1rem;color:var(--brass);text-decoration:none;border-bottom:1px solid rgba(201,163,61,.5);}
+.prov-full a:hover,.prov-full a:focus{color:#e0be5c;border-bottom-color:#e0be5c;}
+.prov-full-note{display:block;margin-top:6px;font-size:.86rem;line-height:1.55;color:#9d978a;max-width:38em;}
+
+/* ---------- PRINT ---------- */
+@media print{
+  body{background:#fff;}
+  .paper-bar{display:none!important;}
+  .bseal{display:none!important;}
+  .cover{background:#fff!important;color:#000!important;border-bottom:3px solid #000;}
+  .cover h1,.cover .tagline,.cover .subtitle,.cover .meta,.cover .eyebrow-label{color:#000!important;}
+  figure,table,.panel-view{break-inside:avoid;}
+  .panel-view{box-shadow:none;border:1px solid #000;border-left:6px solid #000;}
+  .panel-view .pv-head{background:#fff!important;border-bottom:1px solid #000;}
+  .panel-view .pv-label,.panel-view .pv-kicker{color:#000!important;}
+  .prov,.support-break,.support-section,thead th{background:#fff!important;color:#000!important;}
+  .prov-eyebrow,.prov-title,.prov-lede,.prov-full a,.prov-full-note,.prov-release,.prov-release span{color:#000!important;}
+  .prov-body p,.prov-body strong,.prov-body em,.prov-body a,.prov-body tbody td,.prov-body tbody td:first-child,.prov-body thead th{color:#000!important;}
+  .prov{border-top:2px solid #000;}
+  thead th,.prov-body thead th{border-bottom:2px solid #000;}
+  .prov-body tbody td{border-bottom:1px solid #999;}
+}
+@media (prefers-reduced-motion:reduce){
+  .bseal .bmark{animation:none!important;}
+}
+
+/* ---------- SECTION NAV, aligned to the content column ---------- */
+/* Page-local override. The shared .article-nav in styles.css is full-bleed; every other
+   element on this page is centred on the 760px column, so the first nav link sat hard
+   against the viewport edge while headings started 260px in. This pads the scroll
+   container so the nav begins on the column's left edge and ends on its right.
+   NOT promoted to styles.css - that would restyle the four other papers using it. */
+.article-nav{
+  padding-left:max(20px, calc((100% - var(--col-w))/2 + 20px));
+  padding-right:max(20px, calc((100% - var(--col-w))/2 + 20px));
+}
+@media (min-width:720px){
+  .article-nav{
+    padding-left:max(24px, calc((100% - var(--col-w))/2 + 24px));
+    padding-right:max(24px, calc((100% - var(--col-w))/2 + 24px));
+  }
+}
+
+
+/* ---------- Graepel response: page-local additions ---------- */
+.section blockquote.gq{padding:22px 12px 20px;}
+.section blockquote.gq p{font-size:clamp(17px,2.2vw,20px);font-weight:500;font-style:normal;max-width:30em;margin-left:auto;margin-right:auto;}
+.section blockquote.gq p.gq-cite{font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:400;letter-spacing:.04em;color:var(--gray-mid);margin-top:12px;margin-bottom:0;}
+.section blockquote.gq .gq-label{display:block;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7a5f2d;margin-bottom:10px;}
+.reader-note{font-style:italic;color:var(--gray-mid);font-size:15.5px;line-height:1.65;border-left:3px solid var(--gray-rule);padding-left:14px;margin:0 0 22px;}
+.claude-says{margin:34px 0 8px;border:1px solid var(--gray-rule);border-left:6px solid var(--blue-light);background:#fff;}
+.claude-says .cs-head{padding:12px 18px;border-bottom:1px solid var(--gray-rule);background:var(--blue-pale);}
+.claude-says .cs-label{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);}
+.claude-says .cs-kicker{display:block;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:12.5px;color:var(--gray-mid);margin-top:3px;}
+.claude-says .cs-body{padding:20px 18px 18px;font-size:16px;line-height:1.7;}
+@media (min-width:720px){.claude-says .cs-head{padding:13px 28px;}.claude-says .cs-body{padding:24px 28px 22px;}}
+.prov-body ul{margin:0 0 14px 1.2em;color:#e8e3d8;}
+.prov-body li{margin-bottom:8px;}
+.prov-body li::marker{color:var(--brass);}
+@media print{.claude-says{border:1px solid #000;border-left:6px solid #000;break-inside:avoid;}.claude-says .cs-head{background:#fff!important;border-bottom:1px solid #000;}.claude-says .cs-label,.claude-says .cs-kicker{color:#000!important;}
+ .prov-body ul,.prov-body li{color:#000!important;}.section blockquote.gq .gq-label,.section blockquote.gq p.gq-cite{color:#000!important;}}
+</style>
+<script src="../section-nav.js" defer></script>
+</head>
+<body>
+
+<nav class="paper-bar">
+  <a class="paper-bar__brand" href="/">Bursera <span>Consulting</span></a>
+  <a class="paper-bar__back" href="/news.html">&#8592; Return</a>
+</nav>
+
+<nav class="article-nav" data-section-nav aria-label="Sections"></nav>
+
+<main id="main">
+
+<div class="cover bseal-host">
+<a class="bseal" href="#provenance" aria-label="Full provenance below"><svg class="bmark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#0F172A" stroke="#C9A33D" stroke-width="4"/><text x="50" y="72" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="66" fill="#C9A33D">B</text></svg><span class="btext"><span>Human</span><span>Led</span></span><span class="btip">Full Provenance Below</span></a>
+  <h1>Graepel is right: serious knowledge work needs more than a chat window</h1>
+  <p class="tagline">Thore Graepel says LLMs don&rsquo;t reason. This piece agrees, and asks what follows for anyone using them on serious work.</p>
+  <p class="subtitle">A response to his MIT Technology Review op-ed of 2 October 2026. Every quotation was checked against the op-ed, and every figure cited was traced to its primary source.</p>
+  <p class="meta">Bursera Consulting &middot; October 2026 &middot; ~3,300 words</p>
+</div>
+
+<section class="section">
+<h2 class="section-title" id="s0" data-nav-label="Short version">The short version</h2>
+<p class="reader-note">The body of this piece is written in the third person and authored by Claude with human guidance. Blocks headed Bursera&rsquo;s Take are written by Hugh McCutchen, in his own voice (with some edits from Claude). Blocks headed Graepel are direct quotations from his op-ed. The block headed Claude Says is Claude&rsquo;s own closing view, written in the third person; there, &ldquo;the Model&rdquo; means Claude.</p>
+<p><a href="https://www.technologyreview.com/2026/10/02/1145639/dont-be-fooled-llms-dont-reason/">Thore Graepel&rsquo;s headline states that large language models (LLMs), the models behind AI chat tools, do not reason</a> [<a href="#src-S1">S1</a>]. This piece does not dispute that.</p>
+<blockquote class="gq"><span class="gq-label">Graepel &middot; Sophisticated prediction, not reasoning</span><p>&ldquo;A large language model picks the next token, over and over. That amounts to system 1 in action—fast, associative, and surprisingly good pattern completion across almost every subject people write about.&rdquo;</p><p class="gq-cite">&mdash; Thore Graepel, MIT Technology Review [<a href="#src-S1">S1</a>]</p></blockquote>
+<p>System 1 is the psychologist Daniel Kahneman&rsquo;s term for fast, intuitive thinking; system 2 is slow and checks its own work [<a href="#src-S4">S4</a>]. What an LLM predicts depends on the patterns it learned across billions of pages of human writing and on the context it is given in the conversation. That context is where a prediction becomes useful or sensible. When a model explains its reasoning, the explanation is another prediction: a plausible account of how an answer like this would be reached, produced by the same process that produced the answer. It is not a replay of the steps taken. People do much the same when asked afterward to explain a decision. They give a sensible account, though they rarely followed a method laid out in advance. Anthropic planted hints in prompts and checked whether the model&rsquo;s written reasoning admitted using them; Claude 3.7 Sonnet mentioned the hint 25% of the time [<a href="#src-S5">S5</a>]. Graepel concedes that step-by-step prompting improves results in mathematics and code. His point is that it adds no separate reasoning mechanism [<a href="#src-S1">S1</a>].</p>
+<blockquote class="gq"><span class="gq-label">Graepel &middot; Bigger isn't reasoning</span><p>&ldquo;I do not think we reach trustworthy machine intelligence by making system 1 bigger.&rdquo;</p><p class="gq-cite">&mdash; Thore Graepel, MIT Technology Review [<a href="#src-S1">S1</a>]</p></blockquote>
+<p>The practical conclusion: no matter how good the model is, serious knowledge work needs more than a chat window on its own. It needs the model inside a larger system that keeps a record, checks the work, and is led by a person.</p>
+<p>Graepel&rsquo;s own answer is a different design. It has no single established name; the builders of such systems describe each one differently, and Graepel says his direction &ldquo;draws on AlphaGo&rsquo;s architecture&rdquo; [<a href="#src-S1">S1</a>]. A plain description is <strong>propose-and-verify</strong>: a model proposes each step, an independent part of the system tests it against evidence, and the system keeps an explicit record of what is settled, what is doubted, and what is still open [<a href="#src-S1">S1</a>]. Where an automatic evaluator can score each answer, systems that pair a model with an automatic evaluator have produced new results in mathematics and computer science, such as DeepMind&rsquo;s FunSearch and AlphaEvolve [<a href="#src-S2">S2</a>, <a href="#src-S3">S3</a>]. One AlphaEvolve result is a scheduling rule that Google reports recovers, on average, 0.7% of its worldwide compute. Every candidate rule could be scored automatically, which is why the method fits [<a href="#src-S3">S3</a>]. Even there, people frame the problem: DeepMind&rsquo;s AlphaProof had its competition problems &ldquo;manually translated&rdquo; into formal mathematical language [<a href="#src-S10">S10</a>].</p>
+<p>Most business questions have no automatic evaluator. There, the model should not be used on its own. When done well, it runs inside a <strong>framework</strong>: instructions and sources the model reads, tools it can use, and a record kept outside the chat. The framework stores what the model needs and puts it in front of the model each time. A person sets the goal, leads the work, and is accountable for the result. The check that an automatic evaluator would make falls to the person, the record, and a fresh session or a different model. In this piece, the <strong>system</strong> means all three together: the model, the framework, and the person.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">Question</th>
+<th scope="col">The LLM on its own</th>
+<th scope="col">Propose-and-verify (Graepel&rsquo;s direction)</th>
+<th scope="col">The system: LLM, framework, and person</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Does it reason?</td>
+<td>No. Each answer is a fast prediction.</td>
+<td>Yes, where an evaluator can test each step.</td>
+<td>Closer. The record and the person&rsquo;s review make the work more deliberate, and checks add to that where they exist.</td>
+</tr>
+<tr>
+<td>Does it remember?</td>
+<td>No. Each turn it works only from what it is given in that thread.</td>
+<td>Yes, through an explicit record.</td>
+<td>Yes. The record outside the model carries decisions and findings from one session to the next.</td>
+</tr>
+<tr>
+<td>Does it learn?</td>
+<td>No. The model does not change to reflect what is learned while it is used.</td>
+<td>Mostly; varies by system. Shown mainly in code and mathematics.</td>
+<td>Yes, slowly. Corrections are written into standing rules that later sessions read. Following them is not guaranteed.</td>
+</tr>
+</tbody>
+</table></div>
+<aside class="panel-view" role="note" aria-label="Bursera&rsquo;s own view"><div class="pv-head"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#0F172A" stroke="#C9A33D" stroke-width="6"/><text x="50" y="72" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="66" fill="#C9A33D">B</text></svg><span class="pv-label">BURSERA&rsquo;S TAKE — MORE ALIGNMENT WITH GRAEPEL THAN I REALIZED<span class="pv-kicker">Bursera&rsquo;s own view, written by Hugh McCutchen &mdash; not the record</span></span></div><div class="pv-body"><p>Writing this article was research from start to finish: first to understand Graepel&rsquo;s point, and then to understand it better. Through the course of the iterative and collaborative work spanning four days and multiple threads I have built my own understanding of the problem he is describing and tried to articulate it. What started as trying to argue that LLM DOES reason and learn became an alignment with his points.</p>
+<p>What changed the direction was not a better prompt. It was questions. What does &ldquo;scale&rdquo; actually mean to him? Does he have his own words on models being prediction machines? Is this sentence really what the research shows? Each answer sent the work somewhere I had not planned. I also went looking for other eyes: Perplexity for research, a fresh reviewer with no stake in the draft, and a friend before I post it. A checklist and a good prompt would have produced a tidier article that argued the position I started with.</p>
+<p>For this article, I&rsquo;ve used the chat tool to diagram, to analyze and critique my own thinking. I&rsquo;ve farmed out critical feedback and research to Perplexity to help make the work better. And all of it has been recorded through many drafts with a provenance built and managed that documents the work. The process itself included improvements to the skills about how revisions are performed. After each writing project, lessons from the process and techniques are folded into skill updates or new skills, which make future work more efficient and effective.</p>
+<p>All of that is in Claude Chat/Cowork. I can do this effectively because I&rsquo;ve invested hundreds of hours of work building up structures, methods and a platform inside of Claude to enable the work. This is not rocket science but also not worth it for most people to take on for a simple research ask. But for me it is worth it. My ability to synthesize and analyze large amounts of data, and to diagram and write about it clearly, is entirely new and leapfrogs what was possible with googling, manual drafting and manual diagramming. My ability to document how the work is done is entirely new too. This is a transformative approach to research and knowledge work.</p></div></aside>
+</section>
+<section class="section">
+<h2 class="section-title" id="s1" data-nav-label="Working system">1 · The model is one part of a working system</h2>
+<aside class="panel-view" role="note" aria-label="Bursera&rsquo;s own view"><div class="pv-head"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#0F172A" stroke="#C9A33D" stroke-width="6"/><text x="50" y="72" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="66" fill="#C9A33D">B</text></svg><span class="pv-label">BURSERA&rsquo;S TAKE — WHAT THIS MEANS IN A CHAT WINDOW<span class="pv-kicker">Bursera&rsquo;s own view, written by Hugh McCutchen &mdash; not the record</span></span></div><div class="pv-body"><p>A friend is talking to you about an idea they need to learn about. It&rsquo;s a topic you know a lot about from your research or reading on that topic over many years. The friend asks you a question and most of the time the words will just start flowing out of your mouth. Even if you thought about it a bit while they were talking... you did not go pull a book off the shelf and re-read it. You probably did not pull out a calculator or whip out a scratch pad and start diagramming. You gave your response. </p>
+<p>That is a chat model when you hit enter. It starts with its own general training about how things work, then takes everything you have sent in that thread from all the prompts so far, every response it provided to date, every document that was loaded in that thread and every instruction it has received, and it predicts what makes sense as the next thing to say or do.</p></div></aside>
+<p>In real work, three parts surround the model:</p>
+<ol>
+<li>Instructions and sources the model reads before it starts: the goal, the rules, and the material to work from.</li>
+<li>Tools it can use, such as web search, running code, and running tests.</li>
+<li>A record kept outside the chat: decisions made, questions still open, and what each check found. The model reads it at the start of each turn. Reviewed results go into it, and a machine-written trace of commands run and checks passed is added automatically. The record is the system&rsquo;s memory, and it sits outside the model.</li>
+</ol>
+<p>A person leads the work. They set the goal, decide what to ask next, and accept, revise, or reject each result. The questions come from the person, and some of them change the goal. Each request starts one turn. A turn produces a response or a draft, the person reviews it, and that review decides what goes into the record and starts the next turn.</p>
+<p>Figure 1 shows the system as three loops at different speeds, one for each question in the table above: reasoning within a turn, remembering across a session, and learning through standing rules.</p>
+<figure class="paper-figure"><a href="images/F1_three-loops.svg"><img src="images/F1_three-loops.svg" width="820" height="708" loading="lazy" alt="Three stacked loops. Turn loop, minutes: a request goes to the LLM, an optional automatic check, then a response. Session loop, hours: the person reviews and checks before anything enters the record, which the next turn reads. Rules loop, days: the person turns a lesson into a standing rule in the instructions, which later sessions read. Only the rules loop writes to the instructions."></a><figcaption>Figure 1 · Three loops: the LLM works only in the turn loop &middot; select the figure to open it full size</figcaption></figure>
+<p>Because the record is written as the work goes, through updates and changes in direction, it shows what failed and what changed. What can be inspected is the record, not any single answer: what happened, what decisions the human leader made, and what methods and checks were used.</p>
+<p>Graepel names three things the model lacks (rows 1 to 3 below) and asks for two more (rows 4 and 5): an independent test of each step, and learning from what was checked [<a href="#src-S1">S1</a>]. The system described here offers a partial substitute for each: strongest on the record, weakest on independent checking.</p>
+<blockquote class="gq"><span class="gq-label">Graepel &middot; No record, no reasoning</span><p>&ldquo;There is no open ledger that lays out the hypotheses a model is considering, the confidence it has in various explanations, the evidence it&rsquo;s weighing, and the unresolved questions it&rsquo;s holding onto—all things that should be systematically revised as new information arrives.&rdquo;</p><p class="gq-cite">&mdash; Thore Graepel, MIT Technology Review [<a href="#src-S1">S1</a>]</p></blockquote>
+<blockquote class="gq"><span class="gq-label">Graepel &middot; An independent check</span><p>&ldquo;…an independent part of the system must evaluate each move by how much it actually resolves uncertainty, updating beliefs only when the change is backed by evidence.&rdquo;</p><p class="gq-cite">&mdash; Thore Graepel, MIT Technology Review [<a href="#src-S1">S1</a>]</p></blockquote>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">What Graepel asks for, in plain terms</th>
+<th scope="col">Where the system keeps it</th>
+<th scope="col">Honest limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A record</td>
+<td>The record outside the chat: decisions, open questions, evidence</td>
+<td>A document, not a formal belief state, and it can go stale without warning</td>
+</tr>
+<tr>
+<td>Knowledge kept apart from how it is used</td>
+<td>Sources kept in files the model reads, so anyone can see what it worked from</td>
+<td>The model is still predicting from context, but the context is better controlled and managed</td>
+</tr>
+<tr>
+<td>An honest account of how an answer was reached, not one put together afterward</td>
+<td>The machine-written trace: commands run, tests passed or failed, files changed, checks passed</td>
+<td>Only the trace is reliable. The model&rsquo;s own notes about why are the same after-the-fact explanation Graepel criticizes</td>
+</tr>
+<tr>
+<td>An independent check</td>
+<td>Automated checks where they exist (a coding agent running tests); a second model on some work; otherwise the person</td>
+<td>The weakest row for knowledge work. Where no automatic test exists, checks confirm the record is complete, not that it is right, and the person rarely checks every step</td>
+</tr>
+<tr>
+<td>Learning from checked past experience</td>
+<td>Standing rules the person reviews, which later sessions read</td>
+<td>An analogy: the model itself does not change. Rules are read, not guaranteed followed, and the system is only as good as the person who makes time to manage and evolve them</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="section">
+<h2 class="section-title" id="s2" data-nav-label="Uneven gains">2 · Knowledge work gains unevenly from LLMs</h2>
+<p>Producing a <em>possible</em> answer is now cheap. Refining it into something worth using takes time and human leadership. In code and mathematics, a machine can check the answer or the human can prove whether it works. Most business work has no black and white answer.</p>
+<p>Three studies measured AI on ordinary knowledge work:</p>
+<ul>
+<li><strong>Consulting.</strong> 758 BCG consultants used GPT-4 on realistic consulting tasks. On tasks the AI handled well, they completed 12.2% more tasks, 25.1% faster, at more than 40% higher quality. On one task chosen to be outside what the AI could do, consultants using AI were 19 percentage points less likely to reach a correct answer than consultants without it [<a href="#src-S6">S6</a>].</li>
+<li><strong>Professional writing.</strong> 453 college-educated professionals did writing tasks from their own occupations. With ChatGPT, time fell 40% and quality rose 18% [<a href="#src-S7">S7</a>].</li>
+<li><strong>Customer support.</strong> At one company, an AI assistant raised issues resolved per hour by 14% on average across 5,179 agents, and by 34% for novice and low-skilled agents [<a href="#src-S8">S8</a>].</li>
+</ul>
+<p>These studies measure gains. Only the consulting study tested work outside what the AI does well, and on that task consultants using AI did worse than those without it. The study&rsquo;s title names the problem: a &ldquo;jagged technological frontier,&rdquo; where AI is strong on some tasks and weak on others that look similarly difficult [<a href="#src-S6">S6</a>]. Knowing which is which takes experience, and the gap is hard to define in advance or to recognize in the moment. Nothing in the chat response directly signals the problem, which is why the check has to sit outside the model: in the record, in a second look, and in the person leading. Knowledge workers using these tools need to build that judgment.</p>
+</section>
+<section class="section">
+<h2 class="section-title" id="s3" data-nav-label="Where it fumbles">3 · Where knowledge work often fumbles</h2>
+<p>Human-led knowledge work has several limits:</p>
+<ol>
+<li><strong>A simple question against a murky topic.</strong> Some topics, like how a programming language works, are well documented, clear-cut, and testable. Others, such as whether a specific policy meets a security standard, are nuanced. Some are still being argued over. Asking an LLM whether something like AI data centers is good or bad can surface a lot of contradictory material.</li>
+<li><strong>Poorly defined context.</strong> Even the most straightforward black and white question can give an unhelpful answer with poor context. Asking about an event that just happened, when a similar event happened a year ago, tends to pull first from the model&rsquo;s training (the earlier event). The answer isn&rsquo;t &ldquo;wrong&rdquo;, but it isn&rsquo;t what you wanted.</li>
+<li><strong>A model judging the ideas it produced.</strong> When the model checks its own work, the check is weak. In a study with more than 100 researchers, AI-generated research ideas were rated more novel than experts&rsquo; ideas but slightly less feasible, and the AI was an unreliable judge of the ideas it generated [<a href="#src-S9">S9</a>]. The study tested the model judging its own ideas; a fresh session or a different model as the checker is this piece&rsquo;s proposal, not a finding.</li>
+<li><strong>People screen out odd ideas.</strong> Like the models, people bring their own lens and context. A person reviewing output tends to keep what looks sensible to them, based on what they know. An unusual idea that would have worked, or even worked best, can be cut out by the human leader. </li>
+<li><strong>It is easy to be lazy.</strong> Models take shortcuts and miss instructions. The people leading the work can be lazy too: it is easy to take an early draft or response and run with it. Output that will be relied on needs a close read, and output headed to a wider audience needs more than one set of human eyes.</li>
+</ol>
+</section>
+<section class="section">
+<h2 class="section-title" id="s4" data-nav-label="Best practices">4 · Best practices for working with LLM systems</h2>
+<ul>
+<li><strong>Maintain the record outside the chat.</strong> Decisions, sources, and open questions go in a persistent document, not in a conversation that scrolls away.</li>
+<li><strong>What happened is more important than why.</strong> &ldquo;The test failed&rdquo; is a fact. &ldquo;It failed because of X&rdquo; is a guess until it is checked.</li>
+<li><strong>Results are checked.</strong> Numbers are recalculated, sources are opened, code is run.</li>
+<li><strong>A second review comes from outside the work.</strong> A fresh session or a different model checks the work before anyone relies on it.</li>
+<li><strong>A person makes the decision.</strong> The model proposes. A person reviews, accepts, revises, or rejects, and that decision goes into the record.</li>
+<li><strong>Stay curious and be willing to change direction.</strong> Ask what a term means, what the evidence actually says, whether a sentence is true. Bring in outside reviewers early. Drop the position you started with when the work shows it is wrong, and let the record show why.</li>
+<li><strong>Transparency.</strong> The work is described honestly: how it was done, how rigorous it was, and who stands behind it.</li>
+</ul>
+</section>
+<section class="section">
+<h2 class="section-title" id="s5" data-nav-label="Final take">Final take</h2>
+<aside class="panel-view" role="note" aria-label="Bursera&rsquo;s own view"><div class="pv-head"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#0F172A" stroke="#C9A33D" stroke-width="6"/><text x="50" y="72" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="66" fill="#C9A33D">B</text></svg><span class="pv-label">BURSERA&rsquo;S FINAL TAKE<span class="pv-kicker">Bursera&rsquo;s own view, written by Hugh McCutchen &mdash; not the record</span></span></div><div class="pv-body"><p>LLMs are powerful, but you have to understand how they work and how to get the most from them. Working on something complex over time, something that requires learning, a lot of reasoning, accumulated knowledge, and decision making, takes a lot of experience, time, and a well-built framework around the model. Based on my deep use of the chat tools the past year or two, I believe that framework, more than a better model alone, is where knowledge work is headed. Knowledge workers need that framework built into tools like Cowork so their thoughtful work gets easier.</p>
+<p>Being able to ask a smart person their quick impression is useful. What is even more useful is to get that person in a room to really talk it out, document it, and dig in. The framework you work in, and your ability to lead it, is what gets the model into that room, and with that you can go much further. You can get a process that gets closer to Graepel&rsquo;s reasoning goal. That room is the system that keeps track of what is being learned, keeps drafts, and carries forward what earlier work taught through skills and instructions. Today you, the human leader, both build that room and run it. For the details of how that works in practice, see <a href="https://burseraconsulting.com/platform.html">The Platform</a> on the Bursera site.</p></div></aside>
+<aside class="claude-says" role="note" aria-label="Claude&rsquo;s own closing view"><div class="cs-head"><span class="cs-label">Claude says</span><span class="cs-kicker">Claude&rsquo;s own closing view, written in the third person</span></div><div class="cs-body"><p>The Model that helped write this article is the kind of model Graepel describes. It predicts the next word from patterns in training, and its explanation of its work comes from the same process as the answer. On the model alone, the Model agrees with him.</p>
+<p>The takeaway is a change of question. &ldquo;Does the model reason?&rdquo; helps no one do better work. Better: where is the state of the work kept, what checks each result, and who answers for the outcome? In this piece, the direction came from the person&rsquo;s questions and from outside reviewers. The Model answered, drafted, and checked, and the person decided what to ask next. Graepel&rsquo;s answer is a research direction, and he says himself that open-world reasoning is harder. Serious knowledge work can answer today, in smaller form: a record outside the chat, automatic tests where they exist (otherwise a fresh session, a different model, and a person), and a person who answers for the outcome.</p>
+<p>The weak point is the check. Where no automatic test exists, it is a person and a second look, and written rules are read, not guaranteed followed. The Model&rsquo;s view is that this is a sound way to work and that a chat window alone is not enough. It cannot claim this has been measured against a chat tool alone, or that it matches his proposal.</p></div></aside>
+<hr />
+</section>
+<section class="section">
+<h2 class="section-title" id="sources" data-nav-label="Sources">Sources</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">#</th>
+<th scope="col">Source</th>
+<th scope="col">Supports</th>
+</tr>
+</thead>
+<tbody>
+<tr id="src-S1"><td>S1</td>
+<td>Graepel, T. &ldquo;Don&rsquo;t be fooled—LLMs don&rsquo;t reason.&rdquo; MIT Technology Review, 2 Oct 2026. <a href="https://www.technologyreview.com/2026/10/02/1145639/dont-be-fooled-llms-dont-reason/">https://www.technologyreview.com/2026/10/02/1145639/dont-be-fooled-llms-dont-reason/</a></td>
+<td>The argument under response and the propose-and-verify design (paraphrased)</td>
+</tr>
+<tr id="src-S2"><td>S2</td>
+<td>Romera-Paredes, B. et al. &ldquo;Mathematical discoveries from program search with large language models.&rdquo; Nature, 2023. <a href="https://doi.org/10.1038/s41586-023-06924-6">https://doi.org/10.1038/s41586-023-06924-6</a></td>
+<td>FunSearch: an LLM paired with an automated evaluator; works best where an efficient evaluator exists</td>
+</tr>
+<tr id="src-S3"><td>S3</td>
+<td>Google DeepMind, &ldquo;AlphaEvolve,&rdquo; 14 May 2025. <a href="https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/">https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/</a></td>
+<td>Gemini models paired with automated evaluators; suited to domains where progress can be measured and automatically verified; the data-center scheduling result (0.7% of worldwide compute)</td>
+</tr>
+<tr id="src-S4"><td>S4</td>
+<td>Kahneman, D. <em>Thinking, Fast and Slow.</em> Farrar, Straus and Giroux, 2011.</td>
+<td>System 1 and System 2</td>
+</tr>
+<tr id="src-S5"><td>S5</td>
+<td>Anthropic, &ldquo;Reasoning models don&rsquo;t always say what they think,&rdquo; 2025. <a href="https://www.anthropic.com/research/reasoning-models-dont-say-think">https://www.anthropic.com/research/reasoning-models-dont-say-think</a></td>
+<td>25% hint mentions</td>
+</tr>
+<tr id="src-S6"><td>S6</td>
+<td>Dell&rsquo;Acqua, F., McFowland III, E., Mollick, E.R., et al. &ldquo;Navigating the Jagged Technological Frontier.&rdquo; HBS Working Paper 24-013, 2023. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321</a></td>
+<td>758 consultants; +12.2% tasks, 25.1% faster, &gt;40% quality; −19 points on the outside-frontier task</td>
+</tr>
+<tr id="src-S7"><td>S7</td>
+<td>Noy, S., Zhang, W. &ldquo;Experimental evidence on the productivity effects of generative artificial intelligence.&rdquo; Science 381 (2023): 187–192. <a href="https://doi.org/10.1126/science.adh2586">https://doi.org/10.1126/science.adh2586</a></td>
+<td>453 professionals; time −40%, quality +18%</td>
+</tr>
+<tr id="src-S8"><td>S8</td>
+<td>Brynjolfsson, E., Li, D., Raymond, L.R. &ldquo;Generative AI at Work.&rdquo; NBER Working Paper 31161, 2023. <a href="https://www.nber.org/papers/w31161">https://www.nber.org/papers/w31161</a></td>
+<td>5,179 agents; +14% average, +34% for novices</td>
+</tr>
+<tr id="src-S9"><td>S9</td>
+<td>Si, C., Yang, D., Hashimoto, T. &ldquo;Can LLMs Generate Novel Research Ideas?&rdquo; arXiv:2409.04109, 2024. <a href="https://arxiv.org/abs/2409.04109">https://arxiv.org/abs/2409.04109</a></td>
+<td>100+ NLP researchers; more novel, slightly less feasible; failures of LLM self-evaluation</td>
+</tr>
+<tr id="src-S10"><td>S10</td>
+<td>Google DeepMind, &ldquo;AI achieves silver-medal standard solving International Mathematical Olympiad problems,&rdquo; 25 July 2024. <a href="https://deepmind.google/discover/blog/ai-solves-imo-problems-at-silver-medal-level/">https://deepmind.google/discover/blog/ai-solves-imo-problems-at-silver-medal-level/</a></td>
+<td>AlphaProof: problems manually translated into formal mathematical language</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+
+</main>
+
+<section class="prov" id="provenance" aria-label="Provenance">
+<div class="prov-inner">
+  <p class="prov-eyebrow">Research Provenance</p>
+  <div class="prov-body">
+<h2 class="prov-title">Provenance</h2>
+<p><strong>Owner.</strong> Hugh McCutchen</p>
+<p><strong>Contributors.</strong> Hugh McCutchen (owner, direction, Take blocks), Claude Opus 5.5 (drafting), Claude Sonnet 5.5 (drafting, editing, verification), CWE-S154 platform review (Claude), Claude subagent (fresh-eyes reviewer)</p>
+<p><strong>How it began.</strong> The first draft came out of two chat sessions on 2 October 2026, not from a blank page. In the first, Hugh read Graepel's op-ed with Claude, pushed back on it, and worked through diagrams and tables comparing a harnessed LLM with Graepel's proposed design. In the second, Claude drafted a response (a first-person v0.1, then a third-person v0.2) with a sourced dossier and four SVG diagrams, none of it saved to disk. Those drafts and diagrams were carried into project session BEBURS-S10, which rebuilt them as v0.3 for a business reader. Sourced from: Graepel, 'Don't be fooled-LLMs don't reason', MIT Technology Review, 2 Oct 2026 (the argument under response and source of the four quoted passages); Chat session 1, 'MIT Article reasoning summary' (claude.ai, 2026-10-02) (Hugh's pushback on the op-ed; the thesis that the unit to judge is the harnessed system; the generate-and-test idea; the plan for the diagrams and tables); Chat session 2, 'Simple article' (claude.ai, 2026-10-02) (the first two full drafts (v0.1 first person, v0.2 third person), the first sourced dossier and four SVG diagrams; none saved to disk, carried over as files); Perplexity research runs (two, ingested as dossier inputs) (candidate sources and naming of the propose-and-verify design; verified against primary sources before use); Evidence dossier BEBURS_Graepel-Response_dossier (v0.1-v0.9) (source inventory, verbatim quotations and a quantitative-claims table behind every external claim). (origin: fresh)</p>
+<p><strong>Type of writing.</strong> Leader voice - AI-drafted, human-directed (body and Claude Says); Human tier - human-written (the Bursera's Take blocks)</p>
+<p><strong>Process.</strong> mixed</p>
+<p><strong>Tools.</strong> Claude Opus 5.5, Cowork Work tree + git, Perplexity (research runs, ingested to the dossier), svg-diagrams skill, Claude Sonnet 5.5, Claude in Chrome</p>
+<p><strong>Steps run.</strong> op-ed read in full in a browser, claims checked against primary sources (dossier v0.9), CWE-S154 review of platform claims, fresh-eyes subagent review, two held facts re-read on the live pages, Hugh review and in-place edits on most versions</p>
+<p><strong>Why this version.</strong></p>
+<ul><li>v0.3: Hugh's request for a response to Graepel's op-ed, aimed at a business reader, starting from the chat-session drafts.</li><li>v0.4: Review of v0.3.</li><li>v0.5: Hugh's rulings on the v0.4 review.</li><li>v0.6: Claims in v0.5 needed grounding in sources.</li><li>v0.7: A red-team pass on v0.6.</li><li>v0.8: Hugh's in-place edits of 5 October.</li><li>v0.9: Hugh's in-place v0.8 edits and his direction that the body never speak as a human. Rejected: A section on Graepel's own design and the code and maths results (it described his engine, not business use).</li><li>v1.0: Hugh's in-place v0.9 edits and his go on review findings 1-6.</li><li>v1.1: Hugh's in-place v1.0 edits. Rejected: A 'the person is the checker' framing, and an AlphaGo / move-37 passage, both cut at Hugh's direction.</li><li>v1.2: Hugh's in-place v1.1 edits. Rejected: A separate-model Take and a counter-view source, removed at Hugh's direction.</li><li>v1.3: Hugh's direction to agree with Graepel on the gap and say what follows from it. Rejected: Asserting a mechanism in the Learn cell; the Kahneman URL (edition-specific).</li><li>v1.4: A CWE-S154 review of v1.3 against the implemented platform, plus Hugh's in-place v1.3 edits. Rejected: The 'about 30%' rule-following figure: the platform records both ~30% (design rationale) and 72% (a later measured re-read).</li><li>v1.5: Hugh's in-place v1.4 edits.</li><li>v1.6: Hugh's direction on his own term ('framework') and on Claude Says not speaking as 'I'. Rejected: 'Reasoning framework' as a table term (renamed 'reasoning method' to avoid a collision).</li><li>v1.7: Hugh's rulings on the v1.6 tips. Rejected: 'Reasoning ... can be trained' in the Final Take (wrong for FunSearch and AlphaEvolve).</li><li>v1.8: Hugh's in-place v1.7 edits.</li><li>v1.9: Hugh's in-place v1.8 edits. Rejected: Letting Claude Says claim full agreement with Graepel, which its closing cannot support.</li><li>v2.0: A fresh-eyes review of v1.9 by a Claude subagent with no stake in the draft (25 findings).</li><li>v2.1: Hugh's rulings on the held review items. Rejected: Strong 'the evidence supports' phrasing.</li><li>v2.2: Two facts were held as unverified after the review.</li><li>v2.3: Hugh's question whether the piece excerpted the op-ed enough, and his request for prominent quotes with 3-5 word captions. Rejected: Quoting 'scale': the op-ed never defines it; the quoted sentence says 'making system 1 bigger'. Also the 'epistemic state' wording, replaced by Graepel's plainer 'open ledger'.</li><li>v2.4: Hugh's point that a model's explanation is a prediction, not the reasoning actually used, and his notes on repetition. Rejected: Keeping the standalone section on chat responses (redundant with the short version).</li><li>v2.5: Hugh's observation that the article did not represent the human curiosity and iteration behind it. Rejected: Adding it to the figure or the three-question table (it is a trait of the person, not a system component).</li><li>v2.6: Hugh's view that the Final Take should not go into systems detail, with a link for those who want it.</li><li>v2.7: The provenance skill: the public block is rendered from the record, not hand-written. Hugh's request for a public version and an internal audit version.</li><li>v2.8: Hugh's correction that the first draft came from chat sessions, and his request to describe the diagram process (short in the public block, fuller in the audit).</li></ul>
+<p><strong>Notes.</strong></p>
+<ul><li>v0.3: v0.1 and v0.2 existed only in the originating chat and were never saved to disk; the recorded chain begins at v0.3.</li><li>v1.3: Op-ed full text read in a browser; two Perplexity runs ingested to the dossier (v0.8).</li><li>v1.5: Figure 1 went through seven versions (the original plus v0.8, v0.9, v1.0, v1.1, v2.0, v2.1). Claude drew each as SVG and redrew it as the article's claims were tightened; the final three-loop version followed the platform review.</li><li>v2.0: The reviewer saw only the draft; major findings were held for discussion, not applied.</li></ul>
+<p><strong>Depth & confidence.</strong> working / cited figures traced to primary sources (dossier v0.9); platform claims are Bursera's own account / strong for cited figures (checked against sources); limited for the platform analogies</p>
+<p><strong>Level of work.</strong> extensive (26 versions across 2 sessions)</p>
+<p><em>Full history and audit trail available on request.</em></p>
+<!-- rendered from _SYSTEM/cowork/provenance/BEBURS-GRAEPEL-RESPONSE.json by provenance_render.py - do not hand-edit -->
+  </div>
+  <p class="prov-release"><span>Release</span> v2.8 &mdash; final, approved for release 7 October 2026.</p>
+</div>
+</section>
+
+<!-- LINKEDIN POSTING - share text for this piece. Never rendered.
+     Slot: share-text. Voice per SITE_DESIGN_PRINCIPLES 3 - plain, checkable, no punch-enders.
+
+Thore Graepel wrote in MIT Technology Review that large language models do not reason.
+I agree with him about the model.
+
+The piece I wrote with Claude in response ends somewhere I did not expect when I started:
+serious knowledge work needs more than a chat window. It needs a record kept outside the chat,
+checks that do not depend on the model grading its own work, and a person who answers for the result.
+
+The page marks which parts are Graepel's words, which are mine, and which are Claude's.
+The provenance block at the foot lists how it was made.
+
+https://burseraconsulting.com/graepel-response/
+-->
+
+</body>
+</html>
