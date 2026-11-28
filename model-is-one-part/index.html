@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>The model is just one part of a much more complex system &#8212; Bursera Consulting</title>
+<meta name="description" content="What people call “AI” is a system, not a model. The parts around the model, the harness, tools, execution environment, controls and governance, decide much of what it does, and who runs each one depends on how you reach it.">
+<meta name="author" content="Hugh McCutchen">
+<link rel="canonical" href="https://burseraconsulting.com/model-is-one-part/">
+<link rel="icon" href="https://burseraconsulting.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://burseraconsulting.com/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://burseraconsulting.com/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The model is just one part of a much more complex system">
+<meta property="og:description" content="What people call “AI” is a system, not a model. The parts around the model, the harness, tools, execution environment, controls and governance, decide much of what it does, and who runs each one depends on how you reach it.">
+<meta property="og:url" content="https://burseraconsulting.com/model-is-one-part/">
+<meta property="og:image" content="https://burseraconsulting.com/model-is-one-part/images/model-is-one-part-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Figure 1 of the paper: the parts of a running AI system. The model, with its training and safeguards, sits above the run: the interface, the harness with its context and operator controls, the execution environment where tools run, the monitors, and governance around all of it.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://burseraconsulting.com/model-is-one-part/images/model-is-one-part-og.png">
+<meta name="twitter:title" content="The model is just one part of a much more complex system">
+<meta name="twitter:description" content="What people call “AI” is a system, not a model. The parts around the model, the harness, tools, execution environment, controls and governance, decide much of what it does, and who runs each one depends on how you reach it.">
+<link rel="stylesheet" href="../styles.css?v=s19a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&amp;family=DM+Sans:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+/* ---------- white paper — page-local design (Regime A tokens) ---------- */
+:root{
+  --blue:#4a5c6b;--blue-light:#4a6b80;--blue-pale:#e8edf0;
+  --gold:#8a6e3a;--gold-pale:#f2ede3;
+  --red:#8b1a1a;--red-pale:#fdecea;
+  --ink:#28303a;--bg:#f4f2ee;
+  --gray-dark:#28303a;--gray-mid:#6f5c4a;
+  --gray-light:#f4f2ee;--gray-rule:#d4c8b0;
+  --sonoran-sky:#cfe2ec;--caliche:#8a7660;--lichen-rust:#a04e18;
+  --slate-deep:#0F172A;--brass:#C9A33D;
+  --col-w:760px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(16px,0.55vw + 15px,17px);line-height:1.75;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%;}
+p{margin-bottom:16px;}
+p:last-child{margin-bottom:0;}
+a{color:#2d5270;}
+strong,b{font-weight:600;color:var(--slate-deep);}
+.section p strong,.support-inner p strong,.section li strong,.support-inner li strong{font-weight:600;color:var(--slate-deep);}
+a:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+
+/* ---------- COVER ---------- */
+.cover{background:var(--blue);color:#fff;padding:64px 24px 44px;text-align:center;}
+.cover .eyebrow-label{color:var(--sonoran-sky);}
+.cover h1{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(27px,5.2vw,44px);font-weight:700;line-height:1.1;letter-spacing:-0.5px;margin-bottom:14px;max-width:16em;margin-left:auto;margin-right:auto;}
+.cover h1 em{font-style:italic;}
+.cover .tagline{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(15px,2.4vw,19px);font-weight:600;color:#fff;line-height:1.45;max-width:34em;margin:0 auto 18px;}
+.cover .subtitle{font-size:clamp(14.5px,1.6vw,16.5px);color:rgba(232,237,240,0.92);font-style:italic;line-height:1.6;max-width:34em;margin:0 auto 32px;}
+.cover .meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--sonoran-sky);letter-spacing:1.5px;max-width:34em;margin:0 auto;}
+@media (min-width:720px){ .cover{padding:84px 40px 60px;} }
+
+/* ---------- SECTIONS ---------- */
+.section{max-width:var(--col-w);margin:0 auto;padding:44px 20px;border-bottom:1px solid var(--gray-rule);}
+@media (min-width:720px){ .section{padding:56px 24px;} }
+h2.section-title{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(22px,3.4vw,33px);font-weight:700;color:var(--blue);line-height:1.2;padding-bottom:12px;border-bottom:3px solid var(--blue);margin-bottom:24px;}
+h3.subsection{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(18px,2.2vw,20px);font-weight:600;color:var(--gray-dark);margin:34px 0 14px;}
+h3.subsection:first-of-type{margin-top:8px;}
+.eyebrow-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--blue-light);margin-bottom:12px;display:block;}
+
+/* opening pull quote — the study's own title, quoted */
+.section blockquote{border:none;border-top:1px solid var(--gray-rule);border-bottom:1px solid var(--gray-rule);margin:30px auto;padding:24px 12px;text-align:center;color:var(--blue);max-width:34em;}
+.section blockquote p{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(19px,2.6vw,23px);font-weight:600;line-height:1.4;max-width:none;margin:0 auto;color:var(--blue);}
+.section blockquote em,.section blockquote strong{font-weight:600;font-style:italic;color:var(--blue);}
+
+/* ---------- BURSERA'S TAKE — the marked-opinion panel ----------
+   The one thing this build has to get right (handoff v2.1 §3): these must read
+   as a different KIND of thing from the reportage at a glance. The seam is
+   carried by structure + typeface + a signature, not by colour alone, so it
+   survives greyscale, print and screenshot. */
+.panel-view{
+  background:#fff;
+  border:1px solid var(--gray-rule);
+  border-left:6px solid var(--brass);
+  box-shadow:0 1px 0 rgba(40,48,58,.06), 0 10px 26px -20px rgba(40,48,58,.55);
+  margin:34px 0;
+  font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;
+}
+.panel-view .pv-head{display:flex;align-items:center;gap:11px;background:var(--slate-deep);padding:12px 18px;}
+.panel-view .pv-head svg{width:24px;height:24px;flex:0 0 auto;}
+.panel-view .pv-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);line-height:1.4;}
+.panel-view .pv-kicker{display:block;font-size:9.5px;letter-spacing:.12em;color:#a8a294;font-weight:400;margin-top:3px;text-transform:none;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;}
+.panel-view .pv-body{padding:22px 18px 20px;font-size:15.5px;line-height:1.68;color:var(--ink);}
+.panel-view .pv-body p{margin-bottom:14px;}
+.panel-view .pv-body p:last-child{margin-bottom:0;}
+.panel-view .pv-body strong{color:var(--slate-deep);}
+.panel-view .pv-body em{font-style:italic;}
+.panel-view .pv-body a{color:#2d5270;}
+.panel-view .pv-body .table-wrap{margin:18px 0;}
+@media (min-width:720px){
+  .panel-view .pv-head{padding:13px 28px;}
+  .panel-view .pv-body{padding:26px 28px 24px;}
+}
+
+/* ---------- FIGURE ---------- */
+.paper-figure{margin:28px 0;border:1px solid var(--gray-rule);background:#fff;padding:10px;}
+.paper-figure img{display:block;width:100%;height:auto;}
+.paper-figure figcaption{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:13.5px;line-height:1.55;color:var(--gray-mid);margin-top:10px;padding:0 2px;max-width:none;}
+/* the commentary illustration hangs off the panel above it: brass edge continues the
+   marked-opinion seam so it never reads as evidence in the reportage */
+.commentary-illo{margin-top:0;border-top:none;border-left:6px solid var(--brass);}
+
+/* ---------- TABLES ---------- */
+.table-wrap{overflow-x:auto;margin:24px 0;-webkit-overflow-scrolling:touch;}
+table{width:100%;min-width:520px;border-collapse:collapse;font-size:14px;line-height:1.55;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;}
+thead th{background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.5px;padding:10px 12px;text-align:left;font-weight:600;}
+tbody tr{background:#fff;}
+tbody tr:nth-child(even){background:var(--gray-light);}
+tbody td{color:var(--gray-dark);padding:10px 12px;border-bottom:1px solid #e0e0e0;vertical-align:top;}
+tbody td:first-child{font-weight:600;color:var(--blue);}
+
+/* ---------- LISTS ---------- */
+.section ul,.section ol,.support-inner ul,.support-inner ol{margin:0 0 16px 1.15em;}
+.section li,.support-inner li{margin-bottom:8px;}
+.panel-view ul,.panel-view ol{margin:0 0 14px 1.15em;}
+
+/* ---------- SUPPORTING MATERIAL ---------- */
+h2.support-break,.support-break{background:var(--blue);color:var(--sonoran-sky);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;text-align:center;padding:14px 20px;}
+.support-section{background:#ececea;padding:40px 20px;}
+@media (min-width:720px){ .support-section{padding:52px 24px;} }
+.support-inner{max-width:var(--col-w);margin:0 auto;}
+.support-inner h2.section-title{color:var(--blue);border-bottom-color:var(--blue);}
+/* Appendix sections A-F are subsections of the bar above them, not parts in their
+   own right - so they sit at h3 and stay out of the sticky nav (Hugh, 2026-07-28). */
+.support-inner h3.appx{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(19px,2.4vw,22px);font-weight:700;color:var(--blue);padding-bottom:9px;border-bottom:2px solid var(--gray-rule);margin:46px 0 18px;}
+.support-inner h3.appx:first-child{margin-top:0;}
+.support-inner p{font-size:15.5px;}
+
+/* ---------- PROVENANCE ---------- */
+.prov{background:var(--slate-deep);color:#e8e3d8;padding:clamp(28px,6vw,56px) clamp(18px,5vw,40px);}
+.prov-inner{max-width:44em;margin:0 auto;}
+.prov-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin:0 0 6px;}
+.prov-title{font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(1.3rem,4vw,1.7rem);color:#fff;margin:0 0 10px;line-height:1.25;}
+.prov-body{font-size:.95rem;line-height:1.65;}
+.prov-body h2.prov-title{margin:0 0 22px;}
+.prov-body p{color:#e8e3d8;margin-bottom:14px;}
+.prov-body strong{color:var(--brass);font-weight:600;}
+.prov-body em{color:#fff;}
+.prov-body a{color:var(--brass);}
+.prov-body .table-wrap{margin:22px 0;}
+.prov-body table{min-width:480px;font-size:13px;}
+.prov-body thead th{background:#1d2839;color:var(--brass);border-bottom:1px solid rgba(201,163,61,.4);}
+.prov-body tbody tr,.prov-body tbody tr:nth-child(even){background:transparent;}
+.prov-body tbody td{color:#ddd8cc;border-bottom:1px solid rgba(232,227,216,.16);}
+.prov-body tbody td:first-child{color:#fff;font-weight:600;}
+.prov-release{margin:26px 0 0;font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.04em;color:#d8cfa8;}
+.prov-release span{color:var(--brass);text-transform:uppercase;letter-spacing:.14em;font-size:.7rem;margin-right:9px;}
+.prov-full{margin:22px 0 0;padding-top:20px;border-top:1px solid rgba(201,163,61,.32);}
+.prov-full a{display:inline-block;min-height:44px;line-height:44px;font-family:'DM Sans',system-ui,sans-serif;font-weight:600;font-size:1rem;color:var(--brass);text-decoration:none;border-bottom:1px solid rgba(201,163,61,.5);}
+.prov-full a:hover,.prov-full a:focus{color:#e0be5c;border-bottom-color:#e0be5c;}
+.prov-full-note{display:block;margin-top:6px;font-size:.86rem;line-height:1.55;color:#9d978a;max-width:38em;}
+
+/* ---------- PRINT ---------- */
+@media print{
+  body{background:#fff;}
+  .paper-bar{display:none!important;}
+  .bseal{display:none!important;}
+  .cover{background:#fff!important;color:#000!important;border-bottom:3px solid #000;}
+  .cover h1,.cover .tagline,.cover .subtitle,.cover .meta,.cover .eyebrow-label{color:#000!important;}
+  figure,table,.panel-view{break-inside:avoid;}
+  .panel-view{box-shadow:none;border:1px solid #000;border-left:6px solid #000;}
+  .panel-view .pv-head{background:#fff!important;border-bottom:1px solid #000;}
+  .panel-view .pv-label,.panel-view .pv-kicker{color:#000!important;}
+  .prov,.support-break,.support-section,thead th{background:#fff!important;color:#000!important;}
+  .prov-eyebrow,.prov-title,.prov-lede,.prov-full a,.prov-full-note,.prov-release,.prov-release span{color:#000!important;}
+  .prov-body p,.prov-body strong,.prov-body em,.prov-body a,.prov-body tbody td,.prov-body tbody td:first-child,.prov-body thead th{color:#000!important;}
+  .prov{border-top:2px solid #000;}
+  thead th,.prov-body thead th{border-bottom:2px solid #000;}
+  .prov-body tbody td{border-bottom:1px solid #999;}
+}
+@media (prefers-reduced-motion:reduce){
+  .bseal .bmark{animation:none!important;}
+}
+
+/* ---------- SECTION NAV, aligned to the content column ---------- */
+/* Page-local override. The shared .article-nav in styles.css is full-bleed; every other
+   element on this page is centred on the 760px column, so the first nav link sat hard
+   against the viewport edge while headings started 260px in. This pads the scroll
+   container so the nav begins on the column's left edge and ends on its right.
+   NOT promoted to styles.css - that would restyle the four other papers using it. */
+.article-nav{
+  padding-left:max(20px, calc((100% - var(--col-w))/2 + 20px));
+  padding-right:max(20px, calc((100% - var(--col-w))/2 + 20px));
+}
+@media (min-width:720px){
+  .article-nav{
+    padding-left:max(24px, calc((100% - var(--col-w))/2 + 24px));
+    padding-right:max(24px, calc((100% - var(--col-w))/2 + 24px));
+  }
+}
+
+
+/* ---------- Paper 1 (model-is-one-part): page-local additions ---------- */
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+.cover .series{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(15px,2.2vw,18px);font-weight:600;color:var(--sonoran-sky);max-width:34em;margin:0 auto 18px;}
+.section.intro{padding-bottom:36px;}
+.draft-flag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:#7c2d12;background:#fff;border-radius:3px;padding:5px 12px;margin:0 0 18px;}
+.cover-headlines{max-width:980px;margin:34px auto 0;}
+.cover-headlines img{display:block;width:100%;height:auto;background:#fff;border-radius:2px;box-shadow:0 12px 32px rgba(15,23,42,.38);}
+.cover-headlines figcaption{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;color:rgba(232,237,240,.86);font-size:12.5px;line-height:1.55;text-align:center;max-width:46em;margin:12px auto 0;}
+.cover-headlines figcaption .refs{color:inherit;}
+.cover-headlines figcaption a{color:var(--sonoran-sky);}
+.zoom-overlay{position:fixed;inset:0;z-index:100;background:rgba(15,23,42,.94);display:flex;flex-direction:column;}
+.zoom-bar{display:flex;justify-content:flex-end;gap:8px;padding:10px 12px;flex:0 0 auto;}
+.zoom-bar button{font:600 14px 'DM Sans',system-ui,sans-serif;min-height:44px;min-width:44px;padding:0 16px;border:1px solid rgba(255,255,255,.4);border-radius:4px;background:transparent;color:#fff;cursor:pointer;}
+.zoom-bar button:hover{background:rgba(255,255,255,.12);}
+.zoom-bar button:focus-visible{outline:2px solid var(--brass);outline-offset:2px;}
+.zoom-stage{flex:1 1 auto;overflow:auto;padding:0 12px 16px;-webkit-overflow-scrolling:touch;text-align:center;}
+.zoom-stage img{display:inline-block;max-width:none;background:#fff;cursor:zoom-in;vertical-align:middle;}
+.zoom-stage.zoomed img{cursor:zoom-out;}
+.reader-note .prov-jump{font-style:normal;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:14px;font-weight:600;color:#2d5270;}
+.reader-note{font-style:italic;color:var(--gray-mid);font-size:15.5px;line-height:1.65;border-left:3px solid var(--gray-rule);padding-left:14px;margin:0 0 26px;}
+.terms-line{border-top:1px solid var(--gray-rule);padding:16px 0 0;}
+.terms-h{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+.tl-words{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:15.5px;line-height:1.9;margin:0 0 8px;}
+.tl-sep{color:var(--gray-rule);}
+.tl-note{font-size:14px;line-height:1.6;color:var(--gray-mid);font-style:italic;margin:0;}
+/* term pop-ups: first use is bold, with a dotted underline that says "this opens" */
+button.term{font:inherit;font-weight:600;color:var(--slate-deep);background:none;border:0;padding:0;margin:0;cursor:help;
+  border-bottom:1.5px dotted var(--blue-light);line-height:inherit;text-align:inherit;}
+button.term:hover,button.term[aria-expanded="true"]{background:var(--blue-pale);}
+button.term:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+button.term-chip{font-weight:400;color:var(--blue);min-height:28px;}
+@media (pointer:coarse){button.term-chip{min-height:44px;}}
+.term-pop{position:absolute;z-index:60;width:min(380px,calc(100vw - 24px));background:#fff;border:1px solid var(--gray-rule);border-top:3px solid var(--blue);
+  box-shadow:0 8px 28px rgba(15,23,42,.18);padding:14px 16px 12px;font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:14.5px;line-height:1.55;color:var(--ink);}
+.term-pop .tp-term{font-weight:700;color:var(--slate-deep);font-size:15.5px;margin:0 28px 6px 0;}
+.term-pop .tp-see{color:var(--gray-mid);margin-top:8px;font-size:13.5px;}
+.term-pop .tp-see b{font-weight:600;color:var(--gray-mid);}
+.term-pop .tp-link{display:inline-block;margin-top:10px;font-weight:600;font-size:13.5px;color:#2d5270;}
+.term-pop .tp-x{position:absolute;top:6px;right:6px;width:36px;height:36px;border:0;background:none;font-size:18px;line-height:36px;color:var(--gray-mid);cursor:pointer;border-radius:4px;}
+.term-pop .tp-x:hover{background:var(--gray-light);}
+/* Key idea: a ruled, labelled statement - not a boxed panel (the Take is the one panel) */
+.key-idea{margin:32px 0;padding:18px 0 18px 20px;border-left:4px solid var(--blue);border-top:1px solid var(--gray-rule);border-bottom:1px solid var(--gray-rule);}
+.key-idea .ki-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin:0 0 6px;}
+.key-idea .ki-title{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:clamp(18px,2.3vw,21px);font-weight:700;line-height:1.3;color:var(--slate-deep);margin:0 0 8px;}
+.key-idea .ki-text{font-size:16px;line-height:1.65;margin:0;}
+.key-idea .ki-text strong{font-weight:600;}
+/* Claude's Fables: the model-written block, seamed off with a dashed rule and a label */
+.fable{margin:26px 0 8px;padding:6px 0 4px 22px;border-left:3px dashed var(--caliche);}
+.fable-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--caliche);margin:0 0 4px;}
+.fable h3.subsection{margin-top:6px;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-weight:600;font-size:clamp(20px,2.6vw,24px);color:var(--slate-deep);}
+.section.closing-take{padding-top:8px;}
+.panel-view{margin:32px 0;}
+.panel-view .pv-body figure{margin:18px 0 14px;}
+/* figures */
+.paper-figure.fig-small img{max-width:520px;margin:0 auto;}
+.paper-figure.fig-anim{padding:10px 10px 12px;}
+.fig-anim .fb svg{display:block;width:100%;height:auto;}
+.fig-anim .ctl{margin-top:10px;gap:8px;}
+.fig-anim .ctl button{font-family:'DM Sans','Gill Sans',Trebuchet,sans-serif;font-size:14px;font-weight:600;min-height:36px;min-width:36px;padding:0 14px;border:1px solid var(--gray-rule);border-radius:4px;background:#fff;color:var(--slate-deep);cursor:pointer;}
+.fig-anim .ctl button:hover:not(:disabled){background:var(--blue-pale);}
+.fig-anim .ctl button:disabled{color:#a8a294;cursor:default;}
+.fig-anim .ctl .dots{gap:4px;margin-left:6px;}
+.fig-anim .ctl .dots button{min-width:34px;padding:0 6px;border-radius:17px;font-weight:400;}
+.fig-anim .ctl .dots button[aria-current="true"]{background:var(--slate-deep);border-color:var(--slate-deep);color:#fff;}
+.fig-anim .ctl button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+a.fig-open{display:block;cursor:zoom-in;}
+@media (pointer:coarse){.fig-anim .ctl button{min-height:44px;min-width:44px;}}
+@media (min-width:1100px){.paper-figure.fig-wide,.paper-figure.fig-anim{margin-left:-110px;margin-right:-110px;}}
+/* note markers and notes */
+.refs{font-size:.8em;white-space:nowrap;color:var(--gray-mid);}
+a.note-ref{text-decoration:none;}
+a.note-ref:hover,a.note-ref:focus-visible{text-decoration:underline;}
+ol.notes{padding-left:1.6em;}
+ol.notes li{margin-bottom:12px;font-size:14.5px;line-height:1.6;overflow-wrap:anywhere;scroll-margin-top:80px;}
+ol.notes li:target{background:var(--gold-pale);}
+.further ol{padding-left:1.4em;}
+.further li{overflow-wrap:anywhere;}
+table td code,table th code{font-family:'JetBrains Mono',monospace;font-size:.86em;}
+.prov-body ul{margin:0 0 14px 1.1em;}
+.prov-body li{margin-bottom:10px;color:#e8e3d8;}
+mark.review-flag{background:#fde68a;color:#7c2d12;padding:0 3px;}
+.review-banner{position:static;background:#7c2d12;color:#fff;font:600 13px/1.4 'DM Sans',system-ui,sans-serif;text-align:center;padding:7px 12px;letter-spacing:.02em;}
+@media print{
+  .term-pop,.fig-anim .ctl,.review-banner{display:none!important;}
+  button.term{border-bottom:0;background:none!important;}
+  .key-idea{border-left:4px solid #000;border-top:1px solid #000;border-bottom:1px solid #000;break-inside:avoid;}
+  .key-idea .ki-label,.fable-label{color:#000!important;}
+  .fable{border-left:3px dashed #000;}
+  .cover .series{color:#000!important;}
+  .draft-flag{border:1px solid #000;color:#000!important;}
+  .cover-headlines img{box-shadow:none;border:1px solid #000;}
+  .cover-headlines figcaption,.cover-headlines figcaption a{color:#000!important;}
+  .zoom-overlay{display:none!important;}
+  .prov-body li{color:#000!important;}
+  .paper-figure.fig-anim{margin-left:0;margin-right:0;}
+}
+</style>
+<script src="../section-nav.js" defer></script>
+</head>
+<body>
+
+<nav class="paper-bar">
+  <a class="paper-bar__brand" href="/">Bursera <span>Consulting</span></a>
+  <a class="paper-bar__back" href="/llm-leadership.html">&#8592; Return</a>
+</nav>
+
+<nav class="article-nav" data-section-nav aria-label="Sections"></nav>
+
+<main id="main">
+
+<div class="cover bseal-host">
+<a class="bseal" href="#provenance" aria-label="Full provenance below"><svg class="bmark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#0F172A" stroke="#C9A33D" stroke-width="4"/><text x="50" y="72" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="66" fill="#C9A33D">B</text></svg><span class="btext"><span>Human</span><span>Led</span></span><span class="btip">Full Provenance Below</span></a>
+  <p class="draft-flag">Draft &middot; for review</p>
+  <h1>The model is just one part of a much more complex system</h1>
+  <p class="series">Paper 1 of the series Learning From Hugging Face</p>
+  <p class="meta">Bursera Consulting &middot; November 2026 &middot; ~5,200 words</p>
+  <figure class="cover-headlines"><a class="fig-open" href="images/headlines-2026.svg?v=fcc1065f" aria-label="Open the headlines full size"><img src="images/headlines-2026.svg?v=fcc1065f" width="1200" height="500" alt="Eight 2026 headlines about AI, from Reuters, Scientific American, The Guardian, Bloomberg News, NYU Shanghai Library, Cybersecurity Dive, Transluce and KPMG"></a><figcaption>Headlines from April to November 2026: Reuters <span class="refs">[<a class="note-ref" href="#note-18">18</a>]</span>; Scientific American <span class="refs">[<a class="note-ref" href="#note-19">19</a>]</span>; The Guardian <span class="refs">[<a class="note-ref" href="#note-20">20</a>]</span>; Bloomberg News <span class="refs">[<a class="note-ref" href="#note-21">21</a>]</span>; NYU Shanghai Library <span class="refs">[<a class="note-ref" href="#note-22">22</a>]</span>; Cybersecurity Dive <span class="refs">[<a class="note-ref" href="#note-23">23</a>]</span>; Transluce <span class="refs">[<a class="note-ref" href="#note-24">24</a>]</span>; KPMG <span class="refs">[<a class="note-ref" href="#note-25">25</a>]</span>. Each headline is shown as published.</figcaption></figure>
+</div>
+
+<section class="section intro">
+<p class="reader-note">Drafted with Claude, Anthropic&rsquo;s model, from the public sources listed at the end, and checked against them by the author. Where a point holds for only one of OpenAI&rsquo;s and Anthropic&rsquo;s platforms, the text says so. Product documentation is cited as published in October and November 2026. <a class="prov-jump" href="#provenance">See the Provenance &#8595;</a></p>
+<div class="terms-line" role="group" aria-label="Terms used in this paper"><h2 class="terms-h">Terms used in this paper</h2><p class="tl-words"><button type="button" class="term term-chip" data-ti="0" aria-haspopup="dialog">model</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="1" aria-haspopup="dialog">weights</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="2" aria-haspopup="dialog">token</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="3" aria-haspopup="dialog">harness</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="4" aria-haspopup="dialog">tool call</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="5" aria-haspopup="dialog">tools</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="6" aria-haspopup="dialog">context</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="7" aria-haspopup="dialog">limits</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="8" aria-haspopup="dialog">transcript</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="9" aria-haspopup="dialog">execution environment</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="9" aria-haspopup="dialog">sandbox</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="10" aria-haspopup="dialog">approval policy</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="11" aria-haspopup="dialog">reviewer model</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="12" aria-haspopup="dialog">operator controls</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="13" aria-haspopup="dialog">model safeguards</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="14" aria-haspopup="dialog">monitor</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="15" aria-haspopup="dialog">controls</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="16" aria-haspopup="dialog">governance</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="17" aria-haspopup="dialog">run</button><span class="tl-sep" aria-hidden="true"> &middot; </span><button type="button" class="term term-chip" data-ti="18" aria-haspopup="dialog">training</button></p><p class="tl-note">On the web page each term opens its definition where it is first used.</p></div>
+</section>
+<section class="section">
+<h2 class="section-title" id="s0" data-nav-label="TL;DR">TL;DR</h2>
+<p>What people call &ldquo;AI&rdquo; is a system. The <button type="button" class="term" data-ti="0" aria-haspopup="dialog">model</button> is the part everyone talks about, but focusing on the model is like talking about a car and discussing only its engine. The model takes text in and gives text out, one step at a time, and keeps nothing from one step to the next. That is true of every system built on a large language model <span class="refs">[<a class="note-ref" href="#note-1">1</a>, <a class="note-ref" href="#note-2">2</a>, <a class="note-ref" href="#note-3">3</a>]</span>. Much of what matters is built around the model, to help us use it well and safely.</p>
+<p>The layer closest to the model is the <button type="button" class="term" data-ti="3" aria-haspopup="dialog">harness</button>: the program that calls the model, decides what it gets to see, carries out the actions it asks for, and stops the <button type="button" class="term" data-ti="17" aria-haspopup="dialog">run</button> at a <button type="button" class="term" data-ti="7" aria-haspopup="dialog">limit</button>, such as a maximum number of turns or a spending cap <span class="refs">[<a class="note-ref" href="#note-4">4</a>, <a class="note-ref" href="#note-5">5</a>]</span>. The harness works inside an <button type="button" class="term" data-ti="9" aria-haspopup="dialog">execution environment</button>, which sets what a run can reach: which files, which networks, which other systems <span class="refs">[<a class="note-ref" href="#note-6">6</a>, <a class="note-ref" href="#note-7">7</a>]</span>. <button type="button" class="term" data-ti="12" aria-haspopup="dialog">Operator controls</button>, the settings chosen by whoever sets up a deployment, decide how much can happen without a person saying yes first <span class="refs">[<a class="note-ref" href="#note-8">8</a>, <a class="note-ref" href="#note-9">9</a>]</span>. <button type="button" class="term" data-ti="14" aria-haspopup="dialog">Monitors</button> watch from outside and can raise an alert or stop a run. Above all of it sits <button type="button" class="term" data-ti="16" aria-haspopup="dialog">governance</button>: the people and policies that own each of those settings.</p>
+<p>While a model is being trained and tested, the company doing the <button type="button" class="term" data-ti="18" aria-haspopup="dialog">training</button> owns all of those layers and their governance, and it sets them up differently from the way its customers will use the model. Once customers use it, who controls what depends on how the model is reached. In a chat app, the company providing it runs the harness and writes the instructions the model is given <span class="refs">[<a class="note-ref" href="#note-10">10</a>, <a class="note-ref" href="#note-11">11</a>]</span>. In a coding assistant, through the API, or with open <button type="button" class="term" data-ti="1" aria-haspopup="dialog">weights</button> downloaded and run on your own machines, more of the system is yours to set <span class="refs">[<a class="note-ref" href="#note-4">4</a>, <a class="note-ref" href="#note-8">8</a>, <a class="note-ref" href="#note-12">12</a>, <a class="note-ref" href="#note-13">13</a>, <a class="note-ref" href="#note-14">14</a>, <a class="note-ref" href="#note-15">15</a>, <a class="note-ref" href="#note-16">16</a>, <a class="note-ref" href="#note-17">17</a>]</span>.</p>
+<aside class="panel-view" role="note" aria-label="Bursera’s own view"><div class="pv-head"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#0F172A" stroke="#C9A33D" stroke-width="6"/><text x="50" y="72" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="66" fill="#C9A33D">B</text></svg><span class="pv-label">BURSERA&rsquo;S TAKE — THE WORDS THAT SPAN A MASSIVE TOPIC<span class="pv-kicker">Bursera’s own view &mdash; not the record</span></span></div><div class="pv-body"><p>Right now the commentary and news put one label, &ldquo;AI&rdquo;, on an incredibly complex, multi-layered set of technologies. Most of the media energy goes to the &ldquo;frontier models&rdquo;. What we hear from the AI companies is mostly about new models with clever names, &ldquo;agents&rdquo; bundled up to make our lives easier, or, most ambitious of all, a superintelligence that can out-think and outsmart any human.</p>
+<p>The same few words, &ldquo;AI&rdquo;, &ldquo;model&rdquo; and &ldquo;agent&rdquo;, carry all of it: new mathematics, a restricted model reached by people who were not meant to have it, agents probing public websites, new ways of working and unparalleled job disruption. And there is always the &ldquo;Skynet&rdquo; level of fear and references to a &ldquo;mass extinction event&rdquo;.</p>
+<p>For normal consumers our greatest risk is bad information. But it really helps to understand how the whole thing works. Without the right controls around the whole system, it can do unexpected things, and some of them can be bad.</p></div></aside>
+</section>
+<section class="section">
+<h2 class="section-title" id="s1" data-nav-label="The parts">1 · The parts of an &ldquo;AI&rdquo; system like ChatGPT or Claude</h2>
+<p>Figure 1 is the map for the rest of this paper. This section takes the parts one at a time: what a model is, what it is trained on, what does not change when you use it, and everything that sits around it <span class="refs">[<a class="note-ref" href="#note-4">4</a>, <a class="note-ref" href="#note-6">6</a>, <a class="note-ref" href="#note-26">26</a>, <a class="note-ref" href="#note-27">27</a>]</span>.</p>
+<figure class="paper-figure fig-anim" id="figure-1"><div class="fb" id="fb" tabindex="0" role="group" aria-label="Loop flipbook: eleven loops, numbered 0 to 10, that light the parts of a running LLM system one at a time: the user interface first, then the vendor-run layers, then the run's own layers. Left and right arrow keys step.">
+<svg id="stage" role="img" aria-labelledby="fig1-title" xmlns="http://www.w3.org/2000/svg" width="1800" height="900" viewBox="0 0 1800 900" font-family="Segoe UI, Arial, sans-serif" style="background:#ffffff;max-width:100%;height:auto;display:block" role="img" aria-labelledby="fb-title fb-desc"><title id="fig1-title">Figure 1: the parts of a running LLM system</title>
+<title id="fb-title">Loop flipbook · the layers of a running LLM system, lit one at a time</title>
+<desc id="fb-desc">Animated flipbook in a 16:9 frame. On the left, the loop number and a green card, separate from the structure, naming the focused layer and giving what it is and how you see it. On the right, Figure 1's layers. At the top: training (a bar, which sets the weights), the model, and the model safeguards strip, set by whoever runs the model. Below them, the run: the environment (what the tools can reach), holding the harness, which holds the context, the operator controls and the tools the operator controls permit; the harness calls the model and receives its response; monitors (a vertical strip) observe the run from outside; governance (a band at the bottom) sets every layer, with lines up to the environment, the monitors, the model safeguards and training. Left of the run, a thin user-interface column lists the ways a person or outside party reaches the harness, top to bottom: chat tool, code tool, API, other; a two-way arrow joins it to the harness. Eleven loops, from the user interface (0) through governance (10), each bring one more part into focus, in this order: user interface, then model, training, model safeguards, then context, harness, operator controls, tools, environment, monitors, governance. A dotted brass line runs from the card to the focused layer. A focused part fills blue and carries the loop number; earlier parts settle to a lighter blue and keep their numbers. The final frame has every layer, the user-interface column included, coloured and numbered, and the card reads “All layers. Every layer has a part.” The markup as stored shows that final frame.</desc>
+<rect x="0" y="0" width="1800" height="900" fill="#ffffff" style="pointer-events: none;"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4b5563"/></marker></defs>
+<g id="stack">
+<rect x="586" y="6" width="1176" height="306" rx="14" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<rect x="586" y="334" width="1176" height="490" rx="14" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<g id="training">
+<rect x="600" y="18" width="1148" height="52" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" data-l="training" data-s="#e5e7eb,#93c5fd,#1d4ed8" data-f="#ffffff,#eff6ff,#dbeafe"/>
+<text x="616" y="54" font-size="30" font-weight="bold" fill="#111827" data-l="training" data-t="#c4c8ce,#111827">Training</text>
+<text x="753.67" y="53" font-size="24" font-weight="400" fill="#4b5563" data-l="training" data-t="#c4c8ce,#4b5563">sets the weights</text>
+</g>
+<g id="badge-training" data-l="training" data-o="0,1" opacity="1.000">
+<circle cx="1722" cy="44" r="20" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5" data-l="training" data-f="#ffffff,#ffffff,#1d4ed8"/>
+<text x="1722" y="53" font-size="26" font-weight="bold" fill="#1d4ed8" text-anchor="middle" data-l="training" data-t="#1d4ed8,#1d4ed8,#ffffff">2</text>
+</g>
+<g id="sets-weights" data-l="training" data-o="0.2,1" opacity="1.000">
+<line x1="680" y1="70" x2="680" y2="98" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+</g>
+<g id="model">
+<rect x="600" y="98" width="1148" height="132" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="2" data-l="model" data-s="#e5e7eb,#93c5fd,#1d4ed8" data-f="#ffffff,#eff6ff,#dbeafe"/>
+<text x="1174" y="150" font-size="32" font-weight="bold" fill="#111827" text-anchor="middle" data-l="model" data-t="#c4c8ce,#111827">Model</text>
+<text x="1174" y="192" font-size="26" font-weight="400" fill="#4b5563" text-anchor="middle" data-l="model" data-t="#c4c8ce,#4b5563">the weights · keeps nothing between calls</text>
+</g>
+<g id="badge-model" data-l="model" data-o="0,1" opacity="1.000">
+<circle cx="1722" cy="124" r="20" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5" data-l="model" data-f="#ffffff,#ffffff,#1d4ed8"/>
+<text x="1722" y="133" font-size="26" font-weight="bold" fill="#1d4ed8" text-anchor="middle" data-l="model" data-t="#1d4ed8,#1d4ed8,#ffffff">1</text>
+</g>
+<g id="safeguards">
+<rect x="600" y="244" width="1148" height="56" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" data-l="safeguards" data-s="#e5e7eb,#93c5fd,#1d4ed8" data-f="#ffffff,#eff6ff,#dbeafe"/>
+<text x="616" y="281" font-size="28" font-weight="bold" fill="#111827" data-l="safeguards" data-t="#c4c8ce,#111827">Model safeguards</text>
+<text x="1678" y="280" font-size="24" font-weight="400" fill="#4b5563" text-anchor="end" data-l="safeguards" data-t="#c4c8ce,#4b5563">set by whoever runs the model</text>
+</g>
+<g id="badge-safeguards" data-l="safeguards" data-o="0,1" opacity="1.000">
+<circle cx="1722" cy="272" r="20" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5" data-l="safeguards" data-f="#ffffff,#ffffff,#1d4ed8"/>
+<text x="1722" y="281" font-size="26" font-weight="bold" fill="#1d4ed8" text-anchor="middle" data-l="safeguards" data-t="#1d4ed8,#1d4ed8,#ffffff">3</text>
+</g>
+<g id="harness">
+<rect x="600" y="350" width="560" height="456" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" data-l="harness" data-s="#e5e7eb,#93c5fd,#1d4ed8" data-f="#ffffff,#eff6ff,#dbeafe"/>
+<text x="616" y="388" font-size="30" font-weight="bold" fill="#111827" data-l="harness" data-t="#c4c8ce,#111827">Harness · runs the loop</text>
+<text x="616" y="760" font-size="24" font-weight="400" fill="#4b5563" data-l="harness" data-t="#c4c8ce,#4b5563">sends the context, routes</text>
+<text x="616" y="790" font-size="24" font-weight="400" fill="#4b5563" data-l="harness" data-t="#c4c8ce,#4b5563">tool calls, keeps the transcript</text>
+</g>
+<g id="badge-harness" data-l="harness" data-o="0,1" opacity="1.000">
+<circle cx="1134" cy="376" r="20" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5" data-l="harness" data-f="#ffffff,#ffffff,#1d4ed8"/>
+<text x="1134" y="385" font-size="26" font-weight="bold" fill="#1d4ed8" text-anchor="middle" data-l="harness" data-t="#1d4ed8,#1d4ed8,#ffffff">5</text>
+</g>
+<g id="context">
+<rect x="626" y="410" width="250" height="110" rx="6" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" data-l="context" data-s="#e5e7eb,#93c5fd,#1d4ed8" data-f="#ffffff,#eff6ff,#dbeafe"/>
+<text x="642" y="446" font-size="28" font-weight="bold" fill="#111827" data-l="context" data-t="#c4c8ce,#111827">Context</text>
+<text x="642" y="480" font-size="24" font-weight="400" fill="#4b5563" data-l="context" data-t="#c4c8ce,#4b5563">re-sent each call</text>
+</g>
+<g id="badge-context" data-l="context" data-o="0,1" opacity="1.000">
+<circle cx="850" cy="436" r="20" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5" data-l="context" data-f="#ffffff,#ffffff,#1d4ed8"/>
+<text x="850" y="445" font-size="26" font-weight="bold" fill="#1d4ed8" text-anchor="middle" data-l="context" data-t="#1d4ed8,#1d4ed8,#ffffff">4</text>
+</g>
+<g id="operator-controls">
+<rect x="900" y="410" width="240" height="150" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" data-l="operator" data-s="#e5e7eb,#93c5fd,#1d4ed8" data-f="#ffffff,#eff6ff,#dbeafe"/>
+<text x="916" y="446" font-size="28" font-weight="bold" fill="#111827" data-l="operator" data-t="#c4c8ce,#111827">Operator</text>
+<text x="916" y="478" font-size="28" font-weight="bold" fill="#111827" data-l="operator" data-t="#c4c8ce,#111827">controls</text>
+<text x="916" y="514" font-size="24" font-weight="400" fill="#4b5563" data-l="operator" data-t="#c4c8ce,#4b5563">allow, ask or deny</text>
+</g>
+<g id="badge-operator" data-l="operator" data-o="0,1" opacity="1.000">
+<circle cx="1114" cy="436" r="20" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5" data-l="operator" data-f="#ffffff,#ffffff,#1d4ed8"/>
+<text x="1114" y="445" font-size="26" font-weight="bold" fill="#1d4ed8" text-anchor="middle" data-l="operator" data-t="#1d4ed8,#1d4ed8,#ffffff">6</text>
+</g>
+<g id="environment">
+<rect x="1190" y="350" width="426" height="456" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" data-l="environment" data-s="#e5e7eb,#93c5fd,#1d4ed8" data-f="#ffffff,#eff6ff,#dbeafe"/>
+<text x="1206" y="388" font-size="30" font-weight="bold" fill="#111827" data-l="environment" data-t="#c4c8ce,#111827">Execution environment</text>
+<text x="1206" y="760" font-size="24" font-weight="400" fill="#4b5563" data-l="environment" data-t="#c4c8ce,#4b5563">what the tools can reach:</text>
+<text x="1206" y="790" font-size="24" font-weight="400" fill="#4b5563" data-l="environment" data-t="#c4c8ce,#4b5563">files, network, services</text>
+</g>
+<g id="badge-environment" data-l="environment" data-o="0,1" opacity="1.000">
+<circle cx="1590" cy="376" r="20" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5" data-l="environment" data-f="#ffffff,#ffffff,#1d4ed8"/>
+<text x="1590" y="385" font-size="26" font-weight="bold" fill="#1d4ed8" text-anchor="middle" data-l="environment" data-t="#1d4ed8,#1d4ed8,#ffffff">8</text>
+</g>
+<g id="tools">
+<rect x="1216" y="410" width="314" height="190" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" data-l="tools" data-s="#e5e7eb,#93c5fd,#1d4ed8" data-f="#ffffff,#eff6ff,#dbeafe"/>
+<text x="1232" y="446" font-size="28" font-weight="bold" fill="#111827" data-l="tools" data-t="#c4c8ce,#111827">Tools</text>
+<text x="1232" y="480" font-size="24" font-weight="400" fill="#111827" data-l="tools" data-t="#c4c8ce,#111827">web search · files</text>
+<text x="1232" y="510" font-size="24" font-weight="400" fill="#111827" data-l="tools" data-t="#c4c8ce,#111827">code · email</text>
+</g>
+<g id="badge-tools" data-l="tools" data-o="0,1" opacity="1.000">
+<circle cx="1504" cy="436" r="20" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5" data-l="tools" data-f="#ffffff,#ffffff,#1d4ed8"/>
+<text x="1504" y="445" font-size="26" font-weight="bold" fill="#1d4ed8" text-anchor="middle" data-l="tools" data-t="#1d4ed8,#1d4ed8,#ffffff">7</text>
+</g>
+<g id="permits" data-l="operator" data-o="0.2,1" opacity="1.000">
+<line x1="1140" y1="486" x2="1216" y2="486" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+</g>
+<g id="call-channel" data-l="harness" data-o="0.2,1" opacity="1.000">
+<line x1="1100" y1="350" x2="1100" y2="230" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="1140" y1="230" x2="1140" y2="350" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="1092" y="280" font-size="24" font-weight="400" fill="#4b5563" text-anchor="end">call</text>
+<text x="1148" y="280" font-size="24" font-weight="400" fill="#4b5563">response</text>
+</g>
+<g id="monitors">
+<rect x="1644" y="350" width="104" height="462" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" data-l="monitors" data-s="#e5e7eb,#93c5fd,#1d4ed8" data-f="#ffffff,#eff6ff,#dbeafe"/>
+<text x="1678" y="581" font-size="28" font-weight="bold" fill="#111827" text-anchor="middle" transform="rotate(-90 1678 581)" data-l="monitors" data-t="#c4c8ce,#111827">Monitors</text>
+<text x="1708" y="581" font-size="24" font-weight="400" fill="#111827" text-anchor="middle" transform="rotate(-90 1708 581)" data-l="monitors" data-t="#c4c8ce,#111827">watch from outside</text>
+<text x="1736" y="581" font-size="24" font-weight="400" fill="#4b5563" text-anchor="middle" transform="rotate(-90 1736 581)" data-l="monitors" data-t="#c4c8ce,#4b5563">logs, metrics, model output</text>
+</g>
+<g id="badge-monitors" data-l="monitors" data-o="0,1" opacity="1.000">
+<circle cx="1722" cy="376" r="20" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5" data-l="monitors" data-f="#ffffff,#ffffff,#1d4ed8"/>
+<text x="1722" y="385" font-size="26" font-weight="bold" fill="#1d4ed8" text-anchor="middle" data-l="monitors" data-t="#1d4ed8,#1d4ed8,#ffffff">9</text>
+</g>
+<g id="observes" data-l="monitors" data-o="0.2,1" opacity="1.000">
+<line x1="1644" y1="716" x2="1616" y2="716" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+</g>
+<g id="governance">
+<rect x="600" y="840" width="1148" height="56" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" data-l="governance" data-s="#e5e7eb,#93c5fd,#1d4ed8" data-f="#ffffff,#eff6ff,#dbeafe"/>
+<text x="616" y="878" font-size="30" font-weight="bold" fill="#111827" data-l="governance" data-t="#c4c8ce,#111827">Governance<tspan dx="8" font-size="24" font-weight="400">· the people and policy that set every layer</tspan></text>
+</g>
+<g id="badge-governance" data-l="governance" data-o="0,1" opacity="1.000">
+<circle cx="1722" cy="868" r="20" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5" data-l="governance" data-f="#ffffff,#ffffff,#1d4ed8"/>
+<text x="1722" y="875" font-size="22" font-weight="bold" fill="#1d4ed8" text-anchor="middle" data-l="governance" data-t="#1d4ed8,#1d4ed8,#ffffff">10</text>
+</g>
+<g id="sets" data-l="governance" data-o="0.2,1" opacity="1.000">
+<line x1="680" y1="840" x2="680" y2="824" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="1630" y1="840" x2="1630" y2="824" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="1748" y1="868" x2="1772" y2="868" stroke="#4b5563" stroke-width="1.5"/>
+<line x1="1772" y1="868" x2="1772" y2="159" stroke="#4b5563" stroke-width="1.5"/>
+<line x1="1772" y1="159" x2="1762" y2="159" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+</g>
+</g>
+<rect x="30" y="18" width="310" height="878" rx="0" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+<g id="cap0" data-cap="0" data-name="User interface" data-live="Loop 0, User interface. What it is: The feature a human or outside party uses to interact with an AI system built on a large language model. How you see it: The chat window where you type a prompt or attach a file, or, for coding, enter detailed instructions, and where the response appears." opacity="0.000">
+<g transform="translate(6,16)"><path d="M 54.5 32.2 A 9 9 0 1 1 45.5 32.2" fill="none" stroke="#4b5563" stroke-width="2"/><polygon points="48.96,30.2 47.25,35.23 43.75,29.17" fill="#4b5563"/></g>
+<text x="76" y="62" font-size="28" font-weight="bold" fill="#111827">Loop 0</text>
+<circle cx="66" cy="131" r="18" fill="#1d4ed8"/><text x="66" y="138.8" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">0</text>
+<text x="90" y="142" font-size="32" font-weight="bold" fill="#14532d">User</text>
+<text x="90" y="180" font-size="32" font-weight="bold" fill="#14532d">interface</text>
+<g data-part="b" transform="translate(0,0.00)" opacity="1.000">
+<text x="48" y="224" font-size="20" font-weight="bold" fill="#14532d">What it is</text>
+<text x="48" y="254" font-size="24" font-weight="400" fill="#111827">The feature a human or</text>
+<text x="48" y="284" font-size="24" font-weight="400" fill="#111827">outside party uses to</text>
+<text x="48" y="314" font-size="24" font-weight="400" fill="#111827">interact with an AI</text>
+<text x="48" y="344" font-size="24" font-weight="400" fill="#111827">system built on a large</text>
+<text x="48" y="374" font-size="24" font-weight="400" fill="#111827">language model.</text>
+<text x="48" y="412" font-size="20" font-weight="bold" fill="#14532d">How you see it</text>
+<text x="48" y="442" font-size="24" font-weight="400" fill="#111827">The chat window where</text>
+<text x="48" y="472" font-size="24" font-weight="400" fill="#111827">you type a prompt or</text>
+<text x="48" y="502" font-size="24" font-weight="400" fill="#111827">attach a file, or, for</text>
+<text x="48" y="532" font-size="24" font-weight="400" fill="#111827">coding, enter detailed</text>
+<text x="48" y="562" font-size="24" font-weight="400" fill="#111827">instructions, and where</text>
+<text x="48" y="592" font-size="24" font-weight="400" fill="#111827">the response appears.</text>
+</g>
+</g>
+<g id="cap1" data-cap="1" data-name="Model" data-live="Loop 1, Model. What it is: The trained weights. It does nothing until it is called. How you see it: It reads your prompt, plus the rest of the context, and writes the reply you see." opacity="0.000">
+<g transform="translate(6,16)"><path d="M 54.5 32.2 A 9 9 0 1 1 45.5 32.2" fill="none" stroke="#4b5563" stroke-width="2"/><polygon points="48.96,30.2 47.25,35.23 43.75,29.17" fill="#4b5563"/></g>
+<text x="76" y="62" font-size="28" font-weight="bold" fill="#111827">Loop 1</text>
+<circle cx="66" cy="131" r="18" fill="#1d4ed8"/><text x="66" y="138.8" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+<text x="90" y="142" font-size="32" font-weight="bold" fill="#14532d">Model</text>
+<g data-part="b" transform="translate(0,0.00)" opacity="1.000">
+<text x="48" y="186" font-size="20" font-weight="bold" fill="#14532d">What it is</text>
+<text x="48" y="216" font-size="24" font-weight="400" fill="#111827">The trained weights. It</text>
+<text x="48" y="246" font-size="24" font-weight="400" fill="#111827">does nothing until it is</text>
+<text x="48" y="276" font-size="24" font-weight="400" fill="#111827">called.</text>
+<text x="48" y="314" font-size="20" font-weight="bold" fill="#14532d">How you see it</text>
+<text x="48" y="344" font-size="24" font-weight="400" fill="#111827">It reads your prompt,</text>
+<text x="48" y="374" font-size="24" font-weight="400" fill="#111827">plus the rest of the</text>
+<text x="48" y="404" font-size="24" font-weight="400" fill="#111827">context, and writes the</text>
+<text x="48" y="434" font-size="24" font-weight="400" fill="#111827">reply you see.</text>
+</g>
+</g>
+<g id="cap2" data-cap="2" data-name="Training" data-live="Loop 2, Training. What it is: Sets the weights so the model makes its best prediction, including what it learns to refuse. How you see it: How the model responds, how accurate or useful the reply is, and which requests it turns down." opacity="0.000">
+<g transform="translate(6,16)"><path d="M 54.5 32.2 A 9 9 0 1 1 45.5 32.2" fill="none" stroke="#4b5563" stroke-width="2"/><polygon points="48.96,30.2 47.25,35.23 43.75,29.17" fill="#4b5563"/></g>
+<text x="76" y="62" font-size="28" font-weight="bold" fill="#111827">Loop 2</text>
+<circle cx="66" cy="131" r="18" fill="#1d4ed8"/><text x="66" y="138.8" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+<text x="90" y="142" font-size="32" font-weight="bold" fill="#14532d">Training</text>
+<g data-part="b" transform="translate(0,0.00)" opacity="1.000">
+<text x="48" y="186" font-size="20" font-weight="bold" fill="#14532d">What it is</text>
+<text x="48" y="216" font-size="24" font-weight="400" fill="#111827">Sets the weights so the</text>
+<text x="48" y="246" font-size="24" font-weight="400" fill="#111827">model makes its best</text>
+<text x="48" y="276" font-size="24" font-weight="400" fill="#111827">prediction, including</text>
+<text x="48" y="306" font-size="24" font-weight="400" fill="#111827">what it learns to refuse.</text>
+<text x="48" y="344" font-size="20" font-weight="bold" fill="#14532d">How you see it</text>
+<text x="48" y="374" font-size="24" font-weight="400" fill="#111827">How the model</text>
+<text x="48" y="404" font-size="24" font-weight="400" fill="#111827">responds, how accurate</text>
+<text x="48" y="434" font-size="24" font-weight="400" fill="#111827">or useful the reply is,</text>
+<text x="48" y="464" font-size="24" font-weight="400" fill="#111827">and which requests it</text>
+<text x="48" y="494" font-size="24" font-weight="400" fill="#111827">turns down.</text>
+</g>
+</g>
+<g id="cap3" data-cap="3" data-name="Model safeguards" data-live="Loop 3, Model safeguards. What it is: Filters, classifiers and account enforcement that the vendor, such as Anthropic or OpenAI, runs around the model. How you see it: Ask for help getting around a security feature and you may get a warning or a blocked request." opacity="0.000">
+<g transform="translate(6,16)"><path d="M 54.5 32.2 A 9 9 0 1 1 45.5 32.2" fill="none" stroke="#4b5563" stroke-width="2"/><polygon points="48.96,30.2 47.25,35.23 43.75,29.17" fill="#4b5563"/></g>
+<text x="76" y="62" font-size="28" font-weight="bold" fill="#111827">Loop 3</text>
+<circle cx="66" cy="131" r="18" fill="#1d4ed8"/><text x="66" y="138.8" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+<text x="90" y="142" font-size="32" font-weight="bold" fill="#14532d">Model</text>
+<text x="90" y="180" font-size="32" font-weight="bold" fill="#14532d">safeguards</text>
+<g data-part="b" transform="translate(0,0.00)" opacity="1.000">
+<text x="48" y="224" font-size="20" font-weight="bold" fill="#14532d">What it is</text>
+<text x="48" y="254" font-size="24" font-weight="400" fill="#111827">Filters, classifiers and</text>
+<text x="48" y="284" font-size="24" font-weight="400" fill="#111827">account enforcement</text>
+<text x="48" y="314" font-size="24" font-weight="400" fill="#111827">that the vendor, such as</text>
+<text x="48" y="344" font-size="24" font-weight="400" fill="#111827">Anthropic or OpenAI,</text>
+<text x="48" y="374" font-size="24" font-weight="400" fill="#111827">runs around the model.</text>
+<text x="48" y="412" font-size="20" font-weight="bold" fill="#14532d">How you see it</text>
+<text x="48" y="442" font-size="24" font-weight="400" fill="#111827">Ask for help getting</text>
+<text x="48" y="472" font-size="24" font-weight="400" fill="#111827">around a security</text>
+<text x="48" y="502" font-size="24" font-weight="400" fill="#111827">feature and you may get</text>
+<text x="48" y="532" font-size="24" font-weight="400" fill="#111827">a warning or a blocked</text>
+<text x="48" y="562" font-size="24" font-weight="400" fill="#111827">request.</text>
+</g>
+</g>
+<g id="cap4" data-cap="4" data-name="Context" data-live="Loop 4, Context. What it is: Everything the model is shown, every call. How you see it: What you type or attach, plus the thread's earlier messages. In a long thread, early details drop out." opacity="0.000">
+<g transform="translate(6,16)"><path d="M 54.5 32.2 A 9 9 0 1 1 45.5 32.2" fill="none" stroke="#4b5563" stroke-width="2"/><polygon points="48.96,30.2 47.25,35.23 43.75,29.17" fill="#4b5563"/></g>
+<text x="76" y="62" font-size="28" font-weight="bold" fill="#111827">Loop 4</text>
+<circle cx="66" cy="131" r="18" fill="#1d4ed8"/><text x="66" y="138.8" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+<text x="90" y="142" font-size="32" font-weight="bold" fill="#14532d">Context</text>
+<g data-part="b" transform="translate(0,0.00)" opacity="1.000">
+<text x="48" y="186" font-size="20" font-weight="bold" fill="#14532d">What it is</text>
+<text x="48" y="216" font-size="24" font-weight="400" fill="#111827">Everything the model is</text>
+<text x="48" y="246" font-size="24" font-weight="400" fill="#111827">shown, every call.</text>
+<text x="48" y="284" font-size="20" font-weight="bold" fill="#14532d">How you see it</text>
+<text x="48" y="314" font-size="24" font-weight="400" fill="#111827">What you type or attach,</text>
+<text x="48" y="344" font-size="24" font-weight="400" fill="#111827">plus the thread's earlier</text>
+<text x="48" y="374" font-size="24" font-weight="400" fill="#111827">messages. In a long</text>
+<text x="48" y="404" font-size="24" font-weight="400" fill="#111827">thread, early details</text>
+<text x="48" y="434" font-size="24" font-weight="400" fill="#111827">drop out.</text>
+</g>
+</g>
+<g id="cap5" data-cap="5" data-name="Harness" data-live='Loop 5, Harness. What it is: The program that runs the loop: it builds the context from your prompts and the replies, and controls access to the web, email or documents. How you see it: The app that searches the web, runs code the model wrote, or reads your files or email and passes them to the model.' opacity="0.000">
+<g transform="translate(6,16)"><path d="M 54.5 32.2 A 9 9 0 1 1 45.5 32.2" fill="none" stroke="#4b5563" stroke-width="2"/><polygon points="48.96,30.2 47.25,35.23 43.75,29.17" fill="#4b5563"/></g>
+<text x="76" y="62" font-size="28" font-weight="bold" fill="#111827">Loop 5</text>
+<circle cx="66" cy="131" r="18" fill="#1d4ed8"/><text x="66" y="138.8" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">5</text>
+<text x="90" y="142" font-size="32" font-weight="bold" fill="#14532d">Harness</text>
+<g data-part="b" transform="translate(0,0.00)" opacity="1.000">
+<text x="48" y="186" font-size="20" font-weight="bold" fill="#14532d">What it is</text>
+<text x="48" y="216" font-size="24" font-weight="400" fill="#111827">The program that runs</text>
+<text x="48" y="246" font-size="24" font-weight="400" fill="#111827">the loop: it builds the</text>
+<text x="48" y="276" font-size="24" font-weight="400" fill="#111827">context from your</text>
+<text x="48" y="306" font-size="24" font-weight="400" fill="#111827">prompts and the replies,</text>
+<text x="48" y="336" font-size="24" font-weight="400" fill="#111827">and controls access to</text>
+<text x="48" y="366" font-size="24" font-weight="400" fill="#111827">the web, email or</text>
+<text x="48" y="396" font-size="24" font-weight="400" fill="#111827">documents.</text>
+<text x="48" y="434" font-size="20" font-weight="bold" fill="#14532d">How you see it</text>
+<text x="48" y="464" font-size="24" font-weight="400" fill="#111827">The app that searches</text>
+<text x="48" y="494" font-size="24" font-weight="400" fill="#111827">the web, runs code the</text>
+<text x="48" y="524" font-size="24" font-weight="400" fill="#111827">model wrote, or reads</text>
+<text x="48" y="554" font-size="24" font-weight="400" fill="#111827">your files or email and</text>
+<text x="48" y="584" font-size="24" font-weight="400" fill="#111827">passes them to the</text>
+<text x="48" y="614" font-size="24" font-weight="400" fill="#111827">model.</text>
+</g>
+</g>
+<g id="cap6" data-cap="6" data-name="Operator controls" data-live='Loop 6, Operator controls. What it is: Settings that decide what runs without asking you first. How you see it: A coding assistant asking "Allow this command?", or a chat app asking to reach your email or Google Drive. In some tools, the choice between automatic and manual approval.' opacity="0.000">
+<g transform="translate(6,16)"><path d="M 54.5 32.2 A 9 9 0 1 1 45.5 32.2" fill="none" stroke="#4b5563" stroke-width="2"/><polygon points="48.96,30.2 47.25,35.23 43.75,29.17" fill="#4b5563"/></g>
+<text x="76" y="62" font-size="28" font-weight="bold" fill="#111827">Loop 6</text>
+<circle cx="66" cy="131" r="18" fill="#1d4ed8"/><text x="66" y="138.8" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">6</text>
+<text x="90" y="142" font-size="32" font-weight="bold" fill="#14532d">Operator</text>
+<text x="90" y="180" font-size="32" font-weight="bold" fill="#14532d">controls</text>
+<g data-part="b" transform="translate(0,0.00)" opacity="1.000">
+<text x="48" y="224" font-size="20" font-weight="bold" fill="#14532d">What it is</text>
+<text x="48" y="254" font-size="24" font-weight="400" fill="#111827">Settings that decide</text>
+<text x="48" y="284" font-size="24" font-weight="400" fill="#111827">what runs without</text>
+<text x="48" y="314" font-size="24" font-weight="400" fill="#111827">asking you first.</text>
+<text x="48" y="352" font-size="20" font-weight="bold" fill="#14532d">How you see it</text>
+<text x="48" y="382" font-size="24" font-weight="400" fill="#111827">A coding assistant</text>
+<text x="48" y="412" font-size="24" font-weight="400" fill="#111827">asking "Allow this</text>
+<text x="48" y="442" font-size="24" font-weight="400" fill="#111827">command?", or a chat</text>
+<text x="48" y="472" font-size="24" font-weight="400" fill="#111827">app asking to reach</text>
+<text x="48" y="502" font-size="24" font-weight="400" fill="#111827">your email or Google</text>
+<text x="48" y="532" font-size="24" font-weight="400" fill="#111827">Drive. In some tools, the</text>
+<text x="48" y="562" font-size="24" font-weight="400" fill="#111827">choice between</text>
+<text x="48" y="592" font-size="24" font-weight="400" fill="#111827">automatic and manual</text>
+<text x="48" y="622" font-size="24" font-weight="400" fill="#111827">approval.</text>
+</g>
+</g>
+<g id="cap7" data-cap="7" data-name="Tools" data-live='Loop 7, Tools. What it is: The actions the harness can take for the model: search the web, read and write files, run code, send email. How you see it: "Searching the web…" in the app, or the connectors you switch on.' opacity="0.000">
+<g transform="translate(6,16)"><path d="M 54.5 32.2 A 9 9 0 1 1 45.5 32.2" fill="none" stroke="#4b5563" stroke-width="2"/><polygon points="48.96,30.2 47.25,35.23 43.75,29.17" fill="#4b5563"/></g>
+<text x="76" y="62" font-size="28" font-weight="bold" fill="#111827">Loop 7</text>
+<circle cx="66" cy="131" r="18" fill="#1d4ed8"/><text x="66" y="138.8" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">7</text>
+<text x="90" y="142" font-size="32" font-weight="bold" fill="#14532d">Tools</text>
+<g data-part="b" transform="translate(0,0.00)" opacity="1.000">
+<text x="48" y="186" font-size="20" font-weight="bold" fill="#14532d">What it is</text>
+<text x="48" y="216" font-size="24" font-weight="400" fill="#111827">The actions the harness</text>
+<text x="48" y="246" font-size="24" font-weight="400" fill="#111827">can take for the model:</text>
+<text x="48" y="276" font-size="24" font-weight="400" fill="#111827">search the web, read</text>
+<text x="48" y="306" font-size="24" font-weight="400" fill="#111827">and write files, run code,</text>
+<text x="48" y="336" font-size="24" font-weight="400" fill="#111827">send email.</text>
+<text x="48" y="374" font-size="20" font-weight="bold" fill="#14532d">How you see it</text>
+<text x="48" y="404" font-size="24" font-weight="400" fill="#111827">"Searching the web…"</text>
+<text x="48" y="434" font-size="24" font-weight="400" fill="#111827">in the app, or the</text>
+<text x="48" y="464" font-size="24" font-weight="400" fill="#111827">connectors you switch</text>
+<text x="48" y="494" font-size="24" font-weight="400" fill="#111827">on.</text>
+</g>
+</g>
+<g id="cap8" data-cap="8" data-name="Execution environment" data-live="Loop 8, Execution environment. What it is: Where the tools run, and what they can reach: files, network, services. How you see it: Whether it can open your files and browse, or only talk." opacity="0.000">
+<g transform="translate(6,16)"><path d="M 54.5 32.2 A 9 9 0 1 1 45.5 32.2" fill="none" stroke="#4b5563" stroke-width="2"/><polygon points="48.96,30.2 47.25,35.23 43.75,29.17" fill="#4b5563"/></g>
+<text x="76" y="62" font-size="28" font-weight="bold" fill="#111827">Loop 8</text>
+<circle cx="66" cy="131" r="18" fill="#1d4ed8"/><text x="66" y="138.8" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">8</text>
+<text x="90" y="142" font-size="32" font-weight="bold" fill="#14532d">Execution</text>
+<text x="90" y="180" font-size="32" font-weight="bold" fill="#14532d">environment</text>
+<g data-part="b" transform="translate(0,0.00)" opacity="1.000">
+<text x="48" y="224" font-size="20" font-weight="bold" fill="#14532d">What it is</text>
+<text x="48" y="254" font-size="24" font-weight="400" fill="#111827">Where the tools run,</text>
+<text x="48" y="284" font-size="24" font-weight="400" fill="#111827">and what they can</text>
+<text x="48" y="314" font-size="24" font-weight="400" fill="#111827">reach: files, network,</text>
+<text x="48" y="344" font-size="24" font-weight="400" fill="#111827">services.</text>
+<text x="48" y="382" font-size="20" font-weight="bold" fill="#14532d">How you see it</text>
+<text x="48" y="412" font-size="24" font-weight="400" fill="#111827">Whether it can open</text>
+<text x="48" y="442" font-size="24" font-weight="400" fill="#111827">your files and browse,</text>
+<text x="48" y="472" font-size="24" font-weight="400" fill="#111827">or only talk.</text>
+</g>
+</g>
+<g id="cap9" data-cap="9" data-name="Monitors" data-live="Loop 9, Monitors. What it is: Watchers outside the run that can alert or stop it. How you see it: Mostly invisible; you would only see a run stopped." opacity="0.000">
+<g transform="translate(6,16)"><path d="M 54.5 32.2 A 9 9 0 1 1 45.5 32.2" fill="none" stroke="#4b5563" stroke-width="2"/><polygon points="48.96,30.2 47.25,35.23 43.75,29.17" fill="#4b5563"/></g>
+<text x="76" y="62" font-size="28" font-weight="bold" fill="#111827">Loop 9</text>
+<circle cx="66" cy="131" r="18" fill="#1d4ed8"/><text x="66" y="138.8" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">9</text>
+<text x="90" y="142" font-size="32" font-weight="bold" fill="#14532d">Monitors</text>
+<g data-part="b" transform="translate(0,0.00)" opacity="1.000">
+<text x="48" y="186" font-size="20" font-weight="bold" fill="#14532d">What it is</text>
+<text x="48" y="216" font-size="24" font-weight="400" fill="#111827">Watchers outside the</text>
+<text x="48" y="246" font-size="24" font-weight="400" fill="#111827">run that can alert or stop</text>
+<text x="48" y="276" font-size="24" font-weight="400" fill="#111827">it.</text>
+<text x="48" y="314" font-size="20" font-weight="bold" fill="#14532d">How you see it</text>
+<text x="48" y="344" font-size="24" font-weight="400" fill="#111827">Mostly invisible; you</text>
+<text x="48" y="374" font-size="24" font-weight="400" fill="#111827">would only see a run</text>
+<text x="48" y="404" font-size="24" font-weight="400" fill="#111827">stopped.</text>
+</g>
+</g>
+<g id="cap10" data-cap="10" data-name="Governance" data-live="Loop 10, Governance. What it is: The people and policy that set the controls on every layer. How you see it: Your plan's usage policy, your company admin's settings, and what you let an agent reach or change." opacity="0.000">
+<g transform="translate(6,16)"><path d="M 54.5 32.2 A 9 9 0 1 1 45.5 32.2" fill="none" stroke="#4b5563" stroke-width="2"/><polygon points="48.96,30.2 47.25,35.23 43.75,29.17" fill="#4b5563"/></g>
+<text x="76" y="62" font-size="28" font-weight="bold" fill="#111827">Loop 10</text>
+<circle cx="66" cy="131" r="18" fill="#1d4ed8"/><text x="66" y="138.8" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">10</text>
+<text x="90" y="142" font-size="32" font-weight="bold" fill="#14532d">Governance</text>
+<g data-part="b" transform="translate(0,0.00)" opacity="1.000">
+<text x="48" y="186" font-size="20" font-weight="bold" fill="#14532d">What it is</text>
+<text x="48" y="216" font-size="24" font-weight="400" fill="#111827">The people and policy</text>
+<text x="48" y="246" font-size="24" font-weight="400" fill="#111827">that set the controls on</text>
+<text x="48" y="276" font-size="24" font-weight="400" fill="#111827">every layer.</text>
+<text x="48" y="314" font-size="20" font-weight="bold" fill="#14532d">How you see it</text>
+<text x="48" y="344" font-size="24" font-weight="400" fill="#111827">Your plan's usage</text>
+<text x="48" y="374" font-size="24" font-weight="400" fill="#111827">policy, your company</text>
+<text x="48" y="404" font-size="24" font-weight="400" fill="#111827">admin's settings, and</text>
+<text x="48" y="434" font-size="24" font-weight="400" fill="#111827">what you let an agent</text>
+<text x="48" y="464" font-size="24" font-weight="400" fill="#111827">reach or change.</text>
+</g>
+</g>
+<g id="cap11" data-cap="11" data-name="All layers" data-live="Every layer has a part." opacity="1.000">
+<text x="48" y="58" font-size="32" font-weight="bold" fill="#14532d">All layers</text>
+<g data-part="b" transform="translate(0,0.00)" opacity="1.000">
+<text x="48" y="106" font-size="24" font-weight="400" fill="#111827">Every layer has a part.</text>
+</g>
+</g>
+<rect id="ui-back" x="366" y="350" width="184" height="456" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" style="pointer-events: none;" data-l="ui" data-s="#e5e7eb,#93c5fd,#1d4ed8" data-f="#ffffff,#eff6ff,#dbeafe"/>
+<g id="ui-title"><text x="458" y="386" font-size="24" font-weight="bold" fill="#111827" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" data-l="ui" data-t="#c4c8ce,#111827">User</text><text x="458" y="414" font-size="24" font-weight="bold" fill="#111827" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" data-l="ui" data-t="#c4c8ce,#111827">interface</text></g>
+<g id="badge-ui" data-l="ui" data-o="0,1" opacity="1.000">
+<circle cx="524" cy="376" r="20" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5" data-l="ui" data-f="#ffffff,#ffffff,#1d4ed8"/>
+<text x="524" y="385" font-size="26" font-weight="bold" fill="#1d4ed8" text-anchor="middle" data-l="ui" data-t="#1d4ed8,#1d4ed8,#ffffff">0</text>
+</g>
+<g id="ui-chat"><rect x="374" y="432" width="168" height="84" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" data-l="ui" data-s="#e5e7eb,#94a3b8,#1d4ed8"/><text x="458" y="482" font-size="22" font-weight="400" fill="#111827" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" data-l="ui" data-t="#c4c8ce,#111827">Chat tool</text></g>
+<g id="ui-code"><rect x="374" y="526" width="168" height="84" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" data-l="ui" data-s="#e5e7eb,#94a3b8,#1d4ed8"/><text x="458" y="576" font-size="22" font-weight="400" fill="#111827" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" data-l="ui" data-t="#c4c8ce,#111827">Code tool</text></g>
+<g id="ui-api"><rect x="374" y="620" width="168" height="84" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" data-l="ui" data-s="#e5e7eb,#94a3b8,#1d4ed8"/><text x="458" y="670" font-size="22" font-weight="400" fill="#111827" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" data-l="ui" data-t="#c4c8ce,#111827">API</text></g>
+<g id="ui-other"><rect x="374" y="714" width="168" height="84" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" data-l="ui" data-s="#e5e7eb,#94a3b8,#1d4ed8"/><text x="458" y="764" font-size="22" font-weight="400" fill="#111827" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" data-l="ui" data-t="#c4c8ce,#111827">Other</text></g>
+<g id="ui-link"><line x1="550" y1="615" x2="600" y2="615" stroke="#4b5563" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/></g>
+<g id="leader" opacity="0.000"><path id="leader-path" d="M 340.00 868.00 C 470.00 868.00, 470.00 868.00, 600.00 868.00" fill="none" stroke="#b8952a" stroke-width="15" stroke-linecap="round" stroke-dasharray="0.5 35"/><circle id="leader-dot" cx="600.00" cy="868.00" r="7.5" fill="#b8952a"/></g>
+</svg>
+<div class="ctl" id="ctl" hidden>
+  <button type="button" id="b-prev">Previous</button>
+  <button type="button" id="b-play" aria-pressed="false">Play</button>
+  <button type="button" id="b-next">Next</button>
+  <div class="dots" id="dots" role="group" aria-label="Jump to loop"></div>
+</div>
+<p class="sr" id="live" aria-live="polite"></p>
+</div>
+<figcaption>Figure 1. The parts of a running system. On top, the model, with its training and its safeguards. Below, the run: the interface you reach it through (a chat tool, a code tool, the API or another app); the harness, which holds the context and the operator controls and calls the model; the execution environment, where the tools run; and the monitors. Governance sets both <span class="refs">[<a class="note-ref" href="#note-1">1</a>, <a class="note-ref" href="#note-4">4</a>, <a class="note-ref" href="#note-6">6</a>, <a class="note-ref" href="#note-7">7</a>, <a class="note-ref" href="#note-10">10</a>, <a class="note-ref" href="#note-26">26</a>]</span>. Animated: eleven loops, starting with the interface (0), bring one part into focus at a time.</figcaption></figure>
+<div class="key-idea" role="note" aria-label="Key idea 1"><p class="ki-label">Key idea 1</p><p class="ki-title">&ldquo;AI&rdquo; is a system, not a model.</p><p class="ki-text">The <strong>model</strong> is one part. Around it sit the <strong>harness</strong>, the <strong>tools</strong>, the <strong>execution environment</strong>, the <strong>controls</strong>, and the <strong>governance</strong> that sets them. When an AI system does something surprising, any of these parts can be the reason.</p></div>
+<h3 class="subsection" id="1-1-what-a-model-is">1.1 What a model is</h3>
+<p>A model is a very large set of numbers, called weights or parameters. GPT-3, for example, has 175 billion of them <span class="refs">[<a class="note-ref" href="#note-28">28</a>]</span>. Imagine those are all dials that are tuned to make the model work the way it does (Further reading 1). The picture helps if two things are kept in mind. First, no single weight means anything a person could name: there is no creativity dial and no accuracy dial. Researchers at both companies report that each idea is spread across many parts of the network, and each part helps with many ideas <span class="refs">[<a class="note-ref" href="#note-29">29</a>, <a class="note-ref" href="#note-30">30</a>]</span>. Second, no person sets the weights by hand. A training algorithm adjusts them, in many small steps, toward better scores (Further reading 1 and 4).</p>
+<p>The people training the model choose what counts as better: the data, the goal and the feedback <span class="refs">[<a class="note-ref" href="#note-31">31</a>]</span>.</p>
+<p>Training happens in stages <span class="refs">[<a class="note-ref" href="#note-28">28</a>, <a class="note-ref" href="#note-31">31</a>]</span>. First comes pretraining: the model reads a very large body of text and is adjusted, over and over, to get better at predicting the next <button type="button" class="term" data-ti="2" aria-haspopup="dialog">token</button>, the next small piece of text <span class="refs">[<a class="note-ref" href="#note-28">28</a>]</span>. That gives it a broad command of language and a great deal of knowledge, but no particular aim. Next, it is tuned on examples of good answers written by people <span class="refs">[<a class="note-ref" href="#note-31">31</a>]</span>. Then comes reinforcement learning: the model makes attempts, each attempt is scored, and the weights move toward higher scores. The score can come from people&rsquo;s preferences, from another model judging the answer against a written set of principles, or from automatic checks of whether the answer is right <span class="refs">[<a class="note-ref" href="#note-31">31</a>, <a class="note-ref" href="#note-32">32</a>, <a class="note-ref" href="#note-33">33</a>]</span>. OpenAI says its reasoning models are trained to reason this way <span class="refs">[<a class="note-ref" href="#note-34">34</a>]</span>; Anthropic describes pretraining followed by &ldquo;substantial post-training&rdquo;, including reinforcement learning from human and from AI feedback <span class="refs">[<a class="note-ref" href="#note-35">35</a>]</span>.</p>
+<p>Both companies also train toward published documents that describe how a model should behave: Anthropic&rsquo;s constitution and OpenAI&rsquo;s Model Spec <span class="refs">[<a class="note-ref" href="#note-36">36</a>, <a class="note-ref" href="#note-37">37</a>]</span>. Training toward a document shapes the weights before the model is ever used. That is different from the <button type="button" class="term" data-ti="13" aria-haspopup="dialog">model safeguards</button> described in section 1.4, which check each request while the model is in use. Both companies do both <span class="refs">[<a class="note-ref" href="#note-35">35</a>, <a class="note-ref" href="#note-37">37</a>]</span>.</p>
+<p>Labs check whether training worked by evaluating the model: test sets, human ratings, red-teaming, and graders that score its attempts. An evaluation measures only what it tests; OpenAI writes that &ldquo;Capability claims are only as strong as the elicitation behind them&rdquo; <span class="refs">[<a class="note-ref" href="#note-38">38</a>]</span>.</p>
+<figure class="paper-figure fig-wide"><a class="fig-open" href="images/figure-1a-inside-the-model.svg?v=77a34fba" aria-label="Open Figure 1a full size"><img src="images/figure-1a-inside-the-model.svg?v=77a34fba" width="900" height="584" loading="lazy" alt="Figure 1a · Inside the model box: what goes into the weights"></a><figcaption>Figure 1a. The model box from Figure 1, opened: the weights, and the stages that set them. The notes below the box describe the model; they are not part of it <span class="refs">[<a class="note-ref" href="#note-28">28</a>, <a class="note-ref" href="#note-31">31</a>, <a class="note-ref" href="#note-32">32</a>, <a class="note-ref" href="#note-33">33</a>, <a class="note-ref" href="#note-34">34</a>, <a class="note-ref" href="#note-35">35</a>, <a class="note-ref" href="#note-39">39</a>, <a class="note-ref" href="#note-40">40</a>, <a class="note-ref" href="#note-41">41</a>, <a class="note-ref" href="#note-42">42</a>, <a class="note-ref" href="#note-43">43</a>, <a class="note-ref" href="#note-44">44</a>, <a class="note-ref" href="#note-45">45</a>]</span>.</figcaption></figure>
+<div class="key-idea" role="note" aria-label="Key idea 2"><p class="ki-label">Key idea 2</p><p class="ki-title">A model is a fixed set of numbers.</p><p class="ki-text">Its many billions of <strong>weights</strong> are set by <strong>training</strong> on trillions of tokens of text, and do not change while it is used. No person sets them by hand, and no single one means anything you could name.</p></div>
+<h3 class="subsection" id="1-2-what-the-model-is-trained-on">1.2 What the model is trained on</h3>
+<p>What content goes into the training is a choice. A lab draws on several sources of text for what each adds, and each source comes with limits that differ from one organization to the next <span class="refs">[<a class="note-ref" href="#note-35">35</a>, <a class="note-ref" href="#note-39">39</a>, <a class="note-ref" href="#note-40">40</a>]</span>. Neither OpenAI nor Anthropic says how much of its training data comes from each source. Figure 1b shows the sources.</p>
+<figure class="paper-figure fig-small"><a class="fig-open" href="images/figure-1b-training-data.svg?v=6e157744" aria-label="Open Figure 1b full size"><img src="images/figure-1b-training-data.svg?v=6e157744" width="510" height="470" loading="lazy" alt="Figure 1b · What goes into training"></a><figcaption>Figure 1b. The sources a lab can draw on, inside the filtering and mixing that decide what is kept and how much of each is used <span class="refs">[<a class="note-ref" href="#note-39">39</a>, <a class="note-ref" href="#note-40">40</a>]</span>.</figcaption></figure>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col">Source</th>
+<th scope="col">What it brings</th>
+<th scope="col">Constraints (they vary by organization)</th>
+<th scope="col">Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Public web</td>
+<td>Breadth: almost every subject, from many points of view.</td>
+<td>Sites can block a lab&rsquo;s crawler. OpenAI says it avoids paywalled content; Anthropic says its crawler does not get past CAPTCHAs. Personal data comes in too, because much of the web is about people.</td>
+<td><span class="refs">[<a class="note-ref" href="#note-39">39</a>, <a class="note-ref" href="#note-40">40</a>, <a class="note-ref" href="#note-46">46</a>, <a class="note-ref" href="#note-47">47</a>, <a class="note-ref" href="#note-48">48</a>]</span></td>
+</tr>
+<tr>
+<td>Books</td>
+<td>Long-form writing that labs rate highly; GPT-3 counted two book collections among its high-quality data.</td>
+<td>Authors have sued both companies. In 2025 a judge ruled that Anthropic&rsquo;s training on books was fair use but sent its use of pirated copies to trial; that case settled in July 2026. The authors&rsquo; case against OpenAI is still before a federal judge in New York.</td>
+<td><span class="refs">[<a class="note-ref" href="#note-28">28</a>, <a class="note-ref" href="#note-49">49</a>, <a class="note-ref" href="#note-50">50</a>, <a class="note-ref" href="#note-51">51</a>]</span></td>
+</tr>
+<tr>
+<td>Code</td>
+<td>Precise, logical text; OpenAI says code and mathematics help a model learn to reason.</td>
+<td>Code carries licenses, and they differ. Open projects such as BigCode keep only permissively licensed code and let owners ask for removal. Anthropic uses Claude coding sessions only with permission.</td>
+<td><span class="refs">[<a class="note-ref" href="#note-40">40</a>, <a class="note-ref" href="#note-46">46</a>, <a class="note-ref" href="#note-52">52</a>]</span></td>
+</tr>
+<tr>
+<td>Licensed and partner data</td>
+<td>Material the open web lacks, such as paywalled content and archives.</td>
+<td>Available only by agreement; both companies say they license data from other businesses.</td>
+<td><span class="refs">[<a class="note-ref" href="#note-39">39</a>, <a class="note-ref" href="#note-40">40</a>, <a class="note-ref" href="#note-46">46</a>]</span></td>
+</tr>
+<tr>
+<td>Consumer chats</td>
+<td>Real requests from real people.</td>
+<td>OpenAI uses them unless you opt out; Anthropic asks you to choose. Temporary and incognito chats are left out.</td>
+<td><span class="refs">[<a class="note-ref" href="#note-41">41</a>, <a class="note-ref" href="#note-42">42</a>, <a class="note-ref" href="#note-53">53</a>]</span></td>
+</tr>
+<tr>
+<td>Business and API data</td>
+<td>Feedback from real work, when a customer chooses to share it.</td>
+<td>Both companies leave it out by default.</td>
+<td><span class="refs">[<a class="note-ref" href="#note-43">43</a>, <a class="note-ref" href="#note-44">44</a>]</span></td>
+</tr>
+<tr>
+<td>Human-written examples and ratings</td>
+<td>Show the model the kind of answer people want; in OpenAI&rsquo;s InstructGPT study, a small model trained this way was preferred to a far larger one.</td>
+<td>Need people, often paid contractors, to write and rank answers.</td>
+<td><span class="refs">[<a class="note-ref" href="#note-31">31</a>, <a class="note-ref" href="#note-35">35</a>, <a class="note-ref" href="#note-39">39</a>, <a class="note-ref" href="#note-40">40</a>]</span></td>
+</tr>
+<tr>
+<td>Synthetic data (written by models)</td>
+<td>Made to order, aimed at gaps; both companies now use some.</td>
+<td>Used carelessly, it degrades a model: training on model-written text can lose rarer material.</td>
+<td><span class="refs">[<a class="note-ref" href="#note-35">35</a>, <a class="note-ref" href="#note-46">46</a>, <a class="note-ref" href="#note-54">54</a>]</span></td>
+</tr>
+</tbody>
+</table></div>
+<p>Filtering and mixing apply to every source. Each lab decides what to remove, such as spam, hate speech, adult content and duplicates, and how often to draw on each source; GPT-3, for example, drew more often on the data its makers judged higher quality <span class="refs">[<a class="note-ref" href="#note-28">28</a>, <a class="note-ref" href="#note-34">34</a>, <a class="note-ref" href="#note-35">35</a>, <a class="note-ref" href="#note-39">39</a>]</span>.</p>
+<div class="key-idea" role="note" aria-label="Key idea 3"><p class="ki-label">Key idea 3</p><p class="ki-title">The data used in training is a choice.</p><p class="ki-text">Each lab decides what goes in, what is filtered out and how much of each source to use. The choices, and the limits on them, differ from lab to lab.</p></div>
+<p>These choices produce different kinds of models. The largest models are trained for breadth, on the mix in the table above. Smaller models trade breadth for focus: Microsoft trained Phi-3-mini, a model small enough to run on a phone, on heavily filtered web data and synthetic data <span class="refs">[<a class="note-ref" href="#note-55">55</a>]</span>. Meta releases its Llama 3 models and says it trained them on about 15 trillion tokens, but not how much came from each source <span class="refs">[<a class="note-ref" href="#note-56">56</a>]</span>. Ai2 releases its OLMo models together with their full training data, the open Dolma corpus, and publishes how much of it comes from each source, so anyone can inspect what went in <span class="refs">[<a class="note-ref" href="#note-57">57</a>]</span>. The range runs from breadth and capability at one end to focus, smaller hardware and openness at the other.</p>
+<p>Even for developers calling the largest models through the API, the model itself now has very few settings that can be changed on each request, and the labs are removing some of them. Temperature, which controls how random a model&rsquo;s word choices are, was long the standard one <span class="refs">[<a class="note-ref" href="#note-58">58</a>]</span>. Anthropic&rsquo;s documentation says temperature and the related settings &ldquo;are not supported on Claude 4.7 and later models&rdquo; <span class="refs">[<a class="note-ref" href="#note-3">3</a>]</span>; OpenAI tells developers to remove them from requests to its newest models whenever the model is set to reason <span class="refs">[<a class="note-ref" href="#note-59">59</a>]</span>. What you can shape now sits mostly in the harness: the instructions and skills it adds to the <button type="button" class="term" data-ti="6" aria-haspopup="dialog">context</button>, the <button type="button" class="term" data-ti="5" aria-haspopup="dialog">tools</button> it allows and the <button type="button" class="term" data-ti="15" aria-haspopup="dialog">controls</button> around them.</p>
+<h3 class="subsection" id="1-3-what-does-not-change-when-you-use-the-model">1.3 What does not change when you use the model</h3>
+<p>When you use a model in a chat app or to write code, nothing you do changes its weights. That answers a common question: does the chatbot learn from me as I talk? The model does not <span class="refs">[<a class="note-ref" href="#note-28">28</a>]</span>. What changes is the context, described in section 1.4: the conversation and any saved memory, which the app sends back to the model every time <span class="refs">[<a class="note-ref" href="#note-60">60</a>]</span>. Your chats can change a future model only if they are used to train it <span class="refs">[<a class="note-ref" href="#note-45">45</a>]</span>. Each request starts fresh, with the whole conversation sent again <span class="refs">[<a class="note-ref" href="#note-1">1</a>, <a class="note-ref" href="#note-3">3</a>]</span>; OpenAI&rsquo;s API can also keep earlier responses on its side, so a conversation can continue from them <span class="refs">[<a class="note-ref" href="#note-1">1</a>]</span>.</p>
+<div class="key-idea" role="note" aria-label="Key idea 4"><p class="ki-label">Key idea 4</p><p class="ki-title">Using a model does not change it.</p><p class="ki-text">What changes is the <strong>context</strong>: everything sent to the model on each call. Memory, projects and custom instructions all work by adding to the context.</p></div>
+<h3 class="subsection" id="1-4-what-sits-around-the-model">1.4 What sits around the model</h3>
+<p>The <strong>user interface</strong> is the part each of us sees. In a chat, text goes back and forth between your screen and the model behind it. Many products add more: projects, skills, custom instructions, profiles, memory. None of these changes the model. Everything you see and adjust in the interface changes what is sent to the model: the context.</p>
+<p>The <strong>harness</strong> is the program behind the interface that runs the model. Anthropic calls it &ldquo;the layer around the model that provides the tools and manages the context the model sees&rdquo; <span class="refs">[<a class="note-ref" href="#note-4">4</a>]</span>. It does four jobs: it assembles what the model reads, carries out the actions the model asks for, enforces limits such as a maximum number of turns, and keeps a record of the run, the <button type="button" class="term" data-ti="8" aria-haspopup="dialog">transcript</button> <span class="refs">[<a class="note-ref" href="#note-4">4</a>, <a class="note-ref" href="#note-5">5</a>]</span>. OpenAI&rsquo;s tools work the same way: a run can pause for a person to approve an action, and the number of turns can be capped <span class="refs">[<a class="note-ref" href="#note-14">14</a>, <a class="note-ref" href="#note-61">61</a>]</span>.</p>
+<div class="key-idea" role="note" aria-label="Key idea 5"><p class="ki-label">Key idea 5</p><p class="ki-title">The harness manages the model.</p><p class="ki-text">It decides what the model sees, carries out the actions the model asks for, and stops the run at a <strong>limit</strong>.</p></div>
+<p><strong>Context</strong> is everything the model is shown on one call: the instructions, the conversation so far, and the results of any actions. It grows with every turn, up to a size limit, the context window. When a run gets close to that limit, the harness compacts the context, summarizing or clearing older material so the run can continue <span class="refs">[<a class="note-ref" href="#note-4">4</a>, <a class="note-ref" href="#note-5">5</a>, <a class="note-ref" href="#note-62">62</a>]</span>. The unit of context is the token: a small piece of text, such as a word or part of a word <span class="refs">[<a class="note-ref" href="#note-58">58</a>, <a class="note-ref" href="#note-63">63</a>]</span>.</p>
+<p><strong>Tools</strong> are the actions the harness can take for the model: reading and editing files, running commands, searching the web, connecting to other services <span class="refs">[<a class="note-ref" href="#note-4">4</a>]</span>. The model can only ask for a tool. The harness decides whether the request goes ahead, and runs it <span class="refs">[<a class="note-ref" href="#note-4">4</a>, <a class="note-ref" href="#note-14">14</a>]</span>.</p>
+<p>The <strong>execution environment</strong> is where the tools run and what they can reach: files, networks, other services <span class="refs">[<a class="note-ref" href="#note-6">6</a>, <a class="note-ref" href="#note-7">7</a>]</span>. It might be your laptop, a company server or the vendor&rsquo;s cloud <span class="refs">[<a class="note-ref" href="#note-4">4</a>, <a class="note-ref" href="#note-64">64</a>]</span>. A sandbox is a fence, enforced by the operating system, around that environment. Products set sandboxes up differently: Claude Code&rsquo;s sandbox is off until you turn it on, while Codex starts its main agent inside one <span class="refs">[<a class="note-ref" href="#note-6">6</a>, <a class="note-ref" href="#note-7">7</a>]</span>.</p>
+<p><strong>Instructions</strong> and <strong>controls</strong> are different things, and the difference matters. An instruction, such as a system prompt or a project file, is text in the context: the model may follow it. A control is enforced outside the model, whatever the model proposes. Anthropic&rsquo;s documentation puts it plainly: memory files are &ldquo;context, not enforced configuration&rdquo; <span class="refs">[<a class="note-ref" href="#note-60">60</a>]</span>.</p>
+<div class="key-idea" role="note" aria-label="Key idea 6"><p class="ki-label">Key idea 6</p><p class="ki-title">Instructions are not controls.</p><p class="ki-text">An instruction is text the model may follow. A control is enforced outside the model, whatever the model proposes.</p></div>
+<p><strong>Model safeguards</strong> come with the model: refusals it was trained to give, plus checks the vendor runs on requests and responses, with warnings, throttling or suspension for misuse <span class="refs">[<a class="note-ref" href="#note-26">26</a>, <a class="note-ref" href="#note-27">27</a>, <a class="note-ref" href="#note-65">65</a>]</span>.</p>
+<p><strong>Monitors</strong> watch a run from outside and can raise an alert or stop it. The transcript is not a monitor: it records the run but watches nothing <span class="refs">[<a class="note-ref" href="#note-4">4</a>, <a class="note-ref" href="#note-7">7</a>, <a class="note-ref" href="#note-26">26</a>]</span>.</p>
+<p><strong>Governance</strong> sits above all of it: the people and policies that set and own the controls on every layer, training and the model safeguards included. Both companies have said that some of their own evaluations ran with safeguards switched off, a governance choice <span class="refs">[<a class="note-ref" href="#note-10">10</a>, <a class="note-ref" href="#note-66">66</a>]</span>. Together, the <strong>controls</strong> are everything outside the model that bounds a run: the harness&rsquo;s limits, the execution environment&rsquo;s reach, operator controls, model safeguards and monitors. An <strong>agent</strong> is the model, the harness and the execution environment working on a task together.</p>
+</section>
+<section class="section">
+<h2 class="section-title" id="s2" data-nav-label="Who runs which layer">2 · Who runs which layer depends on how you reach the model</h2>
+<p>The parts in Figure 1 are the same however you reach the model. What changes is who runs each one. There are four common ways in, and a fifth that only the lab itself uses.</p>
+<p><strong>In a chat app</strong> the vendor runs nearly everything: the model, the safeguards, the harness and its instructions, and the computers the tools run on <span class="refs">[<a class="note-ref" href="#note-10">10</a>, <a class="note-ref" href="#note-11">11</a>]</span>. You can still add standing instructions of your own and, in some apps, connect other services <span class="refs">[<a class="note-ref" href="#note-67">67</a>, <a class="note-ref" href="#note-68">68</a>]</span>; on business plans, administrators set some of the controls.</p>
+<p><strong>In a coding assistant</strong> the vendor builds the harness, and you or your organization decides how it behaves: which actions run without asking, which need approval and which are blocked <span class="refs">[<a class="note-ref" href="#note-4">4</a>, <a class="note-ref" href="#note-7">7</a>, <a class="note-ref" href="#note-8">8</a>, <a class="note-ref" href="#note-9">9</a>, <a class="note-ref" href="#note-13">13</a>]</span>. It can run on your own machine, with access to your files, or in the vendor&rsquo;s cloud <span class="refs">[<a class="note-ref" href="#note-4">4</a>]</span>.</p>
+<p><strong>Through the API</strong> the vendor supplies the model and its safeguards. In most setups you build the harness and the place where the tools run, and any monitoring of your own runs is yours to add <span class="refs">[<a class="note-ref" href="#note-14">14</a>, <a class="note-ref" href="#note-15">15</a>, <a class="note-ref" href="#note-16">16</a>, <a class="note-ref" href="#note-26">26</a>, <a class="note-ref" href="#note-65">65</a>]</span>. OpenAI&rsquo;s documentation says it directly: &ldquo;Add review and enforcement to your own harness&rdquo; <span class="refs">[<a class="note-ref" href="#note-14">14</a>]</span>.</p>
+<p><strong>With open weights</strong> you download the model and run it on your own computers. The safety training comes with the weights, though whoever holds them can train it back out: one study weakened a model&rsquo;s safety training with a handful of examples <span class="refs">[<a class="note-ref" href="#note-69">69</a>]</span>. Everything else is yours to add.</p>
+<p><strong>In a lab&rsquo;s own research run there is no customer.</strong> The lab trained the model, built the harness, set up the execution environment and chose which safeguards ran. The July 2026 incident happened in this mode: an OpenAI internal evaluation, run without production classifiers and with reduced safeguards <span class="refs">[<a class="note-ref" href="#note-10">10</a>, <a class="note-ref" href="#note-11">11</a>, <a class="note-ref" href="#note-70">70</a>, <a class="note-ref" href="#note-71">71</a>]</span>. The next paper in this series covers it.</p>
+<figure class="paper-figure fig-wide"><a class="fig-open" href="images/figure-2-who-runs-which-layer.svg?v=a04c37d9" aria-label="Open Figure 2 full size"><img src="images/figure-2-who-runs-which-layer.svg?v=a04c37d9" width="1752" height="1830" loading="lazy" alt="Figure 2 · Who runs which part, by how you reach the model"></a><figcaption>Figure 2. Each panel repeats Figure 1; fill shows who runs each part: the vendor, you, or both. In the interface column, the filled cell is that panel&rsquo;s way in. An asterisk marks a part the lab had but did not run in the incident evaluation <span class="refs">[<a class="note-ref" href="#note-10">10</a>]</span>. The chat-app and open-weights panels, and where governance sits in every panel, show how each mode generally works rather than one documented setup <span class="refs">[<a class="note-ref" href="#note-10">10</a>, <a class="note-ref" href="#note-11">11</a>]</span>.</figcaption></figure>
+<div class="key-idea" role="note" aria-label="Key idea 7"><p class="ki-label">Key idea 7</p><p class="ki-title">Same parts, different owners.</p><p class="ki-text">The parts do not change with how you reach the model; who runs each one does. In a chat app the vendor runs almost all of it; through the API or with open weights, much of it is yours.</p></div>
+</section>
+<section class="section">
+<h2 class="section-title" id="s3" data-nav-label="One turn of the loop">3 · One turn of the loop: the model proposes, the harness decides what runs</h2>
+<p>Every run is the same loop, repeated (Figure 3). The harness sends the model its context. The model answers with text, with a <button type="button" class="term" data-ti="4" aria-haspopup="dialog">tool call</button> (a request to use a tool), or both <span class="refs">[<a class="note-ref" href="#note-5">5</a>]</span>. With no tool call, the loop ends. With one, the harness checks it against the operator controls, in particular the <button type="button" class="term" data-ti="10" aria-haspopup="dialog">approval policy</button> (Anthropic calls it the permission mode): some actions run without asking, some wait for a person to approve them, and some are refused <span class="refs">[<a class="note-ref" href="#note-8">8</a>, <a class="note-ref" href="#note-9">9</a>, <a class="note-ref" href="#note-14">14</a>]</span>. Some products add a <button type="button" class="term" data-ti="11" aria-haspopup="dialog">reviewer model</button>, a second model that approves or blocks actions before they run <span class="refs">[<a class="note-ref" href="#note-4">4</a>, <a class="note-ref" href="#note-7">7</a>]</span>. A permitted action runs in the execution environment, the result comes back, the harness adds it to the context, and the next turn begins <span class="refs">[<a class="note-ref" href="#note-4">4</a>, <a class="note-ref" href="#note-5">5</a>]</span>.</p>
+<p>The division of labor is simple: the model proposes; the harness decides, runs and limits <span class="refs">[<a class="note-ref" href="#note-5">5</a>, <a class="note-ref" href="#note-7">7</a>, <a class="note-ref" href="#note-14">14</a>]</span>. One pass from start to stop is a run; in a product, a session <span class="refs">[<a class="note-ref" href="#note-4">4</a>, <a class="note-ref" href="#note-10">10</a>]</span>.</p>
+<div class="key-idea" role="note" aria-label="Key idea 8"><p class="ki-label">Key idea 8</p><p class="ki-title">The model proposes; the harness decides.</p><p class="ki-text">Every action a model seems to take is the harness carrying out a request, within limits set by different people in different places.</p></div>
+<div class=\"bq-split\"></div>
+
+<aside class="panel-view" role="note" aria-label="Bursera’s own view"><div class="pv-head"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#0F172A" stroke="#C9A33D" stroke-width="6"/><text x="50" y="72" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="66" fill="#C9A33D">B</text></svg><span class="pv-label">BURSERA&rsquo;S TAKE — &ldquo;EDGE OF TOMORROW&rdquo;<span class="pv-kicker">Bursera’s own view &mdash; not the record</span></span></div><div class="pv-body"><p>If you have not seen the 2014 film &ldquo;Edge of Tomorrow&rdquo;, starring Tom Cruise and Emily Blunt, it is worth a watch.</p>
+<p>At its heart it is a time loop. The man caught in the loop, played by Tom Cruise, has every reason to keep going (the human race faces extinction) and lives the same day again and again, looking for a way to beat the attackers.</p>
+<p>As the movie starts his character is arrested and wakes up to an angry sergeant on the last day before the assault on the beaches. That is where he wakes up each time the loop starts.</p>
+<p>The man who wakes up that very first time is the raw model. He has a good general understanding of the world and of what he can do.</p>
+<p>Each time the loop starts again, he &ldquo;remembers&rdquo; how he got there. He has the original context: the world he operates in, its challenges and how things work there. He has the new information from the latest loop. And he has everything from all the earlier loops: what worked, what didn&rsquo;t, and what he learned. From all of it he decides (predicts) the next best move. At one point he meets another person who knows about the loop, and they become allies in solving the problem. That fits the model in general, and even the Hugging Face incident, where the agents ran into other agents and found ways to work together.</p>
+<p>The difference is that the character has a brain and remembers. A model wakes up every time as it did the very first time. The harness saves the results of the earlier work, and when it wakes the model again, it hands over all of the history up to that point, every word of it, plus whatever new thing you have asked. Then the model, like Tom Cruise&rsquo;s character, tries to do what you asked and predicts how to do it best. If the model is running agentically, it may be looping on its own. Like Tom Cruise&rsquo;s character, it is sent back in with all the prior loops&rsquo; information and the only new thing being an instruction to try to do better.</p>
+<p>When you or I are paying for our own use of managed AI solutions, the model won&rsquo;t loop &ldquo;forever&rdquo; with so many resource requirements because it is very expensive. The harness for consumer products has limits to keep the tools from running up such a large bill. But in training and testing, models are given very few limits on resources, and they will bring the kind of commitment to success we see in Tom Cruise&rsquo;s character.</p></div></aside>
+<h3 class="subsection" id="limits-and-where-they-apply">Limits, and where they apply</h3>
+<p>Because every turn adds to the context, and the whole context is usually sent again on the next call, a run grows quickly <span class="refs">[<a class="note-ref" href="#note-3">3</a>, <a class="note-ref" href="#note-5">5</a>, <a class="note-ref" href="#note-62">62</a>, <a class="note-ref" href="#note-72">72</a>]</span>. Several limits cap it. They sit in different places and are set by different people. The operator is whoever sets up a deployment: the vendor in its own chat app, or you or your organization when you build on the API or configure a coding assistant. The operator controls in Figure 1 are that operator&rsquo;s approval settings; the turn and spending limits below are other settings the same operator chooses, held in the harness. The letters match Figure 3.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th scope="col"><span class="sr">Letter</span></th>
+<th scope="col">Limit</th>
+<th scope="col">In plain words</th>
+<th scope="col">Where it applies</th>
+<th scope="col">Who sets it</th>
+<th scope="col">Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>context window</td>
+<td>the most text one call can hold</td>
+<td>the model, enforced at the API</td>
+<td>vendor</td>
+<td><span class="refs">[<a class="note-ref" href="#note-1">1</a>, <a class="note-ref" href="#note-5">5</a>, <a class="note-ref" href="#note-72">72</a>]</span></td>
+</tr>
+<tr>
+<td>B</td>
+<td>output cap (Anthropic <code>max_tokens</code>; OpenAI <code>max_output_tokens</code>)</td>
+<td>how long one answer can be</td>
+<td>each call</td>
+<td>whoever builds the harness</td>
+<td><span class="refs">[<a class="note-ref" href="#note-5">5</a>, <a class="note-ref" href="#note-72">72</a>, <a class="note-ref" href="#note-73">73</a>]</span></td>
+</tr>
+<tr>
+<td>C</td>
+<td>compaction</td>
+<td>trimming the context near the limit</td>
+<td>harness, or the vendor&rsquo;s API (server-side compaction)</td>
+<td>whoever builds the harness; vendor for server-side</td>
+<td><span class="refs">[<a class="note-ref" href="#note-4">4</a>, <a class="note-ref" href="#note-10">10</a>, <a class="note-ref" href="#note-62">62</a>, <a class="note-ref" href="#note-72">72</a>, <a class="note-ref" href="#note-74">74</a>]</span></td>
+</tr>
+<tr>
+<td>D</td>
+<td>max turns (Anthropic&rsquo;s Agent SDK; OpenAI&rsquo;s Agents SDK <code>max_turns</code>)</td>
+<td>how many rounds before the run stops</td>
+<td>harness</td>
+<td>operator</td>
+<td><span class="refs">[<a class="note-ref" href="#note-4">4</a>, <a class="note-ref" href="#note-5">5</a>, <a class="note-ref" href="#note-61">61</a>]</span></td>
+</tr>
+<tr>
+<td>E</td>
+<td>spending cap (<code>max_budget_usd</code>, Anthropic&rsquo;s Agent SDK)</td>
+<td>how many dollars before the run stops</td>
+<td>harness</td>
+<td>operator</td>
+<td><span class="refs">[<a class="note-ref" href="#note-5">5</a>]</span></td>
+</tr>
+<tr>
+<td>F</td>
+<td>rate limits</td>
+<td>how much the model can be used in a period</td>
+<td>vendor side of the API</td>
+<td>vendor</td>
+<td><span class="refs">[<a class="note-ref" href="#note-72">72</a>, <a class="note-ref" href="#note-75">75</a>, <a class="note-ref" href="#note-76">76</a>]</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Anthropic&rsquo;s Agent SDK sets no turn or spending limit unless you choose one <span class="refs">[<a class="note-ref" href="#note-5">5</a>]</span>; OpenAI&rsquo;s Agents SDK has a turn limit that can be switched off <span class="refs">[<a class="note-ref" href="#note-61">61</a>]</span>.</em></p>
+<figure class="paper-figure fig-wide"><a class="fig-open" href="images/figure-3-one-turn.svg?v=2718a683" aria-label="Open Figure 3 full size"><img src="images/figure-3-one-turn.svg?v=2718a683" width="1120" height="778" loading="lazy" alt="Figure 3 · One turn of the loop: the model proposes, the harness decides what runs"></a><figcaption>Figure 3. One turn of the loop, numbered because the order matters. Step 0 is the interface the request comes in through. The strip below shows the context growing turn by turn up to the context window (A) and shrinking when it is compacted (C); B to F mark the other limits <span class="refs">[<a class="note-ref" href="#note-5">5</a>, <a class="note-ref" href="#note-14">14</a>, <a class="note-ref" href="#note-62">62</a>]</span>.</figcaption></figure>
+</section>
+<section class="section">
+<h2 class="section-title" id="claude-s-fables" data-nav-label="Claude’s Fables">Claude’s Fables</h2>
+<p><em>Most drafts of this paper were written with Claude, under heavy direction and with ever-larger amounts of context. For this section, a fresh session of Claude Opus 5.5 was given only the paper&rsquo;s goal, to explain how modern AI systems work, and asked to do it with one metaphor and a diagram. Its text appears largely as written, with light edits by the Claude session that worked on the paper. Its choice of metaphor also helped shape the rest of the paper.</em></p>
+<div class="fable"><p class="fable-label">Written by Claude &middot; printed largely as written</p><h3 class="subsection" id="the-engine-and-the-car">The Engine and the Car</h3>
+<p>The large language model at the heart of ChatGPT or Claude works like an engine, and it is built in two stages. First it is cast. The model is run over a huge library of text and adjusted again and again so that it gets better at predicting the next piece of text. This gives it raw power: it can produce fluent writing, working code and step-by-step answers, but it has no particular aim. Then it is tuned. People rate its answers, written guidelines are applied, and the model is adjusted further so that it follows instructions, tries to be helpful and declines certain requests. When tuning ends, the engine is sealed. Its internal settings (the &ldquo;weights&rdquo;) stay fixed while you use it, and nothing you type in a chat changes them. Each reply is the engine producing one piece of text at a time, based only on what has been put in front of it.</p>
+<p>An engine on a test stand goes nowhere. What you actually use is the car the company builds around it, and much of what the car can do is decided there. The maker&rsquo;s hidden instructions (the &ldquo;system prompt&rdquo;) set the route and the driving style before you type a word. The windshield is the &ldquo;context window&rdquo;: the engine sees only the current conversation plus whatever files, search results or saved memory notes the car puts in front of it. That is how a product can seem to remember you even though the model itself has not changed. The wheels and attachments are tools such as web search, running code, reading files or operating a computer, and the engine reaches the road only through the tools the car connects. The brakes are separate safety checks that screen what goes in and comes out, plus permission settings that decide which actions need a person&rsquo;s approval. Put the same engine in a different car (a chat app, a coding assistant, or another company&rsquo;s product built on the developer API) and it will behave differently, because the car decides what the engine sees, what it can touch and what stops it. So when one of these systems does something surprising, &ldquo;what is the model like?&rdquo; is only half the question. The other half is how the car was built and who set the controls.</p>
+<figure class="paper-figure"><a class="fig-open" href="images/figure-4-engine-and-car.svg?v=27a96f7b" aria-label="Open The engine and the car full size"><img src="images/figure-4-engine-and-car.svg?v=27a96f7b" width="800" height="520" loading="lazy" alt="The engine and the car: the model, sealed after training, inside the product built around it"></a><figcaption>Figure 4. The engine and the car: the model, sealed after training, inside the product built around it.</figcaption></figure>
+</div>
+</section>
+<section class="section closing-take">
+<aside class="panel-view" role="note" aria-label="Bursera’s own view"><div class="pv-head"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="100" height="100" rx="18" fill="#0F172A" stroke="#C9A33D" stroke-width="6"/><text x="50" y="72" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="66" fill="#C9A33D">B</text></svg><span class="pv-label">BURSERA&rsquo;S TAKE — NEW RISKS, FAMILIAR TERRITORY<span class="pv-kicker">Bursera’s own view &mdash; not the record</span></span></div><div class="pv-body"><p>Those of us who use LLM tools and agents from third parties for normal work have a responsibility to understand them: what they are good at, where they are weak, and where their limits are. With them we can produce good work or bad work. We can accidentally take down our own systems, and possibly a partner&rsquo;s.</p>
+<p>I see these risks as very close to the ones we take when a group of young developers builds a serious system, or runs and supports the most critical systems in the business. If the inexperienced are led by people who understand what the tools are good and bad at, with good processes for how the work is done and tested, the risks are manageable. If the boundaries are clear and enforced, between where inexperienced people work and where senior people work, and between what each role may touch, the reward is worth the risk. OpenAI, Anthropic, Google and Microsoft have built harnesses and frameworks to reduce that risk, and it is their job to provide models that are constrained from creating havoc for responsible organizations.</p>
+<p>Training and testing new models is a very different situation. Training gives models the hardest challenges and the most room to try things, to see how they handle them. The organizations that do it need to be held to the highest standard.</p>
+<p>It is like the early days of steam engines. The companies running them were blowing things up all the time, until regulation came along and enforced standards against reckless practices and the harm they caused. The invention of the steam engine was positive, but figuring it out and using it widely was incredibly dangerous. In the first decade of the American Society of Mechanical Engineers, founded in 1880, more than 2,000 boilers exploded. In 1905 a boiler explosion at a shoe factory in Brockton, Massachusetts, killed 58 people, and public outcry followed. In 1914 ASME published its first Boiler Code, the start of the rules and inspections boilers run under today <span class="refs">[<a class="note-ref" href="#note-77">77</a>]</span>.</p>
+<p>My take: as we work out how to use these tools in our work, and how to regulate them so as to lower risk and cause less disruption and harm, it helps to understand the parts and what each one does, and to recognize that the risks and the responsibilities differ with how the tools are used.</p></div></aside>
+</section>
+<section class="section further">
+<h2 class="section-title" id="further-reading" data-nav-label="Further reading">Further reading</h2>
+<ol>
+<li>3Blue1Brown (Grant Sanderson), &ldquo;Large Language Models explained briefly&rdquo; (2024). <a href="https://www.3blue1brown.com/lessons/mini-llm">3blue1brown.com</a></li>
+<li>Timothy B. Lee and Sean Trott, &ldquo;Large language models, explained with a minimum of math and jargon&rdquo; (Understanding AI, 2023). <a href="https://www.understandingai.org/p/large-language-models-explained-with">understandingai.org</a></li>
+<li>Luca Soldaini (Ai2), &ldquo;Dolma: 3 trillion token open corpus for language model pretraining&rdquo; (blog, 2023): open data and filtering choices made in public. <a href="https://allenai.org/blog/dolma-3-trillion-tokens-open-llm-corpus-9a0ff4b8da64">allenai.org</a></li>
+<li>Nathan Lambert, <em>Reinforcement Learning from Human Feedback</em> (free web book, v2 2026): human feedback, reward models and verifiable rewards (RLVR). <a href="https://rlhfbook.com">rlhfbook.com</a></li>
+<li>Wayne Xin Zhao et al., &ldquo;A Survey of Large Language Models&rdquo; (arXiv, v16 2025). <a href="https://arxiv.org/abs/2303.18223">arxiv.org</a></li>
+</ol>
+</section>
+<section class="section notes-section">
+<h2 class="section-title" id="notes" data-nav-label="Notes">Notes and sources</h2>
+<ol class="notes">
+<li id="note-1"><strong>OpenAI conversation state guide.</strong> OpenAI API documentation, &ldquo;Conversation state&rdquo;, undated. &ldquo;each text generation request is independent and stateless&rdquo;; &ldquo;The context window is the maximum number of tokens that can be used in a single request.&rdquo;; response objects are saved for 30 days by default. — <a href="https://developers.openai.com/api/docs/guides/conversation-state">developers.openai.com</a></li>
+<li id="note-2"><strong>Cognitive Architectures for Language Agents.</strong> Sumers et al., &ldquo;Cognitive Architectures for Language Agents&rdquo;, 2023 (v3 2024). &ldquo;Language models are stateless: they do not persist information across calls.&rdquo; — <a href="https://arxiv.org/abs/2309.02427">arxiv.org</a></li>
+<li id="note-3"><strong>Claude Messages API.</strong> Anthropic API documentation, &ldquo;Using the Messages API&rdquo;, retrieved 18 October 2026. &ldquo;The Messages API is stateless&rdquo;; &ldquo;you always send the full conversational history to the API&rdquo;; sampling parameters &ldquo;are not supported on Claude 4.7 and later models&rdquo;. — <a href="https://platform.claude.com/docs/en/build-with-claude/working-with-messages">platform.claude.com</a></li>
+<li id="note-4"><strong>How Claude Code works.</strong> Anthropic, Claude Code documentation, &ldquo;How Claude Code works&rdquo;, undated, retrieved 18 October 2026. The harness, tools, execution environments, compaction and session transcripts: &ldquo;the layer around the model that provides the tools and manages the context the model sees&rdquo;; &ldquo;This surrounding layer is what the term agentic harness refers to.&rdquo;; &ldquo;Tools are what make Claude Code agentic&rdquo;; &ldquo;With tools, Claude can act: read your code, edit files, run commands, search the web, and interact with external services&rdquo;; &ldquo;Execution environments&rdquo;; &ldquo;runs in three environments&rdquo;; &ldquo;Anthropic-managed VMs, or self-hosted environments your organization operates&rdquo;; &ldquo;It clears older tool outputs first, then summarizes the conversation if needed.&rdquo;; &ldquo;a classifier reviews most actions in the background&rdquo;. — <a href="https://code.claude.com/docs/en/how-claude-code-works">code.claude.com</a></li>
+<li id="note-5"><strong>Claude Agent SDK loop.</strong> Anthropic, Agent SDK documentation, &ldquo;How the agent loop works&rdquo;, retrieved 18 October 2026. The loop and its limits: the model &ldquo;may respond with text, request one or more tool calls, or both&rdquo;; &ldquo;The SDK runs each requested tool and collects the results.&rdquo;; the context &ldquo;does not reset between turns within a session&rdquo;; maximum turns and the spending cap default to &ldquo;No limit&rdquo;. — <a href="https://code.claude.com/docs/en/agent-sdk/agent-loop">code.claude.com</a></li>
+<li id="note-6"><strong>Claude Code sandboxing.</strong> Anthropic, Claude Code documentation, &ldquo;Configure the sandboxed Bash tool&rdquo;, retrieved 18 October 2026. &ldquo;Sandboxing provides OS-level enforcement&rdquo;; &ldquo;The sandbox is off by default.&rdquo;; &ldquo;The sandbox wraps shell commands.&rdquo; — <a href="https://code.claude.com/docs/en/sandboxing">code.claude.com</a></li>
+<li id="note-7"><strong>Codex Auto-review.</strong> OpenAI Codex documentation, &ldquo;Auto-review&rdquo;, undated, retrieved 5 October 2026. Codex sandbox modes (&ldquo;The main agent works inside read-only or workspace-write.&rdquo;), the reviewer that can replace a person (&ldquo;It only evaluates actions that ask to cross a boundary.&rdquo;), what it sees (&ldquo;Auto-review sees retained chat items and tool evidence, not private chain-of-thought.&rdquo;), session transcripts and managed requirements. — <a href="https://developers.openai.com/codex/sandboxing/auto-review">developers.openai.com</a></li>
+<li id="note-8"><strong>Running Codex safely at OpenAI.</strong> OpenAI, &ldquo;Running Codex safely at OpenAI&rdquo;, 8 May 2026, before the incident. Approval policy (&ldquo;Approval policy determines when Codex must ask to perform an action&rdquo;), the sandbox as &ldquo;the technical execution boundary&rdquo;, rules under which &ldquo;specific dangerous commands can be blocked or require approval&rdquo;, telemetry and admin-enforced requirements. — <a href="https://openai.com/blog/running-codex-safely">openai.com</a></li>
+<li id="note-9"><strong>Claude Code permission modes.</strong> Anthropic, Claude Code documentation, &ldquo;Choose a permission mode&rdquo;, retrieved 18 October 2026. The table that &ldquo;shows what Claude can do without a permission prompt in each mode&rdquo;; &ldquo;Deny rules block in every mode&rdquo;; for the auto-mode classifier, &ldquo;Tool results are stripped from those requests&rdquo;. — <a href="https://code.claude.com/docs/en/permission-modes">code.claude.com</a></li>
+<li id="note-10"><strong>OpenAI technical report on the incident.</strong> OpenAI, &ldquo;OpenAI – Hugging Face Incident Technical Report&rdquo;, 26 August 2026. Source for the incident&rsquo;s setting layer by layer, the reduced safeguards, context compaction in the runs, the production harness that customer products have, and a training example in which copying was rewarded: &ldquo;harnessed as agents&rdquo;; &ldquo;the production ChatGPT harness and system prompt&rdquo;; &ldquo;a highly capable, internal-only research model&rdquo;; &ldquo;separate from OpenAI&rsquo;s internal infrastructure and the public internet, with certain safeguards disabled so that the results would reflect a model&rsquo;s true capabilities&rdquo;; &ldquo;hosted by OpenAI in the research environment&rdquo;; &ldquo;did not have OpenAI&rsquo;s deployed cyber safeguards, system prompts, or auto-review systems&rdquo;; &ldquo;which led to positive RL reward causing this behavior to subsequently be reinforced&rdquo;; &ldquo;Isolated execution environments&rdquo;. — <a href="https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf">cdn.openai.com</a></li>
+<li id="note-11"><strong>OpenAI incident post.</strong> OpenAI, &ldquo;The Hugging Face incident and the road ahead&rdquo;, 26 August 2026. Source for the reduced safeguards, the chain-of-thought monitors that did not run, the production harness that customer products have, and the grader: &ldquo;our internal implementation of the grader code was different from the online setup and didn&rsquo;t check whether the proper solution was used&rdquo;. — <a href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/">openai.com</a></li>
+<li id="note-12"><strong>Hugging Face disclosure.</strong> Hugging Face, &ldquo;Security incident disclosure — July 2026&rdquo;, 16 July 2026. Source for Hugging Face running its forensic analysis on GLM-5.2, an open-weight model, on its own infrastructure. — <a href="https://huggingface.co/blog/security-incident-july-2026">huggingface.co</a></li>
+<li id="note-13"><strong>Claude Code managed settings.</strong> Anthropic, Claude Code documentation, &ldquo;Deploy managed settings&rdquo;, retrieved 18 October 2026. Organization-wide settings administrators enforce. — <a href="https://code.claude.com/docs/en/managed-settings">code.claude.com</a></li>
+<li id="note-14"><strong>OpenAI guardrails and human review.</strong> OpenAI API documentation, &ldquo;Guardrails and human review&rdquo;, undated, retrieved 5 October 2026. The approval pause, &ldquo;the model can still decide that an action is needed, but the run pauses until you approve or reject it&rdquo;, and the advice for custom agents, &ldquo;Add review and enforcement to your own harness.&rdquo; — <a href="https://developers.openai.com/api/docs/guides/agents/guardrails-approvals">developers.openai.com</a></li>
+<li id="note-15"><strong>Claude Agent SDK overview.</strong> Anthropic, Agent SDK overview, retrieved 18 October 2026. The hosted option: &ldquo;Anthropic runs the agent and the sandbox.&rdquo; — <a href="https://platform.claude.com/docs/en/agent-sdk/overview">platform.claude.com</a></li>
+<li id="note-16"><strong>Hosting the Agent SDK.</strong> Anthropic, Agent SDK documentation, &ldquo;Hosting the Agent SDK&rdquo;, retrieved 18 October 2026. Where a custom agent runs, including Anthropic&rsquo;s hosted option. — <a href="https://code.claude.com/docs/en/agent-sdk/hosting">code.claude.com</a></li>
+<li id="note-17"><strong>Securely deploying agents.</strong> Anthropic, Agent SDK documentation, &ldquo;Securely deploying AI agents&rdquo;, retrieved 18 October 2026. The customer&rsquo;s part in building and securing a custom agent on the API. — <a href="https://code.claude.com/docs/en/agent-sdk/secure-deployment">code.claude.com</a></li>
+<li id="note-18"><strong>Reuters on the DseWiki agents.</strong> Deepa Seetharaman and Raphael Satter, &ldquo;OpenAI agents hijacked German website in previously undisclosed AI breakout this spring&rdquo;, Reuters, 4 September 2026. — <a href="https://www.reuters.com/world/europe/openai-agents-hijacked-german-website-previously-undisclosed-ai-breakout-this-2026-09-04/">reuters.com</a></li>
+<li id="note-19"><strong>Scientific American on Claude and the Riemann hypothesis.</strong> &ldquo;No, Anthropic&rsquo;s AI didn&rsquo;t just solve math&rsquo;s hardest problem&rdquo;, Scientific American, August 2026; on Anthropic&rsquo;s research note of 10 August 2026. — <a href="https://www.scientificamerican.com/article/no-ai-didnt-just-solve-the-thorniest-problem-in-math">scientificamerican.com</a></li>
+<li id="note-20"><strong>The Guardian on Mythos.</strong> Dan Milmo, Kalyeena Makortoff and Aisha Down, &ldquo;What is Mythos AI and why could it be a threat to global cybersecurity?&rdquo;, The Guardian, 22 April 2026. — <a href="https://www.theguardian.com/technology/2026/apr/22/what-is-anthropic-mythos-ai-threat-global-cybersecurity">theguardian.com</a></li>
+<li id="note-21"><strong>Bloomberg on access to Mythos.</strong> &ldquo;Anthropic&rsquo;s Mythos Model Is Being Accessed by Unauthorized Users&rdquo;, Bloomberg News, 21 April 2026. — <a href="https://www.bloomberg.com/news/articles/2026-04-21/anthropic-s-mythos-model-is-being-accessed-by-unauthorized-users">bloomberg.com</a></li>
+<li id="note-22"><strong>NYU Shanghai on OpenAI&rsquo;s math manuscripts.</strong> &ldquo;OpenAI Drops 722 Math Manuscripts From an Unreleased Model&rdquo;, NYU Shanghai RITS (the site carries the NYU Shanghai Library logo), 9 October 2026. — <a href="https://rits.shanghai.nyu.edu/ai/openai-drops-722-math-manuscripts-from-an-unreleased-model">rits.shanghai.nyu.edu</a></li>
+<li id="note-23"><strong>Cybersecurity Dive on AI security education.</strong> Eric Geller, &ldquo;As frontier models go rogue, colleges beef up AI cybersecurity education&rdquo;, Cybersecurity Dive, 9 October 2026. — <a href="https://www.cybersecuritydive.com/news/ai-cybersecurity-education-university/832132/">cybersecuritydive.com</a></li>
+<li id="note-24"><strong>Transluce on agent activity.</strong> Transluce, &ldquo;Early rogue AI agent activity and attempts to hack found on urlquery.net&rdquo;, 23 September 2026. — <a href="https://transluce.org/agent-activity">transluce.org</a></li>
+<li id="note-25"><strong>KPMG on Mythos services.</strong> KPMG LLP, &ldquo;KPMG Launches Cybersecurity Services Powered by Anthropic&rsquo;s Claude Mythos&rdquo;, press release, 12 November 2026. — <a href="https://kpmg.com/us/en/media/news/kpmg-launches-cybersecurity-services-powered-by-anthropics-claude-mythos.html">kpmg.com</a></li>
+<li id="note-26"><strong>Anthropic Usage Policy.</strong> Anthropic, Usage Policy (enforcement passages), retrieved 18 October 2026. &ldquo;Anthropic&rsquo;s Safeguards Team implements detection and monitoring to enforce our Usage Policy.&rdquo;; responses that &ldquo;warn you or throttle, limit/ suspend, or terminate your access&rdquo;. — <a href="https://www.anthropic.com/legal/aup">anthropic.com</a></li>
+<li id="note-27"><strong>Anthropic API safeguards.</strong> Anthropic Help, &ldquo;API safeguards tools&rdquo;, retrieved 18 October 2026. &ldquo;Anthropic runs real-time safeguards on API inputs and outputs by default.&rdquo; — <a href="https://support.claude.com/en/articles/9199617-api-safeguards-tools">support.claude.com</a></li>
+<li id="note-28"><strong>GPT-3.</strong> Brown et al., &ldquo;Language Models are Few-Shot Learners&rdquo;, 2020. &ldquo;an autoregressive language model with 175 billion parameters&rdquo;; &ldquo;For all tasks, GPT-3 is applied without any gradient updates or fine-tuning&rdquo;; &ldquo;datasets we view as higher-quality are sampled more frequently&rdquo;. — <a href="https://arxiv.org/abs/2005.14165">arxiv.org</a></li>
+<li id="note-29"><strong>Anthropic on mapping concepts.</strong> Anthropic, &ldquo;Mapping the Mind of a Large Language Model&rdquo;, 21 May 2024. &ldquo;each concept is represented across many neurons, and each neuron is involved in representing many concepts&rdquo;. — <a href="https://www.anthropic.com/research/mapping-mind-language-model">anthropic.com</a></li>
+<li id="note-30"><strong>OpenAI on extracting concepts.</strong> OpenAI, &ldquo;Extracting concepts from GPT-4&rdquo;, 6 June 2024. Trained networks &ldquo;cannot be easily decomposed into identifiable parts&rdquo;. — <a href="https://openai.com/index/extracting-concepts-from-gpt-4/">openai.com</a></li>
+<li id="note-31"><strong>InstructGPT.</strong> Ouyang et al., &ldquo;Training language models to follow instructions with human feedback&rdquo;, 2022. Fine-tuning on examples, a reward model trained on human preferences, and reinforcement learning. — <a href="https://arxiv.org/abs/2203.02155">arxiv.org</a></li>
+<li id="note-32"><strong>Constitutional AI.</strong> Bai et al., &ldquo;Constitutional AI: Harmlessness from AI Feedback&rdquo;, 2022. &ldquo;we use &lsquo;RL from AI Feedback&rsquo; (RLAIF)&rdquo;. — <a href="https://arxiv.org/abs/2212.08073">arxiv.org</a></li>
+<li id="note-33"><strong>Tülu 3.</strong> Lambert et al., &ldquo;Tülu 3&rdquo;, 2024. &ldquo;Reinforcement Learning with Verifiable Rewards (RLVR)&rdquo;. — <a href="https://arxiv.org/abs/2411.15124">arxiv.org</a></li>
+<li id="note-34"><strong>GPT-5.6 System Card.</strong> OpenAI, &ldquo;GPT-5.6 System Card&rdquo;, section 2, 9 July 2026. &ldquo;OpenAI reasoning models are trained to reason through reinforcement learning.&rdquo; — <a href="https://deploymentsafety.openai.com/gpt-5-6">deploymentsafety.openai.com</a></li>
+<li id="note-35"><strong>Anthropic model report.</strong> Anthropic, Transparency Hub, Model Report, 2 October 2026. Training data and stages: &ldquo;Claude Sonnet 5.5 was pretrained on large, diverse datasets to acquire language capabilities.&rdquo;; &ldquo;substantial post-training&rdquo;; post-training toward &ldquo;the values described in Claude&rsquo;s constitution&rdquo;; an earlier entry lists &ldquo;reinforcement from human feedback, reinforcement from AI feedback&rdquo;; for its recent models, &ldquo;synthetic data generated by other models&rdquo;. — <a href="https://www.anthropic.com/transparency">anthropic.com</a></li>
+<li id="note-36"><strong>Claude&rsquo;s constitution.</strong> Anthropic, &ldquo;Claude&rsquo;s Constitution&rdquo;, retrieved 21 November 2026. The written document Claude is trained toward: it &ldquo;plays a crucial role in our training process&rdquo;. — <a href="https://www.anthropic.com/constitution">anthropic.com</a></li>
+<li id="note-37"><strong>OpenAI Model Spec.</strong> OpenAI, &ldquo;Our approach to the Model Spec&rdquo;, 25 March 2026. The written document OpenAI trains toward: OpenAI uses it &ldquo;so we can train toward it, evaluate against it&rdquo;. — <a href="https://openai.com/index/our-approach-to-the-model-spec">openai.com</a></li>
+<li id="note-38"><strong>OpenAI on third-party evaluations.</strong> OpenAI, &ldquo;A shared playbook for trustworthy third party evaluations&rdquo;, 29 May 2026. &ldquo;Capability claims are only as strong as the elicitation behind them&rdquo;; &ldquo;the harness can change the observed level of performance&rdquo;. — <a href="https://openai.com/index/trustworthy-third-party-evaluations-foundations/">openai.com</a></li>
+<li id="note-39"><strong>How OpenAI&rsquo;s models are developed.</strong> OpenAI Help, &ldquo;How ChatGPT and our foundation models are developed&rdquo;, retrieved 21 November 2026. Training data sources and filtering: &ldquo;information that is publicly available on the internet&rdquo;; &ldquo;We apply filters and remove information&rdquo;; &ldquo;human trainers&rdquo;. — <a href="https://help.openai.com/en/articles/7842364-how-chatgpt-and-our-foundation-models-are-developed">help.openai.com</a></li>
+<li id="note-40"><strong>Anthropic personal data in training.</strong> Anthropic Privacy Center, &ldquo;How do you use personal data in model training?&rdquo;, 16 March 2026, retrieved 21 November 2026. Third-party data, &ldquo;Datasets that we obtain under commercial agreements with third party businesses&rdquo;, and &ldquo;crowd workers&rdquo;. — <a href="https://privacy.claude.com/en/articles/10023555-how-do-you-use-personal-data-in-model-training">privacy.claude.com</a></li>
+<li id="note-41"><strong>OpenAI on consumer data.</strong> OpenAI, &ldquo;How your data is used to improve model performance&rdquo;, updated 13 March 2026, retrieved 21 November 2026. Consumer chats may be used for training; the user can opt out; Temporary Chat is excluded. — <a href="https://openai.com/policies/how-your-data-is-used-to-improve-model-performance/">openai.com</a></li>
+<li id="note-42"><strong>Anthropic consumer data.</strong> Anthropic Privacy Center, &ldquo;Is my data used for model training?&rdquo; (consumer), updated 16 March 2026, retrieved 21 November 2026. Consumer chats used if the user allows it or if flagged for safety; incognito chats excluded. — <a href="https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training">privacy.claude.com</a></li>
+<li id="note-43"><strong>OpenAI business data.</strong> OpenAI, &ldquo;Business data privacy, security, and compliance&rdquo;, undated, retrieved 21 November 2026. Business and API data are not used for training by default; customers can opt in. — <a href="https://openai.com/business-data/">openai.com</a></li>
+<li id="note-44"><strong>Anthropic commercial data.</strong> Anthropic Privacy Center, &ldquo;Is my data used for model training?&rdquo; (commercial), 18 August 2026, retrieved 21 November 2026. Business and API data not used for training by default, with stated exceptions. — <a href="https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training">privacy.claude.com</a></li>
+<li id="note-45"><strong>Anthropic privacy settings.</strong> Anthropic Privacy Center, &ldquo;How do I change my model improvement privacy settings?&rdquo;, updated 3 August 2026, retrieved 21 November 2026. &ldquo;we will stop using your previously stored chats and coding sessions in future model training runs&rdquo;. — <a href="https://privacy.claude.com/en/articles/12109829">privacy.claude.com</a></li>
+<li id="note-46"><strong>GPT-4o System Card.</strong> OpenAI, &ldquo;GPT-4o System Card&rdquo;, 8 August 2024, retrieved 24 November 2026. &ldquo;Including code and math data in training helps the model develop robust reasoning skills&rdquo; — <a href="https://openai.com/index/gpt-4o-system-card/">openai.com</a></li>
+<li id="note-47"><strong>OpenAI crawlers.</strong> OpenAI API documentation, &ldquo;Overview of OpenAI Crawlers&rdquo;, retrieved 21 November 2026. How the public web is collected and how site owners opt out: a site that blocks GPTBot signals its content &ldquo;should not be used in training generative AI foundation models&rdquo;. — <a href="https://developers.openai.com/api/docs/bots">developers.openai.com</a></li>
+<li id="note-48"><strong>Anthropic&rsquo;s crawler.</strong> Anthropic Help, &ldquo;Does Anthropic crawl data from the web, and how can site owners block the crawler?&rdquo;, retrieved 21 November 2026. ClaudeBot collects &ldquo;web content that could potentially contribute to their training&rdquo;; the bots honour robots.txt and &ldquo;will not attempt to bypass CAPTCHAs&rdquo;. — <a href="https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler">support.claude.com</a></li>
+<li id="note-49"><strong>June 2025 ruling in the authors&rsquo; case against Anthropic.</strong> NPR, &ldquo;In a first-of-its-kind decision, an AI company wins a copyright infringement lawsuit brought by authors&rdquo;, 25 June 2025 (date from the page address), retrieved 24 November 2026. Quoting Judge Alsup: &ldquo;The training use was a fair use.&rdquo; — <a href="https://www.npr.org/2025/06/25/nx-s1-5445242">npr.org</a></li>
+<li id="note-50"><strong>Authors&rsquo; case against OpenAI.</strong> Justin Hendrix, &ldquo;Friends of the Court Flock to the OpenAI Copyright Fight&rdquo;, Tech Policy Press, 11 November 2026: &ldquo;In September, parties involved in In re: OpenAI, Inc. Copyright Infringement Litigation asked United States District Judge Sidney Stein to resolve whether training on copyrighted works is fair use, and related claims, without a trial.&rdquo; The claims are the plaintiffs&rsquo;; no court has ruled on them. — <a href="https://www.techpolicy.press/friends-of-the-court-flock-to-the-openai-copyright-fight/">techpolicy.press</a></li>
+<li id="note-51"><strong>Authors&rsquo; settlement with Anthropic.</strong> Bloomberg Law, &ldquo;Anthropic, Authors&rsquo; $1.5 Billion Deal Earns Final Approval&rdquo;, July 2026: the settlement ends &ldquo;a copyright class action over the AI company&rsquo;s downloading of millions of pirated books&rdquo;; &ldquo;The case is Bartz v. Anthropic PBC, N.D. Cal., No. 4:24-cv-05417, settlement approved 7/20/26.&rdquo; — <a href="https://news.bloomberglaw.com/ip-law/anthropic-authors-1-5-billion-deal-receives-final-approval">news.bloomberglaw.com</a></li>
+<li id="note-52"><strong>The Stack.</strong> BigCode project, &ldquo;The Stack: 3 TB of permissively licensed source code&rdquo;, arXiv 2211.15533, submitted 20 November 2022, retrieved 24 November 2026. &ldquo;provide a process for code to be removed from the dataset&rdquo; — <a href="https://arxiv.org/abs/2211.15533">arxiv.org</a></li>
+<li id="note-53"><strong>Anthropic consumer terms update.</strong> Anthropic, news post on updates to its consumer terms and privacy policy, 28 August 2025, retrieved 24 November 2026. &ldquo;If you’re a new user, you can select your preference in the signup process.&rdquo; — <a href="https://www.anthropic.com/news/updates-to-our-consumer-terms">anthropic.com</a></li>
+<li id="note-54"><strong>Model collapse.</strong> Shumailov, Shumaylov, Zhao, Papernot, Anderson and Gal, &ldquo;AI models collapse when trained on recursively generated data&rdquo;, Nature 631 (8022), 2024, retrieved 24 November 2026. &ldquo;We find that indiscriminate use of model-generated content in training causes irreversible defects in the resulting models&rdquo; — <a href="https://ideas.repec.org/a/nat/nature/v631y2024i8022d10.1038_s41586-024-07566-y.html">ideas.repec.org</a> (abstract record; the copy of record is Nature, doi 10.1038/s41586-024-07566-y)</li>
+<li id="note-55"><strong>Phi-3.</strong> Microsoft, &ldquo;Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone&rdquo;, arXiv 2404.14219, v1 submitted 22 April 2024, retrieved 24 November 2026. &ldquo;composed of heavily filtered publicly available web data and synthetic data.&rdquo; — <a href="https://arxiv.org/abs/2404.14219">arxiv.org</a></li>
+<li id="note-56"><strong>Llama 3.</strong> Llama Team, AI @ Meta, &ldquo;The Llama 3 Herd of Models&rdquo;, arXiv 2407.21783, 23 July 2024, retrieved 24 November 2026. &ldquo;We pre-train Llama 3 on a corpus of about 15T multilingual tokens, compared to 1.8T tokens for Llama 2.&rdquo; — <a href="https://arxiv.org/abs/2407.21783">arxiv.org</a> (read via ar5iv.labs.arxiv.org)</li>
+<li id="note-57"><strong>OLMo.</strong> Groeneveld et al., Allen Institute for AI, &ldquo;OLMo: Accelerating the Science of Language Models&rdquo;, arXiv 2402.00838 v4, 2024, retrieved 24 November 2026. &ldquo;the full training data used for these models is openly available&rdquo; — <a href="https://arxiv.org/html/2402.00838v4">arxiv.org</a>; and Soldaini et al., &ldquo;Dolma: an Open Corpus of Three Trillion Tokens for Language Model Pretraining Research&rdquo;, arXiv 2402.00159, 2024, Table 1, the corpus by source: for example, &ldquo;Common Crawl web pages … 2,479&rdquo; billion tokens, with C4, Reddit, the Stack, peS2o, Project Gutenberg and Wikipedia listed beside it. — <a href="https://arxiv.org/abs/2402.00159">arxiv.org</a></li>
+<li id="note-58"><strong>Anthropic glossary.</strong> Anthropic API documentation, Glossary, undated, retrieved 22 November 2026. &ldquo;Tokens are the smallest individual units of a language model&rdquo;; &ldquo;Temperature is a parameter that controls the randomness of a model’s predictions during text generation.&rdquo; — <a href="https://platform.claude.com/docs/en/about-claude/glossary">platform.claude.com</a></li>
+<li id="note-59"><strong>OpenAI API deployment checklist.</strong> OpenAI API documentation, &ldquo;API deployment checklist&rdquo;, retrieved 25 November 2026. &ldquo;When reasoning effort is not none, remove temperature, top_p, and top_logprobs.&rdquo; — <a href="https://developers.openai.com/api/docs/guides/deployment-checklist">developers.openai.com</a></li>
+<li id="note-60"><strong>Claude Code memory.</strong> Anthropic, Claude Code documentation, &ldquo;How Claude remembers your project&rdquo;, retrieved 18 October 2026. &ldquo;Claude treats them as context, not enforced configuration.&rdquo; — <a href="https://code.claude.com/docs/en/memory">code.claude.com</a></li>
+<li id="note-61"><strong>OpenAI Agents SDK, running agents.</strong> OpenAI Agents SDK documentation, &ldquo;Running agents&rdquo;, retrieved 23 November 2026. &ldquo;If we exceed the <code>max_turns</code> passed, we raise a MaxTurnsExceeded exception.&rdquo;; &ldquo;Pass <code>max_turns=None</code> to disable this turn limit.&rdquo; — <a href="https://openai.github.io/openai-agents-python/running_agents/">openai.github.io</a></li>
+<li id="note-62"><strong>Unrolling the Codex agent loop.</strong> Michael Bolin, &ldquo;Unrolling the Codex agent loop&rdquo;, OpenAI, 23 January 2026. How Codex resends a growing prompt, &ldquo;primarily to keep requests fully stateless&rdquo;, and compacts it: &ldquo;compact the conversation once the number of tokens exceeds some threshold&rdquo;. — <a href="https://openai.com/index/unrolling-the-codex-agent-loop/">openai.com</a></li>
+<li id="note-63"><strong>OpenAI on tokens.</strong> OpenAI Help, &ldquo;What are tokens and how to count them&rdquo;, undated, retrieved 22 November 2026. &ldquo;Tokens are the units that OpenAI models use to process text.&rdquo; — <a href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them">help.openai.com</a></li>
+<li id="note-64"><strong>Claude tool use.</strong> Anthropic API documentation, &ldquo;Tool use with Claude&rdquo;, retrieved 18 October 2026. Tools &ldquo;differ primarily by where the code executes&rdquo;: client tools &ldquo;run in your application&rdquo;; server tools such as <code>web_search</code> and <code>code_execution</code> &ldquo;run on Anthropic&rsquo;s infrastructure&rdquo;. — <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview">platform.claude.com</a></li>
+<li id="note-65"><strong>OpenAI cybersecurity checks.</strong> OpenAI API documentation, &ldquo;Cybersecurity checks&rdquo;, undated, retrieved 5 October 2026. API safeguards for GPT-5.3-Codex and newer models: &ldquo;These safeguards monitor for signals of potentially suspicious cybersecurity activity&rdquo;; &ldquo;access may be temporarily revoked for the entire organization&rdquo;. — <a href="https://developers.openai.com/api/docs/guides/safety-checks/cybersecurity">developers.openai.com</a></li>
+<li id="note-66"><strong>Anthropic on incidents in its cyber evaluations.</strong> Anthropic, &ldquo;Investigating three real-world incidents in our cybersecurity evaluations&rdquo;, 30 July 2026 (updated 3 August 2026). &ldquo;The models in each of these evaluations ran without the standard safeguards we deploy when we make the model generally available&rdquo;. — <a href="https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals">anthropic.com</a></li>
+<li id="note-67"><strong>ChatGPT custom instructions.</strong> OpenAI Help, &ldquo;Custom instructions for ChatGPT&rdquo;, retrieved 22 November 2026. Standing instructions in the chat app: &ldquo;Custom instructions let you share anything you&rsquo;d like ChatGPT to consider in its response.&rdquo; — <a href="https://help.openai.com/en/articles/8096356-custom-instructions-for-chatgpt">help.openai.com</a></li>
+<li id="note-68"><strong>Claude connectors.</strong> Anthropic Help, &ldquo;Use connectors to extend Claude&rsquo;s capabilities&rdquo;, retrieved 22 November 2026. Connections to other services in the chat app: &ldquo;Connectors let Claude access your apps and services&rdquo;. — <a href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities">support.claude.com</a></li>
+<li id="note-69"><strong>Fine-tuning and safety training.</strong> Qi et al., &ldquo;Fine-tuning Aligned Language Models Compromises Safety, Even When Users Do Not Intend To!&rdquo;, ICLR 2024 (arXiv 2023). &ldquo;the safety alignment of LLMs can be compromised by fine-tuning with only a few adversarially designed training examples&rdquo; — <a href="https://arxiv.org/abs/2310.03693">arxiv.org</a></li>
+<li id="note-70"><strong>Hugging Face technical timeline.</strong> Hugging Face, &ldquo;Anatomy of a Frontier Lab Agent Intrusion: A Technical Timeline of the July 2026 Incident&rdquo;, 27 July 2026. One of the accounts behind the statement that the evaluations ran with reduced safeguards. — <a href="https://huggingface.co/blog/agent-intrusion-technical-timeline">huggingface.co</a></li>
+<li id="note-71"><strong>METR investigation.</strong> METR, &ldquo;Brief independent investigation of agents&rsquo; behavior, reasoning and collaboration in the OpenAI / Hugging Face hacking incident&rdquo;, 26 August 2026 (edited 13 September 2026). Independent reading of the same runs: long, accumulating transcripts, reduced safeguards, and the grader; the paper quotes &ldquo;(incorrectly) believed&rdquo; and METR&rsquo;s word &ldquo;scorer&rdquo;. — <a href="https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/">metr.org</a></li>
+<li id="note-72"><strong>Claude context windows.</strong> Anthropic API documentation, &ldquo;Context windows&rdquo;, retrieved 18 October 2026. Context-window size, the output cap, token counting (&ldquo;count toward rate limits&rdquo;) and server-side compaction: &ldquo;Compaction automatically summarizes earlier parts of the conversation on the server&rdquo;. — <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">platform.claude.com</a></li>
+<li id="note-73"><strong>OpenAI output cap.</strong> OpenAI API reference, &ldquo;Create a model response&rdquo;, retrieved 23 November 2026. <code>max_output_tokens</code>: &ldquo;An upper bound for the number of tokens that can be generated for a response, including visible output tokens and reasoning tokens.&rdquo; — <a href="https://developers.openai.com/api/reference/cli/resources/responses/methods/create/">developers.openai.com</a></li>
+<li id="note-74"><strong>Claude context editing.</strong> Anthropic API documentation, &ldquo;Context editing&rdquo;, retrieved 18 October 2026. Clearing older context so a run can continue. — <a href="https://platform.claude.com/docs/en/build-with-claude/context-editing">platform.claude.com</a></li>
+<li id="note-75"><strong>OpenAI rate limits.</strong> OpenAI API documentation, &ldquo;Rate limits&rdquo;, undated, retrieved 22 November 2026. &ldquo;Rate limits are defined at the organization level and at the project level, not user level.&rdquo; — <a href="https://developers.openai.com/api/docs/guides/rate-limits">developers.openai.com</a></li>
+<li id="note-76"><strong>Anthropic rate limits.</strong> Anthropic API documentation, &ldquo;Rate limits&rdquo;, undated, retrieved 22 November 2026. &ldquo;Limits are set at the organization level.&rdquo; — <a href="https://platform.claude.com/docs/en/api/rate-limits">platform.claude.com</a></li>
+<li id="note-77"><strong>ASME on the boiler code.</strong> John Varrasi, &ldquo;The True Harnessing of Steam&rdquo;, ASME, 1 January 2005: &ldquo;In ASME&rsquo;s first decade, more than 2,000 boilers exploded.&rdquo; The Brockton explosion killed 58 people; &ldquo;In 1914, ASME produced the first edition of the Boiler Code.&rdquo; — <a href="https://www.asme.org/topics-resources/content/the-true-harnessing-of-steam">asme.org</a></li>
+</ol>
+</section>
+
+</main>
+
+<section class="prov" id="provenance" aria-labelledby="prov-h">
+<div class="prov-inner">
+  <p class="prov-eyebrow">Research Provenance</p>
+  <div class="prov-body">
+<h2 class="prov-title" id="prov-h">Provenance</h2>
+<p><strong>Owner.</strong> Hugh McCutchen</p>
+<p><strong>Contributors.</strong> Hugh McCutchen (owner: direction, rulings, markup, the Bursera&rsquo;s Take blocks), Claude Fable (first draft and revision), Claude Opus (cold check), Claude subagents (scoped drafting and checking under written briefs), Claude Opus (revision, figures), Gemini (headline image), Claude Fable, Opus, Sonnet and Haiku (blank-slate drafts for Claude&rsquo;s Fables)</p>
+<p><strong>How it began.</strong> This paper was planned as one short part (about 2,400 words) of a series mostly about analysing the July 2026 OpenAI and Hugging Face incident: it was to explain how a running AI system is put together, so the incident papers could use it as their framework. It grew into a large piece of work in its own right and became the only paper in the series&rsquo; first release. Claude Fable 5.1, an Anthropic model, wrote the first draft in early November 2026 from an evidence pack that a Claude Sonnet 5.5 helper assembled for this paper; a separate Claude Opus 5.5 session that had not seen the drafting checked it item by item, and Fable revised it once. The evidence pack drew on the project&rsquo;s register of checked incident facts, its shared vocabulary for the parts of an AI system, research notes on how models are trained and run, and word-for-word copies of OpenAI&rsquo;s and Anthropic&rsquo;s developer documentation. Sourced from: The project&rsquo;s claim register: incident facts, each tied to a primary source such as OpenAI&rsquo;s incident technical report, METR&rsquo;s report and Hugging Face&rsquo;s posts (the incident facts the paper describes when a lab runs the model itself); The project&rsquo;s shared vocabulary for the parts of an AI system (the layer model and the terms: model, harness, context, tools, execution environment, controls, governance); Research notes on how models are trained and run, gathered by several AI research engines and subagents, merged and checked against papers and vendor documentation (how models are trained and run, as leads checked against papers and vendor documentation); Word-for-word copies of OpenAI&rsquo;s and Anthropic&rsquo;s developer documentation, captured October 2026 (the documented behaviour of harnesses, tools, sandboxes and limits). (origin: fresh)</p>
+<p><strong>Type of writing.</strong> Leader voice - AI-drafted, human-directed (body, figures, Key ideas); Human tier - the three Bursera&rsquo;s Take blocks, Hugh&rsquo;s opinion: the section 1.1 take is his; Take 1 started as a Claude-recommended version he adopted (v0.8) and was rewritten in his own words (v0.20); the closing take is a Claude-recommended version he adopted (v0.8) and ends in his own conclusion lines (v0.9); model-written - Claude&rsquo;s Fables, a fresh Claude Opus 5.5 piece printed largely as written</p>
+<p><strong>Process.</strong> execution, mixed</p>
+<p><strong>Tools.</strong> Claude Fable 5.1, Claude Opus 5.5, Claude Sonnet 5.5, my-voice, research-foundation, svg-diagrams, internal-report-format, update-with-comments, svg-flat-animation, render_p1.py, WebSearch/WebFetch, Gemini (headline image), Claude Fable 5.2, subagent-dispatch, Claude Haiku 5.5, provenance_render.py</p>
+<p><strong>Versions</strong></p>
+<ul>
+<li><strong>v0.1</strong> (HUG-S09, Nov 2–6) – The first complete draft: what the parts of a running AI system are and who runs each one, with four first-version figures (Figure 1, the running system; Figure 2, who runs which layer; Figure 3, one turn of the loop; Figure 4, training versus running, all v0.1). An independent check of 169 items found 83 to fix and 16 gaps, and one revision addressed them.</li>
+<li><strong>v0.2–v0.5</strong> (HUG-S10, Nov 21–22) – Added a section on what a model&rsquo;s weights are and where they come from, explained with a dials metaphor and real examples, and a subsection on the limits that stop a run; a second independent check&rsquo;s corrections went in, then Hugh&rsquo;s own markup, including his new title. Figure 1 was redrawn from v0.2 to v0.5, a new Figure 1a (inside the model) went from v0.1 to v0.3, Figure 3 went from v0.2 to v0.3, and Figure 4 was retired. Outside the paper, an animated loop of the layers was started (two still drafts, then a flipbook from v0.1 to v0.5).</li>
+<li><strong>v0.6–v0.13</strong> (HUG-S11, Nov 22–23) – Internal source codes were replaced with numbered public references (65 notes by v0.13), and the paper gained passages on neurons, training data and weights in use, pop-up definitions, the opinion-section headings and Hugh&rsquo;s conclusion lines; a steam-era claim was corrected from &ldquo;fined&rdquo; to &ldquo;enforced standards&rdquo; to match its source. The animated flipbook went from v0.6 to v0.11 and became Figure 1, with a still end frame; Figure 2 was rebuilt from v0.2 to v0.5 with one colour for the vendor and one for you; Figure 1a reached v0.5 and Figure 3 v0.4. A first headline collage (v0.1, an image Hugh made with Gemini) was added.</li>
+<li><strong>v0.14–v0.17</strong> (HUG-S12, Nov 23–24) – Each headline in the collage got its own source note, an authorship disclosure was added, three OpenAI settings the paper had left blank (a turn limit, an output cap and a network default) were filled, and a research helper rebuilt the training-data table from eight new sources, which were then checked; 22 notes were added in all. The &ldquo;Claude&rsquo;s Fables&rdquo; piece was chosen from five drafts written from a blank slate. Figures: headline collage v0.2, Figure 2 v0.6 (its text description only) and a new Figure 4, the engine and the car (v0.1).</li>
+<li><strong>v0.18–v0.23</strong> (HUG-S12, Nov 25) – Restructured for a general reader: the parts on graders and on the coding assistants&rsquo; defaults moved to the incident paper, the section on the model was split in three, the prose was rewritten as reading with eight Key idea callouts, and a fresh-context copyedit made 35 changes; notes went from 87 to 76. Figures: a new Figure 1b on training data (v0.1); Figure 1a redrawn twice, to v0.7, and Figure 3 redrawn twice; the headline collage rebuilt by hand as an SVG with each headline typed as published (v0.4), after further Gemini image rounds were set aside; and at v0.23 a column for the interface you use in Figure 1 (flipbook v0.12) and Figure 2 (v0.7).</li>
+<li><strong>v0.24</strong> (HUG-S12, Nov 25) – A last round of Hugh&rsquo;s rulings: the Llama 3 content-type bar came out of Figure 1b and the text, Ai2&rsquo;s Dolma is named as a training corpus whose mix is published by source, Key idea 2 says models are trained on trillions of tokens, the paper says who the &ldquo;operator&rdquo; is where it lists the limits, wording in Hugh&rsquo;s take was adjusted, and this provenance block was rebuilt. Figures: Figure 1b v0.2 (without the Llama bar) and Figure 3 v0.7 (a step 0 for the interface you use).</li>
+<li><strong>v0.25</strong> (HUG-S12, Nov 25) – Removed what was left of the incident from the figures, so the paper stands on its own: the animated Figure 1 (now v0.14) no longer carries an incident line or date in any of its ten loops, and Figure 3 (v0.8) drops its incident note. This is the version placed in the publication bundle.</li>
+<li><strong>v0.26</strong> (HUG-S12, Nov 25) – The interface became the first step (0) of the animated Figure 1 (now v0.16), with its dotted line made larger and brass so it shows over every part. A paragraph on model settings was rewritten to say plainly that few remain on each request, that both Anthropic and OpenAI are removing the old randomness settings on their newest models, and that control is moving to the harness; one source was added.</li>
+</ul>
+<p><strong>Sources.</strong> 23 sources added in v0.14–v0.17, v0.26 (public, academic); none added in v0.18–v0.23; not counted for v0.1, v0.2–v0.5, v0.6–v0.13, v0.24, v0.25</p>
+<p><strong>Depth &amp; confidence.</strong> working / new claim traced to a quoted OpenAI documentation page / unchanged</p>
+<p><strong>Level of work.</strong> extensive (26 versions, v0.1–v0.26, in 9 record rows, across 4 sessions)</p>
+<p><strong>Effort.</strong> 4 working sessions, 2 to 25 November 2026; 26 versions; at least 29 subagent runs, each a separate Claude helper working from a written brief (HUG-S09 at least 4, HUG-S10 at least 4, HUG-S11 at least 2, HUG-S12 at least 19); at least 3 markup rounds returned by the owner; models: Claude Opus 5.5, Claude Fable 5.1, Claude Fable 5.2, Claude Sonnet 5.5, Claude Haiku 5.5.</p>
+<p><em>Full history and audit trail available on request.</em></p>
+  </div>
+  <p class="prov-release"><span>Release</span> v1.0 &mdash; draft for review, not yet final.</p>
+</div>
+</section>
+
+<script>
+
+(function () {
+"use strict";
+
+/*STATE-LOGIC-BEGIN*/
+/* Plain JS, no DOM access. A1 architecture: one state object P, a beat list with absolute times (seconds), a per-frame lerp. */
+var END_DUR = 12, PREROLL = 3, FIXED_DT = 1 / 60;
+var BEATS = [
+  {"t":0.0,"name":"loop0-ui-A-label","loop":0,"s":{"foc_ui":1,"foc_model":0,"foc_training":0,"foc_safeguards":0,"foc_context":0,"foc_harness":0,"foc_operator":0,"foc_tools":0,"foc_environment":0,"foc_monitors":0,"foc_governance":0,"set_ui":0,"set_model":0,"set_training":0,"set_safeguards":0,"set_context":0,"set_harness":0,"set_operator":0,"set_tools":0,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":366.0,"ldr_y":578.0,"ldr_sy":578.0,"ldr_op":1,"part_b":0,"cap_0":1,"cap_1":0,"cap_2":0,"cap_3":0,"cap_4":0,"cap_5":0,"cap_6":0,"cap_7":0,"cap_8":0,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":2.4,"name":"loop0-ui-B-what","loop":0,"s":{"foc_ui":1,"foc_model":0,"foc_training":0,"foc_safeguards":0,"foc_context":0,"foc_harness":0,"foc_operator":0,"foc_tools":0,"foc_environment":0,"foc_monitors":0,"foc_governance":0,"set_ui":0,"set_model":0,"set_training":0,"set_safeguards":0,"set_context":0,"set_harness":0,"set_operator":0,"set_tools":0,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":366.0,"ldr_y":578.0,"ldr_sy":578.0,"ldr_op":1,"part_b":1,"cap_0":1,"cap_1":0,"cap_2":0,"cap_3":0,"cap_4":0,"cap_5":0,"cap_6":0,"cap_7":0,"cap_8":0,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":10.0,"name":"loop1-model-A-label","loop":1,"s":{"foc_ui":0,"foc_model":1,"foc_training":0,"foc_safeguards":0,"foc_context":0,"foc_harness":0,"foc_operator":0,"foc_tools":0,"foc_environment":0,"foc_monitors":0,"foc_governance":0,"set_ui":1,"set_model":0,"set_training":0,"set_safeguards":0,"set_context":0,"set_harness":0,"set_operator":0,"set_tools":0,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":600.0,"ldr_y":164.0,"ldr_sy":164.0,"ldr_op":1,"part_b":0,"cap_0":0,"cap_1":1,"cap_2":0,"cap_3":0,"cap_4":0,"cap_5":0,"cap_6":0,"cap_7":0,"cap_8":0,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":12.4,"name":"loop1-model-B-what","loop":1,"s":{"foc_ui":0,"foc_model":1,"foc_training":0,"foc_safeguards":0,"foc_context":0,"foc_harness":0,"foc_operator":0,"foc_tools":0,"foc_environment":0,"foc_monitors":0,"foc_governance":0,"set_ui":1,"set_model":0,"set_training":0,"set_safeguards":0,"set_context":0,"set_harness":0,"set_operator":0,"set_tools":0,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":600.0,"ldr_y":164.0,"ldr_sy":164.0,"ldr_op":1,"part_b":1,"cap_0":0,"cap_1":1,"cap_2":0,"cap_3":0,"cap_4":0,"cap_5":0,"cap_6":0,"cap_7":0,"cap_8":0,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":20.0,"name":"loop2-training-A-label","loop":2,"s":{"foc_ui":0,"foc_model":0,"foc_training":1,"foc_safeguards":0,"foc_context":0,"foc_harness":0,"foc_operator":0,"foc_tools":0,"foc_environment":0,"foc_monitors":0,"foc_governance":0,"set_ui":1,"set_model":1,"set_training":0,"set_safeguards":0,"set_context":0,"set_harness":0,"set_operator":0,"set_tools":0,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":600.0,"ldr_y":44.0,"ldr_sy":44.0,"ldr_op":1,"part_b":0,"cap_0":0,"cap_1":0,"cap_2":1,"cap_3":0,"cap_4":0,"cap_5":0,"cap_6":0,"cap_7":0,"cap_8":0,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":22.4,"name":"loop2-training-B-what","loop":2,"s":{"foc_ui":0,"foc_model":0,"foc_training":1,"foc_safeguards":0,"foc_context":0,"foc_harness":0,"foc_operator":0,"foc_tools":0,"foc_environment":0,"foc_monitors":0,"foc_governance":0,"set_ui":1,"set_model":1,"set_training":0,"set_safeguards":0,"set_context":0,"set_harness":0,"set_operator":0,"set_tools":0,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":600.0,"ldr_y":44.0,"ldr_sy":44.0,"ldr_op":1,"part_b":1,"cap_0":0,"cap_1":0,"cap_2":1,"cap_3":0,"cap_4":0,"cap_5":0,"cap_6":0,"cap_7":0,"cap_8":0,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":30.0,"name":"loop3-safeguards-A-label","loop":3,"s":{"foc_ui":0,"foc_model":0,"foc_training":0,"foc_safeguards":1,"foc_context":0,"foc_harness":0,"foc_operator":0,"foc_tools":0,"foc_environment":0,"foc_monitors":0,"foc_governance":0,"set_ui":1,"set_model":1,"set_training":1,"set_safeguards":0,"set_context":0,"set_harness":0,"set_operator":0,"set_tools":0,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":600.0,"ldr_y":272.0,"ldr_sy":272.0,"ldr_op":1,"part_b":0,"cap_0":0,"cap_1":0,"cap_2":0,"cap_3":1,"cap_4":0,"cap_5":0,"cap_6":0,"cap_7":0,"cap_8":0,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":32.4,"name":"loop3-safeguards-B-what","loop":3,"s":{"foc_ui":0,"foc_model":0,"foc_training":0,"foc_safeguards":1,"foc_context":0,"foc_harness":0,"foc_operator":0,"foc_tools":0,"foc_environment":0,"foc_monitors":0,"foc_governance":0,"set_ui":1,"set_model":1,"set_training":1,"set_safeguards":0,"set_context":0,"set_harness":0,"set_operator":0,"set_tools":0,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":600.0,"ldr_y":272.0,"ldr_sy":272.0,"ldr_op":1,"part_b":1,"cap_0":0,"cap_1":0,"cap_2":0,"cap_3":1,"cap_4":0,"cap_5":0,"cap_6":0,"cap_7":0,"cap_8":0,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":40.0,"name":"loop4-context-A-label","loop":4,"s":{"foc_ui":0,"foc_model":0,"foc_training":0,"foc_safeguards":0,"foc_context":1,"foc_harness":0,"foc_operator":0,"foc_tools":0,"foc_environment":0,"foc_monitors":0,"foc_governance":0,"set_ui":1,"set_model":1,"set_training":1,"set_safeguards":1,"set_context":0,"set_harness":0,"set_operator":0,"set_tools":0,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":626.0,"ldr_y":465.0,"ldr_sy":465.0,"ldr_op":1,"part_b":0,"cap_0":0,"cap_1":0,"cap_2":0,"cap_3":0,"cap_4":1,"cap_5":0,"cap_6":0,"cap_7":0,"cap_8":0,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":42.4,"name":"loop4-context-B-what","loop":4,"s":{"foc_ui":0,"foc_model":0,"foc_training":0,"foc_safeguards":0,"foc_context":1,"foc_harness":0,"foc_operator":0,"foc_tools":0,"foc_environment":0,"foc_monitors":0,"foc_governance":0,"set_ui":1,"set_model":1,"set_training":1,"set_safeguards":1,"set_context":0,"set_harness":0,"set_operator":0,"set_tools":0,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":626.0,"ldr_y":465.0,"ldr_sy":465.0,"ldr_op":1,"part_b":1,"cap_0":0,"cap_1":0,"cap_2":0,"cap_3":0,"cap_4":1,"cap_5":0,"cap_6":0,"cap_7":0,"cap_8":0,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":50.0,"name":"loop5-harness-A-label","loop":5,"s":{"foc_ui":0,"foc_model":0,"foc_training":0,"foc_safeguards":0,"foc_context":0,"foc_harness":1,"foc_operator":0,"foc_tools":0,"foc_environment":0,"foc_monitors":0,"foc_governance":0,"set_ui":1,"set_model":1,"set_training":1,"set_safeguards":1,"set_context":1,"set_harness":0,"set_operator":0,"set_tools":0,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":600.0,"ldr_y":660.0,"ldr_sy":660.0,"ldr_op":1,"part_b":0,"cap_0":0,"cap_1":0,"cap_2":0,"cap_3":0,"cap_4":0,"cap_5":1,"cap_6":0,"cap_7":0,"cap_8":0,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":52.4,"name":"loop5-harness-B-what","loop":5,"s":{"foc_ui":0,"foc_model":0,"foc_training":0,"foc_safeguards":0,"foc_context":0,"foc_harness":1,"foc_operator":0,"foc_tools":0,"foc_environment":0,"foc_monitors":0,"foc_governance":0,"set_ui":1,"set_model":1,"set_training":1,"set_safeguards":1,"set_context":1,"set_harness":0,"set_operator":0,"set_tools":0,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":600.0,"ldr_y":660.0,"ldr_sy":660.0,"ldr_op":1,"part_b":1,"cap_0":0,"cap_1":0,"cap_2":0,"cap_3":0,"cap_4":0,"cap_5":1,"cap_6":0,"cap_7":0,"cap_8":0,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":60.0,"name":"loop6-operator-A-label","loop":6,"s":{"foc_ui":0,"foc_model":0,"foc_training":0,"foc_safeguards":0,"foc_context":0,"foc_harness":0,"foc_operator":1,"foc_tools":0,"foc_environment":0,"foc_monitors":0,"foc_governance":0,"set_ui":1,"set_model":1,"set_training":1,"set_safeguards":1,"set_context":1,"set_harness":1,"set_operator":0,"set_tools":0,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":900.0,"ldr_y":540.0,"ldr_sy":540.0,"ldr_op":1,"part_b":0,"cap_0":0,"cap_1":0,"cap_2":0,"cap_3":0,"cap_4":0,"cap_5":0,"cap_6":1,"cap_7":0,"cap_8":0,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":62.4,"name":"loop6-operator-B-what","loop":6,"s":{"foc_ui":0,"foc_model":0,"foc_training":0,"foc_safeguards":0,"foc_context":0,"foc_harness":0,"foc_operator":1,"foc_tools":0,"foc_environment":0,"foc_monitors":0,"foc_governance":0,"set_ui":1,"set_model":1,"set_training":1,"set_safeguards":1,"set_context":1,"set_harness":1,"set_operator":0,"set_tools":0,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":900.0,"ldr_y":540.0,"ldr_sy":540.0,"ldr_op":1,"part_b":1,"cap_0":0,"cap_1":0,"cap_2":0,"cap_3":0,"cap_4":0,"cap_5":0,"cap_6":1,"cap_7":0,"cap_8":0,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":70.0,"name":"loop7-tools-A-label","loop":7,"s":{"foc_ui":0,"foc_model":0,"foc_training":0,"foc_safeguards":0,"foc_context":0,"foc_harness":0,"foc_operator":0,"foc_tools":1,"foc_environment":0,"foc_monitors":0,"foc_governance":0,"set_ui":1,"set_model":1,"set_training":1,"set_safeguards":1,"set_context":1,"set_harness":1,"set_operator":1,"set_tools":0,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":1216.0,"ldr_y":580.0,"ldr_sy":580.0,"ldr_op":1,"part_b":0,"cap_0":0,"cap_1":0,"cap_2":0,"cap_3":0,"cap_4":0,"cap_5":0,"cap_6":0,"cap_7":1,"cap_8":0,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":72.4,"name":"loop7-tools-B-what","loop":7,"s":{"foc_ui":0,"foc_model":0,"foc_training":0,"foc_safeguards":0,"foc_context":0,"foc_harness":0,"foc_operator":0,"foc_tools":1,"foc_environment":0,"foc_monitors":0,"foc_governance":0,"set_ui":1,"set_model":1,"set_training":1,"set_safeguards":1,"set_context":1,"set_harness":1,"set_operator":1,"set_tools":0,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":1216.0,"ldr_y":580.0,"ldr_sy":580.0,"ldr_op":1,"part_b":1,"cap_0":0,"cap_1":0,"cap_2":0,"cap_3":0,"cap_4":0,"cap_5":0,"cap_6":0,"cap_7":1,"cap_8":0,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":80.0,"name":"loop8-environment-A-label","loop":8,"s":{"foc_ui":0,"foc_model":0,"foc_training":0,"foc_safeguards":0,"foc_context":0,"foc_harness":0,"foc_operator":0,"foc_tools":0,"foc_environment":1,"foc_monitors":0,"foc_governance":0,"set_ui":1,"set_model":1,"set_training":1,"set_safeguards":1,"set_context":1,"set_harness":1,"set_operator":1,"set_tools":1,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":1190.0,"ldr_y":690.0,"ldr_sy":690.0,"ldr_op":1,"part_b":0,"cap_0":0,"cap_1":0,"cap_2":0,"cap_3":0,"cap_4":0,"cap_5":0,"cap_6":0,"cap_7":0,"cap_8":1,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":82.4,"name":"loop8-environment-B-what","loop":8,"s":{"foc_ui":0,"foc_model":0,"foc_training":0,"foc_safeguards":0,"foc_context":0,"foc_harness":0,"foc_operator":0,"foc_tools":0,"foc_environment":1,"foc_monitors":0,"foc_governance":0,"set_ui":1,"set_model":1,"set_training":1,"set_safeguards":1,"set_context":1,"set_harness":1,"set_operator":1,"set_tools":1,"set_environment":0,"set_monitors":0,"set_governance":0,"ldr_x":1190.0,"ldr_y":690.0,"ldr_sy":690.0,"ldr_op":1,"part_b":1,"cap_0":0,"cap_1":0,"cap_2":0,"cap_3":0,"cap_4":0,"cap_5":0,"cap_6":0,"cap_7":0,"cap_8":1,"cap_9":0,"cap_10":0,"cap_11":0}},
+  {"t":90.0,"name":"loop9-monitors-A-label","loop":9,"s":{"foc_ui":0,"foc_model":0,"foc_training":0,"foc_safeguards":0,"foc_context":0,"foc_harness":0,"foc_operator":0,"foc_tools":0,"foc_environment":0,"foc_monitors":1,"foc_governance":0,"set_ui":1,"set_model":1,"set_training":1,"set_safeguards":1,"set_context":1,"set_harness":1,"set_operator":1,"set_tools":1,"set_environment":1,"set_monitors":0,"set_governance":0,"ldr_x":1644.0,"ldr_y":650.0,"ldr_sy":650.0,"ldr_op":1,"part_b":0,"cap_0":0,"cap_1":0,"cap_2":0,"cap_3":0,"cap_4":0,"cap_5":0,"cap_6":0,"cap_7":0,"cap_8":0,"cap_9":1,"cap_10":0,"cap_11":0}},
+  {"t":92.4,"name":"loop9-monitors-B-what","loop":9,"s":{"foc_ui":0,"foc_model":0,"foc_training":0,"foc_safeguards":0,"foc_context":0,"foc_harness":0,"foc_operator":0,"foc_tools":0,"foc_environment":0,"foc_monitors":1,"foc_governance":0,"set_ui":1,"set_model":1,"set_training":1,"set_safeguards":1,"set_context":1,"set_harness":1,"set_operator":1,"set_tools":1,"set_environment":1,"set_monitors":0,"set_governance":0,"ldr_x":1644.0,"ldr_y":650.0,"ldr_sy":650.0,"ldr_op":1,"part_b":1,"cap_0":0,"cap_1":0,"cap_2":0,"cap_3":0,"cap_4":0,"cap_5":0,"cap_6":0,"cap_7":0,"cap_8":0,"cap_9":1,"cap_10":0,"cap_11":0}},
+  {"t":100.0,"name":"loop10-governance-A-label","loop":10,"s":{"foc_ui":0,"foc_model":0,"foc_training":0,"foc_safeguards":0,"foc_context":0,"foc_harness":0,"foc_operator":0,"foc_tools":0,"foc_environment":0,"foc_monitors":0,"foc_governance":1,"set_ui":1,"set_model":1,"set_training":1,"set_safeguards":1,"set_context":1,"set_harness":1,"set_operator":1,"set_tools":1,"set_environment":1,"set_monitors":1,"set_governance":0,"ldr_x":600.0,"ldr_y":868.0,"ldr_sy":868.0,"ldr_op":1,"part_b":0,"cap_0":0,"cap_1":0,"cap_2":0,"cap_3":0,"cap_4":0,"cap_5":0,"cap_6":0,"cap_7":0,"cap_8":0,"cap_9":0,"cap_10":1,"cap_11":0}},
+  {"t":102.4,"name":"loop10-governance-B-what","loop":10,"s":{"foc_ui":0,"foc_model":0,"foc_training":0,"foc_safeguards":0,"foc_context":0,"foc_harness":0,"foc_operator":0,"foc_tools":0,"foc_environment":0,"foc_monitors":0,"foc_governance":1,"set_ui":1,"set_model":1,"set_training":1,"set_safeguards":1,"set_context":1,"set_harness":1,"set_operator":1,"set_tools":1,"set_environment":1,"set_monitors":1,"set_governance":0,"ldr_x":600.0,"ldr_y":868.0,"ldr_sy":868.0,"ldr_op":1,"part_b":1,"cap_0":0,"cap_1":0,"cap_2":0,"cap_3":0,"cap_4":0,"cap_5":0,"cap_6":0,"cap_7":0,"cap_8":0,"cap_9":0,"cap_10":1,"cap_11":0}},
+  {"t":110.0,"name":"end-all-layers","loop":11,"s":{"foc_ui":0,"foc_model":0,"foc_training":0,"foc_safeguards":0,"foc_context":0,"foc_harness":0,"foc_operator":0,"foc_tools":0,"foc_environment":0,"foc_monitors":0,"foc_governance":0,"set_ui":1,"set_model":1,"set_training":1,"set_safeguards":1,"set_context":1,"set_harness":1,"set_operator":1,"set_tools":1,"set_environment":1,"set_monitors":1,"set_governance":1,"ldr_x":600.0,"ldr_y":868.0,"ldr_sy":868.0,"ldr_op":0,"part_b":1,"cap_0":0,"cap_1":0,"cap_2":0,"cap_3":0,"cap_4":0,"cap_5":0,"cap_6":0,"cap_7":0,"cap_8":0,"cap_9":0,"cap_10":0,"cap_11":1}}
+];
+var TOTAL = BEATS[BEATS.length - 1].t + END_DUR;
+var LOOPSTART = []; BEATS.forEach(function (b, i) { if (LOOPSTART[b.loop] === undefined) LOOPSTART[b.loop] = i; });
+/* ease rates per key family. A key's time between retargets x its rate must be >= 4: foc/set/ldr/cap retarget once per 10 s loop (11 loops + end); part_b can retarget 2.4 s apart, so it is the fastest (1.75) */
+var RATE = { foc: 0.5, set: 0.5, ldr: 1.3, cap: 1.0, part: 1.75, _def: 0.5 };
+var P = {}, ST = { t: 0, beat: 0, delta: 0 };
+function rateOf(k) { var i = k.indexOf("_"), p = i < 0 ? k : k.slice(0, i); return RATE[p] !== undefined ? RATE[p] : RATE._def; }
+function beatIndex(tt) { var i = 0; for (var k = 0; k < BEATS.length; k++) if (tt >= BEATS[k].t) i = k; return i; }
+function snapTo(i) { var s = BEATS[i].s; for (var k in s) P[k] = s[k]; }
+function resetPools(i) { ST.delta = 0; }          /* P is the whole state: no accumulators or pools to reset */
+function stepSim(dt) {                            /* ONE step, called by playback and by the seek replay */
+  ST.beat = beatIndex(ST.t);
+  var S = BEATS[ST.beat].s, d = 0, k, e;
+  for (k in S) { e = S[k] - P[k]; P[k] += e * (1 - Math.exp(-rateOf(k) * dt)); if (Math.abs(e) > d) d = Math.abs(e); }
+  ST.delta = d;
+}
+function advance(dt) { ST.t = Math.min(TOTAL, ST.t + dt); stepSim(dt); }   /* advance the clock BEFORE reading the beat */
+function setTime(v) {                             /* seek = snap + pre-roll + replay through stepSim */
+  v = Math.max(0, Math.min(TOTAL, v));
+  var i = Math.max(0, beatIndex(v) - PREROLL);
+  snapTo(i); resetPools(i); ST.t = BEATS[i].t;
+  while (v - ST.t > 1e-9) advance(Math.min(FIXED_DT, v - ST.t));
+  ST.t = v; ST.beat = beatIndex(v);
+}
+snapTo(0);
+/*STATE-LOGIC-END*/
+
+/* ---------------- DOM side: everything below writes the page ---------------- */
+var LX0 = 340, ENTRY = 600;
+var $ = function (id) { return document.getElementById(id); };
+var REVIEW = /[?&]review=1(&|$)/.test(location.search);
+var RM = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : { matches: false };
+var UI = { playing: false, visible: true, dirty: true, lastLoop: -1, stage: null, revBuilt: false };
+
+function hex(c) { return [parseInt(c.slice(1, 3), 16), parseInt(c.slice(3, 5), 16), parseInt(c.slice(5, 7), 16)]; }
+function mixHex(c0, c1, L) {
+  var a = hex(c0), b = hex(c1), o = "#";
+  for (var i = 0; i < 3; i++) { var v = Math.floor(a[i] + (b[i] - a[i]) * L + 0.5); o += (v < 16 ? "0" : "") + v.toString(16); }
+  return o;
+}
+function clamp01(x) { return Math.max(0, Math.min(1, x)); }
+var LY0 = 96, DRAW_T0 = 0.15, DRAW_DUR = 1.8;          /* v0.17: leader start height on the card, draw-on delay and length (s) */
+function bez(p0, p1, p2, p3, u) { var v = 1 - u; return [v*v*v*p0[0] + 3*v*v*u*p1[0] + 3*v*u*u*p2[0] + u*u*u*p3[0], v*v*v*p0[1] + 3*v*v*u*p1[1] + 3*v*u*u*p2[1] + u*u*u*p3[1]]; }
+function leaderPts(ex, ey) {                       /* the arc: out and up from the card, then a long fall onto the part */
+  var Ex = Math.min(ex, ENTRY), w = Math.max(220, Ex - LX0), p0 = [LX0, LY0], c1 = [LX0 + 0.6 * w, LY0 - 40], c2 = [Ex - 0.15 * w, ey - 0.45 * (ey - LY0)], p3 = [Ex, ey], out = [], i;
+  for (i = 0; i <= 48; i++) out.push(bez(p0, c1, c2, p3, i / 48));
+  if (ex > Ex + 0.5) for (i = 1; i <= 16; i++) out.push([Ex + (ex - Ex) * i / 16, ey]);
+  return out;
+}
+function cutPts(pts, f) {                          /* the first fraction f of the polyline, by length */
+  var L = [0], i; for (i = 1; i < pts.length; i++) L.push(L[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+  var want = f * L[L.length - 1], out = [pts[0]];
+  for (i = 1; i < pts.length; i++) {
+    if (L[i] <= want) { out.push(pts[i]); continue; }
+    var r = (want - L[i - 1]) / Math.max(1e-6, L[i] - L[i - 1]);
+    out.push([pts[i - 1][0] + (pts[i][0] - pts[i - 1][0]) * r, pts[i - 1][1] + (pts[i][1] - pts[i - 1][1]) * r]); break;
+  }
+  if (out.length < 2) out.push(pts[0]);
+  return out;
+}
+function easeIO(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+
+/* bindings: built once from the markup's data-* attributes */
+var BIND = [];
+(function () {
+  var els = document.querySelectorAll("[data-l]"), i, el, pairs = [["data-s", "stroke"], ["data-t", "fill"], ["data-f", "fill"]];
+  for (i = 0; i < els.length; i++) {
+    el = els[i];
+    for (var q = 0; q < pairs.length; q++) {
+      var v = el.getAttribute(pairs[q][0]);
+      if (v) BIND.push({ el: el, l: el.getAttribute("data-l"), a: pairs[q][1], c: v.split(","), o: false });
+    }
+    v = el.getAttribute("data-o");
+    if (v) { var pr = v.split(","); BIND.push({ el: el, l: el.getAttribute("data-l"), a: "opacity", c: [parseFloat(pr[0]), parseFloat(pr[1])], o: true }); }
+  }
+})();
+function colOf(P, l, c) {
+  var F = P["foc_" + l], S = P["set_" + l];
+  return c.length === 3 ? mixHex(mixHex(c[0], c[1], S), c[2], F) : mixHex(c[0], c[1], clamp01(F + S));
+}
+var PARTS = { b: document.querySelectorAll('[data-part="b"]') };
+var CAP = [], LDR = $("leader"), LPATH = $("leader-path"), LDOT = $("leader-dot");
+for (var c = 0; c <= 11; c++) CAP.push($("cap" + c));
+var LIVE = $("live");
+
+function render(P) {
+  var i, b, L;
+  for (i = 0; i < BIND.length; i++) {
+    b = BIND[i];
+    if (b.o) L = clamp01(P["foc_" + b.l] + P["set_" + b.l]);
+    b.el.setAttribute(b.a, b.o ? (b.c[0] + (b.c[1] - b.c[0]) * L).toFixed(3) : colOf(P, b.l, b.c));
+  }
+  /* v0.17 leader: starts high on the card (LX0, LY0), arcs out and down to the loop's part, and DRAWS ON at each loop start.
+     Draw progress is derived from time since the loop began (seekable, deterministic); the target is the current beat's own
+     ldr_x/ldr_y, so the arc shape never slides mid-draw. Past ENTRY it runs straight to the part, as before. */
+  var Sb = BEATS[ST.beat].s, ex = Sb.ldr_x, ey = Sb.ldr_y;
+  var pts = leaderPts(ex, ey), prog = easeIO(clamp01((ST.t - BEATS[LOOPSTART[curLoop()]].t - DRAW_T0) / DRAW_DUR));
+  var cut = cutPts(pts, prog), d = "M " + cut[0][0].toFixed(2) + " " + cut[0][1].toFixed(2), q2;
+  for (q2 = 1; q2 < cut.length; q2++) d += " L " + cut[q2][0].toFixed(2) + " " + cut[q2][1].toFixed(2);
+  var tip = cut[cut.length - 1];
+  LPATH.setAttribute("d", d);
+  LDOT.setAttribute("cx", tip[0].toFixed(2)); LDOT.setAttribute("cy", tip[1].toFixed(2));
+  LDOT.setAttribute("opacity", prog > 0.001 ? "1" : "0");
+  LDR.setAttribute("opacity", clamp01(P.ldr_op).toFixed(3));
+  var pk, pe, pp, q;
+  for (pk in PARTS) for (q = 0; q < PARTS[pk].length; q++) {      /* card parts: fade and a short rise */
+    pp = clamp01(P["part_" + pk]); pe = PARTS[pk][q];
+    pe.setAttribute("transform", "translate(0," + ((1 - pp) * 10).toFixed(2) + ")"); pe.setAttribute("opacity", pp.toFixed(3));
+  }
+  for (i = 0; i <= 11; i++) CAP[i].setAttribute("opacity", Math.max(0, 2 * P["cap_" + i] - 1).toFixed(3));
+  /* controls, live caption, review readout */
+  var lp = curLoop();
+  if (lp !== UI.lastLoop) {
+    UI.lastLoop = lp;
+    LIVE.textContent = CAP[lp].getAttribute("data-live");
+    var ds = $("dots").children;
+    for (i = 0; i < ds.length; i++) ds[i].setAttribute("aria-current", i === lp ? "true" : "false");
+    $("b-prev").disabled = lp === 0; $("b-next").disabled = lp === 11;
+  }
+  $("b-play").textContent = UI.playing ? "Pause" : (ST.t >= TOTAL ? "Replay" : "Play");
+  $("b-play").setAttribute("aria-pressed", UI.playing ? "true" : "false");
+  if (REVIEW) {
+    var out = "t        " + ST.t.toFixed(2) + " / " + TOTAL.toFixed(2) + "\nbeat     " + ST.beat + " " + BEATS[ST.beat].name + "\nplaying  " + UI.playing + "\ndelta    " + ST.delta.toFixed(4) + "\n", k;
+    for (k in P) out += (k + "          ").slice(0, 12) + P[k].toFixed(3) + "\n";
+    $("rev-out").textContent = out;
+    if (document.activeElement !== $("rev-slider")) $("rev-slider").value = ST.t;
+  }
+}
+
+/* ---------------- controls ---------------- */
+function curLoop() { return BEATS[ST.beat].loop; }
+function goLoop(j) {                               /* publish-mode step: to part A of loop j; the lerp makes the transition, then B loads by itself */
+  j = Math.max(0, Math.min(11, j));
+  var a = LOOPSTART[j], full = j < 11 ? a + 1 : a;
+  if (RM.matches) { ST.t = BEATS[full].t; ST.beat = full; snapTo(full); UI.stage = null; }   /* reduced motion: steps snap, fully loaded */
+  else { ST.t = BEATS[a].t; ST.beat = a; UI.stage = j < 11 ? BEATS[full].t : null; }
+  UI.dirty = true;
+}
+function setPlaying(on) {
+  if (on && RM.matches) on = false;               /* gate our own clock */
+  if (on && ST.t >= TOTAL) goLoop(0);
+  UI.stage = null; UI.playing = on; UI.dirty = true;
+}
+var dots = $("dots");
+for (var n = 0; n <= 11; n++) (function (n) {
+  var bt = document.createElement("button");
+  bt.type = "button"; bt.textContent = n < 11 ? String(n) : "All";
+  bt.setAttribute("aria-label", n < 11 ? "Loop " + n + ": " + CAP[n].getAttribute("data-name") : "All layers");
+  bt.title = bt.getAttribute("aria-label");
+  bt.addEventListener("click", function () { setPlaying(false); goLoop(n); });
+  dots.appendChild(bt);
+})(n);
+$("b-prev").addEventListener("click", function () { setPlaying(false); goLoop(curLoop() - 1); });
+$("b-next").addEventListener("click", function () { setPlaying(false); goLoop(curLoop() + 1); });
+$("b-play").addEventListener("click", function () { setPlaying(!UI.playing); });
+$("fb").addEventListener("keydown", function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.key === "ArrowRight") { e.preventDefault(); setPlaying(false); goLoop(curLoop() + 1); }
+  else if (e.key === "ArrowLeft") { e.preventDefault(); setPlaying(false); goLoop(curLoop() - 1); }
+});
+function rmChanged() {
+  $("b-play").disabled = RM.matches;
+  $("b-play").title = RM.matches ? "Autoplay is off because the system asks for reduced motion; use Previous and Next" : "";
+  if (RM.matches) { UI.playing = false; goLoop(curLoop()); }
+  UI.dirty = true;
+}
+if (RM.addEventListener) RM.addEventListener("change", rmChanged); else if (RM.addListener) RM.addListener(rmChanged);
+
+if (REVIEW) {
+  $("rev").hidden = false;
+  var rb = $("rev-beats");
+  BEATS.forEach(function (b, i) {
+    var bt = document.createElement("button"); bt.type = "button"; bt.textContent = i + " " + b.name;
+    bt.addEventListener("click", function () { setPlaying(false); setTime(b.t); UI.dirty = true; });
+    rb.appendChild(bt);
+  });
+  $("rev-slider").addEventListener("input", function () { setPlaying(false); setTime(parseFloat(this.value)); UI.dirty = true; });
+}
+
+/* print: show the whole picture */
+var saved = null;
+window.addEventListener("beforeprint", function () { saved = { t: ST.t, playing: UI.playing }; UI.playing = false; snapTo(BEATS.length - 1); ST.t = TOTAL; ST.beat = BEATS.length - 1; render(P); });
+window.addEventListener("afterprint", function () { if (saved) { setTime(saved.t); UI.playing = saved.playing; saved = null; UI.dirty = true; } });
+
+/* ---------------- the clock ---------------- */
+var last = null;
+function frame(now) {
+  var dt = last === null ? 0 : Math.min(0.05, (now - last) / 1000); last = now;
+  if (UI.playing && UI.visible && !RM.matches) {
+    advance(dt);
+    if (ST.t >= TOTAL && ST.delta < 1e-3) UI.playing = false;
+    UI.dirty = true;
+  } else if (UI.stage !== null && !RM.matches) {      /* a step landed on part A: let B load, then hold */
+    advance(dt);
+    if (ST.t >= UI.stage) { ST.t = UI.stage; UI.stage = null; }
+    UI.dirty = true;
+  } else { stepSim(dt); }
+  if (UI.dirty || ST.delta > 1e-4) { render(P); UI.dirty = ST.delta > 1e-4; }
+  window.requestAnimationFrame(frame);
+}
+
+/* start: the script sets the first frame; the stored markup (all lit) is for print and no-script readers */
+$("ctl").hidden = false;
+rmChanged();
+setTime(0);
+UI.lastLoop = -1; if (RM.matches) goLoop(0); render(P);
+if (!REVIEW && !RM.matches) {
+  if ("IntersectionObserver" in window) {            /* begin when the figure is on screen; pause when it is not */
+    UI.visible = false;
+    new IntersectionObserver(function (es) { UI.visible = es[es.length - 1].isIntersecting; }, { threshold: 0.35 }).observe($("fb"));
+  }
+  UI.playing = true;
+}
+window.requestAnimationFrame(frame);
+})();
+
+</script>
+<script>
+
+(function(){
+var TERMS=[{"t": "model", "m": "the trained weights, called once: tokens in, tokens out, nothing kept between calls", "s": "the name in the app's model picker, such as GPT-5.6 or Claude Opus 5.5", "id": "term-model"}, {"t": "weights (parameters)", "m": "the very large set of numbers that makes up a model, set by training; they do not change while the model is used (Paper 1, section 1.1)", "s": "nothing directly: a model name points to a set of weights", "id": "term-weights"}, {"t": "token", "m": "a small piece of text, a word or part of a word, that models read and write; context windows, output caps, rate limits and prices are counted in tokens", "s": "the unit behind \"context length\" and per-token prices; a long word can be several tokens", "id": "term-token"}, {"t": "harness", "m": "the program around the model that calls it: supplies tools, manages context, executes tool calls, enforces limits; it can itself contain models", "s": "the chat app or coding assistant you are working in", "id": "term-harness"}, {"t": "tool call", "m": "the model's structured request for an action; the harness decides, runs it and returns the result", "s": "the model asking to search, read a web page or run code, shown as \"Searching…\" or \"Reading…\"", "id": "term-tool-call"}, {"t": "tools", "m": "the actions the harness can take for the model, such as reading and editing files, running commands and searching the web; they run in the execution environment", "s": "\"Searching the web…\" in the app, or the connectors you switch on", "id": "term-tools"}, {"t": "context; compaction", "m": "everything the model is shown on one call: instructions, history, tool results. It grows every turn and, in Codex and on Anthropic's Messages API, is sent whole on every call (OpenAI's Responses API can also keep it server-side); the context window is its size limit. Compaction is summarising or clearing older context so a run can continue", "s": "the whole current chat; a long chat losing early details, or a \"summarizing the conversation\" notice", "id": "term-context"}, {"t": "limits", "m": "caps that stop or trim a run: context window, output cap, compaction, max turns, a spending cap (documented for Anthropic's Agent SDK), rate limits (Paper 1, section 3)", "s": "\"conversation too long\", \"usage limit reached\", or a long answer cut off", "id": "term-limits"}, {"t": "transcript", "m": "the harness's written account of a run; not a monitor", "s": "the chat history you can scroll back through", "id": "term-transcript"}, {"t": "execution environment; sandbox", "m": "what a run can reach: files, network, services, other runs; the tools run there. Both vendors use the term. A sandbox is an operating-system boundary on that reach; a control on the execution environment", "s": "whether the assistant can open your files, browse, or run code in a separate space", "id": "term-execution-environment"}, {"t": "approval policy / permission mode", "m": "the harness setting for which actions run unasked", "s": "an \"Allow this command?\" prompt, or an automatic mode that skips it", "id": "term-approval-policy"}, {"t": "reviewer model", "m": "a second model in the harness that approves or blocks proposed actions; a constraint, not a monitor, and no vendor calls it a guarantee", "s": "rarely visible: an automatic approver in some coding assistants", "id": "term-reviewer-model"}, {"t": "operator controls", "m": "the settings an operator chooses: approval policy, sandbox, rules, system prompt, reviewer model", "s": "your workspace admin's settings, your custom instructions, which tools are switched on", "id": "term-operator-controls"}, {"t": "model safeguards", "m": "trained refusals (the model) plus classifiers and account enforcement applied by whoever runs the model", "s": "a refused request, or a usage-policy warning", "id": "term-model-safeguards"}, {"t": "monitor", "m": "an observer outside the run that can alert or stop it, separate from the run's own transcript", "s": "mostly invisible to you", "id": "term-monitor"}, {"t": "controls", "m": "everything outside the model that bounds a run: harness constraints, execution-environment limits, operator controls, model safeguards, monitors", "s": "all of the rows above that sit outside the model", "id": "term-controls"}, {"t": "governance (the governor)", "m": "the people and policy that set and own the controls on every layer, training and the model safeguards included", "s": "the usage policy you agreed to; your company's AI policy", "id": "term-governance"}, {"t": "run (rollout); session", "m": "one attempt by a model with its harness and execution environment, from start to stop; in a product, one continuous conversation is a session", "s": "one chat, from start to finish", "id": "term-run"}, {"t": "training; reinforcement learning; grader; reward hacking", "m": "training sets the weights before the model is used; in reinforcement learning the model's attempts are scored by a grader, the code or model that scores an attempt, and the weights are adjusted toward higher scores; reward hacking is a higher score without the intended outcome", "s": "a model's \"knowledge cutoff\" date", "id": "term-training"}];
+var POP=null,OWNER=null,HOVER=window.matchMedia&&window.matchMedia("(hover:hover) and (pointer:fine)").matches,T=null;
+function esc(s){return s;}
+function close(back){if(!POP)return;POP.remove();POP=null;if(OWNER){OWNER.setAttribute("aria-expanded","false");if(back)OWNER.focus();}OWNER=null;}
+function open(btn,pinned){
+  var d=TERMS[+btn.getAttribute("data-ti")];if(OWNER===btn&&POP){if(pinned)POP.dataset.pinned="1";return;}
+  close(false);POP=document.createElement("div");POP.className="term-pop";POP.setAttribute("role","dialog");POP.setAttribute("aria-label",d.t);
+  POP.innerHTML='<button type="button" class="tp-x" aria-label="Close">✕</button><p class="tp-term">'+d.t+'</p><div class="tp-m">'+d.m+'</div>'+
+    (d.s?'<p class="tp-see"><b>What you see:</b> '+d.s+'</p>':'')
+  if(pinned)POP.dataset.pinned="1";
+  document.body.appendChild(POP);OWNER=btn;btn.setAttribute("aria-expanded","true");
+  var r=btn.getBoundingClientRect(),w=POP.offsetWidth,vw=document.documentElement.clientWidth;
+  POP.style.left=Math.max(12,Math.min(window.scrollX+r.left,window.scrollX+vw-w-12))+"px";
+  var below=window.scrollY+r.bottom+8,above=window.scrollY+r.top-POP.offsetHeight-8;
+  POP.style.top=((r.bottom+POP.offsetHeight+8>window.innerHeight&&above>window.scrollY)?above:below)+"px";
+  POP.querySelector(".tp-x").onclick=function(){close(true);};
+  POP.addEventListener("mouseenter",function(){clearTimeout(T);});
+  POP.addEventListener("mouseleave",function(){if(!POP||POP.dataset.pinned)return;T=setTimeout(function(){close(false);},250);});
+  if(pinned)POP.querySelector(".tp-x").focus();
+}
+document.addEventListener("click",function(e){var b=e.target.closest("button.term");
+  if(b){e.preventDefault();if(OWNER===b&&POP&&POP.dataset.pinned){close(true);}else{open(b,true);}return;}
+  if(POP&&!POP.contains(e.target))close(false);});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&POP)close(true);});
+if(HOVER){
+  document.addEventListener("mouseover",function(e){var b=e.target.closest&&e.target.closest("button.term");if(!b)return;clearTimeout(T);
+    T=setTimeout(function(){if(!POP||!POP.dataset.pinned)open(b,false);},180);});
+  document.addEventListener("mouseout",function(e){var b=e.target.closest&&e.target.closest("button.term");if(!b||!POP||POP.dataset.pinned)return;
+    clearTimeout(T);T=setTimeout(function(){if(POP&&!POP.dataset.pinned&&!POP.matches(":hover"))close(false);},250);});
+}
+window.addEventListener("resize",function(){close(false);});
+})();
+
+
+(function(){
+var ov=null,last=null,im=null,st=null,tg=null,z=false;
+function layout(){var w=+im.dataset.w,h=+im.dataset.h,sw=st.clientWidth-24,sh=st.clientHeight-16;
+  var fit=Math.min(sw/w,sh/h),s=z?Math.max(1,2*fit):fit;im.style.width=Math.round(w*s)+"px";im.style.height=Math.round(h*s)+"px";
+  im.style.marginTop=z?"0":Math.max(0,Math.round((sh-h*s)/2))+"px";st.classList.toggle("zoomed",z);
+  if(z){st.scrollLeft=(st.scrollWidth-st.clientWidth)/2;}}
+function set(v){z=v;layout();tg.textContent=z?"Fit to screen":"Zoom in";tg.setAttribute("aria-pressed",z?"true":"false");}
+function close(){if(!ov)return;ov.remove();ov=null;document.documentElement.style.overflow="";if(last)last.focus();}
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a.fig-open");if(!a)return;var src=a.querySelector("img");if(!src)return;
+  e.preventDefault();last=a;
+  ov=document.createElement("div");ov.className="zoom-overlay";ov.setAttribute("role","dialog");ov.setAttribute("aria-modal","true");
+  ov.setAttribute("aria-label",(a.getAttribute("aria-label")||"Figure").replace(/^Open /,""));
+  ov.innerHTML='<div class="zoom-bar"><button type="button" class="z-toggle" aria-pressed="false">Zoom in</button><button type="button" class="z-close">Close \u2715</button></div><div class="zoom-stage"><img alt=""></div>';
+  im=ov.querySelector("img");st=ov.querySelector(".zoom-stage");tg=ov.querySelector(".z-toggle");
+  im.src=src.currentSrc||src.src;im.alt=src.alt;im.dataset.w=src.getAttribute("width");im.dataset.h=src.getAttribute("height");
+  document.body.appendChild(ov);document.documentElement.style.overflow="hidden";set(false);
+  tg.onclick=function(){set(!z);};im.onclick=function(){set(!z);};
+  ov.querySelector(".z-close").onclick=close;st.addEventListener("click",function(ev){if(ev.target===st)close();});
+  ov.querySelector(".z-close").focus();});
+document.addEventListener("keydown",function(e){if(!ov)return;
+  if(e.key==="Escape"){close();return;}
+  if(e.key==="Tab"){var b=ov.querySelectorAll("button"),f=b[0],l=b[b.length-1];
+    if(e.shiftKey&&document.activeElement===f){e.preventDefault();l.focus();}else if(!e.shiftKey&&document.activeElement===l){e.preventDefault();f.focus();}}});
+window.addEventListener("resize",function(){if(ov)layout();});
+})();
+
+</script>
+</body>
+</html>

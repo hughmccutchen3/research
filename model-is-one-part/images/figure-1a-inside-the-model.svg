@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="584" viewBox="0 0 900 584" font-family="Segoe UI, Arial, sans-serif" style="background:#ffffff" role="img" aria-labelledby="f1a-title f1a-desc" xmlns:c2pa="http://c2pa.org/manifest">
+<title id="f1a-title">Figure 1a · Inside the model box: what goes into the weights</title>
+<desc id="f1a-desc">Zoom from Figure 1's model box. Top: the model is its weights, billions of numbers set by training. Middle: where the weights come from, left to right: data choices, pretraining by predicting the next token, fine-tuning on demonstrations, reinforcement learning in which attempts are scored and the weights move toward higher scores, scored by human preferences through a reward model, by AI feedback against a written constitution or by automatic checks of the answer, verifiable rewards. Below the model, as notes outside it: at use the weights do not change, and the GPT-3 paper evaluated GPT-3 without any gradient updates. And the series' reading: the weights set what the model tends to try; the harness, controls and environment of Figure 1 decide what an attempt can do.</desc>
+<rect x="0" y="0" width="900" height="584" fill="#ffffff" style="pointer-events: none;"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4b5563"/></marker></defs>
+<text x="20" y="30" font-size="16" font-weight="bold" fill="#111827">Figure 1a · Inside the model box: what goes into the weights</text>
+<g id="from-figure-1">
+<rect x="40" y="64" width="118" height="52" rx="8" fill="#ffffff" stroke="#9ca3af" stroke-width="2"/>
+<text x="99" y="87" font-size="12" font-weight="bold" fill="#111827" text-anchor="middle">Model</text>
+<text x="99" y="104" font-size="10" font-weight="400" fill="#4b5563" text-anchor="middle">in Figure 1</text>
+<line x1="158" y1="64" x2="190" y2="56" stroke="#9ca3af" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="158" y1="116" x2="190" y2="404" stroke="#9ca3af" stroke-width="1" stroke-dasharray="3 3"/>
+</g>
+<g id="model-panel">
+<rect x="190" y="56" width="670" height="348" rx="10" fill="#ffffff" stroke="#9ca3af" stroke-width="2" style="pointer-events: none;"/>
+<text x="208" y="84" font-size="14" font-weight="bold" fill="#111827">Model = the weights</text>
+<text x="208" y="103" font-size="10" font-weight="400" fill="#4b5563">a very large set of numbers (parameters), set by training; GPT-3, for example, has 175 billion</text>
+<text x="208" y="132" font-size="11" font-weight="bold" fill="#111827">Where the weights come from</text>
+</g>
+<g id="stage-1">
+<rect x="208" y="142" width="146" height="196" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="218" y="162" font-size="11" font-weight="bold" fill="#111827">Data choices</text>
+<text x="218" y="180" font-size="10" font-weight="400" fill="#111827">public web</text>
+<text x="218" y="194" font-size="10" font-weight="400" fill="#111827">third-party data</text>
+<text x="218" y="208" font-size="10" font-weight="400" fill="#111827">user data: rules differ</text>
+<text x="218" y="222" font-size="10" font-weight="400" fill="#111827">by company and plan</text>
+<text x="218" y="236" font-size="10" font-weight="400" fill="#111827">synthetic data</text>
+<text x="218" y="250" font-size="10" font-weight="400" fill="#111827">filtering</text>
+<text x="218" y="328" font-size="10" font-weight="400" fill="#4b5563"></text>
+</g>
+<g id="stage-2">
+<rect x="370" y="142" width="146" height="196" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="380" y="162" font-size="11" font-weight="bold" fill="#111827">Pretraining</text>
+<text x="380" y="180" font-size="10" font-weight="400" fill="#111827">predict the next token</text>
+<text x="380" y="194" font-size="10" font-weight="400" fill="#111827">over that text, again</text>
+<text x="380" y="208" font-size="10" font-weight="400" fill="#111827">and again</text>
+<text x="380" y="328" font-size="10" font-weight="400" fill="#4b5563"></text>
+</g>
+<g id="stage-3">
+<rect x="532" y="142" width="146" height="196" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="542" y="162" font-size="11" font-weight="bold" fill="#111827">Fine-tuning</text>
+<text x="542" y="180" font-size="10" font-weight="400" fill="#111827">train on examples of</text>
+<text x="542" y="194" font-size="10" font-weight="400" fill="#111827">wanted answers</text>
+<text x="542" y="208" font-size="10" font-weight="400" fill="#111827">(demonstrations)</text>
+<text x="542" y="328" font-size="10" font-weight="400" fill="#4b5563"></text>
+</g>
+<g id="stage-4">
+<rect x="694" y="142" width="146" height="196" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="704" y="162" font-size="11" font-weight="bold" fill="#111827">Reinforcement</text>
+<text x="704" y="176" font-size="11" font-weight="bold" fill="#111827">learning</text>
+<text x="704" y="194" font-size="10" font-weight="400" fill="#111827">attempts are scored;</text>
+<text x="704" y="208" font-size="10" font-weight="400" fill="#111827">weights move toward</text>
+<text x="704" y="222" font-size="10" font-weight="400" fill="#111827">higher scores</text>
+<text x="704" y="236" font-size="10" font-weight="400" fill="#111827">scored by: human</text>
+<text x="704" y="250" font-size="10" font-weight="400" fill="#111827">preferences, AI feedback</text>
+<text x="704" y="264" font-size="10" font-weight="400" fill="#111827">on a constitution, or</text>
+<text x="704" y="278" font-size="10" font-weight="400" fill="#111827">automatic checks of the</text>
+<text x="704" y="292" font-size="10" font-weight="400" fill="#111827">answer (verifiable</text>
+<text x="704" y="306" font-size="10" font-weight="400" fill="#111827">rewards)</text>
+<text x="704" y="328" font-size="10" font-weight="400" fill="#4b5563"></text>
+</g>
+<g id="stage-arrows">
+<line x1="354" y1="240" x2="368" y2="240" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="516" y1="240" x2="530" y2="240" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="678" y1="240" x2="692" y2="240" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+</g>
+<g id="shipped">
+<rect x="208" y="358" width="632" height="30" rx="15" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="524" y="378" font-size="11" font-weight="bold" fill="#111827" text-anchor="middle">result: the final weights, shipped as the model</text>
+<line x1="767" y1="338" x2="767" y2="356" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+</g>
+<g id="notes-label">
+<text x="190" y="432" font-size="11" font-weight="bold" fill="#4b5563">Notes on the model</text>
+</g>
+<g id="at-use">
+<rect x="190" y="444" width="326" height="120" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="200" y="464" font-size="11" font-weight="bold" fill="#111827">At use (the loop in Figure 3)</text>
+<text x="200" y="483" font-size="10" font-weight="400" fill="#111827">the weights do not change in use;</text>
+<text x="200" y="497" font-size="10" font-weight="400" fill="#111827">the GPT-3 paper evaluated GPT-3</text>
+<text x="200" y="511" font-size="10" font-weight="400" fill="#111827">"without any gradient updates"</text>
+</g>
+<g id="reading">
+<rect x="534" y="444" width="326" height="120" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="544" y="464" font-size="11" font-weight="bold" fill="#111827">What the weights set (this series' reading)</text>
+<text x="544" y="483" font-size="10" font-weight="400" fill="#111827">set: knowledge, skills, tendencies;</text>
+<text x="544" y="497" font-size="10" font-weight="400" fill="#111827">what the model tends to try</text>
+<text x="544" y="517" font-size="10" font-weight="400" fill="#111827">do not set: which tools exist, what runs,</text>
+<text x="544" y="531" font-size="10" font-weight="400" fill="#111827">what the run can reach; that is the harness,</text>
+<text x="544" y="545" font-size="10" font-weight="400" fill="#111827">controls and environment of Figure 1</text>
+</g>
+<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo3MjIyNTc1NS1kN2EwLTQzN2YtYTliZS1jNGJkMzcxNjcyMWIAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaPkL/3FSUHgQi/EE5BLc/BIAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDpkNDRiNjRiYi1lYTA2LTQ4ZTEtYjM1MC0yMzliMzdmM2Q5OWFscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoZldgzwPhrTDBrrUeJLjOYQAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggwbqVYeSwXnGaUuEM6rHgkfQospEUQzFiJupVuqGMR5CkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaL+pbx0j+Er29MfJp/f+gSoAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIOQf/J0V0sxG2ee21TJ+fzgAEuQbBtlW0lBTme6CxcWxZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GR/ZZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjcyMjI1NzU1LWQ3YTAtNDM3Zi1hOWJlLWM0YmQzNzE2NzIxYi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjM3N2YxYTEzLWRhNzYtNDI2NC1hMTdlLTk5ZDM0ZmNjNzUzMnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCDBupVh5LBecZpS4QzqseCR9CiykRRDMWIm6lW6oYxHkKJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggjDLU6NvnVNzBrEO+3xrNL5nidlOX2xl9hMBITz5JhA6iY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgg8QUSEhYmy5FBoViLg7FyMT5Ao3xVjRw/TAxkRaeXN4J0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQKeRkzEuVyMF8nqt8dr7C9pgV2IsV8Pbfc7DaNsstmTOq39Y/VODANT8X0/eew5lyjI+t2XPyFnQ/3BETB07qCI=</c2pa:manifest></metadata></svg>

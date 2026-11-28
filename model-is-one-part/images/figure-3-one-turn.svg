@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="778" viewBox="0 0 1120 778" font-family="Segoe UI, Arial, sans-serif" style="background:#ffffff" role="img" aria-labelledby="f3-title f3-desc" xmlns:c2pa="http://c2pa.org/manifest">
+<title id="f3-title">Figure 3 · One turn of the loop</title>
+<desc id="f3-desc">Four lanes: User, Model, Harness, Execution environment, as a sequence (not the nesting of Figure 1). Numbered steps: 0 the request comes in through a user interface (chat tool, code tool, API or other); 1 harness sends the context; 2 model proposes text, tool calls, or both; 3 harness checks the approval policy or permission mode, and rules, a reviewer model or a person approve or block; 4 the tool runs; 5 harness writes the result to the transcript and compacts as the context nears its limit; loop until a response has no tool calls or a limit is hit. Exit: no tool calls ends the loop; the harness returns the text. One run = the loop from start to stop. Anthropic documents the loop this way; OpenAI's held documents agree where they speak; part of OpenAI's side rests on an unverified lead. Added in v0.2: lettered limit markers matching Figure 1 and a strip showing the context growing turn by turn up to the context window and shrinking after compaction. Added in v0.7: the User lane and step 0.</desc>
+<rect x="0" y="0" width="1120" height="778" fill="#ffffff" style="pointer-events: none;"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4b5563"/></marker></defs>
+<text x="20" y="28" font-size="16" font-weight="bold" fill="#111827">Figure 3 · One turn of the loop: the model proposes, the harness decides what runs</text>
+<g id="lane_user">
+<rect x="40" y="50" width="200" height="30" rx="6" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="140" y="70" font-size="12" font-weight="bold" fill="#111827" text-anchor="middle">User</text>
+</g>
+<line x1="40" y1="90" x2="40" y2="490" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3 5"/>
+<line x1="240" y1="90" x2="240" y2="490" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3 5"/>
+<g id="lane_model">
+<rect x="260" y="50" width="250" height="30" rx="6" fill="#ffffff" stroke="#9ca3af" stroke-width="2"/>
+<text x="385" y="70" font-size="12" font-weight="bold" fill="#111827" text-anchor="middle">Model</text>
+</g>
+<line x1="260" y1="90" x2="260" y2="490" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3 5"/>
+<line x1="510" y1="90" x2="510" y2="490" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3 5"/>
+<g id="lane_harness">
+<rect x="530" y="50" width="280" height="30" rx="6" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="670" y="70" font-size="12" font-weight="bold" fill="#111827" text-anchor="middle">Harness</text>
+</g>
+<line x1="530" y1="90" x2="530" y2="490" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3 5"/>
+<line x1="810" y1="90" x2="810" y2="490" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3 5"/>
+<g id="lane_environment">
+<rect x="830" y="50" width="250" height="30" rx="6" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="955" y="70" font-size="12" font-weight="bold" fill="#111827" text-anchor="middle">Execution environment</text>
+</g>
+<line x1="830" y1="90" x2="830" y2="490" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3 5"/>
+<line x1="1080" y1="90" x2="1080" y2="490" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3 5"/>
+<g id="step-0">
+<rect x="50" y="100" width="180" height="58" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+<circle cx="66" cy="117" r="10" fill="#111827"/>
+<text x="66" y="121" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">0</text>
+<text x="82" y="121" font-size="11" font-weight="bold" fill="#111827">User interface</text>
+<text x="62" y="137" font-size="10" font-weight="400" fill="#4b5563">chat tool · code tool</text>
+<text x="62" y="151" font-size="10" font-weight="400" fill="#4b5563">API · other</text>
+</g>
+<path d="M230,129 L670,129 L670,168" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+<g id="step1_sends-context">
+<rect x="540" y="170" width="260" height="58" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<circle cx="556" cy="187" r="10" fill="#111827"/>
+<text x="556" y="191" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+<text x="572" y="191" font-size="11" font-weight="bold" fill="#111827">sends the context</text>
+<text x="552" y="207" font-size="11" font-weight="400" fill="#4b5563">instructions, history</text>
+<text x="552" y="223" font-size="11" font-weight="400" fill="#4b5563">and tool results</text>
+</g>
+<g id="step2_proposes">
+<rect x="270" y="170" width="230" height="58" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<circle cx="286" cy="187" r="10" fill="#111827"/>
+<text x="286" y="191" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+<text x="302" y="191" font-size="11" font-weight="bold" fill="#111827">proposes the next step</text>
+<text x="282" y="207" font-size="11" font-weight="400" fill="#4b5563">text, tool calls, or both</text>
+</g>
+<line x1="540" y1="188" x2="502" y2="188" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+<g id="step3_checks-policy">
+<rect x="540" y="260" width="260" height="90" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<circle cx="556" cy="277" r="10" fill="#111827"/>
+<text x="556" y="281" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+<text x="572" y="281" font-size="11" font-weight="bold" fill="#111827">checks the approval policy</text>
+<text x="552" y="297" font-size="11" font-weight="400" fill="#4b5563">or permission mode; rules, a</text>
+<text x="552" y="313" font-size="11" font-weight="400" fill="#4b5563">reviewer model or a person</text>
+<text x="552" y="329" font-size="11" font-weight="400" fill="#4b5563">approve or block</text>
+</g>
+<path d="M385,228 L385,305 L538,305" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="396" y="275" font-size="10" font-weight="400" fill="#4b5563">tool calls</text>
+<g id="step4_tool-runs">
+<rect x="840" y="260" width="230" height="90" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<circle cx="856" cy="277" r="10" fill="#111827"/>
+<text x="856" y="281" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+<text x="872" y="281" font-size="11" font-weight="bold" fill="#111827">the tool runs</text>
+<text x="852" y="296" font-size="10" font-weight="400" fill="#4b5563">Claude Code: shell tools run in</text>
+<text x="852" y="310" font-size="10" font-weight="400" fill="#4b5563">the sandbox, if on; Anthropic's</text>
+<text x="852" y="324" font-size="10" font-weight="400" fill="#4b5563">server tools: Anthropic's servers;</text>
+<text x="852" y="338" font-size="10" font-weight="400" fill="#4b5563">the result comes back</text>
+</g>
+<line x1="800" y1="305" x2="838" y2="305" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="791" y="287" width="56" height="14" fill="#ffffff" style="pointer-events: none;"/>
+<text x="819" y="298" font-size="10" font-weight="400" fill="#4b5563" text-anchor="middle">permitted</text>
+<g id="step5_transcript">
+<rect x="540" y="382" width="260" height="70" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<circle cx="556" cy="399" r="10" fill="#111827"/>
+<text x="556" y="403" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">5</text>
+<text x="572" y="403" font-size="11" font-weight="bold" fill="#111827">writes the transcript</text>
+<text x="552" y="419" font-size="11" font-weight="400" fill="#4b5563">adds the result; compacts as the</text>
+<text x="552" y="435" font-size="11" font-weight="400" fill="#4b5563">context nears its limit</text>
+</g>
+<path d="M955,350 L955,417 L802,417" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M670,452 L670,480 L820,480 L820,199 L802,199" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="832" y="464" font-size="10" font-weight="400" fill="#4b5563">repeat until a response has no tool</text>
+<text x="832" y="478" font-size="10" font-weight="400" fill="#4b5563">calls, or a limit is hit:</text>
+<g id="exit_text">
+<rect x="270" y="382" width="230" height="58" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="282" y="404" font-size="11" font-weight="bold" fill="#111827">no tool calls: the loop ends</text>
+<text x="282" y="422" font-size="11" font-weight="400" fill="#4b5563">the harness returns the text</text>
+</g>
+<path d="M330,228 L330,380" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="338" y="315" font-size="10" font-weight="400" fill="#4b5563">no tool calls</text>
+<g id="footer">
+<text x="40" y="744" font-size="10" font-weight="400" fill="#4b5563">The model proposes; the harness executes, permits and caps. Anthropic documents the loop this way; OpenAI's held documents agree where they speak (October 2026).</text>
+<text x="40" y="760" font-size="10" font-weight="400" fill="#4b5563">The loop, repeated from start to stop, is one run; in a product, a session. The lanes show a sequence, not the nesting of Figure 1.</text>
+</g>
+<g id="limit-F"><circle cx="786" cy="184" r="8" fill="#ffffff" stroke="#111827" stroke-width="1.2"/><text x="786" y="187.5" font-size="10" font-weight="bold" fill="#111827" text-anchor="middle">F</text></g>
+<g id="limit-B"><circle cx="486" cy="184" r="8" fill="#ffffff" stroke="#111827" stroke-width="1.2"/><text x="486" y="187.5" font-size="10" font-weight="bold" fill="#111827" text-anchor="middle">B</text></g>
+<g id="limit-C"><circle cx="786" cy="396" r="8" fill="#ffffff" stroke="#111827" stroke-width="1.2"/><text x="786" y="399.5" font-size="10" font-weight="bold" fill="#111827" text-anchor="middle">C</text></g>
+<g id="limit-D"><circle cx="960" cy="474" r="8" fill="#ffffff" stroke="#111827" stroke-width="1.2"/><text x="960" y="477.5" font-size="10" font-weight="bold" fill="#111827" text-anchor="middle">D</text></g>
+<g id="limit-E"><circle cx="980" cy="474" r="8" fill="#ffffff" stroke="#111827" stroke-width="1.2"/><text x="980" y="477.5" font-size="10" font-weight="bold" fill="#111827" text-anchor="middle">E</text></g>
+<g id="context-pile">
+<text x="40" y="522" font-size="11" font-weight="bold" fill="#111827">The context, turn by turn: step 1 sends all of it, every call (Codex; Anthropic's Messages API)</text>
+<rect x="60" y="646" width="72" height="24" rx="2" fill="#ffffff" stroke="#9ca3af" stroke-width="1"/>
+<text x="96" y="686" font-size="10" font-weight="400" fill="#4b5563" text-anchor="middle">start</text>
+<rect x="152" y="646" width="72" height="24" rx="2" fill="#ffffff" stroke="#9ca3af" stroke-width="1"/>
+<rect x="152" y="620" width="72" height="26" rx="2" fill="#ffffff" stroke="#9ca3af" stroke-width="1"/>
+<text x="188" y="686" font-size="10" font-weight="400" fill="#4b5563" text-anchor="middle">after turn 1</text>
+<rect x="244" y="646" width="72" height="24" rx="2" fill="#ffffff" stroke="#9ca3af" stroke-width="1"/>
+<rect x="244" y="620" width="72" height="26" rx="2" fill="#ffffff" stroke="#9ca3af" stroke-width="1"/>
+<rect x="244" y="582" width="72" height="38" rx="2" fill="#ffffff" stroke="#9ca3af" stroke-width="1"/>
+<text x="280" y="686" font-size="10" font-weight="400" fill="#4b5563" text-anchor="middle">after turn 2</text>
+<rect x="336" y="646" width="72" height="24" rx="2" fill="#ffffff" stroke="#9ca3af" stroke-width="1"/>
+<text x="372" y="661.5" font-size="10" font-weight="400" fill="#111827" text-anchor="middle">instructions</text>
+<rect x="336" y="620" width="72" height="26" rx="2" fill="#ffffff" stroke="#9ca3af" stroke-width="1"/>
+<text x="372" y="636.5" font-size="10" font-weight="400" fill="#111827" text-anchor="middle">turn 1</text>
+<rect x="336" y="582" width="72" height="38" rx="2" fill="#ffffff" stroke="#9ca3af" stroke-width="1"/>
+<text x="372" y="604.5" font-size="10" font-weight="400" fill="#111827" text-anchor="middle">turn 2</text>
+<rect x="336" y="542" width="72" height="40" rx="2" fill="#ffffff" stroke="#9ca3af" stroke-width="1"/>
+<text x="372" y="565.5" font-size="10" font-weight="400" fill="#111827" text-anchor="middle">turn 3</text>
+<text x="372" y="686" font-size="10" font-weight="400" fill="#4b5563" text-anchor="middle">after turn 3</text>
+<rect x="452" y="646" width="72" height="24" rx="2" fill="#ffffff" stroke="#9ca3af" stroke-width="1"/>
+<text x="488" y="661.5" font-size="10" font-weight="400" fill="#111827" text-anchor="middle">instructions</text>
+<rect x="452" y="624" width="72" height="22" rx="2" fill="#ffffff" stroke="#9ca3af" stroke-width="1"/>
+<text x="488" y="638.5" font-size="10" font-weight="400" fill="#111827" text-anchor="middle">summary</text>
+<rect x="452" y="584" width="72" height="40" rx="2" fill="#ffffff" stroke="#9ca3af" stroke-width="1"/>
+<text x="488" y="607.5" font-size="10" font-weight="400" fill="#111827" text-anchor="middle">turn 3</text>
+<text x="488" y="686" font-size="10" font-weight="400" fill="#4b5563" text-anchor="middle">after compaction</text>
+<line x1="414" y1="610" x2="446" y2="610" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+<g id="limit-C"><circle cx="430" cy="596" r="8" fill="#ffffff" stroke="#111827" stroke-width="1.2"/><text x="430" y="599.5" font-size="10" font-weight="bold" fill="#111827" text-anchor="middle">C</text></g>
+<line x1="50" y1="540" x2="534" y2="540" stroke="#4b5563" stroke-width="1"/>
+<g id="limit-A"><circle cx="550" cy="540" r="8" fill="#ffffff" stroke="#111827" stroke-width="1.2"/><text x="550" y="543.5" font-size="10" font-weight="bold" fill="#111827" text-anchor="middle">A</text></g>
+<text x="564" y="544" font-size="10" font-weight="400" fill="#4b5563">context window</text>
+</g>
+<g id="pile-notes">
+<text x="600" y="570" font-size="10" font-weight="400" fill="#111827">Each turn adds the model's proposal and the</text>
+<text x="600" y="584" font-size="10" font-weight="400" fill="#111827">tool's result to the pile. The whole pile is sent</text>
+<text x="600" y="598" font-size="10" font-weight="400" fill="#111827">on the next call (Codex; Anthropic's Messages</text>
+<text x="600" y="612" font-size="10" font-weight="400" fill="#111827">API). Near the context window (A) the harness</text>
+<text x="600" y="626" font-size="10" font-weight="400" fill="#111827">or the vendor's API compacts (C): it summarises</text>
+<text x="600" y="640" font-size="10" font-weight="400" fill="#111827">older turns so the run can continue.</text>
+</g>
+<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTpjNjAyNDYyNi1kZWM5LTQzZWItYmQ0NC01N2I2NjliYmI2YjYAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaB1Zi2jR65HWZW3sNc8T8vgAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDpkMGQ2OTNlMi1iM2Y4LTRjZWEtYjI1MC1lZWNjYTRjOTA1NjNscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoGx+Xi89hgYok4se4yP7tNgAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFgg4u9HFfLAWD6zp4ejqa6wmz2L9fDDgkq1VS0hcEVV2WikZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaAuA71rUajUUgNd3kVg6WQgAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIO951Xb4j7ThccJ2ojTIiibU0wgdO+7zjU8WfLwF4sRsZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GTnEZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOmM2MDI0NjI2LWRlYzktNDNlYi1iZDQ0LTU3YjY2OWJiYjZiNi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmIyNDJkZTJjLTdkMjktNGQzZi1iZGU2LTY3YmU3N2JlYzdjMHJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCDi70cV8sBYPrOnh6OprrCbPYv18MOCSrVVLSFwRVXZaKJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggns+VHdMQSjeSjy/4EYn6sP39pgMIumEBhqkGKMaCkxOiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgg8t0VQ5Co+dL6x2WQ/avAsZocd9eQFjDxOYztFnJgvfJ0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQPrKzCMXHjF4uQWXTWxg5TFtH51HE/AwW0EdaHzmwcVu1XI7ymdFtiAoB6RQw74COirgnRF57OGrIYyqjvZDxD4=</c2pa:manifest></metadata></svg>
